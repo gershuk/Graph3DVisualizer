@@ -12,7 +12,7 @@ namespace Grpah3DVisualser
         Vector2 TextureOffset { get; set; }
         Vector2 TextureScale { get; set; }
 
-        void SetBillboardTexture ((Texture2D Texture, Rect Rect)[] images, int textureWidth, int textureHeight);
+        void SetBillboardTexture ((Texture2D Texture, Vector2Int Position)[] images, int textureWidth, int textureHeight);
         void SetBillboardTexture (Texture2D Texture);
     }
 
@@ -34,8 +34,8 @@ namespace Grpah3DVisualser
 
         private void Awake ()
         {
-            _shader = (_shader == null) ? Shader.Find("Custom/BillboardShader") : _shader;
-            _defaultTexture = (_defaultTexture == null) ? Resources.Load<Texture2D>("Textures/BillboardDefaultTexture") : _defaultTexture;
+            _shader = _shader == null ? Shader.Find("Custom/BillboardShader") : _shader;
+            _defaultTexture = _defaultTexture == null ? Resources.Load<Texture2D>("Textures/BillboardDefaultTexture") : _defaultTexture;
 
             var material = new Material(_shader) { mainTexture = _defaultTexture };
             material.SetFloat(_scaleX, 27.59f);
@@ -78,7 +78,7 @@ namespace Grpah3DVisualser
             get => _render.material.GetTextureScale(_mainTextureName);
         }
 
-        public void SetBillboardTexture ((Texture2D Texture, Rect Rect)[] images, int textureWidth, int textureHeight) =>
+        public void SetBillboardTexture ((Texture2D Texture, Vector2Int Position)[] images, int textureWidth, int textureHeight) =>
             _render.material.mainTexture = Texture2DExtension.CombineTextures(images, textureWidth, textureHeight);
 
         public void SetBillboardTexture (Texture2D Texture) => _render.material.mainTexture = Texture;

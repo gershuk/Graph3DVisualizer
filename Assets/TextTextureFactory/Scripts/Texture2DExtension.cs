@@ -4,19 +4,37 @@ namespace TextureFactory
 {
     public static class Texture2DExtension
     {
-        public static Texture2D CombineTextures ((Texture2D Texture, Rect Rect)[] images, int textureWidth, int textureHeight)
+        public static Texture2D CombineTextures ((Texture2D Texture, Vector2Int Position)[] images, int textureWidth, int textureHeight)
+        {
+            var newTexture = new Texture2D(textureWidth, textureHeight);
+
+            for (var j=0;j<textureHeight; ++j)
+            {
+                for (var i=0; i<textureWidth; ++i)
+                {
+                    newTexture.SetPixel(i, j, Color.clear);
+                }
+            }
+            
+            foreach (var image in images)
+            {
+                newTexture.SetPixels(image.Position.x, image.Position.y,
+                                     image.Texture.width, image.Texture.height,
+                                     image.Texture.GetPixels());
+            }
+
+            newTexture.Apply();
+
+            return newTexture;
+        }
+
+        public static Texture2D ResizeTexture (Texture2D texture, int textureWidth, int textureHeight)
         {
             var renderTexture = RenderTexture.GetTemporary(textureWidth, textureHeight);
             renderTexture.filterMode = FilterMode.Point;
             RenderTexture.active = renderTexture;
 
-            foreach (var image in images)
-            {
-                var filterMode = image.Texture.filterMode;
-                image.Texture.filterMode = FilterMode.Point;
-                Graphics.DrawTexture(image.Rect, image.Texture);
-                image.Texture.filterMode = filterMode;
-            }
+            Graphics.Blit(texture, renderTexture);
 
             var newTexture = new Texture2D(textureWidth, textureHeight);
             newTexture.ReadPixels(new Rect(0, 0, textureWidth, textureHeight), 0, 0);
