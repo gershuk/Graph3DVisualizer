@@ -20,17 +20,14 @@ namespace Grpah3DVisualser
             _vertexes = new HashSet<Vertex>();
         }
 
-        public Vertex SpawnVertex<T> (in VertexParameters parameters) where T :Vertex
+        public Vertex SpawnVertex<T> (in VertexParameters vertexParameters, in BillboardParameters billboardParameters) where T :Vertex
         {
-            var vertex = Instantiate(_vertexPrefab, parameters.Position, parameters.Rotation, _transform);
+            var vertex = Instantiate(_vertexPrefab, vertexParameters.Position, vertexParameters.Rotation, _transform);
             var vertexComponent = vertex.gameObject.AddComponent<T>();
             var billboardControler = vertexComponent.BillboardControler;
 
-            billboardControler.SetBillboardTexture(parameters.Images, parameters.Width, parameters.Height);
-            billboardControler.ScaleX = parameters.ScaleX;
-            billboardControler.ScaleY = parameters.ScaleY;
-            billboardControler.Cutoff = parameters.Cutoff;
-
+            billboardControler.SetUpBillboard(billboardParameters);
+            
             _vertexes.Add(vertexComponent);
             return vertexComponent;
         }

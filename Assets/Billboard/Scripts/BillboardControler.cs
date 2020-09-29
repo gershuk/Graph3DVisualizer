@@ -1,9 +1,34 @@
-﻿using TextureFactory;
+﻿using System;
+
+using TextureFactory;
 
 using UnityEngine;
 
 namespace Grpah3DVisualser
 {
+    public readonly struct BillboardParameters
+    {
+        public int TextureWidth { get; }
+        public int TextureHeight { get; }
+
+        public float ScaleX { get; }
+        public float ScaleY { get; }
+
+        public float Cutoff { get; }
+
+        public (Texture2D Texture, Vector2Int Position)[] Images { get; }
+
+        public BillboardParameters (int textureWidth, int textureHeight, float scaleX, float scaleY, float cutoff, (Texture2D Texture, Vector2Int Position)[] images)
+        {
+            TextureWidth = textureWidth;
+            TextureHeight = textureHeight;
+            ScaleX = scaleX;
+            ScaleY = scaleY;
+            Cutoff = cutoff;
+            Images = images ?? throw new ArgumentNullException(nameof(images));
+        }
+    }
+
     public interface IBillboardControler
     {
         float Cutoff { get; set; }
@@ -12,8 +37,7 @@ namespace Grpah3DVisualser
         Vector2 TextureOffset { get; set; }
         Vector2 TextureScale { get; set; }
 
-        void SetBillboardTexture ((Texture2D Texture, Vector2Int Position)[] images, int textureWidth, int textureHeight);
-        void SetBillboardTexture (Texture2D Texture);
+        void SetUpBillboard (BillboardParameters billboardParameters);
     }
 
     [RequireComponent(typeof(MeshRenderer))]
@@ -48,6 +72,12 @@ namespace Grpah3DVisualser
             //ToDo Set Mesh Filter to Quad
         }
 
+        public Texture MainTexture
+        {
+            set => _render.material.mainTexture = value;
+            get => _render.material.mainTexture;
+        }
+
         public float ScaleX
         {
             set => _render.material.SetFloat(_scaleX, value);
@@ -62,7 +92,12 @@ namespace Grpah3DVisualser
 
         public float Cutoff
         {
-            set => _render.material.SetFloat(_cutoff, value);
+            set
+            {
+                if (value > 1 || value < 0)
+                    throw new Exception("Cutoff parameter out of range");
+                _render.material.SetFloat(_cutoff, value);
+            }
             get => _render.material.GetFloat(_cutoff);
         }
 
@@ -78,9 +113,15 @@ namespace Grpah3DVisualser
             get => _render.material.GetTextureScale(_mainTextureName);
         }
 
-        public void SetBillboardTexture ((Texture2D Texture, Vector2Int Position)[] images, int textureWidth, int textureHeight) =>
-            _render.material.mainTexture = Texture2DExtension.CombineTextures(images, textureWidth, textureHeight);
+        public void SetUpBillboard (BillboardParameters billboardParameters)
+        {
+            _render.material.mainTexture = Texture2DExtension.CombineTextures(billboardParameters.Images,
+                                                                              billboardParameters.TextureWidth,
+                                                                              billboardParameters.TextureHeight);
 
-        public void SetBillboardTexture (Texture2D Texture) => _render.material.mainTexture = Texture;
+            ScaleX = billboardParameters.ScaleX;
+            ScaleY = billboardParameters.ScaleY;
+            Cutoff = billboardParameters.Cutoff;
+        }
     }
 }

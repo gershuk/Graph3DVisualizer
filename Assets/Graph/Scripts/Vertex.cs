@@ -11,26 +11,10 @@ namespace Grpah3DVisualser
         public Vector3 Position { get; }
         public Quaternion Rotation { get; }
 
-        public int Width { get; }
-        public int Height { get; }
-
-        public float ScaleX { get; }
-        public float ScaleY { get; }
-
-        public float Cutoff { get; }
-
-        public (Texture2D Texture, Vector2Int Position)[] Images { get; }
-
-        public VertexParameters (Vector3 position, Quaternion rotation, int width, int height, float scaleX, float scaleY, float cutoff,(Texture2D Texture, Vector2Int Position)[] images)
+        public VertexParameters (Vector3 position, Quaternion rotation)
         {
             Position = position;
             Rotation = rotation;
-            Width = width;
-            Height = height;
-            ScaleX = scaleX;
-            ScaleY = scaleY;
-            Cutoff = cutoff;
-            Images = images ?? throw new ArgumentNullException(nameof(images));
         }
     }
 
@@ -41,6 +25,7 @@ namespace Grpah3DVisualser
 
         private void Awake ()
         {
+            _transform = GetComponent<Transform>();
             BillboardControler = GetComponent<BillboardControler>();
         }
     }
