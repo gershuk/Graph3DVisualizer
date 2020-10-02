@@ -8,6 +8,8 @@ namespace Grpah3DVisualser
 {
     public readonly struct BillboardParameters
     {
+        public (Texture2D Texture, Vector2Int Position)[] Images { get; }
+
         public int TextureWidth { get; }
         public int TextureHeight { get; }
 
@@ -16,16 +18,19 @@ namespace Grpah3DVisualser
 
         public float Cutoff { get; }
 
-        public (Texture2D Texture, Vector2Int Position)[] Images { get; }
+        public bool Compressed { get; }
 
-        public BillboardParameters (int textureWidth, int textureHeight, float scaleX, float scaleY, float cutoff, (Texture2D Texture, Vector2Int Position)[] images)
+
+        public BillboardParameters ((Texture2D Texture, Vector2Int Position)[] images, int textureWidth, int textureHeight,
+            float scaleX, float scaleY, float cutoff, bool compressed)
         {
+            Images = images ?? throw new ArgumentNullException(nameof(images));
             TextureWidth = textureWidth;
             TextureHeight = textureHeight;
             ScaleX = scaleX;
             ScaleY = scaleY;
             Cutoff = cutoff;
-            Images = images ?? throw new ArgumentNullException(nameof(images));
+            Compressed = compressed;
         }
     }
 
@@ -44,17 +49,21 @@ namespace Grpah3DVisualser
     [RequireComponent(typeof(MeshFilter))]
 
     [ExecuteInEditMode]
-    public sealed class BillboardControler : MonoBehaviour, IBillboardControler
+    public sealed class BillboardControler : MonoBehaviour, IBillboardControler, IVisibile
     {
         private const string _scaleX = "_ScaleX";
         private const string _scaleY = "_ScaleY";
         private const string _cutoff = "_Cutoff";
         private const string _mainTextureName = "_MainTex";
 
-        private static Texture2D _defaultTexture;
+        [SerializeField]
         private static Shader _shader;
+        [SerializeField]
+        private static Texture2D _defaultTexture;
 
         private MeshRenderer _render;
+
+        public event Action<bool, UnityEngine.Object> OnVisibleChange;
 
         private void Awake ()
         {
@@ -115,13 +124,29 @@ namespace Grpah3DVisualser
 
         public void SetUpBillboard (BillboardParameters billboardParameters)
         {
-            _render.material.mainTexture = Texture2DExtension.CombineTextures(billboardParameters.Images,
-                                                                              billboardParameters.TextureWidth,
-                                                                              billboardParameters.TextureHeight);
+            var m1 = Texture.currentTextureMemory;
+            var texture = Texture2DExtension.CombineTextures(billboardParameters.Images,
+                                                             billboardParameters.TextureWidth,
+                                                             billboardParameters.TextureHeight);
 
+            if (billboardParameters.Compressed)
+                texture.Compress(false);
+
+            _render.material.mainTexture = texture;
             ScaleX = billboardParameters.ScaleX;
             ScaleY = billboardParameters.ScaleY;
             Cutoff = billboardParameters.Cutoff;
         }
+
+        public void SetVisibility (bool state)
+        {
+            if (_render.enabled != state)
+            {
+                _render.enabled = state;
+                OnVisibleChange?.Invoke(state, this);
+            }
+        }
+
+        public bool GetVisibility () => _render.enabled;
     }
 }

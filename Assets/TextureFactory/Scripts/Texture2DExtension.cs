@@ -7,20 +7,20 @@ namespace TextureFactory
         public static Texture2D CombineTextures ((Texture2D Texture, Vector2Int Position)[] images, int textureWidth, int textureHeight)
         {
             var newTexture = new Texture2D(textureWidth, textureHeight);
+            //ToDo: too slow, need to replace
+            //for (var j=0;j<textureHeight; ++j)
+            //{
+            //    for (var i=0; i<textureWidth; ++i)
+            //    {
+            //        newTexture.SetPixel(i, j, Color.clear);
+            //    }
+            //}
 
-            for (var j=0;j<textureHeight; ++j)
-            {
-                for (var i=0; i<textureWidth; ++i)
-                {
-                    newTexture.SetPixel(i, j, Color.clear);
-                }
-            }
-            
             foreach (var image in images)
             {
-                newTexture.SetPixels(image.Position.x, image.Position.y,
+                newTexture.SetPixels32(image.Position.x, image.Position.y,
                                      image.Texture.width, image.Texture.height,
-                                     image.Texture.GetPixels());
+                                     image.Texture.GetPixels32());
             }
 
             newTexture.Apply();
