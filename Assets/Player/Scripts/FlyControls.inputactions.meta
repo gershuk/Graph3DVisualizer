@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: aad7b2c3f7924c14abb08907c5cd5534
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 8404be70184654265930450def6a9037, type: 3}
+  generateWrapperCode: 1
+  wrapperCodePath: Assets/Player/Scripts/FlyControls.cs
+  wrapperClassName: FlyControls
+  wrapperCodeNamespace: PlayerInputControls
