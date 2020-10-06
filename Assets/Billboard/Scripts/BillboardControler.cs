@@ -1,5 +1,7 @@
 ﻿using System;
 
+using SupportComponents;
+
 using TextureFactory;
 
 using UnityEngine;
@@ -138,15 +140,17 @@ namespace Grpah3DVisualser
             Cutoff = billboardParameters.Cutoff;
         }
 
-        public void SetVisibility (bool state)
+        public bool Visibility
         {
-            if (_render.enabled != state)
+            set
             {
-                _render.enabled = state;
-                OnVisibleChange?.Invoke(state, this);
+                if (_render.enabled != value)
+                {
+                    _render.enabled = value;
+                    OnVisibleChange?.Invoke(value, this);
+                }
             }
+            get => _render.enabled;
         }
-
-        public bool GetVisibility () => _render.enabled;
     }
 }

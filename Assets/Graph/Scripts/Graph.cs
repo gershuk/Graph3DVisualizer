@@ -4,8 +4,15 @@ using UnityEngine;
 
 namespace Grpah3DVisualser
 {
+    public interface IGraph
+    {
+        bool ContainsVertex (Vertex vertex);
+        bool DeleteVeretex (Vertex vertex);
+        T SpawnVertex<T> (in VertexParameters vertexParameters, in BillboardParameters billboardParameters) where T : Vertex, new();
+    }
+
     [ExecuteInEditMode]
-    public class Graph : MonoBehaviour
+    public class Graph : MonoBehaviour, IGraph
     {
         [SerializeField]
         private GameObject _vertexPrefab;
@@ -19,7 +26,7 @@ namespace Grpah3DVisualser
             _vertexes = new HashSet<Vertex>();
         }
 
-        public Vertex SpawnVertex<T> (in VertexParameters vertexParameters, in BillboardParameters billboardParameters) where T : Vertex
+        public T SpawnVertex<T> (in VertexParameters vertexParameters, in BillboardParameters billboardParameters) where T : Vertex, new()
         {
             var vertex = Instantiate(_vertexPrefab, vertexParameters.Position, vertexParameters.Rotation, _transform);
             var vertexComponent = vertex.gameObject.AddComponent<T>();

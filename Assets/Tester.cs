@@ -1,6 +1,4 @@
-﻿using System;
-
-using Grpah3DVisualser;
+﻿using Grpah3DVisualser;
 
 using TextureFactory;
 
@@ -24,9 +22,10 @@ public class Tester : MonoBehaviour
             var verPar = new VertexParameters(new Vector3(i * 20, 0, 0), Quaternion.identity);
             var billPar = new BillboardParameters(image, 200, 200, 1, 1, 1f, true);
             var currentVertex = graphControler.SpawnVertex<Vertex>(in verPar, in billPar);
-            lastVertex?.Link<Edge>(currentVertex);
+            var linkParameters = new LinkParameters(1, 1);
+            lastVertex?.Link<Edge>(currentVertex, linkParameters);
             if (lastVertex != null)
-                currentVertex.Link<Edge>(lastVertex);
+                currentVertex.Link<Edge>(lastVertex, linkParameters);
             lastVertex = currentVertex;
         }
     }

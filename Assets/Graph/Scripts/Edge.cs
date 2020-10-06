@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using UnityEngine;
 
@@ -45,7 +44,6 @@ namespace Grpah3DVisualser
 
     public readonly struct EdgeParameters
     {
-        public Vector3 Position { get; }
         public float SourceOffsetDist { get; }
         public float TargetOffsetDist { get; }
         public AdjacentVertices AdjacentVertices { get; }
@@ -53,10 +51,9 @@ namespace Grpah3DVisualser
         public Texture2D LineTexture { get; }
         public EdgeVisibility Visibility { get; }
 
-        public EdgeParameters (Vector3 position, float sourceOffsetDist, float targetOffsetDist, AdjacentVertices adjacentVertices,
+        public EdgeParameters (float sourceOffsetDist, float targetOffsetDist, AdjacentVertices adjacentVertices,
             Texture2D arrowTexture = null, Texture2D lineTexture = null, EdgeVisibility visibility = EdgeVisibility.DependOnVertices)
         {
-            Position = position;
             SourceOffsetDist = sourceOffsetDist;
             TargetOffsetDist = targetOffsetDist;
             AdjacentVertices = adjacentVertices;
@@ -66,8 +63,25 @@ namespace Grpah3DVisualser
         }
     }
 
+    public interface IEdge
+    {
+        AdjacentVertices AdjacentVertices { get; set; }
+        Texture2D ArrowTexture { get; set; }
+        Texture2D LineTexture { get; set; }
+        float SourceOffsetDist { get; set; }
+        float TargetOffsetDist { get; set; }
+        EdgeType Type { get; set; }
+        EdgeVisibility Visibility { get; set; }
+
+        void SetUpEdge (EdgeParameters edgeParameters);
+        void UpdateCoordinates ();
+        void UpdateEdge ();
+        void UpdateType ();
+        void UpdateVisibility ();
+    }
+
     [RequireComponent(typeof(LineRenderer))]
-    public class Edge : MonoBehaviour
+    public class Edge : MonoBehaviour, IEdge
     {
         private const string _cutoff = "_Cutoff";
         private static Shader _shader;
@@ -157,65 +171,23 @@ namespace Grpah3DVisualser
             }
         }
 
-        public void UpdateEdge ()
-        {
-            UpdateType();
-            UpdateVisibility();
-            UpdateCoordinates();
-        }
+        public Texture2D LineTexture { get => _lineTexture; set => _lineTexture = value; }
+        public Texture2D ArrowTexture { get => _arrowTexture; set => _arrowTexture = value; }
 
-        public void SetUpEdge (EdgeParameters edgeParameters)
-        {
-            _transform.position = edgeParameters.Position;
-            _adjacentVertices = edgeParameters.AdjacentVertices;
-            SubscribeOnVerticesEvents();
-            _sourceOffsetDist = edgeParameters.SourceOffsetDist;
-            _targetOffsetDist = edgeParameters.TargetOffsetDist;
-            _arrowTexture = edgeParameters.ArrowTexture != null ? edgeParameters.ArrowTexture : _arrowTexture;
-            _lineTexture = edgeParameters.LineTexture != null ? edgeParameters.LineTexture : _lineTexture;
-            _visibility = edgeParameters.Visibility;
-            UpdateEdge();
-        }
-
-        private void OnDestroy () => UnsubscribeOnVerticesEvents();
-
-        private void Awake ()
-        {
-            _transform = GetComponent<Transform>();
-
-            _shader = _shader == null ? Shader.Find("Custom/EdgeShader") : _shader;
-            _material = new Material(_shader) { mainTexture = _lineTexture };
-            _material.SetFloat(_cutoff, 0.8f);
-
-            _defaultArrowTexture = _defaultArrowTexture == null ? (Texture2D) Resources.Load("Textures/Arrow") : _defaultArrowTexture;
-            _defaultLineTexture = _defaultLineTexture == null ? (Texture2D) Resources.Load("Textures/Line") : _defaultLineTexture;
-
-            _arrowTexture = _defaultArrowTexture;
-            _lineTexture = _defaultLineTexture;
-
-            _lineRenderer = GetComponent<LineRenderer>();
-            _lineRenderer.material = _material;
-            _lineRenderer.positionCount = 2;
-
-            _sourceOffsetDist = 1f;
-            _targetOffsetDist = 1f;
-            _type = EdgeType.Unidirectional;
-        }
-
-        private void UpdateType ()
+        public void UpdateType ()
         {
             switch (_type)
             {
                 case EdgeType.Unidirectional:
-                    _material.mainTexture = _arrowTexture;
+                    _material.mainTexture = ArrowTexture;
                     break;
                 case EdgeType.Bidirectional:
-                    _material.mainTexture = _lineTexture;
+                    _material.mainTexture = LineTexture;
                     break;
             }
         }
 
-        private void UpdateCoordinates ()
+        public void UpdateCoordinates ()
         {
             if (_visibility == EdgeVisibility.DependOnVertices)
             {
@@ -227,7 +199,7 @@ namespace Grpah3DVisualser
             }
         }
 
-        private void UpdateVisibility ()
+        public void UpdateVisibility ()
         {
             switch (_visibility)
             {
@@ -238,11 +210,55 @@ namespace Grpah3DVisualser
                     _lineRenderer.enabled = true;
                     break;
                 case EdgeVisibility.DependOnVertices:
-                    _lineRenderer.enabled = _adjacentVertices.FromVertex.GetVisibility() && _adjacentVertices.ToVertex.GetVisibility();
+                    _lineRenderer.enabled = _adjacentVertices.FromVertex.Visibility && _adjacentVertices.ToVertex.Visibility;
                     break;
             }
 
             UpdateCoordinates();
+        }
+
+        public void UpdateEdge ()
+        {
+            UpdateType();
+            UpdateVisibility();
+            UpdateCoordinates();
+        }
+
+        public void SetUpEdge (EdgeParameters edgeParameters)
+        {
+            _adjacentVertices = edgeParameters.AdjacentVertices;
+            SubscribeOnVerticesEvents();
+            _sourceOffsetDist = edgeParameters.SourceOffsetDist;
+            _targetOffsetDist = edgeParameters.TargetOffsetDist;
+            ArrowTexture = edgeParameters.ArrowTexture != null ? edgeParameters.ArrowTexture : ArrowTexture;
+            LineTexture = edgeParameters.LineTexture != null ? edgeParameters.LineTexture : LineTexture;
+            _visibility = edgeParameters.Visibility;
+            UpdateEdge();
+        }
+
+        private void OnDestroy () => UnsubscribeOnVerticesEvents();
+
+        private void Awake ()
+        {
+            _transform = GetComponent<Transform>();
+
+            _shader = _shader == null ? Shader.Find("Custom/EdgeShader") : _shader;
+            _material = new Material(_shader) { mainTexture = LineTexture };
+            _material.SetFloat(_cutoff, 0.8f);
+
+            _defaultArrowTexture = _defaultArrowTexture == null ? (Texture2D) Resources.Load("Textures/Arrow") : _defaultArrowTexture;
+            _defaultLineTexture = _defaultLineTexture == null ? (Texture2D) Resources.Load("Textures/Line") : _defaultLineTexture;
+
+            ArrowTexture = _defaultArrowTexture;
+            LineTexture = _defaultLineTexture;
+
+            _lineRenderer = GetComponent<LineRenderer>();
+            _lineRenderer.material = _material;
+            _lineRenderer.positionCount = 2;
+
+            _sourceOffsetDist = 1f;
+            _targetOffsetDist = 1f;
+            _type = EdgeType.Unidirectional;
         }
 
         private void SubscribeOnVerticesEvents ()
@@ -254,7 +270,7 @@ namespace Grpah3DVisualser
                 {
                     vertex.OnDestroyed += Vertex_OnDestroyed;
                     vertex.OnVisibleChange += Vertex_OnVisibilityChange;
-                    vertex.OnMove += Vertex_OnMove;
+                    vertex.MoveComponent.OnObjectMove += Vertex_OnMove;
                 }
             }
         }
@@ -268,7 +284,7 @@ namespace Grpah3DVisualser
                 {
                     vertex.OnDestroyed -= Vertex_OnDestroyed;
                     vertex.OnVisibleChange -= Vertex_OnVisibilityChange;
-                    vertex.OnMove -= Vertex_OnMove;
+                    vertex.MoveComponent.OnObjectMove -= Vertex_OnMove;
                 }
             }
         }

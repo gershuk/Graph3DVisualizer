@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4271767791270098743}
   - component: {fileID: 7826585994944105535}
   - component: {fileID: 7979348008377588628}
+  - component: {fileID: 1846678252181362800}
+  - component: {fileID: 6800523037974590115}
   m_Layer: 0
   m_Name: Vertex
   m_TagString: Untagged
@@ -94,3 +96,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8280ac1da1cd642a3ab7e306f90e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1846678252181362800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3213453981013700657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23a5b44235bcb4e46821d5f0fdea737c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 0
+--- !u!135 &6800523037974590115
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3213453981013700657}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
