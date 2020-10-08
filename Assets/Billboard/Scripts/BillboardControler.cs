@@ -64,6 +64,7 @@ namespace Grpah3DVisualser
         private static Texture2D _defaultTexture;
 
         private MeshRenderer _render;
+        private Mesh _mesh;
 
         public event Action<bool, UnityEngine.Object> OnVisibleChange;
 
@@ -71,6 +72,7 @@ namespace Grpah3DVisualser
         {
             _shader = _shader == null ? Shader.Find("Custom/BillboardShader") : _shader;
             _defaultTexture = _defaultTexture == null ? Resources.Load<Texture2D>("Textures/BillboardDefaultTexture") : _defaultTexture;
+            _mesh = GetComponent<MeshFilter>().mesh;
 
             var material = new Material(_shader) { mainTexture = _defaultTexture };
             material.SetFloat(_scaleX, 27.59f);
@@ -80,6 +82,9 @@ namespace Grpah3DVisualser
             _render = GetComponent<MeshRenderer>();
             _render.material = material;
 
+            var bounds = _mesh.bounds;
+            bounds.size = new Vector3(0.5f, 0.5f, 0.5f);
+            _mesh.bounds = bounds;
             //ToDo Set Mesh Filter to Quad
         }
 
@@ -91,13 +96,27 @@ namespace Grpah3DVisualser
 
         public float ScaleX
         {
-            set => _render.material.SetFloat(_scaleX, value);
+            set
+            {
+                var bounds = _mesh.bounds;
+                var newValue = Mathf.Max(value, ScaleY);
+                bounds.size = new Vector3(newValue, newValue, newValue);
+                _mesh.bounds = bounds;
+                _render.material.SetFloat(_scaleX, value);
+            }
             get => _render.material.GetFloat(_scaleX);
         }
 
         public float ScaleY
         {
-            set => _render.material.SetFloat(_scaleY, value);
+            set
+            {
+                var bounds = _mesh.bounds;
+                var newValue = Mathf.Max(value, ScaleX);
+                bounds.size = new Vector3(newValue, newValue, newValue);
+                _mesh.bounds = bounds;
+                _render.material.SetFloat(_scaleY, value);
+            }
             get => _render.material.GetFloat(_scaleY);
         }
 

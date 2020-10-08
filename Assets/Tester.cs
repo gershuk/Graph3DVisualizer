@@ -20,7 +20,7 @@ public class Tester : MonoBehaviour
         for (var i = 0; i < 1000; ++i)
         {
             var verPar = new VertexParameters(new Vector3(i * 20, 0, 0), Quaternion.identity);
-            var billPar = new BillboardParameters(image, 200, 200, 1, 1, 1f, true);
+            var billPar = new BillboardParameters(image, 200, 200, 5, 5, 1f, true);
             var currentVertex = graphControler.SpawnVertex<Vertex>(in verPar, in billPar);
             var linkParameters = new LinkParameters(1, 1);
             lastVertex?.Link<Edge>(currentVertex, linkParameters);
