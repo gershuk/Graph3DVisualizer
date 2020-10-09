@@ -4,13 +4,13 @@ namespace TextureFactory
 {
     public static class Texture2DExtension
     {
-        public static Texture2D CombineTextures ((Texture2D Texture, Vector2Int Position)[] images, int textureWidth, int textureHeight)
+        public static Texture2D CombineTextures ((Texture2D Texture, Vector2Int Position)[] images, int textureWidth, int textureHeight, TextureWrapMode wrapMode)
         {
             var newTexture = new Texture2D(textureWidth, textureHeight);
             //ToDo: too slow, need to replace
-            //for (var j=0;j<textureHeight; ++j)
+            //for (var j = 0; j < textureHeight; ++j)
             //{
-            //    for (var i=0; i<textureWidth; ++i)
+            //    for (var i = 0; i < textureWidth; ++i)
             //    {
             //        newTexture.SetPixel(i, j, Color.clear);
             //    }
@@ -23,6 +23,7 @@ namespace TextureFactory
                                      image.Texture.GetPixels32());
             }
 
+            newTexture.wrapMode = wrapMode;
             newTexture.Apply();
 
             return newTexture;
@@ -42,6 +43,8 @@ namespace TextureFactory
 
             RenderTexture.active = null;
             RenderTexture.ReleaseTemporary(renderTexture);
+
+            newTexture.wrapMode = texture.wrapMode;
 
             return newTexture;
         }

@@ -112,6 +112,8 @@ namespace SupportComponents
             _rotation.x = Mathf.Max(_rotation.x, _minimumX);
             _rotation.y = Mathf.Max(_rotation.y, _minimumY);
 
+            _rotation.z = 0;
+
             _transform.eulerAngles = _rotation;
         }
     }

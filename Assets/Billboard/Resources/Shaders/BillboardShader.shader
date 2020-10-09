@@ -5,6 +5,7 @@
 		_ScaleX("Scale X", Float) = 1.0
 		_ScaleY("Scale Y", Float) = 1.0
 		_Cutoff("Alpha Cutoff", Range(0,1)) = 0.0
+		_LineSize("Line Size", int) = 1
 	}
 	SubShader{
 		Tags
@@ -26,6 +27,7 @@
 			uniform float _ScaleX;
 			uniform float _ScaleY;
 			uniform float _Cutoff;
+			uniform int _LineSize;
 
 			struct vertexInput 
 			{
@@ -49,7 +51,7 @@
 
 			float4 frag(vertexOutput input) : COLOR
 			{
-				float4 texColor = tex2D(_MainTex, float2(input.tex.x, input.tex.y));
+				float4 texColor = tex2D(_MainTex, float2(input.tex.xy));
 				if (texColor.a < _Cutoff)
 				{
 					discard;

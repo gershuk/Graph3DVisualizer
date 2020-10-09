@@ -22,9 +22,11 @@ namespace Grpah3DVisualser
 
         public bool Compressed { get; }
 
+        public TextureWrapMode TextureWrapMode { get; }
+
 
         public BillboardParameters ((Texture2D Texture, Vector2Int Position)[] images, int textureWidth, int textureHeight,
-            float scaleX, float scaleY, float cutoff, bool compressed)
+            float scaleX, float scaleY, float cutoff, bool compressed, TextureWrapMode wrapMode)
         {
             Images = images ?? throw new ArgumentNullException(nameof(images));
             TextureWidth = textureWidth;
@@ -33,6 +35,7 @@ namespace Grpah3DVisualser
             ScaleY = scaleY;
             Cutoff = cutoff;
             Compressed = compressed;
+            TextureWrapMode = wrapMode;
         }
     }
 
@@ -145,10 +148,10 @@ namespace Grpah3DVisualser
 
         public void SetUpBillboard (BillboardParameters billboardParameters)
         {
-            var m1 = Texture.currentTextureMemory;
             var texture = Texture2DExtension.CombineTextures(billboardParameters.Images,
                                                              billboardParameters.TextureWidth,
-                                                             billboardParameters.TextureHeight);
+                                                             billboardParameters.TextureHeight,
+                                                             billboardParameters.TextureWrapMode);
 
             if (billboardParameters.Compressed)
                 texture.Compress(false);
