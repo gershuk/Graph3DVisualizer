@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2939405613336899568, guid: 3e338a4d89d343c42ae31987ced64009, type: 3}
       propertyPath: _speed
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2939405613336899568, guid: 3e338a4d89d343c42ae31987ced64009, type: 3}
       propertyPath: _rotationSpeed
@@ -217,8 +217,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b829111252c9ce144ad344424b0b3dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Texture: {fileID: 2800000, guid: 0059615c58e8c4b41803fb968c09e7b0, type: 3}
+  Texture: {fileID: 2800000, guid: f81094832d834c64d93b198cb16b6a3e, type: 3}
   Graph: {fileID: 1734520734}
+  CustomFont: {fileID: 12800000, guid: 864cfbf45d110d040930585c08effc9f, type: 2}
 --- !u!4 &854038869
 Transform:
   m_ObjectHideFlags: 0

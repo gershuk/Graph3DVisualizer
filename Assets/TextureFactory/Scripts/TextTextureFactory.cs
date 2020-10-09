@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TextureFactory
 {
-    public class TextTextureFactory : MonoBehaviour
+    public class TextTextureFactory
     {
         private readonly Font _customFont;
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Стили именования", Justification = "<Ожидание>")]
@@ -22,6 +22,7 @@ namespace TextureFactory
 
             foreach (var characterInfo in _customFont.characterInfo)
             {
+                //ToDo change to GetPixels32
                 var pixels = fontTexture.GetPixels((int) (characterInfo.uvBottomLeft.x * fontTexture.width),
                                                     (int) (characterInfo.uvBottomLeft.y * fontTexture.height),
                                                     characterInfo.glyphWidth, characterInfo.glyphHeight);
@@ -55,8 +56,13 @@ namespace TextureFactory
                 }
             }
 
-            textureHeight += _customFont.lineHeight;
-            textureWidth = Mathf.Max(textureWidth, lineWidth);
+            if (lineWidth != 0)
+            {
+                textureHeight += _customFont.lineHeight;
+                textureWidth = Mathf.Max(textureWidth, lineWidth);
+                linesSizes.Add(new Vector2Int(lineWidth, _customFont.lineHeight));
+                lineWidth = 0;
+            }
 
             var textTexture = new Texture2D(textureWidth, textureHeight);
 

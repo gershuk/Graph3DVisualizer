@@ -15,7 +15,7 @@ namespace TextureFactory
             //        newTexture.SetPixel(i, j, Color.clear);
             //    }
             //}
-
+            
             foreach (var image in images)
             {
                 newTexture.SetPixels32(image.Position.x, image.Position.y,
