@@ -13,26 +13,26 @@ namespace SupportComponents
         private Transform _transform;
         private bool _isMoving;
         [SerializeField]
-        private float _speed = 10;
+        private float _movingSpeed = 10;
 
         [SerializeField]
         [Range(-360, 360)]
-        private float _minimumX = -360;
+        private float _minRotX = -360;
         [SerializeField]
         [Range(-360, 360)]
-        private float _maximumX = 360F;
+        private float _maxRotX = 360F;
 
         [SerializeField]
         [Range(-360, 360)]
-        private float _minimumY = -360;
+        private float _minRotY = -360;
         [SerializeField]
         [Range(-360, 360)]
-        private float _maximumY = 360F;
+        private float _maxRotY = 360F;
 
         [SerializeField]
         private float _rotationSpeed = 1f;
 
-        public float Speed { get => _speed; set => _speed = value; }
+        public float MovingSpeed { get => _movingSpeed; set => _movingSpeed = value; }
         public float RotationSpeed { get => _rotationSpeed; set => _rotationSpeed = value; }
 
         public event Action<Vector3, UnityEngine.Object> OnObjectMove;
@@ -53,8 +53,8 @@ namespace SupportComponents
                 {
                     var moveDir = (point - _transform.position) / Vector3.Distance(point, _transform.position);
 
-                    var newCoord = Vector3.Distance(point, _transform.position) > Time.deltaTime * Speed
-                        ? _transform.position + moveDir * Time.deltaTime * Speed
+                    var newCoord = Vector3.Distance(point, _transform.position) > Time.deltaTime * MovingSpeed
+                        ? _transform.position + moveDir * Time.deltaTime * MovingSpeed
                         : point;
 
                     _transform.position = newCoord;
@@ -94,9 +94,9 @@ namespace SupportComponents
 
         public void Translate (Vector3 directionVector, float deltaTime)
         {
-            if (!_isMoving)
+            if (!_isMoving && directionVector != Vector3.zero)
             {
-                _transform.Translate(directionVector * Speed * deltaTime);
+                _transform.Translate(directionVector * MovingSpeed * deltaTime);
             }
         }
 
@@ -106,11 +106,11 @@ namespace SupportComponents
             _rotation.x = (_rotation.x - rotDiv.y) % 360f;
             _rotation.y = (_rotation.y + rotDiv.x) % 360f;
 
-            _rotation.x = Mathf.Min(_rotation.x, _maximumX);
-            _rotation.y = Mathf.Min(_rotation.y, _maximumY);
+            _rotation.x = Mathf.Min(_rotation.x, _maxRotX);
+            _rotation.y = Mathf.Min(_rotation.y, _maxRotY);
 
-            _rotation.x = Mathf.Max(_rotation.x, _minimumX);
-            _rotation.y = Mathf.Max(_rotation.y, _minimumY);
+            _rotation.x = Mathf.Max(_rotation.x, _minRotX);
+            _rotation.y = Mathf.Max(_rotation.y, _minRotY);
 
             _rotation.z = 0;
 

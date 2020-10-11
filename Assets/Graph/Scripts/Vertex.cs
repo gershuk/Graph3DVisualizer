@@ -18,23 +18,18 @@ namespace Grpah3DVisualser
         public Texture2D LineTexture { get; }
 
         public LinkParameters (float sourceOffsetDist, float targetOffsetDist, Texture2D arrowTexture = null, Texture2D lineTexture = null)
-        {
-            SourceOffsetDist = sourceOffsetDist;
-            TargetOffsetDist = targetOffsetDist;
-            ArrowTexture = arrowTexture;
-            LineTexture = lineTexture;
-        }
+            => (SourceOffsetDist, TargetOffsetDist, ArrowTexture, LineTexture) = (sourceOffsetDist, targetOffsetDist, arrowTexture, lineTexture);
     }
 
     public class Link
     {
         public Vertex AdjacentVertex { get; }
-        public IEdge Edge { get; }
+        public Edge Edge { get; }
 
-        public Link (Vertex adjacentVertex, IEdge edge)
+        public Link (Vertex adjacentVertex, Edge edge)
         {
             AdjacentVertex = adjacentVertex != null ? adjacentVertex : throw new ArgumentNullException(nameof(adjacentVertex));
-            Edge = edge ?? throw new ArgumentNullException(nameof(edge));
+            Edge = edge != null ? edge : throw new ArgumentNullException(nameof(edge));
         }
     }
 
@@ -42,12 +37,10 @@ namespace Grpah3DVisualser
     {
         public Vector3 Position { get; }
         public Quaternion Rotation { get; }
+        public Vector2 Size { get; }
 
-        public VertexParameters (Vector3 position, Quaternion rotation)
-        {
-            Position = position;
-            Rotation = rotation;
-        }
+        public VertexParameters (Vector3 position, Quaternion rotation, Vector2 size)
+            => (Position, Rotation, Size) = (position, rotation, size);
     }
 
     public interface IVertex
@@ -55,10 +48,11 @@ namespace Grpah3DVisualser
         BillboardControler BillboardControler { get; }
         MoveComponent MoveComponent { get; }
         bool Visibility { get; set; }
+        Vector2 Size { get; set; }
 
-        T Link<T> (Vertex toVertex, LinkParameters linkParameters) where T : MonoBehaviour, IEdge, new();
-        void SetUpVertex (VertexParameters vertexParameters);
-        void UnLink<T> (Vertex toVertex) where T : MonoBehaviour, IEdge;
+        T Link<T> (Vertex toVertex, in LinkParameters linkParameters) where T : Edge, new();
+        void SetUpVertex (in VertexParameters vertexParameters);
+        void UnLink (Vertex toVertex, Type type);
     }
 
     [RequireComponent(typeof(BillboardControler))]
@@ -71,12 +65,42 @@ namespace Grpah3DVisualser
         private List<Link> _incomingLinks;
         private List<Link> _outgoingLinks;
         private bool _visible;
-
-        public BillboardControler BillboardControler { get; private set; }
-        public MoveComponent MoveComponent { get; private set; }
+        private Vector2 _size;
 
         public event Action<UnityEngine.Object> OnDestroyed;
         public event Action<bool, UnityEngine.Object> OnVisibleChange;
+
+        //ToDo make BillboardControler privates
+        public BillboardControler BillboardControler { get; private set; }
+        public MoveComponent MoveComponent { get; private set; }
+
+        public bool Visibility
+        {
+            set
+            {
+                if (_visible != value)
+                {
+                    _visible = value;
+                    BillboardControler.Visibility = value;
+                    OnVisibleChange?.Invoke(value, this);
+                }
+            }
+            get => _visible;
+        }
+
+        public Vector2 Size
+        {
+            get => _size;
+            set
+            {
+                if (_size != value)
+                {
+                    _size = value;
+                    BillboardControler.ScaleX = _size.x;
+                    BillboardControler.ScaleY = _size.y;
+                }
+            }
+        }
 
         private void Awake ()
         {
@@ -90,35 +114,32 @@ namespace Grpah3DVisualser
 
         private void OnDestroy () => OnDestroyed?.Invoke(this);
 
-        private T RemoveLinkFromArray<T> (List<Link> links, Vertex toVertex) where T : IEdge
+        private Edge RemoveLinkFromArray (List<Link> links, Vertex toVertex, Type edgeType)
         {
             for (var i = 0; i < links.Count; ++i)
             {
-                if (links[i].AdjacentVertex == toVertex && links[i].Edge.GetType() == typeof(T))
+                if (links[i].AdjacentVertex == toVertex && links[i].Edge.GetType() == edgeType)
                 {
                     var link = links[i];
                     links[i] = links[links.Count - 1];
                     links.RemoveAt(links.Count - 1);
-                    return (T) link.Edge;
+                    return link.Edge;
                 }
             }
             throw new LinkNotFoundException();
         }
 
-        private T CreateEdge<T> (EdgeParameters parameters) where T : MonoBehaviour, IEdge, new()
+        private T CreateEdge<T> (in EdgeParameters parameters) where T : Edge, new()
         {
             var edge = Instantiate(_edgePrefab, transform.position, Quaternion.identity, transform.parent).AddComponent<T>();
             edge.SetUpEdge(parameters);
             return edge;
         }
 
-        public void SetUpVertex (VertexParameters vertexParameters)
-        {
-            transform.position = vertexParameters.Position;
-            transform.rotation = vertexParameters.Rotation;
-        }
+        public void SetUpVertex (in VertexParameters vertexParameters)
+            => (transform.position, transform.rotation) = (vertexParameters.Position, vertexParameters.Rotation);
 
-        public T Link<T> (Vertex toVertex, LinkParameters linkParameters) where T : MonoBehaviour, IEdge, new()
+        public T Link<T> (Vertex toVertex, in LinkParameters linkParameters) where T : Edge, new()
         {
             foreach (var link in _outgoingLinks)
             {
@@ -128,7 +149,7 @@ namespace Grpah3DVisualser
                 }
             }
 
-            IEdge edge = null;
+            Edge edge = null;
 
             foreach (var link in _incomingLinks)
             {
@@ -143,17 +164,17 @@ namespace Grpah3DVisualser
             var edgeParameters = new EdgeParameters(linkParameters.SourceOffsetDist, linkParameters.TargetOffsetDist,
                 new AdjacentVertices(this, toVertex), linkParameters.ArrowTexture, linkParameters.LineTexture);
 
-            edge = edge ?? CreateEdge<T>(edgeParameters);
+            edge = edge != null ? edge : CreateEdge<T>(edgeParameters);
             _outgoingLinks.Add(new Link(toVertex, edge));
             toVertex._incomingLinks.Add(new Link(this, edge));
 
             return (T) edge;
         }
 
-        public void UnLink<T> (Vertex toVertex) where T : MonoBehaviour, IEdge
+        public void UnLink (Vertex toVertex, Type edgeType)
         {
-            toVertex.RemoveLinkFromArray<T>(toVertex._incomingLinks, this);
-            var edge = RemoveLinkFromArray<T>(_outgoingLinks, toVertex);
+            toVertex.RemoveLinkFromArray(toVertex._incomingLinks, this, edgeType);
+            var edge = RemoveLinkFromArray(_outgoingLinks, toVertex, edgeType);
 
             if (edge.Type == EdgeType.Bidirectional)
             {
@@ -164,20 +185,6 @@ namespace Grpah3DVisualser
             {
                 Destroy(edge.gameObject);
             }
-        }
-
-        public bool Visibility
-        {
-            set
-            {
-                if (_visible != value)
-                {
-                    _visible = value;
-                    BillboardControler.Visibility = value;
-                    OnVisibleChange?.Invoke(value, this);
-                }
-            }
-            get => _visible;
         }
     }
 }

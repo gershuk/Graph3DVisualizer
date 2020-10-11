@@ -24,6 +24,12 @@ namespace PlayerInputControllers
             _moveComponent = GetComponent<MoveComponent>();
         }
 
+        private void LateUpdate ()
+        {
+            _moveComponent.Rotate(_inputActions.FlyModel.LookRotation.ReadValue<Vector2>(), Time.deltaTime);
+            _moveComponent.Translate(_moveDirVector, Time.deltaTime);
+        }
+
         private void OnEnable ()
         {
             _inputActions.FlyModel.FirstItemFunction.started += OnFirstFunctionUsed;
@@ -69,11 +75,5 @@ namespace PlayerInputControllers
         }
 
         public void OnFirstFunctionUsed (InputAction.CallbackContext obj) { }
-
-        private void LateUpdate ()
-        {
-            _moveComponent.Rotate(_inputActions.FlyModel.LookRotation.ReadValue<Vector2>(), Time.deltaTime);
-            _moveComponent.Translate(_moveDirVector, Time.deltaTime);
-        }
     }
 }

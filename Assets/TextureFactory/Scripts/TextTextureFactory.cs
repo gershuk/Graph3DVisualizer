@@ -41,27 +41,19 @@ namespace TextureFactory
 
             var linesSizes = new List<Vector2Int>();
 
-            foreach (var character in text)
+            for (var i = 0; i < text.Length; i++)
             {
-                if (character == '\n')
+                var character = text[i];
+
+                lineWidth += (character != '\n') ? _alphabet[character - _ASCIIOffset].width : 0;
+
+                if (character == '\n' || i == text.Length - 1)
                 {
                     textureHeight += _customFont.lineHeight;
                     textureWidth = Mathf.Max(textureWidth, lineWidth);
                     linesSizes.Add(new Vector2Int(lineWidth, _customFont.lineHeight));
                     lineWidth = 0;
                 }
-                else
-                {
-                    lineWidth += _alphabet[character - _ASCIIOffset].width;
-                }
-            }
-
-            if (lineWidth != 0)
-            {
-                textureHeight += _customFont.lineHeight;
-                textureWidth = Mathf.Max(textureWidth, lineWidth);
-                linesSizes.Add(new Vector2Int(lineWidth, _customFont.lineHeight));
-                lineWidth = 0;
             }
 
             var textTexture = new Texture2D(textureWidth, textureHeight);
@@ -80,8 +72,9 @@ namespace TextureFactory
                 }
                 else
                 {
-                    textTexture.SetPixels(posX, posY, _alphabet[character - _ASCIIOffset].width, _alphabet[character - _ASCIIOffset].height, _alphabet[character - _ASCIIOffset].GetPixels());
-                    posX += _alphabet[character - _ASCIIOffset].width;
+                    var glyphIndex = character - _ASCIIOffset;
+                    textTexture.SetPixels32(posX, posY, _alphabet[glyphIndex].width, _alphabet[glyphIndex].height, _alphabet[glyphIndex].GetPixels32());
+                    posX += _alphabet[glyphIndex].width;
                 }
             }
 

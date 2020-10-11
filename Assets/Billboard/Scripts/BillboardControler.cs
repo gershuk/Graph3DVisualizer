@@ -24,7 +24,6 @@ namespace Grpah3DVisualser
 
         public TextureWrapMode TextureWrapMode { get; }
 
-
         public BillboardParameters ((Texture2D Texture, Vector2Int Position)[] images, int textureWidth, int textureHeight,
             float scaleX, float scaleY, float cutoff, bool compressed, TextureWrapMode wrapMode)
         {
@@ -47,7 +46,7 @@ namespace Grpah3DVisualser
         Vector2 TextureOffset { get; set; }
         Vector2 TextureScale { get; set; }
 
-        void SetUpBillboard (BillboardParameters billboardParameters);
+        void SetUpBillboard (in BillboardParameters billboardParameters);
     }
 
     [RequireComponent(typeof(MeshRenderer))]
@@ -67,29 +66,9 @@ namespace Grpah3DVisualser
         private static Texture2D _defaultTexture;
 
         private MeshRenderer _render;
-        private Mesh _mesh;
+        private MeshFilter _meshFilter;
 
         public event Action<bool, UnityEngine.Object> OnVisibleChange;
-
-        private void Awake ()
-        {
-            _shader = _shader == null ? Shader.Find("Custom/BillboardShader") : _shader;
-            _defaultTexture = _defaultTexture == null ? Resources.Load<Texture2D>("Textures/BillboardDefaultTexture") : _defaultTexture;
-            _mesh = GetComponent<MeshFilter>().mesh;
-
-            var material = new Material(_shader) { mainTexture = _defaultTexture };
-            material.SetFloat(_scaleX, 27.59f);
-            material.SetFloat(_scaleY, 10f);
-            material.SetFloat(_cutoff, 0.687f);
-
-            _render = GetComponent<MeshRenderer>();
-            _render.material = material;
-
-            var bounds = _mesh.bounds;
-            bounds.size = new Vector3(0.5f, 0.5f, 0.5f);
-            _mesh.bounds = bounds;
-            //ToDo Set Mesh Filter to Quad
-        }
 
         public Texture MainTexture
         {
@@ -101,10 +80,10 @@ namespace Grpah3DVisualser
         {
             set
             {
-                var bounds = _mesh.bounds;
+                var bounds = _meshFilter.mesh.bounds;
                 var newValue = Mathf.Max(value, ScaleY);
                 bounds.size = new Vector3(newValue, newValue, newValue);
-                _mesh.bounds = bounds;
+                _meshFilter.mesh.bounds = bounds;
                 _render.material.SetFloat(_scaleX, value);
             }
             get => _render.material.GetFloat(_scaleX);
@@ -114,10 +93,10 @@ namespace Grpah3DVisualser
         {
             set
             {
-                var bounds = _mesh.bounds;
+                var bounds = _meshFilter.mesh.bounds;
                 var newValue = Mathf.Max(value, ScaleX);
                 bounds.size = new Vector3(newValue, newValue, newValue);
-                _mesh.bounds = bounds;
+                _meshFilter.mesh.bounds = bounds;
                 _render.material.SetFloat(_scaleY, value);
             }
             get => _render.material.GetFloat(_scaleY);
@@ -146,7 +125,7 @@ namespace Grpah3DVisualser
             get => _render.material.GetTextureScale(_mainTextureName);
         }
 
-        public void SetUpBillboard (BillboardParameters billboardParameters)
+        public void SetUpBillboard (in BillboardParameters billboardParameters)
         {
             var texture = Texture2DExtension.CombineTextures(billboardParameters.Images,
                                                              billboardParameters.TextureWidth,
@@ -173,6 +152,25 @@ namespace Grpah3DVisualser
                 }
             }
             get => _render.enabled;
+        }
+
+        private void Awake ()
+        {
+            _shader = _shader == null ? Shader.Find("Custom/BillboardShader") : _shader;
+            _defaultTexture = _defaultTexture == null ? Resources.Load<Texture2D>("Textures/BillboardDefaultTexture") : _defaultTexture;
+            _meshFilter = GetComponent<MeshFilter>();
+
+            var material = new Material(_shader) { mainTexture = _defaultTexture };
+            material.SetFloat(_scaleX, 1f);
+            material.SetFloat(_scaleY, 1f);
+            material.SetFloat(_cutoff, 0.687f);
+
+            _render = GetComponent<MeshRenderer>();
+            _render.material = material;
+
+            var bounds = _meshFilter.mesh.bounds;
+            bounds.size = new Vector3(0.5f, 0.5f, 0.5f);
+            _meshFilter.mesh.bounds = bounds;
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Grpah3DVisualser
                 var height = resizedTetxure.height + text.height;
                 var scale = 10f;
 
-                var verPar = new VertexParameters(new Vector3(i % 30 * 20, i / 30 * 20, 0), Quaternion.identity);
+                var verPar = new VertexParameters(new Vector3(i % 30 * 20, i / 30 * 20, 0), Quaternion.identity, new Vector2(1, 1));
                 var billPar = new BillboardParameters(image, width, height, scale, (height * scale) / width, 0.1f, true, TextureWrapMode.Clamp);
                 var currentVertex = graphControler.SpawnVertex<Vertex>(in verPar, in billPar);
                 var linkParameters = new LinkParameters(6, 6);

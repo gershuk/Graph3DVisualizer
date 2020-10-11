@@ -29,11 +29,7 @@ namespace Grpah3DVisualser
             ToVertex = toVertex != null ? toVertex : throw new ArgumentNullException(nameof(toVertex));
         }
 
-        public void Deconstruct (out Vertex fromVertex, out Vertex toVertex)
-        {
-            fromVertex = FromVertex;
-            toVertex = ToVertex;
-        }
+        public void Deconstruct (out Vertex fromVertex, out Vertex toVertex) => (fromVertex, toVertex) = (FromVertex, ToVertex);
 
         public float GetDistance () => Vector3.Distance(FromVertex.transform.position, ToVertex.transform.position);
 
@@ -73,7 +69,7 @@ namespace Grpah3DVisualser
         EdgeType Type { get; set; }
         EdgeVisibility Visibility { get; set; }
 
-        void SetUpEdge (EdgeParameters edgeParameters);
+        void SetUpEdge (in EdgeParameters edgeParameters);
         void UpdateCoordinates ();
         void UpdateEdge ();
         void UpdateType ();
@@ -171,8 +167,74 @@ namespace Grpah3DVisualser
             }
         }
 
-        public Texture2D LineTexture { get => _lineTexture; set => _lineTexture = value; }
-        public Texture2D ArrowTexture { get => _arrowTexture; set => _arrowTexture = value; }
+        public Texture2D LineTexture
+        {
+            get => _lineTexture;
+            set => _lineTexture = value;
+        }
+
+        public Texture2D ArrowTexture
+        {
+            get => _arrowTexture;
+            set => _arrowTexture = value;
+        }
+
+        private void Awake ()
+        {
+            _transform = GetComponent<Transform>();
+
+            _shader = _shader == null ? Shader.Find("Custom/EdgeShader") : _shader;
+            _material = new Material(_shader) { mainTexture = LineTexture };
+            _material.SetFloat(_cutoff, 0.8f);
+
+            _defaultArrowTexture = _defaultArrowTexture == null ? (Texture2D) Resources.Load("Textures/Arrow") : _defaultArrowTexture;
+            _defaultLineTexture = _defaultLineTexture == null ? (Texture2D) Resources.Load("Textures/Line") : _defaultLineTexture;
+
+            ArrowTexture = _defaultArrowTexture;
+            LineTexture = _defaultLineTexture;
+
+            _lineRenderer = GetComponent<LineRenderer>();
+            _lineRenderer.material = _material;
+            _lineRenderer.positionCount = 2;
+
+            _sourceOffsetDist = 1f;
+            _targetOffsetDist = 1f;
+            _type = EdgeType.Unidirectional;
+        }
+
+        private void Vertex_OnMove (Vector3 arg1, UnityEngine.Object arg2) => UpdateCoordinates();
+        private void Vertex_OnVisibilityChange (bool visibility, UnityEngine.Object obj) => UpdateVisibility();
+        private void Vertex_OnDestroyed (UnityEngine.Object obj) => Destroy(gameObject);
+
+        private void SubscribeOnVerticesEvents ()
+        {
+            var vertexes = new[] { AdjacentVertices.FromVertex, AdjacentVertices.ToVertex };
+            foreach (var vertex in vertexes)
+            {
+                if (vertex != null)
+                {
+                    vertex.OnDestroyed += Vertex_OnDestroyed;
+                    vertex.OnVisibleChange += Vertex_OnVisibilityChange;
+                    vertex.MoveComponent.OnObjectMove += Vertex_OnMove;
+                }
+            }
+        }
+
+        private void UnsubscribeOnVerticesEvents ()
+        {
+            var vertexes = new[] { AdjacentVertices.FromVertex, AdjacentVertices.ToVertex };
+            foreach (var vertex in vertexes)
+            {
+                if (vertex != null)
+                {
+                    vertex.OnDestroyed -= Vertex_OnDestroyed;
+                    vertex.OnVisibleChange -= Vertex_OnVisibilityChange;
+                    vertex.MoveComponent.OnObjectMove -= Vertex_OnMove;
+                }
+            }
+        }
+
+        private void OnDestroy () => UnsubscribeOnVerticesEvents();
 
         public void UpdateType ()
         {
@@ -224,73 +286,20 @@ namespace Grpah3DVisualser
             UpdateCoordinates();
         }
 
-        public void SetUpEdge (EdgeParameters edgeParameters)
+        public void SetUpEdge (in EdgeParameters edgeParameters)
         {
             _adjacentVertices = edgeParameters.AdjacentVertices;
             SubscribeOnVerticesEvents();
+
             _sourceOffsetDist = edgeParameters.SourceOffsetDist;
             _targetOffsetDist = edgeParameters.TargetOffsetDist;
+
             ArrowTexture = edgeParameters.ArrowTexture != null ? edgeParameters.ArrowTexture : ArrowTexture;
             LineTexture = edgeParameters.LineTexture != null ? edgeParameters.LineTexture : LineTexture;
+
             _visibility = edgeParameters.Visibility;
+
             UpdateEdge();
         }
-
-        private void OnDestroy () => UnsubscribeOnVerticesEvents();
-
-        private void Awake ()
-        {
-            _transform = GetComponent<Transform>();
-
-            _shader = _shader == null ? Shader.Find("Custom/EdgeShader") : _shader;
-            _material = new Material(_shader) { mainTexture = LineTexture };
-            _material.SetFloat(_cutoff, 0.8f);
-
-            _defaultArrowTexture = _defaultArrowTexture == null ? (Texture2D) Resources.Load("Textures/Arrow") : _defaultArrowTexture;
-            _defaultLineTexture = _defaultLineTexture == null ? (Texture2D) Resources.Load("Textures/Line") : _defaultLineTexture;
-
-            ArrowTexture = _defaultArrowTexture;
-            LineTexture = _defaultLineTexture;
-
-            _lineRenderer = GetComponent<LineRenderer>();
-            _lineRenderer.material = _material;
-            _lineRenderer.positionCount = 2;
-
-            _sourceOffsetDist = 1f;
-            _targetOffsetDist = 1f;
-            _type = EdgeType.Unidirectional;
-        }
-
-        private void SubscribeOnVerticesEvents ()
-        {
-            var vertexes = new[] { AdjacentVertices.FromVertex, AdjacentVertices.ToVertex };
-            foreach (var vertex in vertexes)
-            {
-                if (vertex != null)
-                {
-                    vertex.OnDestroyed += Vertex_OnDestroyed;
-                    vertex.OnVisibleChange += Vertex_OnVisibilityChange;
-                    vertex.MoveComponent.OnObjectMove += Vertex_OnMove;
-                }
-            }
-        }
-
-        private void UnsubscribeOnVerticesEvents ()
-        {
-            var vertexes = new[] { AdjacentVertices.FromVertex, AdjacentVertices.ToVertex };
-            foreach (var vertex in vertexes)
-            {
-                if (vertex != null)
-                {
-                    vertex.OnDestroyed -= Vertex_OnDestroyed;
-                    vertex.OnVisibleChange -= Vertex_OnVisibilityChange;
-                    vertex.MoveComponent.OnObjectMove -= Vertex_OnMove;
-                }
-            }
-        }
-
-        private void Vertex_OnMove (Vector3 arg1, UnityEngine.Object arg2) => UpdateCoordinates();
-        private void Vertex_OnVisibilityChange (bool visibility, UnityEngine.Object obj) => UpdateVisibility();
-        private void Vertex_OnDestroyed (UnityEngine.Object obj) => Destroy(gameObject);
     }
 }

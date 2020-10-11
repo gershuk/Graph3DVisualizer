@@ -8,7 +8,7 @@ namespace SupportComponents
 {
     public interface IMoveable
     {
-        float Speed { get; set; }
+        float MovingSpeed { get; set; }
         float RotationSpeed { get; set; }
         event Action<Vector3, UnityEngine.Object> OnObjectMove;
         Vector3 GlobalCoordinates { get; set; }
