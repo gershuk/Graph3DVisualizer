@@ -10,7 +10,7 @@ namespace SupportComponents
     {
         float MovingSpeed { get; set; }
         float RotationSpeed { get; set; }
-        event Action<Vector3, UnityEngine.Object> OnObjectMove;
+        event Action<Vector3, UnityEngine.Object> ObjectMoved;
         Vector3 GlobalCoordinates { get; set; }
         Vector3 LocalCoordinates { get; set; }
         void Translate (Vector3 moveVector, float deltaTime);
@@ -20,20 +20,21 @@ namespace SupportComponents
 
     public interface IDestructible
     {
-        event Action<UnityEngine.Object> OnDestroyed;
+        event Action<UnityEngine.Object> Destroyed;
     }
 
     public interface IVisibile
     {
         bool Visibility { get; set; }
-        event Action<bool, UnityEngine.Object> OnVisibleChange;
+        event Action<bool, UnityEngine.Object> VisibleChanged;
     }
 
     public interface ISelectable
     {
         bool IsSelected { get; set; }
         bool IsHighlighted { get; set; }
-        event Action<UnityEngine.Object, bool> OnSelectedChange;
-        event Action<UnityEngine.Object, bool> OnHighlightedChange;
+        event Action<UnityEngine.Object, bool> SelectedChanged;
+        event Action<UnityEngine.Object, bool> HighlightedChanged;
+        Color SelectFrameColor { get; set; }
     }
 }

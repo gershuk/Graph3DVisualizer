@@ -7,7 +7,7 @@ namespace TextureFactory
         public static Texture2D CombineTextures ((Texture2D Texture, Vector2Int Position)[] images, int textureWidth, int textureHeight, TextureWrapMode wrapMode)
         {
             var newTexture = new Texture2D(textureWidth, textureHeight);
-            newTexture.SetPixels32(new Color32[textureWidth * textureHeight]);
+            //newTexture.SetPixels32(new Color32[textureWidth * textureHeight]);
 
             foreach (var image in images)
             {

@@ -5,6 +5,8 @@
 		_ScaleX("Scale X", Float) = 1.0
 		_ScaleY("Scale Y", Float) = 1.0
 		_Cutoff("Alpha Cutoff", Range(0,1)) = 0.0
+		[Toggle] _IsMonoColor("Is Mono Color", Float) = 0
+		_MonoColor ("Mono Color", Color) = (255,0,0,0)
 		_LineSize("Line Size", int) = 1
 	}
 	SubShader{
@@ -28,6 +30,8 @@
 			uniform float _ScaleY;
 			uniform float _Cutoff;
 			uniform int _LineSize;
+			uniform fixed4 _MonoColor;
+			uniform fixed _IsMonoColor;
 
 			struct vertexInput 
 			{
@@ -56,6 +60,12 @@
 				{
 					discard;
 				}
+
+				if (_IsMonoColor!=0)
+				{
+					texColor = _MonoColor;
+				}
+
 				return texColor;
 			}
 
