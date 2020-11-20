@@ -166,11 +166,11 @@ namespace Grpah3DVisualser
 
         public Edge Link (Vertex toVertex, Type edgeType, in LinkParameters linkParameters)
         {
+            if (toVertex == this)
+                throw new Exception($"It is forbidden to create edges from a vertex to the same vertex.");
+
             if (_transform.parent != toVertex._transform.parent)
-            {
-                Debug.LogError($"The vertices are in different graphs");
-                return null;
-            }
+                throw new Exception($"The vertices are in different graphs");
 
             foreach (var link in _outgoingLinks)
             {

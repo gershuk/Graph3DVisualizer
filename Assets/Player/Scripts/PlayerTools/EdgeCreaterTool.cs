@@ -30,6 +30,7 @@ namespace PlayerInputControls
         {
             None,
             Selecting,
+            LinkChanging
         }
 
         private const string _createEdgeActionName = "CreateEdgeAction";
@@ -69,53 +70,79 @@ namespace PlayerInputControls
             _laserPointer.LaserState = LaserState.Off;
         }
 
-        private void ChangeEdgeTypeAction_started (InputAction.CallbackContext obj) => ChangeIndex(Mathf.RoundToInt(obj.ReadValue<float>()));
+        private void CallChangeEdgeType (InputAction.CallbackContext obj) => ChangeIndex(Mathf.RoundToInt(obj.ReadValue<float>()));
 
-        private void SelectVertexAction_performed (InputAction.CallbackContext obj)
+        private void CallSelectFirstPoint (InputAction.CallbackContext obj) => SelectFirstPoint();
+
+        private void CallCreateEdge (InputAction.CallbackContext obj)
+        {
+            SelectSecondPoint();
+            CreateEdge();
+        }
+
+        private void CallDeleteEdge (InputAction.CallbackContext obj)
+        {
+            SelectSecondPoint();
+            DeleteEdge();
+        }
+
+        public void SelectFirstPoint ()
         {
             if (_state == State.None)
             {
                 _firstVertex = RayCast(_rayCastRange).transform?.GetComponent<Vertex>();
-                _state = State.Selecting;
+                if (_firstVertex != null)
+                    _state = State.Selecting;
             }
         }
 
-        private void SelectVertexAction_canceled (InputAction.CallbackContext obj)
+        public void SelectSecondPoint ()
         {
-            try
+            if (_state == State.Selecting)
             {
                 _secondVertex = RayCast(_rayCastRange).transform?.GetComponent<Vertex>();
                 if (_secondVertex != null)
-                    _firstVertex?.Link(_secondVertex, _edgeTypes[_typeIndex], _linkParameters);
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError(ex.Message);
-            }
-            finally
-            {
-                _state = State.None;
+                    _state = State.LinkChanging;
             }
         }
 
-        private void DeleteEdgeAction_canceled (InputAction.CallbackContext obj)
+        public void DeleteEdge ()
         {
-            try
+            if (_state == State.LinkChanging)
             {
-                _secondVertex = RayCast(_rayCastRange).transform?.GetComponent<Vertex>();
-                if (_secondVertex != null)
-                    _firstVertex?.UnLink(_secondVertex, _edgeTypes[_typeIndex]);
-            }
-            catch (Exception ex)
-            {
-                Debug.LogError(ex.Message);
-            }
-            finally
-            {
-                _state = State.None;
+                try
+                {
+                    _firstVertex.UnLink(_secondVertex, _edgeTypes[_typeIndex]);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError(ex.Message);
+                }
+                finally
+                {
+                    _state = State.None;
+                }
             }
         }
 
+        public void CreateEdge ()
+        {
+            if (_state == State.LinkChanging)
+            {
+                try
+                {
+                    _firstVertex.Link(_secondVertex, _edgeTypes[_typeIndex], _linkParameters);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError(ex.Message);
+                }
+                finally
+                {
+                    _state = State.None;
+                }
+            }
+        }
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
@@ -125,13 +152,13 @@ namespace PlayerInputControls
             var changeEdgeTypeAction = _inputActions.AddAction(_changeRangeActionName, InputActionType.Button);
             changeEdgeTypeAction.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
 
-            createEdgeAction.performed += SelectVertexAction_performed;
-            createEdgeAction.canceled += SelectVertexAction_canceled;
+            createEdgeAction.performed += CallSelectFirstPoint;
+            createEdgeAction.canceled += CallCreateEdge;
 
-            deleteEdgeAction.performed += SelectVertexAction_performed;
-            deleteEdgeAction.canceled += DeleteEdgeAction_canceled;
+            deleteEdgeAction.performed += CallSelectFirstPoint;
+            deleteEdgeAction.canceled += CallDeleteEdge;
 
-            changeEdgeTypeAction.started += ChangeEdgeTypeAction_started;
+            changeEdgeTypeAction.started += CallChangeEdgeType;
         }
 
         public void ChangeIndex (int deltaIndex) => _typeIndex = (_typeIndex + deltaIndex) < 0 ? _edgeTypes.Count - 1 : (_typeIndex + deltaIndex) % _edgeTypes.Count;

@@ -18,17 +18,16 @@ namespace Grpah3DVisualser
         private VisualTask _visualTask;
         private List<Type> _taskList;
 
-        public Type CurrentTask
+        public Type CurrentTaskType
         {
             get => _currentTaskType;
-            set => _currentTaskType = value.IsSubclassOf(typeof(VisualTask)) ? value : throw new Exception($"You can't cast {value.Name} to a VisualTask");
+            set => _currentTaskType = value == null || value.IsSubclassOf(typeof(VisualTask)) ? value : throw new Exception($"You can't cast {value.Name} to a VisualTask");
         }
 
         public List<Type> TaskList { get => _taskList; private set => _taskList = value; }
 
         public VisualTask VisualTask { get => _visualTask; private set => _visualTask = value; }
 
-        public Type CurrentTaskType { get => _currentTaskType; set => _currentTaskType = value; }
 
         private void Awake ()
         {
@@ -67,7 +66,7 @@ namespace Grpah3DVisualser
 
         public void LoadScene (string name) => SceneManager.LoadScene(name);
 
-        public void SetTaskByName (string name) => CurrentTask = Type.GetType(name);
+        public void SetTaskByName (string name) => CurrentTaskType = Type.GetType(name);
 
         public void FindAllTasks ()
         {

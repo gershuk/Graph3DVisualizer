@@ -40,8 +40,8 @@ public class Menu : MonoBehaviour
 
         var taskList = _sceneControler.TaskList;
 
-        var buttonHeight = 100;
-        var buttonWidth = _content.GetComponent<RectTransform>().rect.width;
+        var buttonHeight = _content.GetComponent<RectTransform>().sizeDelta.y / 5;
+        var buttonWidth = _content.GetComponent<RectTransform>().sizeDelta.x;
         for (var i = 0; i < taskList.Count; i++)
         {
             var task = taskList[i];
@@ -60,7 +60,7 @@ public class Menu : MonoBehaviour
                     });
                 var newButton = CreateButton(buttonParameters);
                 var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
-                var textParameters = new TextParameters(task.Name, Color.black, _font, TextAnchor.MiddleCenter, textRectParameters);
+                var textParameters = new TextParameters(task.Name, Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
                 var newText = CreateText(textParameters);
             }
         }
@@ -79,7 +79,7 @@ public class Menu : MonoBehaviour
                 });
             var newButton = CreateButton(buttonParameters);
             var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
-            var textParameters = new TextParameters("StartMenu", Color.black, _font, TextAnchor.MiddleCenter, textRectParameters);
+            var textParameters = new TextParameters("StartMenu", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
             var newText = CreateText(textParameters);
         }
 
@@ -90,7 +90,7 @@ public class Menu : MonoBehaviour
                 () => { if (_state == State.TaskScene) foreach (var verdict in _sceneControler.VisualTask.GetResult()) Debug.Log(verdict); });
             var newButton = CreateButton(buttonParameters);
             var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
-            var textParameters = new TextParameters("Check", Color.black, _font, TextAnchor.MiddleCenter, textRectParameters);
+            var textParameters = new TextParameters("Check", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
             var newText = CreateText(textParameters);
         }
     }
@@ -111,6 +111,12 @@ public class Menu : MonoBehaviour
     {
         _isActive = state;
         _menu.SetActive(_isActive);
-        Cursor.visible = _isActive;
+        Cursor.visible = state;
+
+        if (_sceneControler.VisualTask != null)
+        {
+            foreach (var player in _sceneControler.VisualTask.Players)
+                player.gameObject.SetActive(!state);
+        }
     }
 }

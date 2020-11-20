@@ -41,14 +41,16 @@ namespace Grpah3DVisualser
             public Color Color { get; }
             public Font Font { get; }
             public TextAnchor Anchor { get; }
+            public int Size { get; }
             public RectTransformParameters RectTransformParameters { get; }
 
-            public TextParameters (string text, Color color, Font font, TextAnchor anchor, in RectTransformParameters rectTransformParameters)
+            public TextParameters (string text, Color color, Font font, TextAnchor anchor, int size, in RectTransformParameters rectTransformParameters)
             {
                 Text = text ?? throw new ArgumentNullException(nameof(text));
                 Color = color;
                 Font = font != null ? font : throw new ArgumentNullException(nameof(font));
                 Anchor = anchor;
+                Size = size;
                 RectTransformParameters = rectTransformParameters;
             }
         }
@@ -56,11 +58,13 @@ namespace Grpah3DVisualser
         public static GameObject CreateText (in TextParameters parameters)
         {
             var newText = new GameObject($"{parameters.Text}Text", typeof(Text));
-            newText.GetComponent<Text>().text = $"{parameters.Text}";
             newText.GetComponent<RectTransform>().SetUpRectTransform(parameters.RectTransformParameters);
-            newText.GetComponent<Text>().color = parameters.Color;
-            newText.GetComponent<Text>().alignment = parameters.Anchor;
-            newText.GetComponent<Text>().font = parameters.Font;
+            var textComponent = newText.GetComponent<Text>();
+            textComponent.text = $"{parameters.Text}";
+            textComponent.color = parameters.Color;
+            textComponent.font = parameters.Font;
+            textComponent.alignment = parameters.Anchor;
+            textComponent.fontSize = parameters.Size;
             return newText;
         }
 

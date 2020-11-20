@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 
 using SupportComponents;
@@ -94,7 +93,7 @@ namespace PlayerInputControls
             changeColorAction.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
 
             selectItemAction.canceled += CallSelectItem;
-            changeColorAction.started += CallChangeColor;
+            changeColorAction.performed += CallChangeColor;
         }
 
         public override void SetUpTool (ToolParams toolParams) => _colors = (toolParams as SelectItemToolParams).Colors.ToList();

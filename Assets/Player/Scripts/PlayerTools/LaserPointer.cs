@@ -54,7 +54,6 @@ namespace PlayerInputControls
             }
         }
 
-
         private void Awake ()
         {
             _transform = transform;
@@ -76,7 +75,7 @@ namespace PlayerInputControls
             _material = _lineRender.sharedMaterial;
 
             _lineRender.positionCount = 2;
-            _lineRender.useWorldSpace = true;
+            _lineRender.useWorldSpace = false;
             _lineRender.endWidth = 0.5f;
             _lineRender.startWidth = 0.5f;
 
@@ -86,9 +85,9 @@ namespace PlayerInputControls
         private void LateUpdate ()
         {
             Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, Range);
-
-            _lineRender.SetPosition(0, _transform.position);
-            _lineRender.SetPosition(1, hit.transform == null ? _transform.position + transform.TransformDirection(new Vector3(0, 0, Range)) : hit.point);
+           
+            _lineRender.SetPosition(0, Vector3.zero);
+            _lineRender.SetPosition(1, hit.transform == null ? Vector3.forward * Range : Vector3.forward * hit.distance);
         }
     }
 }

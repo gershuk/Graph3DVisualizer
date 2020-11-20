@@ -29,8 +29,8 @@ namespace GraphTasks
 
     public abstract class VisualTask : MonoBehaviour
     {
-        public abstract ReadOnlyCollection<FlyPlayer> Players { get; protected set; }
-        public abstract ReadOnlyCollection<Graph> Graphs { get; protected set; }
+        public abstract IReadOnlyCollection<AbstractPLayer> Players { get; protected set; }
+        public abstract IReadOnlyCollection<Graph> Graphs { get; protected set; }
         public abstract Graph CreateGraph ();
         public abstract void InitTask ();
         public abstract void StartTask ();

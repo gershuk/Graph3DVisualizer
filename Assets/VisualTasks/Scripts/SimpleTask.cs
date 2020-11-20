@@ -17,9 +17,8 @@ namespace GraphTasks
         private GameObject _graph;
         private GameObject _player;
 
-        public GameObject Player { get => _player; private set => _player = value; }
-        public override ReadOnlyCollection<FlyPlayer> Players { get => throw new NotImplementedException(); protected set => throw new NotImplementedException(); }
-        public override ReadOnlyCollection<Graph> Graphs { get => throw new NotImplementedException(); protected set => throw new NotImplementedException(); }
+        public override IReadOnlyCollection<AbstractPLayer> Players { get => new List<AbstractPLayer>(1) { _player.GetComponent<AbstractPLayer>() }; protected set => throw new NotImplementedException(); }
+        public override IReadOnlyCollection<Graph> Graphs { get => new List<Graph>(1) { _graph.GetComponent<Graph>() }; protected set => throw new NotImplementedException(); }
 
         public override Graph CreateGraph ()
         {

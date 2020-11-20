@@ -67,6 +67,7 @@ namespace PlayerInputControls
                 StopChangingRange();
             _inputActions?.Disable();
             _laserPointer.LaserState = LaserState.Off;
+            FreeItem();
         }
 
 
@@ -82,19 +83,9 @@ namespace PlayerInputControls
             yield return null;
         }
 
-        private void StartChangingRange ()
-        {
-            _isChangingRange = true;
-            _changeRangeCoroutine = StartCoroutine(ChangingRangeCoroutine());
-        }
-
-        private void StopChangingRange ()
-        {
-            _isChangingRange = false;
-            StopCoroutine(_changeRangeCoroutine);
-        }
-
         private void CallGrabItem (InputAction.CallbackContext obj) => GrabItem();
+
+        private void CallFreeItem (InputAction.CallbackContext obj) => FreeItem();
 
         private void CallStartChangingRange (InputAction.CallbackContext obj) => StartChangingRange();
 
@@ -112,13 +103,28 @@ namespace PlayerInputControls
                 {
                     _moveable = hit.transform.GetComponent<IMoveable>();
                     _capturedRange = Vector3.Distance(hit.transform.position, _transform.position);
+                    _laserPointer.Range = _capturedRange;
                     _isCapturedObject = true;
                 }
             }
-            else
-            {
-                _isCapturedObject = false;
-            }
+        }
+
+        public void FreeItem ()
+        {
+            _moveable = null;
+            _isCapturedObject = false;
+            _laserPointer.Range = _rayCastRange;
+        }
+        public void StartChangingRange ()
+        {
+            _isChangingRange = true;
+            _changeRangeCoroutine = StartCoroutine(ChangingRangeCoroutine());
+        }
+
+        public void StopChangingRange ()
+        {
+            _isChangingRange = false;
+            StopCoroutine(_changeRangeCoroutine);
         }
 
         public override void RegisterEvents (IInputActionCollection inputActions)
@@ -129,7 +135,7 @@ namespace PlayerInputControls
             changeRangeAction.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
 
             grabItemAction.performed += CallGrabItem;
-            grabItemAction.canceled += CallGrabItem;
+            grabItemAction.canceled += CallFreeItem;
 
             changeRangeAction.performed += CallStartChangingRange;
             changeRangeAction.canceled += CallStopChangingRange;

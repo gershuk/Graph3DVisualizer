@@ -9,32 +9,14 @@ using UnityEngine.InputSystem;
 
 namespace PlayerInputControls
 {
-    public readonly struct PlayerParams
-    {
-        public Vector3 Position { get; }
-        public Vector3 EulerAngles { get; }
-        public float MovingSpeed { get; }
-        public float RotationSpeed { get; }
-        public ToolConfig[] ToolConfigs { get; }
-
-        public PlayerParams (Vector3 position, Vector3 eulerAngles, float movingSpeed, float rotationSpeed, ToolConfig[] toolConfigs)
-        {
-            Position = position;
-            EulerAngles = eulerAngles;
-            RotationSpeed = rotationSpeed;
-            MovingSpeed = movingSpeed;
-            ToolConfigs = toolConfigs ?? throw new ArgumentNullException(nameof(toolConfigs));
-        }
-    }
-
     [RequireComponent(typeof(MoveComponent))]
-    sealed public class FlyPlayer : MonoBehaviour
+    sealed public class FlyPlayer : AbstractPLayer
     {
         private Transform _transform;
         private Vector3 _moveDirVector;
         private FlyControls _inputActions;
         private MoveComponent _moveComponent;
-        private List<PlayerTool> _playerItems;
+        private List<PlayerTool> _playerTools;
         private int _currentToolIndex = 0;
         private GameObject _hand;
 
@@ -47,15 +29,16 @@ namespace PlayerInputControls
             _hand.transform.localPosition = new Vector3(2, -2, 0);
             _hand.AddComponent(typeof(LaserPointer));
 
-            _playerItems = new List<PlayerTool>();
+            _playerTools = new List<PlayerTool>();
 
             _inputActions = new FlyControls();
             _moveComponent = GetComponent<MoveComponent>();
+            _inputType = InputType.ToolsOnly;
         }
 
         private void CreateTool (params ToolConfig[] toolsConfig)
         {
-            var clonedList = _playerItems.GetRange(0, _playerItems.Count);
+            var clonedList = _playerTools.GetRange(0, _playerTools.Count);
             try
             {
                 foreach (var config in toolsConfig)
@@ -63,15 +46,15 @@ namespace PlayerInputControls
                     var newTool = ((PlayerTool) _hand.AddComponent(config.ToolType));
                     newTool.RegisterEvents(_inputActions);
                     newTool.SetUpTool(config.ToolParams);
-                    _playerItems.Add(newTool);
-                    _playerItems[_playerItems.Count - 1].enabled = false;
+                    _playerTools.Add(newTool);
+                    _playerTools[_playerTools.Count - 1].enabled = false;
                 }
 
                 SelectTool(0);
             }
             catch
             {
-                _playerItems = clonedList;
+                _playerTools = clonedList;
                 throw;
             }
         }
@@ -95,6 +78,8 @@ namespace PlayerInputControls
             _inputActions.FlyModel.ChangeAltitude.canceled += OnPlayerChangeAltitude;
 
             _inputActions.FlyModel.Enable();
+
+            UpdateInputs();
         }
 
         private void OnDisable ()
@@ -110,6 +95,44 @@ namespace PlayerInputControls
             _inputActions.FlyModel.ChangeAltitude.canceled -= OnPlayerChangeAltitude;
 
             _inputActions.FlyModel.Disable();
+        }
+
+        private void UpdateInputs ()
+        {
+            (bool tools, bool cursor, bool movement) state = (false, false, false);
+            switch (_inputType)
+            {
+                case InputType.Off:
+                    state = (false, false, false);
+                    break;
+                case InputType.MenuOnly:
+                    state = (false, true, false);
+                    break;
+                case InputType.ToolsOnly:
+                    state = (true, false, true);
+                    break;
+                case InputType.All:
+                    state = (true, true, true);
+                    break;
+            }
+
+            if (state.tools)
+            {
+                if (_playerTools.Count > 0)
+                    _playerTools[_currentToolIndex].enabled = true;
+            }
+            else
+            {
+                foreach (var tool in _playerTools)
+                    tool.enabled = false;
+            }
+
+            Cursor.visible = state.cursor;
+
+            if (state.movement)
+                _inputActions.Enable();
+            else
+                _inputActions.Disable();
         }
 
         public void OnPlayerMove (InputAction.CallbackContext obj)
@@ -131,15 +154,15 @@ namespace PlayerInputControls
             var lastIndex = _currentToolIndex;
             try
             {
-                _playerItems[_currentToolIndex].enabled = false;
+                _playerTools[_currentToolIndex].enabled = false;
                 _currentToolIndex = index;
-                _playerItems[_currentToolIndex].enabled = true;
+                _playerTools[_currentToolIndex].enabled = true;
             }
             catch (ArgumentOutOfRangeException)
             {
                 Debug.LogError($"Wrong tool index {_currentToolIndex}");
                 _currentToolIndex = lastIndex;
-                _playerItems[_currentToolIndex].enabled = true;
+                _playerTools[_currentToolIndex].enabled = true;
             }
         }
 
@@ -152,6 +175,16 @@ namespace PlayerInputControls
             _moveComponent.MovingSpeed = playerParams.MovingSpeed;
             _moveComponent.RotationSpeed = playerParams.RotationSpeed;
             CreateTool(playerParams.ToolConfigs);
+        }
+
+        public override InputType InputType
+        {
+            get => _inputType;
+            set
+            {
+                _inputType = value;
+                UpdateInputs();
+            }
         }
     }
 }
