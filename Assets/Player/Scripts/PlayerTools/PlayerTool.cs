@@ -1,5 +1,7 @@
 ﻿using System;
 
+using SupportComponents;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,9 +12,9 @@ namespace PlayerInputControls
     public readonly struct ToolConfig
     {
         public Type ToolType { get; }
-        public ToolParams ToolParams { get; }
+        public object ToolParams { get; }
 
-        public ToolConfig (Type toolType, ToolParams toolParams)
+        public ToolConfig (Type toolType, object toolParams)
         {
             if (!toolType.IsSubclassOf(typeof(PlayerTool)))
                 throw new Exception($"{toolType} is not subclass of PlayerTool");
@@ -33,7 +35,5 @@ namespace PlayerInputControls
             Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, range);
             return hit;
         }
-
-        public abstract void SetUpTool (ToolParams toolParams);
     }
 }

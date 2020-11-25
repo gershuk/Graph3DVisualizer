@@ -45,18 +45,21 @@ namespace Grpah3DVisualser
         }
     }
 
-    public readonly struct VertexParameters
+    public class VertexParameters
     {
         public Vector3 Position { get; }
         public Quaternion Rotation { get; }
+        public BillboardParameters ImageParameters { get; }
+        public BillboardParameters SelectFrameParameters { get; }
 
-        public VertexParameters (Vector3 position, Quaternion rotation) => (Position, Rotation) = (position, rotation);
+        public VertexParameters (Vector3 position, Quaternion rotation, BillboardParameters imageParameters, BillboardParameters selectFrameParameters)
+            => (Position, Rotation, ImageParameters, SelectFrameParameters) = (position, rotation, imageParameters, selectFrameParameters);
     }
 
     [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(MoveComponent))]
     [RequireComponent(typeof(SphereCollider))]
-    public class Vertex : MonoBehaviour, IVisibile, IDestructible, ISelectable
+    public class Vertex : MonoBehaviour, IVisibile, IDestructible, ISelectable, ICustomizable<VertexParameters>
     {
         [SerializeField]
         private GameObject _edgePrefab;
@@ -141,26 +144,25 @@ namespace Grpah3DVisualser
             if (!edgeType.IsSubclassOf(typeof(Edge)) && edgeType != typeof(Edge))
                 throw new Exception($"This type {edgeType.FullName} is not inherited from an Edge");
             var edge = (Edge) Instantiate(_edgePrefab, _transform.position, Quaternion.identity, _transform.parent).AddComponent(edgeType);
-            edge.SetUpEdge(parameters);
+            edge.SetupParams(parameters);
             return edge;
         }
 
-        public void SetUpVertex (in VertexParameters vertexParameters)
-            => (_transform.position, _transform.rotation) = (vertexParameters.Position, vertexParameters.Rotation);
-
-        public void SetMainImage (in BillboardParameters billboardParameters)
+        public void SetMainImage (BillboardParameters billboardParameters)
         {
-            if (_mainImageId != null)
-                _billboardControler.DeleteBillboard(_mainImageId);
-            _mainImageId = _billboardControler.CreateBillboard(billboardParameters, "MainImage", "Vertex image");
+            if (_mainImageId == null)
+                _mainImageId = _billboardControler.CreateBillboard(billboardParameters, "MainImage", "Vertex image");
+            else
+                _billboardControler.GetBillboard(_mainImageId).SetupParams(billboardParameters);
             UpdateColliderRange();
         }
 
-        public void SetSelectFrame (in BillboardParameters billboardParameters)
+        public void SetSelectFrame (BillboardParameters billboardParameters)
         {
-            if (_selectFrameId != null)
-                _billboardControler.DeleteBillboard(_selectFrameId);
-            _selectFrameId = _billboardControler.CreateBillboard(billboardParameters, "SelectFrameImage", "Vertex select frame");
+            if (_selectFrameId == null)
+                _selectFrameId = _billboardControler.CreateBillboard(billboardParameters, "SelectFrameImage", "Vertex select frame");
+            else
+                _billboardControler.GetBillboard(_selectFrameId).SetupParams(billboardParameters);
             UpdateColliderRange();
         }
 
@@ -192,8 +194,8 @@ namespace Grpah3DVisualser
                 }
             }
 
-            var edgeParameters = new EdgeParameters(linkParameters.SourceOffsetDist, linkParameters.TargetOffsetDist,
-                new AdjacentVertices(this, toVertex), linkParameters.ArrowTexture, linkParameters.LineTexture);
+            var edgeParameters = new EdgeParameters(new AdjacentVertices(this, toVertex), linkParameters.SourceOffsetDist, linkParameters.TargetOffsetDist,
+                 linkParameters.ArrowTexture, linkParameters.LineTexture);
 
             edge = edge != null ? edge : CreateEdge(edgeParameters, edgeType);
             _outgoingLinks.Add(new Link(toVertex, edge));
@@ -217,6 +219,16 @@ namespace Grpah3DVisualser
                 Destroy(edge.gameObject);
             }
         }
+
+        public void SetupParams (VertexParameters parameters)
+        {
+            (_transform.position, _transform.rotation) = (parameters.Position, parameters.Rotation);
+            SetMainImage(parameters.ImageParameters);
+            SetSelectFrame(parameters.SelectFrameParameters);
+        }
+
+        public VertexParameters DownloadParams () => new VertexParameters(_transform.position, _transform.rotation, 
+            _billboardControler.GetBillboard(_mainImageId).DownloadParams(), _billboardControler.GetBillboard(_selectFrameId).DownloadParams());
 
         public bool IsSelected
         {

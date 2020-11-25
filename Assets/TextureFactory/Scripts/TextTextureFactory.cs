@@ -22,7 +22,7 @@ namespace TextureFactory
 
             foreach (var characterInfo in _customFont.characterInfo)
             {
-                //ToDo change to GetPixels32
+                //ToDo : Change to GetPixels32
                 var pixels = fontTexture.GetPixels((int) (characterInfo.uvBottomLeft.x * fontTexture.width),
                                                     (int) (characterInfo.uvBottomLeft.y * fontTexture.height),
                                                     characterInfo.glyphWidth, characterInfo.glyphHeight);

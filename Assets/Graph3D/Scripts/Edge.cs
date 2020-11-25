@@ -1,5 +1,7 @@
 ﻿using System;
 
+using SupportComponents;
+
 using UnityEngine;
 
 namespace Grpah3DVisualser
@@ -37,46 +39,29 @@ namespace Grpah3DVisualser
         public Vector3 GetMiddlePoint () => (FromVertex.transform.position + ToVertex.transform.position) / 2;
     }
 
-    public readonly struct EdgeParameters
+    public class EdgeParameters
     {
+        public AdjacentVertices AdjacentVertices { get; }
         public float SourceOffsetDist { get; }
         public float TargetOffsetDist { get; }
-        public AdjacentVertices AdjacentVertices { get; }
         public Texture2D ArrowTexture { get; }
         public Texture2D LineTexture { get; }
         public EdgeVisibility Visibility { get; }
 
-        public EdgeParameters (float sourceOffsetDist, float targetOffsetDist, in AdjacentVertices adjacentVertices,
+        public EdgeParameters (in AdjacentVertices adjacentVertices, float sourceOffsetDist, float targetOffsetDist,
             Texture2D arrowTexture = null, Texture2D lineTexture = null, EdgeVisibility visibility = EdgeVisibility.DependOnVertices)
         {
+            AdjacentVertices = adjacentVertices;
             SourceOffsetDist = sourceOffsetDist;
             TargetOffsetDist = targetOffsetDist;
-            AdjacentVertices = adjacentVertices;
             ArrowTexture = arrowTexture;
             LineTexture = lineTexture;
             Visibility = visibility;
         }
     }
 
-    public interface IEdge
-    {
-        AdjacentVertices AdjacentVertices { get; set; }
-        Texture2D ArrowTexture { get; set; }
-        Texture2D LineTexture { get; set; }
-        float SourceOffsetDist { get; set; }
-        float TargetOffsetDist { get; set; }
-        EdgeType Type { get; set; }
-        EdgeVisibility Visibility { get; set; }
-
-        void SetUpEdge (in EdgeParameters edgeParameters);
-        void UpdateCoordinates ();
-        void UpdateEdge ();
-        void UpdateType ();
-        void UpdateVisibility ();
-    }
-
     [RequireComponent(typeof(LineRenderer))]
-    public class Edge : MonoBehaviour, IEdge
+    public class Edge : MonoBehaviour, ICustomizable<EdgeParameters>
     {
         private const string _cutoff = "_Cutoff";
         private static Shader _shader;
@@ -291,20 +276,23 @@ namespace Grpah3DVisualser
             UpdateCoordinates();
         }
 
-        public void SetUpEdge (in EdgeParameters edgeParameters)
+        public void SetupParams (EdgeParameters parameters)
         {
-            _adjacentVertices = edgeParameters.AdjacentVertices;
+            _adjacentVertices = parameters.AdjacentVertices;
             SubscribeOnVerticesEvents();
 
-            _sourceOffsetDist = edgeParameters.SourceOffsetDist;
-            _targetOffsetDist = edgeParameters.TargetOffsetDist;
+            _sourceOffsetDist = parameters.SourceOffsetDist;
+            _targetOffsetDist = parameters.TargetOffsetDist;
 
-            ArrowTexture = edgeParameters.ArrowTexture != null ? edgeParameters.ArrowTexture : ArrowTexture;
-            LineTexture = edgeParameters.LineTexture != null ? edgeParameters.LineTexture : LineTexture;
+            ArrowTexture = parameters.ArrowTexture != null ? parameters.ArrowTexture : ArrowTexture;
+            LineTexture = parameters.LineTexture != null ? parameters.LineTexture : LineTexture;
 
-            _visibility = edgeParameters.Visibility;
+            _visibility = parameters.Visibility;
 
             UpdateEdge();
         }
+
+        public EdgeParameters DownloadParams () => new EdgeParameters(_adjacentVertices, _sourceOffsetDist, _targetOffsetDist, ArrowTexture, LineTexture, _visibility);
+
     }
 }

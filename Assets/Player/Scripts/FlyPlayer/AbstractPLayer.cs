@@ -12,7 +12,7 @@ namespace PlayerInputControls
         All = 3,
     }
 
-    public readonly struct PlayerParams
+    public class PlayerParams
     {
         public Vector3 Position { get; }
         public Vector3 EulerAngles { get; }

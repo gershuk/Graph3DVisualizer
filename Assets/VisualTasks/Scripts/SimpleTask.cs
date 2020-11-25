@@ -38,19 +38,22 @@ namespace GraphTasks
                 var text = TextTextureFactory.MakeTextTexture($"Vertex{i}");
                 text = Texture2DExtension.ResizeTexture(text, 200, (int) (Math.Truncate(200.0 / text.width + 1)) * text.height);
 
-                var image1 = new (Texture2D, Vector2Int Position)[2] { (resizedTetxure, new Vector2Int(0, text.height)), (text, new Vector2Int(0, 0)) };
-                var image2 = new (Texture2D, Vector2Int Position)[1] { (selectFrame, Vector2Int.zero) };
+                var image1 = new PositionedImage[2] { (resizedTetxure, new Vector2Int(0, text.height)), (text, new Vector2Int(0, 0)) };
+                var image2 = new PositionedImage[1] { (selectFrame, Vector2Int.zero) };
 
                 var width = resizedTetxure.width;
                 var height = resizedTetxure.height + text.height;
                 var scale = 10f;
 
-                var verPar = new VertexParameters(new Vector3(i % 30 * 20, i / 30 * 20, 0), Quaternion.identity);
-                var billPar1 = new BillboardParameters(image1, width, height, new Vector2(scale, height * scale / width), 0.1f, true, TextureWrapMode.Clamp, false, Color.white);
-                var value = Mathf.Max(scale + 3.5f, height * scale / width + 3.5f);
-                var billPar2 = new BillboardParameters(image2, selectFrame.width, selectFrame.height, new Vector2(value, value), 0.1f, true, TextureWrapMode.Clamp, true, Color.red);
+                var combIm1 = new CombinedImages(image1, width, height, TextureWrapMode.Clamp, false);
+                var billPar1 = new BillboardParameters(combIm1, new Vector2(scale, height * scale / width), 0.1f, true, false, Color.white);
 
-                var currentVertex = graphControler.SpawnVertex<Vertex>(in verPar, in billPar1, in billPar2);
+                var value = Mathf.Max(scale + 3.5f, height * scale / width + 3.5f);
+                var combIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height, TextureWrapMode.Clamp, false);
+                var billPar2 = new BillboardParameters(combIm2, new Vector2(value, value), 0.1f, true, true, Color.red);
+
+                var verPar = new VertexParameters(new Vector3(i % 30 * 20, i / 30 * 20, 0), Quaternion.identity, billPar1, billPar2);
+                var currentVertex = graphControler.SpawnVertex<Vertex>(verPar);
                 var linkParameters = new LinkParameters(6, 6);
                 lastVertex?.Link(currentVertex, typeof(Edge), linkParameters);
                 if (lastVertex != null && i % 2 == 0)
@@ -80,7 +83,7 @@ namespace GraphTasks
 
             CreateGraph();
             _player = (GameObject) Instantiate(Resources.Load("Prefabs/Player"));
-            _player.GetComponent<FlyPlayer>().SetUpPlayer(new PlayerParams(Vector3.zero, Vector3.zero, 40, 20,
+            _player.GetComponent<FlyPlayer>().SetupParams(new PlayerParams(Vector3.zero, Vector3.zero, 40, 20,
                 new ToolConfig[3]
                 {
                     new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)),

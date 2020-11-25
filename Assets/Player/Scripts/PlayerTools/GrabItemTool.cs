@@ -140,7 +140,5 @@ namespace PlayerInputControls
             changeRangeAction.performed += CallStartChangingRange;
             changeRangeAction.canceled += CallStopChangingRange;
         }
-
-        public override void SetUpTool (ToolParams toolParams) { }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 using SupportComponents;
 
@@ -10,7 +11,7 @@ using UnityEngine.InputSystem;
 namespace PlayerInputControls
 {
     [RequireComponent(typeof(MoveComponent))]
-    sealed public class FlyPlayer : AbstractPLayer
+    sealed public class FlyPlayer : AbstractPLayer, ICustomizable<PlayerParams>
     {
         private Transform _transform;
         private Vector3 _moveDirVector;
@@ -45,7 +46,9 @@ namespace PlayerInputControls
                 {
                     var newTool = ((PlayerTool) _hand.AddComponent(config.ToolType));
                     newTool.RegisterEvents(_inputActions);
-                    newTool.SetUpTool(config.ToolParams);
+
+                    CustomizableExtension.CallSetUpParams(newTool, new[] { config.ToolParams });
+
                     _playerTools.Add(newTool);
                     _playerTools[_playerTools.Count - 1].enabled = false;
                 }
@@ -168,7 +171,7 @@ namespace PlayerInputControls
 
         public void OnSelectItem (InputAction.CallbackContext obj) => SelectTool(Convert.ToInt32(obj.control.displayName) - 1);
 
-        public void SetUpPlayer (in PlayerParams playerParams)
+        public void SetupParams (PlayerParams playerParams)
         {
             transform.position = playerParams.Position;
             transform.eulerAngles = playerParams.EulerAngles;
@@ -176,6 +179,11 @@ namespace PlayerInputControls
             _moveComponent.RotationSpeed = playerParams.RotationSpeed;
             CreateTool(playerParams.ToolConfigs);
         }
+
+        //ToDo : Remove array from CustomizableExtension.CallDownloadParams
+        public PlayerParams DownloadParams () =>
+            new PlayerParams(transform.position, transform.eulerAngles, _moveComponent.MovingSpeed, _moveComponent.RotationSpeed,
+            _playerTools.Select(tool => new ToolConfig(tool.GetType(), CustomizableExtension.CallDownloadParams(tool)[0])).ToArray());
 
         public override InputType InputType
         {

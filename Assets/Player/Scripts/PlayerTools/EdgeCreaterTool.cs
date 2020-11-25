@@ -4,6 +4,8 @@ using System.Linq;
 
 using Grpah3DVisualser;
 
+using SupportComponents;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,8 +13,8 @@ namespace PlayerInputControls
 {
     public class EdgeCreaterToolParams : ToolParams
     {
-        public IReadOnlyCollection<Type> EdgeTypes { get; private set; }
-        public EdgeCreaterToolParams (IReadOnlyCollection<Type> edgeTypes)
+        public IReadOnlyList<Type> EdgeTypes { get; private set; }
+        public EdgeCreaterToolParams (IReadOnlyList<Type> edgeTypes)
         {
             EdgeTypes = edgeTypes ?? throw new ArgumentNullException(nameof(edgeTypes));
             foreach (var type in EdgeTypes)
@@ -24,7 +26,7 @@ namespace PlayerInputControls
     }
 
     [RequireComponent(typeof(LaserPointer))]
-    public class EdgeCreaterTool : PlayerTool
+    public class EdgeCreaterTool : PlayerTool, ICustomizable<EdgeCreaterToolParams>
     {
         private enum State
         {
@@ -163,6 +165,8 @@ namespace PlayerInputControls
 
         public void ChangeIndex (int deltaIndex) => _typeIndex = (_typeIndex + deltaIndex) < 0 ? _edgeTypes.Count - 1 : (_typeIndex + deltaIndex) % _edgeTypes.Count;
 
-        public override void SetUpTool (ToolParams toolParams) => _edgeTypes = (toolParams as EdgeCreaterToolParams).EdgeTypes.ToList();
+        public void SetupParams (EdgeCreaterToolParams parameters) => _edgeTypes = parameters.EdgeTypes.ToList();
+
+        public EdgeCreaterToolParams DownloadParams () => new EdgeCreaterToolParams(_edgeTypes);
     }
 }

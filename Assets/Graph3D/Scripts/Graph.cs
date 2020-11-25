@@ -20,14 +20,13 @@ namespace Grpah3DVisualser
             Vertexes = new HashSet<Vertex>();
         }
 
-        public T SpawnVertex<T> (in VertexParameters vertexParameters, in BillboardParameters imageParameters,
-            in BillboardParameters selectFrameParameters) where T : Vertex, new()
+        public T SpawnVertex<T> (VertexParameters vertexParameters) where T : Vertex, new()
         {
             var vertex = Instantiate(_vertexPrefab, vertexParameters.Position, vertexParameters.Rotation, _transform);
             var vertexComponent = vertex.gameObject.AddComponent<T>();
 
-            vertexComponent.SetMainImage(imageParameters);
-            vertexComponent.SetSelectFrame(selectFrameParameters);
+            vertexComponent.SetMainImage(vertexParameters.ImageParameters);
+            vertexComponent.SetSelectFrame(vertexParameters.SelectFrameParameters);
 
             vertexComponent.IsSelected = false;
 

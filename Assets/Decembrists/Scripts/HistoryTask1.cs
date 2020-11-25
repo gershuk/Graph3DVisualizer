@@ -25,20 +25,24 @@ namespace GraphTasks
         {
             var rand = new System.Random();
             var picked = (Texture2D) man;
-            var verPar = new VertexParameters(new Vector3(rand.Next(-60, 60), rand.Next(-60, 60), rand.Next(-60, 60)), Quaternion.identity);
             var name = textTextureFactory.MakeTextTexture(picked.name.Replace(',', '\n'));
             var scale = 15f;
 
             var resizedTexture = Texture2DExtension.ResizeTexture(picked, name.width, picked.height / picked.width * name.width);
-            var image1 = new (Texture2D, Vector2Int Position)[2] { (resizedTexture, new Vector2Int(0, name.height)), (name, new Vector2Int(0, 0)) };
-            var image2 = new (Texture2D, Vector2Int Position)[1] { (selectFrame, Vector2Int.zero) };
+            var image1 = new PositionedImage[2] { (resizedTexture, new Vector2Int(0, name.height)), (name, new Vector2Int(0, 0)) };
+            var image2 = new PositionedImage[1] { (selectFrame, Vector2Int.zero) };
             var width = resizedTexture.width;
             var height = resizedTexture.height + name.height;
 
-            var billPar1 = new BillboardParameters(image1, width, height, new Vector2(scale, height * scale / width), 0.1f, true, TextureWrapMode.Clamp, false, Color.white);
+            var comIm1 = new CombinedImages(image1, width, height, TextureWrapMode.Clamp, false);
+            var billPar1 = new BillboardParameters(comIm1, new Vector2(scale, height * scale / width), 0.1f, true, false, Color.white);
+
+            var comIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height, TextureWrapMode.Clamp, false);
             var value = Mathf.Max(scale + 3.5f, height * scale / width + 3.5f);
-            var billPar2 = new BillboardParameters(image2, selectFrame.width, selectFrame.height, new Vector2(value, value), 0.1f, true, TextureWrapMode.Clamp, true, Color.red);
-            var vertex = graphController.SpawnVertex<DecembristVertex>(verPar, billPar1, billPar2);
+            var billPar2 = new BillboardParameters(comIm2, new Vector2(value, value), 0.1f, true, true, Color.red);
+
+            var verPar = new VertexParameters(new Vector3(rand.Next(-60, 60), rand.Next(-60, 60), rand.Next(-60, 60)), Quaternion.identity, billPar1, billPar2);
+            var vertex = graphController.SpawnVertex<DecembristVertex>(verPar);
             vertex.IsDec = isDec;
             vertex.Name = picked.name;
         }
@@ -85,7 +89,7 @@ namespace GraphTasks
 
             CreateGraph();
             _player = (GameObject) Instantiate(Resources.Load("Prefabs/Player"));
-            _player.GetComponent<FlyPlayer>().SetUpPlayer(new PlayerParams(Vector3.zero, Vector3.zero, 40, 20,
+            _player.GetComponent<FlyPlayer>().SetupParams(new PlayerParams(Vector3.zero, Vector3.zero, 40, 20,
                 new ToolConfig[3]
                 {
                     new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)),

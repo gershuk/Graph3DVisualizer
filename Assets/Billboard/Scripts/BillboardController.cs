@@ -9,12 +9,9 @@ using UnityEngine;
 
 namespace Grpah3DVisualser
 {
-    public readonly struct BillboardParameters
+    public class BillboardParameters
     {
-        public (Texture2D Texture, Vector2Int Position)[] Images { get; }
-
-        public int TextureWidth { get; }
-        public int TextureHeight { get; }
+        public CombinedImages CombinedImages { get; }
 
         public Vector2 Scale { get; }
 
@@ -22,28 +19,22 @@ namespace Grpah3DVisualser
 
         public bool Compressed { get; }
 
-        public TextureWrapMode TextureWrapMode { get; }
-
         public bool IsMonoColor { get; }
 
         public Color MonoColor { get; }
 
-        public BillboardParameters ((Texture2D Texture, Vector2Int Position)[] images, int textureWidth, int textureHeight,
-            Vector2 scale, float cutoff, bool compressed, TextureWrapMode wrapMode, bool isMonoColor, Color monoColor)
+        public BillboardParameters (CombinedImages combinedImage, Vector2 scale, float cutoff, bool compressed, bool isMonoColor, Color monoColor)
         {
-            Images = images ?? throw new ArgumentNullException(nameof(images));
-            TextureWidth = textureWidth;
-            TextureHeight = textureHeight;
+            CombinedImages = combinedImage ?? throw new ArgumentNullException(nameof(combinedImage));
             Scale = scale;
             Cutoff = cutoff;
             Compressed = compressed;
-            TextureWrapMode = wrapMode;
             IsMonoColor = isMonoColor;
             MonoColor = monoColor;
         }
     }
 
-    public sealed class Billboard
+    public sealed class Billboard : ICustomizable<BillboardParameters>
     {
         private const string _scaleX = "_ScaleX";
         private const string _scaleY = "_ScaleY";
@@ -51,6 +42,7 @@ namespace Grpah3DVisualser
         private const string _mainTextureName = "_MainTex";
         private const string _isMonoColor = "_IsMonoColor";
         private const string _monoColor = "_MonoColor";
+        private CombinedImages _combinedImage;
 
         public Material Material { get; set; }
 
@@ -117,12 +109,10 @@ namespace Grpah3DVisualser
             set => Material.SetColor(_monoColor, value);
         }
 
-        public void SetUpBillboard (in BillboardParameters billboardParameters)
+        public void SetupParams (BillboardParameters billboardParameters)
         {
-            var texture = Texture2DExtension.CombineTextures(billboardParameters.Images,
-                                                             billboardParameters.TextureWidth,
-                                                             billboardParameters.TextureHeight,
-                                                             billboardParameters.TextureWrapMode);
+            var texture = Texture2DExtension.CombineTextures(billboardParameters.CombinedImages);
+            _combinedImage = billboardParameters.CombinedImages;
 
             if (billboardParameters.Compressed)
                 texture.Compress(false);
@@ -136,11 +126,13 @@ namespace Grpah3DVisualser
             MonoColor = billboardParameters.MonoColor;
         }
 
+        public BillboardParameters DownloadParams () =>
+            new BillboardParameters((CombinedImages) _combinedImage.Clone(), new Vector2(ScaleX, ScaleY), Cutoff, IsMonoColor, IsMonoColor, MonoColor);
 
         public Billboard (in BillboardParameters parameters, Shader shader, Texture2D defaultTexture)
         {
             Material = new Material(shader) { mainTexture = defaultTexture };
-            SetUpBillboard(parameters);
+            SetupParams(parameters);
         }
     }
 
@@ -170,7 +162,7 @@ namespace Grpah3DVisualser
 
         public event Action<bool, UnityEngine.Object> VisibleChanged;
 
-        public bool Visibility 
+        public bool Visibility
         {
             get => _render.enabled;
             set
@@ -240,7 +232,7 @@ namespace Grpah3DVisualser
             var newValue = 0f;
             foreach (var billboard in _billboards)
             {
-                newValue = Mathf.Max(billboard.Value.ScaleX, billboard.Value.ScaleY);               
+                newValue = Mathf.Max(billboard.Value.ScaleX, billboard.Value.ScaleY);
             }
             bounds.size = new Vector3(newValue, newValue, newValue);
             _meshFilter.mesh.bounds = bounds;

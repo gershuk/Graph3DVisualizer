@@ -9,17 +9,17 @@ using UnityEngine.InputSystem;
 
 namespace PlayerInputControls
 {
-    public class SelectItemToolParams : ToolParams
+    public class SelectItemToolParams
     {
-        public IReadOnlyCollection<Color> Colors { get; private set; }
+        public IReadOnlyList<Color> Colors { get;}
 
-        public SelectItemToolParams (IReadOnlyCollection<Color> colors) => Colors = colors ?? throw new ArgumentNullException(nameof(colors));
+        public SelectItemToolParams (IReadOnlyList<Color> colors) => Colors = colors ?? throw new ArgumentNullException(nameof(colors));
     }
 
     [RequireComponent(typeof(LaserPointer))]
-    public class SelectItemTool : PlayerTool
+    public class SelectItemTool : PlayerTool, ICustomizable<SelectItemToolParams>
     {
-        private List<Color> _colors;
+        private IReadOnlyList<Color> _colors;
 
         private const string _inputActionName = "SelectItemActionMap";
         private const string _selectActionName = "SelectItemAction";
@@ -96,6 +96,8 @@ namespace PlayerInputControls
             changeColorAction.performed += CallChangeColor;
         }
 
-        public override void SetUpTool (ToolParams toolParams) => _colors = (toolParams as SelectItemToolParams).Colors.ToList();
+        public void SetupParams (SelectItemToolParams parameters) => _colors = parameters.Colors;
+
+        public SelectItemToolParams DownloadParams () => new SelectItemToolParams(_colors);
     }
 }
