@@ -12,7 +12,10 @@ namespace TextureFactory
             var newTexture = new Texture2D(combinedImage.TextureWidth, combinedImage.TextureHeight);
 
             //ToDo : Rewrite to CLI/C++
-            newTexture.SetPixels32(new Color32[combinedImage.TextureWidth * combinedImage.TextureHeight]);
+            if (combinedImage.IsTransparentBackground)
+            {
+                newTexture.SetPixels32(new Color32[combinedImage.TextureWidth * combinedImage.TextureHeight]);
+            }
 
             foreach (var image in combinedImage.Images)
             {

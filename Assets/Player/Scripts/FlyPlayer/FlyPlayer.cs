@@ -47,7 +47,14 @@ namespace PlayerInputControls
                     var newTool = ((PlayerTool) _hand.AddComponent(config.ToolType));
                     newTool.RegisterEvents(_inputActions);
 
-                    CustomizableExtension.CallSetUpParams(newTool, new[] { config.ToolParams });
+                    try
+                    {
+                        CustomizableExtension.CallSetUpParams(newTool, new[] { config.ToolParams });
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.LogWarning(e.Message);
+                    }
 
                     _playerTools.Add(newTool);
                     _playerTools[_playerTools.Count - 1].enabled = false;

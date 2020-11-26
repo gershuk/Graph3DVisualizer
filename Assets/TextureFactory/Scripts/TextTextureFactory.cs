@@ -33,7 +33,7 @@ namespace TextureFactory
             }
         }
 
-        public Texture2D MakeTextTexture (string text)
+        public Texture2D MakeTextTexture (string text, bool isTransparentBackground = false)
         {
             var textureWidth = 0;
             var textureHeight = 0;
@@ -57,6 +57,11 @@ namespace TextureFactory
             }
 
             var textTexture = new Texture2D(textureWidth, textureHeight);
+
+            if (isTransparentBackground)
+            {
+                textTexture.SetPixels32(new Color32[textureWidth * textureHeight]);
+            }
 
             var posX = 0;
             var posY = textureHeight - linesSizes[linesSizes.Count - 1].y;
