@@ -1,0 +1,16 @@
+{
+    "name": "Billboard",
+    "references": [
+        "GUID:68f547e922d4cac48980104337bf6a86",
+        "GUID:de927d21316a8a447912b685b91e2a7f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

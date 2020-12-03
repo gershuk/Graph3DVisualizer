@@ -1,0 +1,104 @@
+﻿using System;
+using System.Collections.Generic;
+
+using UnityEngine;
+
+namespace TextureFactory
+{
+    public static class Texture2DExtension
+    {
+        public static Texture2D CombineTextures (CombinedImages combinedImage)
+        {
+            var newTexture = new Texture2D(combinedImage.TextureWidth, combinedImage.TextureHeight);
+
+            //ToDo : Rewrite to CLI/C++
+            if (combinedImage.IsTransparentBackground)
+            {
+                newTexture.SetPixels32(new Color32[combinedImage.TextureWidth * combinedImage.TextureHeight]);
+            }
+
+            foreach (var image in combinedImage.Images)
+            {
+                newTexture.SetPixels32(image.Position.x, image.Position.y,
+                                     image.Texture.width, image.Texture.height,
+                                     image.Texture.GetPixels32());
+            }
+
+            newTexture.wrapMode = combinedImage.WrapMode;
+            newTexture.Apply();
+
+            return newTexture;
+        }
+
+        public static Texture2D ResizeTexture (Texture2D texture, int textureWidth, int textureHeight)
+        {
+            var renderTexture = RenderTexture.GetTemporary(textureWidth, textureHeight);
+            renderTexture.filterMode = FilterMode.Point;
+            RenderTexture.active = renderTexture;
+
+            Graphics.Blit(texture, renderTexture);
+
+            var newTexture = new Texture2D(textureWidth, textureHeight);
+            newTexture.ReadPixels(new Rect(0, 0, textureWidth, textureHeight), 0, 0);
+            newTexture.Apply();
+
+            RenderTexture.active = null;
+            RenderTexture.ReleaseTemporary(renderTexture);
+
+            newTexture.wrapMode = texture.wrapMode;
+
+            return newTexture;
+        }
+    }
+
+    public class PositionedImage
+    {
+        public Texture2D Texture;
+        public Vector2Int Position;
+
+        public PositionedImage (Texture2D texture, Vector2Int position)
+        {
+            Texture = texture;
+            Position = position;
+        }
+
+        public override bool Equals (object obj) => obj is PositionedImage other && EqualityComparer<Texture2D>.Default.Equals(Texture, other.Texture) && Position.Equals(other.Position);
+
+        public override int GetHashCode ()
+        {
+            var hashCode = -1773728546;
+            hashCode = hashCode * -1521134295 + EqualityComparer<Texture2D>.Default.GetHashCode(Texture);
+            hashCode = hashCode * -1521134295 + Position.GetHashCode();
+            return hashCode;
+        }
+
+        public void Deconstruct (out Texture2D texture, out Vector2Int position)
+        {
+            texture = Texture;
+            position = Position;
+        }
+
+        public static implicit operator (Texture2D Texture, Vector2Int Position) (PositionedImage value) => (value.Texture, value.Position);
+        public static implicit operator PositionedImage ((Texture2D Texture, Vector2Int Position) value) => new PositionedImage(value.Texture, value.Position);
+    }
+
+    public class CombinedImages : ICloneable
+    {
+        public PositionedImage[] Images { get; set; }
+        public int TextureWidth { get; set; }
+        public int TextureHeight { get; set; }
+        public TextureWrapMode WrapMode { get; set; }
+        public bool IsTransparentBackground { get; set; }
+
+        public CombinedImages (PositionedImage[] images, int textureWidth, int textureHeight, TextureWrapMode wrapMode, bool isTransparentBackground)
+        {
+            Images = images ?? throw new System.ArgumentNullException(nameof(images));
+            TextureWidth = textureWidth;
+            TextureHeight = textureHeight;
+            WrapMode = wrapMode;
+            IsTransparentBackground = isTransparentBackground;
+        }
+
+        public object Clone () => new CombinedImages((PositionedImage[]) Images.Clone(), TextureWidth, TextureHeight, WrapMode, IsTransparentBackground);
+    }
+}
