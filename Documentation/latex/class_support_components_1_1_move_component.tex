@@ -1,0 +1,131 @@
+\hypertarget{class_support_components_1_1_move_component}{}\doxysection{Support\+Components.\+Move\+Component Class Reference}
+\label{class_support_components_1_1_move_component}\index{SupportComponents.MoveComponent@{SupportComponents.MoveComponent}}
+Inheritance diagram for Support\+Components.\+Move\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_support_components_1_1_move_component}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+I\+Enumerator \mbox{\hyperlink{class_support_components_1_1_move_component_acc99d043a10af258b089cf95a68281cd}{Move\+Along\+Trajectory}} (Read\+Only\+Collection$<$ Vector3 $>$ trajectory)
+\item 
+void \mbox{\hyperlink{class_support_components_1_1_move_component_af53c63210d4de5c7d014f29380f4cca7}{Translate}} (Vector3 direction\+Vector, float delta\+Time)
+\item 
+void \mbox{\hyperlink{class_support_components_1_1_move_component_a01a082fe4c952eab87c4d0fd5b015be8}{Rotate}} (Vector2 rotation\+Change, float delta\+Time)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+List$<$(float delta\+Time\+From\+Start, float multiplier)$>$? \mbox{\hyperlink{class_support_components_1_1_move_component_ae76182a17dc027c69ccd8474208617fa}{Gears}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+int? \mbox{\hyperlink{class_support_components_1_1_move_component_a91c880967f2b28b705684dd5c331b22c}{Current\+Gear\+Index}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\hyperlink{namespace_support_components_a5afee1d624a6b0aa8aa67f22c99afe6c}{Transmission\+Mode}} \mbox{\hyperlink{class_support_components_1_1_move_component_ac0dd3eee0aa9aeacf169679aeafc27a3}{Transmission\+Mode}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+float \mbox{\hyperlink{class_support_components_1_1_move_component_a5a2327d1ceef8e057f7419bb81c7ec19}{Moving\+Speed}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+float \mbox{\hyperlink{class_support_components_1_1_move_component_aa8e4b0bb25d3947c5c2d8b03a716e785}{Rotation\+Speed}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Vector3? \mbox{\hyperlink{class_support_components_1_1_move_component_aaef09b9656d183ad03b6b480a4307093}{Global\+Coordinates}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Vector3? \mbox{\hyperlink{class_support_components_1_1_move_component_af492a406b336b3c405172bb8f2fb1340}{Local\+Coordinates}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+Action$<$ Vector3, Unity\+Engine.\+Object $>$ \mbox{\hyperlink{class_support_components_1_1_move_component_a5a5d55e72a7b4ecf06ec73e43ac14fb1}{Object\+Moved}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_support_components_1_1_move_component_acc99d043a10af258b089cf95a68281cd}\label{class_support_components_1_1_move_component_acc99d043a10af258b089cf95a68281cd}} 
+\index{SupportComponents.MoveComponent@{SupportComponents.MoveComponent}!MoveAlongTrajectory@{MoveAlongTrajectory}}
+\index{MoveAlongTrajectory@{MoveAlongTrajectory}!SupportComponents.MoveComponent@{SupportComponents.MoveComponent}}
+\doxysubsubsection{\texorpdfstring{MoveAlongTrajectory()}{MoveAlongTrajectory()}}
+{\footnotesize\ttfamily I\+Enumerator Support\+Components.\+Move\+Component.\+Move\+Along\+Trajectory (\begin{DoxyParamCaption}\item[{Read\+Only\+Collection$<$ Vector3 $>$}]{trajectory }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_support_components_1_1_i_moveable_adf07264a33ecb8b19ae326afc9a9f45c}{Support\+Components.\+I\+Moveable}}.
+
+\mbox{\Hypertarget{class_support_components_1_1_move_component_a01a082fe4c952eab87c4d0fd5b015be8}\label{class_support_components_1_1_move_component_a01a082fe4c952eab87c4d0fd5b015be8}} 
+\index{SupportComponents.MoveComponent@{SupportComponents.MoveComponent}!Rotate@{Rotate}}
+\index{Rotate@{Rotate}!SupportComponents.MoveComponent@{SupportComponents.MoveComponent}}
+\doxysubsubsection{\texorpdfstring{Rotate()}{Rotate()}}
+{\footnotesize\ttfamily void Support\+Components.\+Move\+Component.\+Rotate (\begin{DoxyParamCaption}\item[{Vector2}]{rotation\+Change,  }\item[{float}]{delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_support_components_1_1_i_moveable_ae85a72908bd33bd80727c86b945ed7f1}{Support\+Components.\+I\+Moveable}}.
+
+\mbox{\Hypertarget{class_support_components_1_1_move_component_af53c63210d4de5c7d014f29380f4cca7}\label{class_support_components_1_1_move_component_af53c63210d4de5c7d014f29380f4cca7}} 
+\index{SupportComponents.MoveComponent@{SupportComponents.MoveComponent}!Translate@{Translate}}
+\index{Translate@{Translate}!SupportComponents.MoveComponent@{SupportComponents.MoveComponent}}
+\doxysubsubsection{\texorpdfstring{Translate()}{Translate()}}
+{\footnotesize\ttfamily void Support\+Components.\+Move\+Component.\+Translate (\begin{DoxyParamCaption}\item[{Vector3}]{direction\+Vector,  }\item[{float}]{delta\+Time }\end{DoxyParamCaption})}
+
+
+
+Implements \mbox{\hyperlink{interface_support_components_1_1_i_moveable_ac871a04c1dc4dc5973b38c91e83dca5d}{Support\+Components.\+I\+Moveable}}.
+
+
+
+\doxysubsection{Property Documentation}
+\mbox{\Hypertarget{class_support_components_1_1_move_component_a91c880967f2b28b705684dd5c331b22c}\label{class_support_components_1_1_move_component_a91c880967f2b28b705684dd5c331b22c}} 
+\index{SupportComponents.MoveComponent@{SupportComponents.MoveComponent}!CurrentGearIndex@{CurrentGearIndex}}
+\index{CurrentGearIndex@{CurrentGearIndex}!SupportComponents.MoveComponent@{SupportComponents.MoveComponent}}
+\doxysubsubsection{\texorpdfstring{CurrentGearIndex}{CurrentGearIndex}}
+{\footnotesize\ttfamily int? Support\+Components.\+Move\+Component.\+Current\+Gear\+Index\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_support_components_1_1_move_component_ae76182a17dc027c69ccd8474208617fa}\label{class_support_components_1_1_move_component_ae76182a17dc027c69ccd8474208617fa}} 
+\index{SupportComponents.MoveComponent@{SupportComponents.MoveComponent}!Gears@{Gears}}
+\index{Gears@{Gears}!SupportComponents.MoveComponent@{SupportComponents.MoveComponent}}
+\doxysubsubsection{\texorpdfstring{Gears}{Gears}}
+{\footnotesize\ttfamily List$<$(float delta\+Time\+From\+Start, float multiplier)$>$? Support\+Components.\+Move\+Component.\+Gears\hspace{0.3cm}{\ttfamily [get]}}
+
+\mbox{\Hypertarget{class_support_components_1_1_move_component_aaef09b9656d183ad03b6b480a4307093}\label{class_support_components_1_1_move_component_aaef09b9656d183ad03b6b480a4307093}} 
+\index{SupportComponents.MoveComponent@{SupportComponents.MoveComponent}!GlobalCoordinates@{GlobalCoordinates}}
+\index{GlobalCoordinates@{GlobalCoordinates}!SupportComponents.MoveComponent@{SupportComponents.MoveComponent}}
+\doxysubsubsection{\texorpdfstring{GlobalCoordinates}{GlobalCoordinates}}
+{\footnotesize\ttfamily Vector3? Support\+Components.\+Move\+Component.\+Global\+Coordinates\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_support_components_1_1_move_component_af492a406b336b3c405172bb8f2fb1340}\label{class_support_components_1_1_move_component_af492a406b336b3c405172bb8f2fb1340}} 
+\index{SupportComponents.MoveComponent@{SupportComponents.MoveComponent}!LocalCoordinates@{LocalCoordinates}}
+\index{LocalCoordinates@{LocalCoordinates}!SupportComponents.MoveComponent@{SupportComponents.MoveComponent}}
+\doxysubsubsection{\texorpdfstring{LocalCoordinates}{LocalCoordinates}}
+{\footnotesize\ttfamily Vector3? Support\+Components.\+Move\+Component.\+Local\+Coordinates\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_support_components_1_1_move_component_a5a2327d1ceef8e057f7419bb81c7ec19}\label{class_support_components_1_1_move_component_a5a2327d1ceef8e057f7419bb81c7ec19}} 
+\index{SupportComponents.MoveComponent@{SupportComponents.MoveComponent}!MovingSpeed@{MovingSpeed}}
+\index{MovingSpeed@{MovingSpeed}!SupportComponents.MoveComponent@{SupportComponents.MoveComponent}}
+\doxysubsubsection{\texorpdfstring{MovingSpeed}{MovingSpeed}}
+{\footnotesize\ttfamily float Support\+Components.\+Move\+Component.\+Moving\+Speed\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_support_components_1_1_move_component_aa8e4b0bb25d3947c5c2d8b03a716e785}\label{class_support_components_1_1_move_component_aa8e4b0bb25d3947c5c2d8b03a716e785}} 
+\index{SupportComponents.MoveComponent@{SupportComponents.MoveComponent}!RotationSpeed@{RotationSpeed}}
+\index{RotationSpeed@{RotationSpeed}!SupportComponents.MoveComponent@{SupportComponents.MoveComponent}}
+\doxysubsubsection{\texorpdfstring{RotationSpeed}{RotationSpeed}}
+{\footnotesize\ttfamily float Support\+Components.\+Move\+Component.\+Rotation\+Speed\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+\mbox{\Hypertarget{class_support_components_1_1_move_component_ac0dd3eee0aa9aeacf169679aeafc27a3}\label{class_support_components_1_1_move_component_ac0dd3eee0aa9aeacf169679aeafc27a3}} 
+\index{SupportComponents.MoveComponent@{SupportComponents.MoveComponent}!TransmissionMode@{TransmissionMode}}
+\index{TransmissionMode@{TransmissionMode}!SupportComponents.MoveComponent@{SupportComponents.MoveComponent}}
+\doxysubsubsection{\texorpdfstring{TransmissionMode}{TransmissionMode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_support_components_a5afee1d624a6b0aa8aa67f22c99afe6c}{Transmission\+Mode}} Support\+Components.\+Move\+Component.\+Transmission\+Mode\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+\doxysubsection{Event Documentation}
+\mbox{\Hypertarget{class_support_components_1_1_move_component_a5a5d55e72a7b4ecf06ec73e43ac14fb1}\label{class_support_components_1_1_move_component_a5a5d55e72a7b4ecf06ec73e43ac14fb1}} 
+\index{SupportComponents.MoveComponent@{SupportComponents.MoveComponent}!ObjectMoved@{ObjectMoved}}
+\index{ObjectMoved@{ObjectMoved}!SupportComponents.MoveComponent@{SupportComponents.MoveComponent}}
+\doxysubsubsection{\texorpdfstring{ObjectMoved}{ObjectMoved}}
+{\footnotesize\ttfamily Action$<$Vector3, Unity\+Engine.\+Object$>$ Support\+Components.\+Move\+Component.\+Object\+Moved}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Support\+Components/\+Scripts/\mbox{\hyperlink{_move_component_8cs}{Move\+Component.\+cs}}\end{DoxyCompactItemize}

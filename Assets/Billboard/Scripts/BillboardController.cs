@@ -25,20 +25,61 @@ using UnityEngine;
 
 namespace Grpah3DVisualizer
 {
-    public class BillboardParameters
+    /// <summary>
+    /// Parameters for creating a new <see cref="Billboard"/> object.
+    /// </summary>
+    public sealed class BillboardParameters
     {
+        /// <summary>
+        /// Used to set position of images on the Billboard.
+        /// </summary>
         public CombinedImages CombinedImages { get; }
 
+        /// <summary>
+        /// Used to set Billboard size in units.
+        /// </summary>
         public Vector2 Scale { get; }
 
+        /// <summary>
+        /// Used to determine the lower bound of the texel clipping, based on the alpha channel summary.
+        /// </summary>
         public float Cutoff { get; }
 
+        /// <summary>
+        /// Used to determine whether the display texture is compressed.
+        /// </summary>
         public bool Compressed { get; }
 
+        /// <summary>
+        /// Used to determine image output mode. If true, image is displayed in one color, false-according to the texture.
+        /// </summary>
         public bool IsMonoColor { get; }
 
+        /// <summary>
+        /// Used to determine image color in MonoColor mode.
+        /// </summary>
         public Color MonoColor { get; }
 
+        /// <summary>
+        /// The class constructor.
+        /// </summary>
+        /// <param name="combinedImage">
+        /// Used to set position of images on the Billboard.
+        /// </param>
+        /// <param name="scale">
+        /// Used to set Billboard size in units.
+        /// </param>
+        /// <param name="cutoff">
+        /// Used to determine the lower bound of the texel clipping, based on the alpha channel value.
+        /// </param>
+        /// <param name="compressed">
+        /// Used to determine whether the display texture is compressed.
+        /// </param>
+        /// <param name="isMonoColor">
+        /// Used to determine image output mode. If true, image is displayed in one color, false-according to the texture.
+        /// </param>
+        /// <param name="monoColor">
+        /// Used to determine image color in MonoColor mode.</param>
         public BillboardParameters (CombinedImages combinedImage, Vector2 scale, float cutoff, bool compressed, bool isMonoColor, Color monoColor)
         {
             CombinedImages = combinedImage ?? throw new ArgumentNullException(nameof(combinedImage));
@@ -50,6 +91,9 @@ namespace Grpah3DVisualizer
         }
     }
 
+    /// <summary>
+    /// An object containing information for displaying the Billboard image. Contained in the <see cref="BillboardController"/>.
+    /// </summary>
     public sealed class Billboard : ICustomizable<BillboardParameters>
     {
         private const string _scaleX = "_ScaleX";
@@ -164,6 +208,9 @@ namespace Grpah3DVisualizer
         }
     }
 
+    /// <summary>
+    /// A collection containing <see cref="Billboard"/>s.
+    /// </summary>
     [ExecuteInEditMode]
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
     public class BillboardController : MonoBehaviour, IVisibile
