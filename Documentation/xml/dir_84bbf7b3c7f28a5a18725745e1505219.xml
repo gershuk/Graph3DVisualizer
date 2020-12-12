@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="dir_84bbf7b3c7f28a5a18725745e1505219" kind="dir">
+    <compoundname>Assets</compoundname>
+    <innerdir refid="dir_341cf86cd4cad9e13ecbcfca75d42545">Assets/Billboard</innerdir>
+    <innerdir refid="dir_46e6a57f51514759427122c058bee86f">Assets/Decembrists</innerdir>
+    <innerdir refid="dir_4c7485186b6cb99da9f83b2f9172e070">Assets/Graph3D</innerdir>
+    <innerdir refid="dir_262216262d16817e1e163467e57d575f">Assets/GUIFactory</innerdir>
+    <innerdir refid="dir_8966d8cac009c6b07e62001f2ee973e4">Assets/Player</innerdir>
+    <innerdir refid="dir_c0005b12c1c6ae1cb8e9754bcab8bc3c">Assets/Plugins</innerdir>
+    <innerdir refid="dir_b75b91c31aa2a913d29e71358d0ad5ee">Assets/SceneController</innerdir>
+    <innerdir refid="dir_898a40ee7ef9140e86bd3c3b33a43aba">Assets/SupportComponents</innerdir>
+    <innerdir refid="dir_852b384c40a5cf36f042ed168bfcf49e">Assets/TextureFactory</innerdir>
+    <innerdir refid="dir_b7f566e6d7ce851ce359f42960f05e2b">Assets/VisualTasks</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/"/>
+  </compounddef>
+</doxygen>

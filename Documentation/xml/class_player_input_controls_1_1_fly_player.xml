@@ -1,0 +1,394 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_player_input_controls_1_1_fly_player" kind="class" language="C#" prot="public">
+    <compoundname>PlayerInputControls::FlyPlayer</compoundname>
+    <basecompoundref refid="class_player_input_controls_1_1_abstract_p_layer" prot="public" virt="non-virtual">PlayerInputControls.AbstractPLayer</basecompoundref>
+    <basecompoundref refid="interface_support_components_1_1_i_customizable" prot="public" virt="non-virtual">SupportComponents.ICustomizable&lt; PlayerParams &gt;</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_player_input_controls_1_1_fly_player_1abe7e4b0d64efea3ef32dbff4f4cd7e86" prot="private" static="no" mutable="no">
+        <type>Transform</type>
+        <definition>Transform PlayerInputControls.FlyPlayer._transform</definition>
+        <argsstring></argsstring>
+        <name>_transform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="32" column="27" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_fly_player_1aaf5e36389b41ab22775ea75f61b41203" prot="private" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 PlayerInputControls.FlyPlayer._moveDirVector</definition>
+        <argsstring></argsstring>
+        <name>_moveDirVector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="33" column="25" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_fly_player_1ade45496f52dba49592ced048ff119050" prot="private" static="no" mutable="no">
+        <type><ref refid="class_player_input_controls_1_1_fly_controls" kindref="compound">FlyControls</ref></type>
+        <definition>FlyControls PlayerInputControls.FlyPlayer._inputActions</definition>
+        <argsstring></argsstring>
+        <name>_inputActions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="34" column="29" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_fly_player_1af0977d72dcb62c940202fbeef48926d3" prot="private" static="no" mutable="no">
+        <type><ref refid="class_support_components_1_1_move_component" kindref="compound">MoveComponent</ref></type>
+        <definition>MoveComponent PlayerInputControls.FlyPlayer._moveComponent</definition>
+        <argsstring></argsstring>
+        <name>_moveComponent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="35" column="31" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_fly_player_1a0717773c19c043e9baff7e9cb0605300" prot="private" static="no" mutable="no">
+        <type>List&lt; <ref refid="class_player_input_controls_1_1_player_tool" kindref="compound">PlayerTool</ref> &gt;</type>
+        <definition>List&lt;PlayerTool&gt; PlayerInputControls.FlyPlayer._playerTools</definition>
+        <argsstring></argsstring>
+        <name>_playerTools</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="36" column="22" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_fly_player_1aec6ff87dec152edb809911c1b2a29d73" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int PlayerInputControls.FlyPlayer._currentToolIndex</definition>
+        <argsstring></argsstring>
+        <name>_currentToolIndex</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="37" column="21" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_fly_player_1ae123eb4a52707305e15796fb1f7e427c" prot="private" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject PlayerInputControls.FlyPlayer._hand</definition>
+        <argsstring></argsstring>
+        <name>_hand</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="38" column="28" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_player_input_controls_1_1_fly_player_1abbb4ce22ca85255de581fdeb85a123b1" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>override <ref refid="namespace_player_input_controls_1a5bb0d0358026ebdda2c0a3ee35ec2d92" kindref="member">InputType</ref></type>
+        <definition>override InputType PlayerInputControls.FlyPlayer.InputType</definition>
+        <argsstring></argsstring>
+        <name>InputType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="211" column="35" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="212" bodyend="219"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_player_input_controls_1_1_fly_player_1aa2a12922150c93ab75ab038256f8d948" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyPlayer.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="40" column="22" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="40" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="class_player_input_controls_1_1_fly_player_1a7490fca3b5021aa6f13b2204cdf6c630" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyPlayer.CreateTool</definition>
+        <argsstring>(params ToolConfig[] toolsConfig)</argsstring>
+        <name>CreateTool</name>
+        <param>
+          <type>params <ref refid="struct_player_input_controls_1_1_tool_config" kindref="compound">ToolConfig</ref>[]</type>
+          <declname>toolsConfig</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="56" column="22" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="56" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_player_input_controls_1_1_fly_player_1ab4949d403d05dfef0f1d874345924dd3" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyPlayer.LateUpdate</definition>
+        <argsstring>()</argsstring>
+        <name>LateUpdate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="88" column="22" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="88" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_player_input_controls_1_1_fly_player_1a8951d7b280041978c7a9739c28d04d90" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyPlayer.OnEnable</definition>
+        <argsstring>()</argsstring>
+        <name>OnEnable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="94" column="22" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="94" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_player_input_controls_1_1_fly_player_1a1a0fa6d5063f62db07a157fdbf6bd69d" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyPlayer.OnDisable</definition>
+        <argsstring>()</argsstring>
+        <name>OnDisable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="111" column="22" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="111" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="class_player_input_controls_1_1_fly_player_1a9ed42cbbc1b88f9935f22e958471efbe" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyPlayer.UpdateInputs</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateInputs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="126" column="22" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="126" bodyend="162"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_player_input_controls_1_1_fly_player_1a4f717e794f394130b13eb4533eaf4623" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyPlayer.OnPlayerMove</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>OnPlayerMove</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="164" column="21" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="164" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="class_player_input_controls_1_1_fly_player_1aa17bdadc1beb7671e568c9c13aff8676" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyPlayer.OnPlayerChangeAltitude</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>OnPlayerChangeAltitude</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="170" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_player_input_controls_1_1_fly_player_1a62c9c70adb7f4af5f3c6e0730ccf1f44" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyPlayer.OnMoveToPoint</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>OnMoveToPoint</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="172" column="21" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="172" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="class_player_input_controls_1_1_fly_player_1af3fc5da85c1187f44c426fff0ea2401a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyPlayer.SelectTool</definition>
+        <argsstring>(int index)</argsstring>
+        <name>SelectTool</name>
+        <param>
+          <type>int</type>
+          <declname>index</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="178" column="21" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="178" bodyend="193"/>
+      </memberdef>
+      <memberdef kind="function" id="class_player_input_controls_1_1_fly_player_1ad22612edfabc54d276d89f0fdbde3f05" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyPlayer.OnSelectItem</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>OnSelectItem</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="195" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_player_input_controls_1_1_fly_player_1a40503cb237d640bce5c34914f9e7a609" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyPlayer.SetupParams</definition>
+        <argsstring>(PlayerParams playerParams)</argsstring>
+        <name>SetupParams</name>
+        <param>
+          <type><ref refid="class_player_input_controls_1_1_player_params" kindref="compound">PlayerParams</ref></type>
+          <declname>playerParams</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="197" column="21" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="197" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="class_player_input_controls_1_1_fly_player_1ab4f001c7b9d650be8b9fd4ff6f7d4fc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_player_input_controls_1_1_player_params" kindref="compound">PlayerParams</ref></type>
+        <definition>PlayerParams PlayerInputControls.FlyPlayer.DownloadParams</definition>
+        <argsstring>()</argsstring>
+        <name>DownloadParams</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="207" column="29"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>PlayerInputControls.FlyPlayer</label>
+        <link refid="class_player_input_controls_1_1_fly_player"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="4">
+        <label>ICustomizable&lt; PlayerParams &gt;</label>
+        <link refid="interface_support_components_1_1_i_customizable"/>
+      </node>
+      <node id="2">
+        <label>AbstractPLayer</label>
+        <link refid="class_player_input_controls_1_1_abstract_p_layer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>PlayerInputControls.FlyPlayer</label>
+        <link refid="class_player_input_controls_1_1_fly_player"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="4">
+        <label>ICustomizable&lt; PlayerParams &gt;</label>
+        <link refid="interface_support_components_1_1_i_customizable"/>
+      </node>
+      <node id="2">
+        <label>AbstractPLayer</label>
+        <link refid="class_player_input_controls_1_1_abstract_p_layer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" line="30" column="18" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyPlayer.cs" bodystart="31" bodyend="220"/>
+    <listofallmembers>
+      <member refid="class_player_input_controls_1_1_fly_player_1aec6ff87dec152edb809911c1b2a29d73" prot="private" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>_currentToolIndex</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1ae123eb4a52707305e15796fb1f7e427c" prot="private" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>_hand</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1ade45496f52dba49592ced048ff119050" prot="private" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>_inputActions</name></member>
+      <member refid="class_player_input_controls_1_1_abstract_p_layer_1a05a5025e85dcf3f1943a83fb0f0ccebb" prot="protected" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>_inputType</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1af0977d72dcb62c940202fbeef48926d3" prot="private" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>_moveComponent</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1aaf5e36389b41ab22775ea75f61b41203" prot="private" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>_moveDirVector</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1a0717773c19c043e9baff7e9cb0605300" prot="private" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>_playerTools</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1abe7e4b0d64efea3ef32dbff4f4cd7e86" prot="private" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>_transform</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1aa2a12922150c93ab75ab038256f8d948" prot="private" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>Awake</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1a7490fca3b5021aa6f13b2204cdf6c630" prot="private" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>CreateTool</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1ab4f001c7b9d650be8b9fd4ff6f7d4fc2" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>DownloadParams</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1abbb4ce22ca85255de581fdeb85a123b1" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>InputType</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1ab4949d403d05dfef0f1d874345924dd3" prot="private" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>LateUpdate</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1a1a0fa6d5063f62db07a157fdbf6bd69d" prot="private" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>OnDisable</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1a8951d7b280041978c7a9739c28d04d90" prot="private" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>OnEnable</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1a62c9c70adb7f4af5f3c6e0730ccf1f44" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>OnMoveToPoint</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1aa17bdadc1beb7671e568c9c13aff8676" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>OnPlayerChangeAltitude</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1a4f717e794f394130b13eb4533eaf4623" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>OnPlayerMove</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1ad22612edfabc54d276d89f0fdbde3f05" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>OnSelectItem</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1af3fc5da85c1187f44c426fff0ea2401a" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>SelectTool</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1a40503cb237d640bce5c34914f9e7a609" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>SetupParams</name></member>
+      <member refid="interface_support_components_1_1_i_customizable_1a3871d735ec47f4ebd8983717f8564f2b" prot="public" virt="non-virtual" ambiguityscope="ICustomizable&lt; PlayerParams &gt;."><scope>PlayerInputControls::FlyPlayer</scope><name>SetupParams</name></member>
+      <member refid="class_player_input_controls_1_1_fly_player_1a9ed42cbbc1b88f9935f22e958471efbe" prot="private" virt="non-virtual"><scope>PlayerInputControls::FlyPlayer</scope><name>UpdateInputs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

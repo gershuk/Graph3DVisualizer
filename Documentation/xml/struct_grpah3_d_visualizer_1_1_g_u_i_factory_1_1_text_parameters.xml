@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters" kind="struct" language="C#" prot="public">
+    <compoundname>Grpah3DVisualizer::GUIFactory::TextParameters</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1ab4d266ca5a98657cf18f35e72da45e62" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Grpah3DVisualizer.GUIFactory.TextParameters.Text</definition>
+        <argsstring></argsstring>
+        <name>Text</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="56" column="27" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="56" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1ab9c7fc416aded93ff4b67ebd3468e755" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Color</type>
+        <definition>Color Grpah3DVisualizer.GUIFactory.TextParameters.Color</definition>
+        <argsstring></argsstring>
+        <name>Color</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="57" column="26" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="57" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1a3f5d8d80e30f840adb9283fe5b8a9ce4" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Font</type>
+        <definition>Font Grpah3DVisualizer.GUIFactory.TextParameters.Font</definition>
+        <argsstring></argsstring>
+        <name>Font</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="58" column="25" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="58" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1aaf66e501780f517a43df7a1d436bfc8a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>TextAnchor</type>
+        <definition>TextAnchor Grpah3DVisualizer.GUIFactory.TextParameters.Anchor</definition>
+        <argsstring></argsstring>
+        <name>Anchor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="59" column="31" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="59" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1ac5dbae25d39c3f31c76caf3e3fa995b4" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int Grpah3DVisualizer.GUIFactory.TextParameters.Size</definition>
+        <argsstring></argsstring>
+        <name>Size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="60" column="24" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1a2d1ea46f6cbd2a685c7ca03910ffc665" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_rect_transform_parameters" kindref="compound">RectTransformParameters</ref></type>
+        <definition>RectTransformParameters Grpah3DVisualizer.GUIFactory.TextParameters.RectTransformParameters</definition>
+        <argsstring></argsstring>
+        <name>RectTransformParameters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="61" column="44" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="61" bodyend="61"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1ac32ebb5bd8eb3c143ce4439439586093" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Grpah3DVisualizer.GUIFactory.TextParameters.TextParameters</definition>
+        <argsstring>(string text, Color color, Font font, TextAnchor anchor, int size, in RectTransformParameters rectTransformParameters)</argsstring>
+        <name>TextParameters</name>
+        <param>
+          <type>string</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1ab9c7fc416aded93ff4b67ebd3468e755" kindref="member">Color</ref></type>
+          <declname>color</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1a3f5d8d80e30f840adb9283fe5b8a9ce4" kindref="member">Font</ref></type>
+          <declname>font</declname>
+        </param>
+        <param>
+          <type>TextAnchor</type>
+          <declname>anchor</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>in <ref refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_rect_transform_parameters" kindref="compound">RectTransformParameters</ref></type>
+          <declname>rectTransformParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="63" column="20" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="63" bodyend="71"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="54" column="24" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="55" bodyend="72"/>
+    <listofallmembers>
+      <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1aaf66e501780f517a43df7a1d436bfc8a" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::GUIFactory::TextParameters</scope><name>Anchor</name></member>
+      <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1ab9c7fc416aded93ff4b67ebd3468e755" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::GUIFactory::TextParameters</scope><name>Color</name></member>
+      <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1a3f5d8d80e30f840adb9283fe5b8a9ce4" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::GUIFactory::TextParameters</scope><name>Font</name></member>
+      <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1a2d1ea46f6cbd2a685c7ca03910ffc665" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::GUIFactory::TextParameters</scope><name>RectTransformParameters</name></member>
+      <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1ac5dbae25d39c3f31c76caf3e3fa995b4" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::GUIFactory::TextParameters</scope><name>Size</name></member>
+      <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1ab4d266ca5a98657cf18f35e72da45e62" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::GUIFactory::TextParameters</scope><name>Text</name></member>
+      <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1ac32ebb5bd8eb3c143ce4439439586093" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::GUIFactory::TextParameters</scope><name>TextParameters</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

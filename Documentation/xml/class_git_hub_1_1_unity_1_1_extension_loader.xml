@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_git_hub_1_1_unity_1_1_extension_loader" kind="class" language="C#" prot="public">
+    <compoundname>GitHub::Unity::ExtensionLoader</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ScriptableSingleton&lt; ExtensionLoader &gt;</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_git_hub_1_1_unity_1_1_extension_loader_1a6f9801c2d478d34a4cbfef2fb41af5a0" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool GitHub.Unity.ExtensionLoader.initialized</definition>
+        <argsstring></argsstring>
+        <name>initialized</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="11" column="23" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="11" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_git_hub_1_1_unity_1_1_extension_loader_1a5b719a771ac55414ba57fb2b0f378718" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool GitHub.Unity.ExtensionLoader.Initialized</definition>
+        <argsstring></argsstring>
+        <name>Initialized</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="13" column="21" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="14" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="property" id="class_git_hub_1_1_unity_1_1_extension_loader_1a17a9d825c6550fd891674a77f593cd71" prot="private" static="yes" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool GitHub.Unity.ExtensionLoader.IsDisabled</definition>
+        <argsstring></argsstring>
+        <name>IsDisabled</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="34" column="29" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="34" bodyend="34"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_git_hub_1_1_unity_1_1_extension_loader_1a2d079e410f2b55b978d5610ce35dd8c9" prot="private" static="yes" mutable="no">
+        <type>bool</type>
+        <definition>bool GitHub.Unity.ExtensionLoader.inSourceMode</definition>
+        <argsstring></argsstring>
+        <name>inSourceMode</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="26" column="29" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_git_hub_1_1_unity_1_1_extension_loader_1a5ad637a19d8c3e8810391db3f926ec16" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string GitHub.Unity.ExtensionLoader.sourceModePath</definition>
+        <argsstring></argsstring>
+        <name>sourceModePath</name>
+        <initializer>= &quot;Assets/Editor/build/&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="27" column="30" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_git_hub_1_1_unity_1_1_extension_loader_1a2808c8dd710fa10edac5f7ac1c146081" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string GitHub.Unity.ExtensionLoader.realPath</definition>
+        <argsstring></argsstring>
+        <name>realPath</name>
+        <initializer>= &quot;Assets/Plugins/<ref refid="eula_8txt_1a782c2a77a8921deb1724c9ef5d964ea9" kindref="member">GitHub</ref>/Editor/&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="28" column="30" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_git_hub_1_1_unity_1_1_extension_loader_1abf907149670a006087166d655b3acef0" prot="private" static="yes" mutable="no">
+        <type>string[]</type>
+        <definition>string [] GitHub.Unity.ExtensionLoader.assemblies20</definition>
+        <argsstring></argsstring>
+        <name>assemblies20</name>
+        <initializer>= { &quot;System.Threading.dll&quot;, &quot;AsyncBridge.Net35.dll&quot;, &quot;ReadOnlyCollectionsInterfaces.dll&quot;, &quot;GitHub.Api.dll&quot;, &quot;GitHub.Unity.dll&quot; }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="30" column="31" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_git_hub_1_1_unity_1_1_extension_loader_1aa83651c9c7e43fc357cab4ad5f6db75b" prot="private" static="yes" mutable="no">
+        <type>string[]</type>
+        <definition>string [] GitHub.Unity.ExtensionLoader.assemblies45</definition>
+        <argsstring></argsstring>
+        <name>assemblies45</name>
+        <initializer>= { &quot;GitHub.Api.45.dll&quot;, &quot;GitHub.Unity.45.dll&quot; }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="31" column="31" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_git_hub_1_1_unity_1_1_extension_loader_1a6b2edbce792d0dd9e44d82d8c45a2fa1" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string GitHub.Unity.ExtensionLoader.GITHUB_UNITY_DISABLE</definition>
+        <argsstring></argsstring>
+        <name>GITHUB_UNITY_DISABLE</name>
+        <initializer>= &quot;GITHUB_UNITY_DISABLE&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="33" column="30" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="class_git_hub_1_1_unity_1_1_extension_loader_1a14b6a5f9608dc7915e4a73c2da6a28bf" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>static</type>
+        <definition>static GitHub.Unity.ExtensionLoader.ExtensionLoader</definition>
+        <argsstring>()</argsstring>
+        <name>ExtensionLoader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="36" column="16" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="36" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_git_hub_1_1_unity_1_1_extension_loader_1a707f5238d7a7e9cbc36cf87f4f998ca1" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void GitHub.Unity.ExtensionLoader.Initialize</definition>
+        <argsstring>()</argsstring>
+        <name>Initialize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="45" column="29" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="45" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="class_git_hub_1_1_unity_1_1_extension_loader_1af56632afafb85a62cca9133d0d92d046" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void GitHub.Unity.ExtensionLoader.ToggleAssemblies</definition>
+        <argsstring>()</argsstring>
+        <name>ToggleAssemblies</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="62" column="29" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="62" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_git_hub_1_1_unity_1_1_extension_loader_1a04df646f62c3e5df89487e108c686ce4" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void GitHub.Unity.ExtensionLoader.ToggleAssemblies</definition>
+        <argsstring>(string path, string[] assemblies, bool enable)</argsstring>
+        <name>ToggleAssemblies</name>
+        <param>
+          <type>string</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>string[]</type>
+          <declname>assemblies</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="74" column="29" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="74" bodyend="91"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>GitHub.Unity.ExtensionLoader</label>
+        <link refid="class_git_hub_1_1_unity_1_1_extension_loader"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ScriptableSingleton&lt; ExtensionLoader &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>GitHub.Unity.ExtensionLoader</label>
+        <link refid="class_git_hub_1_1_unity_1_1_extension_loader"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ScriptableSingleton&lt; ExtensionLoader &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" line="9" column="11" bodyfile="Assets/Plugins/GitHub/Editor/ExtensionLoader.cs" bodystart="10" bodyend="92"/>
+    <listofallmembers>
+      <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1abf907149670a006087166d655b3acef0" prot="private" virt="non-virtual"><scope>GitHub::Unity::ExtensionLoader</scope><name>assemblies20</name></member>
+      <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1aa83651c9c7e43fc357cab4ad5f6db75b" prot="private" virt="non-virtual"><scope>GitHub::Unity::ExtensionLoader</scope><name>assemblies45</name></member>
+      <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a14b6a5f9608dc7915e4a73c2da6a28bf" prot="private" virt="non-virtual"><scope>GitHub::Unity::ExtensionLoader</scope><name>ExtensionLoader</name></member>
+      <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a6b2edbce792d0dd9e44d82d8c45a2fa1" prot="private" virt="non-virtual"><scope>GitHub::Unity::ExtensionLoader</scope><name>GITHUB_UNITY_DISABLE</name></member>
+      <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a707f5238d7a7e9cbc36cf87f4f998ca1" prot="private" virt="non-virtual"><scope>GitHub::Unity::ExtensionLoader</scope><name>Initialize</name></member>
+      <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a6f9801c2d478d34a4cbfef2fb41af5a0" prot="private" virt="non-virtual"><scope>GitHub::Unity::ExtensionLoader</scope><name>initialized</name></member>
+      <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a5b719a771ac55414ba57fb2b0f378718" prot="public" virt="non-virtual"><scope>GitHub::Unity::ExtensionLoader</scope><name>Initialized</name></member>
+      <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a2d079e410f2b55b978d5610ce35dd8c9" prot="private" virt="non-virtual"><scope>GitHub::Unity::ExtensionLoader</scope><name>inSourceMode</name></member>
+      <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a17a9d825c6550fd891674a77f593cd71" prot="private" virt="non-virtual"><scope>GitHub::Unity::ExtensionLoader</scope><name>IsDisabled</name></member>
+      <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a2808c8dd710fa10edac5f7ac1c146081" prot="private" virt="non-virtual"><scope>GitHub::Unity::ExtensionLoader</scope><name>realPath</name></member>
+      <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a5ad637a19d8c3e8810391db3f926ec16" prot="private" virt="non-virtual"><scope>GitHub::Unity::ExtensionLoader</scope><name>sourceModePath</name></member>
+      <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1af56632afafb85a62cca9133d0d92d046" prot="private" virt="non-virtual"><scope>GitHub::Unity::ExtensionLoader</scope><name>ToggleAssemblies</name></member>
+      <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a04df646f62c3e5df89487e108c686ce4" prot="private" virt="non-virtual"><scope>GitHub::Unity::ExtensionLoader</scope><name>ToggleAssemblies</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

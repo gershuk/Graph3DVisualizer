@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="dir_3a7db02c1802c05a64cad382d375848d" kind="dir">
+    <compoundname>Assets/Player/Scripts/PlayerTools</compoundname>
+    <innerfile refid="_edge_creater_tool_8cs">EdgeCreaterTool.cs</innerfile>
+    <innerfile refid="_grab_item_tool_8cs">GrabItemTool.cs</innerfile>
+    <innerfile refid="_laser_pointer_8cs">LaserPointer.cs</innerfile>
+    <innerfile refid="_player_tool_8cs">PlayerTool.cs</innerfile>
+    <innerfile refid="_select_item_tool_8cs">SelectItemTool.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Player/Scripts/PlayerTools/"/>
+  </compounddef>
+</doxygen>

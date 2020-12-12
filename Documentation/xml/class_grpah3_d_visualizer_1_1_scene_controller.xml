@@ -1,0 +1,252 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_grpah3_d_visualizer_1_1_scene_controller" kind="class" language="C#" prot="public">
+    <compoundname>Grpah3DVisualizer::SceneController</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_grpah3_d_visualizer_1_1_scene_controller_1ab825c7944cd12363567153c6f87929c6" prot="private" static="no" mutable="no">
+        <type>Dictionary&lt; string, Assembly &gt;</type>
+        <definition>Dictionary&lt;string, Assembly&gt; Grpah3DVisualizer.SceneController._asseblies</definition>
+        <argsstring></argsstring>
+        <name>_asseblies</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="32" column="28" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grpah3_d_visualizer_1_1_scene_controller_1a010a0f1af70cab18cb9b7211f76316c5" prot="private" static="no" mutable="no">
+        <type>Type</type>
+        <definition>Type Grpah3DVisualizer.SceneController._currentTaskType</definition>
+        <argsstring></argsstring>
+        <name>_currentTaskType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="33" column="22" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grpah3_d_visualizer_1_1_scene_controller_1a716427b16470ffa0b5a1b29c9fcd8769" prot="private" static="no" mutable="no">
+        <type><ref refid="class_graph_tasks_1_1_visual_task" kindref="compound">VisualTask</ref></type>
+        <definition>VisualTask Grpah3DVisualizer.SceneController._visualTask</definition>
+        <argsstring></argsstring>
+        <name>_visualTask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="34" column="28" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grpah3_d_visualizer_1_1_scene_controller_1aa72d6d68cb6879e035b4ebc0c8799ece" prot="private" static="no" mutable="no">
+        <type>List&lt; Type &gt;</type>
+        <definition>List&lt;Type&gt; Grpah3DVisualizer.SceneController._taskList</definition>
+        <argsstring></argsstring>
+        <name>_taskList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="35" column="22" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_scene_controller_1aaf23c5937e895626ae09100fcdee3c85" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Type?</type>
+        <definition>Type? Grpah3DVisualizer.SceneController.CurrentTaskType</definition>
+        <argsstring></argsstring>
+        <name>CurrentTaskType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="37" column="21" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_scene_controller_1a5d892572f466d5d21157b9b3c0937ea6" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>List&lt; Type &gt;</type>
+        <definition>List&lt;Type&gt; Grpah3DVisualizer.SceneController.TaskList</definition>
+        <argsstring></argsstring>
+        <name>TaskList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="43" column="21" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_scene_controller_1ad2d6695e7f860a17ae1e1158bd5defe0" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type><ref refid="class_graph_tasks_1_1_visual_task" kindref="compound">VisualTask</ref></type>
+        <definition>VisualTask Grpah3DVisualizer.SceneController.VisualTask</definition>
+        <argsstring></argsstring>
+        <name>VisualTask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="45" column="27" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="45" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_scene_controller_1a4a490f56e2f1c8d1bcb971ccd6dd4bac" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.SceneController.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="48" column="22" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="48" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_scene_controller_1ac794e7405f1867fb3a88ec97c52c9d8e" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.SceneController.LoadAssemblies</definition>
+        <argsstring>(params(string name, string path)[] assemblies)</argsstring>
+        <name>LoadAssemblies</name>
+        <param>
+          <type>params(string name, string path)[]</type>
+          <declname>assemblies</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="54" column="22" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="54" bodyend="68"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_scene_controller_1a23c5c82fa90fd273763e7d14668b9c70" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.SceneController.LoadMods</definition>
+        <argsstring>()</argsstring>
+        <name>LoadMods</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="70" column="21" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="70" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_scene_controller_1ad553f839ff51effa76dd841cf92263f4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.SceneController.LoadScene</definition>
+        <argsstring>(string name)</argsstring>
+        <name>LoadScene</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="83" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_scene_controller_1a4a3e2a4be0800a247a3a6cdfdd146ad2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.SceneController.SetTaskByName</definition>
+        <argsstring>(string name)</argsstring>
+        <name>SetTaskByName</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="85" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_scene_controller_1aef6d7380a5608a807ac7b64783e26eb8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.SceneController.FindAllTasks</definition>
+        <argsstring>()</argsstring>
+        <name>FindAllTasks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="87" column="21" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="87" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_scene_controller_1a31de29ea76e785d5e6ee21fb9bfe8d05" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.SceneController.CreateTask</definition>
+        <argsstring>()</argsstring>
+        <name>CreateTask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="102" column="21" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="102" bodyend="110"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Grpah3DVisualizer.SceneController</label>
+        <link refid="class_grpah3_d_visualizer_1_1_scene_controller"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Grpah3DVisualizer.SceneController</label>
+        <link refid="class_grpah3_d_visualizer_1_1_scene_controller"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/SceneController/Scripts/SceneController.cs" line="30" column="11" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="31" bodyend="111"/>
+    <listofallmembers>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1ab825c7944cd12363567153c6f87929c6" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>_asseblies</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a010a0f1af70cab18cb9b7211f76316c5" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>_currentTaskType</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1aa72d6d68cb6879e035b4ebc0c8799ece" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>_taskList</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a716427b16470ffa0b5a1b29c9fcd8769" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>_visualTask</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a4a490f56e2f1c8d1bcb971ccd6dd4bac" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>Awake</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a31de29ea76e785d5e6ee21fb9bfe8d05" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>CreateTask</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1aaf23c5937e895626ae09100fcdee3c85" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>CurrentTaskType</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1aef6d7380a5608a807ac7b64783e26eb8" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>FindAllTasks</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1ac794e7405f1867fb3a88ec97c52c9d8e" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>LoadAssemblies</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a23c5c82fa90fd273763e7d14668b9c70" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>LoadMods</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1ad553f839ff51effa76dd841cf92263f4" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>LoadScene</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a4a3e2a4be0800a247a3a6cdfdd146ad2" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>SetTaskByName</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a5d892572f466d5d21157b9b3c0937ea6" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>TaskList</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1ad2d6695e7f860a17ae1e1158bd5defe0" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::SceneController</scope><name>VisualTask</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

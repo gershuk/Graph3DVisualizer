@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_menu" kind="class" language="C#" prot="public">
+    <compoundname>Menu</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_menu_1a8269685e78203b028d5bd77c339898b2" prot="private" static="no" strong="yes">
+        <type></type>
+        <name>State</name>
+        <enumvalue id="class_menu_1a8269685e78203b028d5bd77c339898b2a11be5a46cecdc713a8bf9daf0aca0590" prot="private">
+          <name>StartMenu</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_menu_1a8269685e78203b028d5bd77c339898b2a52ef7c5a337de3ed0fb70f4191b6b12d" prot="private">
+          <name>TaskScene</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="27" column="12" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="28" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_menu_1a361ee67b5f5e589265010593fef73342" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Menu._menuAction</definition>
+        <argsstring></argsstring>
+        <name>_menuAction</name>
+        <initializer>= &quot;Show/HideMenuAction&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="33" column="26" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_menu_1aff240b007541141f2080d008f34b1d5b" prot="private" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject Menu._content</definition>
+        <argsstring></argsstring>
+        <name>_content</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="36" column="24" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_menu_1a98e6a1f48f211c3823ad83bddba78541" prot="private" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject Menu._menu</definition>
+        <argsstring></argsstring>
+        <name>_menu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="38" column="24" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_menu_1ae148b53d3065a2f3fc13e204a9c114a9" prot="private" static="no" mutable="no">
+        <type>Font</type>
+        <definition>Font Menu._font</definition>
+        <argsstring></argsstring>
+        <name>_font</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="40" column="18" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_menu_1a8d1fb164a3d4fa72758b42521770f6d3" prot="private" static="no" mutable="no">
+        <type>State</type>
+        <definition>State Menu._state</definition>
+        <argsstring></argsstring>
+        <name>_state</name>
+        <initializer>= State.StartMenu</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="42" column="19" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_menu_1a3e8adac5069e9f53c01c699f6d62dd1f" prot="private" static="no" mutable="no">
+        <type>InputActionMap</type>
+        <definition>InputActionMap Menu._inputActions</definition>
+        <argsstring></argsstring>
+        <name>_inputActions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="43" column="28" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_menu_1aa8f64246364fdb264b2421b1ae3b430b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Menu._isActive</definition>
+        <argsstring></argsstring>
+        <name>_isActive</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="44" column="18" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_menu_1af7fc49aa10027e9dc9f5e5cf030c6a4e" prot="private" static="no" mutable="no">
+        <type><ref refid="class_grpah3_d_visualizer_1_1_scene_controller" kindref="compound">SceneController</ref></type>
+        <definition>SceneController Menu._sceneControler</definition>
+        <argsstring></argsstring>
+        <name>_sceneControler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="45" column="29" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_menu_1a33dc8be1e06d41483e05d20440bafb3a" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Menu.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="47" column="18" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="47" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="class_menu_1aeccc5215886b309c6326d23392273101" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Menu.CreateTask</definition>
+        <argsstring>()</argsstring>
+        <name>CreateTask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="114" column="18" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="114" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="class_menu_1a5cc17f4760a517eddbf1120a276c8d0e" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Menu.CallChangeMenuState</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>CallChangeMenuState</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="120" column="18" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="120" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="class_menu_1a84f3260de3cd1a990251dd1966085e76" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Menu.ChangeMenuState</definition>
+        <argsstring>(bool state)</argsstring>
+        <name>ChangeMenuState</name>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="126" column="18" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="126" bodyend="137"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Menu</label>
+        <link refid="class_menu"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Menu</label>
+        <link refid="class_menu"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/SceneController/Scripts/Menu.cs" line="25" column="7" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="26" bodyend="138"/>
+    <listofallmembers>
+      <member refid="class_menu_1aff240b007541141f2080d008f34b1d5b" prot="private" virt="non-virtual"><scope>Menu</scope><name>_content</name></member>
+      <member refid="class_menu_1ae148b53d3065a2f3fc13e204a9c114a9" prot="private" virt="non-virtual"><scope>Menu</scope><name>_font</name></member>
+      <member refid="class_menu_1a3e8adac5069e9f53c01c699f6d62dd1f" prot="private" virt="non-virtual"><scope>Menu</scope><name>_inputActions</name></member>
+      <member refid="class_menu_1aa8f64246364fdb264b2421b1ae3b430b" prot="private" virt="non-virtual"><scope>Menu</scope><name>_isActive</name></member>
+      <member refid="class_menu_1a98e6a1f48f211c3823ad83bddba78541" prot="private" virt="non-virtual"><scope>Menu</scope><name>_menu</name></member>
+      <member refid="class_menu_1a361ee67b5f5e589265010593fef73342" prot="private" virt="non-virtual"><scope>Menu</scope><name>_menuAction</name></member>
+      <member refid="class_menu_1af7fc49aa10027e9dc9f5e5cf030c6a4e" prot="private" virt="non-virtual"><scope>Menu</scope><name>_sceneControler</name></member>
+      <member refid="class_menu_1a8d1fb164a3d4fa72758b42521770f6d3" prot="private" virt="non-virtual"><scope>Menu</scope><name>_state</name></member>
+      <member refid="class_menu_1a33dc8be1e06d41483e05d20440bafb3a" prot="private" virt="non-virtual"><scope>Menu</scope><name>Awake</name></member>
+      <member refid="class_menu_1a5cc17f4760a517eddbf1120a276c8d0e" prot="private" virt="non-virtual"><scope>Menu</scope><name>CallChangeMenuState</name></member>
+      <member refid="class_menu_1a84f3260de3cd1a990251dd1966085e76" prot="private" virt="non-virtual"><scope>Menu</scope><name>ChangeMenuState</name></member>
+      <member refid="class_menu_1aeccc5215886b309c6326d23392273101" prot="private" virt="non-virtual"><scope>Menu</scope><name>CreateTask</name></member>
+      <member refid="class_menu_1a8269685e78203b028d5bd77c339898b2" prot="private" virt="non-virtual"><scope>Menu</scope><name>State</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

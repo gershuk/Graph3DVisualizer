@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="dir_b7f566e6d7ce851ce359f42960f05e2b" kind="dir">
+    <compoundname>Assets/VisualTasks</compoundname>
+    <innerdir refid="dir_d423057cbcf92a3aee5b728027638156">Assets/VisualTasks/Scripts</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/VisualTasks/"/>
+  </compounddef>
+</doxygen>

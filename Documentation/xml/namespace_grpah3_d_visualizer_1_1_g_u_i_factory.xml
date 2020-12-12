@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="namespace_grpah3_d_visualizer_1_1_g_u_i_factory" kind="namespace" language="C#">
+    <compoundname>Grpah3DVisualizer::GUIFactory</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/SceneController/Scripts/Menu.cs" line="22" column="41"/>
+  </compounddef>
+</doxygen>

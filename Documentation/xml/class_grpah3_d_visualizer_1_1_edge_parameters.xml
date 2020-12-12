@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_grpah3_d_visualizer_1_1_edge_parameters" kind="class" language="C#" prot="public">
+    <compoundname>Grpah3DVisualizer::EdgeParameters</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_edge_parameters_1a67465d8d9ddeb6a9441ce721503f0d19" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices" kindref="compound">AdjacentVertices</ref></type>
+        <definition>AdjacentVertices Grpah3DVisualizer.EdgeParameters.AdjacentVertices</definition>
+        <argsstring></argsstring>
+        <name>AdjacentVertices</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="60" column="33" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="60" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_edge_parameters_1a0d0e7391070acbaef80fbce2f8014b26" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Grpah3DVisualizer.EdgeParameters.SourceOffsetDist</definition>
+        <argsstring></argsstring>
+        <name>SourceOffsetDist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="61" column="22" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_edge_parameters_1a0d40cc3c6296eb87d7d86c5e41817e95" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Grpah3DVisualizer.EdgeParameters.TargetOffsetDist</definition>
+        <argsstring></argsstring>
+        <name>TargetOffsetDist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="62" column="22" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_edge_parameters_1a40d396c3429037cdbb9a198efdc18303" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Texture2D</type>
+        <definition>Texture2D Grpah3DVisualizer.EdgeParameters.ArrowTexture</definition>
+        <argsstring></argsstring>
+        <name>ArrowTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="63" column="26" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="63" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_edge_parameters_1a99cda9c12a8c2c69ba07a6aa1cc50bb4" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Texture2D</type>
+        <definition>Texture2D Grpah3DVisualizer.EdgeParameters.LineTexture</definition>
+        <argsstring></argsstring>
+        <name>LineTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="64" column="26" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="64" bodyend="64"/>
+      </memberdef>
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_edge_parameters_1a79b04ad93c74f06aa783d7c10707a5e1" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="namespace_grpah3_d_visualizer_1a57db9f3204866f79155172679e21e1c7" kindref="member">EdgeVisibility</ref></type>
+        <definition>EdgeVisibility Grpah3DVisualizer.EdgeParameters.Visibility</definition>
+        <argsstring></argsstring>
+        <name>Visibility</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="65" column="31" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="65" bodyend="65"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_edge_parameters_1aa88a6fe4ea8e24a50d77676114088807" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Grpah3DVisualizer.EdgeParameters.EdgeParameters</definition>
+        <argsstring>(in AdjacentVertices adjacentVertices, float sourceOffsetDist, float targetOffsetDist, Texture2D arrowTexture=null, Texture2D lineTexture=null, EdgeVisibility visibility=EdgeVisibility.DependOnVertices)</argsstring>
+        <name>EdgeParameters</name>
+        <param>
+          <type>in <ref refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices" kindref="compound">AdjacentVertices</ref></type>
+          <declname>adjacentVertices</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>sourceOffsetDist</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>targetOffsetDist</declname>
+        </param>
+        <param>
+          <type>Texture2D</type>
+          <declname>arrowTexture</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>Texture2D</type>
+          <declname>lineTexture</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type><ref refid="namespace_grpah3_d_visualizer_1a57db9f3204866f79155172679e21e1c7" kindref="member">EdgeVisibility</ref></type>
+          <declname>visibility</declname>
+          <defval><ref refid="namespace_grpah3_d_visualizer_1a57db9f3204866f79155172679e21e1c7a7acdf85c69cc3c5305456a293524386e" kindref="member">EdgeVisibility.DependOnVertices</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="67" column="16" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="67" bodyend="76"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Graph3D/Scripts/Edge.cs" line="58" column="11" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="59" bodyend="77"/>
+    <listofallmembers>
+      <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1a67465d8d9ddeb6a9441ce721503f0d19" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::EdgeParameters</scope><name>AdjacentVertices</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1a40d396c3429037cdbb9a198efdc18303" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::EdgeParameters</scope><name>ArrowTexture</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1aa88a6fe4ea8e24a50d77676114088807" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::EdgeParameters</scope><name>EdgeParameters</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1a99cda9c12a8c2c69ba07a6aa1cc50bb4" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::EdgeParameters</scope><name>LineTexture</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1a0d0e7391070acbaef80fbce2f8014b26" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::EdgeParameters</scope><name>SourceOffsetDist</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1a0d40cc3c6296eb87d7d86c5e41817e95" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::EdgeParameters</scope><name>TargetOffsetDist</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1a79b04ad93c74f06aa783d7c10707a5e1" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::EdgeParameters</scope><name>Visibility</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

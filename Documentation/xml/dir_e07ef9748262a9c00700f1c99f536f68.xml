@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="dir_e07ef9748262a9c00700f1c99f536f68" kind="dir">
+    <compoundname>Assets/SupportComponents/Scripts</compoundname>
+    <innerfile refid="_move_component_8cs">MoveComponent.cs</innerfile>
+    <innerfile refid="_object_events_8cs">ObjectEvents.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/SupportComponents/Scripts/"/>
+  </compounddef>
+</doxygen>

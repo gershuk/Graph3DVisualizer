@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="dir_4c7485186b6cb99da9f83b2f9172e070" kind="dir">
+    <compoundname>Assets/Graph3D</compoundname>
+    <innerdir refid="dir_a5952d999155f609bcc2923b8321455d">Assets/Graph3D/Scripts</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Graph3D/"/>
+  </compounddef>
+</doxygen>

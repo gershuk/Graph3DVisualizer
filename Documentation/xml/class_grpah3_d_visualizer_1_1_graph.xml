@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_grpah3_d_visualizer_1_1_graph" kind="class" language="C#" prot="public">
+    <compoundname>Grpah3DVisualizer::Graph</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_grpah3_d_visualizer_1_1_graph_1a97c985921b73cc8d8ce5f14aacb1e996" prot="private" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject Grpah3DVisualizer.Graph._vertexPrefab</definition>
+        <argsstring></argsstring>
+        <name>_vertexPrefab</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Graph.cs" line="26" column="28" bodyfile="Assets/Graph3D/Scripts/Graph.cs" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grpah3_d_visualizer_1_1_graph_1a37a88944a96c0880e00de07eb8a4a1ad" prot="private" static="no" mutable="no">
+        <type>Transform</type>
+        <definition>Transform Grpah3DVisualizer.Graph._transform</definition>
+        <argsstring></argsstring>
+        <name>_transform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Graph.cs" line="27" column="27" bodyfile="Assets/Graph3D/Scripts/Graph.cs" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grpah3_d_visualizer_1_1_graph_1a978fa8dd28c0ed49edb7baf877109833" prot="private" static="no" mutable="no">
+        <type>HashSet&lt; <ref refid="class_grpah3_d_visualizer_1_1_vertex" kindref="compound">Vertex</ref> &gt;</type>
+        <definition>HashSet&lt;Vertex&gt; Grpah3DVisualizer.Graph._vertexes</definition>
+        <argsstring></argsstring>
+        <name>_vertexes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Graph.cs" line="28" column="25" bodyfile="Assets/Graph3D/Scripts/Graph.cs" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_graph_1a0212ef934e2561a75ed028b1f8e576b4" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>HashSet&lt; <ref refid="class_grpah3_d_visualizer_1_1_vertex" kindref="compound">Vertex</ref> &gt;</type>
+        <definition>HashSet&lt;Vertex&gt; Grpah3DVisualizer.Graph.Vertexes</definition>
+        <argsstring></argsstring>
+        <name>Vertexes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Graph.cs" line="30" column="24" bodyfile="Assets/Graph3D/Scripts/Graph.cs" bodystart="30" bodyend="30"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_graph_1a6f5cc0c08d5aa9985f0290a384158c67" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.Graph.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Graph.cs" line="32" column="22" bodyfile="Assets/Graph3D/Scripts/Graph.cs" bodystart="32" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_graph_1a6da7fdf74b8a78fd54103cb7e3e1b119" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T Grpah3DVisualizer.Graph.SpawnVertex&lt; T &gt;</definition>
+        <argsstring>(VertexParameters vertexParameters)</argsstring>
+        <name>SpawnVertex&lt; T &gt;</name>
+        <param>
+          <type><ref refid="class_grpah3_d_visualizer_1_1_vertex_parameters" kindref="compound">VertexParameters</ref></type>
+          <declname>vertexParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Graph.cs" line="39" column="16" bodyfile="Assets/Graph3D/Scripts/Graph.cs" bodystart="39" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_graph_1af4487e6d9dda39cbaab9fbd55df5ae81" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Grpah3DVisualizer.Graph.ContainsVertex</definition>
+        <argsstring>(Vertex vertex)</argsstring>
+        <name>ContainsVertex</name>
+        <param>
+          <type><ref refid="class_grpah3_d_visualizer_1_1_vertex" kindref="compound">Vertex</ref></type>
+          <declname>vertex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Graph.cs" line="53" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_graph_1a7b0576d622257afdaaa2687c8fc3bf61" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Grpah3DVisualizer.Graph.DeleteVeretex</definition>
+        <argsstring>(Vertex vertex)</argsstring>
+        <name>DeleteVeretex</name>
+        <param>
+          <type><ref refid="class_grpah3_d_visualizer_1_1_vertex" kindref="compound">Vertex</ref></type>
+          <declname>vertex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Graph.cs" line="55" column="21" bodyfile="Assets/Graph3D/Scripts/Graph.cs" bodystart="55" bodyend="61"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Grpah3DVisualizer.Graph</label>
+        <link refid="class_grpah3_d_visualizer_1_1_graph"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Grpah3DVisualizer.Graph</label>
+        <link refid="class_grpah3_d_visualizer_1_1_graph"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Graph3D/Scripts/Graph.cs" line="23" column="11" bodyfile="Assets/Graph3D/Scripts/Graph.cs" bodystart="24" bodyend="62"/>
+    <listofallmembers>
+      <member refid="class_grpah3_d_visualizer_1_1_graph_1a37a88944a96c0880e00de07eb8a4a1ad" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::Graph</scope><name>_transform</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_graph_1a978fa8dd28c0ed49edb7baf877109833" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::Graph</scope><name>_vertexes</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_graph_1a97c985921b73cc8d8ce5f14aacb1e996" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::Graph</scope><name>_vertexPrefab</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_graph_1a6f5cc0c08d5aa9985f0290a384158c67" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::Graph</scope><name>Awake</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_graph_1af4487e6d9dda39cbaab9fbd55df5ae81" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::Graph</scope><name>ContainsVertex</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_graph_1a7b0576d622257afdaaa2687c8fc3bf61" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::Graph</scope><name>DeleteVeretex</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_graph_1a6da7fdf74b8a78fd54103cb7e3e1b119" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::Graph</scope><name>SpawnVertex&lt; T &gt;</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_graph_1a0212ef934e2561a75ed028b1f8e576b4" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::Graph</scope><name>Vertexes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_graph_tasks_1_1_verdict" kind="class" language="C#" prot="public">
+    <compoundname>GraphTasks::Verdict</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph_tasks_1_1_verdict_1a6f2f2b0ccc852088046f38b48230fb61" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string GraphTasks.Verdict.Description</definition>
+        <argsstring></argsstring>
+        <name>Description</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/VisualTask.cs" line="38" column="23" bodyfile="Assets/VisualTasks/Scripts/VisualTask.cs" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph_tasks_1_1_verdict_1accde580206bbe73a606cf598437e7e03" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type><ref refid="namespace_graph_tasks_1a1613d07ec2443594bb9ad744ab315f7d" kindref="member">VerdictStatus</ref></type>
+        <definition>VerdictStatus GraphTasks.Verdict.Status</definition>
+        <argsstring></argsstring>
+        <name>Status</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/VisualTask.cs" line="39" column="30" bodyfile="Assets/VisualTasks/Scripts/VisualTask.cs" bodystart="39" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph_tasks_1_1_verdict_1a260fbcae09317c8955ad36d31fc08c8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GraphTasks.Verdict.Verdict</definition>
+        <argsstring>(string description, VerdictStatus status)</argsstring>
+        <name>Verdict</name>
+        <param>
+          <type>string</type>
+          <declname>description</declname>
+        </param>
+        <param>
+          <type><ref refid="namespace_graph_tasks_1a1613d07ec2443594bb9ad744ab315f7d" kindref="member">VerdictStatus</ref></type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/VisualTask.cs" line="41" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_tasks_1_1_verdict_1a33bbebe15b00ffca3aeca44e6cc16251" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>override string</type>
+        <definition>override string GraphTasks.Verdict.ToString</definition>
+        <argsstring>()</argsstring>
+        <name>ToString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/VisualTask.cs" line="43" column="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/VisualTasks/Scripts/VisualTask.cs" line="36" column="11" bodyfile="Assets/VisualTasks/Scripts/VisualTask.cs" bodystart="37" bodyend="44"/>
+    <listofallmembers>
+      <member refid="class_graph_tasks_1_1_verdict_1a6f2f2b0ccc852088046f38b48230fb61" prot="public" virt="non-virtual"><scope>GraphTasks::Verdict</scope><name>Description</name></member>
+      <member refid="class_graph_tasks_1_1_verdict_1accde580206bbe73a606cf598437e7e03" prot="public" virt="non-virtual"><scope>GraphTasks::Verdict</scope><name>Status</name></member>
+      <member refid="class_graph_tasks_1_1_verdict_1a33bbebe15b00ffca3aeca44e6cc16251" prot="public" virt="non-virtual"><scope>GraphTasks::Verdict</scope><name>ToString</name></member>
+      <member refid="class_graph_tasks_1_1_verdict_1a260fbcae09317c8955ad36d31fc08c8c" prot="public" virt="non-virtual"><scope>GraphTasks::Verdict</scope><name>Verdict</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

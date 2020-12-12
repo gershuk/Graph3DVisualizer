@@ -1,0 +1,502 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_support_components_1_1_move_component" kind="class" language="C#" prot="public">
+    <compoundname>SupportComponents::MoveComponent</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+    <basecompoundref refid="interface_support_components_1_1_i_moveable" prot="public" virt="non-virtual">SupportComponents.IMoveable</basecompoundref>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1a8fb1a1dd23ee5234f3c5db1941e36c69" prot="private" static="yes" mutable="no">
+        <type>const float</type>
+        <definition>const float SupportComponents.MoveComponent._timeCheckThreshold</definition>
+        <argsstring></argsstring>
+        <name>_timeCheckThreshold</name>
+        <initializer>= 0.001f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="36" column="29" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1a1ffa49427991ae9d0fa51ac6e5121a5e" prot="private" static="yes" mutable="no">
+        <type>const float</type>
+        <definition>const float SupportComponents.MoveComponent._thresholdDistance</definition>
+        <argsstring></argsstring>
+        <name>_thresholdDistance</name>
+        <initializer>= 0.1f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="62" column="29" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1af64284d0ef7720cc3f768deca7ff3944" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float SupportComponents.MoveComponent._minRotX</definition>
+        <argsstring></argsstring>
+        <name>_minRotX</name>
+        <initializer>= -360</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="40" column="23" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1a27fb106729a4d286c87a1226d285c165" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float SupportComponents.MoveComponent._maxRotX</definition>
+        <argsstring></argsstring>
+        <name>_maxRotX</name>
+        <initializer>= 360F</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="43" column="23" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1a2848e0bac61e1cce775ab60e199cd461" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float SupportComponents.MoveComponent._minRotY</definition>
+        <argsstring></argsstring>
+        <name>_minRotY</name>
+        <initializer>= -360</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="46" column="23" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1a4ac91bfd4c8766053ad00eb356f73ae2" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float SupportComponents.MoveComponent._maxRotY</definition>
+        <argsstring></argsstring>
+        <name>_maxRotY</name>
+        <initializer>= 360F</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="49" column="23" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1a3d1b66911194b3911c6730ba2cd28c28" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float SupportComponents.MoveComponent._rotationSpeed</definition>
+        <argsstring></argsstring>
+        <name>_rotationSpeed</name>
+        <initializer>= 1f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="51" column="23" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1aa15b118c764b910bf4f65a69dae92eff" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float SupportComponents.MoveComponent._movingSpeed</definition>
+        <argsstring></argsstring>
+        <name>_movingSpeed</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="54" column="23" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1a58b3044798cc528939fcf0f49a3f8506" prot="private" static="no" mutable="no">
+        <type>List&lt;(float deltaTimeFromStart, float multiplier)&gt;</type>
+        <definition>List&lt;(float deltaTimeFromStart, float multiplier)&gt; SupportComponents.MoveComponent._gears</definition>
+        <argsstring></argsstring>
+        <name>_gears</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="55" column="22" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1ac7cb627973d78156f6b59791dd73b1ce" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int SupportComponents.MoveComponent._currentGearIndex</definition>
+        <argsstring></argsstring>
+        <name>_currentGearIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="57" column="21" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1a6a5fd89b1fb7804e4b18913a29f77b54" prot="private" static="no" mutable="no">
+        <type><ref refid="namespace_support_components_1a5afee1d624a6b0aa8aa67f22c99afe6c" kindref="member">TransmissionMode</ref></type>
+        <definition>TransmissionMode SupportComponents.MoveComponent._transmissionMode</definition>
+        <argsstring></argsstring>
+        <name>_transmissionMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="58" column="34" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1abbab35a9d2146c2940bbb2ec6e2c0665" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float SupportComponents.MoveComponent._startMovingTime</definition>
+        <argsstring></argsstring>
+        <name>_startMovingTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="59" column="23" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1a13ecf9421be69696e492e38f93cf51a4" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float SupportComponents.MoveComponent._lastTimeCheck</definition>
+        <argsstring></argsstring>
+        <name>_lastTimeCheck</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="60" column="23" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1a0c8617e3d221de39136394f5e46bca14" prot="private" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 SupportComponents.MoveComponent._rotation</definition>
+        <argsstring></argsstring>
+        <name>_rotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="63" column="25" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1a94c10c730a6866914ce00a848944d5dc" prot="private" static="no" mutable="no">
+        <type>Transform</type>
+        <definition>Transform SupportComponents.MoveComponent._transform</definition>
+        <argsstring></argsstring>
+        <name>_transform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="64" column="27" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_support_components_1_1_move_component_1a78d6a7dbdf864d350052956b64bb8fd6" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SupportComponents.MoveComponent._isMoving</definition>
+        <argsstring></argsstring>
+        <name>_isMoving</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="65" column="22" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_support_components_1_1_move_component_1ae76182a17dc027c69ccd8474208617fa" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>List&lt;(float deltaTimeFromStart, float multiplier)&gt;?</type>
+        <definition>List&lt;(float deltaTimeFromStart, float multiplier)&gt;? SupportComponents.MoveComponent.Gears</definition>
+        <argsstring></argsstring>
+        <name>Gears</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="67" column="21" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="68" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="property" id="class_support_components_1_1_move_component_1a91c880967f2b28b705684dd5c331b22c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>int?</type>
+        <definition>int? SupportComponents.MoveComponent.CurrentGearIndex</definition>
+        <argsstring></argsstring>
+        <name>CurrentGearIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="79" column="20" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="80" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="property" id="class_support_components_1_1_move_component_1ac0dd3eee0aa9aeacf169679aeafc27a3" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type><ref refid="namespace_support_components_1a5afee1d624a6b0aa8aa67f22c99afe6c" kindref="member">TransmissionMode</ref></type>
+        <definition>TransmissionMode SupportComponents.MoveComponent.TransmissionMode</definition>
+        <argsstring></argsstring>
+        <name>TransmissionMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="95" column="33" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="96" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="property" id="class_support_components_1_1_move_component_1a5a2327d1ceef8e057f7419bb81c7ec19" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float SupportComponents.MoveComponent.MovingSpeed</definition>
+        <argsstring></argsstring>
+        <name>MovingSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="114" column="22" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="114" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="property" id="class_support_components_1_1_move_component_1aa8e4b0bb25d3947c5c2d8b03a716e785" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float SupportComponents.MoveComponent.RotationSpeed</definition>
+        <argsstring></argsstring>
+        <name>RotationSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="116" column="22" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="116" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="property" id="class_support_components_1_1_move_component_1aaef09b9656d183ad03b6b480a4307093" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Vector3?</type>
+        <definition>Vector3? SupportComponents.MoveComponent.GlobalCoordinates</definition>
+        <argsstring></argsstring>
+        <name>GlobalCoordinates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="181" column="24" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="182" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="property" id="class_support_components_1_1_move_component_1af492a406b336b3c405172bb8f2fb1340" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Vector3?</type>
+        <definition>Vector3? SupportComponents.MoveComponent.LocalCoordinates</definition>
+        <argsstring></argsstring>
+        <name>LocalCoordinates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="194" column="24" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="195" bodyend="205"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="class_support_components_1_1_move_component_1a5a5d55e72a7b4ecf06ec73e43ac14fb1" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>Action&lt; Vector3, UnityEngine.Object &gt;</type>
+        <definition>Action&lt;Vector3, UnityEngine.Object&gt; SupportComponents.MoveComponent.ObjectMoved</definition>
+        <argsstring></argsstring>
+        <name>ObjectMoved</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="118" column="29" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_support_components_1_1_move_component_1ac03f40e694666ed33ec50d16fb4b68ac" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SupportComponents.MoveComponent.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="120" column="22" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="120" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="class_support_components_1_1_move_component_1abe16fe02c94ad6583c34de0983556015" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SupportComponents.MoveComponent.UpdateParametersWhileMoving</definition>
+        <argsstring>(float deltaTime)</argsstring>
+        <name>UpdateParametersWhileMoving</name>
+        <param>
+          <type>float</type>
+          <declname>deltaTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="133" column="22" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="133" bodyend="153"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_support_components_1_1_move_component_1acc99d043a10af258b089cf95a68281cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerator</type>
+        <definition>IEnumerator SupportComponents.MoveComponent.MoveAlongTrajectory</definition>
+        <argsstring>(ReadOnlyCollection&lt; Vector3 &gt; trajectory)</argsstring>
+        <name>MoveAlongTrajectory</name>
+        <reimplements refid="interface_support_components_1_1_i_moveable_1adf07264a33ecb8b19ae326afc9a9f45c">MoveAlongTrajectory</reimplements>
+        <param>
+          <type>ReadOnlyCollection&lt; Vector3 &gt;</type>
+          <declname>trajectory</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="155" column="28" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="155" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="class_support_components_1_1_move_component_1af53c63210d4de5c7d014f29380f4cca7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SupportComponents.MoveComponent.Translate</definition>
+        <argsstring>(Vector3 directionVector, float deltaTime)</argsstring>
+        <name>Translate</name>
+        <reimplements refid="interface_support_components_1_1_i_moveable_1ac871a04c1dc4dc5973b38c91e83dca5d">Translate</reimplements>
+        <param>
+          <type>Vector3</type>
+          <declname>directionVector</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>deltaTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="207" column="21" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="207" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="class_support_components_1_1_move_component_1a01a082fe4c952eab87c4d0fd5b015be8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SupportComponents.MoveComponent.Rotate</definition>
+        <argsstring>(Vector2 rotationChange, float deltaTime)</argsstring>
+        <name>Rotate</name>
+        <reimplements refid="interface_support_components_1_1_i_moveable_1ae85a72908bd33bd80727c86b945ed7f1">Rotate</reimplements>
+        <param>
+          <type>Vector2</type>
+          <declname>rotationChange</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>deltaTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="216" column="21" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="216" bodyend="231"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>IMoveable</label>
+        <link refid="interface_support_components_1_1_i_moveable"/>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="1">
+        <label>SupportComponents.MoveComponent</label>
+        <link refid="class_support_components_1_1_move_component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>IMoveable</label>
+        <link refid="interface_support_components_1_1_i_moveable"/>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="1">
+        <label>SupportComponents.MoveComponent</label>
+        <link refid="class_support_components_1_1_move_component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="34" column="11" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="35" bodyend="232"/>
+    <listofallmembers>
+      <member refid="class_support_components_1_1_move_component_1ac7cb627973d78156f6b59791dd73b1ce" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_currentGearIndex</name></member>
+      <member refid="class_support_components_1_1_move_component_1a58b3044798cc528939fcf0f49a3f8506" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_gears</name></member>
+      <member refid="class_support_components_1_1_move_component_1a78d6a7dbdf864d350052956b64bb8fd6" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_isMoving</name></member>
+      <member refid="class_support_components_1_1_move_component_1a13ecf9421be69696e492e38f93cf51a4" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_lastTimeCheck</name></member>
+      <member refid="class_support_components_1_1_move_component_1a27fb106729a4d286c87a1226d285c165" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_maxRotX</name></member>
+      <member refid="class_support_components_1_1_move_component_1a4ac91bfd4c8766053ad00eb356f73ae2" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_maxRotY</name></member>
+      <member refid="class_support_components_1_1_move_component_1af64284d0ef7720cc3f768deca7ff3944" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_minRotX</name></member>
+      <member refid="class_support_components_1_1_move_component_1a2848e0bac61e1cce775ab60e199cd461" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_minRotY</name></member>
+      <member refid="class_support_components_1_1_move_component_1aa15b118c764b910bf4f65a69dae92eff" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_movingSpeed</name></member>
+      <member refid="class_support_components_1_1_move_component_1a0c8617e3d221de39136394f5e46bca14" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_rotation</name></member>
+      <member refid="class_support_components_1_1_move_component_1a3d1b66911194b3911c6730ba2cd28c28" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_rotationSpeed</name></member>
+      <member refid="class_support_components_1_1_move_component_1abbab35a9d2146c2940bbb2ec6e2c0665" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_startMovingTime</name></member>
+      <member refid="class_support_components_1_1_move_component_1a1ffa49427991ae9d0fa51ac6e5121a5e" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_thresholdDistance</name></member>
+      <member refid="class_support_components_1_1_move_component_1a8fb1a1dd23ee5234f3c5db1941e36c69" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_timeCheckThreshold</name></member>
+      <member refid="class_support_components_1_1_move_component_1a94c10c730a6866914ce00a848944d5dc" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_transform</name></member>
+      <member refid="class_support_components_1_1_move_component_1a6a5fd89b1fb7804e4b18913a29f77b54" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>_transmissionMode</name></member>
+      <member refid="class_support_components_1_1_move_component_1ac03f40e694666ed33ec50d16fb4b68ac" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>Awake</name></member>
+      <member refid="class_support_components_1_1_move_component_1a91c880967f2b28b705684dd5c331b22c" prot="public" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>CurrentGearIndex</name></member>
+      <member refid="class_support_components_1_1_move_component_1ae76182a17dc027c69ccd8474208617fa" prot="public" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>Gears</name></member>
+      <member refid="class_support_components_1_1_move_component_1aaef09b9656d183ad03b6b480a4307093" prot="public" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>GlobalCoordinates</name></member>
+      <member refid="class_support_components_1_1_move_component_1af492a406b336b3c405172bb8f2fb1340" prot="public" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>LocalCoordinates</name></member>
+      <member refid="class_support_components_1_1_move_component_1acc99d043a10af258b089cf95a68281cd" prot="public" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>MoveAlongTrajectory</name></member>
+      <member refid="class_support_components_1_1_move_component_1a5a2327d1ceef8e057f7419bb81c7ec19" prot="public" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>MovingSpeed</name></member>
+      <member refid="class_support_components_1_1_move_component_1a5a5d55e72a7b4ecf06ec73e43ac14fb1" prot="public" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>ObjectMoved</name></member>
+      <member refid="class_support_components_1_1_move_component_1a01a082fe4c952eab87c4d0fd5b015be8" prot="public" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>Rotate</name></member>
+      <member refid="class_support_components_1_1_move_component_1aa8e4b0bb25d3947c5c2d8b03a716e785" prot="public" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>RotationSpeed</name></member>
+      <member refid="class_support_components_1_1_move_component_1af53c63210d4de5c7d014f29380f4cca7" prot="public" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>Translate</name></member>
+      <member refid="class_support_components_1_1_move_component_1ac0dd3eee0aa9aeacf169679aeafc27a3" prot="public" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>TransmissionMode</name></member>
+      <member refid="class_support_components_1_1_move_component_1abe16fe02c94ad6583c34de0983556015" prot="private" virt="non-virtual"><scope>SupportComponents::MoveComponent</scope><name>UpdateParametersWhileMoving</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

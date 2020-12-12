@@ -1,0 +1,304 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_grpah3_d_visualizer_1_1_billboard_controller" kind="class" language="C#" prot="public">
+    <compoundname>Grpah3DVisualizer::BillboardController</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+    <basecompoundref refid="interface_support_components_1_1_i_visibile" prot="public" virt="non-virtual">SupportComponents.IVisibile</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_grpah3_d_visualizer_1_1_billboard_controller_1ac9b97a9c9280e94c0b540762d27a6d9e" prot="private" static="no" mutable="no">
+        <type>Dictionary&lt; <ref refid="class_grpah3_d_visualizer_1_1_billboard_id" kindref="compound">BillboardId</ref>, <ref refid="class_grpah3_d_visualizer_1_1_billboard" kindref="compound">Billboard</ref> &gt;</type>
+        <definition>Dictionary&lt;BillboardId, Billboard&gt; Grpah3DVisualizer.BillboardController._billboards</definition>
+        <argsstring></argsstring>
+        <name>_billboards</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="218" column="28" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grpah3_d_visualizer_1_1_billboard_controller_1a9c5cd7d201dd7c5d34c5a8b47e284eec" prot="private" static="no" mutable="no">
+        <type>MeshRenderer</type>
+        <definition>MeshRenderer Grpah3DVisualizer.BillboardController._render</definition>
+        <argsstring></argsstring>
+        <name>_render</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="219" column="30" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grpah3_d_visualizer_1_1_billboard_controller_1ab02898b20c72add429ed9c3189ac18fb" prot="private" static="no" mutable="no">
+        <type>MeshFilter</type>
+        <definition>MeshFilter Grpah3DVisualizer.BillboardController._meshFilter</definition>
+        <argsstring></argsstring>
+        <name>_meshFilter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="220" column="28" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="220" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_grpah3_d_visualizer_1_1_billboard_controller_1a1cf8b29a0c7c63303431289b48090b9d" prot="private" static="yes" mutable="no">
+        <type>Shader</type>
+        <definition>Shader Grpah3DVisualizer.BillboardController._shader</definition>
+        <argsstring></argsstring>
+        <name>_shader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="223" column="31" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_grpah3_d_visualizer_1_1_billboard_controller_1a1abe401bc86957b6d33bbb345d9e4d13" prot="private" static="yes" mutable="no">
+        <type>Texture2D</type>
+        <definition>Texture2D Grpah3DVisualizer.BillboardController._defaultTexture</definition>
+        <argsstring></argsstring>
+        <name>_defaultTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="225" column="34" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="225" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="class_grpah3_d_visualizer_1_1_billboard_controller_1a0ac4b2cf73e5cda0281aa083df94a325" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>Action&lt; bool, UnityEngine.Object &gt;</type>
+        <definition>Action&lt;bool, UnityEngine.Object&gt; Grpah3DVisualizer.BillboardController.VisibleChanged</definition>
+        <argsstring></argsstring>
+        <name>VisibleChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="227" column="29" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="227" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_billboard_controller_1a964d91ebe6e3d7452fa836b5bd89cb64" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool?</type>
+        <definition>bool? Grpah3DVisualizer.BillboardController.Visibility</definition>
+        <argsstring></argsstring>
+        <name>Visibility</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="229" column="21" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="230" bodyend="240"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_billboard_controller_1a48963f49ff9d1854749e8780a0ee5c2a" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.BillboardController.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="242" column="22" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="242" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_billboard_controller_1ad72894aaac0bf49b4b40c6e8be333c39" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.BillboardController.AddBillboardMaterialToRender</definition>
+        <argsstring>(BillboardId billboardId)</argsstring>
+        <name>AddBillboardMaterialToRender</name>
+        <param>
+          <type><ref refid="class_grpah3_d_visualizer_1_1_billboard_id" kindref="compound">BillboardId</ref></type>
+          <declname>billboardId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="257" column="22" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="257" bodyend="271"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_billboard_controller_1aa7bff0cd8f0f2053894e4ce7252f35a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_grpah3_d_visualizer_1_1_billboard_id" kindref="compound">BillboardId</ref></type>
+        <definition>BillboardId Grpah3DVisualizer.BillboardController.CreateBillboard</definition>
+        <argsstring>(in BillboardParameters parameters, string name, string description)</argsstring>
+        <name>CreateBillboard</name>
+        <param>
+          <type>in <ref refid="class_grpah3_d_visualizer_1_1_billboard_parameters" kindref="compound">BillboardParameters</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="273" column="28" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="273" bodyend="282"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_billboard_controller_1afbbce9981f1685ceace4f6bb4369badb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_grpah3_d_visualizer_1_1_billboard" kindref="compound">Billboard</ref></type>
+        <definition>Billboard Grpah3DVisualizer.BillboardController.GetBillboard</definition>
+        <argsstring>(BillboardId billboardId)</argsstring>
+        <name>GetBillboard</name>
+        <param>
+          <type><ref refid="class_grpah3_d_visualizer_1_1_billboard_id" kindref="compound">BillboardId</ref></type>
+          <declname>billboardId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="284" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_billboard_controller_1a59a7b6819de2512841558d7c4737ff3d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.BillboardController.DeleteBillboard</definition>
+        <argsstring>(BillboardId billboardId)</argsstring>
+        <name>DeleteBillboard</name>
+        <param>
+          <type><ref refid="class_grpah3_d_visualizer_1_1_billboard_id" kindref="compound">BillboardId</ref></type>
+          <declname>billboardId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="286" column="21" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="286" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_billboard_controller_1a5cebcfdc86420846e7c7dc156e723f0e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.BillboardController.UpdateBounds</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateBounds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="294" column="21" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="294" bodyend="304"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_billboard_controller_1a07c5a578ef281963aaf0b738de8ea576" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.BillboardController.DisableBillboard</definition>
+        <argsstring>(BillboardId billboardId)</argsstring>
+        <name>DisableBillboard</name>
+        <param>
+          <type><ref refid="class_grpah3_d_visualizer_1_1_billboard_id" kindref="compound">BillboardId</ref></type>
+          <declname>billboardId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="306" column="21" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="306" bodyend="325"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_billboard_controller_1affd362bc6e3b9999a98dedc1fd5febf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.BillboardController.EnableBillboard</definition>
+        <argsstring>(BillboardId billboardId)</argsstring>
+        <name>EnableBillboard</name>
+        <param>
+          <type><ref refid="class_grpah3_d_visualizer_1_1_billboard_id" kindref="compound">BillboardId</ref></type>
+          <declname>billboardId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="327" column="21"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A collection containing <ref refid="class_grpah3_d_visualizer_1_1_billboard" kindref="compound">Billboard</ref>s. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Grpah3DVisualizer.BillboardController</label>
+        <link refid="class_grpah3_d_visualizer_1_1_billboard_controller"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="3">
+        <label>IVisibile</label>
+        <link refid="interface_support_components_1_1_i_visibile"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Grpah3DVisualizer.BillboardController</label>
+        <link refid="class_grpah3_d_visualizer_1_1_billboard_controller"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="3">
+        <label>IVisibile</label>
+        <link refid="interface_support_components_1_1_i_visibile"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Billboard/Scripts/BillboardController.cs" line="216" column="11" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="217" bodyend="328"/>
+    <listofallmembers>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1ac9b97a9c9280e94c0b540762d27a6d9e" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>_billboards</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a1abe401bc86957b6d33bbb345d9e4d13" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>_defaultTexture</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1ab02898b20c72add429ed9c3189ac18fb" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>_meshFilter</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a9c5cd7d201dd7c5d34c5a8b47e284eec" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>_render</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a1cf8b29a0c7c63303431289b48090b9d" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>_shader</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1ad72894aaac0bf49b4b40c6e8be333c39" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>AddBillboardMaterialToRender</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a48963f49ff9d1854749e8780a0ee5c2a" prot="private" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>Awake</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1aa7bff0cd8f0f2053894e4ce7252f35a1" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>CreateBillboard</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a59a7b6819de2512841558d7c4737ff3d" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>DeleteBillboard</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a07c5a578ef281963aaf0b738de8ea576" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>DisableBillboard</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1affd362bc6e3b9999a98dedc1fd5febf1" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>EnableBillboard</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1afbbce9981f1685ceace4f6bb4369badb" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>GetBillboard</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a5cebcfdc86420846e7c7dc156e723f0e" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>UpdateBounds</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a964d91ebe6e3d7452fa836b5bd89cb64" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>Visibility</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a0ac4b2cf73e5cda0281aa083df94a325" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardController</scope><name>VisibleChanged</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

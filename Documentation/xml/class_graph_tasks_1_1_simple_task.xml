@@ -1,0 +1,200 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_graph_tasks_1_1_simple_task" kind="class" language="C#" prot="public">
+    <compoundname>GraphTasks::SimpleTask</compoundname>
+    <basecompoundref refid="class_graph_tasks_1_1_visual_task" prot="public" virt="non-virtual">GraphTasks.VisualTask</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_graph_tasks_1_1_simple_task_1a774a080208a36716ccf4eb4fb45a7e9a" prot="private" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject GraphTasks.SimpleTask._graph</definition>
+        <argsstring></argsstring>
+        <name>_graph</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="33" column="28" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_tasks_1_1_simple_task_1a7c6c6b9a86530ed2f58c706f9b83d940" prot="private" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject GraphTasks.SimpleTask._player</definition>
+        <argsstring></argsstring>
+        <name>_player</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="34" column="28" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph_tasks_1_1_simple_task_1aeba3b2b36a3378563c2df4acd205a879" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>override IReadOnlyCollection&lt; <ref refid="class_player_input_controls_1_1_abstract_p_layer" kindref="compound">AbstractPLayer</ref> &gt;</type>
+        <definition>override IReadOnlyCollection&lt;AbstractPLayer&gt; GraphTasks.SimpleTask.Players</definition>
+        <argsstring></argsstring>
+        <name>Players</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="36" column="45" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph_tasks_1_1_simple_task_1a37624e500d389f0da2fc4e2d481ec667" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>override IReadOnlyCollection&lt; <ref refid="class_grpah3_d_visualizer_1_1_graph" kindref="compound">Graph</ref> &gt;</type>
+        <definition>override IReadOnlyCollection&lt;Graph&gt; GraphTasks.SimpleTask.Graphs</definition>
+        <argsstring></argsstring>
+        <name>Graphs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="37" column="45" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="37" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph_tasks_1_1_simple_task_1a92d67c254cb2ba91b03ace37c434c72a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override <ref refid="class_grpah3_d_visualizer_1_1_graph" kindref="compound">Graph</ref></type>
+        <definition>override Graph GraphTasks.SimpleTask.CreateGraph</definition>
+        <argsstring>()</argsstring>
+        <name>CreateGraph</name>
+        <reimplements refid="class_graph_tasks_1_1_visual_task_1a9c392eb2bcab59ef02732367257982cb">CreateGraph</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="39" column="31" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="39" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_tasks_1_1_simple_task_1ad621adcf4281004b2ddf6f605b61ebeb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void GraphTasks.SimpleTask.InitTask</definition>
+        <argsstring>()</argsstring>
+        <name>InitTask</name>
+        <reimplements refid="class_graph_tasks_1_1_visual_task_1aab0ea9f7701805f2824a8ce01196d1ac">InitTask</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="85" column="30" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="85" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_tasks_1_1_simple_task_1a087d4800c118d0652a99264c7a21b488" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>override void</type>
+        <definition>override void GraphTasks.SimpleTask.StartTask</definition>
+        <argsstring>()</argsstring>
+        <name>StartTask</name>
+        <reimplements refid="class_graph_tasks_1_1_visual_task_1a3b8bb8b2cca1e4a7af8075f8e0cada27">StartTask</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="111" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_tasks_1_1_simple_task_1aa9b48daa7f541ddba122be9f645afa03" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>override void</type>
+        <definition>override void GraphTasks.SimpleTask.StopTask</definition>
+        <argsstring>()</argsstring>
+        <name>StopTask</name>
+        <reimplements refid="class_graph_tasks_1_1_visual_task_1a4d776305ed83d7274e34cc3e31fb74ad">StopTask</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="113" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_tasks_1_1_simple_task_1a096f0f2a6c3a95b21199eb654c648986" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void GraphTasks.SimpleTask.DestroyTask</definition>
+        <argsstring>()</argsstring>
+        <name>DestroyTask</name>
+        <reimplements refid="class_graph_tasks_1_1_visual_task_1ae45224a095b0d44d7df344c5932a1d03">DestroyTask</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="115" column="30" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="115" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_tasks_1_1_simple_task_1a52c873677822d8668118213c46fa482e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>override List&lt; <ref refid="class_graph_tasks_1_1_verdict" kindref="compound">Verdict</ref> &gt;</type>
+        <definition>override List&lt;Verdict&gt; GraphTasks.SimpleTask.GetResult</definition>
+        <argsstring>()</argsstring>
+        <name>GetResult</name>
+        <reimplements refid="class_graph_tasks_1_1_visual_task_1ad0ea942c866041f34afb4afb02b9843a">GetResult</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="122" column="30"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>GraphTasks.SimpleTask</label>
+        <link refid="class_graph_tasks_1_1_simple_task"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>VisualTask</label>
+        <link refid="class_graph_tasks_1_1_visual_task"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>GraphTasks.SimpleTask</label>
+        <link refid="class_graph_tasks_1_1_simple_task"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>VisualTask</label>
+        <link refid="class_graph_tasks_1_1_visual_task"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="31" column="11" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="32" bodyend="123"/>
+    <listofallmembers>
+      <member refid="class_graph_tasks_1_1_simple_task_1a774a080208a36716ccf4eb4fb45a7e9a" prot="private" virt="non-virtual"><scope>GraphTasks::SimpleTask</scope><name>_graph</name></member>
+      <member refid="class_graph_tasks_1_1_simple_task_1a7c6c6b9a86530ed2f58c706f9b83d940" prot="private" virt="non-virtual"><scope>GraphTasks::SimpleTask</scope><name>_player</name></member>
+      <member refid="class_graph_tasks_1_1_simple_task_1a92d67c254cb2ba91b03ace37c434c72a" prot="public" virt="virtual"><scope>GraphTasks::SimpleTask</scope><name>CreateGraph</name></member>
+      <member refid="class_graph_tasks_1_1_simple_task_1a096f0f2a6c3a95b21199eb654c648986" prot="public" virt="virtual"><scope>GraphTasks::SimpleTask</scope><name>DestroyTask</name></member>
+      <member refid="class_graph_tasks_1_1_simple_task_1a52c873677822d8668118213c46fa482e" prot="public" virt="virtual"><scope>GraphTasks::SimpleTask</scope><name>GetResult</name></member>
+      <member refid="class_graph_tasks_1_1_simple_task_1a37624e500d389f0da2fc4e2d481ec667" prot="public" virt="non-virtual"><scope>GraphTasks::SimpleTask</scope><name>Graphs</name></member>
+      <member refid="class_graph_tasks_1_1_simple_task_1ad621adcf4281004b2ddf6f605b61ebeb" prot="public" virt="virtual"><scope>GraphTasks::SimpleTask</scope><name>InitTask</name></member>
+      <member refid="class_graph_tasks_1_1_simple_task_1aeba3b2b36a3378563c2df4acd205a879" prot="public" virt="non-virtual"><scope>GraphTasks::SimpleTask</scope><name>Players</name></member>
+      <member refid="class_graph_tasks_1_1_simple_task_1a087d4800c118d0652a99264c7a21b488" prot="public" virt="virtual"><scope>GraphTasks::SimpleTask</scope><name>StartTask</name></member>
+      <member refid="class_graph_tasks_1_1_simple_task_1aa9b48daa7f541ddba122be9f645afa03" prot="public" virt="virtual"><scope>GraphTasks::SimpleTask</scope><name>StopTask</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

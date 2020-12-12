@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="dir_262216262d16817e1e163467e57d575f" kind="dir">
+    <compoundname>Assets/GUIFactory</compoundname>
+    <innerdir refid="dir_afa0c56e58c9faba2f100e127e0616ab">Assets/GUIFactory/Scripts</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/GUIFactory/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_grpah3_d_visualizer_1_1_link" kind="class" language="C#" prot="public">
+    <compoundname>Grpah3DVisualizer::Link</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_link_1a0f1e2bb685e964cadcb8f971abc282f1" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_grpah3_d_visualizer_1_1_vertex" kindref="compound">Vertex</ref></type>
+        <definition>Vertex Grpah3DVisualizer.Link.AdjacentVertex</definition>
+        <argsstring></argsstring>
+        <name>AdjacentVertex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Vertex.cs" line="54" column="23" bodyfile="Assets/Graph3D/Scripts/Vertex.cs" bodystart="54" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_link_1a4a9a44a6e7f8423c227ebe276a5c11a9" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_grpah3_d_visualizer_1_1_edge" kindref="compound">Edge</ref></type>
+        <definition>Edge Grpah3DVisualizer.Link.Edge</definition>
+        <argsstring></argsstring>
+        <name>Edge</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Vertex.cs" line="55" column="21" bodyfile="Assets/Graph3D/Scripts/Vertex.cs" bodystart="55" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_link_1a12c6dc55cfc7c4203613bda1be77d7fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Grpah3DVisualizer.Link.Link</definition>
+        <argsstring>(Vertex adjacentVertex, Edge edge)</argsstring>
+        <name>Link</name>
+        <param>
+          <type><ref refid="class_grpah3_d_visualizer_1_1_vertex" kindref="compound">Vertex</ref></type>
+          <declname>adjacentVertex</declname>
+        </param>
+        <param>
+          <type><ref refid="class_grpah3_d_visualizer_1_1_edge" kindref="compound">Edge</ref></type>
+          <declname>edge</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Vertex.cs" line="57" column="16" bodyfile="Assets/Graph3D/Scripts/Vertex.cs" bodystart="57" bodyend="61"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Graph3D/Scripts/Vertex.cs" line="52" column="11" bodyfile="Assets/Graph3D/Scripts/Vertex.cs" bodystart="53" bodyend="62"/>
+    <listofallmembers>
+      <member refid="class_grpah3_d_visualizer_1_1_link_1a0f1e2bb685e964cadcb8f971abc282f1" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::Link</scope><name>AdjacentVertex</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_link_1a4a9a44a6e7f8423c227ebe276a5c11a9" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::Link</scope><name>Edge</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_link_1a12c6dc55cfc7c4203613bda1be77d7fd" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::Link</scope><name>Link</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

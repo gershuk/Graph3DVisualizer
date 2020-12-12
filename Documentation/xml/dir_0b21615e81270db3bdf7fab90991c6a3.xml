@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="dir_0b21615e81270db3bdf7fab90991c6a3" kind="dir">
+    <compoundname>Assets/Plugins/GitHub/Editor</compoundname>
+    <innerfile refid="_extension_loader_8cs">ExtensionLoader.cs</innerfile>
+    <innerfile refid="_unity_a_p_i_wrapper_8cs">UnityAPIWrapper.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Plugins/GitHub/Editor/"/>
+  </compounddef>
+</doxygen>

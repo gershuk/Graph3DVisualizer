@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="dir_8966d8cac009c6b07e62001f2ee973e4" kind="dir">
+    <compoundname>Assets/Player</compoundname>
+    <innerdir refid="dir_37d7d5e3ff470413b88a07dbec6bc79c">Assets/Player/Scripts</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Player/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="struct_grpah3_d_visualizer_1_1_adjacent_vertices" kind="struct" language="C#" prot="public">
+    <compoundname>Grpah3DVisualizer::AdjacentVertices</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1af64991d4400ee4a815edca4c54790997" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_grpah3_d_visualizer_1_1_vertex" kindref="compound">Vertex</ref></type>
+        <definition>Vertex Grpah3DVisualizer.AdjacentVertices.FromVertex</definition>
+        <argsstring></argsstring>
+        <name>FromVertex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="40" column="23" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1a1a41868c3a238fb45ec36a2508cacbfe" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_grpah3_d_visualizer_1_1_vertex" kindref="compound">Vertex</ref></type>
+        <definition>Vertex Grpah3DVisualizer.AdjacentVertices.ToVertex</definition>
+        <argsstring></argsstring>
+        <name>ToVertex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="41" column="23" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="41" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1aa3ce61da2b25da99878fdbed5f28e325" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Grpah3DVisualizer.AdjacentVertices.AdjacentVertices</definition>
+        <argsstring>(Vertex fromVertex, Vertex toVertex)</argsstring>
+        <name>AdjacentVertices</name>
+        <param>
+          <type><ref refid="class_grpah3_d_visualizer_1_1_vertex" kindref="compound">Vertex</ref></type>
+          <declname>fromVertex</declname>
+        </param>
+        <param>
+          <type><ref refid="class_grpah3_d_visualizer_1_1_vertex" kindref="compound">Vertex</ref></type>
+          <declname>toVertex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="43" column="16" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="43" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1a772c9b00e189b51b87f10168288f95ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Grpah3DVisualizer.AdjacentVertices.Deconstruct</definition>
+        <argsstring>(out Vertex fromVertex, out Vertex toVertex)</argsstring>
+        <name>Deconstruct</name>
+        <param>
+          <type>out <ref refid="class_grpah3_d_visualizer_1_1_vertex" kindref="compound">Vertex</ref></type>
+          <declname>fromVertex</declname>
+        </param>
+        <param>
+          <type>out <ref refid="class_grpah3_d_visualizer_1_1_vertex" kindref="compound">Vertex</ref></type>
+          <declname>toVertex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="49" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1ad86a68f9aef5b2b87a26ee99985241a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float Grpah3DVisualizer.AdjacentVertices.GetDistance</definition>
+        <argsstring>()</argsstring>
+        <name>GetDistance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="51" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1a82d035d584ce9d03b33534ba83b77453" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>Vector3 Grpah3DVisualizer.AdjacentVertices.GetUnitVector</definition>
+        <argsstring>()</argsstring>
+        <name>GetUnitVector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="53" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1ad59d5e5e2d5efb6bb8d28cc4e88c98b1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>Vector3 Grpah3DVisualizer.AdjacentVertices.GetMiddlePoint</definition>
+        <argsstring>()</argsstring>
+        <name>GetMiddlePoint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="55" column="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Graph3D/Scripts/Edge.cs" line="38" column="20" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="39" bodyend="56"/>
+    <listofallmembers>
+      <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1aa3ce61da2b25da99878fdbed5f28e325" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::AdjacentVertices</scope><name>AdjacentVertices</name></member>
+      <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1a772c9b00e189b51b87f10168288f95ce" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::AdjacentVertices</scope><name>Deconstruct</name></member>
+      <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1af64991d4400ee4a815edca4c54790997" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::AdjacentVertices</scope><name>FromVertex</name></member>
+      <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1ad86a68f9aef5b2b87a26ee99985241a7" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::AdjacentVertices</scope><name>GetDistance</name></member>
+      <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1ad59d5e5e2d5efb6bb8d28cc4e88c98b1" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::AdjacentVertices</scope><name>GetMiddlePoint</name></member>
+      <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1a82d035d584ce9d03b33534ba83b77453" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::AdjacentVertices</scope><name>GetUnitVector</name></member>
+      <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1a1a41868c3a238fb45ec36a2508cacbfe" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::AdjacentVertices</scope><name>ToVertex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

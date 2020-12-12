@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_player_input_controls_1_1_laser_pointer" kind="class" language="C#" prot="public">
+    <compoundname>PlayerInputControls::LaserPointer</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_player_input_controls_1_1_laser_pointer_1a8012c54b5654514ff2660b14eb680195" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float PlayerInputControls.LaserPointer._range</definition>
+        <argsstring></argsstring>
+        <name>_range</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="36" column="23" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_laser_pointer_1adc3b80f6c07331e09ac4bdbc4b39f075" prot="private" static="no" mutable="no">
+        <type>Texture2D</type>
+        <definition>Texture2D PlayerInputControls.LaserPointer._texture2D</definition>
+        <argsstring></argsstring>
+        <name>_texture2D</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="39" column="27" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_laser_pointer_1afb583d48dc0fbd32e3bd7c636dd695b3" prot="private" static="no" mutable="no">
+        <type>Shader</type>
+        <definition>Shader PlayerInputControls.LaserPointer._shader</definition>
+        <argsstring></argsstring>
+        <name>_shader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="40" column="24" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_laser_pointer_1a21a3eadfa7c1245622d4528fe70aca05" prot="private" static="no" mutable="no">
+        <type>Material</type>
+        <definition>Material PlayerInputControls.LaserPointer._material</definition>
+        <argsstring></argsstring>
+        <name>_material</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="41" column="26" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_laser_pointer_1a7ca753ebddd822401bc42314bc818383" prot="private" static="no" mutable="no">
+        <type>LineRenderer</type>
+        <definition>LineRenderer PlayerInputControls.LaserPointer._lineRender</definition>
+        <argsstring></argsstring>
+        <name>_lineRender</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="42" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_laser_pointer_1a64841722933b323364a47f5fa900b292" prot="private" static="no" mutable="no">
+        <type>Transform</type>
+        <definition>Transform PlayerInputControls.LaserPointer._transform</definition>
+        <argsstring></argsstring>
+        <name>_transform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="43" column="27" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_laser_pointer_1a648932d6c6acf83adbc3c1d66018511d" prot="private" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject PlayerInputControls.LaserPointer._gameObject</definition>
+        <argsstring></argsstring>
+        <name>_gameObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="44" column="28" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_laser_pointer_1aae536ab628eea680c542ee0ef3cf16aa" prot="private" static="no" mutable="no">
+        <type><ref refid="namespace_player_input_controls_1ac32d85f390d73c8d66b57b6dc7aae59c" kindref="member">LaserState</ref></type>
+        <definition>LaserState PlayerInputControls.LaserPointer._laserState</definition>
+        <argsstring></argsstring>
+        <name>_laserState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="45" column="28" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_player_input_controls_1_1_laser_pointer_1a9bc20f66bf393481d7b0755d0122bab7" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string PlayerInputControls.LaserPointer._cutoff</definition>
+        <argsstring></argsstring>
+        <name>_cutoff</name>
+        <initializer>= &quot;_Cutoff&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="37" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_player_input_controls_1_1_laser_pointer_1afd1770c4ccb93bb8e0f8f6cb65bc0a66" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string PlayerInputControls.LaserPointer._monoColorStateName</definition>
+        <argsstring></argsstring>
+        <name>_monoColorStateName</name>
+        <initializer>= &quot;_IsMonoColor&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="38" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_player_input_controls_1_1_laser_pointer_1a699d933618ae5925b63173d8fc3b89a4" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Color</type>
+        <definition>Color PlayerInputControls.LaserPointer.RayColor</definition>
+        <argsstring></argsstring>
+        <name>RayColor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="47" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="47" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="property" id="class_player_input_controls_1_1_laser_pointer_1ae3641277404ec772610ec840f1b941eb" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float PlayerInputControls.LaserPointer.Range</definition>
+        <argsstring></argsstring>
+        <name>Range</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="49" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="property" id="class_player_input_controls_1_1_laser_pointer_1abc1f4808f8053e8a103476a91001b227" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type><ref refid="namespace_player_input_controls_1ac32d85f390d73c8d66b57b6dc7aae59c" kindref="member">LaserState</ref></type>
+        <definition>LaserState PlayerInputControls.LaserPointer.LaserState</definition>
+        <argsstring></argsstring>
+        <name>LaserState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="51" column="27" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="52" bodyend="71"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_player_input_controls_1_1_laser_pointer_1ae37bee859fc8f14e944c8596ef7e586e" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.LaserPointer.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="73" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="73" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="class_player_input_controls_1_1_laser_pointer_1ac4c604fa973bca33b415be9be59ae5df" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.LaserPointer.LateUpdate</definition>
+        <argsstring>()</argsstring>
+        <name>LateUpdate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="101" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="101" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>PlayerInputControls.LaserPointer</label>
+        <link refid="class_player_input_controls_1_1_laser_pointer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>PlayerInputControls.LaserPointer</label>
+        <link refid="class_player_input_controls_1_1_laser_pointer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="33" column="11" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="34" bodyend="108"/>
+    <listofallmembers>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1a9bc20f66bf393481d7b0755d0122bab7" prot="private" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>_cutoff</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1a648932d6c6acf83adbc3c1d66018511d" prot="private" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>_gameObject</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1aae536ab628eea680c542ee0ef3cf16aa" prot="private" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>_laserState</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1a7ca753ebddd822401bc42314bc818383" prot="private" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>_lineRender</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1a21a3eadfa7c1245622d4528fe70aca05" prot="private" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>_material</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1afd1770c4ccb93bb8e0f8f6cb65bc0a66" prot="private" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>_monoColorStateName</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1a8012c54b5654514ff2660b14eb680195" prot="private" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>_range</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1afb583d48dc0fbd32e3bd7c636dd695b3" prot="private" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>_shader</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1adc3b80f6c07331e09ac4bdbc4b39f075" prot="private" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>_texture2D</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1a64841722933b323364a47f5fa900b292" prot="private" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>_transform</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1ae37bee859fc8f14e944c8596ef7e586e" prot="private" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>Awake</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1abc1f4808f8053e8a103476a91001b227" prot="public" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>LaserState</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1ac4c604fa973bca33b415be9be59ae5df" prot="private" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>LateUpdate</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1ae3641277404ec772610ec840f1b941eb" prot="public" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>Range</name></member>
+      <member refid="class_player_input_controls_1_1_laser_pointer_1a699d933618ae5925b63173d8fc3b89a4" prot="public" virt="non-virtual"><scope>PlayerInputControls::LaserPointer</scope><name>RayColor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

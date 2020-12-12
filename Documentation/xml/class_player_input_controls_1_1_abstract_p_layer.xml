@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_player_input_controls_1_1_abstract_p_layer" kind="class" language="C#" prot="public">
+    <compoundname>PlayerInputControls::AbstractPLayer</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+    <derivedcompoundref refid="class_player_input_controls_1_1_fly_player" prot="public" virt="non-virtual">PlayerInputControls.FlyPlayer</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_player_input_controls_1_1_abstract_p_layer_1a05a5025e85dcf3f1943a83fb0f0ccebb" prot="protected" static="no" mutable="no">
+        <type><ref refid="namespace_player_input_controls_1a5bb0d0358026ebdda2c0a3ee35ec2d92" kindref="member">InputType</ref></type>
+        <definition>InputType PlayerInputControls.AbstractPLayer._inputType</definition>
+        <argsstring></argsstring>
+        <name>_inputType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/AbstractPLayer.cs" line="51" column="29" bodyfile="Assets/Player/Scripts/FlyPlayer/AbstractPLayer.cs" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_player_input_controls_1_1_abstract_p_layer_1a9adaae750e12e353f1b355b908f2aef2" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>abstract <ref refid="namespace_player_input_controls_1a5bb0d0358026ebdda2c0a3ee35ec2d92" kindref="member">InputType</ref></type>
+        <definition>abstract InputType PlayerInputControls.AbstractPLayer.InputType</definition>
+        <argsstring></argsstring>
+        <name>InputType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/AbstractPLayer.cs" line="52" column="35" bodyfile="Assets/Player/Scripts/FlyPlayer/AbstractPLayer.cs" bodystart="52" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>PlayerInputControls.AbstractPLayer</label>
+        <link refid="class_player_input_controls_1_1_abstract_p_layer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>PlayerInputControls.FlyPlayer</label>
+        <link refid="class_player_input_controls_1_1_fly_player"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>PlayerInputControls.AbstractPLayer</label>
+        <link refid="class_player_input_controls_1_1_abstract_p_layer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Player/Scripts/FlyPlayer/AbstractPLayer.cs" line="49" column="21" bodyfile="Assets/Player/Scripts/FlyPlayer/AbstractPLayer.cs" bodystart="50" bodyend="53"/>
+    <listofallmembers>
+      <member refid="class_player_input_controls_1_1_abstract_p_layer_1a05a5025e85dcf3f1943a83fb0f0ccebb" prot="protected" virt="non-virtual"><scope>PlayerInputControls::AbstractPLayer</scope><name>_inputType</name></member>
+      <member refid="class_player_input_controls_1_1_abstract_p_layer_1a9adaae750e12e353f1b355b908f2aef2" prot="public" virt="non-virtual"><scope>PlayerInputControls::AbstractPLayer</scope><name>InputType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

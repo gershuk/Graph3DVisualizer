@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="dir_7e9c2331035b0c226825353ae960a46b" kind="dir">
+    <compoundname>Assets/Billboard/Scripts</compoundname>
+    <innerfile refid="_billboard_controller_8cs">BillboardController.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Billboard/Scripts/"/>
+  </compounddef>
+</doxygen>

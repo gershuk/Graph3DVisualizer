@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_grpah3_d_visualizer_1_1_g_u_i_factory" kind="class" language="C#" prot="public">
+    <compoundname>Grpah3DVisualizer::GUIFactory</compoundname>
+    <innerclass refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_button_parameters" prot="public">Grpah3DVisualizer::GUIFactory::ButtonParameters</innerclass>
+    <innerclass refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_rect_transform_parameters" prot="public">Grpah3DVisualizer::GUIFactory::RectTransformParameters</innerclass>
+    <innerclass refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters" prot="public">Grpah3DVisualizer::GUIFactory::TextParameters</innerclass>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_g_u_i_factory_1a73b40303021f3c0bab8b603ebc80cd09" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Grpah3DVisualizer.GUIFactory.SetUpRectTransform</definition>
+        <argsstring>(this RectTransform rectTransform, in RectTransformParameters parameters)</argsstring>
+        <name>SetUpRectTransform</name>
+        <param>
+          <type>this RectTransform</type>
+          <declname>rectTransform</declname>
+        </param>
+        <param>
+          <type>in <ref refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_rect_transform_parameters" kindref="compound">RectTransformParameters</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="45" column="28" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="45" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_g_u_i_factory_1a0dee643a69b856f30a68891307f785d0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>GameObject</type>
+        <definition>static GameObject Grpah3DVisualizer.GUIFactory.CreateText</definition>
+        <argsstring>(in TextParameters parameters)</argsstring>
+        <name>CreateText</name>
+        <param>
+          <type>in <ref refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters" kindref="compound">TextParameters</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="74" column="34" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="74" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_g_u_i_factory_1af260f4ab51a123c92de4f3ce575b0be9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>GameObject</type>
+        <definition>static GameObject Grpah3DVisualizer.GUIFactory.CreateButton</definition>
+        <argsstring>(in ButtonParameters parameters)</argsstring>
+        <name>CreateButton</name>
+        <param>
+          <type>in <ref refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_button_parameters" kindref="compound">ButtonParameters</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="101" column="34" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="101" bodyend="107"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="25" column="19" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="26" bodyend="108"/>
+    <listofallmembers>
+      <member refid="class_grpah3_d_visualizer_1_1_g_u_i_factory_1af260f4ab51a123c92de4f3ce575b0be9" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::GUIFactory</scope><name>CreateButton</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_g_u_i_factory_1a0dee643a69b856f30a68891307f785d0" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::GUIFactory</scope><name>CreateText</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_g_u_i_factory_1a73b40303021f3c0bab8b603ebc80cd09" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::GUIFactory</scope><name>SetUpRectTransform</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

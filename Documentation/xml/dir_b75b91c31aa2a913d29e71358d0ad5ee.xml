@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="dir_b75b91c31aa2a913d29e71358d0ad5ee" kind="dir">
+    <compoundname>Assets/SceneController</compoundname>
+    <innerdir refid="dir_1394cdc8181da8718bb10b411ba92605">Assets/SceneController/Scripts</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/SceneController/"/>
+  </compounddef>
+</doxygen>

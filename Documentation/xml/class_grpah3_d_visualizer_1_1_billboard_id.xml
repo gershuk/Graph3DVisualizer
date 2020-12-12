@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_grpah3_d_visualizer_1_1_billboard_id" kind="class" language="C#" prot="public">
+    <compoundname>Grpah3DVisualizer::BillboardId</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_billboard_id_1a442c0800822f0186f39b0e718e240d3c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Grpah3DVisualizer.BillboardId.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="201" column="23" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="201" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="property" id="class_grpah3_d_visualizer_1_1_billboard_id_1a3454712b15a9cf6a8d485b3a6aeeb0db" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Grpah3DVisualizer.BillboardId.Description</definition>
+        <argsstring></argsstring>
+        <name>Description</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="202" column="23" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="202" bodyend="202"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_billboard_id_1a76e9c9b4029c37940adc5fc6e4a5f141" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Grpah3DVisualizer.BillboardId.BillboardId</definition>
+        <argsstring>(string name, string description)</argsstring>
+        <name>BillboardId</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="204" column="16" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="204" bodyend="208"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Billboard/Scripts/BillboardController.cs" line="199" column="11" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="200" bodyend="209"/>
+    <listofallmembers>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_id_1a76e9c9b4029c37940adc5fc6e4a5f141" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardId</scope><name>BillboardId</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_id_1a3454712b15a9cf6a8d485b3a6aeeb0db" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardId</scope><name>Description</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_billboard_id_1a442c0800822f0186f39b0e718e240d3c" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::BillboardId</scope><name>Name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

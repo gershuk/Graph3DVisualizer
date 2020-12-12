@@ -1,0 +1,842 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.20" xml:lang="en-US">
+  <compound refid="class_player_input_controls_1_1_abstract_p_layer" kind="class"><name>PlayerInputControls::AbstractPLayer</name>
+    <member refid="class_player_input_controls_1_1_abstract_p_layer_1a05a5025e85dcf3f1943a83fb0f0ccebb" kind="variable"><name>_inputType</name></member>
+    <member refid="class_player_input_controls_1_1_abstract_p_layer_1a9adaae750e12e353f1b355b908f2aef2" kind="property"><name>InputType</name></member>
+  </compound>
+  <compound refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices" kind="struct"><name>Grpah3DVisualizer::AdjacentVertices</name>
+    <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1af64991d4400ee4a815edca4c54790997" kind="property"><name>FromVertex</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1a1a41868c3a238fb45ec36a2508cacbfe" kind="property"><name>ToVertex</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1aa3ce61da2b25da99878fdbed5f28e325" kind="function"><name>AdjacentVertices</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1a772c9b00e189b51b87f10168288f95ce" kind="function"><name>Deconstruct</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1ad86a68f9aef5b2b87a26ee99985241a7" kind="function"><name>GetDistance</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1a82d035d584ce9d03b33534ba83b77453" kind="function"><name>GetUnitVector</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_adjacent_vertices_1ad59d5e5e2d5efb6bb8d28cc4e88c98b1" kind="function"><name>GetMiddlePoint</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_billboard" kind="class"><name>Grpah3DVisualizer::Billboard</name>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1aaec31d31ae6511761c7dd2e753439052" kind="variable"><name>_scaleX</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1ada3e83b698b6917d1f7c15bd27c57e4b" kind="variable"><name>_scaleY</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1a26e15bfc7e40d15dbc207e160bd38df8" kind="variable"><name>_cutoff</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1af3305554381b0e669333505fa321b3c4" kind="variable"><name>_mainTextureName</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1ad733be2755587357d98cc3f26243ddd1" kind="variable"><name>_isMonoColor</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1ac3b6714fe5d3afcef068f60a3f747cf7" kind="variable"><name>_monoColor</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1ae65bf28798c9428f6169cff74c10ad67" kind="variable"><name>_combinedImage</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1a5cce7c4770f9541c38d17d49d99bb2b7" kind="property"><name>Material</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1a1917cccd7452c32cefbcdbc3acee8de4" kind="property"><name>MainTexture</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1a66452caecb514393468784ea412b727a" kind="property"><name>ScaleX</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1aed7e7294341a8d4e6f6ba46acb10696c" kind="property"><name>ScaleY</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1adf16bc6cde48a5a8ffc88ea0d351d821" kind="property"><name>Cutoff</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1a7d8f7284400ac84c05fcd13912f340e7" kind="property"><name>TextureOffset</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1ad3908587e5f736f8bf8ba3e286788b04" kind="property"><name>TextureScale</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1aa24966d53fb0af4a31ad4b182e1b6172" kind="property"><name>IsMonoColor</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1ac97484814f5b0e794b524547e5a30d4e" kind="property"><name>MonoColor</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1afd97807c949ef476d7e8277e065b0719" kind="variable"><name>ScaleChanged</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1a92514a4dc52110f055464eb6b931d0c0" kind="function"><name>SetupParams</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1aa6898a4051bdf79bbe15d9045e709165" kind="function"><name>DownloadParams</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_1a02e80843ad8602bd3bfadb33a3560885" kind="function"><name>Billboard</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_billboard_controller" kind="class"><name>Grpah3DVisualizer::BillboardController</name>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1ac9b97a9c9280e94c0b540762d27a6d9e" kind="variable"><name>_billboards</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a9c5cd7d201dd7c5d34c5a8b47e284eec" kind="variable"><name>_render</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1ab02898b20c72add429ed9c3189ac18fb" kind="variable"><name>_meshFilter</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a1cf8b29a0c7c63303431289b48090b9d" kind="variable"><name>_shader</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a1abe401bc86957b6d33bbb345d9e4d13" kind="variable"><name>_defaultTexture</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a0ac4b2cf73e5cda0281aa083df94a325" kind="event"><name>VisibleChanged</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a964d91ebe6e3d7452fa836b5bd89cb64" kind="property"><name>Visibility</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a48963f49ff9d1854749e8780a0ee5c2a" kind="function"><name>Awake</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1ad72894aaac0bf49b4b40c6e8be333c39" kind="function"><name>AddBillboardMaterialToRender</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1aa7bff0cd8f0f2053894e4ce7252f35a1" kind="function"><name>CreateBillboard</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1afbbce9981f1685ceace4f6bb4369badb" kind="function"><name>GetBillboard</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a59a7b6819de2512841558d7c4737ff3d" kind="function"><name>DeleteBillboard</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a5cebcfdc86420846e7c7dc156e723f0e" kind="function"><name>UpdateBounds</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1a07c5a578ef281963aaf0b738de8ea576" kind="function"><name>DisableBillboard</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_controller_1affd362bc6e3b9999a98dedc1fd5febf1" kind="function"><name>EnableBillboard</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_billboard_id" kind="class"><name>Grpah3DVisualizer::BillboardId</name>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_id_1a442c0800822f0186f39b0e718e240d3c" kind="property"><name>Name</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_id_1a3454712b15a9cf6a8d485b3a6aeeb0db" kind="property"><name>Description</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_id_1a76e9c9b4029c37940adc5fc6e4a5f141" kind="function"><name>BillboardId</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_billboard_parameters" kind="class"><name>Grpah3DVisualizer::BillboardParameters</name>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_parameters_1a52b3390b4ad5441534d0041744143e24" kind="property"><name>CombinedImages</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_parameters_1a45a04d8b09cc6a448123d6f2671d32c9" kind="property"><name>Scale</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_parameters_1a8cbca694b727120e38dde538c4be8902" kind="property"><name>Cutoff</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_parameters_1a91499680e72a7bd2b847fa55041b3028" kind="property"><name>Compressed</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_parameters_1a8b8a4dcdc7d39012089b13549288eb83" kind="property"><name>IsMonoColor</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_parameters_1a30a8982ca928d0a8eb2c7e4ef0c8cfda" kind="property"><name>MonoColor</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_billboard_parameters_1ae389925c3ad1a0134f62ab4362c136a9" kind="function"><name>BillboardParameters</name></member>
+  </compound>
+  <compound refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_button_parameters" kind="struct"><name>Grpah3DVisualizer::GUIFactory::ButtonParameters</name>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_button_parameters_1a2d6ea8974bdf84b0e90ce55fe50b0b77" kind="property"><name>Name</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_button_parameters_1a586c2a157f71a4e4a940d435ad07997d" kind="property"><name>RectTransformParameters</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_button_parameters_1a160daef05102a39de384774771bec425" kind="property"><name>OnClickFunction</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_button_parameters_1ab6382722458160e04d3b16383e39a285" kind="function"><name>ButtonParameters</name></member>
+  </compound>
+  <compound refid="class_texture_factory_1_1_combined_images" kind="class"><name>TextureFactory::CombinedImages</name>
+    <member refid="class_texture_factory_1_1_combined_images_1ab955b4bc70b70cf24555a00d89277a34" kind="property"><name>Images</name></member>
+    <member refid="class_texture_factory_1_1_combined_images_1a1e93fba35c60e7f055ae6475c68398d7" kind="property"><name>TextureWidth</name></member>
+    <member refid="class_texture_factory_1_1_combined_images_1ae74039730a3d0db4d792c305c282eab7" kind="property"><name>TextureHeight</name></member>
+    <member refid="class_texture_factory_1_1_combined_images_1a32d26cb83ce701ff579dd8db5261d5bf" kind="property"><name>WrapMode</name></member>
+    <member refid="class_texture_factory_1_1_combined_images_1a2ee6f98a587693db40c4427c6c11cc15" kind="property"><name>IsTransparentBackground</name></member>
+    <member refid="class_texture_factory_1_1_combined_images_1a3f3ed07ca99f2a4986ce52fbef7a6218" kind="function"><name>CombinedImages</name></member>
+    <member refid="class_texture_factory_1_1_combined_images_1ae8b2abe777e99fa540568dd9f702bdec" kind="function"><name>Clone</name></member>
+  </compound>
+  <compound refid="class_support_components_1_1_customizable_extension" kind="class"><name>SupportComponents::CustomizableExtension</name>
+    <member refid="class_support_components_1_1_customizable_extension_1a36a3ad22b579b074266d7ebfc08d62ae" kind="function"><name>CallSetUpParams</name></member>
+    <member refid="class_support_components_1_1_customizable_extension_1a1e09acc2f765e3dcec0549d96684d449" kind="function"><name>CallDownloadParams</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_decembrist_vertex" kind="class"><name>Grpah3DVisualizer::DecembristVertex</name>
+    <member refid="class_grpah3_d_visualizer_1_1_decembrist_vertex_1a08b3573e48b2ee3cf3cb6ae24ff2a09f" kind="property"><name>IsDec</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_decembrist_vertex_1adf5ff773b610d32acabb2afb84354d65" kind="property"><name>Name</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_edge" kind="class"><name>Grpah3DVisualizer::Edge</name>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a5a14274431055d4297416aa61be7db1e" kind="variable"><name>_cutoff</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a73adcaa974e4abc015c17001c4f4f36b" kind="variable"><name>_shader</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1ab11175f62a6aebcc30909d66b0875f9f" kind="variable"><name>_defaultArrowTexture</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1ad0ff69bee888bd4489198c3e9957311e" kind="variable"><name>_defaultLineTexture</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1aa34dde62409c1b8c3428e7d4c7eddd6e" kind="variable"><name>_lineTexture</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a8c2a766b01708bdc52fd5c57f4a6c335" kind="variable"><name>_arrowTexture</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1aa4eeaab06167dfa193db23571588fb60" kind="variable"><name>_transform</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a69c208174cfaf1693645539bce884fa9" kind="variable"><name>_material</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a35ae4e26c3c9d036ff35703ac6d2751f" kind="variable"><name>_lineRenderer</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a324c5e35280fcd4a53644f3b774b2aed" kind="variable"><name>_sourceOffsetDist</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a00e3d0b1822a36895818e09131cfcc3f" kind="variable"><name>_targetOffsetDist</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a53d3313bc43c37edffc773765e4b3002" kind="variable"><name>_type</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1ad689d8ff92a17f30b0e07e99bc98cbbe" kind="variable"><name>_adjacentVertices</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a2cd5d1a6d74134d4d5cb36af27a37190" kind="variable"><name>_visibility</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a1b8762b216cce79581d9b731a515360d" kind="property"><name>AdjacentVertices</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1ab9812a05b7fa5fe44e475c26534cd73a" kind="property"><name>Type</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1aebbb477e2a3ae5d3cc646fae6a9f4fec" kind="property"><name>SourceOffsetDist</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a2ba52cc13f40ed0e7d61dcf9fa2ecf7a" kind="property"><name>TargetOffsetDist</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a9af7bb1e289d0fd5f416f399554fa963" kind="property"><name>Visibility</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1ae4704038558e5d22233e82dc249a4dbc" kind="property"><name>LineTexture</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a1a57dbd04b384f6eaeac6d3c399de5ff" kind="property"><name>ArrowTexture</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a64b0f48d3c9cbf678a656a3a15d1e28a" kind="function"><name>Awake</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a6ba40872798c7c54d6334f2090e3d191" kind="function"><name>OnMove</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a3ce3c4556058771be17e94e0272aac8d" kind="function"><name>OnVisibilityChange</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a8b48c50475daccb127ec974464aab171" kind="function"><name>OnDestroyed</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a92c556a7ce8d83b21fd4e49041dbc67b" kind="function"><name>SubscribeOnVerticesEvents</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a7d24e96df24e4c028b90fff67448d920" kind="function"><name>UnsubscribeOnVerticesEvents</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a981a7ff385875e966e78da2b81cb37b4" kind="function"><name>OnDestroy</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1aad1a64d5789567653fe1e51c2dc4be0b" kind="function"><name>UpdateType</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a13a5bb82f81ac2658d358cd34e1624a2" kind="function"><name>UpdateCoordinates</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a436024eafda8a5063b8c93e7ccf7404a" kind="function"><name>UpdateVisibility</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a048405b68e8959259a6a319e140c77fb" kind="function"><name>UpdateEdge</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1a2d87024eccf928280c2173913064479c" kind="function"><name>SetupParams</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_1adab1dbea86b8fba4beac0fcc67ff493c" kind="function"><name>DownloadParams</name></member>
+  </compound>
+  <compound refid="class_player_input_controls_1_1_edge_creater_tool" kind="class"><name>PlayerInputControls::EdgeCreaterTool</name>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a31913bd8c9a2227b3e4f31c4de121f90" kind="enum"><name>State</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a31913bd8c9a2227b3e4f31c4de121f90a6adf97f83acf6453d4a6a4b1070f3754" kind="enumvalue"><name>None</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a31913bd8c9a2227b3e4f31c4de121f90a7df03dec0845db7d2b8df32c4d3532cb" kind="enumvalue"><name>Selecting</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a31913bd8c9a2227b3e4f31c4de121f90a3f3fd305853cd7feadbab8b5af8a6b0f" kind="enumvalue"><name>LinkChanging</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a29f29f4df58bcb625393971bb2e2ce4c" kind="variable"><name>_createEdgeActionName</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a0210db6b842bdb8fe0331b382fc58d7b" kind="variable"><name>_deleteEdgeActionName</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1aa002d02b7b36e207e5d6e960201f565c" kind="variable"><name>_changeRangeActionName</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a3638dce1354bf149ba6c4ac7a417ccc7" kind="variable"><name>_actionMapName</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a8458102a41a4c9416f6d6f4ef41c2f41" kind="variable"><name>_rayCastRange</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1aa5d57eec56c5cfb4374ca3682693eba3" kind="variable"><name>_inputActions</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a927d7b54bf244afab8c561e44cfbed54" kind="variable"><name>_laserPointer</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1ac01e221bbb24012e7b07fd8dc6330985" kind="variable"><name>_edgeTypes</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a57821f59788a9166eeec98ec90e11a35" kind="variable"><name>_typeIndex</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a03b962aa731741b8dd026007933262bd" kind="variable"><name>_firstVertex</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a6a78d340291ef04128fbe5a1efa09c9d" kind="variable"><name>_secondVertex</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1acf57475e7a5b74373afbd8dca71fb790" kind="variable"><name>_linkParameters</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1acb8b5e99e000975fb89966f2d0821a9d" kind="variable"><name>_state</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a4ad3a63872aa1d1b4945e9c97a96d90a" kind="function"><name>Awake</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1af417be53ba68c5afc065d30465f88faf" kind="function"><name>OnEnable</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a803714157e9063331babb96fbc73f1b6" kind="function"><name>OnDisable</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1ab195fa515e8f64502d8d9c65cd88c13e" kind="function"><name>CallChangeEdgeType</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a07985ab126960ccc178b4582452574a1" kind="function"><name>CallSelectFirstPoint</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a6d0b9ab9dfdd59d07a0d79ffaa0b0fef" kind="function"><name>CallCreateEdge</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1ab07b8f8c3f8bbc90fe0f0ef3369301d3" kind="function"><name>CallDeleteEdge</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a46e944dbd8ee7b10af129a71b647d71a" kind="function"><name>SelectFirstPoint</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a0e1b54ef5b624330e3897c09a538b85e" kind="function"><name>SelectSecondPoint</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1aaba50bc92f63c705ec63abed7351c618" kind="function"><name>DeleteEdge</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a3e89cb83566fef423dda663f2d9c25f2" kind="function"><name>CreateEdge</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a51bfc10d6fee2262213390092ed0a8a0" kind="function"><name>RegisterEvents</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a9c7199c8e9ec26c1efbb5792366406a5" kind="function"><name>ChangeIndex</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1ab8d35532bde6a719293b22a07d361eb5" kind="function"><name>SetupParams</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_1a6d12afbc42443e6d955f97901df46058" kind="function"><name>DownloadParams</name></member>
+  </compound>
+  <compound refid="class_player_input_controls_1_1_edge_creater_tool_params" kind="class"><name>PlayerInputControls::EdgeCreaterToolParams</name>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_params_1aa8b5ec41dbe6053cca6ee53b350079cf" kind="property"><name>EdgeTypes</name></member>
+    <member refid="class_player_input_controls_1_1_edge_creater_tool_params_1aa19237dbf1339ac003205eef9d239314" kind="function"><name>EdgeCreaterToolParams</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_edge_parameters" kind="class"><name>Grpah3DVisualizer::EdgeParameters</name>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1a67465d8d9ddeb6a9441ce721503f0d19" kind="property"><name>AdjacentVertices</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1a0d0e7391070acbaef80fbce2f8014b26" kind="property"><name>SourceOffsetDist</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1a0d40cc3c6296eb87d7d86c5e41817e95" kind="property"><name>TargetOffsetDist</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1a40d396c3429037cdbb9a198efdc18303" kind="property"><name>ArrowTexture</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1a99cda9c12a8c2c69ba07a6aa1cc50bb4" kind="property"><name>LineTexture</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1a79b04ad93c74f06aa783d7c10707a5e1" kind="property"><name>Visibility</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_edge_parameters_1aa88a6fe4ea8e24a50d77676114088807" kind="function"><name>EdgeParameters</name></member>
+  </compound>
+  <compound refid="class_git_hub_1_1_unity_1_1_extension_loader" kind="class"><name>GitHub::Unity::ExtensionLoader</name>
+    <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a6f9801c2d478d34a4cbfef2fb41af5a0" kind="variable"><name>initialized</name></member>
+    <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a5b719a771ac55414ba57fb2b0f378718" kind="property"><name>Initialized</name></member>
+    <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a17a9d825c6550fd891674a77f593cd71" kind="property"><name>IsDisabled</name></member>
+    <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a2d079e410f2b55b978d5610ce35dd8c9" kind="variable"><name>inSourceMode</name></member>
+    <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a5ad637a19d8c3e8810391db3f926ec16" kind="variable"><name>sourceModePath</name></member>
+    <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a2808c8dd710fa10edac5f7ac1c146081" kind="variable"><name>realPath</name></member>
+    <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1abf907149670a006087166d655b3acef0" kind="variable"><name>assemblies20</name></member>
+    <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1aa83651c9c7e43fc357cab4ad5f6db75b" kind="variable"><name>assemblies45</name></member>
+    <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a6b2edbce792d0dd9e44d82d8c45a2fa1" kind="variable"><name>GITHUB_UNITY_DISABLE</name></member>
+    <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a14b6a5f9608dc7915e4a73c2da6a28bf" kind="function"><name>ExtensionLoader</name></member>
+    <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a707f5238d7a7e9cbc36cf87f4f998ca1" kind="function"><name>Initialize</name></member>
+    <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1af56632afafb85a62cca9133d0d92d046" kind="function"><name>ToggleAssemblies</name></member>
+    <member refid="class_git_hub_1_1_unity_1_1_extension_loader_1a04df646f62c3e5df89487e108c686ce4" kind="function"><name>ToggleAssemblies</name></member>
+  </compound>
+  <compound refid="class_player_input_controls_1_1_fly_controls" kind="class"><name>PlayerInputControls::FlyControls</name>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a3b8779e05db94408c6e2b110e347817a" kind="property"><name>asset</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a9acb4d19905c0c5cf445d5841ebcd3e9" kind="property"><name>bindingMask</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a9c6aee458deff7833915d1529b56eca2" kind="property"><name>devices</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1acf6505b27d147502e6146859b1a2a7b6" kind="variable"><name>controlSchemes</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a764ccfde300ba2639af5bda37383df6e" kind="variable"><name>FlyModel</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1ab0eab31471bd26ecfc52f0d0a3b4e506" kind="variable"><name>m_FlyModel</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a74e47ed7dacf920e142a39d62381c3f4" kind="variable"><name>m_FlyModelActionsCallbackInterface</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1ab5f1e20ec3380dc273574518edb75be6" kind="variable"><name>m_FlyModel_MoveToPoint</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a7572ad1be1b1cb77742c706b72f3e3a8" kind="variable"><name>m_FlyModel_Move</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a19a7d6bbe59c7aac7273be54dd1ed431" kind="variable"><name>m_FlyModel_LookRotation</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a2bce11ba799b7bcdf64d2e2b2a321a92" kind="variable"><name>m_FlyModel_ChangeAltitude</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a09cd0129b8039a4f4d89a5b64d1dc4da" kind="variable"><name>m_FlyModel_ScrollItemList</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a44cb242055debf428a541edbd9d11c01" kind="variable"><name>m_FlyModel_SelectItem</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1ad74fac3b59eed8725a98a28adae5d26a" kind="function"><name>FlyControls</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a15ccabeeb222391d8b0a2efcb71ea3de" kind="function"><name>Dispose</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a5fd353fbc89205f54c040049bb0e46cc" kind="function"><name>Contains</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a806a3aa163cccfe696c89e0021c5199d" kind="function"><name>GetEnumerator</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a377a572e2df5858b57ea6d789780c1b8" kind="function"><name>Enable</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a622418c3c66e0c3a8d63b853eda159f0" kind="function"><name>Disable</name></member>
+    <member refid="class_player_input_controls_1_1_fly_controls_1a577cbd4660c54b1d9b94025fe533fbc4" kind="function"><name>GetEnumerator</name></member>
+  </compound>
+  <compound refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions" kind="struct"><name>PlayerInputControls::FlyControls::FlyModelActions</name>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1afdf253565f560de109c049f28e179694" kind="variable"><name>m_Wrapper</name></member>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a4131fdd80488da281a41afb20b5be0be" kind="variable"><name>MoveToPoint</name></member>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1aeb1637efcfc5e8c97f6f8fd0a457482a" kind="variable"><name>Move</name></member>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1aea7cdd38c371c192abd6331032de01ef" kind="variable"><name>LookRotation</name></member>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a64239227979d10b5f9f6ee749a301484" kind="variable"><name>ChangeAltitude</name></member>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a7a4b9bc2b5c84f40d440970f14425e6b" kind="variable"><name>ScrollItemList</name></member>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a7171406c4a30bbb0e502d36d96372fee" kind="variable"><name>SelectItem</name></member>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a9f8853eefed08794639766fc1444170c" kind="variable"><name>enabled</name></member>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a351a67a8916333ef53233f398de6679b" kind="function"><name>FlyModelActions</name></member>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1adb88960b7f199017a46498f3f184a086" kind="function"><name>Get</name></member>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a3973967f9f21d69a31806ef84176f7fa" kind="function"><name>Enable</name></member>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a66a6456b900b6231ba3525770405c416" kind="function"><name>Disable</name></member>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a515713544f30ef7012986af089fe392f" kind="function"><name>SetCallbacks</name></member>
+    <member refid="struct_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1ae68cbf8bba3810502ae8226d8ea86fbb" kind="function"><name>operator InputActionMap</name></member>
+  </compound>
+  <compound refid="class_player_input_controls_1_1_fly_player" kind="class"><name>PlayerInputControls::FlyPlayer</name>
+    <member refid="class_player_input_controls_1_1_fly_player_1abe7e4b0d64efea3ef32dbff4f4cd7e86" kind="variable"><name>_transform</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1aaf5e36389b41ab22775ea75f61b41203" kind="variable"><name>_moveDirVector</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1ade45496f52dba49592ced048ff119050" kind="variable"><name>_inputActions</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1af0977d72dcb62c940202fbeef48926d3" kind="variable"><name>_moveComponent</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1a0717773c19c043e9baff7e9cb0605300" kind="variable"><name>_playerTools</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1aec6ff87dec152edb809911c1b2a29d73" kind="variable"><name>_currentToolIndex</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1ae123eb4a52707305e15796fb1f7e427c" kind="variable"><name>_hand</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1abbb4ce22ca85255de581fdeb85a123b1" kind="property"><name>InputType</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1aa2a12922150c93ab75ab038256f8d948" kind="function"><name>Awake</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1a7490fca3b5021aa6f13b2204cdf6c630" kind="function"><name>CreateTool</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1ab4949d403d05dfef0f1d874345924dd3" kind="function"><name>LateUpdate</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1a8951d7b280041978c7a9739c28d04d90" kind="function"><name>OnEnable</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1a1a0fa6d5063f62db07a157fdbf6bd69d" kind="function"><name>OnDisable</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1a9ed42cbbc1b88f9935f22e958471efbe" kind="function"><name>UpdateInputs</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1a4f717e794f394130b13eb4533eaf4623" kind="function"><name>OnPlayerMove</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1aa17bdadc1beb7671e568c9c13aff8676" kind="function"><name>OnPlayerChangeAltitude</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1a62c9c70adb7f4af5f3c6e0730ccf1f44" kind="function"><name>OnMoveToPoint</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1af3fc5da85c1187f44c426fff0ea2401a" kind="function"><name>SelectTool</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1ad22612edfabc54d276d89f0fdbde3f05" kind="function"><name>OnSelectItem</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1a40503cb237d640bce5c34914f9e7a609" kind="function"><name>SetupParams</name></member>
+    <member refid="class_player_input_controls_1_1_fly_player_1ab4f001c7b9d650be8b9fd4ff6f7d4fc2" kind="function"><name>DownloadParams</name></member>
+  </compound>
+  <compound refid="class_player_input_controls_1_1_grab_item_tool" kind="class"><name>PlayerInputControls::GrabItemTool</name>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1acd361c29b87317b28b3bb775d7fa6248" kind="variable"><name>_grabActionName</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1aae17a2830b6cc974d0e9b37fa0a11f21" kind="variable"><name>_changeRangeActionName</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a53769a9c1590e652ef887cb66ef17661" kind="variable"><name>_actionMapName</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1ad1f292bb80916e536fdb08b74a102493" kind="variable"><name>_rayCastRange</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a8035e07de511729893a442bbdcc2028d" kind="variable"><name>_capturedRange</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1ae0e276ae15099f7ec2d67aec22cc3db5" kind="variable"><name>_rangeChangeSpeed</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a40095087e6737adafc070904f1f2f1e6" kind="variable"><name>_inputActions</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1aba67b37183f854a0c6f64d149d0dcd6c" kind="variable"><name>_moveable</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1aabf0c667f80d3c48c75894a80d3bb413" kind="variable"><name>_isCapturedObject</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a7d41aa5a5f875d79ce992e060c4259df" kind="variable"><name>_laserPointer</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a9b0effdbcf06825e5742c05ea36a05a1" kind="variable"><name>_transform</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a6b50c194993907b59c0820e6d1570707" kind="variable"><name>_changeRangeCoroutine</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a58d3414200857990ae13a153a5a3ce46" kind="variable"><name>_isChangingRange</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a82681542b5d397084e6f1327dfcba444" kind="property"><name>CapturedRange</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1ad413156e7b7814615e0cfcd3a6de0090" kind="property"><name>RangeChangeSpeed</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a60392b3073fba335f71de4ca213a489a" kind="function"><name>Awake</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1ac83ac97291e2a1f8d6defc70f1c43855" kind="function"><name>LateUpdate</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a5da7fc177b746648e40f7d14557626e9" kind="function"><name>OnEnable</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a49785aa74efbb10137f83f45a7d1d2de" kind="function"><name>OnDisable</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1ac54fef6922d0946a76d94d575e59b21f" kind="function"><name>ChangingRangeCoroutine</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a627322a81db95f97a882b2196201d214" kind="function"><name>CallGrabItem</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1ae10403810f3c0c573c7aac46a1db6c70" kind="function"><name>CallFreeItem</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a35bc9cf91bfab6d6b8075d8b0805d10e" kind="function"><name>CallStartChangingRange</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a93cb23bdc7b7ec90ce221e7c8526a5e0" kind="function"><name>CallStopChangingRange</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a58bbfad38b9b94c328350dc236eb2af4" kind="function"><name>ChangeRange</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1aa6257be72ed1f09872e830dbeb2942c7" kind="function"><name>GrabItem</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a96ec936e2e9ecb0a3705d37547293d2f" kind="function"><name>FreeItem</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1ac6baa4cc4b5861eed2a66f49a5bae6d3" kind="function"><name>StartChangingRange</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1af6b82f5e5aa580a5562016c04bd40ad2" kind="function"><name>StopChangingRange</name></member>
+    <member refid="class_player_input_controls_1_1_grab_item_tool_1a9e878cd2a978b03d085ca10fdf064bf3" kind="function"><name>RegisterEvents</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_graph" kind="class"><name>Grpah3DVisualizer::Graph</name>
+    <member refid="class_grpah3_d_visualizer_1_1_graph_1a97c985921b73cc8d8ce5f14aacb1e996" kind="variable"><name>_vertexPrefab</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_graph_1a37a88944a96c0880e00de07eb8a4a1ad" kind="variable"><name>_transform</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_graph_1a978fa8dd28c0ed49edb7baf877109833" kind="variable"><name>_vertexes</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_graph_1a0212ef934e2561a75ed028b1f8e576b4" kind="property"><name>Vertexes</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_graph_1a6f5cc0c08d5aa9985f0290a384158c67" kind="function"><name>Awake</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_graph_1a6da7fdf74b8a78fd54103cb7e3e1b119" kind="function"><name>SpawnVertex&lt; T &gt;</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_graph_1af4487e6d9dda39cbaab9fbd55df5ae81" kind="function"><name>ContainsVertex</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_graph_1a7b0576d622257afdaaa2687c8fc3bf61" kind="function"><name>DeleteVeretex</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_g_u_i_factory" kind="class"><name>Grpah3DVisualizer::GUIFactory</name>
+    <member refid="class_grpah3_d_visualizer_1_1_g_u_i_factory_1a73b40303021f3c0bab8b603ebc80cd09" kind="function"><name>SetUpRectTransform</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_g_u_i_factory_1a0dee643a69b856f30a68891307f785d0" kind="function"><name>CreateText</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_g_u_i_factory_1af260f4ab51a123c92de4f3ce575b0be9" kind="function"><name>CreateButton</name></member>
+  </compound>
+  <compound refid="class_graph_tasks_1_1_history_task1" kind="class"><name>GraphTasks::HistoryTask1</name>
+    <member refid="class_graph_tasks_1_1_history_task1_1a54800b38b38d079bbb70b078ff878d6d" kind="variable"><name>_graph</name></member>
+    <member refid="class_graph_tasks_1_1_history_task1_1a36315dfa62145705b9e4ba52293a1e21" kind="variable"><name>_player</name></member>
+    <member refid="class_graph_tasks_1_1_history_task1_1a8274e89aaeef8a691ce7039985a861fe" kind="property"><name>Players</name></member>
+    <member refid="class_graph_tasks_1_1_history_task1_1afabb5986b74e9e6be9dcf9aad696cb09" kind="property"><name>Graphs</name></member>
+    <member refid="class_graph_tasks_1_1_history_task1_1a71c3e7fa2687d798b7f0a1f43ed1bfb5" kind="function"><name>AddPeople</name></member>
+    <member refid="class_graph_tasks_1_1_history_task1_1afffacfd076308722deca19ccf59fe6ad" kind="function"><name>CreateGraph</name></member>
+    <member refid="class_graph_tasks_1_1_history_task1_1ab3599b316e0524389c094068401b55b0" kind="function"><name>InitTask</name></member>
+    <member refid="class_graph_tasks_1_1_history_task1_1aa20f09325c526a6348da9c5af1790e93" kind="function"><name>StartTask</name></member>
+    <member refid="class_graph_tasks_1_1_history_task1_1a9f496d67e7397a15091f178fe7966f26" kind="function"><name>StopTask</name></member>
+    <member refid="class_graph_tasks_1_1_history_task1_1a18e427fa0d9c002b01ac4c7c37ec5bad" kind="function"><name>DestroyTask</name></member>
+    <member refid="class_graph_tasks_1_1_history_task1_1a0a54461ebeb44a9d0dda0ee02faff457" kind="function"><name>GetResult</name></member>
+  </compound>
+  <compound refid="interface_support_components_1_1_i_customizable" kind="interface"><name>SupportComponents::ICustomizable</name>
+    <member refid="interface_support_components_1_1_i_customizable_1a3871d735ec47f4ebd8983717f8564f2b" kind="function"><name>SetupParams</name></member>
+    <member refid="interface_support_components_1_1_i_customizable_1ab01ac8a39a5d54dc25542e752a56a4ce" kind="function"><name>DownloadParams</name></member>
+  </compound>
+  <compound refid="interface_support_components_1_1_i_destructible" kind="interface"><name>SupportComponents::IDestructible</name>
+    <member refid="interface_support_components_1_1_i_destructible_1ad7ea4bbcae9e57d39be02bfba2bd8865" kind="event"><name>Destroyed</name></member>
+  </compound>
+  <compound refid="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions" kind="interface"><name>PlayerInputControls::FlyControls::IFlyModelActions</name>
+    <member refid="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1a447d6e091f2ffc8c30cdcb0424f60cf4" kind="function"><name>OnMoveToPoint</name></member>
+    <member refid="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1ab79f3f0b70646f8b7f28ca621ff0b8fc" kind="function"><name>OnMove</name></member>
+    <member refid="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1afe819f63c9fdc68934e534bd65fa54b7" kind="function"><name>OnLookRotation</name></member>
+    <member refid="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1a7b8f14473ddc688c9bfafa207988e8d1" kind="function"><name>OnChangeAltitude</name></member>
+    <member refid="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1a92272b4b4b37c838ba0aa61d54ffbd0a" kind="function"><name>OnScrollItemList</name></member>
+    <member refid="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1ac0c821e6ec7a6e2d53135af63c38977b" kind="function"><name>OnSelectItem</name></member>
+  </compound>
+  <compound refid="interface_support_components_1_1_i_moveable" kind="interface"><name>SupportComponents::IMoveable</name>
+    <member refid="interface_support_components_1_1_i_moveable_1a044e47230f7a4eb972a488deec85deaf" kind="property"><name>MovingSpeed</name></member>
+    <member refid="interface_support_components_1_1_i_moveable_1a51153e4ddd043e8364c0b600be3a0299" kind="property"><name>RotationSpeed</name></member>
+    <member refid="interface_support_components_1_1_i_moveable_1a1ca39f5f20c6e1c5780b3aefaf7bb8d0" kind="property"><name>GlobalCoordinates</name></member>
+    <member refid="interface_support_components_1_1_i_moveable_1a2c5497e2a91cd153b9b9c6dff94babbf" kind="property"><name>LocalCoordinates</name></member>
+    <member refid="interface_support_components_1_1_i_moveable_1aca9f783388a612ae6b918964b154a36d" kind="event"><name>ObjectMoved</name></member>
+    <member refid="interface_support_components_1_1_i_moveable_1ac871a04c1dc4dc5973b38c91e83dca5d" kind="function"><name>Translate</name></member>
+    <member refid="interface_support_components_1_1_i_moveable_1ae85a72908bd33bd80727c86b945ed7f1" kind="function"><name>Rotate</name></member>
+    <member refid="interface_support_components_1_1_i_moveable_1adf07264a33ecb8b19ae326afc9a9f45c" kind="function"><name>MoveAlongTrajectory</name></member>
+  </compound>
+  <compound refid="interface_support_components_1_1_i_selectable" kind="interface"><name>SupportComponents::ISelectable</name>
+    <member refid="interface_support_components_1_1_i_selectable_1ab716c9877557b876649631861a7e78c9" kind="property"><name>IsSelected</name></member>
+    <member refid="interface_support_components_1_1_i_selectable_1a07dc432577c5fba49dd147fc2dbef1ad" kind="property"><name>IsHighlighted</name></member>
+    <member refid="interface_support_components_1_1_i_selectable_1af3549f8fcdfa88b58b60ac258d4b5124" kind="property"><name>SelectFrameColor</name></member>
+    <member refid="interface_support_components_1_1_i_selectable_1a82a211f43d7a090e15439ae4df27983d" kind="event"><name>SelectedChanged</name></member>
+    <member refid="interface_support_components_1_1_i_selectable_1a9c4a95d6053f935a6426dd769466a535" kind="event"><name>HighlightedChanged</name></member>
+  </compound>
+  <compound refid="interface_support_components_1_1_i_visibile" kind="interface"><name>SupportComponents::IVisibile</name>
+    <member refid="interface_support_components_1_1_i_visibile_1a6f1543b647f396db2ccc278ae9f09dc7" kind="property"><name>Visibility</name></member>
+    <member refid="interface_support_components_1_1_i_visibile_1ab1659b2dc42eff82b10ab9bfacf59b2f" kind="event"><name>VisibleChanged</name></member>
+  </compound>
+  <compound refid="class_player_input_controls_1_1_laser_pointer" kind="class"><name>PlayerInputControls::LaserPointer</name>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1a8012c54b5654514ff2660b14eb680195" kind="variable"><name>_range</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1adc3b80f6c07331e09ac4bdbc4b39f075" kind="variable"><name>_texture2D</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1afb583d48dc0fbd32e3bd7c636dd695b3" kind="variable"><name>_shader</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1a21a3eadfa7c1245622d4528fe70aca05" kind="variable"><name>_material</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1a7ca753ebddd822401bc42314bc818383" kind="variable"><name>_lineRender</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1a64841722933b323364a47f5fa900b292" kind="variable"><name>_transform</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1a648932d6c6acf83adbc3c1d66018511d" kind="variable"><name>_gameObject</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1aae536ab628eea680c542ee0ef3cf16aa" kind="variable"><name>_laserState</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1a9bc20f66bf393481d7b0755d0122bab7" kind="variable"><name>_cutoff</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1afd1770c4ccb93bb8e0f8f6cb65bc0a66" kind="variable"><name>_monoColorStateName</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1a699d933618ae5925b63173d8fc3b89a4" kind="property"><name>RayColor</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1ae3641277404ec772610ec840f1b941eb" kind="property"><name>Range</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1abc1f4808f8053e8a103476a91001b227" kind="property"><name>LaserState</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1ae37bee859fc8f14e944c8596ef7e586e" kind="function"><name>Awake</name></member>
+    <member refid="class_player_input_controls_1_1_laser_pointer_1ac4c604fa973bca33b415be9be59ae5df" kind="function"><name>LateUpdate</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_link" kind="class"><name>Grpah3DVisualizer::Link</name>
+    <member refid="class_grpah3_d_visualizer_1_1_link_1a0f1e2bb685e964cadcb8f971abc282f1" kind="property"><name>AdjacentVertex</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_link_1a4a9a44a6e7f8423c227ebe276a5c11a9" kind="property"><name>Edge</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_link_1a12c6dc55cfc7c4203613bda1be77d7fd" kind="function"><name>Link</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_link_not_found_exception" kind="class"><name>Grpah3DVisualizer::LinkNotFoundException</name>
+    <member refid="class_grpah3_d_visualizer_1_1_link_not_found_exception_1acfaa6f4a264d886b23dbe6dcdc3406b9" kind="function"><name>LinkNotFoundException</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_link_not_found_exception_1aa267cf2d37ee05904e045f60f772baec" kind="function"><name>LinkNotFoundException</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_link_not_found_exception_1ac898c25d3673c574c40b13c114c3de10" kind="function"><name>LinkNotFoundException</name></member>
+  </compound>
+  <compound refid="struct_grpah3_d_visualizer_1_1_link_parameters" kind="struct"><name>Grpah3DVisualizer::LinkParameters</name>
+    <member refid="struct_grpah3_d_visualizer_1_1_link_parameters_1ab6bc3664cdcb8fdcba1bd203b26dba5a" kind="property"><name>SourceOffsetDist</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_link_parameters_1a79a620df764a4c176f481094eab8fe0b" kind="property"><name>TargetOffsetDist</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_link_parameters_1afa24747481de049bba140a4f014b9e95" kind="property"><name>ArrowTexture</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_link_parameters_1a18136a737d74bbaf6ecff189ed2e2019" kind="property"><name>LineTexture</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_link_parameters_1a214bf2fc1414e55a69b3497b05d8b5e0" kind="function"><name>LinkParameters</name></member>
+  </compound>
+  <compound refid="class_menu" kind="class"><name>Menu</name>
+    <member refid="class_menu_1a8269685e78203b028d5bd77c339898b2" kind="enum"><name>State</name></member>
+    <member refid="class_menu_1a8269685e78203b028d5bd77c339898b2a11be5a46cecdc713a8bf9daf0aca0590" kind="enumvalue"><name>StartMenu</name></member>
+    <member refid="class_menu_1a8269685e78203b028d5bd77c339898b2a52ef7c5a337de3ed0fb70f4191b6b12d" kind="enumvalue"><name>TaskScene</name></member>
+    <member refid="class_menu_1a361ee67b5f5e589265010593fef73342" kind="variable"><name>_menuAction</name></member>
+    <member refid="class_menu_1aff240b007541141f2080d008f34b1d5b" kind="variable"><name>_content</name></member>
+    <member refid="class_menu_1a98e6a1f48f211c3823ad83bddba78541" kind="variable"><name>_menu</name></member>
+    <member refid="class_menu_1ae148b53d3065a2f3fc13e204a9c114a9" kind="variable"><name>_font</name></member>
+    <member refid="class_menu_1a8d1fb164a3d4fa72758b42521770f6d3" kind="variable"><name>_state</name></member>
+    <member refid="class_menu_1a3e8adac5069e9f53c01c699f6d62dd1f" kind="variable"><name>_inputActions</name></member>
+    <member refid="class_menu_1aa8f64246364fdb264b2421b1ae3b430b" kind="variable"><name>_isActive</name></member>
+    <member refid="class_menu_1af7fc49aa10027e9dc9f5e5cf030c6a4e" kind="variable"><name>_sceneControler</name></member>
+    <member refid="class_menu_1a33dc8be1e06d41483e05d20440bafb3a" kind="function"><name>Awake</name></member>
+    <member refid="class_menu_1aeccc5215886b309c6326d23392273101" kind="function"><name>CreateTask</name></member>
+    <member refid="class_menu_1a5cc17f4760a517eddbf1120a276c8d0e" kind="function"><name>CallChangeMenuState</name></member>
+    <member refid="class_menu_1a84f3260de3cd1a990251dd1966085e76" kind="function"><name>ChangeMenuState</name></member>
+  </compound>
+  <compound refid="class_support_components_1_1_move_component" kind="class"><name>SupportComponents::MoveComponent</name>
+    <member refid="class_support_components_1_1_move_component_1a8fb1a1dd23ee5234f3c5db1941e36c69" kind="variable"><name>_timeCheckThreshold</name></member>
+    <member refid="class_support_components_1_1_move_component_1a1ffa49427991ae9d0fa51ac6e5121a5e" kind="variable"><name>_thresholdDistance</name></member>
+    <member refid="class_support_components_1_1_move_component_1af64284d0ef7720cc3f768deca7ff3944" kind="variable"><name>_minRotX</name></member>
+    <member refid="class_support_components_1_1_move_component_1a27fb106729a4d286c87a1226d285c165" kind="variable"><name>_maxRotX</name></member>
+    <member refid="class_support_components_1_1_move_component_1a2848e0bac61e1cce775ab60e199cd461" kind="variable"><name>_minRotY</name></member>
+    <member refid="class_support_components_1_1_move_component_1a4ac91bfd4c8766053ad00eb356f73ae2" kind="variable"><name>_maxRotY</name></member>
+    <member refid="class_support_components_1_1_move_component_1a3d1b66911194b3911c6730ba2cd28c28" kind="variable"><name>_rotationSpeed</name></member>
+    <member refid="class_support_components_1_1_move_component_1aa15b118c764b910bf4f65a69dae92eff" kind="variable"><name>_movingSpeed</name></member>
+    <member refid="class_support_components_1_1_move_component_1a58b3044798cc528939fcf0f49a3f8506" kind="variable"><name>_gears</name></member>
+    <member refid="class_support_components_1_1_move_component_1ac7cb627973d78156f6b59791dd73b1ce" kind="variable"><name>_currentGearIndex</name></member>
+    <member refid="class_support_components_1_1_move_component_1a6a5fd89b1fb7804e4b18913a29f77b54" kind="variable"><name>_transmissionMode</name></member>
+    <member refid="class_support_components_1_1_move_component_1abbab35a9d2146c2940bbb2ec6e2c0665" kind="variable"><name>_startMovingTime</name></member>
+    <member refid="class_support_components_1_1_move_component_1a13ecf9421be69696e492e38f93cf51a4" kind="variable"><name>_lastTimeCheck</name></member>
+    <member refid="class_support_components_1_1_move_component_1a0c8617e3d221de39136394f5e46bca14" kind="variable"><name>_rotation</name></member>
+    <member refid="class_support_components_1_1_move_component_1a94c10c730a6866914ce00a848944d5dc" kind="variable"><name>_transform</name></member>
+    <member refid="class_support_components_1_1_move_component_1a78d6a7dbdf864d350052956b64bb8fd6" kind="variable"><name>_isMoving</name></member>
+    <member refid="class_support_components_1_1_move_component_1ae76182a17dc027c69ccd8474208617fa" kind="property"><name>Gears</name></member>
+    <member refid="class_support_components_1_1_move_component_1a91c880967f2b28b705684dd5c331b22c" kind="property"><name>CurrentGearIndex</name></member>
+    <member refid="class_support_components_1_1_move_component_1ac0dd3eee0aa9aeacf169679aeafc27a3" kind="property"><name>TransmissionMode</name></member>
+    <member refid="class_support_components_1_1_move_component_1a5a2327d1ceef8e057f7419bb81c7ec19" kind="property"><name>MovingSpeed</name></member>
+    <member refid="class_support_components_1_1_move_component_1aa8e4b0bb25d3947c5c2d8b03a716e785" kind="property"><name>RotationSpeed</name></member>
+    <member refid="class_support_components_1_1_move_component_1aaef09b9656d183ad03b6b480a4307093" kind="property"><name>GlobalCoordinates</name></member>
+    <member refid="class_support_components_1_1_move_component_1af492a406b336b3c405172bb8f2fb1340" kind="property"><name>LocalCoordinates</name></member>
+    <member refid="class_support_components_1_1_move_component_1a5a5d55e72a7b4ecf06ec73e43ac14fb1" kind="event"><name>ObjectMoved</name></member>
+    <member refid="class_support_components_1_1_move_component_1ac03f40e694666ed33ec50d16fb4b68ac" kind="function"><name>Awake</name></member>
+    <member refid="class_support_components_1_1_move_component_1abe16fe02c94ad6583c34de0983556015" kind="function"><name>UpdateParametersWhileMoving</name></member>
+    <member refid="class_support_components_1_1_move_component_1acc99d043a10af258b089cf95a68281cd" kind="function"><name>MoveAlongTrajectory</name></member>
+    <member refid="class_support_components_1_1_move_component_1af53c63210d4de5c7d014f29380f4cca7" kind="function"><name>Translate</name></member>
+    <member refid="class_support_components_1_1_move_component_1a01a082fe4c952eab87c4d0fd5b015be8" kind="function"><name>Rotate</name></member>
+  </compound>
+  <compound refid="class_player_input_controls_1_1_player_params" kind="class"><name>PlayerInputControls::PlayerParams</name>
+    <member refid="class_player_input_controls_1_1_player_params_1a1c8ed821c8bbddba4a64ccab22287f6d" kind="property"><name>Position</name></member>
+    <member refid="class_player_input_controls_1_1_player_params_1a0c14d9dfd33e27cea880823ccbf2dce7" kind="property"><name>EulerAngles</name></member>
+    <member refid="class_player_input_controls_1_1_player_params_1aec95b819bf680da85ff65a833055974d" kind="property"><name>MovingSpeed</name></member>
+    <member refid="class_player_input_controls_1_1_player_params_1ae1180073f45f4b2bd3bf3e878629d9a2" kind="property"><name>RotationSpeed</name></member>
+    <member refid="class_player_input_controls_1_1_player_params_1a6911a43e121f6a42c4398d7f5a18b312" kind="property"><name>ToolConfigs</name></member>
+    <member refid="class_player_input_controls_1_1_player_params_1a12164bcbb51fe8e733a5cae9e5e3398b" kind="function"><name>PlayerParams</name></member>
+  </compound>
+  <compound refid="class_player_input_controls_1_1_player_tool" kind="class"><name>PlayerInputControls::PlayerTool</name>
+    <member refid="class_player_input_controls_1_1_player_tool_1af128611ae3212386ec5c9e31c63a202c" kind="function"><name>RegisterEvents</name></member>
+    <member refid="class_player_input_controls_1_1_player_tool_1a488bbaf056b1de7963f9519ce0696927" kind="function"><name>RayCast</name></member>
+  </compound>
+  <compound refid="class_texture_factory_1_1_positioned_image" kind="class"><name>TextureFactory::PositionedImage</name>
+    <member refid="class_texture_factory_1_1_positioned_image_1a83f10fb1d1d702ebf3ae8a52da972913" kind="variable"><name>Texture</name></member>
+    <member refid="class_texture_factory_1_1_positioned_image_1ae48a30586a2b009fe67b1bc1d1217969" kind="variable"><name>Position</name></member>
+    <member refid="class_texture_factory_1_1_positioned_image_1a44c3e61e2ef6d8730ca6c6952d7a39a3" kind="function"><name>PositionedImage</name></member>
+    <member refid="class_texture_factory_1_1_positioned_image_1a3e71448729ccb68f3bd452849f3dbbdb" kind="function"><name>Equals</name></member>
+    <member refid="class_texture_factory_1_1_positioned_image_1a2d1fc439e06cbb823adf72a3545e8a9d" kind="function"><name>GetHashCode</name></member>
+    <member refid="class_texture_factory_1_1_positioned_image_1afcc509566e3b53a7308437cb2c1df4c8" kind="function"><name>Deconstruct</name></member>
+    <member refid="class_texture_factory_1_1_positioned_image_1a8f9f7359370b28ae8b6033c749e2852d" kind="function"><name>operator</name></member>
+    <member refid="class_texture_factory_1_1_positioned_image_1a85659c4e188429a594c54e50083bda6a" kind="function"><name>operator PositionedImage</name></member>
+  </compound>
+  <compound refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_rect_transform_parameters" kind="struct"><name>Grpah3DVisualizer::GUIFactory::RectTransformParameters</name>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_rect_transform_parameters_1a8f31c3e19663e37f118bde528602f8ef" kind="property"><name>Parent</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_rect_transform_parameters_1a95c5f0efc27a509e8066ff8efff92ad8" kind="property"><name>AnchorMin</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_rect_transform_parameters_1a78d1d92583b346edeafb046ef5345384" kind="property"><name>AnchorMax</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_rect_transform_parameters_1a0457635ce1a21c00d6f0fe434f1ddb10" kind="property"><name>SizeDelta</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_rect_transform_parameters_1a492e32a789e57440c8e72e5bade5bb47" kind="property"><name>AnchoredPosition</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_rect_transform_parameters_1a7a3726fab72634b33b91bfe19446b03f" kind="function"><name>RectTransformParameters</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_scene_controller" kind="class"><name>Grpah3DVisualizer::SceneController</name>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1ab825c7944cd12363567153c6f87929c6" kind="variable"><name>_asseblies</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a010a0f1af70cab18cb9b7211f76316c5" kind="variable"><name>_currentTaskType</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a716427b16470ffa0b5a1b29c9fcd8769" kind="variable"><name>_visualTask</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1aa72d6d68cb6879e035b4ebc0c8799ece" kind="variable"><name>_taskList</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1aaf23c5937e895626ae09100fcdee3c85" kind="property"><name>CurrentTaskType</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a5d892572f466d5d21157b9b3c0937ea6" kind="property"><name>TaskList</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1ad2d6695e7f860a17ae1e1158bd5defe0" kind="property"><name>VisualTask</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a4a490f56e2f1c8d1bcb971ccd6dd4bac" kind="function"><name>Awake</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1ac794e7405f1867fb3a88ec97c52c9d8e" kind="function"><name>LoadAssemblies</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a23c5c82fa90fd273763e7d14668b9c70" kind="function"><name>LoadMods</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1ad553f839ff51effa76dd841cf92263f4" kind="function"><name>LoadScene</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a4a3e2a4be0800a247a3a6cdfdd146ad2" kind="function"><name>SetTaskByName</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1aef6d7380a5608a807ac7b64783e26eb8" kind="function"><name>FindAllTasks</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_scene_controller_1a31de29ea76e785d5e6ee21fb9bfe8d05" kind="function"><name>CreateTask</name></member>
+  </compound>
+  <compound refid="class_player_input_controls_1_1_select_item_tool" kind="class"><name>PlayerInputControls::SelectItemTool</name>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1aa00ae64b0a178198b65df30b18e1923e" kind="variable"><name>_colors</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1a53273bf5cbace6605c2127ce0b8d4d5c" kind="variable"><name>_rayCastRange</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1a01404ce809f307d194140501af5cd69c" kind="variable"><name>_colorIndex</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1a1bc3cc4b506e8c5001876e61c57c65d8" kind="variable"><name>_inputActions</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1a4f23c6c5bd34b14e6bdbbf9ed7e5781a" kind="variable"><name>_laserPointer</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1aa759d0761838b887ec84a6c79e8e4399" kind="variable"><name>_inputActionName</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1a64cec8d97e4b67946b595f2700a667ff" kind="variable"><name>_selectActionName</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1ab34edd824714807528e85e26fdbbb966" kind="variable"><name>_changeColorActionName</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1a249f002c6e1fa5207f8849a7f00ecbf9" kind="property"><name>RayCastRange</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1a1651a4ad0b8d37e7f42ca2954e394cf1" kind="function"><name>Awake</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1ac841541d7cca2314b4e5b15276899f6d" kind="function"><name>OnEnable</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1a054d42a4783f9724dda114318f648014" kind="function"><name>OnDisable</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1a437bc27ba13590634aaa226fe8102cae" kind="function"><name>CallSelectItem</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1acb2f2005673b6d148d82e73e4ce95f26" kind="function"><name>CallChangeColor</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1ad4b0ad529d8fc782c21a0ea1c5c0df19" kind="function"><name>SelectItem</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1a3bf6b7a52673cf642a11725749a6df8d" kind="function"><name>ChangeColor</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1a5607c57c29abb3711fa1bcedf1e114c8" kind="function"><name>RegisterEvents</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1a3251a3e74db833d7e9187a8018a35d40" kind="function"><name>SetupParams</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_1a7a34a6fd6d0eb4201d68fbe457c7e19d" kind="function"><name>DownloadParams</name></member>
+  </compound>
+  <compound refid="class_player_input_controls_1_1_select_item_tool_params" kind="class"><name>PlayerInputControls::SelectItemToolParams</name>
+    <member refid="class_player_input_controls_1_1_select_item_tool_params_1a60de9d2791aab2b8dc78f3d1de3c1c14" kind="property"><name>Colors</name></member>
+    <member refid="class_player_input_controls_1_1_select_item_tool_params_1a64d86ffcf46e2315ed8c338b5f9a998a" kind="function"><name>SelectItemToolParams</name></member>
+  </compound>
+  <compound refid="class_graph_tasks_1_1_simple_task" kind="class"><name>GraphTasks::SimpleTask</name>
+    <member refid="class_graph_tasks_1_1_simple_task_1a774a080208a36716ccf4eb4fb45a7e9a" kind="variable"><name>_graph</name></member>
+    <member refid="class_graph_tasks_1_1_simple_task_1a7c6c6b9a86530ed2f58c706f9b83d940" kind="variable"><name>_player</name></member>
+    <member refid="class_graph_tasks_1_1_simple_task_1aeba3b2b36a3378563c2df4acd205a879" kind="property"><name>Players</name></member>
+    <member refid="class_graph_tasks_1_1_simple_task_1a37624e500d389f0da2fc4e2d481ec667" kind="property"><name>Graphs</name></member>
+    <member refid="class_graph_tasks_1_1_simple_task_1a92d67c254cb2ba91b03ace37c434c72a" kind="function"><name>CreateGraph</name></member>
+    <member refid="class_graph_tasks_1_1_simple_task_1ad621adcf4281004b2ddf6f605b61ebeb" kind="function"><name>InitTask</name></member>
+    <member refid="class_graph_tasks_1_1_simple_task_1a087d4800c118d0652a99264c7a21b488" kind="function"><name>StartTask</name></member>
+    <member refid="class_graph_tasks_1_1_simple_task_1aa9b48daa7f541ddba122be9f645afa03" kind="function"><name>StopTask</name></member>
+    <member refid="class_graph_tasks_1_1_simple_task_1a096f0f2a6c3a95b21199eb654c648986" kind="function"><name>DestroyTask</name></member>
+    <member refid="class_graph_tasks_1_1_simple_task_1a52c873677822d8668118213c46fa482e" kind="function"><name>GetResult</name></member>
+  </compound>
+  <compound refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters" kind="struct"><name>Grpah3DVisualizer::GUIFactory::TextParameters</name>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1ab4d266ca5a98657cf18f35e72da45e62" kind="property"><name>Text</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1ab9c7fc416aded93ff4b67ebd3468e755" kind="property"><name>Color</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1a3f5d8d80e30f840adb9283fe5b8a9ce4" kind="property"><name>Font</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1aaf66e501780f517a43df7a1d436bfc8a" kind="property"><name>Anchor</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1ac5dbae25d39c3f31c76caf3e3fa995b4" kind="property"><name>Size</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1a2d1ea46f6cbd2a685c7ca03910ffc665" kind="property"><name>RectTransformParameters</name></member>
+    <member refid="struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_text_parameters_1ac32ebb5bd8eb3c143ce4439439586093" kind="function"><name>TextParameters</name></member>
+  </compound>
+  <compound refid="class_texture_factory_1_1_text_texture_factory" kind="class"><name>TextureFactory::TextTextureFactory</name>
+    <member refid="class_texture_factory_1_1_text_texture_factory_1ae5abb37021a36a7f271d21ac73242827" kind="variable"><name>_customFont</name></member>
+    <member refid="class_texture_factory_1_1_text_texture_factory_1a1bd9853b9d327387a2f496e6c800439c" kind="variable"><name>_ASCIIOffset</name></member>
+    <member refid="class_texture_factory_1_1_text_texture_factory_1ab0a2454d41e7ed1ee77e7a1d4f83cce4" kind="variable"><name>_alphabet</name></member>
+    <member refid="class_texture_factory_1_1_text_texture_factory_1a9c32c90ee834ed9f44abd944373f5029" kind="function"><name>TextTextureFactory</name></member>
+    <member refid="class_texture_factory_1_1_text_texture_factory_1af9d90739fb814900671a076034c6aa59" kind="function"><name>MakeTextTexture</name></member>
+  </compound>
+  <compound refid="class_texture_factory_1_1_texture2_d_extension" kind="class"><name>TextureFactory::Texture2DExtension</name>
+    <member refid="class_texture_factory_1_1_texture2_d_extension_1a15424b85fa94a0cbee8077f798e1b386" kind="function"><name>CombineTextures</name></member>
+    <member refid="class_texture_factory_1_1_texture2_d_extension_1a265dc5e88a1fe038faf1e35496925ca3" kind="function"><name>ResizeTexture</name></member>
+  </compound>
+  <compound refid="struct_player_input_controls_1_1_tool_config" kind="struct"><name>PlayerInputControls::ToolConfig</name>
+    <member refid="struct_player_input_controls_1_1_tool_config_1a041ccf81acf5b8fa96c9b10b0d2cf3e3" kind="property"><name>ToolType</name></member>
+    <member refid="struct_player_input_controls_1_1_tool_config_1a18f15b67c36a8d612480d839c2bfbdb0" kind="property"><name>ToolParams</name></member>
+    <member refid="struct_player_input_controls_1_1_tool_config_1af4f4d5348a59aedaadab7cf4e598e6d0" kind="function"><name>ToolConfig</name></member>
+  </compound>
+  <compound refid="class_player_input_controls_1_1_tool_params" kind="class"><name>PlayerInputControls::ToolParams</name>
+  </compound>
+  <compound refid="class_git_hub_1_1_unity_1_1_unity_a_p_i_wrapper" kind="class"><name>GitHub::Unity::UnityAPIWrapper</name>
+    <member refid="class_git_hub_1_1_unity_1_1_unity_a_p_i_wrapper_1ae4901c7d7a8caa48b63b14c6a0ee1a49" kind="function"><name>UnityAPIWrapper</name></member>
+  </compound>
+  <compound refid="class_graph_tasks_1_1_verdict" kind="class"><name>GraphTasks::Verdict</name>
+    <member refid="class_graph_tasks_1_1_verdict_1a6f2f2b0ccc852088046f38b48230fb61" kind="property"><name>Description</name></member>
+    <member refid="class_graph_tasks_1_1_verdict_1accde580206bbe73a606cf598437e7e03" kind="property"><name>Status</name></member>
+    <member refid="class_graph_tasks_1_1_verdict_1a260fbcae09317c8955ad36d31fc08c8c" kind="function"><name>Verdict</name></member>
+    <member refid="class_graph_tasks_1_1_verdict_1a33bbebe15b00ffca3aeca44e6cc16251" kind="function"><name>ToString</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_vertex" kind="class"><name>Grpah3DVisualizer::Vertex</name>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a1dc6692443aabdeaba5f71d949251abb" kind="variable"><name>_edgePrefab</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1acaf718757bd067761806a7f6dea49d6c" kind="variable"><name>_incomingLinks</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a1d8f9458785797c7b9d6d185a72036e3" kind="variable"><name>_outgoingLinks</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a5c2372da2c1b4f48d74eaf1d231dcdb4" kind="variable"><name>_visible</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a86e3a71b20cbd79b296fd795857e9017" kind="variable"><name>_isSelected</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a57ea3e8c56a08e858e99dc476a38e71b" kind="variable"><name>_mainImageId</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1ae913fa8c15610a43ea5ce9392bef77b8" kind="variable"><name>_selectFrameId</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a3a193c154847d6362994d59b99d0b2a6" kind="variable"><name>_sphereCollider</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1afadd60e4a55b79a745c6f4cec2fa8e9f" kind="variable"><name>_transform</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a91dc14185a4a4f7239121f2f1fcbe91b" kind="variable"><name>_billboardControler</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a9b5d5794ff2f4363dc744fda1431d7ea" kind="event"><name>Destroyed</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a773469b0dd43287d070d065f8d0f1523" kind="event"><name>VisibleChanged</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1ae7b1807be823e173811cf58baa3c0dcf" kind="event"><name>SelectedChanged</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a76ae77b316458f000138d0dd47c8ef3f" kind="event"><name>HighlightedChanged</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a31ffddf834366253c6e14541bfc92c2e" kind="property"><name>MoveComponent</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1af897d4c5ad44b7e148667d82c6823d5c" kind="property"><name>Visibility</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1ae2e1e3cae93c74244dd1ac78993b5125" kind="property"><name>IsSelected</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a30a09bf0d5e08aeee4c92a7de1302895" kind="property"><name>IsHighlighted</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1afdcfb1e620bdce440e2d81e849a9d590" kind="property"><name>SelectFrameColor</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a5b86d52375fc4b3876c6844470722116" kind="property"><name>SetSelectFrameSize</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1ad4c07b69a3e577fa95ae9e69b3c8a827" kind="property"><name>SetMainImageSize</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a9d2ed46e041765dc2fcfe4fea23e415b" kind="function"><name>Awake</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1abe60c321af596dd36dfb34111d394edb" kind="function"><name>OnDestroy</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1ac9b9b49e06cb3d7fc7df99d3ef715b08" kind="function"><name>UpdateColliderRange</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a3db85bbcbad36fbde254f7aece213ba9" kind="function"><name>RemoveLinkFromArray</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1aa7233d9f4d588bc05162bc5466ed2b11" kind="function"><name>CreateEdge</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1ad62f2dde8407dfb7eee6f2cf5de0ffe5" kind="function"><name>SetMainImage</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1adce369c7f86fa1726ca7b75fdf4fa464" kind="function"><name>SetSelectFrame</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1aea1f8f4be8152309fcce0977ea8b2167" kind="function"><name>Link</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a82fef972251316d8c3c107b53c161ed5" kind="function"><name>UnLink</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a4e9b8b3f68c9b442e18c1c433ba78f2d" kind="function"><name>SetupParams</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_1a3b589604d46bfe972c4fc94481258f19" kind="function"><name>DownloadParams</name></member>
+  </compound>
+  <compound refid="class_grpah3_d_visualizer_1_1_vertex_parameters" kind="class"><name>Grpah3DVisualizer::VertexParameters</name>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_parameters_1a38d84e3f7dc475c70dcaa55463aac1ee" kind="property"><name>Position</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_parameters_1a60b1744df0de895892eb130c75e0e7ef" kind="property"><name>Rotation</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_parameters_1a694ee7531ac22e6759f8216c9540ff4d" kind="property"><name>ImageParameters</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_parameters_1a263400c76fb6a0620216b202e1fd4e4c" kind="property"><name>SelectFrameParameters</name></member>
+    <member refid="class_grpah3_d_visualizer_1_1_vertex_parameters_1a32a387842bd93944252e9c43b26a2aa5" kind="function"><name>VertexParameters</name></member>
+  </compound>
+  <compound refid="class_graph_tasks_1_1_visual_task" kind="class"><name>GraphTasks::VisualTask</name>
+    <member refid="class_graph_tasks_1_1_visual_task_1a4a9a85a0add8be9a23a6ce2f6a852a35" kind="property"><name>Players</name></member>
+    <member refid="class_graph_tasks_1_1_visual_task_1a2853b1f0d264e203d95c9506635c13b1" kind="property"><name>Graphs</name></member>
+    <member refid="class_graph_tasks_1_1_visual_task_1a9c392eb2bcab59ef02732367257982cb" kind="function"><name>CreateGraph</name></member>
+    <member refid="class_graph_tasks_1_1_visual_task_1aab0ea9f7701805f2824a8ce01196d1ac" kind="function"><name>InitTask</name></member>
+    <member refid="class_graph_tasks_1_1_visual_task_1a3b8bb8b2cca1e4a7af8075f8e0cada27" kind="function"><name>StartTask</name></member>
+    <member refid="class_graph_tasks_1_1_visual_task_1a4d776305ed83d7274e34cc3e31fb74ad" kind="function"><name>StopTask</name></member>
+    <member refid="class_graph_tasks_1_1_visual_task_1ae45224a095b0d44d7df344c5932a1d03" kind="function"><name>DestroyTask</name></member>
+    <member refid="class_graph_tasks_1_1_visual_task_1ad0ea942c866041f34afb4afb02b9843a" kind="function"><name>GetResult</name></member>
+  </compound>
+  <compound refid="namespace_git_hub" kind="namespace"><name>GitHub</name>
+  </compound>
+  <compound refid="namespace_git_hub_1_1_unity" kind="namespace"><name>GitHub::Unity</name>
+  </compound>
+  <compound refid="namespace_graph_tasks" kind="namespace"><name>GraphTasks</name>
+    <member refid="namespace_graph_tasks_1a1613d07ec2443594bb9ad744ab315f7d" kind="enum"><name>VerdictStatus</name></member>
+    <member refid="namespace_graph_tasks_1a1613d07ec2443594bb9ad744ab315f7dad0a3892a5b340ce4f3472dc7595dce02" kind="enumvalue"><name>Correct</name></member>
+    <member refid="namespace_graph_tasks_1a1613d07ec2443594bb9ad744ab315f7daa94d7853871a856c71a172a599cee227" kind="enumvalue"><name>Incorrect</name></member>
+    <member refid="namespace_graph_tasks_1a1613d07ec2443594bb9ad744ab315f7daec0fc0100c4fc1ce4eea230c3dc10360" kind="enumvalue"><name>Undefined</name></member>
+  </compound>
+  <compound refid="namespace_grpah3_d_visualizer" kind="namespace"><name>Grpah3DVisualizer</name>
+    <member refid="namespace_grpah3_d_visualizer_1a57db9f3204866f79155172679e21e1c7" kind="enum"><name>EdgeVisibility</name></member>
+    <member refid="namespace_grpah3_d_visualizer_1a57db9f3204866f79155172679e21e1c7a7acdf85c69cc3c5305456a293524386e" kind="enumvalue"><name>Hidden</name></member>
+    <member refid="namespace_grpah3_d_visualizer_1a57db9f3204866f79155172679e21e1c7aec24d78ce33048dc73a2b6b1a0690192" kind="enumvalue"><name>Visible</name></member>
+    <member refid="namespace_grpah3_d_visualizer_1a57db9f3204866f79155172679e21e1c7a5b102e312ea97a003f936d204ebbddfb" kind="enumvalue"><name>DependOnVertices</name></member>
+    <member refid="namespace_grpah3_d_visualizer_1a9a4cd20dadcfdaeb01c1dd574c22fd56" kind="enum"><name>EdgeType</name></member>
+    <member refid="namespace_grpah3_d_visualizer_1a9a4cd20dadcfdaeb01c1dd574c22fd56a7c91d399b1b0815caa55eebe8056c2b7" kind="enumvalue"><name>Unidirectional</name></member>
+    <member refid="namespace_grpah3_d_visualizer_1a9a4cd20dadcfdaeb01c1dd574c22fd56aabd4328c725637aabedbd02d3b7ffd40" kind="enumvalue"><name>Bidirectional</name></member>
+  </compound>
+  <compound refid="namespace_grpah3_d_visualizer_1_1_g_u_i_factory" kind="namespace"><name>Grpah3DVisualizer::GUIFactory</name>
+  </compound>
+  <compound refid="namespace_player_input_controls" kind="namespace"><name>PlayerInputControls</name>
+    <member refid="namespace_player_input_controls_1a5bb0d0358026ebdda2c0a3ee35ec2d92" kind="enum"><name>InputType</name></member>
+    <member refid="namespace_player_input_controls_1a5bb0d0358026ebdda2c0a3ee35ec2d92ad15305d7a4e34e02489c74a5ef542f36" kind="enumvalue"><name>Off</name></member>
+    <member refid="namespace_player_input_controls_1a5bb0d0358026ebdda2c0a3ee35ec2d92a32be0f45035a8e01272e3765f3e53623" kind="enumvalue"><name>MenuOnly</name></member>
+    <member refid="namespace_player_input_controls_1a5bb0d0358026ebdda2c0a3ee35ec2d92afc40bbee027dad61976b95074962a489" kind="enumvalue"><name>ToolsOnly</name></member>
+    <member refid="namespace_player_input_controls_1a5bb0d0358026ebdda2c0a3ee35ec2d92ab1c94ca2fbc3e78fc30069c8d0f01680" kind="enumvalue"><name>All</name></member>
+    <member refid="namespace_player_input_controls_1ac32d85f390d73c8d66b57b6dc7aae59c" kind="enum"><name>LaserState</name></member>
+    <member refid="namespace_player_input_controls_1ac32d85f390d73c8d66b57b6dc7aae59ca521c36a31c2762741cf0f8890cbe05e3" kind="enumvalue"><name>On</name></member>
+    <member refid="namespace_player_input_controls_1ac32d85f390d73c8d66b57b6dc7aae59cad15305d7a4e34e02489c74a5ef542f36" kind="enumvalue"><name>Off</name></member>
+  </compound>
+  <compound refid="namespacestatic" kind="namespace"><name>static</name>
+  </compound>
+  <compound refid="namespace_support_components" kind="namespace"><name>SupportComponents</name>
+    <member refid="namespace_support_components_1a5afee1d624a6b0aa8aa67f22c99afe6c" kind="enum"><name>TransmissionMode</name></member>
+    <member refid="namespace_support_components_1a5afee1d624a6b0aa8aa67f22c99afe6ca06b9281e396db002010bde1de57262eb" kind="enumvalue"><name>Auto</name></member>
+    <member refid="namespace_support_components_1a5afee1d624a6b0aa8aa67f22c99afe6cae1ba155a9f2e8c3be94020eef32a0301" kind="enumvalue"><name>Manual</name></member>
+    <member refid="namespace_support_components_1a5afee1d624a6b0aa8aa67f22c99afe6cae1b5d97c3571bc99470441a7e5962f69" kind="enumvalue"><name>FirstGear</name></member>
+    <member refid="namespace_support_components_1a5afee1d624a6b0aa8aa67f22c99afe6ca6295ff1f22ab0bf7bd1a245390aee7c0" kind="enumvalue"><name>TopGear</name></member>
+  </compound>
+  <compound refid="namespace_system" kind="namespace"><name>System</name>
+  </compound>
+  <compound refid="namespace_system_1_1_collections" kind="namespace"><name>System::Collections</name>
+  </compound>
+  <compound refid="namespace_system_1_1_collections_1_1_generic" kind="namespace"><name>System::Collections::Generic</name>
+  </compound>
+  <compound refid="namespace_system_1_1_collections_1_1_object_model" kind="namespace"><name>System::Collections::ObjectModel</name>
+  </compound>
+  <compound refid="namespace_system_1_1_i_o" kind="namespace"><name>System::IO</name>
+  </compound>
+  <compound refid="namespace_system_1_1_linq" kind="namespace"><name>System::Linq</name>
+  </compound>
+  <compound refid="namespace_system_1_1_reflection" kind="namespace"><name>System::Reflection</name>
+  </compound>
+  <compound refid="namespace_texture_factory" kind="namespace"><name>TextureFactory</name>
+  </compound>
+  <compound refid="namespace_unity_editor" kind="namespace"><name>UnityEditor</name>
+  </compound>
+  <compound refid="namespace_unity_engine" kind="namespace"><name>UnityEngine</name>
+  </compound>
+  <compound refid="namespace_unity_engine_1_1_events" kind="namespace"><name>UnityEngine::Events</name>
+  </compound>
+  <compound refid="namespace_unity_engine_1_1_input_system" kind="namespace"><name>UnityEngine::InputSystem</name>
+  </compound>
+  <compound refid="namespace_unity_engine_1_1_input_system_1_1_utilities" kind="namespace"><name>UnityEngine::InputSystem::Utilities</name>
+  </compound>
+  <compound refid="namespace_unity_engine_1_1_physics" kind="namespace"><name>UnityEngine::Physics</name>
+  </compound>
+  <compound refid="namespace_unity_engine_1_1_scene_management" kind="namespace"><name>UnityEngine::SceneManagement</name>
+  </compound>
+  <compound refid="namespace_unity_engine_1_1_u_i" kind="namespace"><name>UnityEngine::UI</name>
+  </compound>
+  <compound refid="_billboard_controller_8cs" kind="file"><name>BillboardController.cs</name>
+  </compound>
+  <compound refid="_decembrist_vertex_8cs" kind="file"><name>DecembristVertex.cs</name>
+  </compound>
+  <compound refid="_history_task1_8cs" kind="file"><name>HistoryTask1.cs</name>
+  </compound>
+  <compound refid="_edge_8cs" kind="file"><name>Edge.cs</name>
+  </compound>
+  <compound refid="_graph_8cs" kind="file"><name>Graph.cs</name>
+  </compound>
+  <compound refid="_vertex_8cs" kind="file"><name>Vertex.cs</name>
+  </compound>
+  <compound refid="_g_u_i_factory_8cs" kind="file"><name>GUIFactory.cs</name>
+  </compound>
+  <compound refid="_abstract_p_layer_8cs" kind="file"><name>AbstractPLayer.cs</name>
+  </compound>
+  <compound refid="_fly_controls_8cs" kind="file"><name>FlyControls.cs</name>
+  </compound>
+  <compound refid="_fly_player_8cs" kind="file"><name>FlyPlayer.cs</name>
+  </compound>
+  <compound refid="_edge_creater_tool_8cs" kind="file"><name>EdgeCreaterTool.cs</name>
+  </compound>
+  <compound refid="_grab_item_tool_8cs" kind="file"><name>GrabItemTool.cs</name>
+  </compound>
+  <compound refid="_laser_pointer_8cs" kind="file"><name>LaserPointer.cs</name>
+  </compound>
+  <compound refid="_player_tool_8cs" kind="file"><name>PlayerTool.cs</name>
+  </compound>
+  <compound refid="_select_item_tool_8cs" kind="file"><name>SelectItemTool.cs</name>
+  </compound>
+  <compound refid="credits_8txt" kind="file"><name>credits.txt</name>
+  </compound>
+  <compound refid="eula_8txt" kind="file"><name>eula.txt</name>
+    <member refid="eula_8txt_1a51a4a0779dfb63dbdea114195bb30cea" kind="variable"><name>Unity</name></member>
+    <member refid="eula_8txt_1a0319feada63c10749b273ec8bde969a0" kind="variable"><name>INSTALL</name></member>
+    <member refid="eula_8txt_1afe5555e6f6b1cc65f57e28127340e31a" kind="variable"><name>so</name></member>
+    <member refid="eula_8txt_1ae98d1be1b43dc521d6e57bc573b1684b" kind="variable"><name>reasons</name></member>
+    <member refid="eula_8txt_1aa99ed3182adbe993c6e2de688241c4c9" kind="variable"><name>warranties</name></member>
+    <member refid="eula_8txt_1a98174e1f36bcfe221676951e37a65829" kind="variable"><name>downloading</name></member>
+    <member refid="eula_8txt_1a6733567020ed1a58040ada97867f8eb2" kind="variable"><name>installing</name></member>
+    <member refid="eula_8txt_1a56c9ed679f9cde02ecccbcdc2f3faf75" kind="variable"><name>using</name></member>
+    <member refid="eula_8txt_1af86e0c7f03dc2b40c5f0ccbdf5e43730" kind="variable"><name>Software</name></member>
+    <member refid="eula_8txt_1af932792500c843818925123dfbce88ef" kind="variable"><name>EULA</name></member>
+    <member refid="eula_8txt_1ac72a4180f753f8fb170b1dcd36050ba3" kind="variable"><name>download</name></member>
+    <member refid="eula_8txt_1a8394ec2be0c4bcda85b8e19207f0c37f" kind="variable"><name>install</name></member>
+    <member refid="eula_8txt_1a56b9d9c8a5e92c694ee0551d86e049d4" kind="variable"><name>want</name></member>
+    <member refid="eula_8txt_1a4b4b7a27f139afaa694f90ad46d87128" kind="variable"><name>licensed</name></member>
+    <member refid="eula_8txt_1a57a9832cd17834b1ed0329efdc471115" kind="variable"><name>https</name></member>
+    <member refid="eula_8txt_1a7cfebe3580b245d8babce92bd862d94a" kind="variable"><name>errors</name></member>
+    <member refid="eula_8txt_1a5614afcc492c005324687422c2b9df7b" kind="variable"><name>licenses</name></member>
+    <member refid="eula_8txt_1ab9915407c0bd8d76441247faa5541595" kind="variable"><name>that</name></member>
+    <member refid="eula_8txt_1a663ce9e174132a32fd10902b16f3c2ad" kind="variable"><name>license</name></member>
+    <member refid="eula_8txt_1a004beeb7c5b89cd1b098c6c33874aa6d" kind="variable"><name>Components</name></member>
+    <member refid="eula_8txt_1a27e5d70f1c88584985db2fc3177c4b91" kind="variable"><name>Component</name></member>
+    <member refid="eula_8txt_1a5c3524f5a0ef18c75221bae15acbd3d9" kind="variable"><name>Product</name></member>
+    <member refid="eula_8txt_1a48a60bfa56c53e76bcf3378b09caf05a" kind="variable"><name>made</name></member>
+    <member refid="eula_8txt_1a2a1c19a86398945cf2c52a8565c50df6" kind="variable"><name>copyrights</name></member>
+    <member refid="eula_8txt_1a6a32e16031b254603223f00e5cea04b7" kind="variable"><name>secrets</name></member>
+    <member refid="eula_8txt_1ab653c73025edc584e07800f5557485fd" kind="variable"><name>GitHub®</name></member>
+    <member refid="eula_8txt_1a67196f4fcdff0fda41c27c25a5ce5a89" kind="variable"><name>Atom™</name></member>
+    <member refid="eula_8txt_1af239de98e128af32892de14949eaf664" kind="variable"><name>prior</name></member>
+    <member refid="eula_8txt_1a35fb6afb06c49ba0f7d1cdf6e65a419c" kind="variable"><name>permission</name></member>
+    <member refid="eula_8txt_1a361dab8c234bb706ea5f068958d52d58" kind="variable"><name>Policy</name></member>
+    <member refid="eula_8txt_1a9340e06bd7d72c2eccda741d8da33915" kind="variable"><name>WARRANTY</name></member>
+    <member refid="eula_8txt_1abd9304ebdc8d28e3e4da339122513837" kind="variable"><name>IMPLIED</name></member>
+    <member refid="eula_8txt_1a2fd9b1e8adbbd3a02ed1934ca57bee1d" kind="variable"><name>platform</name></member>
+    <member refid="eula_8txt_1a40d5d3f4423057d9c700776ef1b3c800" kind="variable"><name>uninterrupted</name></member>
+    <member refid="eula_8txt_1a5e7435243d391f85df700831b8bce52b" kind="variable"><name>timely</name></member>
+    <member refid="eula_8txt_1ada7eb22c3399ac7c8c612ec642709c6a" kind="variable"><name>secure</name></member>
+    <member refid="eula_8txt_1af2932467bbc6484ce2f41d796687df38" kind="variable"><name>free</name></member>
+    <member refid="eula_8txt_1aa5d9cb86835c3fff075d4ba9e3ed912c" kind="variable"><name>reliable</name></member>
+    <member refid="eula_8txt_1a91085712a72988d5159421c060f79871" kind="variable"><name>products</name></member>
+    <member refid="eula_8txt_1abb89f298d6c72ffd3b92303427f3a5c9" kind="variable"><name>services</name></member>
+    <member refid="eula_8txt_1ae4626f19cbb7a95c76838e9b5b52213e" kind="variable"><name>information</name></member>
+    <member refid="eula_8txt_1a3a6236ba8937c7020672456319072d54" kind="variable"><name>expectations</name></member>
+    <member refid="eula_8txt_1a08ed525d05964ec0ed16c614b28b1019" kind="variable"><name>INDIRECT</name></member>
+    <member refid="eula_8txt_1a078171074c29d3045a4f94cddf322d76" kind="variable"><name>INCIDENTAL</name></member>
+    <member refid="eula_8txt_1a178b59d22fc550daac4aa4510d459400" kind="variable"><name>SPECIAL</name></member>
+    <member refid="eula_8txt_1aacc2fc1913415c024be9ed61d435c462" kind="variable"><name>DAMAGES</name></member>
+    <member refid="eula_8txt_1a357acccd69eacb7d1ecf8791635075e9" kind="variable"><name>TO</name></member>
+    <member refid="eula_8txt_1a77d46d354b6dca6ac32f6ad530a05243" kind="variable"><name>PROFITS</name></member>
+    <member refid="eula_8txt_1a8f344dc31e5e8698cd08fa680c395f33" kind="variable"><name>GOODWILL</name></member>
+    <member refid="eula_8txt_1ac6ee2ce360d36cac42212eb6c7099313" kind="variable"><name>USE</name></member>
+    <member refid="eula_8txt_1a5a58a798b861f4f308e74c2a8065294d" kind="variable"><name>including</name></member>
+    <member refid="eula_8txt_1a653dabfb0775b4a07cc6bf66f5693d0d" kind="variable"><name>example</name></member>
+    <member refid="eula_8txt_1aa96453c0fc35417b1e9b3d1dbb52c1f8" kind="variable"><name>goods</name></member>
+    <member refid="eula_8txt_1aa8d3700b09821664e16f3b5327dd7ffd" kind="variable"><name>data</name></member>
+    <member refid="eula_8txt_1a92780853e4de1e3b832c555c79e102a8" kind="variable"><name>discontinue</name></member>
+    <member refid="eula_8txt_1a156c6abb5f5ea90347d457ca4018c16a" kind="variable"><name>permanently</name></member>
+    <member refid="eula_8txt_1a21031b8b08c2902e900d9957065df7f2" kind="variable"><name>change</name></member>
+    <member refid="eula_8txt_1a565f20b2ac82a5c8da18823cf8df9437" kind="variable"><name>Enterprise</name></member>
+    <member refid="eula_8txt_1aac154f784192942c19c131facc4c39a6" kind="function"><name>Agreement</name></member>
+    <member refid="eula_8txt_1ab657b834e0d44bec9ea2f68619389b7c" kind="function"><name>documentation</name></member>
+    <member refid="eula_8txt_1a41aa38fbe1fedfdc9c97e5b811216b3a" kind="function"><name>and</name></member>
+    <member refid="eula_8txt_1a2072324a9bc3ff8d16a320acb2b87aa8" kind="function"><name>error</name></member>
+    <member refid="eula_8txt_1af642362d9bee2ded3b7a28838328e00b" kind="function"><name>data</name></member>
+    <member refid="eula_8txt_1a374b8e65e8f36ed0e87c5160c7b3d047" kind="function"><name>licenses</name></member>
+    <member refid="eula_8txt_1a60d1a42e6ba867f96741b41f6f8c5f8e" kind="function"><name>that</name></member>
+    <member refid="eula_8txt_1ae197bed4ea315727438d9b61f6c10d78" kind="function"><name>or</name></member>
+    <member refid="eula_8txt_1af19a9b0f02f8500a278fe09ab44c0026" kind="function"><name>LOSSES</name></member>
+    <member refid="eula_8txt_1a65466d9206e7eff1cf7bdcc686874dbd" kind="function"><name>Software</name></member>
+    <member refid="eula_8txt_1a782c2a77a8921deb1724c9ef5d964ea9" kind="function"><name>GitHub</name></member>
+  </compound>
+  <compound refid="_extension_loader_8cs" kind="file"><name>ExtensionLoader.cs</name>
+  </compound>
+  <compound refid="_unity_a_p_i_wrapper_8cs" kind="file"><name>UnityAPIWrapper.cs</name>
+  </compound>
+  <compound refid="_menu_8cs" kind="file"><name>Menu.cs</name>
+  </compound>
+  <compound refid="_scene_controller_8cs" kind="file"><name>SceneController.cs</name>
+  </compound>
+  <compound refid="_move_component_8cs" kind="file"><name>MoveComponent.cs</name>
+  </compound>
+  <compound refid="_object_events_8cs" kind="file"><name>ObjectEvents.cs</name>
+  </compound>
+  <compound refid="_text_texture_factory_8cs" kind="file"><name>TextTextureFactory.cs</name>
+  </compound>
+  <compound refid="_texture2_d_extension_8cs" kind="file"><name>Texture2DExtension.cs</name>
+  </compound>
+  <compound refid="_simple_task_8cs" kind="file"><name>SimpleTask.cs</name>
+  </compound>
+  <compound refid="_visual_task_8cs" kind="file"><name>VisualTask.cs</name>
+  </compound>
+  <compound refid="dir_84bbf7b3c7f28a5a18725745e1505219" kind="dir"><name>Assets</name>
+  </compound>
+  <compound refid="dir_341cf86cd4cad9e13ecbcfca75d42545" kind="dir"><name>Assets/Billboard</name>
+  </compound>
+  <compound refid="dir_46e6a57f51514759427122c058bee86f" kind="dir"><name>Assets/Decembrists</name>
+  </compound>
+  <compound refid="dir_0b21615e81270db3bdf7fab90991c6a3" kind="dir"><name>Assets/Plugins/GitHub/Editor</name>
+  </compound>
+  <compound refid="dir_418b1d3a97cb7f332e87be90f8018ff2" kind="dir"><name>Assets/Player/Scripts/FlyPlayer</name>
+  </compound>
+  <compound refid="dir_9896ce7b8bca22941ec94cdd67c0a37e" kind="dir"><name>Assets/Plugins/GitHub</name>
+  </compound>
+  <compound refid="dir_4c7485186b6cb99da9f83b2f9172e070" kind="dir"><name>Assets/Graph3D</name>
+  </compound>
+  <compound refid="dir_262216262d16817e1e163467e57d575f" kind="dir"><name>Assets/GUIFactory</name>
+  </compound>
+  <compound refid="dir_8966d8cac009c6b07e62001f2ee973e4" kind="dir"><name>Assets/Player</name>
+  </compound>
+  <compound refid="dir_3a7db02c1802c05a64cad382d375848d" kind="dir"><name>Assets/Player/Scripts/PlayerTools</name>
+  </compound>
+  <compound refid="dir_c0005b12c1c6ae1cb8e9754bcab8bc3c" kind="dir"><name>Assets/Plugins</name>
+  </compound>
+  <compound refid="dir_b75b91c31aa2a913d29e71358d0ad5ee" kind="dir"><name>Assets/SceneController</name>
+  </compound>
+  <compound refid="dir_7da52cdb14f0edfc8bcd90ddc1f28dac" kind="dir"><name>Assets/TextureFactory/Scripts</name>
+  </compound>
+  <compound refid="dir_d423057cbcf92a3aee5b728027638156" kind="dir"><name>Assets/VisualTasks/Scripts</name>
+  </compound>
+  <compound refid="dir_37d7d5e3ff470413b88a07dbec6bc79c" kind="dir"><name>Assets/Player/Scripts</name>
+  </compound>
+  <compound refid="dir_ff409c559fe5827febb820b5a79ff09a" kind="dir"><name>Assets/Decembrists/Scripts</name>
+  </compound>
+  <compound refid="dir_afa0c56e58c9faba2f100e127e0616ab" kind="dir"><name>Assets/GUIFactory/Scripts</name>
+  </compound>
+  <compound refid="dir_1394cdc8181da8718bb10b411ba92605" kind="dir"><name>Assets/SceneController/Scripts</name>
+  </compound>
+  <compound refid="dir_a5952d999155f609bcc2923b8321455d" kind="dir"><name>Assets/Graph3D/Scripts</name>
+  </compound>
+  <compound refid="dir_e07ef9748262a9c00700f1c99f536f68" kind="dir"><name>Assets/SupportComponents/Scripts</name>
+  </compound>
+  <compound refid="dir_7e9c2331035b0c226825353ae960a46b" kind="dir"><name>Assets/Billboard/Scripts</name>
+  </compound>
+  <compound refid="dir_898a40ee7ef9140e86bd3c3b33a43aba" kind="dir"><name>Assets/SupportComponents</name>
+  </compound>
+  <compound refid="dir_852b384c40a5cf36f042ed168bfcf49e" kind="dir"><name>Assets/TextureFactory</name>
+  </compound>
+  <compound refid="dir_b7f566e6d7ce851ce359f42960f05e2b" kind="dir"><name>Assets/VisualTasks</name>
+  </compound>
+</doxygenindex>

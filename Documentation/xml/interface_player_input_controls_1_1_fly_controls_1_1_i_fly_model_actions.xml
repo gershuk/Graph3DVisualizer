@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions" kind="interface" language="C#" prot="public">
+    <compoundname>PlayerInputControls::FlyControls::IFlyModelActions</compoundname>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1a447d6e091f2ffc8c30cdcb0424f60cf4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyControls.IFlyModelActions.OnMoveToPoint</definition>
+        <argsstring>(InputAction.CallbackContext context)</argsstring>
+        <name>OnMoveToPoint</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="426" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1ab79f3f0b70646f8b7f28ca621ff0b8fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyControls.IFlyModelActions.OnMove</definition>
+        <argsstring>(InputAction.CallbackContext context)</argsstring>
+        <name>OnMove</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="427" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1afe819f63c9fdc68934e534bd65fa54b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyControls.IFlyModelActions.OnLookRotation</definition>
+        <argsstring>(InputAction.CallbackContext context)</argsstring>
+        <name>OnLookRotation</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="428" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1a7b8f14473ddc688c9bfafa207988e8d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyControls.IFlyModelActions.OnChangeAltitude</definition>
+        <argsstring>(InputAction.CallbackContext context)</argsstring>
+        <name>OnChangeAltitude</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="429" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1a92272b4b4b37c838ba0aa61d54ffbd0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyControls.IFlyModelActions.OnScrollItemList</definition>
+        <argsstring>(InputAction.CallbackContext context)</argsstring>
+        <name>OnScrollItemList</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="430" column="18"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1ac0c821e6ec7a6e2d53135af63c38977b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void PlayerInputControls.FlyControls.IFlyModelActions.OnSelectItem</definition>
+        <argsstring>(InputAction.CallbackContext context)</argsstring>
+        <name>OnSelectItem</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="431" column="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="424" column="26" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" bodystart="425" bodyend="432"/>
+    <listofallmembers>
+      <member refid="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1a7b8f14473ddc688c9bfafa207988e8d1" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyControls::IFlyModelActions</scope><name>OnChangeAltitude</name></member>
+      <member refid="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1afe819f63c9fdc68934e534bd65fa54b7" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyControls::IFlyModelActions</scope><name>OnLookRotation</name></member>
+      <member refid="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1ab79f3f0b70646f8b7f28ca621ff0b8fc" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyControls::IFlyModelActions</scope><name>OnMove</name></member>
+      <member refid="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1a447d6e091f2ffc8c30cdcb0424f60cf4" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyControls::IFlyModelActions</scope><name>OnMoveToPoint</name></member>
+      <member refid="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1a92272b4b4b37c838ba0aa61d54ffbd0a" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyControls::IFlyModelActions</scope><name>OnScrollItemList</name></member>
+      <member refid="interface_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions_1ac0c821e6ec7a6e2d53135af63c38977b" prot="public" virt="non-virtual"><scope>PlayerInputControls::FlyControls::IFlyModelActions</scope><name>OnSelectItem</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

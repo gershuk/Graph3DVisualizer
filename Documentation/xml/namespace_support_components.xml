@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="namespace_support_components" kind="namespace" language="C#">
+    <compoundname>SupportComponents</compoundname>
+    <innerclass refid="class_support_components_1_1_customizable_extension" prot="public">SupportComponents::CustomizableExtension</innerclass>
+    <innerclass refid="interface_support_components_1_1_i_customizable" prot="public">SupportComponents::ICustomizable</innerclass>
+    <innerclass refid="interface_support_components_1_1_i_destructible" prot="public">SupportComponents::IDestructible</innerclass>
+    <innerclass refid="interface_support_components_1_1_i_moveable" prot="public">SupportComponents::IMoveable</innerclass>
+    <innerclass refid="interface_support_components_1_1_i_selectable" prot="public">SupportComponents::ISelectable</innerclass>
+    <innerclass refid="interface_support_components_1_1_i_visibile" prot="public">SupportComponents::IVisibile</innerclass>
+    <innerclass refid="class_support_components_1_1_move_component" prot="public">SupportComponents::MoveComponent</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_support_components_1a5afee1d624a6b0aa8aa67f22c99afe6c" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>TransmissionMode</name>
+        <enumvalue id="namespace_support_components_1a5afee1d624a6b0aa8aa67f22c99afe6ca06b9281e396db002010bde1de57262eb" prot="public">
+          <name>Auto</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_support_components_1a5afee1d624a6b0aa8aa67f22c99afe6cae1ba155a9f2e8c3be94020eef32a0301" prot="public">
+          <name>Manual</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_support_components_1a5afee1d624a6b0aa8aa67f22c99afe6cae1b5d97c3571bc99470441a7e5962f69" prot="public">
+          <name>FirstGear</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_support_components_1a5afee1d624a6b0aa8aa67f22c99afe6ca6295ff1f22ab0bf7bd1a245390aee7c0" prot="public">
+          <name>TopGear</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="26" column="11" bodyfile="Assets/SupportComponents/Scripts/MoveComponent.cs" bodystart="27" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/SupportComponents/Scripts/MoveComponent.cs" line="24" column="1"/>
+  </compounddef>
+</doxygen>

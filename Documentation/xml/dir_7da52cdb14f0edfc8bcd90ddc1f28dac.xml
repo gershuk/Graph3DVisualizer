@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="dir_7da52cdb14f0edfc8bcd90ddc1f28dac" kind="dir">
+    <compoundname>Assets/TextureFactory/Scripts</compoundname>
+    <innerfile refid="_text_texture_factory_8cs">TextTextureFactory.cs</innerfile>
+    <innerfile refid="_texture2_d_extension_8cs">Texture2DExtension.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/TextureFactory/Scripts/"/>
+  </compounddef>
+</doxygen>

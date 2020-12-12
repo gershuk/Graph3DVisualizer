@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_grpah3_d_visualizer_1_1_link_not_found_exception" kind="class" language="C#" prot="public">
+    <compoundname>Grpah3DVisualizer::LinkNotFoundException</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">Exception</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_link_not_found_exception_1acfaa6f4a264d886b23dbe6dcdc3406b9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Grpah3DVisualizer.LinkNotFoundException.LinkNotFoundException</definition>
+        <argsstring>()</argsstring>
+        <name>LinkNotFoundException</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Vertex.cs" line="28" column="16" bodyfile="Assets/Graph3D/Scripts/Vertex.cs" bodystart="28" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_link_not_found_exception_1aa267cf2d37ee05904e045f60f772baec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Grpah3DVisualizer.LinkNotFoundException.LinkNotFoundException</definition>
+        <argsstring>(string message)</argsstring>
+        <name>LinkNotFoundException</name>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Vertex.cs" line="32" column="16" bodyfile="Assets/Graph3D/Scripts/Vertex.cs" bodystart="32" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="class_grpah3_d_visualizer_1_1_link_not_found_exception_1ac898c25d3673c574c40b13c114c3de10" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Grpah3DVisualizer.LinkNotFoundException.LinkNotFoundException</definition>
+        <argsstring>(string message, Exception innerException)</argsstring>
+        <name>LinkNotFoundException</name>
+        <param>
+          <type>string</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>Exception</type>
+          <declname>innerException</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Vertex.cs" line="36" column="16" bodyfile="Assets/Graph3D/Scripts/Vertex.cs" bodystart="36" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Grpah3DVisualizer.LinkNotFoundException</label>
+        <link refid="class_grpah3_d_visualizer_1_1_link_not_found_exception"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Exception</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Grpah3DVisualizer.LinkNotFoundException</label>
+        <link refid="class_grpah3_d_visualizer_1_1_link_not_found_exception"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Exception</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Graph3D/Scripts/Vertex.cs" line="26" column="11" bodyfile="Assets/Graph3D/Scripts/Vertex.cs" bodystart="27" bodyend="39"/>
+    <listofallmembers>
+      <member refid="class_grpah3_d_visualizer_1_1_link_not_found_exception_1acfaa6f4a264d886b23dbe6dcdc3406b9" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::LinkNotFoundException</scope><name>LinkNotFoundException</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_link_not_found_exception_1aa267cf2d37ee05904e045f60f772baec" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::LinkNotFoundException</scope><name>LinkNotFoundException</name></member>
+      <member refid="class_grpah3_d_visualizer_1_1_link_not_found_exception_1ac898c25d3673c574c40b13c114c3de10" prot="public" virt="non-virtual"><scope>Grpah3DVisualizer::LinkNotFoundException</scope><name>LinkNotFoundException</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

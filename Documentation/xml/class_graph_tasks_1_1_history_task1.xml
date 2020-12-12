@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="class_graph_tasks_1_1_history_task1" kind="class" language="C#" prot="public">
+    <compoundname>GraphTasks::HistoryTask1</compoundname>
+    <basecompoundref refid="class_graph_tasks_1_1_visual_task" prot="public" virt="non-virtual">GraphTasks.VisualTask</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_graph_tasks_1_1_history_task1_1a54800b38b38d079bbb70b078ff878d6d" prot="private" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject GraphTasks.HistoryTask1._graph</definition>
+        <argsstring></argsstring>
+        <name>_graph</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="33" column="28" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph_tasks_1_1_history_task1_1a36315dfa62145705b9e4ba52293a1e21" prot="private" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject GraphTasks.HistoryTask1._player</definition>
+        <argsstring></argsstring>
+        <name>_player</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="34" column="28" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph_tasks_1_1_history_task1_1a8274e89aaeef8a691ce7039985a861fe" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>override IReadOnlyCollection&lt; <ref refid="class_player_input_controls_1_1_abstract_p_layer" kindref="compound">AbstractPLayer</ref> &gt;</type>
+        <definition>override IReadOnlyCollection&lt;AbstractPLayer&gt; GraphTasks.HistoryTask1.Players</definition>
+        <argsstring></argsstring>
+        <name>Players</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="36" column="45" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph_tasks_1_1_history_task1_1afabb5986b74e9e6be9dcf9aad696cb09" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>override IReadOnlyCollection&lt; <ref refid="class_grpah3_d_visualizer_1_1_graph" kindref="compound">Graph</ref> &gt;</type>
+        <definition>override IReadOnlyCollection&lt;Graph&gt; GraphTasks.HistoryTask1.Graphs</definition>
+        <argsstring></argsstring>
+        <name>Graphs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="37" column="45" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="37" bodyend="37"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_graph_tasks_1_1_history_task1_1a71c3e7fa2687d798b7f0a1f43ed1bfb5" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_grpah3_d_visualizer_1_1_decembrist_vertex" kindref="compound">DecembristVertex</ref></type>
+        <definition>DecembristVertex GraphTasks.HistoryTask1.AddPeople</definition>
+        <argsstring>(TextTextureFactory textTextureFactory, UnityEngine.Object man, Graph graphController, Texture2D selectFrame, bool isDec)</argsstring>
+        <name>AddPeople</name>
+        <param>
+          <type><ref refid="class_texture_factory_1_1_text_texture_factory" kindref="compound">TextTextureFactory</ref></type>
+          <declname>textTextureFactory</declname>
+        </param>
+        <param>
+          <type>UnityEngine.Object</type>
+          <declname>man</declname>
+        </param>
+        <param>
+          <type><ref refid="class_grpah3_d_visualizer_1_1_graph" kindref="compound">Graph</ref></type>
+          <declname>graphController</declname>
+        </param>
+        <param>
+          <type>Texture2D</type>
+          <declname>selectFrame</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isDec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="39" column="34" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="39" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph_tasks_1_1_history_task1_1afffacfd076308722deca19ccf59fe6ad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override <ref refid="class_grpah3_d_visualizer_1_1_graph" kindref="compound">Graph</ref></type>
+        <definition>override Graph GraphTasks.HistoryTask1.CreateGraph</definition>
+        <argsstring>()</argsstring>
+        <name>CreateGraph</name>
+        <reimplements refid="class_graph_tasks_1_1_visual_task_1a9c392eb2bcab59ef02732367257982cb">CreateGraph</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="68" column="31" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="68" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_tasks_1_1_history_task1_1ab3599b316e0524389c094068401b55b0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void GraphTasks.HistoryTask1.InitTask</definition>
+        <argsstring>()</argsstring>
+        <name>InitTask</name>
+        <reimplements refid="class_graph_tasks_1_1_visual_task_1aab0ea9f7701805f2824a8ce01196d1ac">InitTask</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="104" column="30" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="104" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_tasks_1_1_history_task1_1aa20f09325c526a6348da9c5af1790e93" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>override void</type>
+        <definition>override void GraphTasks.HistoryTask1.StartTask</definition>
+        <argsstring>()</argsstring>
+        <name>StartTask</name>
+        <reimplements refid="class_graph_tasks_1_1_visual_task_1a3b8bb8b2cca1e4a7af8075f8e0cada27">StartTask</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="130" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_tasks_1_1_history_task1_1a9f496d67e7397a15091f178fe7966f26" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>override void</type>
+        <definition>override void GraphTasks.HistoryTask1.StopTask</definition>
+        <argsstring>()</argsstring>
+        <name>StopTask</name>
+        <reimplements refid="class_graph_tasks_1_1_visual_task_1a4d776305ed83d7274e34cc3e31fb74ad">StopTask</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="132" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_tasks_1_1_history_task1_1a18e427fa0d9c002b01ac4c7c37ec5bad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void GraphTasks.HistoryTask1.DestroyTask</definition>
+        <argsstring>()</argsstring>
+        <name>DestroyTask</name>
+        <reimplements refid="class_graph_tasks_1_1_visual_task_1ae45224a095b0d44d7df344c5932a1d03">DestroyTask</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="134" column="30" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="134" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph_tasks_1_1_history_task1_1a0a54461ebeb44a9d0dda0ee02faff457" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override List&lt; <ref refid="class_graph_tasks_1_1_verdict" kindref="compound">Verdict</ref> &gt;</type>
+        <definition>override List&lt;Verdict&gt; GraphTasks.HistoryTask1.GetResult</definition>
+        <argsstring>()</argsstring>
+        <name>GetResult</name>
+        <reimplements refid="class_graph_tasks_1_1_visual_task_1ad0ea942c866041f34afb4afb02b9843a">GetResult</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="141" column="30" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="141" bodyend="152"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>VisualTask</label>
+        <link refid="class_graph_tasks_1_1_visual_task"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>GraphTasks.HistoryTask1</label>
+        <link refid="class_graph_tasks_1_1_history_task1"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>VisualTask</label>
+        <link refid="class_graph_tasks_1_1_visual_task"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>GraphTasks.HistoryTask1</label>
+        <link refid="class_graph_tasks_1_1_history_task1"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="31" column="11" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="32" bodyend="153"/>
+    <listofallmembers>
+      <member refid="class_graph_tasks_1_1_history_task1_1a54800b38b38d079bbb70b078ff878d6d" prot="private" virt="non-virtual"><scope>GraphTasks::HistoryTask1</scope><name>_graph</name></member>
+      <member refid="class_graph_tasks_1_1_history_task1_1a36315dfa62145705b9e4ba52293a1e21" prot="private" virt="non-virtual"><scope>GraphTasks::HistoryTask1</scope><name>_player</name></member>
+      <member refid="class_graph_tasks_1_1_history_task1_1a71c3e7fa2687d798b7f0a1f43ed1bfb5" prot="private" virt="non-virtual"><scope>GraphTasks::HistoryTask1</scope><name>AddPeople</name></member>
+      <member refid="class_graph_tasks_1_1_history_task1_1afffacfd076308722deca19ccf59fe6ad" prot="public" virt="virtual"><scope>GraphTasks::HistoryTask1</scope><name>CreateGraph</name></member>
+      <member refid="class_graph_tasks_1_1_history_task1_1a18e427fa0d9c002b01ac4c7c37ec5bad" prot="public" virt="virtual"><scope>GraphTasks::HistoryTask1</scope><name>DestroyTask</name></member>
+      <member refid="class_graph_tasks_1_1_history_task1_1a0a54461ebeb44a9d0dda0ee02faff457" prot="public" virt="virtual"><scope>GraphTasks::HistoryTask1</scope><name>GetResult</name></member>
+      <member refid="class_graph_tasks_1_1_history_task1_1afabb5986b74e9e6be9dcf9aad696cb09" prot="public" virt="non-virtual"><scope>GraphTasks::HistoryTask1</scope><name>Graphs</name></member>
+      <member refid="class_graph_tasks_1_1_history_task1_1ab3599b316e0524389c094068401b55b0" prot="public" virt="virtual"><scope>GraphTasks::HistoryTask1</scope><name>InitTask</name></member>
+      <member refid="class_graph_tasks_1_1_history_task1_1a8274e89aaeef8a691ce7039985a861fe" prot="public" virt="non-virtual"><scope>GraphTasks::HistoryTask1</scope><name>Players</name></member>
+      <member refid="class_graph_tasks_1_1_history_task1_1aa20f09325c526a6348da9c5af1790e93" prot="public" virt="virtual"><scope>GraphTasks::HistoryTask1</scope><name>StartTask</name></member>
+      <member refid="class_graph_tasks_1_1_history_task1_1a9f496d67e7397a15091f178fe7966f26" prot="public" virt="virtual"><scope>GraphTasks::HistoryTask1</scope><name>StopTask</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

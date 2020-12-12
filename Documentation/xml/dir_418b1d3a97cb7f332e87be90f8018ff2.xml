@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+  <compounddef id="dir_418b1d3a97cb7f332e87be90f8018ff2" kind="dir">
+    <compoundname>Assets/Player/Scripts/FlyPlayer</compoundname>
+    <innerfile refid="_abstract_p_layer_8cs">AbstractPLayer.cs</innerfile>
+    <innerfile refid="_fly_controls_8cs">FlyControls.cs</innerfile>
+    <innerfile refid="_fly_player_8cs">FlyPlayer.cs</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Player/Scripts/FlyPlayer/"/>
+  </compounddef>
+</doxygen>
