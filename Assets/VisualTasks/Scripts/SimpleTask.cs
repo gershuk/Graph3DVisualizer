@@ -16,7 +16,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 using Grpah3DVisualizer;
 
@@ -28,18 +27,16 @@ using UnityEngine;
 
 namespace GraphTasks
 {
-    public class SimpleTask : VisualTask
+    public class SimpleTask : AbstractVisualTask
     {
-        private GameObject _graph;
-        private GameObject _player;
+        public override IReadOnlyCollection<AbstractPlayer> Players { get => _players; protected set => _players = (List<AbstractPlayer>) value; }
+        public override IReadOnlyCollection<AbstractGraph> Graphs { get => _graphs; protected set => _graphs = (List<AbstractGraph>) value; }
 
-        public override IReadOnlyCollection<AbstractPLayer> Players { get => new List<AbstractPLayer>(1) { _player.GetComponent<AbstractPLayer>() }; protected set => throw new NotImplementedException(); }
-        public override IReadOnlyCollection<Graph> Graphs { get => new List<Graph>(1) { _graph.GetComponent<Graph>() }; protected set => throw new NotImplementedException(); }
-
-        public override Graph CreateGraph ()
+        public Graph CreateGraph ()
         {
-            _graph = new GameObject("Graph");
-            var graphControler = _graph.AddComponent<Graph>();
+            var graph = new GameObject("Graph");
+            var graphControler = graph.AddComponent<Graph>();
+            _graphs.Add(graphControler);
             Vertex lastVertex = null;
 
             var customFont = (Font) Resources.Load("Font/CustomFontDroidSans-Bold");
@@ -68,12 +65,12 @@ namespace GraphTasks
                 var combIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height, TextureWrapMode.Clamp, false);
                 var billPar2 = new BillboardParameters(combIm2, new Vector2(value, value), 0.1f, true, true, Color.red);
 
-                var verPar = new VertexParameters(new Vector3(i % 30 * 20, i / 30 * 20, 0), Quaternion.identity, billPar1, billPar2);
-                var currentVertex = graphControler.SpawnVertex<Vertex>(verPar);
-                var linkParameters = new LinkParameters(6, 6);
-                lastVertex?.Link(currentVertex, typeof(Edge), linkParameters);
+                var verPar = new SelectableVertexParameters(new Vector3(i % 30 * 20, i / 30 * 20, 0), Quaternion.identity, billPar1, billPar2, false);
+                var currentVertex = graphControler.SpawnVertex<SelectableVertex, SelectableVertexParameters>(verPar);
+                var edgeParams = new EdgeParameters(6, 6);
+                lastVertex?.Link<Edge, EdgeParameters>(currentVertex, edgeParams);
                 if (lastVertex != null && i % 2 == 0)
-                    currentVertex.Link(lastVertex, typeof(Edge), linkParameters);
+                    currentVertex.Link<Edge, EdgeParameters>(lastVertex, edgeParams);
                 lastVertex = currentVertex;
 
                 Destroy(text);
@@ -84,6 +81,8 @@ namespace GraphTasks
 
         public override void InitTask ()
         {
+            CreateGraph();
+
             var colors = new List<Color>(7)
                          {
                              new Color(1f,0f,0f),
@@ -97,9 +96,9 @@ namespace GraphTasks
 
             var edgeTypes = new List<Type>(1) { typeof(Edge) };
 
-            CreateGraph();
-            _player = (GameObject) Instantiate(Resources.Load("Prefabs/Player"));
-            _player.GetComponent<FlyPlayer>().SetupParams(new PlayerParams(Vector3.zero, Vector3.zero, 40, 20,
+            var player = (Instantiate(Resources.Load("Prefabs/Player")) as GameObject).GetComponent<FlyPlayer>();
+            _players.Add(player);
+            player.SetupParams(new PlayerParameters(Vector3.zero, Vector3.zero, 40, 20,
                 new ToolConfig[3]
                 {
                     new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)),
@@ -111,13 +110,6 @@ namespace GraphTasks
         public override void StartTask () => throw new NotImplementedException();
 
         public override void StopTask () => throw new NotImplementedException();
-
-        public override void DestroyTask ()
-        {
-            Destroy(_player);
-            Destroy(_graph);
-            Destroy(gameObject);
-        }
 
         public override List<Verdict> GetResult () => throw new NotImplementedException();
     }

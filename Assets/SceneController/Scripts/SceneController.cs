@@ -31,18 +31,18 @@ namespace Grpah3DVisualizer
     {
         private Dictionary<string, Assembly> _asseblies;
         private Type _currentTaskType;
-        private VisualTask _visualTask;
+        private AbstractVisualTask _visualTask;
         private List<Type> _taskList;
 
         public Type CurrentTaskType
         {
             get => _currentTaskType;
-            set => _currentTaskType = value == null || value.IsSubclassOf(typeof(VisualTask)) ? value : throw new Exception($"You can't cast {value.Name} to a VisualTask");
+            set => _currentTaskType = value == null || value.IsSubclassOf(typeof(AbstractVisualTask)) ? value : throw new Exception($"You can't cast {value.Name} to a VisualTask");
         }
 
         public List<Type> TaskList { get => _taskList; private set => _taskList = value; }
 
-        public VisualTask VisualTask { get => _visualTask; private set => _visualTask = value; }
+        public AbstractVisualTask VisualTask { get => _visualTask; private set => _visualTask = value; }
 
 
         private void Awake ()
@@ -82,8 +82,6 @@ namespace Grpah3DVisualizer
 
         public void LoadScene (string name) => SceneManager.LoadScene(name);
 
-        public void SetTaskByName (string name) => CurrentTaskType = Type.GetType(name);
-
         public void FindAllTasks ()
         {
             var assemblys = AppDomain.CurrentDomain.GetAssemblies();
@@ -93,7 +91,7 @@ namespace Grpah3DVisualizer
                 var types = assembly.GetTypes();
                 foreach (var type in types)
                 {
-                    if (type.IsSubclassOf(typeof(VisualTask)))
+                    if (type.IsSubclassOf(typeof(AbstractVisualTask)))
                         _taskList.Add(type);
                 }
             }
@@ -104,7 +102,7 @@ namespace Grpah3DVisualizer
             if (_currentTaskType != null)
             {
                 var gameObject = new GameObject("VisualTask");
-                _visualTask = (VisualTask) gameObject.AddComponent(_currentTaskType);
+                _visualTask = (AbstractVisualTask) gameObject.AddComponent(_currentTaskType);
                 _visualTask.InitTask();
             }
         }

@@ -24,7 +24,7 @@ using UnityEngine.InputSystem;
 
 namespace PlayerInputControls
 {
-    public class SelectItemToolParams
+    public class SelectItemToolParams : ToolParams
     {
         public IReadOnlyList<Color> Colors { get; }
 

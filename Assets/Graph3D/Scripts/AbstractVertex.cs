@@ -1,0 +1,194 @@
+﻿// This file is part of Grpah3DVisualizer.
+// Copyright © Gershuk Vladislav 2020.
+//
+// Grpah3DVisualizer is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Grpah3DVisualizer is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY, without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+
+using System;
+using System.Collections.Generic;
+
+using SupportComponents;
+
+using UnityEngine;
+
+namespace Grpah3DVisualizer
+{
+    public class LinkNotFoundException : Exception
+    {
+        public LinkNotFoundException () : base()
+        {
+        }
+
+        public LinkNotFoundException (string message) : base(message)
+        {
+        }
+
+        public LinkNotFoundException (string message, Exception innerException) : base(message, innerException)
+        {
+        }
+    }
+
+    public class Link
+    {
+        public AbstractVertex AdjacentVertex { get; }
+        public AbstractEdge Edge { get; }
+
+        public Link (AbstractVertex adjacentVertex, AbstractEdge edge)
+        {
+            AdjacentVertex = adjacentVertex != null ? adjacentVertex : throw new ArgumentNullException(nameof(adjacentVertex));
+            Edge = edge != null ? edge : throw new ArgumentNullException(nameof(edge));
+        }
+    }
+
+    public class VertexParameters : CustomizableParameter
+    {
+        public Vector3 Position { get; }
+        public Quaternion Rotation { get; }
+        public BillboardParameters ImageParameters { get; }
+
+        public VertexParameters (Vector3 position, Quaternion rotation, BillboardParameters imageParameters)
+            => (Position, Rotation, ImageParameters) = (position, rotation, imageParameters);
+    }
+
+    [RequireComponent(typeof(MoveComponent))]
+    public abstract class AbstractVertex : MonoBehaviour, IVisibile, IDestructible, ICustomizable<VertexParameters>
+    {
+        [SerializeField]
+        protected GameObject _edgePrefab;
+        protected List<Link> _incomingLinks;
+        protected List<Link> _outgoingLinks;
+        protected bool _visible = true;
+        protected BillboardId _mainImageId;
+        protected Transform _transform;
+
+        public abstract MoveComponent MoveComponent { get; protected set; }
+        public abstract bool Visibility { get; set; }
+        public abstract Vector2 SetMainImageSize { get; set; }
+
+        public abstract event Action<UnityEngine.Object> Destroyed;
+        public abstract event Action<bool, UnityEngine.Object> VisibleChanged;
+
+        private TEdge CreateEdge<TEdge, TParameters> (TParameters parameters, AbstractVertex toVertex) where TEdge : AbstractEdge where TParameters : EdgeParameters
+        {
+            var edge = Instantiate(_edgePrefab, _transform.position, Quaternion.identity, _transform.parent).AddComponent<TEdge>();
+            edge.AdjacentVertices = new AdjacentVertices(this, toVertex);
+            (edge as ICustomizable<TParameters>).SetupParams(parameters);
+            return edge;
+        }
+
+        private AbstractEdge CreateEdge (EdgeParameters parameters, Type edgeType, AbstractVertex toVertex)
+        {
+            if (!edgeType.IsSubclassOf(typeof(AbstractEdge)))
+                throw new WrongTypeInCustomizableParameterException(typeof(AbstractEdge), edgeType);
+            var edge = (AbstractEdge) Instantiate(_edgePrefab, _transform.position, Quaternion.identity, _transform.parent).AddComponent(edgeType);
+            edge.AdjacentVertices = new AdjacentVertices(this, toVertex);
+            CustomizableExtension.CallSetUpParams(edge, new[] { parameters });
+            return edge;
+        }
+
+        protected AbstractEdge RemoveLinkFromArray (List<Link> links, AbstractVertex toVertex, Type edgeType)
+        {
+            for (var i = 0; i < links.Count; ++i)
+            {
+                if (links[i].AdjacentVertex == toVertex && links[i].Edge.GetType() == edgeType)
+                {
+                    var link = links[i];
+                    links[i] = links[links.Count - 1];
+                    links.RemoveAt(links.Count - 1);
+                    return link.Edge;
+                }
+            }
+            throw new LinkNotFoundException();
+        }
+
+        public abstract VertexParameters DownloadParams ();
+        public abstract void SetMainImage (BillboardParameters billboardParameters);
+        public virtual void SetupParams (VertexParameters parameters)
+        {
+            (_transform.position, _transform.rotation) = (parameters.Position, parameters.Rotation);
+            SetMainImage(parameters.ImageParameters);
+        }
+
+        protected void CheckLinkForCorrectness (AbstractVertex toVertex, Type edgeType)
+        {
+            if (toVertex == this)
+                throw new Exception($"It is forbidden to create edges from a vertex to the same vertex.");
+
+            if (_transform.parent != toVertex._transform.parent)
+                throw new Exception($"The vertices are in different graphs");
+
+            foreach (var link in _outgoingLinks)
+            {
+                if (link.AdjacentVertex == toVertex && link.Edge.GetType() == edgeType)
+                {
+                    throw new Exception("Link already exist");
+                }
+            }
+        }
+
+        protected AbstractEdge FindOppositeEdge (AbstractVertex toVertex, Type edgeType)
+        {
+            AbstractEdge edge = null;
+
+            foreach (var link in _incomingLinks)
+            {
+                if (link.AdjacentVertex == toVertex && link.Edge.GetType() == edgeType)
+                {
+                    edge = link.Edge;
+                    edge.Type = EdgeType.Bidirectional;
+                    break;
+                }
+            }
+
+            return edge;
+        }
+
+        public TEdge Link<TEdge, TParameters> (AbstractVertex toVertex, TParameters edgeParameters) where TEdge : AbstractEdge where TParameters : EdgeParameters
+        {
+            CheckLinkForCorrectness(toVertex, typeof(TEdge));
+            var edge = (TEdge) FindOppositeEdge(toVertex, typeof(TEdge));
+            edge = edge != null ? edge : CreateEdge<TEdge, TParameters>(edgeParameters, toVertex);
+            _outgoingLinks.Add(new Link(toVertex, edge));
+            toVertex._incomingLinks.Add(new Link(this, edge));
+            return edge;
+        }
+
+        public AbstractEdge Link (AbstractVertex toVertex, Type edgeType, EdgeParameters edgeParameters)
+        {
+            CheckLinkForCorrectness(toVertex, edgeType);
+            var edge = FindOppositeEdge(toVertex, edgeType);
+            edge = edge != null ? edge : CreateEdge(edgeParameters, edgeType, toVertex);
+            _outgoingLinks.Add(new Link(toVertex, edge));
+            toVertex._incomingLinks.Add(new Link(this, edge));
+            return edge;
+        }
+
+        public void UnLink<TEdge> (AbstractVertex toVertex) where TEdge : AbstractEdge => UnLink(toVertex, typeof(Edge));
+
+        public void UnLink (AbstractVertex toVertex, Type edgeType)
+        {
+            toVertex.RemoveLinkFromArray(toVertex._incomingLinks, this, edgeType);
+            var edge = RemoveLinkFromArray(_outgoingLinks, toVertex, edgeType);
+
+            if (edge.Type == EdgeType.Bidirectional)
+            {
+                edge.Type = EdgeType.Unidirectional;
+                edge.AdjacentVertices = new AdjacentVertices(toVertex, this);
+            }
+            else
+            {
+                Destroy(edge.gameObject);
+            }
+        }
+    }
+}

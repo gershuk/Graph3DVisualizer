@@ -17,7 +17,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 
 using SupportComponents;
 
@@ -27,14 +26,11 @@ using UnityEngine.InputSystem;
 namespace PlayerInputControls
 {
     [RequireComponent(typeof(MoveComponent))]
-    public sealed class FlyPlayer : AbstractPLayer, ICustomizable<PlayerParams>
+    public sealed class FlyPlayer : AbstractPlayer
     {
         private Transform _transform;
         private Vector3 _moveDirVector;
         private FlyControls _inputActions;
-        private MoveComponent _moveComponent;
-        private List<PlayerTool> _playerTools;
-        private int _currentToolIndex = 0;
         private GameObject _hand;
 
         private void Awake ()
@@ -53,7 +49,7 @@ namespace PlayerInputControls
             _inputType = InputType.ToolsOnly;
         }
 
-        private void CreateTool (params ToolConfig[] toolsConfig)
+        protected override void CreateTool (params ToolConfig[] toolsConfig)
         {
             var clonedList = _playerTools.GetRange(0, _playerTools.Count);
             try
@@ -65,7 +61,8 @@ namespace PlayerInputControls
 
                     try
                     {
-                        CustomizableExtension.CallSetUpParams(newTool, new[] { config.ToolParams });
+                        if (config.ToolParams != null)
+                            CustomizableExtension.CallSetUpParams(newTool, config.ToolParams);
                     }
                     catch (Exception e)
                     {
@@ -175,38 +172,7 @@ namespace PlayerInputControls
                 StartCoroutine(_moveComponent.MoveAlongTrajectory(new ReadOnlyCollection<Vector3>(new List<Vector3>(1) { hit.point })));
         }
 
-        public void SelectTool (int index)
-        {
-            var lastIndex = _currentToolIndex;
-            try
-            {
-                _playerTools[_currentToolIndex].enabled = false;
-                _currentToolIndex = index;
-                _playerTools[_currentToolIndex].enabled = true;
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-                Debug.LogError($"Wrong tool index {_currentToolIndex}");
-                _currentToolIndex = lastIndex;
-                _playerTools[_currentToolIndex].enabled = true;
-            }
-        }
-
         public void OnSelectItem (InputAction.CallbackContext obj) => SelectTool(Convert.ToInt32(obj.control.displayName) - 1);
-
-        public void SetupParams (PlayerParams playerParams)
-        {
-            transform.position = playerParams.Position;
-            transform.eulerAngles = playerParams.EulerAngles;
-            _moveComponent.MovingSpeed = playerParams.MovingSpeed;
-            _moveComponent.RotationSpeed = playerParams.RotationSpeed;
-            CreateTool(playerParams.ToolConfigs);
-        }
-
-        //ToDo : Remove array from CustomizableExtension.CallDownloadParams
-        public PlayerParams DownloadParams () =>
-            new PlayerParams(transform.position, transform.eulerAngles, _moveComponent.MovingSpeed, _moveComponent.RotationSpeed,
-            _playerTools.Select(tool => new ToolConfig(tool.GetType(), CustomizableExtension.CallDownloadParams(tool)[0])).ToArray());
 
         public override InputType InputType
         {

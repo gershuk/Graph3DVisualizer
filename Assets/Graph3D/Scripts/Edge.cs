@@ -14,108 +14,21 @@
 // You should have received a copy of the GNU General Public License
 // along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
-using System;
-
-using SupportComponents;
-
 using UnityEngine;
 
 namespace Grpah3DVisualizer
 {
-    public enum EdgeVisibility
-    {
-        Hidden = 0,
-        Visible = 1,
-        DependOnVertices = 2,
-    }
-
-    public enum EdgeType
-    {
-        Unidirectional = 0,
-        Bidirectional = 1,
-    }
-
-    public readonly struct AdjacentVertices
-    {
-        public Vertex FromVertex { get; }
-        public Vertex ToVertex { get; }
-
-        public AdjacentVertices (Vertex fromVertex, Vertex toVertex)
-        {
-            FromVertex = fromVertex != null ? fromVertex : throw new ArgumentNullException(nameof(fromVertex));
-            ToVertex = toVertex != null ? toVertex : throw new ArgumentNullException(nameof(toVertex));
-        }
-
-        public void Deconstruct (out Vertex fromVertex, out Vertex toVertex) => (fromVertex, toVertex) = (FromVertex, ToVertex);
-
-        public float GetDistance () => Vector3.Distance(FromVertex.transform.position, ToVertex.transform.position);
-
-        public Vector3 GetUnitVector () => (ToVertex.transform.position - FromVertex.transform.position) / GetDistance();
-
-        public Vector3 GetMiddlePoint () => (FromVertex.transform.position + ToVertex.transform.position) / 2;
-    }
-
-    public class EdgeParameters
-    {
-        public AdjacentVertices AdjacentVertices { get; }
-        public float SourceOffsetDist { get; }
-        public float TargetOffsetDist { get; }
-        public Texture2D ArrowTexture { get; }
-        public Texture2D LineTexture { get; }
-        public EdgeVisibility Visibility { get; }
-
-        public EdgeParameters (in AdjacentVertices adjacentVertices, float sourceOffsetDist, float targetOffsetDist,
-            Texture2D arrowTexture = null, Texture2D lineTexture = null, EdgeVisibility visibility = EdgeVisibility.DependOnVertices)
-        {
-            AdjacentVertices = adjacentVertices;
-            SourceOffsetDist = sourceOffsetDist;
-            TargetOffsetDist = targetOffsetDist;
-            ArrowTexture = arrowTexture;
-            LineTexture = lineTexture;
-            Visibility = visibility;
-        }
-    }
-
     [RequireComponent(typeof(LineRenderer))]
-    public class Edge : MonoBehaviour, ICustomizable<EdgeParameters>
+    public class Edge : AbstractEdge
     {
         private const string _cutoff = "_Cutoff";
         private static Shader _shader;
         private static Texture2D _defaultArrowTexture;
         private static Texture2D _defaultLineTexture;
-
-        [SerializeField]
-        private Texture2D _lineTexture;
-        [SerializeField]
-        private Texture2D _arrowTexture;
-
-        private Transform _transform;
-
         private Material _material;
         private LineRenderer _lineRenderer;
 
-        private float _sourceOffsetDist;
-        private float _targetOffsetDist;
-        private EdgeType _type;
-        private AdjacentVertices _adjacentVertices;
-        private EdgeVisibility _visibility;
-
-        public AdjacentVertices AdjacentVertices
-        {
-            get => _adjacentVertices;
-            set
-            {
-                if (!_adjacentVertices.Equals(value))
-                {
-                    UnsubscribeOnVerticesEvents();
-                    _adjacentVertices = value;
-                    SubscribeOnVerticesEvents();
-                    UpdateCoordinates();
-                }
-            }
-        }
-
-        public EdgeType Type
+        public override EdgeType Type
         {
             get => _type;
             set
@@ -128,7 +41,7 @@ namespace Grpah3DVisualizer
             }
         }
 
-        public float SourceOffsetDist
+        public override float SourceOffsetDist
         {
             get => _sourceOffsetDist;
             set
@@ -141,7 +54,7 @@ namespace Grpah3DVisualizer
             }
         }
 
-        public float TargetOffsetDist
+        public override float TargetOffsetDist
         {
             get => _targetOffsetDist;
             set
@@ -154,7 +67,7 @@ namespace Grpah3DVisualizer
             }
         }
 
-        public EdgeVisibility Visibility
+        public override EdgeVisibility Visibility
         {
             get => _visibility;
             set
@@ -167,13 +80,13 @@ namespace Grpah3DVisualizer
             }
         }
 
-        public Texture2D LineTexture
+        public override Texture2D LineTexture
         {
             get => _lineTexture;
             set => _lineTexture = value;
         }
 
-        public Texture2D ArrowTexture
+        public override Texture2D ArrowTexture
         {
             get => _arrowTexture;
             set => _arrowTexture = value;
@@ -210,7 +123,7 @@ namespace Grpah3DVisualizer
         private void OnVisibilityChange (bool visibility, UnityEngine.Object obj) => UpdateVisibility();
         private void OnDestroyed (UnityEngine.Object obj) => Destroy(gameObject);
 
-        private void SubscribeOnVerticesEvents ()
+        protected override void SubscribeOnVerticesEvents ()
         {
             var vertexes = new[] { AdjacentVertices.FromVertex, AdjacentVertices.ToVertex };
             foreach (var vertex in vertexes)
@@ -224,7 +137,7 @@ namespace Grpah3DVisualizer
             }
         }
 
-        private void UnsubscribeOnVerticesEvents ()
+        protected override void UnsubscribeOnVerticesEvents ()
         {
             var vertexes = new[] { AdjacentVertices.FromVertex, AdjacentVertices.ToVertex };
             foreach (var vertex in vertexes)
@@ -240,7 +153,7 @@ namespace Grpah3DVisualizer
 
         private void OnDestroy () => UnsubscribeOnVerticesEvents();
 
-        public void UpdateType ()
+        public override void UpdateType ()
         {
             switch (_type)
             {
@@ -253,7 +166,7 @@ namespace Grpah3DVisualizer
             }
         }
 
-        public void UpdateCoordinates ()
+        public override void UpdateCoordinates ()
         {
             if (_visibility == EdgeVisibility.DependOnVertices)
             {
@@ -267,7 +180,7 @@ namespace Grpah3DVisualizer
             }
         }
 
-        public void UpdateVisibility ()
+        public override void UpdateVisibility ()
         {
             switch (_visibility)
             {
@@ -285,30 +198,11 @@ namespace Grpah3DVisualizer
             UpdateCoordinates();
         }
 
-        public void UpdateEdge ()
+        public override void UpdateEdge ()
         {
             UpdateType();
             UpdateVisibility();
             UpdateCoordinates();
         }
-
-        public void SetupParams (EdgeParameters parameters)
-        {
-            _adjacentVertices = parameters.AdjacentVertices;
-            SubscribeOnVerticesEvents();
-
-            _sourceOffsetDist = parameters.SourceOffsetDist;
-            _targetOffsetDist = parameters.TargetOffsetDist;
-
-            ArrowTexture = parameters.ArrowTexture != null ? parameters.ArrowTexture : ArrowTexture;
-            LineTexture = parameters.LineTexture != null ? parameters.LineTexture : LineTexture;
-
-            _visibility = parameters.Visibility;
-
-            UpdateEdge();
-        }
-
-        public EdgeParameters DownloadParams () => new EdgeParameters(_adjacentVertices, _sourceOffsetDist, _targetOffsetDist, ArrowTexture, LineTexture, _visibility);
-
     }
 }

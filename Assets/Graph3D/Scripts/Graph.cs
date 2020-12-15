@@ -14,50 +14,60 @@
 // You should have received a copy of the GNU General Public License
 // along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
+
+using SupportComponents;
 
 using UnityEngine;
 
 namespace Grpah3DVisualizer
 {
-    public class Graph : MonoBehaviour
+    public class Graph : AbstractGraph
     {
-        [SerializeField]
-        private GameObject _vertexPrefab;
-        private Transform _transform;
-        private HashSet<Vertex> _vertexes;
-
-        public HashSet<Vertex> Vertexes { get => _vertexes; private set => _vertexes = value; }
+        private HashSet<AbstractVertex> _vertexes;
 
         private void Awake ()
         {
             _vertexPrefab = _vertexPrefab == null ? (GameObject) Resources.Load("Prefabs/Vertex") : _vertexPrefab;
             _transform = GetComponent<Transform>();
-            Vertexes = new HashSet<Vertex>();
+            _vertexes = new HashSet<AbstractVertex>();
         }
 
-        public T SpawnVertex<T> (VertexParameters vertexParameters) where T : Vertex, new()
+        public override TVertex SpawnVertex<TVertex, TParams> (TParams vertexParameters)
         {
             var vertex = Instantiate(_vertexPrefab, vertexParameters.Position, vertexParameters.Rotation, _transform);
-            var vertexComponent = vertex.gameObject.AddComponent<T>();
-
-            vertexComponent.SetMainImage(vertexParameters.ImageParameters);
-            vertexComponent.SetSelectFrame(vertexParameters.SelectFrameParameters);
-
-            vertexComponent.IsSelected = false;
-
-            Vertexes.Add(vertexComponent);
+            var vertexComponent = vertex.gameObject.AddComponent<TVertex>();
+            (vertexComponent as ICustomizable<TParams>).SetupParams(vertexParameters);
+            _vertexes.Add(vertexComponent);
             return vertexComponent;
         }
 
-        public bool ContainsVertex (Vertex vertex) => Vertexes.Contains(vertex);
-
-        public bool DeleteVeretex (Vertex vertex)
+        public override AbstractVertex SpawnVertex (Type vertexType, VertexParameters parameters)
         {
-            var result = Vertexes.Remove(vertex);
+            if (vertexType.IsSubclassOf(typeof(AbstractVertex)))
+                throw new WrongTypeInCustomizableParameterException(typeof(AbstractVertex), vertexType);
+
+            var vertex = Instantiate(_vertexPrefab, parameters.Position, parameters.Rotation, _transform);
+            var vertexComponent = (AbstractVertex) vertex.gameObject.AddComponent(vertexType);
+            CustomizableExtension.CallSetUpParams(vertexComponent, new[] { parameters });
+            _vertexes.Add(vertexComponent);
+            return vertexComponent;
+        }
+
+        public override bool ContainsVertex (Vertex vertex) => _vertexes.Contains(vertex);
+
+        public override bool DeleteVeretex (Vertex vertex)
+        {
+            var result = _vertexes.Remove(vertex);
             if (result)
                 Destroy(vertex.gameObject);
             return result;
         }
+
+        public override int VertexesCount => _vertexes.Count;
+
+        public override IReadOnlyList<AbstractVertex> GetVertexes () => _vertexes.ToList();
     }
 }

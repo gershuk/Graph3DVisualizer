@@ -18,6 +18,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Runtime.Serialization;
 
 using UnityEngine;
 
@@ -55,7 +56,9 @@ namespace SupportComponents
         Color SelectFrameColor { get; set; }
     }
 
-    public interface ICustomizable<TParams>
+    public abstract class CustomizableParameter { };
+
+    public interface ICustomizable<TParams> where TParams : CustomizableParameter
     {
         void SetupParams (TParams parameters);
         TParams DownloadParams ();
@@ -63,41 +66,51 @@ namespace SupportComponents
 
     public static class CustomizableExtension
     {
-        //public static void SetupParams<T> (this ICustomizable<T> customizable, object parameters)
-        //{
-        //    if (parameters is T setupParams)
-        //        customizable.SetupParams(setupParams);
-        //    else
-        //        throw new InvalidCastException();
-        //}
-
         public static void CallSetUpParams (object customizable, object[] parameters)
         {
-            var isFinded = false;
-            foreach (var interfaceType in customizable.GetType().GetInterfaces())
+            foreach (var param in parameters)
             {
-                if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>))
-                {
-                    interfaceType.GetMethod("SetupParams", interfaceType.GetGenericArguments()).Invoke(customizable, parameters);
-                    isFinded = true;
-                }
-            }
+                var isFinded = false;
 
-            if (!isFinded)
-                throw new Exception("Customizable methods not found");
+                foreach (var interfaceType in customizable.GetType().GetInterfaces())
+                {
+                    if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>) && interfaceType.GetGenericArguments()[0] == param.GetType())
+                    {
+                        interfaceType.GetMethod("SetupParams", interfaceType.GetGenericArguments()).Invoke(customizable, new[] { param });
+                        isFinded = true;
+                    }
+                }
+
+                if (!isFinded)
+                    throw new Exception($"Customizable methods with parameter type {param.GetType()} not found");
+            }
         }
 
-        public static List<object> CallDownloadParams (object customizable)
+        public static List<T> CallDownloadParams<T> (object customizable) where T : CustomizableParameter
         {
-            var parameters = new List<object>();
+            var parameters = new List<T>();
             foreach (var interfaceType in customizable.GetType().GetInterfaces())
             {
-                if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>))
+                if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>)
+                    && (interfaceType.GetGenericArguments()[0].IsSubclassOf(typeof(T)) || interfaceType.GetGenericArguments()[0] == typeof(T)))
                 {
-                    parameters.Add(interfaceType.GetMethod("DownloadParams").Invoke(customizable, null));
+                    parameters.Add((T) interfaceType.GetMethod("DownloadParams").Invoke(customizable, null));
                 }
             }
             return parameters;
         }
+    }
+
+    public class WrongTypeInCustomizableParameterException : Exception
+    {
+        protected WrongTypeInCustomizableParameterException (SerializationInfo info, StreamingContext context) : base(info, context) { }
+
+        public WrongTypeInCustomizableParameterException () { }
+
+        public WrongTypeInCustomizableParameterException (string message) : base(message) { }
+
+        public WrongTypeInCustomizableParameterException (string message, Exception innerException) : base(message, innerException) { }
+
+        public WrongTypeInCustomizableParameterException (Type expectedType, Type receivedType) : base($"The type inherited from {expectedType.Name} was expected, and {receivedType.Name} was obtained.") { }
     }
 }

@@ -28,7 +28,7 @@ namespace Grpah3DVisualizer
     /// <summary>
     /// Parameters for creating a new <see cref="Billboard"/> object.
     /// </summary>
-    public sealed class BillboardParameters
+    public sealed class BillboardParameters : CustomizableParameter
     {
         /// <summary>
         /// Used to set position of images on the Billboard.

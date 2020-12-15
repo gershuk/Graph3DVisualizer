@@ -64,7 +64,7 @@ namespace PlayerInputControls
         private int _typeIndex;
         private Vertex _firstVertex;
         private Vertex _secondVertex;
-        private LinkParameters _linkParameters;
+        private EdgeParameters _edgeParameters;
         private State _state;
 
         private void Awake ()
@@ -72,7 +72,7 @@ namespace PlayerInputControls
             _state = State.None;
             _edgeTypes = new List<Type>();
             _laserPointer = GetComponent<LaserPointer>();
-            _linkParameters = new LinkParameters(6, 6);
+            _edgeParameters = new EdgeParameters(6, 6);
         }
 
         private void OnEnable ()
@@ -149,7 +149,7 @@ namespace PlayerInputControls
             {
                 try
                 {
-                    _firstVertex.Link(_secondVertex, _edgeTypes[_typeIndex], _linkParameters);
+                    _firstVertex.Link(_secondVertex, _edgeTypes[_typeIndex], _edgeParameters);
                 }
                 catch (Exception ex)
                 {

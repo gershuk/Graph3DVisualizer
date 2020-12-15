@@ -16,7 +16,7 @@
 
 namespace Grpah3DVisualizer
 {
-    public class DecembristVertex : Vertex
+    public class DecembristVertex : SelectableVertex
     {
         public bool IsDec { get; set; } = false;
         public string Name { get; set; }

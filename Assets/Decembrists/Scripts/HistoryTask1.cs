@@ -28,13 +28,13 @@ using UnityEngine;
 
 namespace GraphTasks
 {
-    public class HistoryTask1 : VisualTask
+    public class HistoryTask1 : AbstractVisualTask
     {
         private GameObject _graph;
         private GameObject _player;
 
-        public override IReadOnlyCollection<AbstractPLayer> Players { get => new List<AbstractPLayer>(1) { _player.GetComponent<AbstractPLayer>() }; protected set => throw new NotImplementedException(); }
-        public override IReadOnlyCollection<Graph> Graphs { get => new List<Graph>(1) { _graph.GetComponent<Graph>() }; protected set => throw new NotImplementedException(); }
+        public override IReadOnlyCollection<AbstractPlayer> Players { get => _players; protected set => _players = (List<AbstractPlayer>) value; }
+        public override IReadOnlyCollection<AbstractGraph> Graphs { get => _graphs; protected set => _graphs = (List<AbstractGraph>) value; }
 
         private DecembristVertex AddPeople (TextTextureFactory textTextureFactory, UnityEngine.Object man, Graph graphController, Texture2D selectFrame, bool isDec)
         {
@@ -57,15 +57,15 @@ namespace GraphTasks
             var value = Mathf.Max(scale + 3.5f, height * scale / width + 3.5f);
             var billPar2 = new BillboardParameters(comIm2, new Vector2(value, value), 0.1f, true, true, Color.red);
 
-            var verPar = new VertexParameters(new Vector3(rand.Next(-60, 60), rand.Next(-60, 60), rand.Next(-60, 60)), Quaternion.identity, billPar1, billPar2);
-            var vertex = graphController.SpawnVertex<DecembristVertex>(verPar);
+            var verPar = new SelectableVertexParameters(new Vector3(rand.Next(-60, 60), rand.Next(-60, 60), rand.Next(-60, 60)), Quaternion.identity, billPar1, billPar2, false);
+            var vertex = graphController.SpawnVertex<DecembristVertex, SelectableVertexParameters>(verPar);
             vertex.IsDec = isDec;
             vertex.Name = picked.name;
 
             return vertex;
         }
 
-        public override Graph CreateGraph ()
+        public Graph CreateGraph ()
         {
             _graph = new GameObject("Graph");
             var graphControler = _graph.AddComponent<Graph>();
@@ -118,7 +118,7 @@ namespace GraphTasks
 
             CreateGraph();
             _player = (GameObject) Instantiate(Resources.Load("Prefabs/Player"));
-            _player.GetComponent<FlyPlayer>().SetupParams(new PlayerParams(Vector3.back * 20, Vector3.zero, 40, 20,
+            _player.GetComponent<FlyPlayer>().SetupParams(new PlayerParameters(Vector3.back * 20, Vector3.zero, 40, 20,
                 new ToolConfig[3]
                 {
                     new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)),
@@ -131,17 +131,10 @@ namespace GraphTasks
 
         public override void StopTask () => throw new NotImplementedException();
 
-        public override void DestroyTask ()
-        {
-            Destroy(_player);
-            Destroy(_graph);
-            Destroy(gameObject);
-        }
-
         public override List<Verdict> GetResult ()
         {
-            var verdicts = new List<Verdict>(_graph.GetComponent<Graph>().Vertexes.Count);
-            foreach (DecembristVertex vertex in _graph.GetComponent<Graph>().Vertexes)
+            var verdicts = new List<Verdict>(_graph.GetComponent<Graph>().VertexesCount);
+            foreach (DecembristVertex vertex in _graph.GetComponent<Graph>().GetVertexes())
             {
                 var type = vertex.IsDec ? "Декабрист" : "Не декабрист";
                 var act = vertex.IsSelected ? "выбрали" : "не выбрали";

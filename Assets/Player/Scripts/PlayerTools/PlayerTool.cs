@@ -16,6 +16,8 @@
 
 using System;
 
+using SupportComponents;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,9 +28,9 @@ namespace PlayerInputControls
     public readonly struct ToolConfig
     {
         public Type ToolType { get; }
-        public object ToolParams { get; }
+        public ToolParams[] ToolParams { get; }
 
-        public ToolConfig (Type toolType, object toolParams)
+        public ToolConfig (Type toolType, params ToolParams[] toolParams)
         {
             if (!toolType.IsSubclassOf(typeof(PlayerTool)))
                 throw new Exception($"{toolType} is not subclass of PlayerTool");
@@ -37,7 +39,7 @@ namespace PlayerInputControls
         }
     }
 
-    public abstract class ToolParams
+    public abstract class ToolParams : CustomizableParameter
     { }
 
     public abstract class PlayerTool : MonoBehaviour
