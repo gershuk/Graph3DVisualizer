@@ -73,7 +73,7 @@ namespace GraphTasks
 
             var decCount = 6;
             var notdecCount = 4;
-            var customFont = (Font) Resources.Load("Font/CustomFontDroidSans-Bold");
+            var customFont = Resources.Load<Font>("Font/CustomFontArial");
             var textTextureFactory = new TextTextureFactory(customFont, 32);
             var selectFrame = (Texture2D) Resources.Load("Textures/SelectFrame");
 

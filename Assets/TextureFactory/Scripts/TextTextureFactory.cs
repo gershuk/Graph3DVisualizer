@@ -34,12 +34,15 @@ namespace TextureFactory
 
             foreach (var characterInfo in _customFont.characterInfo)
             {
+                var width = Mathf.RoundToInt((characterInfo.uvTopRight.x - characterInfo.uvBottomLeft.x) * fontTexture.width);
+                var height = Mathf.RoundToInt((characterInfo.uvTopRight.y - characterInfo.uvBottomLeft.y) * fontTexture.height);
+
                 //ToDo : Change to GetPixels32
                 var pixels = fontTexture.GetPixels((int) (characterInfo.uvBottomLeft.x * fontTexture.width),
                                                     (int) (characterInfo.uvBottomLeft.y * fontTexture.height),
-                                                    characterInfo.glyphWidth, characterInfo.glyphHeight);
+                                                    width, height);
 
-                _alphabet[ASCIIOffset+characterInfo.index] = new Texture2D(characterInfo.glyphWidth, characterInfo.glyphHeight);
+                _alphabet[ASCIIOffset + characterInfo.index] = new Texture2D(width, height);
                 _alphabet[ASCIIOffset+characterInfo.index].SetPixels(pixels);
                 _alphabet[ASCIIOffset+characterInfo.index].Apply(true);
             }

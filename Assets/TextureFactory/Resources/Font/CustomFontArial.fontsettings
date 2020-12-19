@@ -8,7 +8,7 @@ Font:
   m_PrefabAsset: {fileID: 0}
   m_Name: CustomFontArial
   serializedVersion: 5
-  m_LineSpacing: 10.24
+  m_LineSpacing: 102.4
   m_DefaultMaterial: {fileID: 2100000, guid: e7a154c27c3f6ab4bbbe6c9701ac9151, type: 2}
   m_FontSize: 0
   m_Texture: {fileID: 0}
@@ -24,7 +24,7 @@ Font:
       serializedVersion: 2
       x: 0
       y: 0.9
-      width: 0.1
+      width: 0.06958176
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -38,9 +38,9 @@ Font:
     index: 1
     uv:
       serializedVersion: 2
-      x: 0.1
+      x: 0.10000001
       y: 0.9
-      width: 0.1
+      width: 0.027756665
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -54,9 +54,9 @@ Font:
     index: 2
     uv:
       serializedVersion: 2
-      x: 0.2
+      x: 0.19619775
       y: 0.9
-      width: 0.10000001
+      width: 0.035361227
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -70,9 +70,9 @@ Font:
     index: 3
     uv:
       serializedVersion: 2
-      x: 0.3
+      x: 0.30000004
       y: 0.9
-      width: 0.099999994
+      width: 0.04676813
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -86,9 +86,9 @@ Font:
     index: 4
     uv:
       serializedVersion: 2
-      x: 0.4
+      x: 0.39999998
       y: 0.9
-      width: 0.099999994
+      width: 0.042965848
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -104,7 +104,7 @@ Font:
       serializedVersion: 2
       x: 0.5
       y: 0.9
-      width: 0.100000024
+      width: 0.06577954
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -118,9 +118,9 @@ Font:
     index: 6
     uv:
       serializedVersion: 2
-      x: 0.6
+      x: 0.6000001
       y: 0.9
-      width: 0.100000024
+      width: 0.050570413
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -134,9 +134,9 @@ Font:
     index: 7
     uv:
       serializedVersion: 2
-      x: 0.7
+      x: 0.70000005
       y: 0.9
-      width: 0.100000024
+      width: 0.023954442
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -150,9 +150,9 @@ Font:
     index: 8
     uv:
       serializedVersion: 2
-      x: 0.8
+      x: 0.79999995
       y: 0.9
-      width: 0.100000024
+      width: 0.031559005
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -168,7 +168,7 @@ Font:
       serializedVersion: 2
       x: 0.90000004
       y: 0.9
-      width: 0.099999964
+      width: 0.03155901
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -184,7 +184,7 @@ Font:
       serializedVersion: 2
       x: 0
       y: 0.79999995
-      width: 0.1
+      width: 0.031558946
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -198,9 +198,9 @@ Font:
     index: 11
     uv:
       serializedVersion: 2
-      x: 0.1
+      x: 0.10396434
       y: 0.79999995
-      width: 0.1
+      width: 0.039001465
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -214,9 +214,9 @@ Font:
     index: 12
     uv:
       serializedVersion: 2
-      x: 0.2
+      x: 0.20000002
       y: 0.79999995
-      width: 0.10000001
+      width: 0.023954384
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -230,9 +230,9 @@ Font:
     index: 13
     uv:
       serializedVersion: 2
-      x: 0.3
+      x: 0.30000004
       y: 0.79999995
-      width: 0.099999994
+      width: 0.031558946
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -246,9 +246,9 @@ Font:
     index: 14
     uv:
       serializedVersion: 2
-      x: 0.4
+      x: 0.39999998
       y: 0.79999995
-      width: 0.099999994
+      width: 0.025488153
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -264,7 +264,7 @@ Font:
       serializedVersion: 2
       x: 0.5
       y: 0.79999995
-      width: 0.100000024
+      width: 0.03309266
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -280,7 +280,7 @@ Font:
       serializedVersion: 2
       x: 0.6
       y: 0.79999995
-      width: 0.100000024
+      width: 0.04449953
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -296,7 +296,7 @@ Font:
       serializedVersion: 2
       x: 0.7
       y: 0.79999995
-      width: 0.100000024
+      width: 0.04449953
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -312,7 +312,7 @@ Font:
       serializedVersion: 2
       x: 0.8
       y: 0.79999995
-      width: 0.100000024
+      width: 0.04449953
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -328,7 +328,7 @@ Font:
       serializedVersion: 2
       x: 0.90000004
       y: 0.79999995
-      width: 0.099999964
+      width: 0.04449953
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -344,7 +344,7 @@ Font:
       serializedVersion: 2
       x: 0
       y: 0.7
-      width: 0.1
+      width: 0.04449953
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -358,9 +358,9 @@ Font:
     index: 21
     uv:
       serializedVersion: 2
-      x: 0.1
+      x: 0.100000024
       y: 0.7
-      width: 0.1
+      width: 0.044499528
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -376,7 +376,7 @@ Font:
       serializedVersion: 2
       x: 0.2
       y: 0.7
-      width: 0.10000001
+      width: 0.04449953
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -392,7 +392,7 @@ Font:
       serializedVersion: 2
       x: 0.3
       y: 0.7
-      width: 0.099999994
+      width: 0.04449953
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -408,7 +408,7 @@ Font:
       serializedVersion: 2
       x: 0.4
       y: 0.7
-      width: 0.099999994
+      width: 0.04449953
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -424,7 +424,7 @@ Font:
       serializedVersion: 2
       x: 0.5
       y: 0.7
-      width: 0.100000024
+      width: 0.04449953
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -440,7 +440,7 @@ Font:
       serializedVersion: 2
       x: 0.6
       y: 0.7
-      width: 0.100000024
+      width: 0.02775672
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -454,9 +454,9 @@ Font:
     index: 27
     uv:
       serializedVersion: 2
-      x: 0.7
+      x: 0.70000005
       y: 0.7
-      width: 0.100000024
+      width: 0.027756725
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -470,9 +470,9 @@ Font:
     index: 28
     uv:
       serializedVersion: 2
-      x: 0.8
+      x: 0.79999995
       y: 0.7
-      width: 0.100000024
+      width: 0.046768013
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -488,7 +488,7 @@ Font:
       serializedVersion: 2
       x: 0.90000004
       y: 0.7
-      width: 0.099999964
+      width: 0.046768013
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -504,7 +504,7 @@ Font:
       serializedVersion: 2
       x: 0
       y: 0.59999996
-      width: 0.1
+      width: 0.046768073
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -518,9 +518,9 @@ Font:
     index: 31
     uv:
       serializedVersion: 2
-      x: 0.1
+      x: 0.10000001
       y: 0.59999996
-      width: 0.1
+      width: 0.042965792
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -534,9 +534,9 @@ Font:
     index: 32
     uv:
       serializedVersion: 2
-      x: 0.2
+      x: 0.20000002
       y: 0.59999996
-      width: 0.10000001
+      width: 0.07718632
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -550,9 +550,9 @@ Font:
     index: 33
     uv:
       serializedVersion: 2
-      x: 0.3
+      x: 0.30000004
       y: 0.59999996
-      width: 0.099999994
+      width: 0.054372635
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -568,7 +568,7 @@ Font:
       serializedVersion: 2
       x: 0.4
       y: 0.59999996
-      width: 0.099999994
+      width: 0.05437263
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -584,7 +584,7 @@ Font:
       serializedVersion: 2
       x: 0.5
       y: 0.59999996
-      width: 0.100000024
+      width: 0.05437263
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -600,7 +600,7 @@ Font:
       serializedVersion: 2
       x: 0.6
       y: 0.59999996
-      width: 0.100000024
+      width: 0.05437263
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -616,7 +616,7 @@ Font:
       serializedVersion: 2
       x: 0.7
       y: 0.59999996
-      width: 0.100000024
+      width: 0.05437263
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -632,7 +632,7 @@ Font:
       serializedVersion: 2
       x: 0.8
       y: 0.59999996
-      width: 0.100000024
+      width: 0.05437263
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -648,7 +648,7 @@ Font:
       serializedVersion: 2
       x: 0.90000004
       y: 0.59999996
-      width: 0.099999964
+      width: 0.05437263
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -664,7 +664,7 @@ Font:
       serializedVersion: 2
       x: 0
       y: 0.5
-      width: 0.1
+      width: 0.058174916
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -678,9 +678,9 @@ Font:
     index: 41
     uv:
       serializedVersion: 2
-      x: 0.1
+      x: 0.10000001
       y: 0.5
-      width: 0.1
+      width: 0.027756665
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -694,9 +694,9 @@ Font:
     index: 42
     uv:
       serializedVersion: 2
-      x: 0.2
+      x: 0.20000002
       y: 0.5
-      width: 0.10000001
+      width: 0.042965792
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -710,9 +710,9 @@ Font:
     index: 43
     uv:
       serializedVersion: 2
-      x: 0.3
+      x: 0.30000004
       y: 0.5
-      width: 0.099999994
+      width: 0.050570354
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -728,7 +728,7 @@ Font:
       serializedVersion: 2
       x: 0.4
       y: 0.5
-      width: 0.099999994
+      width: 0.04296579
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -744,7 +744,7 @@ Font:
       serializedVersion: 2
       x: 0.5
       y: 0.5
-      width: 0.100000024
+      width: 0.06197714
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -758,9 +758,9 @@ Font:
     index: 46
     uv:
       serializedVersion: 2
-      x: 0.6
+      x: 0.6000001
       y: 0.5
-      width: 0.100000024
+      width: 0.050570294
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -774,9 +774,9 @@ Font:
     index: 47
     uv:
       serializedVersion: 2
-      x: 0.7
+      x: 0.70000005
       y: 0.5
-      width: 0.100000024
+      width: 0.05817486
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -790,9 +790,9 @@ Font:
     index: 48
     uv:
       serializedVersion: 2
-      x: 0.8
+      x: 0.79999995
       y: 0.5
-      width: 0.100000024
+      width: 0.050570294
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -808,7 +808,7 @@ Font:
       serializedVersion: 2
       x: 0.90000004
       y: 0.5
-      width: 0.099999964
+      width: 0.05817486
       height: 0.100000024
     vert:
       serializedVersion: 2
@@ -823,8 +823,8 @@ Font:
     uv:
       serializedVersion: 2
       x: 0
-      y: 0.4
-      width: 0.1
+      y: 0.39999998
+      width: 0.058174916
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -838,9 +838,9 @@ Font:
     index: 51
     uv:
       serializedVersion: 2
-      x: 0.1
-      y: 0.4
-      width: 0.1
+      x: 0.10000001
+      y: 0.39999998
+      width: 0.054372635
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -854,9 +854,9 @@ Font:
     index: 52
     uv:
       serializedVersion: 2
-      x: 0.2
-      y: 0.4
-      width: 0.10000001
+      x: 0.20000002
+      y: 0.39999998
+      width: 0.046768073
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -870,9 +870,9 @@ Font:
     index: 53
     uv:
       serializedVersion: 2
-      x: 0.3
-      y: 0.4
-      width: 0.099999994
+      x: 0.30000004
+      y: 0.39999998
+      width: 0.054372635
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -886,9 +886,9 @@ Font:
     index: 54
     uv:
       serializedVersion: 2
-      x: 0.4
-      y: 0.4
-      width: 0.099999994
+      x: 0.39999998
+      y: 0.39999998
+      width: 0.050570354
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -903,8 +903,8 @@ Font:
     uv:
       serializedVersion: 2
       x: 0.5
-      y: 0.4
-      width: 0.100000024
+      y: 0.39999998
+      width: 0.07338399
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -918,9 +918,9 @@ Font:
     index: 56
     uv:
       serializedVersion: 2
-      x: 0.6
-      y: 0.4
-      width: 0.100000024
+      x: 0.6000001
+      y: 0.39999998
+      width: 0.050570294
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -934,9 +934,9 @@ Font:
     index: 57
     uv:
       serializedVersion: 2
-      x: 0.7
-      y: 0.4
-      width: 0.100000024
+      x: 0.70000005
+      y: 0.39999998
+      width: 0.050570294
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -950,9 +950,9 @@ Font:
     index: 58
     uv:
       serializedVersion: 2
-      x: 0.8
-      y: 0.4
-      width: 0.100000024
+      x: 0.79999995
+      y: 0.39999998
+      width: 0.046768013
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -967,8 +967,8 @@ Font:
     uv:
       serializedVersion: 2
       x: 0.90000004
-      y: 0.4
-      width: 0.099999964
+      y: 0.39999998
+      width: 0.027756607
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -984,7 +984,7 @@ Font:
       serializedVersion: 2
       x: 0
       y: 0.29999998
-      width: 0.1
+      width: 0.027756665
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -998,9 +998,9 @@ Font:
     index: 61
     uv:
       serializedVersion: 2
-      x: 0.1
+      x: 0.10000001
       y: 0.29999998
-      width: 0.1
+      width: 0.027756665
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1014,9 +1014,9 @@ Font:
     index: 62
     uv:
       serializedVersion: 2
-      x: 0.2
+      x: 0.20000002
       y: 0.29999998
-      width: 0.10000001
+      width: 0.03916351
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1030,9 +1030,9 @@ Font:
     index: 63
     uv:
       serializedVersion: 2
-      x: 0.3
+      x: 0.30000004
       y: 0.29999998
-      width: 0.099999994
+      width: 0.046768073
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1046,9 +1046,9 @@ Font:
     index: 64
     uv:
       serializedVersion: 2
-      x: 0.4
+      x: 0.39999998
       y: 0.29999998
-      width: 0.099999994
+      width: 0.027756665
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1064,7 +1064,7 @@ Font:
       serializedVersion: 2
       x: 0.5
       y: 0.29999998
-      width: 0.100000024
+      width: 0.042965848
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1078,9 +1078,9 @@ Font:
     index: 66
     uv:
       serializedVersion: 2
-      x: 0.6
+      x: 0.6000001
       y: 0.29999998
-      width: 0.100000024
+      width: 0.04296585
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1096,7 +1096,7 @@ Font:
       serializedVersion: 2
       x: 0.7
       y: 0.29999998
-      width: 0.100000024
+      width: 0.04296585
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1112,7 +1112,7 @@ Font:
       serializedVersion: 2
       x: 0.8
       y: 0.29999998
-      width: 0.100000024
+      width: 0.04296585
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1128,7 +1128,7 @@ Font:
       serializedVersion: 2
       x: 0.90000004
       y: 0.29999998
-      width: 0.099999964
+      width: 0.04296585
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1144,7 +1144,7 @@ Font:
       serializedVersion: 2
       x: 0
       y: 0.20000002
-      width: 0.1
+      width: 0.031558946
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1158,9 +1158,9 @@ Font:
     index: 71
     uv:
       serializedVersion: 2
-      x: 0.1
+      x: 0.10000001
       y: 0.20000002
-      width: 0.1
+      width: 0.046768073
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1176,7 +1176,7 @@ Font:
       serializedVersion: 2
       x: 0.2
       y: 0.20000002
-      width: 0.10000001
+      width: 0.04676807
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1190,9 +1190,9 @@ Font:
     index: 73
     uv:
       serializedVersion: 2
-      x: 0.3
+      x: 0.30000004
       y: 0.20000002
-      width: 0.099999994
+      width: 0.023954384
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1208,7 +1208,7 @@ Font:
       serializedVersion: 2
       x: 0.4
       y: 0.20000002
-      width: 0.099999994
+      width: 0.02395438
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1224,7 +1224,7 @@ Font:
       serializedVersion: 2
       x: 0.5
       y: 0.20000002
-      width: 0.100000024
+      width: 0.04296579
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1238,9 +1238,9 @@ Font:
     index: 76
     uv:
       serializedVersion: 2
-      x: 0.6
+      x: 0.6000001
       y: 0.20000002
-      width: 0.100000024
+      width: 0.023954326
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1254,9 +1254,9 @@ Font:
     index: 77
     uv:
       serializedVersion: 2
-      x: 0.7
+      x: 0.70000005
       y: 0.20000002
-      width: 0.100000024
+      width: 0.06197714
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1272,7 +1272,7 @@ Font:
       serializedVersion: 2
       x: 0.8
       y: 0.20000002
-      width: 0.100000024
+      width: 0.04296579
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1288,7 +1288,7 @@ Font:
       serializedVersion: 2
       x: 0.90000004
       y: 0.20000002
-      width: 0.099999964
+      width: 0.046768013
       height: 0.099999994
     vert:
       serializedVersion: 2
@@ -1303,8 +1303,8 @@ Font:
     uv:
       serializedVersion: 2
       x: 0
-      y: 0.09999999
-      width: 0.1
+      y: 0.10000001
+      width: 0.04296579
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1320,7 +1320,7 @@ Font:
       serializedVersion: 2
       x: 0.1
       y: 0.09999999
-      width: 0.1
+      width: 0.04676807
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1334,9 +1334,9 @@ Font:
     index: 82
     uv:
       serializedVersion: 2
-      x: 0.2
-      y: 0.09999999
-      width: 0.10000001
+      x: 0.20000002
+      y: 0.10000001
+      width: 0.031558946
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1350,9 +1350,9 @@ Font:
     index: 83
     uv:
       serializedVersion: 2
-      x: 0.3
-      y: 0.09999999
-      width: 0.099999994
+      x: 0.30000004
+      y: 0.10000001
+      width: 0.03916351
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1366,9 +1366,9 @@ Font:
     index: 84
     uv:
       serializedVersion: 2
-      x: 0.4
-      y: 0.09999999
-      width: 0.099999994
+      x: 0.39999998
+      y: 0.10000001
+      width: 0.02775666
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1383,8 +1383,8 @@ Font:
     uv:
       serializedVersion: 2
       x: 0.5
-      y: 0.09999999
-      width: 0.100000024
+      y: 0.10000001
+      width: 0.04676813
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1400,7 +1400,7 @@ Font:
       serializedVersion: 2
       x: 0.6
       y: 0.09999999
-      width: 0.100000024
+      width: 0.04296579
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1414,9 +1414,9 @@ Font:
     index: 87
     uv:
       serializedVersion: 2
-      x: 0.7
-      y: 0.09999999
-      width: 0.100000024
+      x: 0.69619775
+      y: 0.10000001
+      width: 0.06197714
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1432,7 +1432,7 @@ Font:
       serializedVersion: 2
       x: 0.8
       y: 0.09999999
-      width: 0.100000024
+      width: 0.04296579
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1448,7 +1448,7 @@ Font:
       serializedVersion: 2
       x: 0.90000004
       y: 0.09999999
-      width: 0.099999964
+      width: 0.04296579
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1463,8 +1463,8 @@ Font:
     uv:
       serializedVersion: 2
       x: 0
-      y: -0.000000037252903
-      width: 0.1
+      y: 0
+      width: 0.042965792
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1478,9 +1478,9 @@ Font:
     index: 91
     uv:
       serializedVersion: 2
-      x: 0.1
-      y: -0.000000037252903
-      width: 0.1
+      x: 0.10000001
+      y: 0
+      width: 0.03916351
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1494,9 +1494,9 @@ Font:
     index: 92
     uv:
       serializedVersion: 2
-      x: 0.2
-      y: -0.000000037252903
-      width: 0.10000001
+      x: 0.20000002
+      y: 0
+      width: 0.023954384
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1512,7 +1512,7 @@ Font:
       serializedVersion: 2
       x: 0.3
       y: -0.000000037252903
-      width: 0.099999994
+      width: 0.03916351
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1526,9 +1526,9 @@ Font:
     index: 94
     uv:
       serializedVersion: 2
-      x: 0.4
-      y: -0.000000037252903
-      width: 0.099999994
+      x: 0.39999998
+      y: 0
+      width: 0.050570354
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1543,8 +1543,8 @@ Font:
     uv:
       serializedVersion: 2
       x: 0.5
-      y: -0.000000037252903
-      width: 0.100000024
+      y: 0
+      width: 0.046768013
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1560,7 +1560,7 @@ Font:
       serializedVersion: 2
       x: 0.6
       y: -0.000000037252903
-      width: 0.100000024
+      width: 0.04676801
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1576,7 +1576,7 @@ Font:
       serializedVersion: 2
       x: 0.7
       y: -0.000000037252903
-      width: 0.100000024
+      width: 0.04676801
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1592,7 +1592,7 @@ Font:
       serializedVersion: 2
       x: 0.8
       y: -0.000000037252903
-      width: 0.100000024
+      width: 0.04676801
       height: 0.1
     vert:
       serializedVersion: 2
@@ -1608,7 +1608,7 @@ Font:
       serializedVersion: 2
       x: 0.90000004
       y: -0.000000037252903
-      width: 0.099999964
+      width: 0.04676801
       height: 0.1
     vert:
       serializedVersion: 2
