@@ -30,9 +30,6 @@ namespace GraphTasks
 {
     public class HistoryTask1 : AbstractVisualTask
     {
-        private GameObject _graph;
-        private GameObject _player;
-
         public override IReadOnlyCollection<AbstractPlayer> Players { get => _players; protected set => _players = (List<AbstractPlayer>) value; }
         public override IReadOnlyCollection<AbstractGraph> Graphs { get => _graphs; protected set => _graphs = (List<AbstractGraph>) value; }
 
@@ -67,8 +64,8 @@ namespace GraphTasks
 
         public Graph CreateGraph ()
         {
-            _graph = new GameObject("Graph");
-            var graphControler = _graph.AddComponent<Graph>();
+            var graph = new GameObject("Graph");
+            var graphControler = graph.AddComponent<Graph>();
 
             var rand = new System.Random();
             var decembrists = Resources.LoadAll("Textures/Decembrists", typeof(Texture2D));
@@ -116,15 +113,17 @@ namespace GraphTasks
 
             var edgeTypes = new List<Type>(1) { typeof(Edge) };
 
-            CreateGraph();
-            _player = (GameObject) Instantiate(Resources.Load("Prefabs/Player"));
-            _player.GetComponent<FlyPlayer>().SetupParams(new PlayerParameters(Vector3.back * 20, Vector3.zero, 40, 20,
+            _graphs.Add(CreateGraph());
+            var player = (GameObject) Instantiate(Resources.Load("Prefabs/Player"));
+            var flyPlayer = player.GetComponent<FlyPlayer>();
+            flyPlayer.SetupParams(new PlayerParameters(Vector3.back * 20, Vector3.zero, 40, 20,
                 new ToolConfig[3]
                 {
                     new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)),
                     new ToolConfig(typeof(GrabItemTool), null),
                     new ToolConfig(typeof(EdgeCreaterTool), new EdgeCreaterToolParams(edgeTypes))
                 }));
+            _players.Add(flyPlayer);
         }
 
         public override void StartTask () => throw new NotImplementedException();
@@ -133,8 +132,8 @@ namespace GraphTasks
 
         public override List<Verdict> GetResult ()
         {
-            var verdicts = new List<Verdict>(_graph.GetComponent<Graph>().VertexesCount);
-            foreach (DecembristVertex vertex in _graph.GetComponent<Graph>().GetVertexes())
+            var verdicts = new List<Verdict>(_graphs[0].GetComponent<Graph>().VertexesCount);
+            foreach (DecembristVertex vertex in _graphs[0].GetComponent<Graph>().GetVertexes())
             {
                 var type = vertex.IsDec ? "Декабрист" : "Не декабрист";
                 var act = vertex.IsSelected ? "выбрали" : "не выбрали";

@@ -85,9 +85,9 @@ namespace GraphTasks
         public void DestroyTask ()
         {
             foreach (var player in _players)
-                Destroy(player);
+                Destroy(player.gameObject);
             foreach (var graph in _graphs)
-                Destroy(graph);
+                Destroy(graph.gameObject);
             Destroy(gameObject);
         }
 
