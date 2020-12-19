@@ -23,18 +23,14 @@ namespace TextureFactory
     public class TextTextureFactory
     {
         private readonly Font _customFont;
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Стили именования", Justification = "<Ожидание>")]
-        private readonly int _ASCIIOffset;
         private readonly Texture2D[] _alphabet;
 
         public TextTextureFactory (Font customFont, int ASCIIOffset)
         {
             _customFont = customFont;
-            _ASCIIOffset = ASCIIOffset;
-
             var fontTexture = (Texture2D) _customFont.material.mainTexture;
 
-            _alphabet = new Texture2D[_customFont.characterInfo.Length];
+            _alphabet = new Texture2D[256];
 
             foreach (var characterInfo in _customFont.characterInfo)
             {
@@ -43,9 +39,9 @@ namespace TextureFactory
                                                     (int) (characterInfo.uvBottomLeft.y * fontTexture.height),
                                                     characterInfo.glyphWidth, characterInfo.glyphHeight);
 
-                _alphabet[characterInfo.index] = new Texture2D(characterInfo.glyphWidth, characterInfo.glyphHeight);
-                _alphabet[characterInfo.index].SetPixels(pixels);
-                _alphabet[characterInfo.index].Apply(true);
+                _alphabet[ASCIIOffset+characterInfo.index] = new Texture2D(characterInfo.glyphWidth, characterInfo.glyphHeight);
+                _alphabet[ASCIIOffset+characterInfo.index].SetPixels(pixels);
+                _alphabet[ASCIIOffset+characterInfo.index].Apply(true);
             }
         }
 
@@ -61,7 +57,7 @@ namespace TextureFactory
             {
                 var character = text[i];
 
-                lineWidth += (character != '\n') ? _alphabet[character - _ASCIIOffset].width : 0;
+                lineWidth += (character != '\n') ? _alphabet[character].width : 0;
 
                 if (character == '\n' || i == text.Length - 1)
                 {
@@ -93,9 +89,8 @@ namespace TextureFactory
                 }
                 else
                 {
-                    var glyphIndex = character - _ASCIIOffset;
-                    textTexture.SetPixels32(posX, posY, _alphabet[glyphIndex].width, _alphabet[glyphIndex].height, _alphabet[glyphIndex].GetPixels32());
-                    posX += _alphabet[glyphIndex].width;
+                    textTexture.SetPixels32(posX, posY, _alphabet[character].width, _alphabet[character].height, _alphabet[character].GetPixels32());
+                    posX += _alphabet[character].width;
                 }
             }
 
