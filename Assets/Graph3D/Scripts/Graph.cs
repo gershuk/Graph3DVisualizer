@@ -30,7 +30,7 @@ namespace Grpah3DVisualizer
 
         private void Awake ()
         {
-            _vertexPrefab = _vertexPrefab == null ? (GameObject) Resources.Load("Prefabs/Vertex") : _vertexPrefab;
+            _vertexPrefab = _vertexPrefab == null ? Resources.Load<GameObject>("Prefabs/Vertex") : _vertexPrefab;
             _transform = GetComponent<Transform>();
             _vertexes = new HashSet<AbstractVertex>();
         }

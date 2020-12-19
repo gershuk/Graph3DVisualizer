@@ -36,6 +36,8 @@ namespace PlayerInputControls
         private float _range;
         private const string _cutoff = "_Cutoff";
         private const string _monoColorStateName = "_IsMonoColor";
+        private const string _lineTexturePath = "Textures/Line";
+        private const string _edgeShaderPath = "Custom/EdgeShader";
         private Texture2D _texture2D;
         private Shader _shader;
         private Material _material;
@@ -75,8 +77,8 @@ namespace PlayerInputControls
             _transform = transform;
             _gameObject = gameObject;
 
-            _texture2D = _texture2D == null ? (Texture2D) Resources.Load("Textures/Line") : _texture2D;
-            _shader = _shader == null ? Shader.Find("Custom/EdgeShader") : _shader;
+            _texture2D = _texture2D == null ? Resources.Load<Texture2D>(_lineTexturePath) : _texture2D;
+            _shader = _shader == null ? Shader.Find(_edgeShaderPath) : _shader;
 
             _material = new Material(_shader) { mainTexture = _texture2D };
             _material.SetFloat(_cutoff, 0.8f);

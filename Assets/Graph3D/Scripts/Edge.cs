@@ -22,6 +22,9 @@ namespace Grpah3DVisualizer
     public class Edge : AbstractEdge
     {
         private const string _cutoff = "_Cutoff";
+        private const string _arrowTexturePath = "Textures/Arrow";
+        private const string _lineTexturePath = "Textures/Line";
+        private const string _edgeShaderPath = "Custom/EdgeShader";
         private static Shader _shader;
         private static Texture2D _defaultArrowTexture;
         private static Texture2D _defaultLineTexture;
@@ -96,13 +99,13 @@ namespace Grpah3DVisualizer
         {
             _transform = GetComponent<Transform>();
 
-            _defaultArrowTexture = _defaultArrowTexture == null ? (Texture2D) Resources.Load("Textures/Arrow") : _defaultArrowTexture;
-            _defaultLineTexture = _defaultLineTexture == null ? (Texture2D) Resources.Load("Textures/Line") : _defaultLineTexture;
+            _defaultArrowTexture = _defaultArrowTexture == null ? Resources.Load<Texture2D>(_arrowTexturePath) : _defaultArrowTexture;
+            _defaultLineTexture = _defaultLineTexture == null ? Resources.Load<Texture2D>(_lineTexturePath) : _defaultLineTexture;
 
             ArrowTexture = _defaultArrowTexture;
             LineTexture = _defaultLineTexture;
 
-            _shader = _shader == null ? Shader.Find("Custom/EdgeShader") : _shader;
+            _shader = _shader == null ? Shader.Find(_edgeShaderPath) : _shader;
             _material = new Material(_shader) { mainTexture = LineTexture };
             _material.SetFloat(_cutoff, 0.8f);
 

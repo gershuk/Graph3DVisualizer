@@ -29,6 +29,11 @@ namespace GraphTasks
 {
     public class SimpleTask : AbstractVisualTask
     {
+        private const string _fontPath = "Font/CustomFontDroidSans-Bold";
+        private const string _mainTexture = "Textures/Default";
+        private const string _selectFrameTexture = "Textures/SelectFrame";
+        private const string _playerPrefabPath = "Prefabs/Player";
+
         public override IReadOnlyCollection<AbstractPlayer> Players { get => _players; protected set => _players = (List<AbstractPlayer>) value; }
         public override IReadOnlyCollection<AbstractGraph> Graphs { get => _graphs; protected set => _graphs = (List<AbstractGraph>) value; }
 
@@ -39,9 +44,9 @@ namespace GraphTasks
             _graphs.Add(graphControler);
             Vertex lastVertex = null;
 
-            var customFont = (Font) Resources.Load("Font/CustomFontDroidSans-Bold");
-            var mainTexture = (Texture2D) Resources.Load("Textures/Default");
-            var selectFrame = (Texture2D) Resources.Load("Textures/SelectFrame");
+            var customFont = Resources.Load<Font>(_fontPath);
+            var mainTexture = Resources.Load<Texture2D>(_mainTexture);
+            var selectFrame = Resources.Load<Texture2D>(_selectFrameTexture);
 
             var TextTextureFactory = new TextTextureFactory(customFont, 32);
             var resizedTetxure = Texture2DExtension.ResizeTexture(mainTexture, 200, 200);
@@ -96,7 +101,7 @@ namespace GraphTasks
 
             var edgeTypes = new List<Type>(1) { typeof(Edge) };
 
-            var player = (Instantiate(Resources.Load("Prefabs/Player")) as GameObject).GetComponent<FlyPlayer>();
+            var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath)).GetComponent<FlyPlayer>();
             _players.Add(player);
             player.SetupParams(new PlayerParameters(Vector3.zero, Vector3.zero, 40, 20,
                 new ToolConfig[3]

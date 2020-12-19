@@ -32,6 +32,7 @@ namespace Grpah3DVisualizer
         public override event Action<UnityEngine.Object> Destroyed;
         public override event Action<bool, UnityEngine.Object> VisibleChanged;
 
+        private const string _edgePrefabPath = "Prefabs/Edge";
         protected SphereCollider _sphereCollider;
         protected BillboardController _billboardControler;
 
@@ -56,7 +57,7 @@ namespace Grpah3DVisualizer
             _transform = transform;
             _sphereCollider = GetComponent<SphereCollider>();
             _visible = true;
-            _edgePrefab = _edgePrefab == null ? (GameObject) Resources.Load("Prefabs/Edge") : _edgePrefab;
+            _edgePrefab = _edgePrefab == null ? Resources.Load<GameObject>(_edgePrefabPath) : _edgePrefab;
             _incomingLinks = new List<Link>();
             _outgoingLinks = new List<Link>();
             _billboardControler = GetComponent<BillboardController>();

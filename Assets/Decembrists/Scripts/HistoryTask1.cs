@@ -30,6 +30,12 @@ namespace GraphTasks
 {
     public class HistoryTask1 : AbstractVisualTask
     {
+        private const string _decembristsPath = "Textures/Decembrists";
+        private const string _notDecembristsPath = "Textures/NotDecembrists";
+        private const string _fontPath = "Font/CustomFontArial";
+        private const string _selectFramePath = "Textures/SelectFrame";
+        private const string _playerPath = "Prefabs/Player";
+
         public override IReadOnlyCollection<AbstractPlayer> Players { get => _players; protected set => _players = (List<AbstractPlayer>) value; }
         public override IReadOnlyCollection<AbstractGraph> Graphs { get => _graphs; protected set => _graphs = (List<AbstractGraph>) value; }
 
@@ -68,14 +74,14 @@ namespace GraphTasks
             var graphControler = graph.AddComponent<Graph>();
 
             var rand = new System.Random();
-            var decembrists = Resources.LoadAll("Textures/Decembrists", typeof(Texture2D));
-            var notDecembrists = Resources.LoadAll("Textures/NotDecembrists", typeof(Texture2D));
+            var decembrists = Resources.LoadAll(_decembristsPath, typeof(Texture2D));
+            var notDecembrists = Resources.LoadAll(_notDecembristsPath, typeof(Texture2D));
 
             var decCount = 6;
             var notdecCount = 4;
-            var customFont = Resources.Load<Font>("Font/CustomFontArial");
+            var customFont = Resources.Load<Font>(_fontPath);
             var textTextureFactory = new TextTextureFactory(customFont, 32);
-            var selectFrame = (Texture2D) Resources.Load("Textures/SelectFrame");
+            var selectFrame = Resources.Load<Texture2D>(_selectFramePath);
 
             var people = new List<DecembristVertex>(10);
 
@@ -114,7 +120,7 @@ namespace GraphTasks
             var edgeTypes = new List<Type>(1) { typeof(Edge) };
 
             _graphs.Add(CreateGraph());
-            var player = (GameObject) Instantiate(Resources.Load("Prefabs/Player"));
+            var player = Instantiate(Resources.Load<GameObject>(_playerPath));
             var flyPlayer = player.GetComponent<FlyPlayer>();
             flyPlayer.SetupParams(new PlayerParameters(Vector3.back * 20, Vector3.zero, 40, 20,
                 new ToolConfig[3]

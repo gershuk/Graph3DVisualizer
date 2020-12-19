@@ -215,6 +215,8 @@ namespace Grpah3DVisualizer
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
     public class BillboardController : MonoBehaviour, IVisibile
     {
+        private const string _billboardDefaultTexturePath = "Textures/BillboardDefaultTexture";
+        private const string _billboardShaderPath = "Custom/BillboardShader";
         private Dictionary<BillboardId, Billboard> _billboards;
         private MeshRenderer _render;
         private MeshFilter _meshFilter;
@@ -250,8 +252,8 @@ namespace Grpah3DVisualizer
             bounds.size = new Vector3(0.5f, 0.5f, 0.5f);
             _meshFilter.mesh.bounds = bounds;
 
-            _shader = _shader == null ? Shader.Find("Custom/BillboardShader") : _shader;
-            _defaultTexture = _defaultTexture == null ? Resources.Load<Texture2D>("Textures/BillboardDefaultTexture") : _defaultTexture;
+            _shader = _shader == null ? Shader.Find(_billboardShaderPath) : _shader;
+            _defaultTexture = _defaultTexture == null ? Resources.Load<Texture2D>(_billboardDefaultTexturePath) : _defaultTexture;
         }
 
         private void AddBillboardMaterialToRender (BillboardId billboardId)

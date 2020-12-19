@@ -42,6 +42,7 @@ namespace Grpah3DVisualizer
     [RequireComponent(typeof(SphereCollider))]
     public class SelectableVertex : Vertex, ICustomizable<SelectableVertexParameters>, ISelectable
     {
+        private const string _edgePrefabPath = "Prefabs/Edge";
         private bool _isSelected = true;
         private BillboardId _selectFrameId;
 
@@ -56,7 +57,7 @@ namespace Grpah3DVisualizer
             _transform = transform;
             _sphereCollider = GetComponent<SphereCollider>();
             _visible = true;
-            _edgePrefab = _edgePrefab == null ? (GameObject) Resources.Load("Prefabs/Edge") : _edgePrefab;
+            _edgePrefab = _edgePrefab == null ? Resources.Load<GameObject>(_edgePrefabPath) : _edgePrefab;
             _incomingLinks = new List<Link>();
             _outgoingLinks = new List<Link>();
             _billboardControler = GetComponent<BillboardController>();
