@@ -17,7 +17,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 using UnityEngine;
 
@@ -119,7 +118,7 @@ namespace SupportComponents
 
         private void Awake ()
         {
-            Gears = new List<(float deltaTimeFromStart, float multiplier)>(4) { (0f, 1f), (10, 1.5f), (20, 2f), (40, 4f) };
+            Gears = new List<(float deltaTimeFromStart, float multiplier)>(4) { (0f, 1f), (10, 3f), (20, 5f), (40, 8f) };
             TransmissionMode = TransmissionMode.Auto;
             _startMovingTime = -1;
             _lastTimeCheck = -1;
@@ -152,7 +151,9 @@ namespace SupportComponents
             }
         }
 
-        public IEnumerator MoveAlongTrajectory (ReadOnlyCollection<Vector3> trajectory)
+
+        //ToDo : Change
+        public IEnumerator MoveAlongTrajectory (IReadOnlyList<Vector3> trajectory)
         {
             _isMoving = true;
             foreach (var point in trajectory)

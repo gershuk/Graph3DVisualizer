@@ -30,6 +30,7 @@ namespace GraphTasks
     public class SimpleTask : AbstractVisualTask
     {
         private const string _fontPath = "Font/CustomFontDroidSans-Bold";
+        private const string _3DFontPath = "Font/CustomFontArial";
         private const string _mainTexture = "Textures/Default";
         private const string _selectFrameTexture = "Textures/SelectFrame";
         private const string _playerPrefabPath = "Prefabs/Player";
@@ -70,8 +71,10 @@ namespace GraphTasks
                 var combIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height, TextureWrapMode.Clamp, false);
                 var billPar2 = new BillboardParameters(combIm2, new Vector2(value, value), 0.1f, true, true, Color.red);
 
-                var verPar = new SelectableVertexParameters(new Vector3(i % 30 * 20, i / 30 * 20, 0), Quaternion.identity, billPar1, billPar2, false);
+                var verPar = new SelectableVertexParameters(new Vector3(i % 30 * 100, i / 30 * 100, 0), Quaternion.identity, billPar1, billPar2, false);
                 var currentVertex = graphControler.SpawnVertex<SelectableVertex, SelectableVertexParameters>(verPar);
+                currentVertex.gameObject.AddComponent<VertexLinksMenu>();
+                currentVertex.gameObject.name = $"Vertex{i}";
                 var edgeParams = new EdgeParameters(6, 6);
                 lastVertex?.Link<Edge, EdgeParameters>(currentVertex, edgeParams);
                 if (lastVertex != null && i % 2 == 0)
@@ -103,12 +106,13 @@ namespace GraphTasks
 
             var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath)).GetComponent<FlyPlayer>();
             _players.Add(player);
-            player.SetupParams(new PlayerParameters(Vector3.zero, Vector3.zero, 40, 20,
-                new ToolConfig[3]
+            player.SetupParams(new PlayerParameters(new Vector3(100,20,-50), Vector3.zero, 40, 20,
+                new ToolConfig[4]
                 {
                     new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)),
                     new ToolConfig(typeof(GrabItemTool), null),
-                    new ToolConfig(typeof(EdgeCreaterTool), new EdgeCreaterToolParams(edgeTypes))
+                    new ToolConfig(typeof(EdgeCreaterTool), new EdgeCreaterToolParams(edgeTypes)),
+                    new ToolConfig(typeof(ClickTool), new ClickToolParams(player.gameObject))
                 }));
         }
 

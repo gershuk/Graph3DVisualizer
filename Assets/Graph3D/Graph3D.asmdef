@@ -2,7 +2,8 @@
     "name": "Graph3D",
     "references": [
         "GUID:68f547e922d4cac48980104337bf6a86",
-        "GUID:5dcc6a26a69a87d46a6a7aeaeb426547"
+        "GUID:5dcc6a26a69a87d46a6a7aeaeb426547",
+        "GUID:78a8b2fd7b196d34690589f8eb2bb22d"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

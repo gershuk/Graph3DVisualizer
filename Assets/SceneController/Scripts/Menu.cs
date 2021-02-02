@@ -103,7 +103,7 @@ public class Menu : MonoBehaviour
             var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
                         new Vector2(buttonWidth / 2, -buttonHeight * (taskList.Count + 1 + 0.5f)));
             var buttonParameters = new ButtonParameters("Check", buttonRectParameters,
-                () => { if (_state == State.TaskScene) foreach (var verdict in _sceneControler.VisualTask.GetResult()) Debug.Log(verdict); });
+                () => { if (_state == State.TaskScene) foreach (var verdict in _sceneControler.VisualTask.GetResult()) Debug.LogError(verdict); });
             var newButton = CreateButton(buttonParameters);
             var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
             var textParameters = new TextParameters("Check", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);

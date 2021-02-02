@@ -33,7 +33,7 @@ namespace SupportComponents
         Vector3 LocalCoordinates { get; set; }
         void Translate (Vector3 moveVector, float deltaTime);
         void Rotate (Vector2 rotationChange, float deltaTime);
-        IEnumerator MoveAlongTrajectory (ReadOnlyCollection<Vector3> trajectory);
+        IEnumerator MoveAlongTrajectory (IReadOnlyList<Vector3> trajectory);
     }
 
     public interface IDestructible

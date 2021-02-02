@@ -1,3 +1,15 @@
-﻿{
-	"name": "GUIFactory"
+{
+    "name": "GUIFactory",
+    "references": [
+        "GUID:68f547e922d4cac48980104337bf6a86"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

@@ -78,6 +78,9 @@ namespace Grpah3DVisualizer
         public abstract event Action<UnityEngine.Object> Destroyed;
         public abstract event Action<bool, UnityEngine.Object> VisibleChanged;
 
+        public IReadOnlyList<Link> IncomingLinks => _incomingLinks;
+        public IReadOnlyList<Link> OutgoingLinks => _outgoingLinks;
+
         private TEdge CreateEdge<TEdge, TParameters> (TParameters parameters, AbstractVertex toVertex) where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
             var edge = Instantiate(_edgePrefab, _transform.position, Quaternion.identity, _transform.parent).AddComponent<TEdge>();
