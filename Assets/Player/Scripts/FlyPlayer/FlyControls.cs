@@ -1,23 +1,8 @@
-// This file is part of Grpah3DVisualizer.
-// Copyright © Gershuk Vladislav 2020.
-//
-// Grpah3DVisualizer is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Grpah3DVisualizer is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY, without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+// GENERATED AUTOMATICALLY FROM 'Assets/Player/Scripts/FlyPlayer/FlyControls.inputactions'
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
@@ -26,7 +11,7 @@ namespace PlayerInputControls
     public class @FlyControls : IInputActionCollection, IDisposable
     {
         public InputActionAsset asset { get; }
-        public @FlyControls ()
+        public @FlyControls()
         {
             asset = InputActionAsset.FromJson(@"{
     ""name"": ""FlyControls"",
@@ -320,7 +305,10 @@ namespace PlayerInputControls
             m_FlyModel_SelectItem = m_FlyModel.FindAction("SelectItem", throwIfNotFound: true);
         }
 
-        public void Dispose () => UnityEngine.Object.Destroy(asset);
+        public void Dispose()
+        {
+            UnityEngine.Object.Destroy(asset);
+        }
 
         public InputBinding? bindingMask
         {
@@ -336,15 +324,30 @@ namespace PlayerInputControls
 
         public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
 
-        public bool Contains (InputAction action) => asset.Contains(action);
+        public bool Contains(InputAction action)
+        {
+            return asset.Contains(action);
+        }
 
-        public IEnumerator<InputAction> GetEnumerator () => asset.GetEnumerator();
+        public IEnumerator<InputAction> GetEnumerator()
+        {
+            return asset.GetEnumerator();
+        }
 
-        IEnumerator IEnumerable.GetEnumerator () => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
 
-        public void Enable () => asset.Enable();
+        public void Enable()
+        {
+            asset.Enable();
+        }
 
-        public void Disable () => asset.Disable();
+        public void Disable()
+        {
+            asset.Disable();
+        }
 
         // FlyModel
         private readonly InputActionMap m_FlyModel;
@@ -357,20 +360,20 @@ namespace PlayerInputControls
         private readonly InputAction m_FlyModel_SelectItem;
         public struct FlyModelActions
         {
-            private readonly @FlyControls m_Wrapper;
-            public FlyModelActions (@FlyControls wrapper) => m_Wrapper = wrapper;
+            private @FlyControls m_Wrapper;
+            public FlyModelActions(@FlyControls wrapper) { m_Wrapper = wrapper; }
             public InputAction @MoveToPoint => m_Wrapper.m_FlyModel_MoveToPoint;
             public InputAction @Move => m_Wrapper.m_FlyModel_Move;
             public InputAction @LookRotation => m_Wrapper.m_FlyModel_LookRotation;
             public InputAction @ChangeAltitude => m_Wrapper.m_FlyModel_ChangeAltitude;
             public InputAction @ScrollItemList => m_Wrapper.m_FlyModel_ScrollItemList;
             public InputAction @SelectItem => m_Wrapper.m_FlyModel_SelectItem;
-            public InputActionMap Get () => m_Wrapper.m_FlyModel;
-            public void Enable () => Get().Enable();
-            public void Disable () => Get().Disable();
+            public InputActionMap Get() { return m_Wrapper.m_FlyModel; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap (FlyModelActions set) => set.Get();
-            public void SetCallbacks (IFlyModelActions instance)
+            public static implicit operator InputActionMap(FlyModelActions set) { return set.Get(); }
+            public void SetCallbacks(IFlyModelActions instance)
             {
                 if (m_Wrapper.m_FlyModelActionsCallbackInterface != null)
                 {
@@ -420,12 +423,12 @@ namespace PlayerInputControls
         public FlyModelActions @FlyModel => new FlyModelActions(this);
         public interface IFlyModelActions
         {
-            void OnMoveToPoint (InputAction.CallbackContext context);
-            void OnMove (InputAction.CallbackContext context);
-            void OnLookRotation (InputAction.CallbackContext context);
-            void OnChangeAltitude (InputAction.CallbackContext context);
-            void OnScrollItemList (InputAction.CallbackContext context);
-            void OnSelectItem (InputAction.CallbackContext context);
+            void OnMoveToPoint(InputAction.CallbackContext context);
+            void OnMove(InputAction.CallbackContext context);
+            void OnLookRotation(InputAction.CallbackContext context);
+            void OnChangeAltitude(InputAction.CallbackContext context);
+            void OnScrollItemList(InputAction.CallbackContext context);
+            void OnSelectItem(InputAction.CallbackContext context);
         }
     }
 }
