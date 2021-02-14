@@ -1,5 +1,5 @@
 ﻿// This file is part of Grpah3DVisualizer.
-// Copyright © Gershuk Vladislav 2020.
+// Copyright © Gershuk Vladislav 2021.
 //
 // Grpah3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,11 +17,13 @@
 using System;
 using System.Collections.Generic;
 
-using SupportComponents;
+using Grpah3DVisualizer.Billboards;
+using Grpah3DVisualizer.Customizable;
+using Grpah3DVisualizer.SupportComponents;
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer
+namespace Grpah3DVisualizer.Graph3D
 {
     public class SelectableVertexParameters : VertexParameters
     {
@@ -38,7 +40,7 @@ namespace Grpah3DVisualizer
     }
 
     [RequireComponent(typeof(BillboardController))]
-    [RequireComponent(typeof(MoveComponent))]
+    [RequireComponent(typeof(MovementComponent))]
     [RequireComponent(typeof(SphereCollider))]
     public class SelectableVertex : Vertex, ICustomizable<SelectableVertexParameters>, ISelectable
     {
@@ -50,7 +52,7 @@ namespace Grpah3DVisualizer
         //ToDo : Add highlight effect
         public event Action<UnityEngine.Object, bool> HighlightedChanged;
 
-        public override MoveComponent MoveComponent { get; protected set; }
+        public override MovementComponent MovementComponent { get; protected set; }
 
         private void Awake ()
         {
@@ -61,7 +63,7 @@ namespace Grpah3DVisualizer
             _incomingLinks = new List<Link>();
             _outgoingLinks = new List<Link>();
             _billboardControler = GetComponent<BillboardController>();
-            MoveComponent = GetComponent<MoveComponent>();
+            MovementComponent = GetComponent<MovementComponent>();
         }
 
         protected override void UpdateColliderRange ()

@@ -1,5 +1,5 @@
 ﻿// This file is part of Grpah3DVisualizer.
-// Copyright © Gershuk Vladislav 2020.
+// Copyright © Gershuk Vladislav 2021.
 //
 // Grpah3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,14 +16,14 @@
 
 using System;
 
-using SupportComponents;
+using Grpah3DVisualizer.Customizable;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 using static UnityEngine.Physics;
 
-namespace PlayerInputControls
+namespace Grpah3DVisualizer.PlayerInputControls
 {
     public readonly struct ToolConfig
     {

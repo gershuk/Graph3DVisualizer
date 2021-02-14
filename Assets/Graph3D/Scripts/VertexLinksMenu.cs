@@ -1,13 +1,29 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿// This file is part of Grpah3DVisualizer.
+// Copyright © Gershuk Vladislav 2021.
+//
+// Grpah3DVisualizer is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Grpah3DVisualizer is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY, without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
-using SupportComponents;
+using System.Collections.Generic;
+
+using Grpah3DVisualizer.GUI;
+using Grpah3DVisualizer.SupportComponents;
 
 using UnityEngine;
 
-using static Grpah3DVisualizer.GUIFactory3D;
+using static Grpah3DVisualizer.GUI.GUIFactory3D;
 
-namespace Grpah3DVisualizer
+namespace Grpah3DVisualizer.Graph3D
 {
     public class VertexLinksMenu : PopUpVerticalStackMenu
     {
@@ -40,7 +56,7 @@ namespace Grpah3DVisualizer
                         Resources.GetBuiltinResource<Font>("Arial.ttf"), 18, 6, Color.black);
 
                     var button = CreateButton<Button3DComponnet>(parameters);
-                    button.transform.eulerAngles = new Vector3 (0,180,0);
+                    button.transform.eulerAngles = new Vector3(0, 180, 0);
                     button.GetComponent<Button3DComponnet>().Action = (GameObject target) =>
                     {
                         var targetPosition = target.transform.position;
@@ -71,7 +87,7 @@ namespace Grpah3DVisualizer
                         if (Vector3.Distance(secondPoint, targetPosition) > 20)
                             points.Add(newPoint);
                         points.Add(secondPointOffset);
-                        StartCoroutine(target.GetComponent<MoveComponent>().MoveAlongTrajectory(points));
+                        StartCoroutine(target.GetComponent<MovementComponent>().MoveAlongTrajectory(points));
                         SetDisabled();
                     };
 
@@ -89,7 +105,7 @@ namespace Grpah3DVisualizer
                         Resources.GetBuiltinResource<Font>("Arial.ttf"), 18, 6, Color.white);
                 var text = CreateText(infoParams);
                 text.transform.eulerAngles = new Vector3(0, 180, 0);
-                content.Add((3,text.transform));
+                content.Add((3, text.transform));
                 SetSubObjectList(content, callingObject.transform);
                 base.ClickAction(callingObject);
             }

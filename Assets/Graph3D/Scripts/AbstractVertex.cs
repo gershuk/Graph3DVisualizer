@@ -1,5 +1,5 @@
 ﻿// This file is part of Grpah3DVisualizer.
-// Copyright © Gershuk Vladislav 2020.
+// Copyright © Gershuk Vladislav 2021.
 //
 // Grpah3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,11 +17,13 @@
 using System;
 using System.Collections.Generic;
 
-using SupportComponents;
+using Grpah3DVisualizer.Billboards;
+using Grpah3DVisualizer.Customizable;
+using Grpah3DVisualizer.SupportComponents;
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer
+namespace Grpah3DVisualizer.Graph3D
 {
     public class LinkNotFoundException : Exception
     {
@@ -60,7 +62,7 @@ namespace Grpah3DVisualizer
             => (Position, Rotation, ImageParameters) = (position, rotation, imageParameters);
     }
 
-    [RequireComponent(typeof(MoveComponent))]
+    [RequireComponent(typeof(MovementComponent))]
     public abstract class AbstractVertex : MonoBehaviour, IVisibile, IDestructible, ICustomizable<VertexParameters>
     {
         [SerializeField]
@@ -71,7 +73,7 @@ namespace Grpah3DVisualizer
         protected BillboardId _mainImageId;
         protected Transform _transform;
 
-        public abstract MoveComponent MoveComponent { get; protected set; }
+        public abstract MovementComponent MovementComponent { get; protected set; }
         public abstract bool Visibility { get; set; }
         public abstract Vector2 SetMainImageSize { get; set; }
 

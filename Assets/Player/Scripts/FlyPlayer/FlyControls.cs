@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace PlayerInputControls
+namespace Grpah3DVisualizer.PlayerInputControls
 {
     public class @FlyControls : IInputActionCollection, IDisposable
     {

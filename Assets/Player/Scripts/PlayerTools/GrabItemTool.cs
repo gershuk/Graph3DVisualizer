@@ -1,5 +1,5 @@
 ﻿// This file is part of Grpah3DVisualizer.
-// Copyright © Gershuk Vladislav 2020.
+// Copyright © Gershuk Vladislav 2021.
 //
 // Grpah3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -16,12 +16,12 @@
 
 using System.Collections;
 
-using SupportComponents;
+using Grpah3DVisualizer.SupportComponents;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace PlayerInputControls
+namespace Grpah3DVisualizer.PlayerInputControls
 {
     [RequireComponent(typeof(LaserPointer))]
     public class GrabItemTool : PlayerTool

@@ -1,5 +1,5 @@
 ﻿// This file is part of Grpah3DVisualizer.
-// Copyright © Gershuk Vladislav 2020.
+// Copyright © Gershuk Vladislav 2021.
 //
 // Grpah3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,12 +17,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Runtime.Serialization;
 
 using UnityEngine;
 
-namespace SupportComponents
+namespace Grpah3DVisualizer.SupportComponents
 {
     public interface IMoveable
     {
@@ -54,63 +52,5 @@ namespace SupportComponents
         event Action<UnityEngine.Object, bool> SelectedChanged;
         event Action<UnityEngine.Object, bool> HighlightedChanged;
         Color SelectFrameColor { get; set; }
-    }
-
-    public abstract class CustomizableParameter { };
-
-    public interface ICustomizable<TParams> where TParams : CustomizableParameter
-    {
-        void SetupParams (TParams parameters);
-        TParams DownloadParams ();
-    }
-
-    public static class CustomizableExtension
-    {
-        public static void CallSetUpParams (object customizable, object[] parameters)
-        {
-            foreach (var param in parameters)
-            {
-                var isFinded = false;
-
-                foreach (var interfaceType in customizable.GetType().GetInterfaces())
-                {
-                    if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>) && interfaceType.GetGenericArguments()[0] == param.GetType())
-                    {
-                        interfaceType.GetMethod("SetupParams", interfaceType.GetGenericArguments()).Invoke(customizable, new[] { param });
-                        isFinded = true;
-                    }
-                }
-
-                if (!isFinded)
-                    throw new Exception($"Customizable methods with parameter type {param.GetType()} not found");
-            }
-        }
-
-        public static List<T> CallDownloadParams<T> (object customizable) where T : CustomizableParameter
-        {
-            var parameters = new List<T>();
-            foreach (var interfaceType in customizable.GetType().GetInterfaces())
-            {
-                if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>)
-                    && (interfaceType.GetGenericArguments()[0].IsSubclassOf(typeof(T)) || interfaceType.GetGenericArguments()[0] == typeof(T)))
-                {
-                    parameters.Add((T) interfaceType.GetMethod("DownloadParams").Invoke(customizable, null));
-                }
-            }
-            return parameters;
-        }
-    }
-
-    public class WrongTypeInCustomizableParameterException : Exception
-    {
-        protected WrongTypeInCustomizableParameterException (SerializationInfo info, StreamingContext context) : base(info, context) { }
-
-        public WrongTypeInCustomizableParameterException () { }
-
-        public WrongTypeInCustomizableParameterException (string message) : base(message) { }
-
-        public WrongTypeInCustomizableParameterException (string message, Exception innerException) : base(message, innerException) { }
-
-        public WrongTypeInCustomizableParameterException (Type expectedType, Type receivedType) : base($"The type inherited from {expectedType.Name} was expected, and {receivedType.Name} was obtained.") { }
     }
 }

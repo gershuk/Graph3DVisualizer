@@ -1,5 +1,5 @@
 ﻿// This file is part of Grpah3DVisualizer.
-// Copyright © Gershuk Vladislav 2020.
+// Copyright © Gershuk Vladislav 2021.
 //
 // Grpah3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,12 +17,13 @@
 using System;
 using System.Collections.Generic;
 
-using SupportComponents;
+using Grpah3DVisualizer.Customizable;
+using Grpah3DVisualizer.SupportComponents;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace PlayerInputControls
+namespace Grpah3DVisualizer.PlayerInputControls
 {
     public class SelectItemToolParams : ToolParams
     {

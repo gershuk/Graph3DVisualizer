@@ -1,5 +1,5 @@
 ﻿// This file is part of Grpah3DVisualizer.
-// Copyright © Gershuk Vladislav 2020.
+// Copyright © Gershuk Vladislav 2021.
 //
 // Grpah3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace SupportComponents
+namespace Grpah3DVisualizer.SupportComponents
 {
     public enum TransmissionMode
     {
@@ -30,7 +30,7 @@ namespace SupportComponents
         TopGear = 3,
     }
 
-    public class MoveComponent : MonoBehaviour, IMoveable
+    public class MovementComponent : MonoBehaviour, IMoveable
     {
         private const float _timeCheckThreshold = 0.001f;
 

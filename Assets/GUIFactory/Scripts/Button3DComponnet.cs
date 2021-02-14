@@ -14,13 +14,20 @@
 // You should have received a copy of the GNU General Public License
 // along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
-using Grpah3DVisualizer.Graph3D;
+using System;
 
-namespace Grpah3DVisualizer.GraphTasks
+using Grpah3DVisualizer.SupportComponents;
+
+using UnityEngine;
+
+namespace Grpah3DVisualizer.GUI
 {
-    public class DecembristVertex : SelectableVertex
+    public class Button3DComponnet : ClickableObject
     {
-        public bool IsDec { get; set; } = false;
-        public string Name { get; set; }
+        //ToDo : change to expression
+        public Action<GameObject> Action { get; set; }
+
+        public override void SetDisabled () { }
+        protected override void ClickAction (GameObject gameObject) => Action?.Invoke(gameObject);
     }
 }

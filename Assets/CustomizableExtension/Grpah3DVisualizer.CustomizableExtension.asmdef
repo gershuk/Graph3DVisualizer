@@ -1,10 +1,6 @@
 {
-    "name": "Player",
-    "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:c714d0b183033d44cb9541a269246798",
-        "GUID:68f547e922d4cac48980104337bf6a86"
-    ],
+    "name": "Grpah3DVisualizer.CustomizableExtension",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

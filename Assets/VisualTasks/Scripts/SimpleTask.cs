@@ -1,5 +1,5 @@
 ﻿// This file is part of Grpah3DVisualizer.
-// Copyright © Gershuk Vladislav 2020.
+// Copyright © Gershuk Vladislav 2021.
 //
 // Grpah3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,20 +17,18 @@
 using System;
 using System.Collections.Generic;
 
-using Grpah3DVisualizer;
-
-using PlayerInputControls;
-
-using TextureFactory;
+using Grpah3DVisualizer.Billboards;
+using Grpah3DVisualizer.Graph3D;
+using Grpah3DVisualizer.PlayerInputControls;
+using Grpah3DVisualizer.TextureFactory;
 
 using UnityEngine;
 
-namespace GraphTasks
+namespace Grpah3DVisualizer.GraphTasks
 {
     public class SimpleTask : AbstractVisualTask
     {
         private const string _fontPath = "Font/CustomFontDroidSans-Bold";
-        private const string _3DFontPath = "Font/CustomFontArial";
         private const string _mainTexture = "Textures/Default";
         private const string _selectFrameTexture = "Textures/SelectFrame";
         private const string _playerPrefabPath = "Prefabs/Player";
@@ -106,7 +104,7 @@ namespace GraphTasks
 
             var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath)).GetComponent<FlyPlayer>();
             _players.Add(player);
-            player.SetupParams(new PlayerParameters(new Vector3(100,20,-50), Vector3.zero, 40, 20,
+            player.SetupParams(new PlayerParameters(new Vector3(100, 20, -50), Vector3.zero, 40, 20,
                 new ToolConfig[4]
                 {
                     new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)),
