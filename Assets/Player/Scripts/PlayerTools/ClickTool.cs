@@ -16,13 +16,13 @@
 
 using System;
 
-using Grpah3DVisualizer.Customizable;
-using Grpah3DVisualizer.SupportComponents;
+using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Grpah3DVisualizer.PlayerInputControls
+namespace Graph3DVisualizer.PlayerInputControls
 {
     [RequireComponent(typeof(LaserPointer))]
     public class ClickTool : PlayerTool, ICustomizable<ClickToolParams>

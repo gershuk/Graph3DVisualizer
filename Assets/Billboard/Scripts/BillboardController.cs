@@ -17,13 +17,13 @@
 using System;
 using System.Collections.Generic;
 
-using Grpah3DVisualizer.Customizable;
-using Grpah3DVisualizer.SupportComponents;
-using Grpah3DVisualizer.TextureFactory;
+using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.SupportComponents;
+using Graph3DVisualizer.TextureFactory;
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer.Billboards
+namespace Graph3DVisualizer.Billboards
 {
     /// <summary>
     /// An object containing information for displaying the Billboard image. Contained in the <see cref="BillboardController"/>.

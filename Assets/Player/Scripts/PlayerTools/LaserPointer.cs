@@ -20,7 +20,7 @@ using UnityEngine;
 
 using static UnityEngine.Physics;
 
-namespace Grpah3DVisualizer.PlayerInputControls
+namespace Graph3DVisualizer.PlayerInputControls
 {
     [ExecuteInEditMode]
     [RequireComponent(typeof(LineRenderer))]

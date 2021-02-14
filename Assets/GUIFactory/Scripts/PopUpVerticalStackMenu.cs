@@ -16,11 +16,11 @@
 
 using System.Collections.Generic;
 
-using Grpah3DVisualizer.SupportComponents;
+using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer.GUI
+namespace Graph3DVisualizer.GUI
 {
     public class PopUpVerticalStackMenu : ClickableObject
     {

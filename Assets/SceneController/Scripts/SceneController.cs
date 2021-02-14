@@ -20,12 +20,12 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-using Grpah3DVisualizer.GraphTasks;
+using Graph3DVisualizer.GraphTasks;
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Grpah3DVisualizer.Scene
+namespace Graph3DVisualizer.Scene
 {
     public class SceneController : MonoBehaviour
     {

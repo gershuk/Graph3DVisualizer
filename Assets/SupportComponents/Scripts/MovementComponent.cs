@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer.SupportComponents
+namespace Graph3DVisualizer.SupportComponents
 {
     public class MovementComponent : MonoBehaviour, IMoveable
     {

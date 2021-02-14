@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace Grpah3DVisualizer.PlayerInputControls
+namespace Graph3DVisualizer.PlayerInputControls
 {
     public class @FlyControls : IInputActionCollection, IDisposable
     {

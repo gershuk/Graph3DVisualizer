@@ -1,10 +1,12 @@
 {
-    "name": "Grpah3DVisualizer.Player",
+    "name": "Graph3DVisualizer.SceneController",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c",
         "GUID:c714d0b183033d44cb9541a269246798",
-        "GUID:68f547e922d4cac48980104337bf6a86",
-        "GUID:a251807422a267846803e3939918e146"
+        "GUID:d93d376db5257d64e880282318a2ebb9",
+        "GUID:de927d21316a8a447912b685b91e2a7f",
+        "GUID:08b6197bb3dceda4ab0f9de5f81ddea9",
+        "GUID:78a8b2fd7b196d34690589f8eb2bb22d",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

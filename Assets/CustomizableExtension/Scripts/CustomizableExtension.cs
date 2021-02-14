@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace Grpah3DVisualizer.Customizable
+namespace Graph3DVisualizer.Customizable
 {
     public static class CustomizableExtension
     {

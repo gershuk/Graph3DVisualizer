@@ -16,14 +16,14 @@
 
 using System.Collections.Generic;
 
-using Grpah3DVisualizer.GUI;
-using Grpah3DVisualizer.SupportComponents;
+using Graph3DVisualizer.GUI;
+using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 
-using static Grpah3DVisualizer.GUI.GUIFactory3D;
+using static Graph3DVisualizer.GUI.GUIFactory3D;
 
-namespace Grpah3DVisualizer.Graph3D
+namespace Graph3DVisualizer.Graph3D
 {
     public class VertexLinksMenu : PopUpVerticalStackMenu
     {

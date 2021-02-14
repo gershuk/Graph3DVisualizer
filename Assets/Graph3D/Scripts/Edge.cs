@@ -16,7 +16,7 @@
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer.Graph3D
+namespace Graph3DVisualizer.Graph3D
 {
     [RequireComponent(typeof(LineRenderer))]
     public class Edge : AbstractEdge

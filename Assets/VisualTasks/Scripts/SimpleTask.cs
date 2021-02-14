@@ -17,14 +17,14 @@
 using System;
 using System.Collections.Generic;
 
-using Grpah3DVisualizer.Billboards;
-using Grpah3DVisualizer.Graph3D;
-using Grpah3DVisualizer.PlayerInputControls;
-using Grpah3DVisualizer.TextureFactory;
+using Graph3DVisualizer.Billboards;
+using Graph3DVisualizer.Graph3D;
+using Graph3DVisualizer.PlayerInputControls;
+using Graph3DVisualizer.TextureFactory;
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer.GraphTasks
+namespace Graph3DVisualizer.GraphTasks
 {
     public class SimpleTask : AbstractVisualTask
     {

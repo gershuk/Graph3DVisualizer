@@ -17,9 +17,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using static Grpah3DVisualizer.GUI.GUIFactory;
+using static Graph3DVisualizer.GUI.GUIFactory;
 
-namespace Grpah3DVisualizer.Scene
+namespace Graph3DVisualizer.Scene
 {
     [RequireComponent(typeof(SceneController))]
     public class Menu : MonoBehaviour

@@ -16,12 +16,12 @@
 
 using System.Collections;
 
-using Grpah3DVisualizer.SupportComponents;
+using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Grpah3DVisualizer.PlayerInputControls
+namespace Graph3DVisualizer.PlayerInputControls
 {
     [RequireComponent(typeof(LaserPointer))]
     public class GrabItemTool : PlayerTool

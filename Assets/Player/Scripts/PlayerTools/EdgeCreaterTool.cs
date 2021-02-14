@@ -18,13 +18,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using Grpah3DVisualizer.Customizable;
-using Grpah3DVisualizer.Graph3D;
+using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.Graph3D;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Grpah3DVisualizer.PlayerInputControls
+namespace Graph3DVisualizer.PlayerInputControls
 {
     [RequireComponent(typeof(LaserPointer))]
     public class EdgeCreaterTool : PlayerTool, ICustomizable<EdgeCreaterToolParams>

@@ -18,7 +18,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer.TextureFactory
+namespace Graph3DVisualizer.TextureFactory
 {
     public class TextTextureFactory
     {

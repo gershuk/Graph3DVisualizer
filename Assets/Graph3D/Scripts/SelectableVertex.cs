@@ -17,13 +17,13 @@
 using System;
 using System.Collections.Generic;
 
-using Grpah3DVisualizer.Billboards;
-using Grpah3DVisualizer.Customizable;
-using Grpah3DVisualizer.SupportComponents;
+using Graph3DVisualizer.Billboards;
+using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer.Graph3D
+namespace Graph3DVisualizer.Graph3D
 {
     [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(MovementComponent))]

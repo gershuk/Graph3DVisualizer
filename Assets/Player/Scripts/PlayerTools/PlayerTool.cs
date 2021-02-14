@@ -16,14 +16,14 @@
 
 using System;
 
-using Grpah3DVisualizer.Customizable;
+using Graph3DVisualizer.Customizable;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 using static UnityEngine.Physics;
 
-namespace Grpah3DVisualizer.PlayerInputControls
+namespace Graph3DVisualizer.PlayerInputControls
 {
     public readonly struct ToolConfig
     {

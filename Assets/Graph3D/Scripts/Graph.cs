@@ -18,11 +18,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using Grpah3DVisualizer.Customizable;
+using Graph3DVisualizer.Customizable;
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer.Graph3D
+namespace Graph3DVisualizer.Graph3D
 {
     public class Graph : AbstractGraph
     {

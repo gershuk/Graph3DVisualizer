@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
-using Grpah3DVisualizer.Graph3D;
+using Graph3DVisualizer.Graph3D;
 
-namespace Grpah3DVisualizer.GraphTasks
+namespace Graph3DVisualizer.GraphTasks
 {
     public class DecembristVertex : SelectableVertex
     {

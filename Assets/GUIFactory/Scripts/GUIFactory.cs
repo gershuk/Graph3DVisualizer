@@ -20,7 +20,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Grpah3DVisualizer.GUI
+namespace Graph3DVisualizer.GUI
 {
     public static class GUIFactory
     {

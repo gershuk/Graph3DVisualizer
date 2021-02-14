@@ -18,13 +18,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using Grpah3DVisualizer.Customizable;
-using Grpah3DVisualizer.Graph3D;
-using Grpah3DVisualizer.PlayerInputControls;
+using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.Graph3D;
+using Graph3DVisualizer.PlayerInputControls;
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer.GraphTasks
+namespace Graph3DVisualizer.GraphTasks
 {
     public abstract class AbstractVisualTask : MonoBehaviour, ICustomizable<VisualTaskParameters>
     {

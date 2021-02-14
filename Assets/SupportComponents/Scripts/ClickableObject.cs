@@ -18,7 +18,7 @@ using System;
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer.SupportComponents
+namespace Graph3DVisualizer.SupportComponents
 {
     public abstract class ClickableObject : MonoBehaviour
     {

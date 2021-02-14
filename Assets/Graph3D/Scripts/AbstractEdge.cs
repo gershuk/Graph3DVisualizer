@@ -16,11 +16,11 @@
 
 using System;
 
-using Grpah3DVisualizer.Customizable;
+using Graph3DVisualizer.Customizable;
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer.Graph3D
+namespace Graph3DVisualizer.Graph3D
 {
     public readonly struct AdjacentVertices
     {

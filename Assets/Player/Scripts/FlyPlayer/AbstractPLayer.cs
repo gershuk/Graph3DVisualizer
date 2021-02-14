@@ -18,12 +18,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-using Grpah3DVisualizer.Customizable;
-using Grpah3DVisualizer.SupportComponents;
+using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 
-namespace Grpah3DVisualizer.PlayerInputControls
+namespace Graph3DVisualizer.PlayerInputControls
 {
     public abstract class AbstractPlayer : MonoBehaviour, ICustomizable<PlayerParameters>
     {
