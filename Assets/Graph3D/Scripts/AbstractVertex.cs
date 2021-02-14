@@ -25,63 +25,27 @@ using UnityEngine;
 
 namespace Grpah3DVisualizer.Graph3D
 {
-    public class LinkNotFoundException : Exception
-    {
-        public LinkNotFoundException () : base()
-        {
-        }
-
-        public LinkNotFoundException (string message) : base(message)
-        {
-        }
-
-        public LinkNotFoundException (string message, Exception innerException) : base(message, innerException)
-        {
-        }
-    }
-
-    public class Link
-    {
-        public AbstractVertex AdjacentVertex { get; }
-        public AbstractEdge Edge { get; }
-
-        public Link (AbstractVertex adjacentVertex, AbstractEdge edge)
-        {
-            AdjacentVertex = adjacentVertex != null ? adjacentVertex : throw new ArgumentNullException(nameof(adjacentVertex));
-            Edge = edge != null ? edge : throw new ArgumentNullException(nameof(edge));
-        }
-    }
-
-    public class VertexParameters : CustomizableParameter
-    {
-        public Vector3 Position { get; }
-        public Quaternion Rotation { get; }
-        public BillboardParameters ImageParameters { get; }
-
-        public VertexParameters (Vector3 position, Quaternion rotation, BillboardParameters imageParameters)
-            => (Position, Rotation, ImageParameters) = (position, rotation, imageParameters);
-    }
-
     [RequireComponent(typeof(MovementComponent))]
     public abstract class AbstractVertex : MonoBehaviour, IVisibile, IDestructible, ICustomizable<VertexParameters>
     {
         [SerializeField]
         protected GameObject _edgePrefab;
-        protected List<Link> _incomingLinks;
-        protected List<Link> _outgoingLinks;
-        protected bool _visible = true;
-        protected BillboardId _mainImageId;
-        protected Transform _transform;
 
-        public abstract MovementComponent MovementComponent { get; protected set; }
-        public abstract bool Visibility { get; set; }
-        public abstract Vector2 SetMainImageSize { get; set; }
+        protected List<Link> _incomingLinks;
+        protected BillboardId _mainImageId;
+        protected List<Link> _outgoingLinks;
+        protected Transform _transform;
+        protected bool _visible = true;
 
         public abstract event Action<UnityEngine.Object> Destroyed;
+
         public abstract event Action<bool, UnityEngine.Object> VisibleChanged;
 
         public IReadOnlyList<Link> IncomingLinks => _incomingLinks;
+        public abstract MovementComponent MovementComponent { get; protected set; }
         public IReadOnlyList<Link> OutgoingLinks => _outgoingLinks;
+        public abstract Vector2 SetMainImageSize { get; set; }
+        public abstract bool Visibility { get; set; }
 
         private TEdge CreateEdge<TEdge, TParameters> (TParameters parameters, AbstractVertex toVertex) where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
@@ -99,29 +63,6 @@ namespace Grpah3DVisualizer.Graph3D
             edge.AdjacentVertices = new AdjacentVertices(this, toVertex);
             CustomizableExtension.CallSetUpParams(edge, new[] { parameters });
             return edge;
-        }
-
-        protected AbstractEdge RemoveLinkFromArray (List<Link> links, AbstractVertex toVertex, Type edgeType)
-        {
-            for (var i = 0; i < links.Count; ++i)
-            {
-                if (links[i].AdjacentVertex == toVertex && links[i].Edge.GetType() == edgeType)
-                {
-                    var link = links[i];
-                    links[i] = links[links.Count - 1];
-                    links.RemoveAt(links.Count - 1);
-                    return link.Edge;
-                }
-            }
-            throw new LinkNotFoundException();
-        }
-
-        public abstract VertexParameters DownloadParams ();
-        public abstract void SetMainImage (BillboardParameters billboardParameters);
-        public virtual void SetupParams (VertexParameters parameters)
-        {
-            (_transform.position, _transform.rotation) = (parameters.Position, parameters.Rotation);
-            SetMainImage(parameters.ImageParameters);
         }
 
         protected void CheckLinkForCorrectness (AbstractVertex toVertex, Type edgeType)
@@ -158,6 +99,23 @@ namespace Grpah3DVisualizer.Graph3D
             return edge;
         }
 
+        protected AbstractEdge RemoveLinkFromArray (List<Link> links, AbstractVertex toVertex, Type edgeType)
+        {
+            for (var i = 0; i < links.Count; ++i)
+            {
+                if (links[i].AdjacentVertex == toVertex && links[i].Edge.GetType() == edgeType)
+                {
+                    var link = links[i];
+                    links[i] = links[links.Count - 1];
+                    links.RemoveAt(links.Count - 1);
+                    return link.Edge;
+                }
+            }
+            throw new LinkNotFoundException();
+        }
+
+        public abstract VertexParameters DownloadParams ();
+
         public TEdge Link<TEdge, TParameters> (AbstractVertex toVertex, TParameters edgeParameters) where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
             CheckLinkForCorrectness(toVertex, typeof(TEdge));
@@ -178,6 +136,14 @@ namespace Grpah3DVisualizer.Graph3D
             return edge;
         }
 
+        public abstract void SetMainImage (BillboardParameters billboardParameters);
+
+        public virtual void SetupParams (VertexParameters parameters)
+        {
+            (_transform.position, _transform.rotation) = (parameters.Position, parameters.Rotation);
+            SetMainImage(parameters.ImageParameters);
+        }
+
         public void UnLink<TEdge> (AbstractVertex toVertex) where TEdge : AbstractEdge => UnLink(toVertex, typeof(Edge));
 
         public void UnLink (AbstractVertex toVertex, Type edgeType)
@@ -195,5 +161,42 @@ namespace Grpah3DVisualizer.Graph3D
                 Destroy(edge.gameObject);
             }
         }
+    }
+
+    public class Link
+    {
+        public AbstractVertex AdjacentVertex { get; }
+        public AbstractEdge Edge { get; }
+
+        public Link (AbstractVertex adjacentVertex, AbstractEdge edge)
+        {
+            AdjacentVertex = adjacentVertex != null ? adjacentVertex : throw new ArgumentNullException(nameof(adjacentVertex));
+            Edge = edge != null ? edge : throw new ArgumentNullException(nameof(edge));
+        }
+    }
+
+    public class LinkNotFoundException : Exception
+    {
+        public LinkNotFoundException () : base()
+        {
+        }
+
+        public LinkNotFoundException (string message) : base(message)
+        {
+        }
+
+        public LinkNotFoundException (string message, Exception innerException) : base(message, innerException)
+        {
+        }
+    }
+
+    public class VertexParameters : CustomizableParameter
+    {
+        public BillboardParameters ImageParameters { get; }
+        public Vector3 Position { get; }
+        public Quaternion Rotation { get; }
+
+        public VertexParameters (Vector3 position, Quaternion rotation, BillboardParameters imageParameters)
+            => (Position, Rotation, ImageParameters) = (position, rotation, imageParameters);
     }
 }

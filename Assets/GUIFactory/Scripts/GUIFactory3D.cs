@@ -26,15 +26,15 @@ namespace Grpah3DVisualizer.GUI
     {
         public readonly struct TextMeshParameters
         {
-            public Transform Parent { get; }
-            public Vector3 LocalPos { get; }
-            public string ObjectName { get; }
-            public string Text { get; }
-            public float TextSize { get; }
+            public Color Color { get; }
             public Font Font { get; }
             public int FontSize { get; }
+            public Vector3 LocalPos { get; }
+            public string ObjectName { get; }
+            public Transform Parent { get; }
             public float TabSize { get; }
-            public Color Color { get; }
+            public string Text { get; }
+            public float TextSize { get; }
 
             public TextMeshParameters (Transform parent, Vector3 localPos, string objectName, string text, float textSize, Font font, int fontSize, float tabSize, Color color)
             {
@@ -48,6 +48,18 @@ namespace Grpah3DVisualizer.GUI
                 TabSize = tabSize;
                 Color = color;
             }
+        }
+
+        public static GameObject CreateButton<T> (TextMeshParameters textParameters) where T : ClickableObject
+        {
+            var button = CreateText(textParameters);
+            var collider = button.AddComponent<BoxCollider>();
+            var back = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Background"));
+            back.transform.localScale = new Vector3(collider.size.x, collider.size.y, 0.1f);
+            back.transform.parent = button.transform;
+            back.transform.localPosition = new Vector3(0, 0, 0.1f);
+            button.AddComponent<T>();
+            return button;
         }
 
         public static GameObject CreateText (TextMeshParameters parameters)
@@ -64,18 +76,6 @@ namespace Grpah3DVisualizer.GUI
             text3DMeshComponent.color = parameters.Color;
             text3D.transform.localPosition = parameters.LocalPos;
             return text3D;
-        }
-
-        public static GameObject CreateButton<T> (TextMeshParameters textParameters) where T : ClickableObject
-        {
-            var button = CreateText(textParameters);
-            var collider = button.AddComponent<BoxCollider>();
-            var back = UnityEngine.Object.Instantiate(Resources.Load<GameObject>("Prefabs/Background"));
-            back.transform.localScale = new Vector3(collider.size.x, collider.size.y, 0.1f);
-            back.transform.parent = button.transform;
-            back.transform.localPosition = new Vector3(0, 0, 0.1f);
-            button.AddComponent<T>();
-            return button;
         }
     }
 }

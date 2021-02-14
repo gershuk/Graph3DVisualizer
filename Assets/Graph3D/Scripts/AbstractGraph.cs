@@ -24,6 +24,41 @@ using UnityEngine;
 
 namespace Grpah3DVisualizer.Graph3D
 {
+    public abstract class AbstractGraph : MonoBehaviour, ICustomizable<GraphParameters>
+    {
+        protected Transform _transform;
+
+        [SerializeField]
+        protected GameObject _vertexPrefab;
+
+        public abstract int VertexesCount { get; }
+
+        public abstract bool ContainsVertex (Vertex vertex);
+
+        public abstract bool DeleteVeretex (Vertex vertex);
+
+        public GraphParameters DownloadParams () =>
+            new GraphParameters(GetVertexes().Select(x => (x.GetType(), CustomizableExtension.CallDownloadParams<VertexParameters>(x).ToArray())).ToArray());
+
+        public abstract IReadOnlyList<AbstractVertex> GetVertexes ();
+
+        //ToDo : Add vertex links to parameters
+        public void SetupParams (GraphParameters parameters)
+        {
+            foreach (var (vertexType, vertexParameters) in parameters.VertexParameters)
+            {
+                foreach (var vertexParameter in vertexParameters)
+                    SpawnVertex(vertexType, vertexParameter);
+            }
+        }
+
+        public abstract TVertex SpawnVertex<TVertex, TParams> (TParams vertexParameters)
+                    where TVertex : AbstractVertex, new()
+            where TParams : VertexParameters;
+
+        public abstract AbstractVertex SpawnVertex (Type vertexType, VertexParameters parameters);
+    }
+
     public class GraphParameters : CustomizableParameter
     {
         public (Type vertexType, VertexParameters[] vertexParameters)[] VertexParameters { get; }
@@ -38,37 +73,5 @@ namespace Grpah3DVisualizer.Graph3D
                     throw new WrongTypeInCustomizableParameterException(typeof(AbstractVertex), vertexType);
             }
         }
-    }
-
-    public abstract class AbstractGraph : MonoBehaviour, ICustomizable<GraphParameters>
-    {
-        [SerializeField]
-        protected GameObject _vertexPrefab;
-        protected Transform _transform;
-
-        public abstract int VertexesCount { get; }
-
-        public abstract bool ContainsVertex (Vertex vertex);
-        public abstract bool DeleteVeretex (Vertex vertex);
-        public abstract IReadOnlyList<AbstractVertex> GetVertexes ();
-
-        public abstract TVertex SpawnVertex<TVertex, TParams> (TParams vertexParameters)
-            where TVertex : AbstractVertex, new()
-            where TParams : VertexParameters;
-
-        public abstract AbstractVertex SpawnVertex (Type vertexType, VertexParameters parameters);
-
-        //ToDo : Add vertex links to parameters
-        public void SetupParams (GraphParameters parameters)
-        {
-            foreach (var (vertexType, vertexParameters) in parameters.VertexParameters)
-            {
-                foreach (var vertexParameter in vertexParameters)
-                    SpawnVertex(vertexType, vertexParameter);
-            }
-        }
-
-        public GraphParameters DownloadParams () =>
-            new GraphParameters(GetVertexes().Select(x => (x.GetType(), CustomizableExtension.CallDownloadParams<VertexParameters>(x).ToArray())).ToArray());
     }
 }

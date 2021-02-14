@@ -22,17 +22,19 @@ namespace Grpah3DVisualizer.SupportComponents
 {
     public abstract class ClickableObject : MonoBehaviour
     {
-        protected Transform _transform;
         protected GameObject _gameObject;
+        protected Transform _transform;
+
+        public event Action<GameObject> Clicked;
 
         protected abstract void ClickAction (GameObject gameObject);
 
-        public event Action<GameObject> Clicked;
         public void Click (GameObject gameObject)
         {
             ClickAction(gameObject);
             Clicked?.Invoke(gameObject);
         }
+
         public abstract void SetDisabled ();
     }
 }

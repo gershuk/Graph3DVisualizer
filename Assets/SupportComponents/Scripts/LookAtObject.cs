@@ -14,9 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
-using System.Collections;
-using System.Collections.Generic;
-
 using UnityEngine;
 
 namespace Grpah3DVisualizer.SupportComponents

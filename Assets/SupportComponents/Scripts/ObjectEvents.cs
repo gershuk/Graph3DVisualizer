@@ -22,35 +22,42 @@ using UnityEngine;
 
 namespace Grpah3DVisualizer.SupportComponents
 {
-    public interface IMoveable
-    {
-        float MovingSpeed { get; set; }
-        float RotationSpeed { get; set; }
-        event Action<Vector3, UnityEngine.Object> ObjectMoved;
-        Vector3 GlobalCoordinates { get; set; }
-        Vector3 LocalCoordinates { get; set; }
-        void Translate (Vector3 moveVector, float deltaTime);
-        void Rotate (Vector2 rotationChange, float deltaTime);
-        IEnumerator MoveAlongTrajectory (IReadOnlyList<Vector3> trajectory);
-    }
-
     public interface IDestructible
     {
         event Action<UnityEngine.Object> Destroyed;
     }
 
-    public interface IVisibile
+    public interface IMoveable
     {
-        bool Visibility { get; set; }
-        event Action<bool, UnityEngine.Object> VisibleChanged;
+        event Action<Vector3, UnityEngine.Object> ObjectMoved;
+
+        Vector3 GlobalCoordinates { get; set; }
+        Vector3 LocalCoordinates { get; set; }
+        float MovingSpeed { get; set; }
+        float RotationSpeed { get; set; }
+
+        IEnumerator MoveAlongTrajectory (IReadOnlyList<Vector3> trajectory);
+
+        void Rotate (Vector2 rotationChange, float deltaTime);
+
+        void Translate (Vector3 moveVector, float deltaTime);
     }
 
     public interface ISelectable
     {
-        bool IsSelected { get; set; }
-        bool IsHighlighted { get; set; }
-        event Action<UnityEngine.Object, bool> SelectedChanged;
         event Action<UnityEngine.Object, bool> HighlightedChanged;
+
+        event Action<UnityEngine.Object, bool> SelectedChanged;
+
+        bool IsHighlighted { get; set; }
+        bool IsSelected { get; set; }
         Color SelectFrameColor { get; set; }
+    }
+
+    public interface IVisibile
+    {
+        event Action<bool, UnityEngine.Object> VisibleChanged;
+
+        bool Visibility { get; set; }
     }
 }

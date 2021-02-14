@@ -24,13 +24,27 @@ namespace Grpah3DVisualizer.GUI
 {
     public static class GUIFactory
     {
+        public readonly struct ButtonParameters
+        {
+            public string Name { get; }
+            public UnityAction OnClickFunction { get; }
+            public RectTransformParameters RectTransformParameters { get; }
+
+            public ButtonParameters (string name, in RectTransformParameters rectTransformParameters, UnityAction onClickFunction)
+            {
+                Name = name ?? throw new ArgumentNullException(nameof(name));
+                RectTransformParameters = rectTransformParameters;
+                OnClickFunction = onClickFunction;
+            }
+        }
+
         public readonly struct RectTransformParameters
         {
-            public Transform Parent { get; }
-            public Vector2 AnchorMin { get; }
-            public Vector2 AnchorMax { get; }
-            public Vector2 SizeDelta { get; }
             public Vector2 AnchoredPosition { get; }
+            public Vector2 AnchorMax { get; }
+            public Vector2 AnchorMin { get; }
+            public Transform Parent { get; }
+            public Vector2 SizeDelta { get; }
 
             public RectTransformParameters (Transform parent, Vector2 anchorMin, Vector2 anchorMax, Vector2 sizeDelta, Vector2 anchoredPosition)
             {
@@ -42,23 +56,14 @@ namespace Grpah3DVisualizer.GUI
             }
         }
 
-        public static void SetUpRectTransform (this RectTransform rectTransform, in RectTransformParameters parameters)
-        {
-            rectTransform.SetParent(parameters.Parent);
-            rectTransform.anchorMin = parameters.AnchorMin;
-            rectTransform.anchorMax = parameters.AnchorMax;
-            rectTransform.sizeDelta = parameters.SizeDelta;
-            rectTransform.anchoredPosition = parameters.AnchoredPosition;
-        }
-
         public readonly struct TextParameters
         {
-            public string Text { get; }
+            public TextAnchor Anchor { get; }
             public Color Color { get; }
             public Font Font { get; }
-            public TextAnchor Anchor { get; }
-            public int Size { get; }
             public RectTransformParameters RectTransformParameters { get; }
+            public int Size { get; }
+            public string Text { get; }
 
             public TextParameters (string text, Color color, Font font, TextAnchor anchor, int size, in RectTransformParameters rectTransformParameters)
             {
@@ -69,6 +74,14 @@ namespace Grpah3DVisualizer.GUI
                 Size = size;
                 RectTransformParameters = rectTransformParameters;
             }
+        }
+
+        public static GameObject CreateButton (in ButtonParameters parameters)
+        {
+            var newButton = new GameObject($"{parameters.Name}Button", typeof(Image), typeof(Button), typeof(LayoutElement));
+            newButton.GetComponent<Button>().onClick.AddListener(parameters.OnClickFunction);
+            newButton.GetComponent<RectTransform>().SetUpRectTransform(parameters.RectTransformParameters);
+            return newButton;
         }
 
         public static GameObject CreateText (in TextParameters parameters)
@@ -84,26 +97,13 @@ namespace Grpah3DVisualizer.GUI
             return newText;
         }
 
-        public readonly struct ButtonParameters
+        public static void SetUpRectTransform (this RectTransform rectTransform, in RectTransformParameters parameters)
         {
-            public string Name { get; }
-            public RectTransformParameters RectTransformParameters { get; }
-            public UnityAction OnClickFunction { get; }
-
-            public ButtonParameters (string name, in RectTransformParameters rectTransformParameters, UnityAction onClickFunction)
-            {
-                Name = name ?? throw new ArgumentNullException(nameof(name));
-                RectTransformParameters = rectTransformParameters;
-                OnClickFunction = onClickFunction;
-            }
-        }
-
-        public static GameObject CreateButton (in ButtonParameters parameters)
-        {
-            var newButton = new GameObject($"{parameters.Name}Button", typeof(Image), typeof(Button), typeof(LayoutElement));
-            newButton.GetComponent<Button>().onClick.AddListener(parameters.OnClickFunction);
-            newButton.GetComponent<RectTransform>().SetUpRectTransform(parameters.RectTransformParameters);
-            return newButton;
+            rectTransform.SetParent(parameters.Parent);
+            rectTransform.anchorMin = parameters.AnchorMin;
+            rectTransform.anchorMax = parameters.AnchorMax;
+            rectTransform.sizeDelta = parameters.SizeDelta;
+            rectTransform.anchoredPosition = parameters.AnchoredPosition;
         }
     }
 }

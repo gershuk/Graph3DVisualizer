@@ -27,8 +27,8 @@ namespace Grpah3DVisualizer.PlayerInputControls
 {
     public readonly struct ToolConfig
     {
-        public Type ToolType { get; }
         public ToolParams[] ToolParams { get; }
+        public Type ToolType { get; }
 
         public ToolConfig (Type toolType, params ToolParams[] toolParams)
         {
@@ -39,17 +39,17 @@ namespace Grpah3DVisualizer.PlayerInputControls
         }
     }
 
-    public abstract class ToolParams : CustomizableParameter
-    { }
-
     public abstract class PlayerTool : MonoBehaviour
     {
-        public abstract void RegisterEvents (IInputActionCollection inputActions);
-
         protected RaycastHit RayCast (float range)
         {
             Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, range);
             return hit;
         }
+
+        public abstract void RegisterEvents (IInputActionCollection inputActions);
     }
+
+    public abstract class ToolParams : CustomizableParameter
+    { }
 }

@@ -25,20 +25,6 @@ using UnityEngine;
 
 namespace Grpah3DVisualizer.Graph3D
 {
-    public class SelectableVertexParameters : VertexParameters
-    {
-        public BillboardParameters SelectFrameParameters { get; }
-        public bool IsSelected { get; }
-
-        public SelectableVertexParameters (Vector3 position, Quaternion rotation, BillboardParameters imageParameters,
-            BillboardParameters selectFrameParameters, bool isSelected) : base(position, rotation, imageParameters) =>
-            (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
-
-        public SelectableVertexParameters (VertexParameters vertexParameters, BillboardParameters selectFrameParameters, bool isSelected) :
-            base(vertexParameters.Position, vertexParameters.Rotation, vertexParameters.ImageParameters) =>
-            (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
-    }
-
     [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(MovementComponent))]
     [RequireComponent(typeof(SphereCollider))]
@@ -48,11 +34,50 @@ namespace Grpah3DVisualizer.Graph3D
         private bool _isSelected = true;
         private BillboardId _selectFrameId;
 
-        public event Action<UnityEngine.Object, bool> SelectedChanged;
         //ToDo : Add highlight effect
         public event Action<UnityEngine.Object, bool> HighlightedChanged;
 
+        public event Action<UnityEngine.Object, bool> SelectedChanged;
+
+        public bool IsHighlighted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public bool IsSelected
+        {
+            get => _isSelected;
+            set
+            {
+                if (_isSelected != value)
+                {
+                    _isSelected = value;
+
+                    if (value)
+                        _billboardControler.EnableBillboard(_selectFrameId);
+                    else
+                        _billboardControler.DisableBillboard(_selectFrameId);
+
+                    SelectedChanged?.Invoke(this, value);
+                }
+            }
+        }
+
         public override MovementComponent MovementComponent { get; protected set; }
+
+        public Color SelectFrameColor
+        {
+            get => _billboardControler.GetBillboard(_selectFrameId).MonoColor;
+            set => _billboardControler.GetBillboard(_selectFrameId).MonoColor = value;
+        }
+
+        public Vector2 SetSelectFrameSize
+        {
+            get => new Vector2(_billboardControler.GetBillboard(_selectFrameId).ScaleX, _billboardControler.GetBillboard(_selectFrameId).ScaleY);
+            set
+            {
+                _billboardControler.GetBillboard(_selectFrameId).ScaleX = value.x;
+                _billboardControler.GetBillboard(_selectFrameId).ScaleY = value.y;
+                UpdateColliderRange();
+            }
+        }
 
         private void Awake ()
         {
@@ -82,6 +107,9 @@ namespace Grpah3DVisualizer.Graph3D
             _sphereCollider.radius = newRadius;
         }
 
+        SelectableVertexParameters ICustomizable<SelectableVertexParameters>.DownloadParams () =>
+            new SelectableVertexParameters(DownloadParams(), _billboardControler.GetBillboard(_selectFrameId).DownloadParams(), IsSelected);
+
         public void SetSelectFrame (BillboardParameters billboardParameters)
         {
             if (_selectFrameId == null)
@@ -97,46 +125,19 @@ namespace Grpah3DVisualizer.Graph3D
             SetSelectFrame(parameters.SelectFrameParameters);
             IsSelected = parameters.IsSelected;
         }
+    }
 
-        SelectableVertexParameters ICustomizable<SelectableVertexParameters>.DownloadParams () =>
-            new SelectableVertexParameters(DownloadParams(), _billboardControler.GetBillboard(_selectFrameId).DownloadParams(), IsSelected);
+    public class SelectableVertexParameters : VertexParameters
+    {
+        public bool IsSelected { get; }
+        public BillboardParameters SelectFrameParameters { get; }
 
-        public bool IsSelected
-        {
-            get => _isSelected;
-            set
-            {
-                if (_isSelected != value)
-                {
-                    _isSelected = value;
+        public SelectableVertexParameters (Vector3 position, Quaternion rotation, BillboardParameters imageParameters,
+            BillboardParameters selectFrameParameters, bool isSelected) : base(position, rotation, imageParameters) =>
+            (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
 
-                    if (value)
-                        _billboardControler.EnableBillboard(_selectFrameId);
-                    else
-                        _billboardControler.DisableBillboard(_selectFrameId);
-
-                    SelectedChanged?.Invoke(this, value);
-                }
-            }
-        }
-
-        public bool IsHighlighted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public Color SelectFrameColor
-        {
-            get => _billboardControler.GetBillboard(_selectFrameId).MonoColor;
-            set => _billboardControler.GetBillboard(_selectFrameId).MonoColor = value;
-        }
-
-        public Vector2 SetSelectFrameSize
-        {
-            get => new Vector2(_billboardControler.GetBillboard(_selectFrameId).ScaleX, _billboardControler.GetBillboard(_selectFrameId).ScaleY);
-            set
-            {
-                _billboardControler.GetBillboard(_selectFrameId).ScaleX = value.x;
-                _billboardControler.GetBillboard(_selectFrameId).ScaleY = value.y;
-                UpdateColliderRange();
-            }
-        }
+        public SelectableVertexParameters (VertexParameters vertexParameters, BillboardParameters selectFrameParameters, bool isSelected) :
+            base(vertexParameters.Position, vertexParameters.Rotation, vertexParameters.ImageParameters) =>
+            (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
     }
 }

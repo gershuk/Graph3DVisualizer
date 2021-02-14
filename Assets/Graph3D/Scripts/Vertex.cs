@@ -29,15 +29,28 @@ namespace Grpah3DVisualizer.Graph3D
     [RequireComponent(typeof(SphereCollider))]
     public class Vertex : AbstractVertex
     {
-
-        public override event Action<UnityEngine.Object> Destroyed;
-        public override event Action<bool, UnityEngine.Object> VisibleChanged;
-
         private const string _edgePrefabPath = "Prefabs/Edge";
-        protected SphereCollider _sphereCollider;
+
         protected BillboardController _billboardControler;
 
+        protected SphereCollider _sphereCollider;
+
+        public override event Action<UnityEngine.Object> Destroyed;
+
+        public override event Action<bool, UnityEngine.Object> VisibleChanged;
+
         public override MovementComponent MovementComponent { get; protected set; }
+
+        public override Vector2 SetMainImageSize
+        {
+            get => new Vector2(_billboardControler.GetBillboard(_mainImageId).ScaleX, _billboardControler.GetBillboard(_mainImageId).ScaleY);
+            set
+            {
+                _billboardControler.GetBillboard(_mainImageId).ScaleX = value.x;
+                _billboardControler.GetBillboard(_mainImageId).ScaleY = value.y;
+                UpdateColliderRange();
+            }
+        }
 
         public override bool Visibility
         {
@@ -78,6 +91,9 @@ namespace Grpah3DVisualizer.Graph3D
             _sphereCollider.radius = newRadius;
         }
 
+        public override VertexParameters DownloadParams () => new VertexParameters(_transform.position, _transform.rotation,
+            _billboardControler.GetBillboard(_mainImageId).DownloadParams());
+
         public override void SetMainImage (BillboardParameters billboardParameters)
         {
             if (_mainImageId == null)
@@ -86,19 +102,5 @@ namespace Grpah3DVisualizer.Graph3D
                 _billboardControler.GetBillboard(_mainImageId).SetupParams(billboardParameters);
             UpdateColliderRange();
         }
-
-        public override Vector2 SetMainImageSize
-        {
-            get => new Vector2(_billboardControler.GetBillboard(_mainImageId).ScaleX, _billboardControler.GetBillboard(_mainImageId).ScaleY);
-            set
-            {
-                _billboardControler.GetBillboard(_mainImageId).ScaleX = value.x;
-                _billboardControler.GetBillboard(_mainImageId).ScaleY = value.y;
-                UpdateColliderRange();
-            }
-        }
-
-        public override VertexParameters DownloadParams () => new VertexParameters(_transform.position, _transform.rotation,
-            _billboardControler.GetBillboard(_mainImageId).DownloadParams());
     }
 }

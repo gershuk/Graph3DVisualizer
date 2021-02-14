@@ -6,25 +6,25 @@
 		_ScaleY("Scale Y", Float) = 1.0
 		_Cutoff("Alpha Cutoff", Range(0,1)) = 0.0
 		[Toggle] _IsMonoColor("Is Mono Color", Float) = 0
-		_MonoColor ("Mono Color", Color) = (255,0,0,0)
+		_MonoColor("Mono Color", Color) = (255,0,0,0)
 		_LineSize("Line Size", int) = 1
 	}
-	SubShader{
-		Tags
-		{
-			"Queue" = "AlphaTest"
-			"RenderType" = "TransparentCutout"
-			"IgnoreProjector" = "True"
+		SubShader{
+			Tags
+			{
+				"Queue" = "AlphaTest"
+				"RenderType" = "TransparentCutout"
+				"IgnoreProjector" = "True"
 			//"DisableBatching" = "True" //In order to avoid "flickering"
 		}
-		
-		Pass 
+
+		Pass
 		{
 			CGPROGRAM
 
-			#pragma vertex vert  
+			#pragma vertex vert
 			#pragma fragment frag
-			
+
 			uniform sampler2D _MainTex;
 			uniform float _ScaleX;
 			uniform float _ScaleY;
@@ -33,13 +33,13 @@
 			uniform fixed4 _MonoColor;
 			uniform fixed _IsMonoColor;
 
-			struct vertexInput 
+			struct vertexInput
 			{
 				float4 vertex : POSITION;
 				float4 tex : TEXCOORD0;
 			};
 
-			struct vertexOutput 
+			struct vertexOutput
 			{
 				float4 pos : SV_POSITION;
 				float4 tex : TEXCOORD0;
@@ -61,7 +61,7 @@
 					discard;
 				}
 
-				if (_IsMonoColor!=0)
+				if (_IsMonoColor != 0)
 				{
 					texColor = _MonoColor;
 				}
@@ -71,5 +71,5 @@
 
 			ENDCG
 		}
-	}
+		}
 }

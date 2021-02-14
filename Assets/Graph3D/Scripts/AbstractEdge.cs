@@ -22,19 +22,6 @@ using UnityEngine;
 
 namespace Grpah3DVisualizer.Graph3D
 {
-    public enum EdgeVisibility
-    {
-        Hidden = 0,
-        Visible = 1,
-        DependOnVertices = 2,
-    }
-
-    public enum EdgeType
-    {
-        Unidirectional = 0,
-        Bidirectional = 1,
-    }
-
     public readonly struct AdjacentVertices
     {
         public AbstractVertex FromVertex { get; }
@@ -50,52 +37,28 @@ namespace Grpah3DVisualizer.Graph3D
 
         public float GetDistance () => Vector3.Distance(FromVertex.transform.position, ToVertex.transform.position);
 
-        public Vector3 GetUnitVector () => (ToVertex.transform.position - FromVertex.transform.position) / GetDistance();
-
         public Vector3 GetMiddlePoint () => (FromVertex.transform.position + ToVertex.transform.position) / 2;
-    }
 
-    public class EdgeParameters : CustomizableParameter
-    {
-        public float SourceOffsetDist { get; }
-        public float TargetOffsetDist { get; }
-        public Texture2D ArrowTexture { get; }
-        public Texture2D LineTexture { get; }
-        public EdgeVisibility Visibility { get; }
-
-        public EdgeParameters (float sourceOffsetDist, float targetOffsetDist,
-            Texture2D arrowTexture = null, Texture2D lineTexture = null, EdgeVisibility visibility = EdgeVisibility.DependOnVertices)
-        {
-            SourceOffsetDist = sourceOffsetDist;
-            TargetOffsetDist = targetOffsetDist;
-            ArrowTexture = arrowTexture;
-            LineTexture = lineTexture;
-            Visibility = visibility;
-        }
+        public Vector3 GetUnitVector () => (ToVertex.transform.position - FromVertex.transform.position) / GetDistance();
     }
 
     public abstract class AbstractEdge : MonoBehaviour, ICustomizable<EdgeParameters>
     {
-        [SerializeField]
-        protected Texture2D _lineTexture;
+        protected AdjacentVertices _adjacentVertices;
+
         [SerializeField]
         protected Texture2D _arrowTexture;
 
-        protected Transform _transform;
         protected GameObject _gameObject;
+
+        [SerializeField]
+        protected Texture2D _lineTexture;
 
         protected float _sourceOffsetDist;
         protected float _targetOffsetDist;
+        protected Transform _transform;
         protected EdgeType _type;
-        protected AdjacentVertices _adjacentVertices;
         protected EdgeVisibility _visibility;
-
-        public abstract EdgeType Type { get; set; }
-        public abstract float SourceOffsetDist { get; set; }
-        public abstract float TargetOffsetDist { get; set; }
-        public abstract EdgeVisibility Visibility { get; set; }
-        public abstract Texture2D LineTexture { get; set; }
-        public abstract Texture2D ArrowTexture { get; set; }
 
         public virtual AdjacentVertices AdjacentVertices
         {
@@ -112,17 +75,21 @@ namespace Grpah3DVisualizer.Graph3D
             }
         }
 
+        public abstract Texture2D ArrowTexture { get; set; }
+        public abstract Texture2D LineTexture { get; set; }
+        public abstract float SourceOffsetDist { get; set; }
+        public abstract float TargetOffsetDist { get; set; }
+        public abstract EdgeType Type { get; set; }
+        public abstract EdgeVisibility Visibility { get; set; }
+
         protected abstract void SubscribeOnVerticesEvents ();
+
         protected abstract void UnsubscribeOnVerticesEvents ();
 
-        public abstract void UpdateCoordinates ();
-        public abstract void UpdateEdge ();
-        public abstract void UpdateType ();
-        public abstract void UpdateVisibility ();
+        public EdgeParameters DownloadParams () => new EdgeParameters(_sourceOffsetDist, _targetOffsetDist, ArrowTexture, LineTexture, _visibility);
 
         public void SetupParams (EdgeParameters parameters)
         {
-
             _sourceOffsetDist = parameters.SourceOffsetDist;
             _targetOffsetDist = parameters.TargetOffsetDist;
 
@@ -134,6 +101,44 @@ namespace Grpah3DVisualizer.Graph3D
             UpdateEdge();
         }
 
-        public EdgeParameters DownloadParams () => new EdgeParameters(_sourceOffsetDist, _targetOffsetDist, ArrowTexture, LineTexture, _visibility);
+        public abstract void UpdateCoordinates ();
+
+        public abstract void UpdateEdge ();
+
+        public abstract void UpdateType ();
+
+        public abstract void UpdateVisibility ();
+    }
+
+    public class EdgeParameters : CustomizableParameter
+    {
+        public Texture2D ArrowTexture { get; }
+        public Texture2D LineTexture { get; }
+        public float SourceOffsetDist { get; }
+        public float TargetOffsetDist { get; }
+        public EdgeVisibility Visibility { get; }
+
+        public EdgeParameters (float sourceOffsetDist, float targetOffsetDist,
+            Texture2D arrowTexture = null, Texture2D lineTexture = null, EdgeVisibility visibility = EdgeVisibility.DependOnVertices)
+        {
+            SourceOffsetDist = sourceOffsetDist;
+            TargetOffsetDist = targetOffsetDist;
+            ArrowTexture = arrowTexture;
+            LineTexture = lineTexture;
+            Visibility = visibility;
+        }
+    }
+
+    public enum EdgeType
+    {
+        Unidirectional = 0,
+        Bidirectional = 1,
+    }
+
+    public enum EdgeVisibility
+    {
+        Hidden = 0,
+        Visible = 1,
+        DependOnVertices = 2,
     }
 }

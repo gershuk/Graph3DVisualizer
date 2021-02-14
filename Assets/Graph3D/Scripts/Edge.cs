@@ -21,27 +21,26 @@ namespace Grpah3DVisualizer.Graph3D
     [RequireComponent(typeof(LineRenderer))]
     public class Edge : AbstractEdge
     {
-        private const string _cutoff = "_Cutoff";
         private const string _arrowTexturePath = "Textures/Arrow";
-        private const string _lineTexturePath = "Textures/Line";
+        private const string _cutoff = "_Cutoff";
         private const string _edgeShaderPath = "Custom/EdgeShader";
-        private static Shader _shader;
+        private const string _lineTexturePath = "Textures/Line";
         private static Texture2D _defaultArrowTexture;
         private static Texture2D _defaultLineTexture;
-        private Material _material;
+        private static Shader _shader;
         private LineRenderer _lineRenderer;
+        private Material _material;
 
-        public override EdgeType Type
+        public override Texture2D ArrowTexture
         {
-            get => _type;
-            set
-            {
-                if (_type != value)
-                {
-                    _type = value;
-                    UpdateType();
-                }
-            }
+            get => _arrowTexture;
+            set => _arrowTexture = value;
+        }
+
+        public override Texture2D LineTexture
+        {
+            get => _lineTexture;
+            set => _lineTexture = value;
         }
 
         public override float SourceOffsetDist
@@ -70,6 +69,19 @@ namespace Grpah3DVisualizer.Graph3D
             }
         }
 
+        public override EdgeType Type
+        {
+            get => _type;
+            set
+            {
+                if (_type != value)
+                {
+                    _type = value;
+                    UpdateType();
+                }
+            }
+        }
+
         public override EdgeVisibility Visibility
         {
             get => _visibility;
@@ -81,18 +93,6 @@ namespace Grpah3DVisualizer.Graph3D
                     UpdateVisibility();
                 }
             }
-        }
-
-        public override Texture2D LineTexture
-        {
-            get => _lineTexture;
-            set => _lineTexture = value;
-        }
-
-        public override Texture2D ArrowTexture
-        {
-            get => _arrowTexture;
-            set => _arrowTexture = value;
         }
 
         private void Awake ()
@@ -122,9 +122,13 @@ namespace Grpah3DVisualizer.Graph3D
             _type = EdgeType.Unidirectional;
         }
 
-        private void OnMove (Vector3 arg1, UnityEngine.Object arg2) => UpdateCoordinates();
-        private void OnVisibilityChange (bool visibility, UnityEngine.Object obj) => UpdateVisibility();
+        private void OnDestroy () => UnsubscribeOnVerticesEvents();
+
         private void OnDestroyed (UnityEngine.Object obj) => Destroy(gameObject);
+
+        private void OnMove (Vector3 arg1, UnityEngine.Object arg2) => UpdateCoordinates();
+
+        private void OnVisibilityChange (bool visibility, UnityEngine.Object obj) => UpdateVisibility();
 
         protected override void SubscribeOnVerticesEvents ()
         {
@@ -154,21 +158,6 @@ namespace Grpah3DVisualizer.Graph3D
             }
         }
 
-        private void OnDestroy () => UnsubscribeOnVerticesEvents();
-
-        public override void UpdateType ()
-        {
-            switch (_type)
-            {
-                case EdgeType.Unidirectional:
-                    _material.mainTexture = ArrowTexture;
-                    break;
-                case EdgeType.Bidirectional:
-                    _material.mainTexture = LineTexture;
-                    break;
-            }
-        }
-
         public override void UpdateCoordinates ()
         {
             if (_visibility == EdgeVisibility.DependOnVertices)
@@ -183,6 +172,27 @@ namespace Grpah3DVisualizer.Graph3D
             }
         }
 
+        public override void UpdateEdge ()
+        {
+            UpdateType();
+            UpdateVisibility();
+            UpdateCoordinates();
+        }
+
+        public override void UpdateType ()
+        {
+            switch (_type)
+            {
+                case EdgeType.Unidirectional:
+                    _material.mainTexture = ArrowTexture;
+                    break;
+
+                case EdgeType.Bidirectional:
+                    _material.mainTexture = LineTexture;
+                    break;
+            }
+        }
+
         public override void UpdateVisibility ()
         {
             switch (_visibility)
@@ -190,21 +200,16 @@ namespace Grpah3DVisualizer.Graph3D
                 case EdgeVisibility.Hidden:
                     _lineRenderer.enabled = false;
                     break;
+
                 case EdgeVisibility.Visible:
                     _lineRenderer.enabled = true;
                     break;
+
                 case EdgeVisibility.DependOnVertices:
                     _lineRenderer.enabled = _adjacentVertices.FromVertex.Visibility && _adjacentVertices.ToVertex.Visibility;
                     break;
             }
 
-            UpdateCoordinates();
-        }
-
-        public override void UpdateEdge ()
-        {
-            UpdateType();
-            UpdateVisibility();
             UpdateCoordinates();
         }
     }

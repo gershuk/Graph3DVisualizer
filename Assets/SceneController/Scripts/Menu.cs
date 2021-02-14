@@ -34,15 +34,19 @@ namespace Grpah3DVisualizer.Scene
 
         [SerializeField]
         private GameObject _content;
-        [SerializeField]
-        private GameObject _menu;
+
         [SerializeField]
         private Font _font;
 
-        private State _state = State.StartMenu;
         private InputActionMap _inputActions;
+
         private bool _isActive = true;
+
+        [SerializeField]
+        private GameObject _menu;
+
         private SceneController _sceneControler;
+        private State _state = State.StartMenu;
 
         private void Awake ()
         {
@@ -111,12 +115,6 @@ namespace Grpah3DVisualizer.Scene
             }
         }
 
-        private void CreateTask ()
-        {
-            if (_state == State.TaskScene)
-                _sceneControler.CreateTask();
-        }
-
         private void CallChangeMenuState (InputAction.CallbackContext obj)
         {
             if (_state != State.StartMenu)
@@ -134,6 +132,12 @@ namespace Grpah3DVisualizer.Scene
                 foreach (var player in _sceneControler.VisualTask.Players)
                     player.gameObject.SetActive(!state);
             }
+        }
+
+        private void CreateTask ()
+        {
+            if (_state == State.TaskScene)
+                _sceneControler.CreateTask();
         }
     }
 }

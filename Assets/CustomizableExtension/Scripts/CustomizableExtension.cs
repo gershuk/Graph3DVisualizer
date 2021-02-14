@@ -20,16 +20,22 @@ using System.Runtime.Serialization;
 
 namespace Grpah3DVisualizer.Customizable
 {
-    public abstract class CustomizableParameter { };
-
-    public interface ICustomizable<TParams> where TParams : CustomizableParameter
-    {
-        void SetupParams (TParams parameters);
-        TParams DownloadParams ();
-    }
-
     public static class CustomizableExtension
     {
+        public static List<T> CallDownloadParams<T> (object customizable) where T : CustomizableParameter
+        {
+            var parameters = new List<T>();
+            foreach (var interfaceType in customizable.GetType().GetInterfaces())
+            {
+                if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>)
+                    && (interfaceType.GetGenericArguments()[0].IsSubclassOf(typeof(T)) || interfaceType.GetGenericArguments()[0] == typeof(T)))
+                {
+                    parameters.Add((T) interfaceType.GetMethod("DownloadParams").Invoke(customizable, null));
+                }
+            }
+            return parameters;
+        }
+
         public static void CallSetUpParams (object customizable, object[] parameters)
         {
             foreach (var param in parameters)
@@ -49,32 +55,37 @@ namespace Grpah3DVisualizer.Customizable
                     throw new Exception($"Customizable methods with parameter type {param.GetType()} not found");
             }
         }
-
-        public static List<T> CallDownloadParams<T> (object customizable) where T : CustomizableParameter
-        {
-            var parameters = new List<T>();
-            foreach (var interfaceType in customizable.GetType().GetInterfaces())
-            {
-                if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>)
-                    && (interfaceType.GetGenericArguments()[0].IsSubclassOf(typeof(T)) || interfaceType.GetGenericArguments()[0] == typeof(T)))
-                {
-                    parameters.Add((T) interfaceType.GetMethod("DownloadParams").Invoke(customizable, null));
-                }
-            }
-            return parameters;
-        }
     }
+
+    public abstract class CustomizableParameter { };
 
     public class WrongTypeInCustomizableParameterException : Exception
     {
-        protected WrongTypeInCustomizableParameterException (SerializationInfo info, StreamingContext context) : base(info, context) { }
+        protected WrongTypeInCustomizableParameterException (SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
 
-        public WrongTypeInCustomizableParameterException () { }
+        public WrongTypeInCustomizableParameterException ()
+        {
+        }
 
-        public WrongTypeInCustomizableParameterException (string message) : base(message) { }
+        public WrongTypeInCustomizableParameterException (string message) : base(message)
+        {
+        }
 
-        public WrongTypeInCustomizableParameterException (string message, Exception innerException) : base(message, innerException) { }
+        public WrongTypeInCustomizableParameterException (string message, Exception innerException) : base(message, innerException)
+        {
+        }
 
-        public WrongTypeInCustomizableParameterException (Type expectedType, Type receivedType) : base($"The type inherited from {expectedType.Name} was expected, and {receivedType.Name} was obtained.") { }
+        public WrongTypeInCustomizableParameterException (Type expectedType, Type receivedType) : base($"The type inherited from {expectedType.Name} was expected, and {receivedType.Name} was obtained.")
+        {
+        }
+    }
+
+    public interface ICustomizable<TParams> where TParams : CustomizableParameter
+    {
+        TParams DownloadParams ();
+
+        void SetupParams (TParams parameters);
     }
 }

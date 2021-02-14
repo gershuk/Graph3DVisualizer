@@ -25,28 +25,20 @@ using UnityEngine.InputSystem;
 
 namespace Grpah3DVisualizer.PlayerInputControls
 {
-    public class SelectItemToolParams : ToolParams
-    {
-        public IReadOnlyList<Color> Colors { get; }
-
-        public SelectItemToolParams (IReadOnlyList<Color> colors) => Colors = colors ?? throw new ArgumentNullException(nameof(colors));
-    }
-
     [RequireComponent(typeof(LaserPointer))]
     public class SelectItemTool : PlayerTool, ICustomizable<SelectItemToolParams>
     {
-        private IReadOnlyList<Color> _colors;
-
+        private const string _changeColorActionName = "ChangeColorAction";
         private const string _inputActionName = "SelectItemActionMap";
         private const string _selectActionName = "SelectItemAction";
-        private const string _changeColorActionName = "ChangeColorAction";
+        private int _colorIndex;
+        private IReadOnlyList<Color> _colors;
+        private InputActionMap _inputActions;
+
+        private LaserPointer _laserPointer;
 
         [SerializeField]
         private float _rayCastRange = 1000;
-
-        private int _colorIndex;
-        private InputActionMap _inputActions;
-        private LaserPointer _laserPointer;
 
         public float RayCastRange { get => _rayCastRange; set => _rayCastRange = value; }
 
@@ -56,12 +48,9 @@ namespace Grpah3DVisualizer.PlayerInputControls
             _colorIndex = 0;
         }
 
-        private void OnEnable ()
-        {
-            _inputActions?.Enable();
-            _laserPointer.LaserState = LaserState.On;
-            _laserPointer.Range = _rayCastRange;
-        }
+        private void CallChangeColor (InputAction.CallbackContext obj) => ChangeColor(Mathf.RoundToInt(obj.ReadValue<float>()));
+
+        private void CallSelectItem (InputAction.CallbackContext obj) => SelectItem();
 
         private void OnDisable ()
         {
@@ -69,8 +58,27 @@ namespace Grpah3DVisualizer.PlayerInputControls
             _laserPointer.LaserState = LaserState.Off;
         }
 
-        private void CallSelectItem (InputAction.CallbackContext obj) => SelectItem();
-        private void CallChangeColor (InputAction.CallbackContext obj) => ChangeColor(Mathf.RoundToInt(obj.ReadValue<float>()));
+        private void OnEnable ()
+        {
+            _inputActions?.Enable();
+            _laserPointer.LaserState = LaserState.On;
+            _laserPointer.Range = _rayCastRange;
+        }
+
+        public void ChangeColor (int deltaIndex) => _colorIndex = (_colorIndex + deltaIndex) < 0 ? _colors.Count - 1 : (_colorIndex + deltaIndex) % _colors.Count;
+
+        public SelectItemToolParams DownloadParams () => new SelectItemToolParams(_colors);
+
+        public override void RegisterEvents (IInputActionCollection inputActions)
+        {
+            _inputActions = new InputActionMap(_inputActionName);
+            var selectItemAction = _inputActions.AddAction(_selectActionName, InputActionType.Button, "<Mouse>/leftButton");
+            var changeColorAction = _inputActions.AddAction(_changeColorActionName, InputActionType.Button);
+            changeColorAction.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
+
+            selectItemAction.canceled += CallSelectItem;
+            changeColorAction.performed += CallChangeColor;
+        }
 
         public void SelectItem ()
         {
@@ -96,21 +104,13 @@ namespace Grpah3DVisualizer.PlayerInputControls
             }
         }
 
-        public void ChangeColor (int deltaIndex) => _colorIndex = (_colorIndex + deltaIndex) < 0 ? _colors.Count - 1 : (_colorIndex + deltaIndex) % _colors.Count;
-
-        public override void RegisterEvents (IInputActionCollection inputActions)
-        {
-            _inputActions = new InputActionMap(_inputActionName);
-            var selectItemAction = _inputActions.AddAction(_selectActionName, InputActionType.Button, "<Mouse>/leftButton");
-            var changeColorAction = _inputActions.AddAction(_changeColorActionName, InputActionType.Button);
-            changeColorAction.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
-
-            selectItemAction.canceled += CallSelectItem;
-            changeColorAction.performed += CallChangeColor;
-        }
-
         public void SetupParams (SelectItemToolParams parameters) => _colors = parameters.Colors;
+    }
 
-        public SelectItemToolParams DownloadParams () => new SelectItemToolParams(_colors);
+    public class SelectItemToolParams : ToolParams
+    {
+        public IReadOnlyList<Color> Colors { get; }
+
+        public SelectItemToolParams (IReadOnlyList<Color> colors) => Colors = colors ?? throw new ArgumentNullException(nameof(colors));
     }
 }

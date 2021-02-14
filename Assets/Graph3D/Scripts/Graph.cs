@@ -28,12 +28,26 @@ namespace Grpah3DVisualizer.Graph3D
     {
         private HashSet<AbstractVertex> _vertexes;
 
+        public override int VertexesCount => _vertexes.Count;
+
         private void Awake ()
         {
             _vertexPrefab = _vertexPrefab == null ? Resources.Load<GameObject>("Prefabs/Vertex") : _vertexPrefab;
             _transform = GetComponent<Transform>();
             _vertexes = new HashSet<AbstractVertex>();
         }
+
+        public override bool ContainsVertex (Vertex vertex) => _vertexes.Contains(vertex);
+
+        public override bool DeleteVeretex (Vertex vertex)
+        {
+            var result = _vertexes.Remove(vertex);
+            if (result)
+                Destroy(vertex.gameObject);
+            return result;
+        }
+
+        public override IReadOnlyList<AbstractVertex> GetVertexes () => _vertexes.ToList();
 
         public override TVertex SpawnVertex<TVertex, TParams> (TParams vertexParameters)
         {
@@ -55,19 +69,5 @@ namespace Grpah3DVisualizer.Graph3D
             _vertexes.Add(vertexComponent);
             return vertexComponent;
         }
-
-        public override bool ContainsVertex (Vertex vertex) => _vertexes.Contains(vertex);
-
-        public override bool DeleteVeretex (Vertex vertex)
-        {
-            var result = _vertexes.Remove(vertex);
-            if (result)
-                Destroy(vertex.gameObject);
-            return result;
-        }
-
-        public override int VertexesCount => _vertexes.Count;
-
-        public override IReadOnlyList<AbstractVertex> GetVertexes () => _vertexes.ToList();
     }
 }

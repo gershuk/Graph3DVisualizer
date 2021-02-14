@@ -67,44 +67,13 @@ namespace Grpah3DVisualizer.TextureFactory
         }
     }
 
-    public class PositionedImage
-    {
-        public Texture2D Texture;
-        public Vector2Int Position;
-
-        public PositionedImage (Texture2D texture, Vector2Int position)
-        {
-            Texture = texture;
-            Position = position;
-        }
-
-        public override bool Equals (object obj) => obj is PositionedImage other && EqualityComparer<Texture2D>.Default.Equals(Texture, other.Texture) && Position.Equals(other.Position);
-
-        public override int GetHashCode ()
-        {
-            var hashCode = -1773728546;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Texture2D>.Default.GetHashCode(Texture);
-            hashCode = hashCode * -1521134295 + Position.GetHashCode();
-            return hashCode;
-        }
-
-        public void Deconstruct (out Texture2D texture, out Vector2Int position)
-        {
-            texture = Texture;
-            position = Position;
-        }
-
-        public static implicit operator (Texture2D Texture, Vector2Int Position) (PositionedImage value) => (value.Texture, value.Position);
-        public static implicit operator PositionedImage ((Texture2D Texture, Vector2Int Position) value) => new PositionedImage(value.Texture, value.Position);
-    }
-
     public class CombinedImages : ICloneable
     {
         public PositionedImage[] Images { get; set; }
-        public int TextureWidth { get; set; }
-        public int TextureHeight { get; set; }
-        public TextureWrapMode WrapMode { get; set; }
         public bool IsTransparentBackground { get; set; }
+        public int TextureHeight { get; set; }
+        public int TextureWidth { get; set; }
+        public TextureWrapMode WrapMode { get; set; }
 
         public CombinedImages (PositionedImage[] images, int textureWidth, int textureHeight, TextureWrapMode wrapMode, bool isTransparentBackground)
         {
@@ -116,5 +85,37 @@ namespace Grpah3DVisualizer.TextureFactory
         }
 
         public object Clone () => new CombinedImages((PositionedImage[]) Images.Clone(), TextureWidth, TextureHeight, WrapMode, IsTransparentBackground);
+    }
+
+    public class PositionedImage
+    {
+        public Vector2Int Position;
+        public Texture2D Texture;
+
+        public PositionedImage (Texture2D texture, Vector2Int position)
+        {
+            Texture = texture;
+            Position = position;
+        }
+
+        public static implicit operator (Texture2D Texture, Vector2Int Position) (PositionedImage value) => (value.Texture, value.Position);
+
+        public static implicit operator PositionedImage ((Texture2D Texture, Vector2Int Position) value) => new PositionedImage(value.Texture, value.Position);
+
+        public void Deconstruct (out Texture2D texture, out Vector2Int position)
+        {
+            texture = Texture;
+            position = Position;
+        }
+
+        public override bool Equals (object obj) => obj is PositionedImage other && EqualityComparer<Texture2D>.Default.Equals(Texture, other.Texture) && Position.Equals(other.Position);
+
+        public override int GetHashCode ()
+        {
+            var hashCode = -1773728546;
+            hashCode = hashCode * -1521134295 + EqualityComparer<Texture2D>.Default.GetHashCode(Texture);
+            hashCode = hashCode * -1521134295 + Position.GetHashCode();
+            return hashCode;
+        }
     }
 }

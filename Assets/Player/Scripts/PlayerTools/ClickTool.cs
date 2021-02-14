@@ -24,37 +24,24 @@ using UnityEngine.InputSystem;
 
 namespace Grpah3DVisualizer.PlayerInputControls
 {
-    public class ClickToolParams : ToolParams
-    {
-        public GameObject Owner { get; private set; }
-
-        public ClickToolParams (GameObject owner) => Owner = owner ?? throw new ArgumentNullException(nameof(owner));
-    }
-
     [RequireComponent(typeof(LaserPointer))]
     public class ClickTool : PlayerTool, ICustomizable<ClickToolParams>
     {
         private const string _inputActionName = "ClickObjectActionMap";
         private const string _selectActionName = "ClickObjectAction";
-        private GameObject _owner;
         private ClickableObject _clickableObject;
+        private InputActionMap _inputActions;
+        private LaserPointer _laserPointer;
+        private GameObject _owner;
 
         [SerializeField]
         private float _rayCastRange = 1000;
-
-        private InputActionMap _inputActions;
-        private LaserPointer _laserPointer;
 
         public float RayCastRange { get => _rayCastRange; set => _rayCastRange = value; }
 
         private void Awake () => _laserPointer = GetComponent<LaserPointer>();
 
-        private void OnEnable ()
-        {
-            _inputActions?.Enable();
-            _laserPointer.LaserState = LaserState.On;
-            _laserPointer.Range = _rayCastRange;
-        }
+        private void CallClick (InputAction.CallbackContext obj) => Click();
 
         private void OnDisable ()
         {
@@ -62,7 +49,12 @@ namespace Grpah3DVisualizer.PlayerInputControls
             _laserPointer.LaserState = LaserState.Off;
         }
 
-        private void CallClick (InputAction.CallbackContext obj) => Click();
+        private void OnEnable ()
+        {
+            _inputActions?.Enable();
+            _laserPointer.LaserState = LaserState.On;
+            _laserPointer.Range = _rayCastRange;
+        }
 
         public void Click ()
         {
@@ -74,6 +66,8 @@ namespace Grpah3DVisualizer.PlayerInputControls
                 _clickableObject.Click(_owner);
         }
 
+        public ClickToolParams DownloadParams () => new ClickToolParams(_owner);
+
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
             _inputActions = new InputActionMap(_inputActionName);
@@ -82,7 +76,13 @@ namespace Grpah3DVisualizer.PlayerInputControls
             selectItemAction.canceled += CallClick;
         }
 
-        public ClickToolParams DownloadParams () => new ClickToolParams(_owner);
         public void SetupParams (ClickToolParams parameters) => _owner = parameters.Owner;
+    }
+
+    public class ClickToolParams : ToolParams
+    {
+        public GameObject Owner { get; private set; }
+
+        public ClickToolParams (GameObject owner) => Owner = owner ?? throw new ArgumentNullException(nameof(owner));
     }
 }

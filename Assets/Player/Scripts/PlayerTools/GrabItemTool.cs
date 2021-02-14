@@ -26,29 +26,32 @@ namespace Grpah3DVisualizer.PlayerInputControls
     [RequireComponent(typeof(LaserPointer))]
     public class GrabItemTool : PlayerTool
     {
-        private const string _grabActionName = "GrabItemAction";
-        private const string _changeRangeActionName = "ChangeRangeAction";
         private const string _actionMapName = "GrabItemActionMap";
+        private const string _changeRangeActionName = "ChangeRangeAction";
+        private const string _grabActionName = "GrabItemAction";
 
         [SerializeField]
-        private float _rayCastRange = 1000;
-        [SerializeField]
         private float _capturedRange = 1000;
-        [SerializeField]
-        private float _rangeChangeSpeed = 30;
+
+        private Coroutine _changeRangeCoroutine;
 
         private InputActionMap _inputActions;
 
-        private IMoveable _moveable = null;
         private bool _isCapturedObject = false;
+
+        private bool _isChangingRange;
 
         private LaserPointer _laserPointer;
 
+        private IMoveable _moveable = null;
+
+        [SerializeField]
+        private float _rangeChangeSpeed = 30;
+
+        [SerializeField]
+        private float _rayCastRange = 1000;
+
         private Transform _transform;
-
-        private Coroutine _changeRangeCoroutine;
-        private bool _isChangingRange;
-
         public float CapturedRange { get => _capturedRange; set => _capturedRange = value; }
         public float RangeChangeSpeed { get => _rangeChangeSpeed; set => _rangeChangeSpeed = value; }
 
@@ -62,30 +65,13 @@ namespace Grpah3DVisualizer.PlayerInputControls
             _isChangingRange = false;
         }
 
-        private void LateUpdate ()
-        {
-            if (_isCapturedObject && _moveable != null)
-            {
-                _moveable.GlobalCoordinates = _transform.position + _transform.TransformDirection(new Vector3(0, 0, _capturedRange));
-            }
-        }
+        private void CallFreeItem (InputAction.CallbackContext obj) => FreeItem();
 
-        private void OnEnable ()
-        {
-            _inputActions?.Enable();
-            _laserPointer.LaserState = LaserState.On;
-            _laserPointer.Range = _rayCastRange;
-        }
+        private void CallGrabItem (InputAction.CallbackContext obj) => GrabItem();
 
-        private void OnDisable ()
-        {
-            if (_changeRangeCoroutine != null)
-                StopChangingRange();
-            _inputActions?.Disable();
-            _laserPointer.LaserState = LaserState.Off;
-            FreeItem();
-        }
+        private void CallStartChangingRange (InputAction.CallbackContext obj) => StartChangingRange();
 
+        private void CallStopChangingRange (InputAction.CallbackContext obj) => StopChangingRange();
 
         private IEnumerator ChangingRangeCoroutine ()
         {
@@ -99,15 +85,38 @@ namespace Grpah3DVisualizer.PlayerInputControls
             yield return null;
         }
 
-        private void CallGrabItem (InputAction.CallbackContext obj) => GrabItem();
+        private void LateUpdate ()
+        {
+            if (_isCapturedObject && _moveable != null)
+            {
+                _moveable.GlobalCoordinates = _transform.position + _transform.TransformDirection(new Vector3(0, 0, _capturedRange));
+            }
+        }
 
-        private void CallFreeItem (InputAction.CallbackContext obj) => FreeItem();
+        private void OnDisable ()
+        {
+            if (_changeRangeCoroutine != null)
+                StopChangingRange();
+            _inputActions?.Disable();
+            _laserPointer.LaserState = LaserState.Off;
+            FreeItem();
+        }
 
-        private void CallStartChangingRange (InputAction.CallbackContext obj) => StartChangingRange();
-
-        private void CallStopChangingRange (InputAction.CallbackContext obj) => StopChangingRange();
+        private void OnEnable ()
+        {
+            _inputActions?.Enable();
+            _laserPointer.LaserState = LaserState.On;
+            _laserPointer.Range = _rayCastRange;
+        }
 
         public void ChangeRange (float normalizedDelta) => _capturedRange = Mathf.Max(0, _capturedRange + normalizedDelta * Time.deltaTime * RangeChangeSpeed);
+
+        public void FreeItem ()
+        {
+            _moveable = null;
+            _isCapturedObject = false;
+            _laserPointer.Range = _rayCastRange;
+        }
 
         public void GrabItem ()
         {
@@ -125,24 +134,6 @@ namespace Grpah3DVisualizer.PlayerInputControls
             }
         }
 
-        public void FreeItem ()
-        {
-            _moveable = null;
-            _isCapturedObject = false;
-            _laserPointer.Range = _rayCastRange;
-        }
-        public void StartChangingRange ()
-        {
-            _isChangingRange = true;
-            _changeRangeCoroutine = StartCoroutine(ChangingRangeCoroutine());
-        }
-
-        public void StopChangingRange ()
-        {
-            _isChangingRange = false;
-            StopCoroutine(_changeRangeCoroutine);
-        }
-
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
             _inputActions = new InputActionMap(_actionMapName);
@@ -155,6 +146,18 @@ namespace Grpah3DVisualizer.PlayerInputControls
 
             changeRangeAction.performed += CallStartChangingRange;
             changeRangeAction.canceled += CallStopChangingRange;
+        }
+
+        public void StartChangingRange ()
+        {
+            _isChangingRange = true;
+            _changeRangeCoroutine = StartCoroutine(ChangingRangeCoroutine());
+        }
+
+        public void StopChangingRange ()
+        {
+            _isChangingRange = false;
+            StopCoroutine(_changeRangeCoroutine);
         }
     }
 }

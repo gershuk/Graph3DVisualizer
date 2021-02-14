@@ -26,20 +26,6 @@ using UnityEngine.InputSystem;
 
 namespace Grpah3DVisualizer.PlayerInputControls
 {
-    public class EdgeCreaterToolParams : ToolParams
-    {
-        public IReadOnlyList<Type> EdgeTypes { get; private set; }
-        public EdgeCreaterToolParams (IReadOnlyList<Type> edgeTypes)
-        {
-            EdgeTypes = edgeTypes ?? throw new ArgumentNullException(nameof(edgeTypes));
-            foreach (var type in EdgeTypes)
-            {
-                if (!type.IsSubclassOf(typeof(Edge)) && type != typeof(Edge))
-                    throw new Exception($"{type} isn't subclass of Edge");
-            }
-        }
-    }
-
     [RequireComponent(typeof(LaserPointer))]
     public class EdgeCreaterTool : PlayerTool, ICustomizable<EdgeCreaterToolParams>
     {
@@ -50,21 +36,26 @@ namespace Grpah3DVisualizer.PlayerInputControls
             LinkChanging
         }
 
+        private const string _actionMapName = "EdgeCreaterActionMap";
+        private const string _changeRangeActionName = "ChangeEdgeType";
         private const string _createEdgeActionName = "CreateEdgeAction";
         private const string _deleteEdgeActionName = "DeleteEdgeAction";
-        private const string _changeRangeActionName = "ChangeEdgeType";
-        private const string _actionMapName = "EdgeCreaterActionMap";
+        private EdgeParameters _edgeParameters;
+
+        private List<Type> _edgeTypes;
+
+        private Vertex _firstVertex;
+
+        private InputActionMap _inputActions;
+
+        private LaserPointer _laserPointer;
 
         [SerializeField]
         private float _rayCastRange = 1000;
-        private InputActionMap _inputActions;
-        private LaserPointer _laserPointer;
-        private List<Type> _edgeTypes;
-        private int _typeIndex;
-        private Vertex _firstVertex;
+
         private Vertex _secondVertex;
-        private EdgeParameters _edgeParameters;
         private State _state;
+        private int _typeIndex;
 
         private void Awake ()
         {
@@ -74,22 +65,7 @@ namespace Grpah3DVisualizer.PlayerInputControls
             _edgeParameters = new EdgeParameters(6, 6);
         }
 
-        private void OnEnable ()
-        {
-            _inputActions?.Enable();
-            _laserPointer.LaserState = LaserState.On;
-            _laserPointer.Range = _rayCastRange;
-        }
-
-        private void OnDisable ()
-        {
-            _inputActions?.Disable();
-            _laserPointer.LaserState = LaserState.Off;
-        }
-
         private void CallChangeEdgeType (InputAction.CallbackContext obj) => ChangeIndex(Mathf.RoundToInt(obj.ReadValue<float>()));
-
-        private void CallSelectFirstPoint (InputAction.CallbackContext obj) => SelectFirstPoint();
 
         private void CallCreateEdge (InputAction.CallbackContext obj)
         {
@@ -103,23 +79,39 @@ namespace Grpah3DVisualizer.PlayerInputControls
             DeleteEdge();
         }
 
-        public void SelectFirstPoint ()
+        private void CallSelectFirstPoint (InputAction.CallbackContext obj) => SelectFirstPoint();
+
+        private void OnDisable ()
         {
-            if (_state == State.None)
-            {
-                _firstVertex = RayCast(_rayCastRange).transform?.GetComponent<Vertex>();
-                if (_firstVertex != null)
-                    _state = State.Selecting;
-            }
+            _inputActions?.Disable();
+            _laserPointer.LaserState = LaserState.Off;
         }
 
-        public void SelectSecondPoint ()
+        private void OnEnable ()
         {
-            if (_state == State.Selecting)
+            _inputActions?.Enable();
+            _laserPointer.LaserState = LaserState.On;
+            _laserPointer.Range = _rayCastRange;
+        }
+
+        public void ChangeIndex (int deltaIndex) => _typeIndex = (_typeIndex + deltaIndex) < 0 ? _edgeTypes.Count - 1 : (_typeIndex + deltaIndex) % _edgeTypes.Count;
+
+        public void CreateEdge ()
+        {
+            if (_state == State.LinkChanging)
             {
-                _secondVertex = RayCast(_rayCastRange).transform?.GetComponent<Vertex>();
-                if (_secondVertex != null)
-                    _state = State.LinkChanging;
+                try
+                {
+                    _firstVertex.Link(_secondVertex, _edgeTypes[_typeIndex], _edgeParameters);
+                }
+                catch (Exception ex)
+                {
+                    Debug.LogError(ex.Message);
+                }
+                finally
+                {
+                    _state = State.None;
+                }
             }
         }
 
@@ -142,24 +134,7 @@ namespace Grpah3DVisualizer.PlayerInputControls
             }
         }
 
-        public void CreateEdge ()
-        {
-            if (_state == State.LinkChanging)
-            {
-                try
-                {
-                    _firstVertex.Link(_secondVertex, _edgeTypes[_typeIndex], _edgeParameters);
-                }
-                catch (Exception ex)
-                {
-                    Debug.LogError(ex.Message);
-                }
-                finally
-                {
-                    _state = State.None;
-                }
-            }
-        }
+        public EdgeCreaterToolParams DownloadParams () => new EdgeCreaterToolParams(_edgeTypes);
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
@@ -178,10 +153,41 @@ namespace Grpah3DVisualizer.PlayerInputControls
             changeEdgeTypeAction.started += CallChangeEdgeType;
         }
 
-        public void ChangeIndex (int deltaIndex) => _typeIndex = (_typeIndex + deltaIndex) < 0 ? _edgeTypes.Count - 1 : (_typeIndex + deltaIndex) % _edgeTypes.Count;
+        public void SelectFirstPoint ()
+        {
+            if (_state == State.None)
+            {
+                _firstVertex = RayCast(_rayCastRange).transform?.GetComponent<Vertex>();
+                if (_firstVertex != null)
+                    _state = State.Selecting;
+            }
+        }
+
+        public void SelectSecondPoint ()
+        {
+            if (_state == State.Selecting)
+            {
+                _secondVertex = RayCast(_rayCastRange).transform?.GetComponent<Vertex>();
+                if (_secondVertex != null)
+                    _state = State.LinkChanging;
+            }
+        }
 
         public void SetupParams (EdgeCreaterToolParams parameters) => _edgeTypes = parameters.EdgeTypes.ToList();
+    }
 
-        public EdgeCreaterToolParams DownloadParams () => new EdgeCreaterToolParams(_edgeTypes);
+    public class EdgeCreaterToolParams : ToolParams
+    {
+        public IReadOnlyList<Type> EdgeTypes { get; private set; }
+
+        public EdgeCreaterToolParams (IReadOnlyList<Type> edgeTypes)
+        {
+            EdgeTypes = edgeTypes ?? throw new ArgumentNullException(nameof(edgeTypes));
+            foreach (var type in EdgeTypes)
+            {
+                if (!type.IsSubclassOf(typeof(Edge)) && type != typeof(Edge))
+                    throw new Exception($"{type} isn't subclass of Edge");
+            }
+        }
     }
 }

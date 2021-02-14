@@ -22,33 +22,32 @@ using static UnityEngine.Physics;
 
 namespace Grpah3DVisualizer.PlayerInputControls
 {
-    public enum LaserState
-    {
-        On = 0,
-        Off = 1,
-    }
-
     [ExecuteInEditMode]
     [RequireComponent(typeof(LineRenderer))]
     public class LaserPointer : MonoBehaviour
     {
-        [SerializeField]
-        private float _range;
         private const string _cutoff = "_Cutoff";
-        private const string _monoColorStateName = "_IsMonoColor";
-        private const string _lineTexturePath = "Textures/Line";
+
         private const string _edgeShaderPath = "Custom/EdgeShader";
-        private Texture2D _texture2D;
-        private Shader _shader;
-        private Material _material;
-        private LineRenderer _lineRender;
-        private Transform _transform;
+
+        private const string _lineTexturePath = "Textures/Line";
+
+        private const string _monoColorStateName = "_IsMonoColor";
+
         private GameObject _gameObject;
+
         private LaserState _laserState;
 
-        public Color RayColor { get => _material.GetColor("_MonoColor"); set => _material.SetColor("_MonoColor", value); }
+        private LineRenderer _lineRender;
 
-        public float Range { get => _range; set => _range = value; }
+        private Material _material;
+
+        [SerializeField]
+        private float _range;
+
+        private Shader _shader;
+        private Texture2D _texture2D;
+        private Transform _transform;
 
         public LaserState LaserState
         {
@@ -64,6 +63,7 @@ namespace Grpah3DVisualizer.PlayerInputControls
                         case LaserState.On:
                             _lineRender.enabled = true;
                             break;
+
                         case LaserState.Off:
                             _lineRender.enabled = false;
                             break;
@@ -71,6 +71,9 @@ namespace Grpah3DVisualizer.PlayerInputControls
                 }
             }
         }
+
+        public float Range { get => _range; set => _range = value; }
+        public Color RayColor { get => _material.GetColor("_MonoColor"); set => _material.SetColor("_MonoColor", value); }
 
         private void Awake ()
         {
@@ -107,5 +110,11 @@ namespace Grpah3DVisualizer.PlayerInputControls
             _lineRender.SetPosition(0, Vector3.zero);
             _lineRender.SetPosition(1, hit.transform == null ? Vector3.forward * Range : Vector3.forward * hit.distance);
         }
+    }
+
+    public enum LaserState
+    {
+        On = 0,
+        Off = 1,
     }
 }

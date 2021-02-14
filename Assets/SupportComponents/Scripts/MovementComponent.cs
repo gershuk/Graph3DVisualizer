@@ -22,58 +22,49 @@ using UnityEngine;
 
 namespace Grpah3DVisualizer.SupportComponents
 {
-    public enum TransmissionMode
-    {
-        Auto = 0,
-        Manual = 1,
-        FirstGear = 2,
-        TopGear = 3,
-    }
-
     public class MovementComponent : MonoBehaviour, IMoveable
     {
+        private const float _thresholdDistance = 0.1f;
         private const float _timeCheckThreshold = 0.001f;
+
+        [SerializeField]
+        private int _currentGearIndex;
+
+        private List<(float deltaTimeFromStart, float multiplier)> _gears;
+
+        private bool _isMoving;
+
+        private float _lastTimeCheck;
+
+        [SerializeField]
+        [Range(-360, 360)]
+        private float _maxRotX = 360F;
+
+        [SerializeField]
+        [Range(-360, 360)]
+        private float _maxRotY = 360F;
 
         [SerializeField]
         [Range(-360, 360)]
         private float _minRotX = -360;
-        [SerializeField]
-        [Range(-360, 360)]
-        private float _maxRotX = 360F;
+
         [SerializeField]
         [Range(-360, 360)]
         private float _minRotY = -360;
-        [SerializeField]
-        [Range(-360, 360)]
-        private float _maxRotY = 360F;
-        [SerializeField]
-        private float _rotationSpeed = 1f;
 
         [SerializeField]
         private float _movingSpeed = 10;
-        private List<(float deltaTimeFromStart, float multiplier)> _gears;
-        [SerializeField]
-        private int _currentGearIndex;
-        private TransmissionMode _transmissionMode;
-        private float _startMovingTime;
-        private float _lastTimeCheck;
 
-        private const float _thresholdDistance = 0.1f;
         private Vector3 _rotation;
+
+        [SerializeField]
+        private float _rotationSpeed = 1f;
+
+        private float _startMovingTime;
         private Transform _transform;
-        private bool _isMoving;
+        private TransmissionMode _transmissionMode;
 
-        public List<(float deltaTimeFromStart, float multiplier)> Gears
-        {
-            get => _gears;
-            private set
-            {
-                if (value == null)
-                    throw new NullReferenceException();
-
-                _gears = value.Count > 0 ? value : throw new Exception("Gears list size must be greater than 0");
-            }
-        }
+        public event Action<Vector3, UnityEngine.Object> ObjectMoved;
 
         public int CurrentGearIndex
         {
@@ -91,6 +82,48 @@ namespace Grpah3DVisualizer.SupportComponents
             }
         }
 
+        public List<(float deltaTimeFromStart, float multiplier)> Gears
+        {
+            get => _gears;
+            private set
+            {
+                if (value == null)
+                    throw new NullReferenceException();
+
+                _gears = value.Count > 0 ? value : throw new Exception("Gears list size must be greater than 0");
+            }
+        }
+
+        public Vector3 GlobalCoordinates
+        {
+            set
+            {
+                if (!_isMoving && _transform.position != value)
+                {
+                    _transform.position = value;
+                    ObjectMoved?.Invoke(value, this);
+                }
+            }
+            get => _transform.position;
+        }
+
+        public Vector3 LocalCoordinates
+        {
+            set
+            {
+                if (!_isMoving && _transform.localPosition != value)
+                {
+                    _transform.localPosition = value;
+                    ObjectMoved?.Invoke(_transform.position, this);
+                }
+            }
+            get => _transform.localPosition;
+        }
+
+        public float MovingSpeed { get => _movingSpeed * Gears[CurrentGearIndex].multiplier; set => _movingSpeed = value; }
+
+        public float RotationSpeed { get => _rotationSpeed; set => _rotationSpeed = value; }
+
         public TransmissionMode TransmissionMode
         {
             get => _transmissionMode;
@@ -103,18 +136,13 @@ namespace Grpah3DVisualizer.SupportComponents
                     case TransmissionMode.FirstGear:
                         _currentGearIndex = 0;
                         break;
+
                     case TransmissionMode.TopGear:
                         _currentGearIndex = Gears.Count - 1;
                         break;
                 }
             }
         }
-
-        public float MovingSpeed { get => _movingSpeed * Gears[CurrentGearIndex].multiplier; set => _movingSpeed = value; }
-
-        public float RotationSpeed { get => _rotationSpeed; set => _rotationSpeed = value; }
-
-        public event Action<Vector3, UnityEngine.Object> ObjectMoved;
 
         private void Awake ()
         {
@@ -151,7 +179,6 @@ namespace Grpah3DVisualizer.SupportComponents
             }
         }
 
-
         //ToDo : Change
         public IEnumerator MoveAlongTrajectory (IReadOnlyList<Vector3> trajectory)
         {
@@ -179,41 +206,6 @@ namespace Grpah3DVisualizer.SupportComponents
             yield return null;
         }
 
-        public Vector3 GlobalCoordinates
-        {
-            set
-            {
-                if (!_isMoving && _transform.position != value)
-                {
-                    _transform.position = value;
-                    ObjectMoved?.Invoke(value, this);
-                }
-            }
-            get => _transform.position;
-        }
-
-        public Vector3 LocalCoordinates
-        {
-            set
-            {
-                if (!_isMoving && _transform.localPosition != value)
-                {
-                    _transform.localPosition = value;
-                    ObjectMoved?.Invoke(_transform.position, this);
-                }
-            }
-            get => _transform.localPosition;
-        }
-
-        public void Translate (Vector3 directionVector, float deltaTime)
-        {
-            if (!_isMoving && directionVector != Vector3.zero)
-            {
-                UpdateParametersWhileMoving(deltaTime);
-                _transform.Translate(directionVector * MovingSpeed * deltaTime);
-            }
-        }
-
         public void Rotate (Vector2 rotationChange, float deltaTime)
         {
             var rotDiv = rotationChange * RotationSpeed * deltaTime;
@@ -230,5 +222,22 @@ namespace Grpah3DVisualizer.SupportComponents
 
             _transform.eulerAngles = _rotation;
         }
+
+        public void Translate (Vector3 directionVector, float deltaTime)
+        {
+            if (!_isMoving && directionVector != Vector3.zero)
+            {
+                UpdateParametersWhileMoving(deltaTime);
+                _transform.Translate(directionVector * MovingSpeed * deltaTime);
+            }
+        }
+    }
+
+    public enum TransmissionMode
+    {
+        Auto = 0,
+        Manual = 1,
+        FirstGear = 2,
+        TopGear = 3,
     }
 }

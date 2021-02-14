@@ -31,8 +31,8 @@ namespace Grpah3DVisualizer.Scene
     {
         private Dictionary<string, Assembly> _asseblies;
         private Type _currentTaskType;
-        private AbstractVisualTask _visualTask;
         private List<Type> _taskList;
+        private AbstractVisualTask _visualTask;
 
         public Type CurrentTaskType
         {
@@ -43,7 +43,6 @@ namespace Grpah3DVisualizer.Scene
         public List<Type> TaskList { get => _taskList; private set => _taskList = value; }
 
         public AbstractVisualTask VisualTask { get => _visualTask; private set => _visualTask = value; }
-
 
         private void Awake ()
         {
@@ -64,23 +63,17 @@ namespace Grpah3DVisualizer.Scene
                     Debug.LogError($"{ex} - {assembly.path} can't be loaded");
                 }
             }
-
         }
 
-        public void LoadMods ()
+        public void CreateTask ()
         {
-            var assembliesPath = Application.dataPath + "/ModAssemblies";
-            if (Directory.Exists(assembliesPath))
+            if (_currentTaskType != null)
             {
-                LoadAssemblies(Directory.GetFiles(assembliesPath, "*.dll").Select((path) => (path, path)).ToArray());
-            }
-            else
-            {
-                Directory.CreateDirectory(assembliesPath);
+                var gameObject = new GameObject("VisualTask");
+                _visualTask = (AbstractVisualTask) gameObject.AddComponent(_currentTaskType);
+                _visualTask.InitTask();
             }
         }
-
-        public void LoadScene (string name) => SceneManager.LoadScene(name);
 
         public void FindAllTasks ()
         {
@@ -97,14 +90,19 @@ namespace Grpah3DVisualizer.Scene
             }
         }
 
-        public void CreateTask ()
+        public void LoadMods ()
         {
-            if (_currentTaskType != null)
+            var assembliesPath = Application.dataPath + "/ModAssemblies";
+            if (Directory.Exists(assembliesPath))
             {
-                var gameObject = new GameObject("VisualTask");
-                _visualTask = (AbstractVisualTask) gameObject.AddComponent(_currentTaskType);
-                _visualTask.InitTask();
+                LoadAssemblies(Directory.GetFiles(assembliesPath, "*.dll").Select((path) => (path, path)).ToArray());
+            }
+            else
+            {
+                Directory.CreateDirectory(assembliesPath);
             }
         }
+
+        public void LoadScene (string name) => SceneManager.LoadScene(name);
     }
 }

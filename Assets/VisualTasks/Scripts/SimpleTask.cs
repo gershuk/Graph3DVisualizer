@@ -30,11 +30,10 @@ namespace Grpah3DVisualizer.GraphTasks
     {
         private const string _fontPath = "Font/CustomFontDroidSans-Bold";
         private const string _mainTexture = "Textures/Default";
-        private const string _selectFrameTexture = "Textures/SelectFrame";
         private const string _playerPrefabPath = "Prefabs/Player";
-
-        public override IReadOnlyCollection<AbstractPlayer> Players { get => _players; protected set => _players = (List<AbstractPlayer>) value; }
+        private const string _selectFrameTexture = "Textures/SelectFrame";
         public override IReadOnlyCollection<AbstractGraph> Graphs { get => _graphs; protected set => _graphs = (List<AbstractGraph>) value; }
+        public override IReadOnlyCollection<AbstractPlayer> Players { get => _players; protected set => _players = (List<AbstractPlayer>) value; }
 
         public Graph CreateGraph ()
         {
@@ -85,6 +84,8 @@ namespace Grpah3DVisualizer.GraphTasks
             return graphControler;
         }
 
+        public override List<Verdict> GetResult () => throw new NotImplementedException();
+
         public override void InitTask ()
         {
             CreateGraph();
@@ -117,7 +118,5 @@ namespace Grpah3DVisualizer.GraphTasks
         public override void StartTask () => throw new NotImplementedException();
 
         public override void StopTask () => throw new NotImplementedException();
-
-        public override List<Verdict> GetResult () => throw new NotImplementedException();
     }
 }

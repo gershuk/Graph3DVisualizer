@@ -28,10 +28,20 @@ namespace Grpah3DVisualizer.PlayerInputControls
     [RequireComponent(typeof(MovementComponent))]
     public sealed class FlyPlayer : AbstractPlayer
     {
-        private Transform _transform;
-        private Vector3 _moveDirVector;
-        private FlyControls _inputActions;
         private GameObject _hand;
+        private FlyControls _inputActions;
+        private Vector3 _moveDirVector;
+        private Transform _transform;
+
+        public override InputType InputType
+        {
+            get => _inputType;
+            set
+            {
+                _inputType = value;
+                UpdateInputs();
+            }
+        }
 
         private void Awake ()
         {
@@ -47,6 +57,85 @@ namespace Grpah3DVisualizer.PlayerInputControls
             _inputActions = new FlyControls();
             _moveComponent = GetComponent<MovementComponent>();
             _inputType = InputType.ToolsOnly;
+        }
+
+        private void LateUpdate ()
+        {
+            _moveComponent.Rotate(_inputActions.FlyModel.LookRotation.ReadValue<Vector2>(), Time.deltaTime);
+            _moveComponent.Translate(_moveDirVector, Time.deltaTime);
+        }
+
+        private void OnDisable ()
+        {
+            _inputActions.FlyModel.SelectItem.performed -= OnSelectItem;
+
+            _inputActions.FlyModel.Move.performed -= OnPlayerMove;
+            _inputActions.FlyModel.Move.canceled -= OnPlayerMove;
+
+            _inputActions.FlyModel.MoveToPoint.performed -= OnMoveToPoint;
+
+            _inputActions.FlyModel.ChangeAltitude.performed -= OnPlayerChangeAltitude;
+            _inputActions.FlyModel.ChangeAltitude.canceled -= OnPlayerChangeAltitude;
+
+            _inputActions.FlyModel.Disable();
+        }
+
+        private void OnEnable ()
+        {
+            _inputActions.FlyModel.SelectItem.performed += OnSelectItem;
+
+            _inputActions.FlyModel.Move.performed += OnPlayerMove;
+            _inputActions.FlyModel.Move.canceled += OnPlayerMove;
+
+            _inputActions.FlyModel.MoveToPoint.performed += OnMoveToPoint;
+
+            _inputActions.FlyModel.ChangeAltitude.performed += OnPlayerChangeAltitude;
+            _inputActions.FlyModel.ChangeAltitude.canceled += OnPlayerChangeAltitude;
+
+            _inputActions.FlyModel.Enable();
+
+            UpdateInputs();
+        }
+
+        private void UpdateInputs ()
+        {
+            (bool tools, bool cursor, bool movement) state = (false, false, false);
+            switch (_inputType)
+            {
+                case InputType.Off:
+                    state = (false, false, false);
+                    break;
+
+                case InputType.MenuOnly:
+                    state = (false, true, false);
+                    break;
+
+                case InputType.ToolsOnly:
+                    state = (true, false, true);
+                    break;
+
+                case InputType.All:
+                    state = (true, true, true);
+                    break;
+            }
+
+            if (state.tools)
+            {
+                if (_playerTools.Count > 0)
+                    _playerTools[_currentToolIndex].enabled = true;
+            }
+            else
+            {
+                foreach (var tool in _playerTools)
+                    tool.enabled = false;
+            }
+
+            Cursor.visible = state.cursor;
+
+            if (state.movement)
+                _inputActions.Enable();
+            else
+                _inputActions.Disable();
         }
 
         protected override void CreateTool (params ToolConfig[] toolsConfig)
@@ -82,81 +171,13 @@ namespace Grpah3DVisualizer.PlayerInputControls
             }
         }
 
-        private void LateUpdate ()
+        public void OnMoveToPoint (InputAction.CallbackContext obj)
         {
-            _moveComponent.Rotate(_inputActions.FlyModel.LookRotation.ReadValue<Vector2>(), Time.deltaTime);
-            _moveComponent.Translate(_moveDirVector, Time.deltaTime);
+            if (Physics.Raycast(_hand.transform.position, transform.TransformDirection(Vector3.forward), out var hit, Mathf.Infinity))
+                StartCoroutine(_moveComponent.MoveAlongTrajectory(new List<Vector3>(1) { hit.point }));
         }
 
-        private void OnEnable ()
-        {
-            _inputActions.FlyModel.SelectItem.performed += OnSelectItem;
-
-            _inputActions.FlyModel.Move.performed += OnPlayerMove;
-            _inputActions.FlyModel.Move.canceled += OnPlayerMove;
-
-            _inputActions.FlyModel.MoveToPoint.performed += OnMoveToPoint;
-
-            _inputActions.FlyModel.ChangeAltitude.performed += OnPlayerChangeAltitude;
-            _inputActions.FlyModel.ChangeAltitude.canceled += OnPlayerChangeAltitude;
-
-            _inputActions.FlyModel.Enable();
-
-            UpdateInputs();
-        }
-
-        private void OnDisable ()
-        {
-            _inputActions.FlyModel.SelectItem.performed -= OnSelectItem;
-
-            _inputActions.FlyModel.Move.performed -= OnPlayerMove;
-            _inputActions.FlyModel.Move.canceled -= OnPlayerMove;
-
-            _inputActions.FlyModel.MoveToPoint.performed -= OnMoveToPoint;
-
-            _inputActions.FlyModel.ChangeAltitude.performed -= OnPlayerChangeAltitude;
-            _inputActions.FlyModel.ChangeAltitude.canceled -= OnPlayerChangeAltitude;
-
-            _inputActions.FlyModel.Disable();
-        }
-
-        private void UpdateInputs ()
-        {
-            (bool tools, bool cursor, bool movement) state = (false, false, false);
-            switch (_inputType)
-            {
-                case InputType.Off:
-                    state = (false, false, false);
-                    break;
-                case InputType.MenuOnly:
-                    state = (false, true, false);
-                    break;
-                case InputType.ToolsOnly:
-                    state = (true, false, true);
-                    break;
-                case InputType.All:
-                    state = (true, true, true);
-                    break;
-            }
-
-            if (state.tools)
-            {
-                if (_playerTools.Count > 0)
-                    _playerTools[_currentToolIndex].enabled = true;
-            }
-            else
-            {
-                foreach (var tool in _playerTools)
-                    tool.enabled = false;
-            }
-
-            Cursor.visible = state.cursor;
-
-            if (state.movement)
-                _inputActions.Enable();
-            else
-                _inputActions.Disable();
-        }
+        public void OnPlayerChangeAltitude (InputAction.CallbackContext obj) => _moveDirVector.y = obj.ReadValue<float>();
 
         public void OnPlayerMove (InputAction.CallbackContext obj)
         {
@@ -164,24 +185,6 @@ namespace Grpah3DVisualizer.PlayerInputControls
             _moveDirVector = new Vector3(direction.x, _moveDirVector.y, direction.y);
         }
 
-        public void OnPlayerChangeAltitude (InputAction.CallbackContext obj) => _moveDirVector.y = obj.ReadValue<float>();
-
-        public void OnMoveToPoint (InputAction.CallbackContext obj)
-        {
-            if (Physics.Raycast(_hand.transform.position, transform.TransformDirection(Vector3.forward), out var hit, Mathf.Infinity))
-                StartCoroutine(_moveComponent.MoveAlongTrajectory(new List<Vector3>(1) { hit.point }));
-        }
-
         public void OnSelectItem (InputAction.CallbackContext obj) => SelectTool(Convert.ToInt32(obj.control.displayName) - 1);
-
-        public override InputType InputType
-        {
-            get => _inputType;
-            set
-            {
-                _inputType = value;
-                UpdateInputs();
-            }
-        }
     }
 }

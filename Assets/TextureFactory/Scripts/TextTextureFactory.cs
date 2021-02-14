@@ -22,8 +22,8 @@ namespace Grpah3DVisualizer.TextureFactory
 {
     public class TextTextureFactory
     {
-        private readonly Font _customFont;
         private readonly Texture2D[] _alphabet;
+        private readonly Font _customFont;
 
         public TextTextureFactory (Font customFont, int ASCIIOffset)
         {
@@ -103,4 +103,3 @@ namespace Grpah3DVisualizer.TextureFactory
         }
     }
 }
-

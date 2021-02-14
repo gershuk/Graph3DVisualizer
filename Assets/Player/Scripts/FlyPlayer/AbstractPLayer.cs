@@ -25,47 +25,24 @@ using UnityEngine;
 
 namespace Grpah3DVisualizer.PlayerInputControls
 {
-    public enum InputType
-    {
-        Off = 0,
-        MenuOnly = 1,
-        ToolsOnly = 2,
-        All = 3,
-    }
-
-    public class PlayerParameters : CustomizableParameter
-    {
-        public Vector3 Position { get; }
-        public Vector3 EulerAngles { get; }
-        public float MovingSpeed { get; }
-        public float RotationSpeed { get; }
-        public ToolConfig[] ToolConfigs { get; }
-
-        public PlayerParameters (Vector3 position, Vector3 eulerAngles, float movingSpeed, float rotationSpeed, ToolConfig[] toolConfigs)
-        {
-            Position = position;
-            EulerAngles = eulerAngles;
-            RotationSpeed = rotationSpeed;
-            MovingSpeed = movingSpeed;
-            ToolConfigs = toolConfigs ?? throw new ArgumentNullException(nameof(toolConfigs));
-        }
-    }
-
     public abstract class AbstractPlayer : MonoBehaviour, ICustomizable<PlayerParameters>
     {
+        protected int _currentToolIndex = 0;
         protected InputType _inputType;
         protected MovementComponent _moveComponent;
         protected List<PlayerTool> _playerTools = new List<PlayerTool>();
-        protected int _currentToolIndex = 0;
 
         public event Action<PlayerTool> NewToolSelected;
 
-        public abstract InputType InputType { get; set; }
         public int CurrentToolIndex { get => _currentToolIndex; set => SelectTool(value); }
+        public IReadOnlyList<PlayerTool> GetToolsList => _playerTools;
+        public abstract InputType InputType { get; set; }
 
         protected abstract void CreateTool (params ToolConfig[] toolsConfig);
 
-        public IReadOnlyList<PlayerTool> GetToolsList => _playerTools;
+        public PlayerParameters DownloadParams () =>
+            new PlayerParameters(transform.position, transform.eulerAngles, _moveComponent.MovingSpeed, _moveComponent.RotationSpeed,
+            _playerTools.Select(tool => new ToolConfig(tool.GetType(), CustomizableExtension.CallDownloadParams<ToolParams>(tool).ToArray())).ToArray());
 
         public void SelectTool (int index)
         {
@@ -94,9 +71,31 @@ namespace Grpah3DVisualizer.PlayerInputControls
             _moveComponent.RotationSpeed = playerParams.RotationSpeed;
             CreateTool(playerParams.ToolConfigs);
         }
+    }
 
-        public PlayerParameters DownloadParams () =>
-            new PlayerParameters(transform.position, transform.eulerAngles, _moveComponent.MovingSpeed, _moveComponent.RotationSpeed,
-            _playerTools.Select(tool => new ToolConfig(tool.GetType(), CustomizableExtension.CallDownloadParams<ToolParams>(tool).ToArray())).ToArray());
+    public class PlayerParameters : CustomizableParameter
+    {
+        public Vector3 EulerAngles { get; }
+        public float MovingSpeed { get; }
+        public Vector3 Position { get; }
+        public float RotationSpeed { get; }
+        public ToolConfig[] ToolConfigs { get; }
+
+        public PlayerParameters (Vector3 position, Vector3 eulerAngles, float movingSpeed, float rotationSpeed, ToolConfig[] toolConfigs)
+        {
+            Position = position;
+            EulerAngles = eulerAngles;
+            RotationSpeed = rotationSpeed;
+            MovingSpeed = movingSpeed;
+            ToolConfigs = toolConfigs ?? throw new ArgumentNullException(nameof(toolConfigs));
+        }
+    }
+
+    public enum InputType
+    {
+        Off = 0,
+        MenuOnly = 1,
+        ToolsOnly = 2,
+        All = 3,
     }
 }

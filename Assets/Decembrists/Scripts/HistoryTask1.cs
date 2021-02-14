@@ -30,13 +30,12 @@ namespace Grpah3DVisualizer.GraphTasks
     public class HistoryTask1 : AbstractVisualTask
     {
         private const string _decembristsPath = "Textures/Decembrists";
-        private const string _notDecembristsPath = "Textures/NotDecembrists";
         private const string _fontPath = "Font/CustomFontArial";
-        private const string _selectFramePath = "Textures/SelectFrame";
+        private const string _notDecembristsPath = "Textures/NotDecembrists";
         private const string _playerPath = "Prefabs/Player";
-
-        public override IReadOnlyCollection<AbstractPlayer> Players { get => _players; protected set => _players = (List<AbstractPlayer>) value; }
+        private const string _selectFramePath = "Textures/SelectFrame";
         public override IReadOnlyCollection<AbstractGraph> Graphs { get => _graphs; protected set => _graphs = (List<AbstractGraph>) value; }
+        public override IReadOnlyCollection<AbstractPlayer> Players { get => _players; protected set => _players = (List<AbstractPlayer>) value; }
 
         private DecembristVertex AddPeople (TextTextureFactory textTextureFactory, UnityEngine.Object man, Graph graphController, Texture2D selectFrame, bool isDec)
         {
@@ -87,7 +86,6 @@ namespace Grpah3DVisualizer.GraphTasks
             for (var i = 0; i < decCount; ++i)
                 people.Add(AddPeople(textTextureFactory, decembrists[i], graphControler, selectFrame, true));
 
-
             for (var i = 0; i < notdecCount; ++i)
                 people.Add(AddPeople(textTextureFactory, notDecembrists[i], graphControler, selectFrame, false));
 
@@ -101,6 +99,19 @@ namespace Grpah3DVisualizer.GraphTasks
             }
 
             return graphControler;
+        }
+
+        public override List<Verdict> GetResult ()
+        {
+            var verdicts = new List<Verdict>(_graphs[0].GetComponent<Graph>().VertexesCount);
+            foreach (DecembristVertex vertex in _graphs[0].GetComponent<Graph>().GetVertexes())
+            {
+                var type = vertex.IsDec ? "Декабрист" : "Не декабрист";
+                var act = vertex.IsSelected ? "выбрали" : "не выбрали";
+                var stat = vertex.IsSelected == vertex.IsDec ? VerdictStatus.Correct : VerdictStatus.Incorrect;
+                verdicts.Add(new Verdict($"{vertex.Name} - {type}. Вы {act}", stat));
+            }
+            return verdicts;
         }
 
         public override void InitTask ()
@@ -134,18 +145,5 @@ namespace Grpah3DVisualizer.GraphTasks
         public override void StartTask () => throw new NotImplementedException();
 
         public override void StopTask () => throw new NotImplementedException();
-
-        public override List<Verdict> GetResult ()
-        {
-            var verdicts = new List<Verdict>(_graphs[0].GetComponent<Graph>().VertexesCount);
-            foreach (DecembristVertex vertex in _graphs[0].GetComponent<Graph>().GetVertexes())
-            {
-                var type = vertex.IsDec ? "Декабрист" : "Не декабрист";
-                var act = vertex.IsSelected ? "выбрали" : "не выбрали";
-                var stat = vertex.IsSelected == vertex.IsDec ? VerdictStatus.Correct : VerdictStatus.Incorrect;
-                verdicts.Add(new Verdict($"{vertex.Name} - {type}. Вы {act}", stat));
-            }
-            return verdicts;
-        }
     }
 }

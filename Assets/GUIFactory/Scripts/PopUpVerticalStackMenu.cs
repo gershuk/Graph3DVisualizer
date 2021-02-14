@@ -24,9 +24,8 @@ namespace Grpah3DVisualizer.GUI
 {
     public class PopUpVerticalStackMenu : ClickableObject
     {
-        protected List<(float offset, Transform transform)> _subObjects;
         protected GameObject _plane;
-
+        protected List<(float offset, Transform transform)> _subObjects;
         public float PlainOffset { get; set; } = 12;
 
         private void Awake ()
@@ -37,6 +36,8 @@ namespace Grpah3DVisualizer.GUI
         }
 
         protected override void ClickAction (GameObject gameObject) => _plane.SetActive(true);
+
+        public override void SetDisabled () => _plane.SetActive(false);
 
         public void SetSubObjectList (IReadOnlyList<(float offset, Transform transform)> subObjects, Transform source)
         {
@@ -60,7 +61,5 @@ namespace Grpah3DVisualizer.GUI
 
             _subObjects.AddRange(subObjects);
         }
-
-        public override void SetDisabled () => _plane.SetActive(false);
     }
 }

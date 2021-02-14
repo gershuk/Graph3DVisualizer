@@ -26,11 +26,50 @@ using UnityEngine;
 
 namespace Grpah3DVisualizer.GraphTasks
 {
-    public enum VerdictStatus
+    public abstract class AbstractVisualTask : MonoBehaviour, ICustomizable<VisualTaskParameters>
     {
-        Correct = 0,
-        Incorrect = 1,
-        Undefined = 2,
+        protected List<AbstractGraph> _graphs = new List<AbstractGraph>();
+        protected List<AbstractPlayer> _players = new List<AbstractPlayer>();
+
+        public abstract IReadOnlyCollection<AbstractGraph> Graphs { get; protected set; }
+        public abstract IReadOnlyCollection<AbstractPlayer> Players { get; protected set; }
+
+        public void DestroyTask ()
+        {
+            foreach (var player in _players)
+                Destroy(player.gameObject);
+            foreach (var graph in _graphs)
+                Destroy(graph.gameObject);
+            Destroy(gameObject);
+        }
+
+        public VisualTaskParameters DownloadParams () =>
+            new VisualTaskParameters
+                (_players.Select(x => (x.GetType(), CustomizableExtension.CallDownloadParams<PlayerParameters>(x).ToArray())).ToArray(),
+                 _graphs.Select(x => (x.GetType(), CustomizableExtension.CallDownloadParams<GraphParameters>(x).ToArray())).ToArray());
+
+        public abstract List<Verdict> GetResult ();
+
+        public abstract void InitTask ();
+
+        public void SetupParams (VisualTaskParameters parameters)
+        {
+            foreach (var (graphType, graphParameters) in parameters.GraphsParameters)
+            {
+                var graph = new GameObject("Graph").AddComponent(graphType);
+                CustomizableExtension.CallSetUpParams(graph, graphParameters);
+            }
+
+            foreach (var (playerType, playerParameters) in parameters.PlayersParameters)
+            {
+                var graph = new GameObject("Player").AddComponent(playerType);
+                CustomizableExtension.CallSetUpParams(graph, playerParameters);
+            }
+        }
+
+        public abstract void StartTask ();
+
+        public abstract void StopTask ();
     }
 
     public class Verdict
@@ -45,8 +84,8 @@ namespace Grpah3DVisualizer.GraphTasks
 
     public class VisualTaskParameters : CustomizableParameter
     {
-        public (Type playerType, PlayerParameters[] playerParameters)[] PlayersParameters { get; }
         public (Type graphType, GraphParameters[] graphParameters)[] GraphsParameters { get; }
+        public (Type playerType, PlayerParameters[] playerParameters)[] PlayersParameters { get; }
 
         public VisualTaskParameters ((Type playerType, PlayerParameters[] playerParameters)[] playersParameters,
                                         (Type graphType, GraphParameters[] graphParameters)[] graphsParameters)
@@ -68,45 +107,10 @@ namespace Grpah3DVisualizer.GraphTasks
         }
     }
 
-    public abstract class AbstractVisualTask : MonoBehaviour, ICustomizable<VisualTaskParameters>
+    public enum VerdictStatus
     {
-        protected List<AbstractGraph> _graphs = new List<AbstractGraph>();
-        protected List<AbstractPlayer> _players = new List<AbstractPlayer>();
-
-        public abstract IReadOnlyCollection<AbstractPlayer> Players { get; protected set; }
-        public abstract IReadOnlyCollection<AbstractGraph> Graphs { get; protected set; }
-        public abstract void InitTask ();
-        public abstract void StartTask ();
-        public abstract void StopTask ();
-        public abstract List<Verdict> GetResult ();
-
-        public void DestroyTask ()
-        {
-            foreach (var player in _players)
-                Destroy(player.gameObject);
-            foreach (var graph in _graphs)
-                Destroy(graph.gameObject);
-            Destroy(gameObject);
-        }
-
-        public void SetupParams (VisualTaskParameters parameters)
-        {
-            foreach (var (graphType, graphParameters) in parameters.GraphsParameters)
-            {
-                var graph = new GameObject("Graph").AddComponent(graphType);
-                CustomizableExtension.CallSetUpParams(graph, graphParameters);
-            }
-
-            foreach (var (playerType, playerParameters) in parameters.PlayersParameters)
-            {
-                var graph = new GameObject("Player").AddComponent(playerType);
-                CustomizableExtension.CallSetUpParams(graph, playerParameters);
-            }
-        }
-
-        public VisualTaskParameters DownloadParams () =>
-            new VisualTaskParameters
-                (_players.Select(x => (x.GetType(), CustomizableExtension.CallDownloadParams<PlayerParameters>(x).ToArray())).ToArray(),
-                 _graphs.Select(x => (x.GetType(), CustomizableExtension.CallDownloadParams<GraphParameters>(x).ToArray())).ToArray());
+        Correct = 0,
+        Incorrect = 1,
+        Undefined = 2,
     }
 }
