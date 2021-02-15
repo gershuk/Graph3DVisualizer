@@ -26,7 +26,7 @@ namespace Graph3DVisualizer.Graph3D
 {
     public class Graph : AbstractGraph
     {
-        private HashSet<AbstractVertex> _vertexes;
+        private Dictionary<string, AbstractVertex> _vertexes;
 
         public override int VertexesCount => _vertexes.Count;
 
@@ -34,27 +34,29 @@ namespace Graph3DVisualizer.Graph3D
         {
             _vertexPrefab = _vertexPrefab == null ? Resources.Load<GameObject>("Prefabs/Vertex") : _vertexPrefab;
             _transform = GetComponent<Transform>();
-            _vertexes = new HashSet<AbstractVertex>();
+            _vertexes = new Dictionary<string, AbstractVertex>();
         }
 
-        public override bool ContainsVertex (Vertex vertex) => _vertexes.Contains(vertex);
+        public override bool ContainsVertex (string id) => _vertexes.ContainsKey(id);
 
-        public override bool DeleteVeretex (Vertex vertex)
+        public override bool DeleteVeretex (string id)
         {
-            var result = _vertexes.Remove(vertex);
+            var result = _vertexes.Remove(id);
             if (result)
-                Destroy(vertex.gameObject);
+                Destroy(GetVertexById(id).gameObject);
             return result;
         }
 
-        public override IReadOnlyList<AbstractVertex> GetVertexes () => _vertexes.ToList();
+        public override AbstractVertex GetVertexById (string id) => _vertexes[id];
+
+        public override IReadOnlyList<AbstractVertex> GetVertexes () => _vertexes.Values.ToArray();
 
         public override TVertex SpawnVertex<TVertex, TParams> (TParams vertexParameters)
         {
             var vertex = Instantiate(_vertexPrefab, vertexParameters.Position, vertexParameters.Rotation, _transform);
             var vertexComponent = vertex.gameObject.AddComponent<TVertex>();
             (vertexComponent as ICustomizable<TParams>).SetupParams(vertexParameters);
-            _vertexes.Add(vertexComponent);
+            _vertexes.Add(vertexComponent.Id, vertexComponent);
             return vertexComponent;
         }
 
@@ -66,7 +68,7 @@ namespace Graph3DVisualizer.Graph3D
             var vertex = Instantiate(_vertexPrefab, parameters.Position, parameters.Rotation, _transform);
             var vertexComponent = (AbstractVertex) vertex.gameObject.AddComponent(vertexType);
             CustomizableExtension.CallSetUpParams(vertexComponent, new[] { parameters });
-            _vertexes.Add(vertexComponent);
+            _vertexes.Add(vertexComponent.Id, vertexComponent);
             return vertexComponent;
         }
     }

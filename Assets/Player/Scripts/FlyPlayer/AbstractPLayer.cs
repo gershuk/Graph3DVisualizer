@@ -25,24 +25,25 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.PlayerInputControls
 {
+    [CustomizableGrandType(Type = typeof(PlayerParameters))]
     public abstract class AbstractPlayer : MonoBehaviour, ICustomizable<PlayerParameters>
     {
         protected int _currentToolIndex = 0;
         protected InputType _inputType;
         protected MovementComponent _moveComponent;
-        protected List<PlayerTool> _playerTools = new List<PlayerTool>();
+        protected List<AbstractPlayerTool> _playerTools = new List<AbstractPlayerTool>();
 
-        public event Action<PlayerTool> NewToolSelected;
+        public event Action<AbstractPlayerTool> NewToolSelected;
 
         public int CurrentToolIndex { get => _currentToolIndex; set => SelectTool(value); }
-        public IReadOnlyList<PlayerTool> GetToolsList => _playerTools;
+        public IReadOnlyList<AbstractPlayerTool> GetToolsList => _playerTools;
         public abstract InputType InputType { get; set; }
 
         protected abstract void CreateTool (params ToolConfig[] toolsConfig);
 
         public PlayerParameters DownloadParams () =>
             new PlayerParameters(transform.position, transform.eulerAngles, _moveComponent.MovingSpeed, _moveComponent.RotationSpeed,
-            _playerTools.Select(tool => new ToolConfig(tool.GetType(), CustomizableExtension.CallDownloadParams<ToolParams>(tool).ToArray())).ToArray());
+            _playerTools.Select(tool => new ToolConfig(tool.GetType(), CustomizableExtension.CallDownloadParams<AbstractToolParams>(tool).ToArray())).ToArray());
 
         public void SelectTool (int index)
         {
@@ -73,7 +74,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         }
     }
 
-    public class PlayerParameters : CustomizableParameter
+    public class PlayerParameters : AbstractCustomizableParameter
     {
         public Vector3 EulerAngles { get; }
         public float MovingSpeed { get; }

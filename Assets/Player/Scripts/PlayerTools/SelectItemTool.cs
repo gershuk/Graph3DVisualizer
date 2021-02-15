@@ -26,7 +26,8 @@ using UnityEngine.InputSystem;
 namespace Graph3DVisualizer.PlayerInputControls
 {
     [RequireComponent(typeof(LaserPointer))]
-    public class SelectItemTool : PlayerTool, ICustomizable<SelectItemToolParams>
+    [CustomizableGrandType(Type = typeof(SelectItemToolParams))]
+    public class SelectItemTool : AbstractPlayerTool, ICustomizable<SelectItemToolParams>
     {
         private const string _changeColorActionName = "ChangeColorAction";
         private const string _inputActionName = "SelectItemActionMap";
@@ -107,7 +108,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         public void SetupParams (SelectItemToolParams parameters) => _colors = parameters.Colors;
     }
 
-    public class SelectItemToolParams : ToolParams
+    public class SelectItemToolParams : AbstractToolParams
     {
         public IReadOnlyList<Color> Colors { get; }
 

@@ -25,11 +25,12 @@ using UnityEngine.InputSystem;
 namespace Graph3DVisualizer.PlayerInputControls
 {
     [RequireComponent(typeof(LaserPointer))]
-    public class ClickTool : PlayerTool, ICustomizable<ClickToolParams>
+    [CustomizableGrandType(Type = typeof(ClickToolParams))]
+    public class ClickTool : AbstractPlayerTool, ICustomizable<ClickToolParams>
     {
         private const string _inputActionName = "ClickObjectActionMap";
         private const string _selectActionName = "ClickObjectAction";
-        private ClickableObject _clickableObject;
+        private AbstractClickableObject _clickableObject;
         private InputActionMap _inputActions;
         private LaserPointer _laserPointer;
         private GameObject _owner;
@@ -61,7 +62,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             //if (_clickableObject)
             //    _clickableObject.SetDisabled();
 
-            _clickableObject = RayCast(_rayCastRange).transform?.GetComponent<ClickableObject>();
+            _clickableObject = RayCast(_rayCastRange).transform?.GetComponent<AbstractClickableObject>();
             if (_clickableObject)
                 _clickableObject.Click(_owner);
         }
@@ -79,7 +80,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         public void SetupParams (ClickToolParams parameters) => _owner = parameters.Owner;
     }
 
-    public class ClickToolParams : ToolParams
+    public class ClickToolParams : AbstractToolParams
     {
         public GameObject Owner { get; private set; }
 

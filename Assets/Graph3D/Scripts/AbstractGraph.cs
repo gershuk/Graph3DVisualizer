@@ -16,7 +16,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 using Graph3DVisualizer.Customizable;
 
@@ -24,7 +23,104 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.Graph3D
 {
-    public abstract class AbstractGraph : MonoBehaviour, ICustomizable<GraphParameters>
+    public struct LinkInfo
+    {
+        public EdgeParameters edgeParameters;
+        public Type edgeType;
+        public string firstVertexId;
+        public string secondVertexId;
+
+        public LinkInfo (string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters)
+        {
+            this.firstVertexId = firstVertexId;
+            this.secondVertexId = secondVertexId;
+            this.edgeType = edgeType;
+            this.edgeParameters = edgeParameters;
+        }
+
+        public static implicit operator (string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters) (LinkInfo value)
+        {
+            return (value.firstVertexId, value.secondVertexId, value.edgeType, value.edgeParameters);
+        }
+
+        public static implicit operator LinkInfo ((string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters) value)
+        {
+            return new LinkInfo(value.firstVertexId, value.secondVertexId, value.edgeType, value.edgeParameters);
+        }
+
+        public void Deconstruct (out string firstVertexId, out string secondVertexId, out Type edgeType, out EdgeParameters edgeParameters)
+        {
+            firstVertexId = this.firstVertexId;
+            secondVertexId = this.secondVertexId;
+            edgeType = this.edgeType;
+            edgeParameters = this.edgeParameters;
+        }
+
+        public override bool Equals (object obj)
+        {
+            return obj is LinkInfo other &&
+                   firstVertexId == other.firstVertexId &&
+                   secondVertexId == other.secondVertexId &&
+                   EqualityComparer<Type>.Default.Equals(edgeType, other.edgeType) &&
+                   EqualityComparer<EdgeParameters>.Default.Equals(edgeParameters, other.edgeParameters);
+        }
+
+        public override int GetHashCode ()
+        {
+            var hashCode = -1737920732;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(firstVertexId);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(secondVertexId);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(edgeType);
+            hashCode = hashCode * -1521134295 + EqualityComparer<EdgeParameters>.Default.GetHashCode(edgeParameters);
+            return hashCode;
+        }
+    }
+
+    public struct VertexInfo
+    {
+        public VertexParameters[] vertexParameters;
+        public Type vertexType;
+
+        public VertexInfo (Type vertexType, VertexParameters[] vertexParameters)
+        {
+            this.vertexType = vertexType;
+            this.vertexParameters = vertexParameters;
+        }
+
+        public static implicit operator (Type vertexType, VertexParameters[] vertexParameters) (VertexInfo value)
+        {
+            return (value.vertexType, value.vertexParameters);
+        }
+
+        public static implicit operator VertexInfo ((Type vertexType, VertexParameters[] vertexParameters) value)
+        {
+            return new VertexInfo(value.vertexType, value.vertexParameters);
+        }
+
+        public void Deconstruct (out Type vertexType, out VertexParameters[] vertexParameters)
+        {
+            vertexType = this.vertexType;
+            vertexParameters = this.vertexParameters;
+        }
+
+        public override bool Equals (object obj)
+        {
+            return obj is VertexInfo other &&
+                   EqualityComparer<Type>.Default.Equals(vertexType, other.vertexType) &&
+                   EqualityComparer<VertexParameters[]>.Default.Equals(vertexParameters, other.vertexParameters);
+        }
+
+        public override int GetHashCode ()
+        {
+            var hashCode = -2103449114;
+            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(vertexType);
+            hashCode = hashCode * -1521134295 + EqualityComparer<VertexParameters[]>.Default.GetHashCode(vertexParameters);
+            return hashCode;
+        }
+    }
+
+    [CustomizableGrandType(Type = typeof(GraphParameters))]
+    public abstract class AbstractGraph : AbstractGraphObject, ICustomizable<GraphParameters>
     {
         protected Transform _transform;
 
@@ -33,44 +129,80 @@ namespace Graph3DVisualizer.Graph3D
 
         public abstract int VertexesCount { get; }
 
-        public abstract bool ContainsVertex (Vertex vertex);
+        public abstract bool ContainsVertex (string id);
 
-        public abstract bool DeleteVeretex (Vertex vertex);
+        public abstract bool DeleteVeretex (string id);
 
-        public GraphParameters DownloadParams () =>
-            new GraphParameters(GetVertexes().Select(x => (x.GetType(), CustomizableExtension.CallDownloadParams<VertexParameters>(x).ToArray())).ToArray());
+        //ToDo get links
+        public GraphParameters DownloadParams ()
+        {
+            var vertexParameters = new List<VertexInfo>();
+            var links = new List<LinkInfo>();
+
+            foreach (var vertex in GetVertexes())
+            {
+                vertexParameters.Add((vertex.GetType(), CustomizableExtension.CallDownloadParams<VertexParameters>(vertex).ToArray()));
+
+                foreach (var outgoingLink in vertex.OutgoingLinks)
+                {
+                    links.Add((vertex.Id, outgoingLink.AdjacentVertex.Id, outgoingLink.Edge.GetType(), (EdgeParameters) CustomizableExtension.CallDownloadParams(outgoingLink.Edge)));
+                }
+            }
+
+            return new GraphParameters(vertexParameters.ToArray(), links, Id);
+        }
+
+        public abstract AbstractVertex GetVertexById (string id);
 
         public abstract IReadOnlyList<AbstractVertex> GetVertexes ();
 
-        //ToDo : Add vertex links to parameters
         public void SetupParams (GraphParameters parameters)
         {
-            foreach (var (vertexType, vertexParameters) in parameters.VertexParameters)
+            Id = parameters.Id;
+
+            if (parameters.VertexParameters != null)
             {
-                foreach (var vertexParameter in vertexParameters)
-                    SpawnVertex(vertexType, vertexParameter);
+                foreach (var (vertexType, vertexParameters) in parameters.VertexParameters)
+                {
+                    foreach (var vertexParameter in vertexParameters)
+                        SpawnVertex(vertexType, vertexParameter);
+                }
+            }
+
+            if (parameters.Links != null)
+            {
+                foreach (var (firstVertexId, secondVertexId, edgeType, edgeParams) in parameters.Links)
+                {
+                    GetVertexById(firstVertexId).Link(GetVertexById(secondVertexId), edgeType, edgeParams);
+                }
             }
         }
 
         public abstract TVertex SpawnVertex<TVertex, TParams> (TParams vertexParameters)
                     where TVertex : AbstractVertex, new()
-            where TParams : VertexParameters;
+                    where TParams : VertexParameters;
 
         public abstract AbstractVertex SpawnVertex (Type vertexType, VertexParameters parameters);
     }
 
-    public class GraphParameters : CustomizableParameter
+    public class GraphParameters : AbstractGraphObjectParameters
     {
-        public (Type vertexType, VertexParameters[] vertexParameters)[] VertexParameters { get; }
+        public List<LinkInfo> Links { get; }
+        public VertexInfo[] VertexParameters { get; }
 
-        public GraphParameters ((Type vertexType, VertexParameters[] vertexParameters)[] vertexParameters)
+        public GraphParameters (VertexInfo[] vertexParameters = default,
+                                List<LinkInfo> links = default,
+                                string id = null) : base(id)
         {
-            VertexParameters = vertexParameters ?? throw new ArgumentNullException(nameof(vertexParameters));
-
-            foreach (var (vertexType, _) in VertexParameters)
+            Links = links;
+            if (vertexParameters != null)
             {
-                if (!vertexType.IsSubclassOf(typeof(AbstractVertex)))
-                    throw new WrongTypeInCustomizableParameterException(typeof(AbstractVertex), vertexType);
+                VertexParameters = vertexParameters;
+                foreach (var (vertexType, _) in VertexParameters)
+                {
+                    if (!vertexType.IsSubclassOf(typeof(AbstractVertex)))
+                        throw new WrongTypeInCustomizableParameterException(typeof(AbstractVertex), vertexType);
+                }
             }
         }
     }

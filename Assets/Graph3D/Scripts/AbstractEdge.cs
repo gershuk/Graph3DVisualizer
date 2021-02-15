@@ -42,7 +42,8 @@ namespace Graph3DVisualizer.Graph3D
         public Vector3 GetUnitVector () => (ToVertex.transform.position - FromVertex.transform.position) / GetDistance();
     }
 
-    public abstract class AbstractEdge : MonoBehaviour, ICustomizable<EdgeParameters>
+    [CustomizableGrandType(Type = typeof(EdgeParameters))]
+    public abstract class AbstractEdge : AbstractGraphObject, ICustomizable<EdgeParameters>
     {
         protected AdjacentVertices _adjacentVertices;
 
@@ -86,10 +87,12 @@ namespace Graph3DVisualizer.Graph3D
 
         protected abstract void UnsubscribeOnVerticesEvents ();
 
-        public EdgeParameters DownloadParams () => new EdgeParameters(_sourceOffsetDist, _targetOffsetDist, ArrowTexture, LineTexture, _visibility);
+        public EdgeParameters DownloadParams () => new EdgeParameters(_sourceOffsetDist, _targetOffsetDist, ArrowTexture, LineTexture, _visibility, Id);
 
         public void SetupParams (EdgeParameters parameters)
         {
+            Id = parameters.Id;
+
             _sourceOffsetDist = parameters.SourceOffsetDist;
             _targetOffsetDist = parameters.TargetOffsetDist;
 
@@ -110,7 +113,7 @@ namespace Graph3DVisualizer.Graph3D
         public abstract void UpdateVisibility ();
     }
 
-    public class EdgeParameters : CustomizableParameter
+    public class EdgeParameters : AbstractGraphObjectParameters
     {
         public Texture2D ArrowTexture { get; }
         public Texture2D LineTexture { get; }
@@ -118,8 +121,8 @@ namespace Graph3DVisualizer.Graph3D
         public float TargetOffsetDist { get; }
         public EdgeVisibility Visibility { get; }
 
-        public EdgeParameters (float sourceOffsetDist, float targetOffsetDist,
-            Texture2D arrowTexture = null, Texture2D lineTexture = null, EdgeVisibility visibility = EdgeVisibility.DependOnVertices)
+        public EdgeParameters (float sourceOffsetDist = 1f, float targetOffsetDist = 1f,
+            Texture2D arrowTexture = null, Texture2D lineTexture = null, EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string id = null) : base(id)
         {
             SourceOffsetDist = sourceOffsetDist;
             TargetOffsetDist = targetOffsetDist;

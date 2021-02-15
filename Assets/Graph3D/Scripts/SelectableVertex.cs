@@ -28,6 +28,7 @@ namespace Graph3DVisualizer.Graph3D
     [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(MovementComponent))]
     [RequireComponent(typeof(SphereCollider))]
+    [CustomizableGrandType(Type = typeof(SelectableVertexParameters))]
     public class SelectableVertex : Vertex, ICustomizable<SelectableVertexParameters>, ISelectable
     {
         private const string _edgePrefabPath = "Prefabs/Edge";
@@ -108,7 +109,7 @@ namespace Graph3DVisualizer.Graph3D
         }
 
         SelectableVertexParameters ICustomizable<SelectableVertexParameters>.DownloadParams () =>
-            new SelectableVertexParameters(DownloadParams(), _billboardControler.GetBillboard(_selectFrameId).DownloadParams(), IsSelected);
+            new SelectableVertexParameters(DownloadParams(), _billboardControler.GetBillboard(_selectFrameId).DownloadParams(), IsSelected, Id);
 
         public void SetSelectFrame (BillboardParameters billboardParameters)
         {
@@ -132,12 +133,12 @@ namespace Graph3DVisualizer.Graph3D
         public bool IsSelected { get; }
         public BillboardParameters SelectFrameParameters { get; }
 
-        public SelectableVertexParameters (Vector3 position, Quaternion rotation, BillboardParameters imageParameters,
-            BillboardParameters selectFrameParameters, bool isSelected) : base(position, rotation, imageParameters) =>
-            (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
+        public SelectableVertexParameters (BillboardParameters imageParameters, BillboardParameters selectFrameParameters,
+               Vector3 position = default, Quaternion rotation = default, bool isSelected = false, string id = null) : base(imageParameters, position, rotation, id) =>
+               (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
 
-        public SelectableVertexParameters (VertexParameters vertexParameters, BillboardParameters selectFrameParameters, bool isSelected) :
-            base(vertexParameters.Position, vertexParameters.Rotation, vertexParameters.ImageParameters) =>
-            (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
+        public SelectableVertexParameters (VertexParameters vertexParameters, BillboardParameters selectFrameParameters, bool isSelected = false, string id = null) :
+                                  this(vertexParameters.ImageParameters, selectFrameParameters, vertexParameters.Position, vertexParameters.Rotation, isSelected, id)
+        { }
     }
 }

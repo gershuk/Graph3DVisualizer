@@ -58,7 +58,7 @@ namespace Graph3DVisualizer.GraphTasks
             var value = Mathf.Max(scale + 3.5f, height * scale / width + 3.5f);
             var billPar2 = new BillboardParameters(comIm2, new Vector2(value, value), 0.1f, true, true, Color.red);
 
-            var verPar = new SelectableVertexParameters(new Vector3(rand.Next(-60, 60), rand.Next(-60, 60), rand.Next(-60, 60)), Quaternion.identity, billPar1, billPar2, false);
+            var verPar = new SelectableVertexParameters(billPar1, billPar2);
             var vertex = graphController.SpawnVertex<DecembristVertex, SelectableVertexParameters>(verPar);
             vertex.IsDec = isDec;
             vertex.Name = picked.name;

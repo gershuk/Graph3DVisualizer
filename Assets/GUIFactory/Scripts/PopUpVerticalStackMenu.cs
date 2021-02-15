@@ -22,7 +22,7 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.GUI
 {
-    public class PopUpVerticalStackMenu : ClickableObject
+    public class PopUpVerticalStackMenu : AbstractClickableObject
     {
         protected GameObject _plane;
         protected List<(float offset, Transform transform)> _subObjects;

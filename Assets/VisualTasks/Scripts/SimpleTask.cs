@@ -41,6 +41,7 @@ namespace Graph3DVisualizer.GraphTasks
             var graphControler = graph.AddComponent<Graph>();
             _graphs.Add(graphControler);
             Vertex lastVertex = null;
+            graphControler.SetupParams(new GraphParameters());
 
             var customFont = Resources.Load<Font>(_fontPath);
             var mainTexture = Resources.Load<Texture2D>(_mainTexture);
@@ -68,7 +69,7 @@ namespace Graph3DVisualizer.GraphTasks
                 var combIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height, TextureWrapMode.Clamp, false);
                 var billPar2 = new BillboardParameters(combIm2, new Vector2(value, value), 0.1f, true, true, Color.red);
 
-                var verPar = new SelectableVertexParameters(new Vector3(i % 30 * 100, i / 30 * 100, 0), Quaternion.identity, billPar1, billPar2, false);
+                var verPar = new SelectableVertexParameters(billPar1, billPar2, new Vector3(i % 30 * 100, i / 30 * 100, 0));
                 var currentVertex = graphControler.SpawnVertex<SelectableVertex, SelectableVertexParameters>(verPar);
                 currentVertex.gameObject.AddComponent<VertexLinksMenu>();
                 currentVertex.gameObject.name = $"Vertex{i}";

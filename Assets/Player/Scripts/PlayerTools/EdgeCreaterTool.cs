@@ -27,7 +27,8 @@ using UnityEngine.InputSystem;
 namespace Graph3DVisualizer.PlayerInputControls
 {
     [RequireComponent(typeof(LaserPointer))]
-    public class EdgeCreaterTool : PlayerTool, ICustomizable<EdgeCreaterToolParams>
+    [CustomizableGrandType(Type = typeof(EdgeCreaterToolParams))]
+    public class EdgeCreaterTool : AbstractPlayerTool, ICustomizable<EdgeCreaterToolParams>
     {
         private enum State
         {
@@ -176,7 +177,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         public void SetupParams (EdgeCreaterToolParams parameters) => _edgeTypes = parameters.EdgeTypes.ToList();
     }
 
-    public class EdgeCreaterToolParams : ToolParams
+    public class EdgeCreaterToolParams : AbstractToolParams
     {
         public IReadOnlyList<Type> EdgeTypes { get; private set; }
 

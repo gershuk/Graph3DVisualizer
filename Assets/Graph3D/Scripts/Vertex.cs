@@ -31,8 +31,6 @@ namespace Graph3DVisualizer.Graph3D
     {
         private const string _edgePrefabPath = "Prefabs/Edge";
 
-        protected BillboardController _billboardControler;
-
         protected SphereCollider _sphereCollider;
 
         public override event Action<UnityEngine.Object> Destroyed;
@@ -90,9 +88,6 @@ namespace Graph3DVisualizer.Graph3D
             }
             _sphereCollider.radius = newRadius;
         }
-
-        public override VertexParameters DownloadParams () => new VertexParameters(_transform.position, _transform.rotation,
-            _billboardControler.GetBillboard(_mainImageId).DownloadParams());
 
         public override void SetMainImage (BillboardParameters billboardParameters)
         {

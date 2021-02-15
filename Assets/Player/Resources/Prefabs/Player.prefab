@@ -198,13 +198,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 448012981059091083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23a5b44235bcb4e46821d5f0fdea737c, type: 3}
+  m_Script: {fileID: 11500000, guid: 05c9b777cbe6bba4faced2996674da98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minRotX: -90
-  _maxRotX: 90
-  _minRotY: -360
-  _maxRotY: 360
-  _rotationSpeed: 1
-  _movingSpeed: 2
   _currentGearIndex: 0
+  _maxRotX: 360
+  _maxRotY: 360
+  _minRotX: -360
+  _minRotY: -360
+  _movingSpeed: 10
+  _rotationSpeed: 1

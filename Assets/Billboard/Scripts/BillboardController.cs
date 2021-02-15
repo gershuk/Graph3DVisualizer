@@ -28,6 +28,7 @@ namespace Graph3DVisualizer.Billboards
     /// <summary>
     /// An object containing information for displaying the Billboard image. Contained in the <see cref="BillboardController"/>.
     /// </summary>
+    [CustomizableGrandType(Type = typeof(BillboardParameters))]
     public sealed class Billboard : ICustomizable<BillboardParameters>
     {
         private const string _cutoff = "_Cutoff";
@@ -269,7 +270,7 @@ namespace Graph3DVisualizer.Billboards
     /// <summary>
     /// Parameters for creating a new <see cref="Billboard"/> object.
     /// </summary>
-    public sealed class BillboardParameters : CustomizableParameter
+    public sealed class BillboardParameters : AbstractCustomizableParameter
     {
         /// <summary>
         /// Used to set position of images on the Billboard.

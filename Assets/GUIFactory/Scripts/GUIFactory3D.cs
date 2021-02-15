@@ -50,7 +50,7 @@ namespace Graph3DVisualizer.GUI
             }
         }
 
-        public static GameObject CreateButton<T> (TextMeshParameters textParameters) where T : ClickableObject
+        public static GameObject CreateButton<T> (TextMeshParameters textParameters) where T : AbstractClickableObject
         {
             var button = CreateText(textParameters);
             var collider = button.AddComponent<BoxCollider>();

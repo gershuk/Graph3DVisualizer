@@ -26,6 +26,7 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.GraphTasks
 {
+    [CustomizableGrandType(Type = typeof(VisualTaskParameters))]
     public abstract class AbstractVisualTask : MonoBehaviour, ICustomizable<VisualTaskParameters>
     {
         protected List<AbstractGraph> _graphs = new List<AbstractGraph>();
@@ -82,7 +83,7 @@ namespace Graph3DVisualizer.GraphTasks
         public override string ToString () => $"{Description} Status:{Status}";
     }
 
-    public class VisualTaskParameters : CustomizableParameter
+    public class VisualTaskParameters : AbstractCustomizableParameter
     {
         public (Type graphType, GraphParameters[] graphParameters)[] GraphsParameters { get; }
         public (Type playerType, PlayerParameters[] playerParameters)[] PlayersParameters { get; }

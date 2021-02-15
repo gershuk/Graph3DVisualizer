@@ -26,8 +26,11 @@ using UnityEngine;
 namespace Graph3DVisualizer.Graph3D
 {
     [RequireComponent(typeof(MovementComponent))]
-    public abstract class AbstractVertex : MonoBehaviour, IVisibile, IDestructible, ICustomizable<VertexParameters>
+    [CustomizableGrandType(Type = typeof(VertexParameters))]
+    public abstract class AbstractVertex : AbstractGraphObject, IVisibile, IDestructible, ICustomizable<VertexParameters>
     {
+        protected BillboardController _billboardControler;
+
         [SerializeField]
         protected GameObject _edgePrefab;
 
@@ -114,7 +117,8 @@ namespace Graph3DVisualizer.Graph3D
             throw new LinkNotFoundException();
         }
 
-        public abstract VertexParameters DownloadParams ();
+        public VertexParameters DownloadParams () => new VertexParameters(_billboardControler.GetBillboard(_mainImageId).DownloadParams(),
+            _transform.position, _transform.rotation, Id);
 
         public TEdge Link<TEdge, TParameters> (AbstractVertex toVertex, TParameters edgeParameters) where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
@@ -140,6 +144,8 @@ namespace Graph3DVisualizer.Graph3D
 
         public virtual void SetupParams (VertexParameters parameters)
         {
+            Id = parameters.Id;
+
             (_transform.position, _transform.rotation) = (parameters.Position, parameters.Rotation);
             SetMainImage(parameters.ImageParameters);
         }
@@ -190,13 +196,13 @@ namespace Graph3DVisualizer.Graph3D
         }
     }
 
-    public class VertexParameters : CustomizableParameter
+    public class VertexParameters : AbstractGraphObjectParameters
     {
         public BillboardParameters ImageParameters { get; }
         public Vector3 Position { get; }
         public Quaternion Rotation { get; }
 
-        public VertexParameters (Vector3 position, Quaternion rotation, BillboardParameters imageParameters)
-            => (Position, Rotation, ImageParameters) = (position, rotation, imageParameters);
+        public VertexParameters (BillboardParameters imageParameters, Vector3 position = default, Quaternion rotation = default, string id = null) : base(id)
+            => (ImageParameters, Position, Rotation) = (imageParameters, position, rotation);
     }
 }

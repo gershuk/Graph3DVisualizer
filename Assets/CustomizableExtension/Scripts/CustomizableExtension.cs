@@ -18,11 +18,17 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
+//ToDo need to refactor this module
 namespace Graph3DVisualizer.Customizable
 {
     public static class CustomizableExtension
     {
-        public static List<T> CallDownloadParams<T> (object customizable) where T : CustomizableParameter
+        public static AbstractCustomizableParameter CallDownloadParams (object customizable) =>
+           (AbstractCustomizableParameter) customizable.GetType().GetMethod(nameof(ICustomizable<AbstractCustomizableParameter>.DownloadParams),
+           new[] { (Attribute.GetCustomAttribute(customizable.GetType(), typeof(CustomizableGrandTypeAttribute), true) as CustomizableGrandTypeAttribute).Type })
+           .Invoke(customizable, null);
+
+        public static List<T> CallDownloadParams<T> (object customizable) where T : AbstractCustomizableParameter
         {
             var parameters = new List<T>();
             foreach (var interfaceType in customizable.GetType().GetInterfaces())
@@ -30,11 +36,16 @@ namespace Graph3DVisualizer.Customizable
                 if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>)
                     && (interfaceType.GetGenericArguments()[0].IsSubclassOf(typeof(T)) || interfaceType.GetGenericArguments()[0] == typeof(T)))
                 {
-                    parameters.Add((T) interfaceType.GetMethod("DownloadParams").Invoke(customizable, null));
+                    parameters.Add((T) interfaceType.GetMethod(nameof(ICustomizable<AbstractCustomizableParameter>.DownloadParams)).Invoke(customizable, null));
                 }
             }
             return parameters;
         }
+
+        public static void CallSetUpParams (object customizable, object parameter) =>
+            customizable.GetType().GetMethod(nameof(ICustomizable<AbstractCustomizableParameter>.SetupParams),
+            new[] { (Attribute.GetCustomAttribute(customizable.GetType(), typeof(CustomizableGrandTypeAttribute), true) as CustomizableGrandTypeAttribute).Type })
+            .Invoke(customizable, new[] { parameter });
 
         public static void CallSetUpParams (object customizable, object[] parameters)
         {
@@ -46,7 +57,7 @@ namespace Graph3DVisualizer.Customizable
                 {
                     if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>) && interfaceType.GetGenericArguments()[0] == param.GetType())
                     {
-                        interfaceType.GetMethod("SetupParams", interfaceType.GetGenericArguments()).Invoke(customizable, new[] { param });
+                        interfaceType.GetMethod(nameof(ICustomizable<AbstractCustomizableParameter>.SetupParams), interfaceType.GetGenericArguments()).Invoke(customizable, new[] { param });
                         isFinded = true;
                     }
                 }
@@ -57,7 +68,14 @@ namespace Graph3DVisualizer.Customizable
         }
     }
 
-    public abstract class CustomizableParameter { };
+    public abstract class AbstractCustomizableParameter { };
+
+    [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
+    sealed public class CustomizableGrandTypeAttribute : Attribute
+    {
+        private Type _type;
+        public Type Type { get => _type; set => _type = value.IsSubclassOf(typeof(AbstractCustomizableParameter)) ? value : throw new WrongTypeInCustomizableParameterException(); }
+    }
 
     public class WrongTypeInCustomizableParameterException : Exception
     {
@@ -82,7 +100,7 @@ namespace Graph3DVisualizer.Customizable
         }
     }
 
-    public interface ICustomizable<TParams> where TParams : CustomizableParameter
+    public interface ICustomizable<TParams> where TParams : AbstractCustomizableParameter
     {
         TParams DownloadParams ();
 

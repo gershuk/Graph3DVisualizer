@@ -52,7 +52,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             _hand.transform.localPosition = new Vector3(2, -2, 0);
             _hand.AddComponent(typeof(LaserPointer));
 
-            _playerTools = new List<PlayerTool>();
+            _playerTools = new List<AbstractPlayerTool>();
 
             _inputActions = new FlyControls();
             _moveComponent = GetComponent<MovementComponent>();
@@ -145,7 +145,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             {
                 foreach (var config in toolsConfig)
                 {
-                    var newTool = ((PlayerTool) _hand.AddComponent(config.ToolType));
+                    var newTool = ((AbstractPlayerTool) _hand.AddComponent(config.ToolType));
                     newTool.RegisterEvents(_inputActions);
 
                     try

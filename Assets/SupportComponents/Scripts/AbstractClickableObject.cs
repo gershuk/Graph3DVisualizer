@@ -20,7 +20,7 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.SupportComponents
 {
-    public abstract class ClickableObject : MonoBehaviour
+    public abstract class AbstractClickableObject : MonoBehaviour
     {
         protected GameObject _gameObject;
         protected Transform _transform;

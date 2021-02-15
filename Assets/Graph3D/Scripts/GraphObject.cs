@@ -16,21 +16,25 @@
 
 using System;
 
-using Graph3DVisualizer.SupportComponents;
+using Graph3DVisualizer.Customizable;
 
 using UnityEngine;
 
-namespace Graph3DVisualizer.GUI
+namespace Graph3DVisualizer.Graph3D
 {
-    public class Button3DComponnet : AbstractClickableObject
+    public abstract class AbstractGraphObject : MonoBehaviour
     {
-        //ToDo : change to expression
-        public Action<GameObject> Action { get; set; }
+        //attribute for debug only
+        [SerializeField]
+        private string _id;
 
-        protected override void ClickAction (GameObject gameObject) => Action?.Invoke(gameObject);
+        public string Id { get => _id; protected set => _id = value ?? Guid.NewGuid().ToString(); }
+    }
 
-        public override void SetDisabled ()
-        {
-        }
+    public abstract class AbstractGraphObjectParameters : AbstractCustomizableParameter
+    {
+        public string Id { get; protected set; }
+
+        public AbstractGraphObjectParameters (string id) => Id = id;
     }
 }

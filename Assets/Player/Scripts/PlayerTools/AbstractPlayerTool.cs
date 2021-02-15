@@ -27,19 +27,19 @@ namespace Graph3DVisualizer.PlayerInputControls
 {
     public readonly struct ToolConfig
     {
-        public ToolParams[] ToolParams { get; }
+        public AbstractToolParams[] ToolParams { get; }
         public Type ToolType { get; }
 
-        public ToolConfig (Type toolType, params ToolParams[] toolParams)
+        public ToolConfig (Type toolType, params AbstractToolParams[] toolParams)
         {
-            if (!toolType.IsSubclassOf(typeof(PlayerTool)))
+            if (!toolType.IsSubclassOf(typeof(AbstractPlayerTool)))
                 throw new Exception($"{toolType} is not subclass of PlayerTool");
             ToolType = toolType ?? throw new ArgumentNullException(nameof(toolType));
             ToolParams = toolParams;
         }
     }
 
-    public abstract class PlayerTool : MonoBehaviour
+    public abstract class AbstractPlayerTool : MonoBehaviour
     {
         protected RaycastHit RayCast (float range)
         {
@@ -50,6 +50,6 @@ namespace Graph3DVisualizer.PlayerInputControls
         public abstract void RegisterEvents (IInputActionCollection inputActions);
     }
 
-    public abstract class ToolParams : CustomizableParameter
+    public abstract class AbstractToolParams : AbstractCustomizableParameter
     { }
 }

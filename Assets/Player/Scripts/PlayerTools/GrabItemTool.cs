@@ -24,7 +24,7 @@ using UnityEngine.InputSystem;
 namespace Graph3DVisualizer.PlayerInputControls
 {
     [RequireComponent(typeof(LaserPointer))]
-    public class GrabItemTool : PlayerTool
+    public class GrabItemTool : AbstractPlayerTool
     {
         private const string _actionMapName = "GrabItemActionMap";
         private const string _changeRangeActionName = "ChangeRangeAction";
