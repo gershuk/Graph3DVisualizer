@@ -64,7 +64,7 @@ namespace Graph3DVisualizer.Graph3D
                 throw new WrongTypeInCustomizableParameterException(typeof(AbstractEdge), edgeType);
             var edge = (AbstractEdge) Instantiate(_edgePrefab, _transform.position, Quaternion.identity, _transform.parent).AddComponent(edgeType);
             edge.AdjacentVertices = new AdjacentVertices(this, toVertex);
-            CustomizableExtension.CallSetUpParams(edge, new[] { parameters });
+            CustomizableExtension.CallSetUpParams(edge, parameters);
             return edge;
         }
 
@@ -196,6 +196,7 @@ namespace Graph3DVisualizer.Graph3D
         }
     }
 
+    [Serializable]
     public class VertexParameters : AbstractGraphObjectParameters
     {
         public BillboardParameters ImageParameters { get; }

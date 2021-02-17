@@ -26,6 +26,7 @@ using UnityEngine.InputSystem;
 namespace Graph3DVisualizer.PlayerInputControls
 {
     [RequireComponent(typeof(MovementComponent))]
+    [RequireComponent(typeof(Camera))]
     public sealed class FlyPlayer : AbstractPlayer
     {
         private GameObject _hand;

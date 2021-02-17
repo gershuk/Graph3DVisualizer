@@ -40,7 +40,12 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public float RayCastRange { get => _rayCastRange; set => _rayCastRange = value; }
 
-        private void Awake () => _laserPointer = GetComponent<LaserPointer>();
+        private void Awake ()
+        {
+            _laserPointer = GetComponent<LaserPointer>();
+            //due to problems with serialization, you have to search for it from inside
+            _owner = transform.parent.gameObject;
+        }
 
         private void CallClick (InputAction.CallbackContext obj) => Click();
 
@@ -67,7 +72,7 @@ namespace Graph3DVisualizer.PlayerInputControls
                 _clickableObject.Click(_owner);
         }
 
-        public ClickToolParams DownloadParams () => new ClickToolParams(_owner);
+        public ClickToolParams DownloadParams () => new ClickToolParams();
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
@@ -77,13 +82,16 @@ namespace Graph3DVisualizer.PlayerInputControls
             selectItemAction.canceled += CallClick;
         }
 
-        public void SetupParams (ClickToolParams parameters) => _owner = parameters.Owner;
+        public void SetupParams (ClickToolParams parameters)
+        {
+        }
     }
 
+    [Serializable]
     public class ClickToolParams : AbstractToolParams
     {
-        public GameObject Owner { get; private set; }
+        //public GameObject Owner { get; private set; }
 
-        public ClickToolParams (GameObject owner) => Owner = owner ?? throw new ArgumentNullException(nameof(owner));
+        //public ClickToolParams (GameObject owner) => Owner = owner ?? throw new ArgumentNullException(nameof(owner));
     }
 }

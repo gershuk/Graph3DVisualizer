@@ -14,8 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+using System;
 using System.Collections;
 
+using Graph3DVisualizer.Customizable;
 using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
@@ -24,7 +26,8 @@ using UnityEngine.InputSystem;
 namespace Graph3DVisualizer.PlayerInputControls
 {
     [RequireComponent(typeof(LaserPointer))]
-    public class GrabItemTool : AbstractPlayerTool
+    [CustomizableGrandType(Type = typeof(GrabItemToolParams))]
+    public class GrabItemTool : AbstractPlayerTool, ICustomizable<GrabItemToolParams>
     {
         private const string _actionMapName = "GrabItemActionMap";
         private const string _changeRangeActionName = "ChangeRangeAction";
@@ -111,6 +114,12 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public void ChangeRange (float normalizedDelta) => _capturedRange = Mathf.Max(0, _capturedRange + normalizedDelta * Time.deltaTime * RangeChangeSpeed);
 
+        public GrabItemToolParams DownloadParams ()
+        {
+            Debug.LogWarning($"GrabItemTool.DownloadParams not implemented");
+            return new GrabItemToolParams();
+        }
+
         public void FreeItem ()
         {
             _moveable = null;
@@ -148,6 +157,8 @@ namespace Graph3DVisualizer.PlayerInputControls
             changeRangeAction.canceled += CallStopChangingRange;
         }
 
+        public void SetupParams (GrabItemToolParams parameters) => Debug.LogWarning($"GrabItemTool.SetupParams not implemented");
+
         public void StartChangingRange ()
         {
             _isChangingRange = true;
@@ -160,4 +171,8 @@ namespace Graph3DVisualizer.PlayerInputControls
             StopCoroutine(_changeRangeCoroutine);
         }
     }
+
+    [Serializable]
+    public class GrabItemToolParams : AbstractToolParams
+    { }
 }

@@ -65,8 +65,29 @@ namespace Graph3DVisualizer.TextureFactory
 
             return newTexture;
         }
+
+        public static Texture2D Decompress (this Texture2D source)
+        {
+            var renderTex = RenderTexture.GetTemporary(
+                        source.width,
+                        source.height,
+                        0,
+                        RenderTextureFormat.Default,
+                        RenderTextureReadWrite.Linear);
+
+            Graphics.Blit(source, renderTex);
+            var previous = RenderTexture.active;
+            RenderTexture.active = renderTex;
+            var readableText = new Texture2D(source.width, source.height);
+            readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
+            readableText.Apply();
+            RenderTexture.active = previous;
+            RenderTexture.ReleaseTemporary(renderTex);
+            return readableText;
+        }
     }
 
+    [Serializable]
     public class CombinedImages : ICloneable
     {
         public PositionedImage[] Images { get; set; }
@@ -87,6 +108,7 @@ namespace Graph3DVisualizer.TextureFactory
         public object Clone () => new CombinedImages((PositionedImage[]) Images.Clone(), TextureWidth, TextureHeight, WrapMode, IsTransparentBackground);
     }
 
+    [Serializable]
     public class PositionedImage
     {
         public Vector2Int Position;

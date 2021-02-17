@@ -19,34 +19,50 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
 
 using Graph3DVisualizer.GraphTasks;
+using Graph3D.SurrogateTypesForSerialization;
+
+using Newtonsoft.Json;
 
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using System.Runtime.Serialization;
+using Graph3DVisualizer.Customizable;
 
 namespace Graph3DVisualizer.Scene
 {
-    public class SceneController : MonoBehaviour
+    [CustomizableGrandType(Type = typeof(SceneControllerParameters))]
+    public class SceneController : MonoBehaviour, ICustomizable<SceneControllerParameters>
     {
-        private Dictionary<string, Assembly> _asseblies;
-        private Type _currentTaskType;
-        private List<Type> _taskList;
-        private AbstractVisualTask _visualTask;
-
-        public Type CurrentTaskType
+        private static readonly List<JsonConverter> _jsonConverters = new List<JsonConverter>(4)
         {
-            get => _currentTaskType;
-            set => _currentTaskType = value == null || value.IsSubclassOf(typeof(AbstractVisualTask)) ? value : throw new Exception($"You can't cast {value.Name} to a VisualTask");
-        }
+            new NewtonsoftSurrogateConverter<Vector2, SurrogateVector2>(),
+            new NewtonsoftSurrogateConverter<Vector2Int, SurrogateVector2Int>(),
+            new NewtonsoftSurrogateConverter<Vector3,SurrogateVector3>(),
+            new NewtonsoftSurrogateConverter<Color,SurrogateColor>(),
+            new NewtonsoftSurrogateConverter<Quaternion,SurrogateQuaternion>(),
+        };
 
+        private static SurrogateSelector _surrogateSelector;
+
+        private AbstractVisualTask _activeTask;
+        private Dictionary<string, Assembly> _asseblies;
+        private List<Type> _taskList;
+
+        public AbstractVisualTask ActiveTask { get => _activeTask; private set => _activeTask = value; }
         public List<Type> TaskList { get => _taskList; private set => _taskList = value; }
-
-        public AbstractVisualTask VisualTask { get => _visualTask; private set => _visualTask = value; }
 
         private void Awake ()
         {
             _asseblies = new Dictionary<string, Assembly>();
+            _surrogateSelector = new SurrogateSelector();
+            _surrogateSelector.AddSurrogate(typeof(Vector2), new StreamingContext(StreamingContextStates.All), new SurrogateVector2());
+            _surrogateSelector.AddSurrogate(typeof(Vector2Int), new StreamingContext(StreamingContextStates.All), new SurrogateVector2Int());
+            _surrogateSelector.AddSurrogate(typeof(Vector3), new StreamingContext(StreamingContextStates.All), new SurrogateVector3());
+            _surrogateSelector.AddSurrogate(typeof(Color), new StreamingContext(StreamingContextStates.All), new SurrogateColor());
+            _surrogateSelector.AddSurrogate(typeof(Quaternion), new StreamingContext(StreamingContextStates.All), new SurrogateQuaternion());
+            _surrogateSelector.AddSurrogate(typeof(Texture2D), new StreamingContext(StreamingContextStates.All), new SurrogateTexture2D());
             DontDestroyOnLoad(gameObject);
         }
 
@@ -65,16 +81,6 @@ namespace Graph3DVisualizer.Scene
             }
         }
 
-        public void CreateTask ()
-        {
-            if (_currentTaskType != null)
-            {
-                var gameObject = new GameObject("VisualTask");
-                _visualTask = (AbstractVisualTask) gameObject.AddComponent(_currentTaskType);
-                _visualTask.InitTask();
-            }
-        }
-
         public void FindAllTasks ()
         {
             var assemblys = AppDomain.CurrentDomain.GetAssemblies();
@@ -90,6 +96,16 @@ namespace Graph3DVisualizer.Scene
             }
         }
 
+        public void Load ()
+        {
+        }
+
+        //public void StopAllTasks ()
+        //{
+        //    foreach (var acitveTask in ActiveTasks)
+        //        acitveTask.StopTask();
+        //    ActiveTasks.Clear();
+        //}
         public void LoadMods ()
         {
             var assembliesPath = Application.dataPath + "/ModAssemblies";
@@ -103,6 +119,84 @@ namespace Graph3DVisualizer.Scene
             }
         }
 
-        public void LoadScene (string name) => SceneManager.LoadScene(name);
+        public void SaveBinary (string path)
+        {
+            using (var fs = new FileStream(path, FileMode.Create))
+            {
+                var formatter = new BinaryFormatter { SurrogateSelector = _surrogateSelector };
+                formatter.Serialize(fs, DownloadParams());
+            }
+        }
+
+        public void LoadBinary (string path)
+        {
+            using (var fs = new FileStream(path, FileMode.Open))
+            {
+                var formatter = new BinaryFormatter { SurrogateSelector = _surrogateSelector };
+                var parameters = (SceneControllerParameters) formatter.Deserialize(fs);
+                SetupParams(parameters);
+            }
+        }
+
+        public void SaveJson (string path)
+        {
+            using (var sw = new StreamWriter(path))
+            {
+                var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, ReferenceLoopHandling = ReferenceLoopHandling.Error, Converters = _jsonConverters };
+                sw.WriteLine(JsonConvert.SerializeObject(DownloadParams(), Formatting.Indented, settings));
+            }
+        }
+
+        public void StartTask (int taskIndex, VisualTaskParameters visualTaskParameters = null)
+        {
+            var gameObject = new GameObject("VisualTask");
+            ActiveTask = (AbstractVisualTask) gameObject.AddComponent(TaskList[taskIndex]);
+            if (visualTaskParameters == null)
+                ActiveTask.InitTask();
+            else
+                CustomizableExtension.CallSetUpParams(ActiveTask, visualTaskParameters);
+        }
+
+        public void StopTask ()
+        {
+            _activeTask.DestroyTask();
+            Destroy(_activeTask.gameObject);
+        }
+
+        public SceneControllerParameters DownloadParams () => new SceneControllerParameters(_activeTask.GetType(), (VisualTaskParameters) CustomizableExtension.CallDownloadParams(_activeTask));
+
+        public void SetupParams (SceneControllerParameters parameters)
+        {
+            var index = TaskList.FindIndex(x => x == parameters.TaskType);
+            if (index > -1)
+            {
+                StartTask(index, parameters.VisualTaskParameters);
+            }
+        }
+
+        //public void StopTask<T> (Predicate<T> predicate) where T : AbstractVisualTask
+        //{
+        //    foreach (var acitveTask in ActiveTasks)
+        //    {
+        //        if (acitveTask is T task && predicate(task))
+        //        {
+        //            ActiveTasks.Remove(task);
+        //            task.StopTask();
+        //        }
+        //    }
+        //}
+    }
+
+    [Serializable]
+    public class SceneControllerParameters : AbstractCustomizableParameter
+    {
+        public Type TaskType { get; }
+        public VisualTaskParameters VisualTaskParameters { get; }
+
+        public SceneControllerParameters (Type taskType, VisualTaskParameters visualTaskParameters)
+        {
+            TaskType = taskType ?? throw new ArgumentNullException(nameof(taskType));
+            VisualTaskParameters = visualTaskParameters ?? throw new ArgumentNullException(nameof(visualTaskParameters));
+        }
     }
 }

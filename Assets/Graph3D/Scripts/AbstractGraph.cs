@@ -23,6 +23,7 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.Graph3D
 {
+    [Serializable]
     public struct LinkInfo
     {
         public EdgeParameters edgeParameters;
@@ -76,28 +77,29 @@ namespace Graph3DVisualizer.Graph3D
         }
     }
 
+    [Serializable]
     public struct VertexInfo
     {
-        public VertexParameters[] vertexParameters;
+        public VertexParameters vertexParameters;
         public Type vertexType;
 
-        public VertexInfo (Type vertexType, VertexParameters[] vertexParameters)
+        public VertexInfo (Type vertexType, VertexParameters vertexParameters)
         {
             this.vertexType = vertexType;
             this.vertexParameters = vertexParameters;
         }
 
-        public static implicit operator (Type vertexType, VertexParameters[] vertexParameters) (VertexInfo value)
+        public static implicit operator (Type vertexType, VertexParameters vertexParameters) (VertexInfo value)
         {
             return (value.vertexType, value.vertexParameters);
         }
 
-        public static implicit operator VertexInfo ((Type vertexType, VertexParameters[] vertexParameters) value)
+        public static implicit operator VertexInfo ((Type vertexType, VertexParameters vertexParameters) value)
         {
             return new VertexInfo(value.vertexType, value.vertexParameters);
         }
 
-        public void Deconstruct (out Type vertexType, out VertexParameters[] vertexParameters)
+        public void Deconstruct (out Type vertexType, out VertexParameters vertexParameters)
         {
             vertexType = this.vertexType;
             vertexParameters = this.vertexParameters;
@@ -107,14 +109,14 @@ namespace Graph3DVisualizer.Graph3D
         {
             return obj is VertexInfo other &&
                    EqualityComparer<Type>.Default.Equals(vertexType, other.vertexType) &&
-                   EqualityComparer<VertexParameters[]>.Default.Equals(vertexParameters, other.vertexParameters);
+                   EqualityComparer<VertexParameters>.Default.Equals(vertexParameters, other.vertexParameters);
         }
 
         public override int GetHashCode ()
         {
             var hashCode = -2103449114;
             hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(vertexType);
-            hashCode = hashCode * -1521134295 + EqualityComparer<VertexParameters[]>.Default.GetHashCode(vertexParameters);
+            hashCode = hashCode * -1521134295 + EqualityComparer<VertexParameters>.Default.GetHashCode(vertexParameters);
             return hashCode;
         }
     }
@@ -141,12 +143,17 @@ namespace Graph3DVisualizer.Graph3D
 
             foreach (var vertex in GetVertexes())
             {
-                vertexParameters.Add((vertex.GetType(), CustomizableExtension.CallDownloadParams<VertexParameters>(vertex).ToArray()));
+                vertexParameters.Add((vertex.GetType(), (VertexParameters) CustomizableExtension.CallDownloadParams(vertex)));
 
                 foreach (var outgoingLink in vertex.OutgoingLinks)
                 {
                     links.Add((vertex.Id, outgoingLink.AdjacentVertex.Id, outgoingLink.Edge.GetType(), (EdgeParameters) CustomizableExtension.CallDownloadParams(outgoingLink.Edge)));
                 }
+
+                //foreach (var incomingLink in vertex.IncomingLinks)
+                //{
+                //    links.Add((incomingLink.AdjacentVertex.Id, vertex.Id, incomingLink.Edge.GetType(), (EdgeParameters) CustomizableExtension.CallDownloadParams(incomingLink.Edge)));
+                //}
             }
 
             return new GraphParameters(vertexParameters.ToArray(), links, Id);
@@ -164,8 +171,7 @@ namespace Graph3DVisualizer.Graph3D
             {
                 foreach (var (vertexType, vertexParameters) in parameters.VertexParameters)
                 {
-                    foreach (var vertexParameter in vertexParameters)
-                        SpawnVertex(vertexType, vertexParameter);
+                    SpawnVertex(vertexType, vertexParameters);
                 }
             }
 
@@ -185,6 +191,7 @@ namespace Graph3DVisualizer.Graph3D
         public abstract AbstractVertex SpawnVertex (Type vertexType, VertexParameters parameters);
     }
 
+    [Serializable]
     public class GraphParameters : AbstractGraphObjectParameters
     {
         public List<LinkInfo> Links { get; }

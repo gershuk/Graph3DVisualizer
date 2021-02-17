@@ -23,17 +23,29 @@ namespace Graph3DVisualizer.Customizable
 {
     public static class CustomizableExtension
     {
-        public static AbstractCustomizableParameter CallDownloadParams (object customizable) =>
-           (AbstractCustomizableParameter) customizable.GetType().GetMethod(nameof(ICustomizable<AbstractCustomizableParameter>.DownloadParams),
-           new[] { (Attribute.GetCustomAttribute(customizable.GetType(), typeof(CustomizableGrandTypeAttribute), true) as CustomizableGrandTypeAttribute).Type })
-           .Invoke(customizable, null);
+        public static AbstractCustomizableParameter CallDownloadParams (object customizable)
+        {
+            var methodName = nameof(ICustomizable<AbstractCustomizableParameter>.DownloadParams);
+            var attribute = (CustomizableGrandTypeAttribute) Attribute.GetCustomAttribute(customizable.GetType(), typeof(CustomizableGrandTypeAttribute), true);
+            foreach (var interfaceType in customizable.GetType().GetInterfaces())
+            {
+                if (interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>) && interfaceType.GetGenericArguments()[0] == attribute.Type)
+                {
+                    var method = interfaceType.GetMethod(methodName);
+                    return (AbstractCustomizableParameter) method.Invoke(customizable, null);
+                }
+            }
 
+            throw new MissingMethodException(customizable.GetType().Name, methodName);
+        }
+
+        [Obsolete]
         public static List<T> CallDownloadParams<T> (object customizable) where T : AbstractCustomizableParameter
         {
             var parameters = new List<T>();
             foreach (var interfaceType in customizable.GetType().GetInterfaces())
             {
-                if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>)
+                if (interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>)
                     && (interfaceType.GetGenericArguments()[0].IsSubclassOf(typeof(T)) || interfaceType.GetGenericArguments()[0] == typeof(T)))
                 {
                     parameters.Add((T) interfaceType.GetMethod(nameof(ICustomizable<AbstractCustomizableParameter>.DownloadParams)).Invoke(customizable, null));
@@ -42,11 +54,24 @@ namespace Graph3DVisualizer.Customizable
             return parameters;
         }
 
-        public static void CallSetUpParams (object customizable, object parameter) =>
-            customizable.GetType().GetMethod(nameof(ICustomizable<AbstractCustomizableParameter>.SetupParams),
-            new[] { (Attribute.GetCustomAttribute(customizable.GetType(), typeof(CustomizableGrandTypeAttribute), true) as CustomizableGrandTypeAttribute).Type })
-            .Invoke(customizable, new[] { parameter });
+        public static void CallSetUpParams (object customizable, object parameter)
+        {
+            var methodName = nameof(ICustomizable<AbstractCustomizableParameter>.SetupParams);
+            var attribute = (CustomizableGrandTypeAttribute) Attribute.GetCustomAttribute(customizable.GetType(), typeof(CustomizableGrandTypeAttribute), true);
+            foreach (var interfaceType in customizable.GetType().GetInterfaces())
+            {
+                if (interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>) && interfaceType.GetGenericArguments()[0] == attribute.Type)
+                {
+                    var method = interfaceType.GetMethod(methodName);
+                    method.Invoke(customizable, new[] { parameter });
+                    return;
+                }
+            }
 
+            throw new MissingMethodException();
+        }
+
+        [Obsolete]
         public static void CallSetUpParams (object customizable, object[] parameters)
         {
             foreach (var param in parameters)
@@ -68,6 +93,7 @@ namespace Graph3DVisualizer.Customizable
         }
     }
 
+    [Serializable]
     public abstract class AbstractCustomizableParameter { };
 
     [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Class, Inherited = true, AllowMultiple = false)]

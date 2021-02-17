@@ -270,6 +270,7 @@ namespace Graph3DVisualizer.Billboards
     /// <summary>
     /// Parameters for creating a new <see cref="Billboard"/> object.
     /// </summary>
+    [Serializable]
     public sealed class BillboardParameters : AbstractCustomizableParameter
     {
         /// <summary>

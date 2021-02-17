@@ -26,14 +26,16 @@ namespace Graph3DVisualizer.GUI
     {
         public readonly struct ButtonParameters
         {
+            public Image Image { get; }
             public string Name { get; }
             public UnityAction OnClickFunction { get; }
             public RectTransformParameters RectTransformParameters { get; }
 
-            public ButtonParameters (string name, in RectTransformParameters rectTransformParameters, UnityAction onClickFunction)
+            public ButtonParameters (string name = default, in RectTransformParameters rectTransformParameters = default, Image image = default, UnityAction onClickFunction = default)
             {
-                Name = name ?? throw new ArgumentNullException(nameof(name));
+                Name = name ?? string.Empty;
                 RectTransformParameters = rectTransformParameters;
+                Image = image;
                 OnClickFunction = onClickFunction;
             }
         }
@@ -67,7 +69,7 @@ namespace Graph3DVisualizer.GUI
 
             public TextParameters (string text, Color color, Font font, TextAnchor anchor, int size, in RectTransformParameters rectTransformParameters)
             {
-                Text = text ?? throw new ArgumentNullException(nameof(text));
+                Text = text ?? string.Empty;
                 Color = color;
                 Font = font != null ? font : throw new ArgumentNullException(nameof(font));
                 Anchor = anchor;
@@ -79,7 +81,13 @@ namespace Graph3DVisualizer.GUI
         public static GameObject CreateButton (in ButtonParameters parameters)
         {
             var newButton = new GameObject($"{parameters.Name}Button", typeof(Image), typeof(Button), typeof(LayoutElement));
-            newButton.GetComponent<Button>().onClick.AddListener(parameters.OnClickFunction);
+
+            var buttonComponent = newButton.GetComponent<Button>();
+            if (parameters.OnClickFunction != null)
+                buttonComponent.onClick.AddListener(parameters.OnClickFunction);
+            if (parameters.Image != null)
+                buttonComponent.image = parameters.Image;
+
             newButton.GetComponent<RectTransform>().SetUpRectTransform(parameters.RectTransformParameters);
             return newButton;
         }

@@ -60,23 +60,24 @@ namespace Graph3DVisualizer.Scene
 
             var taskList = _sceneControler.TaskList;
 
-            var buttonHeight = _content.GetComponent<RectTransform>().sizeDelta.y / 5;
+            var buttonHeight = _content.GetComponent<RectTransform>().sizeDelta.y / 8;
             var buttonWidth = _content.GetComponent<RectTransform>().sizeDelta.x;
-            for (var i = 0; i < taskList.Count; i++)
+            var i = 0;
+            for (i = 0; i < taskList.Count; i++)
             {
                 var task = taskList[i];
                 {
                     var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
                         new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
-                    var buttonParameters = new ButtonParameters(task.Name, buttonRectParameters,
+                    var index = i;
+                    var buttonParameters = new ButtonParameters(task.Name, buttonRectParameters, null,
                         () =>
                         {
                             _state = State.TaskScene;
-                            _sceneControler.CurrentTaskType = task;
                             ChangeMenuState(false);
-                            if (_sceneControler.VisualTask != null)
-                                _sceneControler.VisualTask.DestroyTask();
-                            CreateTask();
+                            if (_sceneControler.ActiveTask)
+                                _sceneControler.StopTask();
+                            _sceneControler.StartTask(index);
                         });
                     var newButton = CreateButton(buttonParameters);
                     var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
@@ -87,30 +88,68 @@ namespace Graph3DVisualizer.Scene
 
             {
                 var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
-                            new Vector2(buttonWidth / 2, -buttonHeight * (taskList.Count + 0.5f)));
-                var buttonParameters = new ButtonParameters("StartMenu", buttonRectParameters,
+                            new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
+                var buttonParameters = new ButtonParameters("StartMenu", buttonRectParameters, null,
                     () =>
                     {
                         _state = State.StartMenu;
-                        _sceneControler.CurrentTaskType = null;
+                        if (_sceneControler.ActiveTask)
+                            _sceneControler.StopTask();
                         ChangeMenuState(true);
-                        if (_sceneControler.VisualTask != null)
-                            _sceneControler.VisualTask.DestroyTask();
                     });
                 var newButton = CreateButton(buttonParameters);
                 var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
                 var textParameters = new TextParameters("StartMenu", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
                 var newText = CreateText(textParameters);
+                i++;
             }
 
             {
                 var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
-                            new Vector2(buttonWidth / 2, -buttonHeight * (taskList.Count + 1 + 0.5f)));
-                var buttonParameters = new ButtonParameters("Check", buttonRectParameters,
-                    () => { if (_state == State.TaskScene) foreach (var verdict in _sceneControler.VisualTask.GetResult()) Debug.LogError(verdict); });
+                            new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
+                var buttonParameters = new ButtonParameters("Check", buttonRectParameters, null,
+                    () =>
+                    {
+                        if (_state == State.TaskScene)
+                        {
+                            Debug.LogError($"{_sceneControler.ActiveTask.name} result:");
+                            foreach (var verdict in _sceneControler.ActiveTask.GetResult())
+                                Debug.LogError(verdict);
+                            Debug.LogError("=================================");
+                        }
+                    });
                 var newButton = CreateButton(buttonParameters);
                 var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
                 var textParameters = new TextParameters("Check", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
+                var newText = CreateText(textParameters);
+                i++;
+            }
+
+            {
+                var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
+                            new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
+                var buttonParameters = new ButtonParameters("Save", buttonRectParameters, null, () => _sceneControler.SaveBinary("saveFile.binary"));
+                var newButton = CreateButton(buttonParameters);
+                var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+                var textParameters = new TextParameters("Save", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
+                var newText = CreateText(textParameters);
+                i++;
+            }
+
+            {
+                var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
+                            new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
+                var buttonParameters = new ButtonParameters("Load", buttonRectParameters, null, () =>
+                {
+                    _state = State.TaskScene;
+                    if (_sceneControler.ActiveTask)
+                        _sceneControler.StopTask();
+                    _sceneControler.LoadBinary("saveFile.binary");
+                    ChangeMenuState(false);
+                });
+                var newButton = CreateButton(buttonParameters);
+                var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+                var textParameters = new TextParameters("Load", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
                 var newText = CreateText(textParameters);
             }
         }
@@ -127,17 +166,11 @@ namespace Graph3DVisualizer.Scene
             _menu.SetActive(_isActive);
             Cursor.visible = state;
 
-            if (_sceneControler.VisualTask != null)
+            if (_sceneControler.ActiveTask != null)
             {
-                foreach (var player in _sceneControler.VisualTask.Players)
+                foreach (var player in _sceneControler.ActiveTask.Players)
                     player.gameObject.SetActive(!state);
             }
-        }
-
-        private void CreateTask ()
-        {
-            if (_state == State.TaskScene)
-                _sceneControler.CreateTask();
         }
     }
 }

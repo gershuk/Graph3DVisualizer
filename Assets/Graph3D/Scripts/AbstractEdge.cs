@@ -113,6 +113,7 @@ namespace Graph3DVisualizer.Graph3D
         public abstract void UpdateVisibility ();
     }
 
+    [Serializable]
     public class EdgeParameters : AbstractGraphObjectParameters
     {
         public Texture2D ArrowTexture { get; }

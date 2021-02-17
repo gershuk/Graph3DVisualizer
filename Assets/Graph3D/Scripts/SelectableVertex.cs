@@ -109,7 +109,7 @@ namespace Graph3DVisualizer.Graph3D
         }
 
         SelectableVertexParameters ICustomizable<SelectableVertexParameters>.DownloadParams () =>
-            new SelectableVertexParameters(DownloadParams(), _billboardControler.GetBillboard(_selectFrameId).DownloadParams(), IsSelected, Id);
+            new SelectableVertexParameters((this as ICustomizable<VertexParameters>).DownloadParams(), _billboardControler.GetBillboard(_selectFrameId).DownloadParams(), IsSelected, Id);
 
         public void SetSelectFrame (BillboardParameters billboardParameters)
         {
@@ -128,6 +128,7 @@ namespace Graph3DVisualizer.Graph3D
         }
     }
 
+    [Serializable]
     public class SelectableVertexParameters : VertexParameters
     {
         public bool IsSelected { get; }

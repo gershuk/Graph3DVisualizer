@@ -108,6 +108,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         public void SetupParams (SelectItemToolParams parameters) => _colors = parameters.Colors;
     }
 
+    [Serializable]
     public class SelectItemToolParams : AbstractToolParams
     {
         public IReadOnlyList<Color> Colors { get; }

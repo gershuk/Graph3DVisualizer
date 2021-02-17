@@ -62,12 +62,12 @@ namespace Graph3DVisualizer.Graph3D
 
         public override AbstractVertex SpawnVertex (Type vertexType, VertexParameters parameters)
         {
-            if (vertexType.IsSubclassOf(typeof(AbstractVertex)))
+            if (!vertexType.IsSubclassOf(typeof(AbstractVertex)))
                 throw new WrongTypeInCustomizableParameterException(typeof(AbstractVertex), vertexType);
 
             var vertex = Instantiate(_vertexPrefab, parameters.Position, parameters.Rotation, _transform);
             var vertexComponent = (AbstractVertex) vertex.gameObject.AddComponent(vertexType);
-            CustomizableExtension.CallSetUpParams(vertexComponent, new[] { parameters });
+            CustomizableExtension.CallSetUpParams(vertexComponent, parameters);
             _vertexes.Add(vertexComponent.Id, vertexComponent);
             return vertexComponent;
         }

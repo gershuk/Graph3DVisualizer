@@ -31,6 +31,7 @@ namespace Graph3DVisualizer.Graph3D
         public string Id { get => _id; protected set => _id = value ?? Guid.NewGuid().ToString(); }
     }
 
+    [Serializable]
     public abstract class AbstractGraphObjectParameters : AbstractCustomizableParameter
     {
         public string Id { get; protected set; }

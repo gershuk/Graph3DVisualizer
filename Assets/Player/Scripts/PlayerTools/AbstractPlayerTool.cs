@@ -25,12 +25,13 @@ using static UnityEngine.Physics;
 
 namespace Graph3DVisualizer.PlayerInputControls
 {
+    [Serializable]
     public readonly struct ToolConfig
     {
-        public AbstractToolParams[] ToolParams { get; }
+        public AbstractToolParams ToolParams { get; }
         public Type ToolType { get; }
 
-        public ToolConfig (Type toolType, params AbstractToolParams[] toolParams)
+        public ToolConfig (Type toolType, AbstractToolParams toolParams)
         {
             if (!toolType.IsSubclassOf(typeof(AbstractPlayerTool)))
                 throw new Exception($"{toolType} is not subclass of PlayerTool");
@@ -50,6 +51,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         public abstract void RegisterEvents (IInputActionCollection inputActions);
     }
 
+    [Serializable]
     public abstract class AbstractToolParams : AbstractCustomizableParameter
     { }
 }

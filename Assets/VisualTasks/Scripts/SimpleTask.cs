@@ -32,6 +32,7 @@ namespace Graph3DVisualizer.GraphTasks
         private const string _mainTexture = "Textures/Default";
         private const string _playerPrefabPath = "Prefabs/Player";
         private const string _selectFrameTexture = "Textures/SelectFrame";
+
         public override IReadOnlyCollection<AbstractGraph> Graphs { get => _graphs; protected set => _graphs = (List<AbstractGraph>) value; }
         public override IReadOnlyCollection<AbstractPlayer> Players { get => _players; protected set => _players = (List<AbstractPlayer>) value; }
 
@@ -50,7 +51,7 @@ namespace Graph3DVisualizer.GraphTasks
             var TextTextureFactory = new TextTextureFactory(customFont, 32);
             var resizedTetxure = Texture2DExtension.ResizeTexture(mainTexture, 200, 200);
 
-            for (var i = 0; i < 100; ++i)
+            for (var i = 0; i < 2; ++i)
             {
                 var text = TextTextureFactory.MakeTextTexture($"Vertex{i}");
                 text = Texture2DExtension.ResizeTexture(text, 200, (int) (Math.Truncate(200.0 / text.width + 1)) * text.height);
@@ -79,7 +80,7 @@ namespace Graph3DVisualizer.GraphTasks
                     currentVertex.Link<Edge, EdgeParameters>(lastVertex, edgeParams);
                 lastVertex = currentVertex;
 
-                Destroy(text);
+                //Destroy(text);
             }
 
             return graphControler;
@@ -112,12 +113,8 @@ namespace Graph3DVisualizer.GraphTasks
                     new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)),
                     new ToolConfig(typeof(GrabItemTool), null),
                     new ToolConfig(typeof(EdgeCreaterTool), new EdgeCreaterToolParams(edgeTypes)),
-                    new ToolConfig(typeof(ClickTool), new ClickToolParams(player.gameObject))
+                    new ToolConfig(typeof(ClickTool), new ClickToolParams())
                 }));
         }
-
-        public override void StartTask () => throw new NotImplementedException();
-
-        public override void StopTask () => throw new NotImplementedException();
     }
 }

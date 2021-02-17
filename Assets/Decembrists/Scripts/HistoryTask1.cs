@@ -141,9 +141,5 @@ namespace Graph3DVisualizer.GraphTasks
                 }));
             _players.Add(flyPlayer);
         }
-
-        public override void StartTask () => throw new NotImplementedException();
-
-        public override void StopTask () => throw new NotImplementedException();
     }
 }

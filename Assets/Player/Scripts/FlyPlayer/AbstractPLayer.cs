@@ -26,6 +26,7 @@ using UnityEngine;
 namespace Graph3DVisualizer.PlayerInputControls
 {
     [CustomizableGrandType(Type = typeof(PlayerParameters))]
+    [RequireComponent(typeof(Camera))]
     public abstract class AbstractPlayer : MonoBehaviour, ICustomizable<PlayerParameters>
     {
         protected int _currentToolIndex = 0;
@@ -43,7 +44,7 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public PlayerParameters DownloadParams () =>
             new PlayerParameters(transform.position, transform.eulerAngles, _moveComponent.MovingSpeed, _moveComponent.RotationSpeed,
-            _playerTools.Select(tool => new ToolConfig(tool.GetType(), CustomizableExtension.CallDownloadParams<AbstractToolParams>(tool).ToArray())).ToArray());
+            _playerTools.Select(tool => new ToolConfig(tool.GetType(), (AbstractToolParams) CustomizableExtension.CallDownloadParams(tool))).ToArray());
 
         public void SelectTool (int index)
         {
@@ -74,6 +75,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         }
     }
 
+    [Serializable]
     public class PlayerParameters : AbstractCustomizableParameter
     {
         public Vector3 EulerAngles { get; }

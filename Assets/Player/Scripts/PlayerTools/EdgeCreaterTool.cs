@@ -177,6 +177,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         public void SetupParams (EdgeCreaterToolParams parameters) => _edgeTypes = parameters.EdgeTypes.ToList();
     }
 
+    [Serializable]
     public class EdgeCreaterToolParams : AbstractToolParams
     {
         public IReadOnlyList<Type> EdgeTypes { get; private set; }
