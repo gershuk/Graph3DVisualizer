@@ -46,26 +46,6 @@ namespace Graph3DVisualizer.TextureFactory
             return newTexture;
         }
 
-        public static Texture2D ResizeTexture (Texture2D texture, int textureWidth, int textureHeight)
-        {
-            var renderTexture = RenderTexture.GetTemporary(textureWidth, textureHeight);
-            renderTexture.filterMode = FilterMode.Point;
-            RenderTexture.active = renderTexture;
-
-            Graphics.Blit(texture, renderTexture);
-
-            var newTexture = new Texture2D(textureWidth, textureHeight);
-            newTexture.ReadPixels(new Rect(0, 0, textureWidth, textureHeight), 0, 0);
-            newTexture.Apply();
-
-            RenderTexture.active = null;
-            RenderTexture.ReleaseTemporary(renderTexture);
-
-            newTexture.wrapMode = texture.wrapMode;
-
-            return newTexture;
-        }
-
         public static Texture2D Decompress (this Texture2D source)
         {
             var renderTex = RenderTexture.GetTemporary(
@@ -84,6 +64,26 @@ namespace Graph3DVisualizer.TextureFactory
             RenderTexture.active = previous;
             RenderTexture.ReleaseTemporary(renderTex);
             return readableText;
+        }
+
+        public static Texture2D ResizeTexture (Texture2D texture, int textureWidth, int textureHeight)
+        {
+            var renderTexture = RenderTexture.GetTemporary(textureWidth, textureHeight);
+            renderTexture.filterMode = FilterMode.Point;
+            RenderTexture.active = renderTexture;
+
+            Graphics.Blit(texture, renderTexture);
+
+            var newTexture = new Texture2D(textureWidth, textureHeight);
+            newTexture.ReadPixels(new Rect(0, 0, textureWidth, textureHeight), 0, 0);
+            newTexture.Apply();
+
+            RenderTexture.active = null;
+            RenderTexture.ReleaseTemporary(renderTexture);
+
+            newTexture.wrapMode = texture.wrapMode;
+
+            return newTexture;
         }
     }
 

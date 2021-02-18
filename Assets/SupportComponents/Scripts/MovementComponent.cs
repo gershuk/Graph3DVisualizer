@@ -122,6 +122,7 @@ namespace Graph3DVisualizer.SupportComponents
 
         public float MovingSpeed { get => _movingSpeed * Gears[CurrentGearIndex].multiplier; set => _movingSpeed = value; }
 
+        public Vector3 Rotation { get => _rotation; set => _rotation = value; }
         public float RotationSpeed { get => _rotationSpeed; set => _rotationSpeed = value; }
 
         public TransmissionMode TransmissionMode
@@ -151,9 +152,9 @@ namespace Graph3DVisualizer.SupportComponents
             _startMovingTime = -1;
             _lastTimeCheck = -1;
 
-            _rotation = Vector3.zero;
             _isMoving = false;
             _transform = transform;
+            Rotation = _transform.eulerAngles;
         }
 
         //ToDo : Check only when automatic or always?
@@ -209,18 +210,12 @@ namespace Graph3DVisualizer.SupportComponents
         public void Rotate (Vector2 rotationChange, float deltaTime)
         {
             var rotDiv = rotationChange * RotationSpeed * deltaTime;
-            _rotation.x = (_rotation.x - rotDiv.y) % 360f;
-            _rotation.y = (_rotation.y + rotDiv.x) % 360f;
 
-            _rotation.x = Mathf.Min(_rotation.x, _maxRotX);
-            _rotation.y = Mathf.Min(_rotation.y, _maxRotY);
+            Rotation = new Vector3((Rotation.x - rotDiv.y) % 360f, (Rotation.y + rotDiv.x) % 360f, 0);
+            Rotation = new Vector3(Mathf.Min(Rotation.x, _maxRotX), Mathf.Min(Rotation.y, _maxRotY), 0);
+            Rotation = new Vector3(Mathf.Max(Rotation.x, _minRotX), Mathf.Max(Rotation.y, _minRotY), 0);
 
-            _rotation.x = Mathf.Max(_rotation.x, _minRotX);
-            _rotation.y = Mathf.Max(_rotation.y, _minRotY);
-
-            _rotation.z = 0;
-
-            _transform.eulerAngles = _rotation;
+            _transform.eulerAngles = Rotation;
         }
 
         public void Translate (Vector3 directionVector, float deltaTime)

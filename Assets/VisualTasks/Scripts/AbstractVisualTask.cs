@@ -26,6 +26,94 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.GraphTasks
 {
+    [Serializable]
+    public struct GraphInfo
+    {
+        public GraphParameters graphParameters;
+        public Type graphType;
+
+        public GraphInfo (Type graphType, GraphParameters graphParameters)
+        {
+            this.graphType = graphType;
+            this.graphParameters = graphParameters;
+        }
+
+        public static implicit operator (Type graphType, GraphParameters graphParameters) (GraphInfo value)
+        {
+            return (value.graphType, value.graphParameters);
+        }
+
+        public static implicit operator GraphInfo ((Type graphType, GraphParameters graphParameters) value)
+        {
+            return new GraphInfo(value.graphType, value.graphParameters);
+        }
+
+        public void Deconstruct (out Type graphType, out GraphParameters graphParameters)
+        {
+            graphType = this.graphType;
+            graphParameters = this.graphParameters;
+        }
+
+        public override bool Equals (object obj)
+        {
+            return obj is GraphInfo other &&
+                   EqualityComparer<Type>.Default.Equals(graphType, other.graphType) &&
+                   EqualityComparer<GraphParameters>.Default.Equals(graphParameters, other.graphParameters);
+        }
+
+        public override int GetHashCode ()
+        {
+            var hashCode = 459771302;
+            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(graphType);
+            hashCode = hashCode * -1521134295 + EqualityComparer<GraphParameters>.Default.GetHashCode(graphParameters);
+            return hashCode;
+        }
+    }
+
+    [Serializable]
+    public struct PlayerInfo
+    {
+        public PlayerParameters playerParameters;
+        public Type playerType;
+
+        public PlayerInfo (Type playerType, PlayerParameters playerParameters)
+        {
+            this.playerType = playerType;
+            this.playerParameters = playerParameters;
+        }
+
+        public static implicit operator (Type playerType, PlayerParameters playerParameters) (PlayerInfo value)
+        {
+            return (value.playerType, value.playerParameters);
+        }
+
+        public static implicit operator PlayerInfo ((Type playerType, PlayerParameters playerParameters) value)
+        {
+            return new PlayerInfo(value.playerType, value.playerParameters);
+        }
+
+        public void Deconstruct (out Type playerType, out PlayerParameters playerParameters)
+        {
+            playerType = this.playerType;
+            playerParameters = this.playerParameters;
+        }
+
+        public override bool Equals (object obj)
+        {
+            return obj is PlayerInfo other &&
+                   EqualityComparer<Type>.Default.Equals(playerType, other.playerType) &&
+                   EqualityComparer<PlayerParameters>.Default.Equals(playerParameters, other.playerParameters);
+        }
+
+        public override int GetHashCode ()
+        {
+            var hashCode = -640872516;
+            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(playerType);
+            hashCode = hashCode * -1521134295 + EqualityComparer<PlayerParameters>.Default.GetHashCode(playerParameters);
+            return hashCode;
+        }
+    }
+
     [CustomizableGrandType(Type = typeof(VisualTaskParameters))]
     public abstract class AbstractVisualTask : MonoBehaviour, ICustomizable<VisualTaskParameters>
     {
@@ -117,93 +205,5 @@ namespace Graph3DVisualizer.GraphTasks
         Correct = 0,
         Incorrect = 1,
         Undefined = 2,
-    }
-
-    [Serializable]
-    public struct GraphInfo
-    {
-        public Type graphType;
-        public GraphParameters graphParameters;
-
-        public GraphInfo (Type graphType, GraphParameters graphParameters)
-        {
-            this.graphType = graphType;
-            this.graphParameters = graphParameters;
-        }
-
-        public override bool Equals (object obj)
-        {
-            return obj is GraphInfo other &&
-                   EqualityComparer<Type>.Default.Equals(graphType, other.graphType) &&
-                   EqualityComparer<GraphParameters>.Default.Equals(graphParameters, other.graphParameters);
-        }
-
-        public override int GetHashCode ()
-        {
-            var hashCode = 459771302;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(graphType);
-            hashCode = hashCode * -1521134295 + EqualityComparer<GraphParameters>.Default.GetHashCode(graphParameters);
-            return hashCode;
-        }
-
-        public void Deconstruct (out Type graphType, out GraphParameters graphParameters)
-        {
-            graphType = this.graphType;
-            graphParameters = this.graphParameters;
-        }
-
-        public static implicit operator (Type graphType, GraphParameters graphParameters) (GraphInfo value)
-        {
-            return (value.graphType, value.graphParameters);
-        }
-
-        public static implicit operator GraphInfo ((Type graphType, GraphParameters graphParameters) value)
-        {
-            return new GraphInfo(value.graphType, value.graphParameters);
-        }
-    }
-
-    [Serializable]
-    public struct PlayerInfo
-    {
-        public Type playerType;
-        public PlayerParameters playerParameters;
-
-        public PlayerInfo (Type playerType, PlayerParameters playerParameters)
-        {
-            this.playerType = playerType;
-            this.playerParameters = playerParameters;
-        }
-
-        public override bool Equals (object obj)
-        {
-            return obj is PlayerInfo other &&
-                   EqualityComparer<Type>.Default.Equals(playerType, other.playerType) &&
-                   EqualityComparer<PlayerParameters>.Default.Equals(playerParameters, other.playerParameters);
-        }
-
-        public override int GetHashCode ()
-        {
-            var hashCode = -640872516;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(playerType);
-            hashCode = hashCode * -1521134295 + EqualityComparer<PlayerParameters>.Default.GetHashCode(playerParameters);
-            return hashCode;
-        }
-
-        public void Deconstruct (out Type playerType, out PlayerParameters playerParameters)
-        {
-            playerType = this.playerType;
-            playerParameters = this.playerParameters;
-        }
-
-        public static implicit operator (Type playerType, PlayerParameters playerParameters) (PlayerInfo value)
-        {
-            return (value.playerType, value.playerParameters);
-        }
-
-        public static implicit operator PlayerInfo ((Type playerType, PlayerParameters playerParameters) value)
-        {
-            return new PlayerInfo(value.playerType, value.playerParameters);
-        }
     }
 }

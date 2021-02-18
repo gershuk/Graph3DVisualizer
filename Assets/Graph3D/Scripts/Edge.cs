@@ -102,7 +102,6 @@ namespace Graph3DVisualizer.Graph3D
             _defaultArrowTexture = _defaultArrowTexture == null ? Resources.Load<Texture2D>(_arrowTexturePath) : _defaultArrowTexture;
             _defaultLineTexture = _defaultLineTexture == null ? Resources.Load<Texture2D>(_lineTexturePath) : _defaultLineTexture;
 
-
             ArrowTexture = _defaultArrowTexture;
             LineTexture = _defaultLineTexture;
 

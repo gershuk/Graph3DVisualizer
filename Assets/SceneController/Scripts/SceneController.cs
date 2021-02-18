@@ -19,16 +19,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-using Graph3DVisualizer.GraphTasks;
 using Graph3D.SurrogateTypesForSerialization;
+
+using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.GraphTasks;
 
 using Newtonsoft.Json;
 
 using UnityEngine;
-using System.Runtime.Serialization;
-using Graph3DVisualizer.Customizable;
 
 namespace Graph3DVisualizer.Scene
 {
@@ -37,11 +38,11 @@ namespace Graph3DVisualizer.Scene
     {
         private static readonly List<JsonConverter> _jsonConverters = new List<JsonConverter>(4)
         {
-            new NewtonsoftSurrogateConverter<Vector2, SurrogateVector2>(),
-            new NewtonsoftSurrogateConverter<Vector2Int, SurrogateVector2Int>(),
-            new NewtonsoftSurrogateConverter<Vector3,SurrogateVector3>(),
-            new NewtonsoftSurrogateConverter<Color,SurrogateColor>(),
-            new NewtonsoftSurrogateConverter<Quaternion,SurrogateQuaternion>(),
+            new NewtonsoftSurrogateConverter<Vector2, JsonVector2>(),
+            new NewtonsoftSurrogateConverter<Vector2Int, JsonVector2Int>(),
+            new NewtonsoftSurrogateConverter<Vector3,JsonVector3>(),
+            new NewtonsoftSurrogateConverter<Color,JsonColor>(),
+            new NewtonsoftSurrogateConverter<Quaternion,JsonQuaternion>(),
         };
 
         private static SurrogateSelector _surrogateSelector;
@@ -81,6 +82,8 @@ namespace Graph3DVisualizer.Scene
             }
         }
 
+        public SceneControllerParameters DownloadParams () => new SceneControllerParameters(_activeTask.GetType(), (VisualTaskParameters) CustomizableExtension.CallDownloadParams(_activeTask));
+
         public void FindAllTasks ()
         {
             var assemblys = AppDomain.CurrentDomain.GetAssemblies();
@@ -98,6 +101,16 @@ namespace Graph3DVisualizer.Scene
 
         public void Load ()
         {
+        }
+
+        public void LoadBinary (string path)
+        {
+            using (var fs = new FileStream(path, FileMode.Open))
+            {
+                var formatter = new BinaryFormatter { SurrogateSelector = _surrogateSelector };
+                var parameters = (SceneControllerParameters) formatter.Deserialize(fs);
+                SetupParams(parameters);
+            }
         }
 
         //public void StopAllTasks ()
@@ -128,22 +141,21 @@ namespace Graph3DVisualizer.Scene
             }
         }
 
-        public void LoadBinary (string path)
-        {
-            using (var fs = new FileStream(path, FileMode.Open))
-            {
-                var formatter = new BinaryFormatter { SurrogateSelector = _surrogateSelector };
-                var parameters = (SceneControllerParameters) formatter.Deserialize(fs);
-                SetupParams(parameters);
-            }
-        }
-
         public void SaveJson (string path)
         {
             using (var sw = new StreamWriter(path))
             {
                 var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, ReferenceLoopHandling = ReferenceLoopHandling.Error, Converters = _jsonConverters };
                 sw.WriteLine(JsonConvert.SerializeObject(DownloadParams(), Formatting.Indented, settings));
+            }
+        }
+
+        public void SetupParams (SceneControllerParameters parameters)
+        {
+            var index = TaskList.FindIndex(x => x == parameters.TaskType);
+            if (index > -1)
+            {
+                StartTask(index, parameters.VisualTaskParameters);
             }
         }
 
@@ -161,17 +173,6 @@ namespace Graph3DVisualizer.Scene
         {
             _activeTask.DestroyTask();
             Destroy(_activeTask.gameObject);
-        }
-
-        public SceneControllerParameters DownloadParams () => new SceneControllerParameters(_activeTask.GetType(), (VisualTaskParameters) CustomizableExtension.CallDownloadParams(_activeTask));
-
-        public void SetupParams (SceneControllerParameters parameters)
-        {
-            var index = TaskList.FindIndex(x => x == parameters.TaskType);
-            if (index > -1)
-            {
-                StartTask(index, parameters.VisualTaskParameters);
-            }
         }
 
         //public void StopTask<T> (Predicate<T> predicate) where T : AbstractVisualTask
