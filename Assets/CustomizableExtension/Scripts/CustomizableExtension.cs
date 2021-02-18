@@ -18,9 +18,12 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-//ToDo need to refactor this module
+//ToDo : need to refactor this module
 namespace Graph3DVisualizer.Customizable
 {
+    /// <summary>
+    ///  A class containing functions for dynamically calling methods <see cref="ICustomizable{TParams}.DownloadParams"/>, <see cref="ICustomizable{TParams}.SetupParams(TParams)"/>.
+    /// </summary>
     public static class CustomizableExtension
     {
         public static AbstractCustomizableParameter CallDownloadParams (object customizable)
@@ -93,9 +96,15 @@ namespace Graph3DVisualizer.Customizable
         }
     }
 
+    /// <summary>
+    /// Abstract class for setup and download object parameters.
+    /// </summary>
     [Serializable]
     public abstract class AbstractCustomizableParameter { };
 
+    /// <summary>
+    /// An attribute that specifies which type of parameters to use for <see cref="CustomizableExtension.CallDownloadParams(object)"/>, <see cref="CustomizableExtension.CallSetUpParams(object, object)"/>.
+    /// </summary>
     [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
     sealed public class CustomizableGrandTypeAttribute : Attribute
     {
@@ -126,6 +135,9 @@ namespace Graph3DVisualizer.Customizable
         }
     }
 
+    /// <summary>
+    /// Interface for setup and download object parameters.
+    /// </summary>
     public interface ICustomizable<TParams> where TParams : AbstractCustomizableParameter
     {
         TParams DownloadParams ();

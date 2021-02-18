@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters" kind="struct" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::GUI::GUIFactory::RectTransformParameters</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters_1aba34740f0a2a850125323871ebd69ace" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Vector2</type>
+        <definition>Vector2 Graph3DVisualizer.GUI.GUIFactory.RectTransformParameters.AnchoredPosition</definition>
+        <argsstring></argsstring>
+        <name>AnchoredPosition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="48" column="28" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters_1a8521018eba0f990120b1032aea4e3d14" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Vector2</type>
+        <definition>Vector2 Graph3DVisualizer.GUI.GUIFactory.RectTransformParameters.AnchorMax</definition>
+        <argsstring></argsstring>
+        <name>AnchorMax</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="49" column="28" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="49" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters_1a24267b5797c21169b8afaf483adf7086" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Vector2</type>
+        <definition>Vector2 Graph3DVisualizer.GUI.GUIFactory.RectTransformParameters.AnchorMin</definition>
+        <argsstring></argsstring>
+        <name>AnchorMin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="50" column="28" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="50" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters_1a92a5cd70d49936a523c69bc02c174f46" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Transform</type>
+        <definition>Transform Graph3DVisualizer.GUI.GUIFactory.RectTransformParameters.Parent</definition>
+        <argsstring></argsstring>
+        <name>Parent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="51" column="30" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters_1abfb3082b52940ca2e46b2e2caea5f4f5" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Vector2</type>
+        <definition>Vector2 Graph3DVisualizer.GUI.GUIFactory.RectTransformParameters.SizeDelta</definition>
+        <argsstring></argsstring>
+        <name>SizeDelta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="52" column="28" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="52" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters_1af310a15087a2d3fb51a29b667dece37d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.GUI.GUIFactory.RectTransformParameters.RectTransformParameters</definition>
+        <argsstring>(Transform parent, Vector2 anchorMin, Vector2 anchorMax, Vector2 sizeDelta, Vector2 anchoredPosition)</argsstring>
+        <name>RectTransformParameters</name>
+        <param>
+          <type>Transform</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>anchorMin</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>anchorMax</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>sizeDelta</declname>
+        </param>
+        <param>
+          <type>Vector2</type>
+          <declname>anchoredPosition</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="54" column="20" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="54" bodyend="61"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="46" column="24" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="47" bodyend="62"/>
+    <listofallmembers>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters_1aba34740f0a2a850125323871ebd69ace" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory::RectTransformParameters</scope><name>AnchoredPosition</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters_1a8521018eba0f990120b1032aea4e3d14" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory::RectTransformParameters</scope><name>AnchorMax</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters_1a24267b5797c21169b8afaf483adf7086" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory::RectTransformParameters</scope><name>AnchorMin</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters_1a92a5cd70d49936a523c69bc02c174f46" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory::RectTransformParameters</scope><name>Parent</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters_1af310a15087a2d3fb51a29b667dece37d" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory::RectTransformParameters</scope><name>RectTransformParameters</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters_1abfb3082b52940ca2e46b2e2caea5f4f5" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory::RectTransformParameters</scope><name>SizeDelta</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::GraphTasks::HistoryTask1</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task" prot="public" virt="non-virtual">Graph3DVisualizer.GraphTasks.AbstractVisualTask</basecompoundref>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1aaca3a55196ca61a32e0cc73e1f9ecc7d" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.GraphTasks.HistoryTask1._decembristsPath</definition>
+        <argsstring></argsstring>
+        <name>_decembristsPath</name>
+        <initializer>= &quot;Textures/Decembrists&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="32" column="30" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1ae38d141454350cdf9f4afc2b35bcc66d" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.GraphTasks.HistoryTask1._fontPath</definition>
+        <argsstring></argsstring>
+        <name>_fontPath</name>
+        <initializer>= &quot;Font/CustomFontArial&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="33" column="30" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a4f68fc3b2f8794040bd9f3e74275468f" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.GraphTasks.HistoryTask1._notDecembristsPath</definition>
+        <argsstring></argsstring>
+        <name>_notDecembristsPath</name>
+        <initializer>= &quot;Textures/NotDecembrists&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="34" column="30" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a26917d0084d84b72b1f0d002a38de7cc" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.GraphTasks.HistoryTask1._playerPath</definition>
+        <argsstring></argsstring>
+        <name>_playerPath</name>
+        <initializer>= &quot;Prefabs/Player&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="35" column="30" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1ae8ca9943b82b95c30d235375f2debac3" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.GraphTasks.HistoryTask1._selectFramePath</definition>
+        <argsstring></argsstring>
+        <name>_selectFramePath</name>
+        <initializer>= &quot;Textures/SelectFrame&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="36" column="30" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a40c81502cdb94bbe22d933357a6e072a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>override IReadOnlyCollection&lt; <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph" kindref="compound">AbstractGraph</ref> &gt;</type>
+        <definition>override IReadOnlyCollection&lt;AbstractGraph&gt; Graph3DVisualizer.GraphTasks.HistoryTask1.Graphs</definition>
+        <argsstring></argsstring>
+        <name>Graphs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="37" column="45" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a7830ff8a439a2e0dcaba1081b582e599" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>override IReadOnlyCollection&lt; <ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player" kindref="compound">AbstractPlayer</ref> &gt;</type>
+        <definition>override IReadOnlyCollection&lt;AbstractPlayer&gt; Graph3DVisualizer.GraphTasks.HistoryTask1.Players</definition>
+        <argsstring></argsstring>
+        <name>Players</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="38" column="45" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="38" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a97a04a2358ae183c6a2ab5e3b9c013bd" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex" kindref="compound">DecembristVertex</ref></type>
+        <definition>DecembristVertex Graph3DVisualizer.GraphTasks.HistoryTask1.AddPeople</definition>
+        <argsstring>(TextTextureFactory textTextureFactory, UnityEngine.Object man, Graph graphController, Texture2D selectFrame, bool isDec)</argsstring>
+        <name>AddPeople</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_texture_factory_1_1_text_texture_factory" kindref="compound">TextTextureFactory</ref></type>
+          <declname>textTextureFactory</declname>
+        </param>
+        <param>
+          <type>UnityEngine.Object</type>
+          <declname>man</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_graph" kindref="compound">Graph</ref></type>
+          <declname>graphController</declname>
+        </param>
+        <param>
+          <type>Texture2D</type>
+          <declname>selectFrame</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>isDec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="40" column="34" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="40" bodyend="67"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a67d7fbabc596465810fee73b388b4470" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_graph" kindref="compound">Graph</ref></type>
+        <definition>Graph Graph3DVisualizer.GraphTasks.HistoryTask1.CreateGraph</definition>
+        <argsstring>()</argsstring>
+        <name>CreateGraph</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="69" column="22" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="69" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a844a7f6226e7d6967b3548dc302c8f68" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override List&lt; <ref refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_verdict" kindref="compound">Verdict</ref> &gt;</type>
+        <definition>override List&lt;Verdict&gt; Graph3DVisualizer.GraphTasks.HistoryTask1.GetResult</definition>
+        <argsstring>()</argsstring>
+        <name>GetResult</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1ada597253b27b65cf7cd8d22748400ca9">GetResult</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="104" column="30" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="104" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1afe356ca58bf58d2ce2e1b6f29d7119be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.GraphTasks.HistoryTask1.InitTask</definition>
+        <argsstring>()</argsstring>
+        <name>InitTask</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1ae70a4df7f4e4822dd791007ee9303225">InitTask</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="117" column="30" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="117" bodyend="143"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.GraphTasks.HistoryTask1</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ICustomizable&lt; VisualTaskParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+      <node id="2">
+        <label>AbstractVisualTask</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.GraphTasks.HistoryTask1</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ICustomizable&lt; VisualTaskParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+      <node id="2">
+        <label>AbstractVisualTask</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Decembrists/Scripts/HistoryTask1.cs" line="30" column="11" bodyfile="Assets/Decembrists/Scripts/HistoryTask1.cs" bodystart="31" bodyend="144"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1aaca3a55196ca61a32e0cc73e1f9ecc7d" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>_decembristsPath</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1ae38d141454350cdf9f4afc2b35bcc66d" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>_fontPath</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1ab210229f94051f46aad99cfa14b99f04" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>_graphs</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a4f68fc3b2f8794040bd9f3e74275468f" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>_notDecembristsPath</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a26917d0084d84b72b1f0d002a38de7cc" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>_playerPath</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1afe7d88107642eebc5aef778c9b8c2a75" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>_players</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1ae8ca9943b82b95c30d235375f2debac3" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>_selectFramePath</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a97a04a2358ae183c6a2ab5e3b9c013bd" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>AddPeople</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a67d7fbabc596465810fee73b388b4470" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>CreateGraph</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1aafeba838620094e38644fb6fe97fcaf3" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>DestroyTask</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1a4df4f4e3dfa608848aa05c479277cad7" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>DownloadParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a844a7f6226e7d6967b3548dc302c8f68" prot="public" virt="virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>GetResult</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a40c81502cdb94bbe22d933357a6e072a" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>Graphs</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1afe356ca58bf58d2ce2e1b6f29d7119be" prot="public" virt="virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>InitTask</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1a115be274f11996682b11516118f0a3c9" prot="protected" virt="virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>OnTaskDestoryed</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1_1a7830ff8a439a2e0dcaba1081b582e599" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>Players</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1adecec2ed25997f04fa245a8c3ce94bee" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>SetupParams</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable_1aa34dad1fba6887bc35ae88e559e1365f" prot="public" virt="non-virtual" ambiguityscope="ICustomizable&lt; VisualTaskParameters &gt;."><scope>Graph3DVisualizer::GraphTasks::HistoryTask1</scope><name>SetupParams</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

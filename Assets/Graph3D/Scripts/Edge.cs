@@ -18,6 +18,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.Graph3D
 {
+    /// <summary>
+    /// Simple realization of <see cref="AbstractEdge"/>.
+    /// </summary>
     [RequireComponent(typeof(LineRenderer))]
     public class Edge : AbstractEdge
     {

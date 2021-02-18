@@ -22,6 +22,12 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.GUI
 {
+    /// <summary>
+    /// A component that simulates a 3d popup stack menu.
+    /// </summary>
+    /// <remarks>
+    /// In the next versions, it will be replaced with a regular UI interface.
+    /// </remarks>
     public class PopUpVerticalStackMenu : AbstractClickableObject
     {
         protected GameObject _plane;

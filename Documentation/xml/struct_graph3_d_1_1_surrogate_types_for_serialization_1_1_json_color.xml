@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color" kind="struct" language="C#" prot="public">
+    <compoundname>Graph3D::SurrogateTypesForSerialization::JsonColor</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1a8b1d5fa53d51e5d69585c243d371a576" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3D.SurrogateTypesForSerialization.JsonColor.A</definition>
+        <argsstring></argsstring>
+        <name>A</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="13" column="22" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="13" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1a4e7e21e8e69350f4325b47a6452d9dab" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3D.SurrogateTypesForSerialization.JsonColor.B</definition>
+        <argsstring></argsstring>
+        <name>B</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="14" column="22" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="14" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1a6fae297c3d446aa6bcb0375616a2ec46" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3D.SurrogateTypesForSerialization.JsonColor.G</definition>
+        <argsstring></argsstring>
+        <name>G</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="15" column="22" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="15" bodyend="15"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1ad42904cb9ce8430fcca3195d88953adc" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3D.SurrogateTypesForSerialization.JsonColor.R</definition>
+        <argsstring></argsstring>
+        <name>R</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="16" column="22" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="16" bodyend="16"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1a731b14d4c704b561458026a72a882aee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Graph3D.SurrogateTypesForSerialization.JsonColor.JsonColor</definition>
+        <argsstring>(float r, float g, float b, float a)</argsstring>
+        <name>JsonColor</name>
+        <param>
+          <type>float</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>g</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="18" column="16"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1ad6a249f009d993cc872d3f3f0c6159fb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>implicit</type>
+        <definition>static implicit Graph3D.SurrogateTypesForSerialization.JsonColor.operator Color</definition>
+        <argsstring>(JsonColor jsonColor)</argsstring>
+        <name>operator Color</name>
+        <param>
+          <type><ref refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color" kindref="compound">JsonColor</ref></type>
+          <declname>jsonColor</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="20" column="32"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1a30bb583c561daa81b835f53f3974997d" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>implicit</type>
+        <definition>static implicit Graph3D.SurrogateTypesForSerialization.JsonColor.operator JsonColor</definition>
+        <argsstring>(Color color)</argsstring>
+        <name>operator JsonColor</name>
+        <param>
+          <type>Color</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="22" column="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="11" column="11" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="12" bodyend="23"/>
+    <listofallmembers>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1a8b1d5fa53d51e5d69585c243d371a576" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonColor</scope><name>A</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1a4e7e21e8e69350f4325b47a6452d9dab" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonColor</scope><name>B</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1a6fae297c3d446aa6bcb0375616a2ec46" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonColor</scope><name>G</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1a731b14d4c704b561458026a72a882aee" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonColor</scope><name>JsonColor</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1ad6a249f009d993cc872d3f3f0c6159fb" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonColor</scope><name>operator Color</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1a30bb583c561daa81b835f53f3974997d" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonColor</scope><name>operator JsonColor</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color_1ad42904cb9ce8430fcca3195d88953adc" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonColor</scope><name>R</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

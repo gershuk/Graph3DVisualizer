@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespace_graph3_d_visualizer_1_1_graph_tasks" kind="namespace" language="C#">
+    <compoundname>Graph3DVisualizer::GraphTasks</compoundname>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex" prot="public">Graph3DVisualizer::GraphTasks::DecembristVertex</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_history_task1" prot="public">Graph3DVisualizer::GraphTasks::HistoryTask1</innerclass>
+    <innerclass refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_graph_info" prot="public">Graph3DVisualizer::GraphTasks::GraphInfo</innerclass>
+    <innerclass refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info" prot="public">Graph3DVisualizer::GraphTasks::PlayerInfo</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task" prot="public">Graph3DVisualizer::GraphTasks::AbstractVisualTask</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_verdict" prot="public">Graph3DVisualizer::GraphTasks::Verdict</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters" prot="public">Graph3DVisualizer::GraphTasks::VisualTaskParameters</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task" prot="public">Graph3DVisualizer::GraphTasks::SimpleTask</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_graph3_d_visualizer_1_1_graph_tasks_1a3cbb0c7fea1a48280de12c619abd718f" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>VerdictStatus</name>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_graph_tasks_1a3cbb0c7fea1a48280de12c619abd718fad0a3892a5b340ce4f3472dc7595dce02" prot="public">
+          <name>Correct</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_graph_tasks_1a3cbb0c7fea1a48280de12c619abd718faa94d7853871a856c71a172a599cee227" prot="public">
+          <name>Incorrect</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_graph_tasks_1a3cbb0c7fea1a48280de12c619abd718faec0fc0100c4fc1ce4eea230c3dc10360" prot="public">
+          <name>Undefined</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="219" column="11" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="220" bodyend="224"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Decembrists/Scripts/DecembristVertex.cs" line="19" column="1"/>
+  </compounddef>
+</doxygen>

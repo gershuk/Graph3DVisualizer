@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Billboards::BillboardId</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id_1ad9fb8c72b48699f30d51ead0b2c5bb4b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Graph3DVisualizer.Billboards.BillboardId.Description</definition>
+        <argsstring></argsstring>
+        <name>Description</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="262" column="23" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="262" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id_1abacaa0f2bd912801bc35269918d1d005" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Graph3DVisualizer.Billboards.BillboardId.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="264" column="23" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="264" bodyend="264"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id_1af4ee09c84d2fc239c68bbf03267cb107" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.Billboards.BillboardId.BillboardId</definition>
+        <argsstring>(string name, string description)</argsstring>
+        <name>BillboardId</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="266" column="16" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="266" bodyend="270"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Id to search for a billboard in <ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller" kindref="compound">BillboardController</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Billboard/Scripts/BillboardController.cs" line="260" column="11" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="261" bodyend="271"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id_1af4ee09c84d2fc239c68bbf03267cb107" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardId</scope><name>BillboardId</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id_1ad9fb8c72b48699f30d51ead0b2c5bb4b" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardId</scope><name>Description</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id_1abacaa0f2bd912801bc35269918d1d005" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardId</scope><name>Name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

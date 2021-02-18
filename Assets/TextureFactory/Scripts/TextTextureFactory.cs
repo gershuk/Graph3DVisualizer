@@ -20,6 +20,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.TextureFactory
 {
+    /// <summary>
+    /// Fabricator that allows you to create text on a texture.
+    /// </summary>
     public class TextTextureFactory
     {
         private readonly Texture2D[] _alphabet;

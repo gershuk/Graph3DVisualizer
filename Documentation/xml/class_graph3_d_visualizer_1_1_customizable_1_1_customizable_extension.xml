@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_customizable_1_1_customizable_extension" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Customizable::CustomizableExtension</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_customizable_1_1_customizable_extension_1a969c2f9a49502bcb9ff0500cdc8ea81e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter" kindref="compound">AbstractCustomizableParameter</ref></type>
+        <definition>static AbstractCustomizableParameter Graph3DVisualizer.Customizable.CustomizableExtension.CallDownloadParams</definition>
+        <argsstring>(object customizable)</argsstring>
+        <name>CallDownloadParams</name>
+        <param>
+          <type>object</type>
+          <declname>customizable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" line="29" column="53" bodyfile="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" bodystart="29" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_customizable_1_1_customizable_extension_1a4c0b3183c6f34269eca6667a60d57b7b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>List&lt; T &gt;</type>
+        <definition>static List&lt;T&gt; Graph3DVisualizer.Customizable.CustomizableExtension.CallDownloadParams&lt; T &gt;</definition>
+        <argsstring>(object customizable)</argsstring>
+        <name>CallDownloadParams&lt; T &gt;</name>
+        <param>
+          <type>object</type>
+          <declname>customizable</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" line="46" column="9" bodyfile="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" bodystart="46" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_customizable_1_1_customizable_extension_1a1228601d17f12cad9b0cf269701468d7" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Graph3DVisualizer.Customizable.CustomizableExtension.CallSetUpParams</definition>
+        <argsstring>(object customizable, object parameter)</argsstring>
+        <name>CallSetUpParams</name>
+        <param>
+          <type>object</type>
+          <declname>customizable</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>parameter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" line="60" column="28" bodyfile="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" bodystart="60" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_customizable_1_1_customizable_extension_1a4b663eda07155ed945840d56a6872953" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Graph3DVisualizer.Customizable.CustomizableExtension.CallSetUpParams</definition>
+        <argsstring>(object customizable, object[] parameters)</argsstring>
+        <name>CallSetUpParams</name>
+        <param>
+          <type>object</type>
+          <declname>customizable</declname>
+        </param>
+        <param>
+          <type>object[]</type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" line="78" column="28" bodyfile="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" bodystart="78" bodyend="96"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A class containing functions for dynamically calling methods ICustomizable&lt;TParams&gt;.DownloadParams, ICustomizable&lt;TParams&gt;.SetupParams(TParams). </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" line="27" column="19" bodyfile="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" bodystart="28" bodyend="97"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_customizable_1_1_customizable_extension_1a969c2f9a49502bcb9ff0500cdc8ea81e" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Customizable::CustomizableExtension</scope><name>CallDownloadParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_customizable_1_1_customizable_extension_1a4c0b3183c6f34269eca6667a60d57b7b" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Customizable::CustomizableExtension</scope><name>CallDownloadParams&lt; T &gt;</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_customizable_1_1_customizable_extension_1a1228601d17f12cad9b0cf269701468d7" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Customizable::CustomizableExtension</scope><name>CallSetUpParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_customizable_1_1_customizable_extension_1a4b663eda07155ed945840d56a6872953" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Customizable::CustomizableExtension</scope><name>CallSetUpParams</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

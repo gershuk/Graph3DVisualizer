@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::GraphTasks::DecembristVertex</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.SelectableVertex</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex_1ad10e6e5f75c2e8dfac2877c380accafc" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Graph3DVisualizer.GraphTasks.DecembristVertex.IsDec</definition>
+        <argsstring></argsstring>
+        <name>IsDec</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/DecembristVertex.cs" line="23" column="21" bodyfile="Assets/Decembrists/Scripts/DecembristVertex.cs" bodystart="23" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex_1aff9f6f1a6051c4b6c7ed63a4d5d2772a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Graph3DVisualizer.GraphTasks.DecembristVertex.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Decembrists/Scripts/DecembristVertex.cs" line="24" column="23" bodyfile="Assets/Decembrists/Scripts/DecembristVertex.cs" bodystart="24" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="9">
+        <label>ICustomizable&lt; VertexParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+      <node id="2">
+        <label>SelectableVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Vertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>ISelectable</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable"/>
+      </node>
+      <node id="4">
+        <label>AbstractVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>ICustomizable&lt; SelectableVertexParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+      <node id="5">
+        <label>AbstractGraphObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>IDestructible</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_destructible"/>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.GraphTasks.DecembristVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="7">
+        <label>IVisibile</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="9">
+        <label>ICustomizable&lt; VertexParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+      <node id="10">
+        <label>Graph3DVisualizer.Billboards.BillboardId</label>
+        <link refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id"/>
+      </node>
+      <node id="2">
+        <label>SelectableVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="12" relation="public-inheritance">
+        </childnode>
+        <childnode refid="13" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Vertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>ISelectable</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable"/>
+      </node>
+      <node id="4">
+        <label>AbstractVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+        <childnode refid="10" relation="usage">
+          <edgelabel>_mainImageId</edgelabel>
+        </childnode>
+        <childnode refid="11" relation="usage">
+          <edgelabel>_billboardControler</edgelabel>
+        </childnode>
+      </node>
+      <node id="12">
+        <label>ICustomizable&lt; SelectableVertexParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+      <node id="11">
+        <label>Graph3DVisualizer.Billboards.BillboardController</label>
+        <link refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>AbstractGraphObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>IDestructible</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_destructible"/>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.GraphTasks.DecembristVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="7">
+        <label>IVisibile</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Decembrists/Scripts/DecembristVertex.cs" line="21" column="11" bodyfile="Assets/Decembrists/Scripts/DecembristVertex.cs" bodystart="22" bodyend="25"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1acff979ff8f3ade8daf05fac440a74b61" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>_billboardControler</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1acf3bf37df3cfb423147a1dd0962a9df5" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>_edgePrefab</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a5e84fb1f99e899f38b93f0059e4f99b7" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>_incomingLinks</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a2af4381e527357499e07ce3c87be46d3" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>_mainImageId</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1aff4b4427ba18bf4758fd16e511e3134e" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>_outgoingLinks</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_1a4ca6a70dce81be9cf0bbba5be3a76562" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>_sphereCollider</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a6b3d6fa8c2bd0fa45ccd4d07a76bbe41" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>_transform</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1af2f33c3af9c173a3733f7b56bdbf27e4" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>_visible</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1ac1c565c552f7628a508868c7498ea835" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>CheckLinkForCorrectness</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_1ada6a86903287e37ecceac3f7084ac8a1" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>Destroyed</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1acdb92baaff5ad0a343eea2852cb64145" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>FindOppositeEdge</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_1a9ebc0e1a88648ee251f66b5fde0eb7ee" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>HighlightedChanged</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_1acb28d1479858c4b3d6119e98e058d210" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>Id</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a9292812e5aeba6d89bf58d151b9de1a9" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>IncomingLinks</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex_1ad10e6e5f75c2e8dfac2877c380accafc" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>IsDec</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_1a63b49d9a3a94cca70ff98be242e87e67" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>IsHighlighted</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_1a63eb97410a65e63b61cc7d4a5c142b77" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>IsSelected</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a5c51fd3ccf5079e36696b6a7c25185c8" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>Link</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1ae4c795d847989a2a6e03ce6de3c9da63" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>Link&lt; TEdge, TParameters &gt;</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_1a0c6b3367ccaca3e935e67631573f34de" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>MovementComponent</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex_1aff9f6f1a6051c4b6c7ed63a4d5d2772a" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>Name</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a6e1032a84bcd310bca966e8e2f8976b6" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>OutgoingLinks</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a95498a1bff386e7fcff3958196e12ba6" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>RemoveLinkFromArray</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_1a2ea31aa9cb8cb99acfdaddfe7de05ec1" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>SelectedChanged</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_1a925f3888c4d8239a4bf95fa46fda654e" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>SelectFrameColor</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_1ad2299949fc613403501d869d59e1db53" prot="public" virt="virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>SetMainImage</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_1a18e3425591e02d9b27887361e006c682" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>SetMainImageSize</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_1adaaca6e17591653bf8d6d9f74f04e999" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>SetSelectFrame</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_1a2bc1197cf940fccfae7403ceef669fe6" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>SetSelectFrameSize</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_1a4bdcb29990a0b32ac5a5709c0672328d" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>SetupParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a5d82283efd9147b64976d65696bba8bc" prot="public" virt="virtual" ambiguityscope="Graph3DVisualizer::Graph3D::Vertex."><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>SetupParams</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable_1aa34dad1fba6887bc35ae88e559e1365f" prot="public" virt="non-virtual" ambiguityscope="Graph3DVisualizer::Graph3D::Vertex.ICustomizable&lt; VertexParameters &gt;."><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>SetupParams</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable_1aa34dad1fba6887bc35ae88e559e1365f" prot="public" virt="non-virtual" ambiguityscope="ICustomizable&lt; SelectableVertexParameters &gt;."><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>SetupParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a78078255ef53cc462d4a3e66c3f99ffa" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>UnLink</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1ad31d11cc96a926d149a7103d499c4494" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>UnLink&lt; TEdge &gt;</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_1a771f19fe87c698056cb2c6653a3d5b42" prot="protected" virt="virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>UpdateColliderRange</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_1a09aea7599d3fd7921f44c6c09e6df5dd" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>Visibility</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_1a90e929ccbb90b66f18e0a4cc027bc941" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::DecembristVertex</scope><name>VisibleChanged</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

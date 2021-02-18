@@ -1,0 +1,517 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::SupportComponents::MovementComponent</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+    <basecompoundref refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_moveable" prot="public" virt="non-virtual">Graph3DVisualizer.SupportComponents.IMoveable</basecompoundref>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a777ac422ee69563928f7a1ca8eaa00fa" prot="private" static="yes" mutable="no">
+        <type>const float</type>
+        <definition>const float Graph3DVisualizer.SupportComponents.MovementComponent._thresholdDistance</definition>
+        <argsstring></argsstring>
+        <name>_thresholdDistance</name>
+        <initializer>= 0.1f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="30" column="29" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1aad89c6da5ef9996162629d158ff379c0" prot="private" static="yes" mutable="no">
+        <type>const float</type>
+        <definition>const float Graph3DVisualizer.SupportComponents.MovementComponent._timeCheckThreshold</definition>
+        <argsstring></argsstring>
+        <name>_timeCheckThreshold</name>
+        <initializer>= 0.001f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="31" column="29" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a0a4b99e33a8d97cfad87776f9327908e" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Graph3DVisualizer.SupportComponents.MovementComponent._currentGearIndex</definition>
+        <argsstring></argsstring>
+        <name>_currentGearIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="34" column="21" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ac7c372a574ecc43afe3613fdca74f49b" prot="private" static="no" mutable="no">
+        <type>List&lt;(float deltaTimeFromStart, float multiplier)&gt;</type>
+        <definition>List&lt;(float deltaTimeFromStart, float multiplier)&gt; Graph3DVisualizer.SupportComponents.MovementComponent._gears</definition>
+        <argsstring></argsstring>
+        <name>_gears</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="36" column="22" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a066f8a7ba0a8ace31d57a9e40ac47337" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Graph3DVisualizer.SupportComponents.MovementComponent._isMoving</definition>
+        <argsstring></argsstring>
+        <name>_isMoving</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="38" column="22" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a504867b79c2a9175ea6d049addbd5c50" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.SupportComponents.MovementComponent._lastTimeCheck</definition>
+        <argsstring></argsstring>
+        <name>_lastTimeCheck</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="40" column="23" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ad0351af44f49047fddf086c06f377502" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.SupportComponents.MovementComponent._maxRotX</definition>
+        <argsstring></argsstring>
+        <name>_maxRotX</name>
+        <initializer>= 360F</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="44" column="23" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1af89d9db4ed1a1c5cb4e1a810acf2f946" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.SupportComponents.MovementComponent._maxRotY</definition>
+        <argsstring></argsstring>
+        <name>_maxRotY</name>
+        <initializer>= 360F</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="48" column="23" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ae06a9ab8dbfd92c13da2e526e97d397f" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.SupportComponents.MovementComponent._minRotX</definition>
+        <argsstring></argsstring>
+        <name>_minRotX</name>
+        <initializer>= -360</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="52" column="23" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a395df0f207bcf7d05c5105c20d5da7f1" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.SupportComponents.MovementComponent._minRotY</definition>
+        <argsstring></argsstring>
+        <name>_minRotY</name>
+        <initializer>= -360</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="56" column="23" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a7010af936948bf317fed5a18578f6954" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.SupportComponents.MovementComponent._movingSpeed</definition>
+        <argsstring></argsstring>
+        <name>_movingSpeed</name>
+        <initializer>= 10</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="59" column="23" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a9bfc99deb16dcbab6b65611790c8b27e" prot="private" static="no" mutable="no">
+        <type>Vector3</type>
+        <definition>Vector3 Graph3DVisualizer.SupportComponents.MovementComponent._rotation</definition>
+        <argsstring></argsstring>
+        <name>_rotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="61" column="25" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1adbe45194f326ab5789055f4d2f7e93f7" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.SupportComponents.MovementComponent._rotationSpeed</definition>
+        <argsstring></argsstring>
+        <name>_rotationSpeed</name>
+        <initializer>= 1f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="64" column="23" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a45e14a6de71f82146845f4989ee75269" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.SupportComponents.MovementComponent._startMovingTime</definition>
+        <argsstring></argsstring>
+        <name>_startMovingTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="66" column="23" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a92823373d27b3aa401fdb603b00703ac" prot="private" static="no" mutable="no">
+        <type>Transform</type>
+        <definition>Transform Graph3DVisualizer.SupportComponents.MovementComponent._transform</definition>
+        <argsstring></argsstring>
+        <name>_transform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="67" column="27" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="67" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a3c6d49cfd9ae88c81fa9f5272104f318" prot="private" static="no" mutable="no">
+        <type>TransmissionMode</type>
+        <definition>TransmissionMode Graph3DVisualizer.SupportComponents.MovementComponent._transmissionMode</definition>
+        <argsstring></argsstring>
+        <name>_transmissionMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="68" column="34" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1acc7c23b2bc02d64add31dbafe450fa25" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>Action&lt; Vector3, UnityEngine.Object &gt;</type>
+        <definition>Action&lt;Vector3, UnityEngine.Object&gt; Graph3DVisualizer.SupportComponents.MovementComponent.ObjectMoved</definition>
+        <argsstring></argsstring>
+        <name>ObjectMoved</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="70" column="29" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a713a8f4011f7e417e302c1679644b5df" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>int?</type>
+        <definition>int? Graph3DVisualizer.SupportComponents.MovementComponent.CurrentGearIndex</definition>
+        <argsstring></argsstring>
+        <name>CurrentGearIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="72" column="20" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="73" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1afbe76951199d419eafdc956f37e8d0d7" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>List&lt;(float deltaTimeFromStart, float multiplier)&gt;?</type>
+        <definition>List&lt;(float deltaTimeFromStart, float multiplier)&gt;? Graph3DVisualizer.SupportComponents.MovementComponent.Gears</definition>
+        <argsstring></argsstring>
+        <name>Gears</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="88" column="21" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="89" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a68f8f96569cd562cbbf833151fcf5c78" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Vector3?</type>
+        <definition>Vector3? Graph3DVisualizer.SupportComponents.MovementComponent.GlobalCoordinates</definition>
+        <argsstring></argsstring>
+        <name>GlobalCoordinates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="100" column="24" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="101" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a5b4b71c8a2a6818a227ca82d1203c892" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Vector3?</type>
+        <definition>Vector3? Graph3DVisualizer.SupportComponents.MovementComponent.LocalCoordinates</definition>
+        <argsstring></argsstring>
+        <name>LocalCoordinates</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="113" column="24" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="114" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a7ba4c75449b9e8cf3bd1bbd59a1999b4" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.SupportComponents.MovementComponent.MovingSpeed</definition>
+        <argsstring></argsstring>
+        <name>MovingSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="126" column="22" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="126" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ad04fa4c3cbf8b481a3241f8aa05a13c0" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Vector3</type>
+        <definition>Vector3 Graph3DVisualizer.SupportComponents.MovementComponent.Rotation</definition>
+        <argsstring></argsstring>
+        <name>Rotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="128" column="24" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="128" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ab30d03871a15e6b964096a31d873f687" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.SupportComponents.MovementComponent.RotationSpeed</definition>
+        <argsstring></argsstring>
+        <name>RotationSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="129" column="22" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="129" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a5ee66f4ff6187fe4e23033ed81f6f438" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>TransmissionMode</type>
+        <definition>TransmissionMode Graph3DVisualizer.SupportComponents.MovementComponent.TransmissionMode</definition>
+        <argsstring></argsstring>
+        <name>TransmissionMode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="131" column="33" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="132" bodyend="149"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ab92806258136a9d058c89d4f06e9cd93" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.SupportComponents.MovementComponent.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="151" column="22" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="151" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ab2a35a5b212f7912760f52bd569fcf4f" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.SupportComponents.MovementComponent.UpdateParametersWhileMoving</definition>
+        <argsstring>(float deltaTime)</argsstring>
+        <name>UpdateParametersWhileMoving</name>
+        <param>
+          <type>float</type>
+          <declname>deltaTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="164" column="22" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="164" bodyend="184"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ae38ca4b9e0c6be314fe075dd7cc34ba7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerator</type>
+        <definition>IEnumerator Graph3DVisualizer.SupportComponents.MovementComponent.MoveAlongTrajectory</definition>
+        <argsstring>(IReadOnlyList&lt; Vector3 &gt; trajectory)</argsstring>
+        <name>MoveAlongTrajectory</name>
+        <reimplements refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_moveable_1a6d37c8a051c05ae7f56c787e2943f0a1">MoveAlongTrajectory</reimplements>
+        <param>
+          <type>IReadOnlyList&lt; Vector3 &gt;</type>
+          <declname>trajectory</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="187" column="28" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="187" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1aa7bd2317a6d29c540fea77cfb90ffe50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.SupportComponents.MovementComponent.Rotate</definition>
+        <argsstring>(Vector2 rotationChange, float deltaTime)</argsstring>
+        <name>Rotate</name>
+        <reimplements refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_moveable_1a5bab0ddfd1b94111920c82d5fd24ff6e">Rotate</reimplements>
+        <param>
+          <type>Vector2</type>
+          <declname>rotationChange</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>deltaTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="213" column="21" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="213" bodyend="222"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a8246c0d4e6a917b380633c4143fbc766" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.SupportComponents.MovementComponent.Translate</definition>
+        <argsstring>(Vector3 directionVector, float deltaTime)</argsstring>
+        <name>Translate</name>
+        <reimplements refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_moveable_1a358431cef1ad36bed80be070a450d6cb">Translate</reimplements>
+        <param>
+          <type>Vector3</type>
+          <declname>directionVector</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>deltaTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="224" column="21" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="224" bodyend="231"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Component that controls the movement of the object. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.SupportComponents.MovementComponent</label>
+        <link refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>IMoveable</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_moveable"/>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.SupportComponents.MovementComponent</label>
+        <link refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>IMoveable</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_moveable"/>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="28" column="11" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="29" bodyend="232"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a0a4b99e33a8d97cfad87776f9327908e" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_currentGearIndex</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ac7c372a574ecc43afe3613fdca74f49b" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_gears</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a066f8a7ba0a8ace31d57a9e40ac47337" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_isMoving</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a504867b79c2a9175ea6d049addbd5c50" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_lastTimeCheck</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ad0351af44f49047fddf086c06f377502" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_maxRotX</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1af89d9db4ed1a1c5cb4e1a810acf2f946" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_maxRotY</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ae06a9ab8dbfd92c13da2e526e97d397f" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_minRotX</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a395df0f207bcf7d05c5105c20d5da7f1" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_minRotY</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a7010af936948bf317fed5a18578f6954" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_movingSpeed</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a9bfc99deb16dcbab6b65611790c8b27e" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_rotation</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1adbe45194f326ab5789055f4d2f7e93f7" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_rotationSpeed</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a45e14a6de71f82146845f4989ee75269" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_startMovingTime</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a777ac422ee69563928f7a1ca8eaa00fa" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_thresholdDistance</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1aad89c6da5ef9996162629d158ff379c0" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_timeCheckThreshold</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a92823373d27b3aa401fdb603b00703ac" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_transform</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a3c6d49cfd9ae88c81fa9f5272104f318" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>_transmissionMode</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ab92806258136a9d058c89d4f06e9cd93" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>Awake</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a713a8f4011f7e417e302c1679644b5df" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>CurrentGearIndex</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1afbe76951199d419eafdc956f37e8d0d7" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>Gears</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a68f8f96569cd562cbbf833151fcf5c78" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>GlobalCoordinates</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a5b4b71c8a2a6818a227ca82d1203c892" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>LocalCoordinates</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ae38ca4b9e0c6be314fe075dd7cc34ba7" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>MoveAlongTrajectory</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a7ba4c75449b9e8cf3bd1bbd59a1999b4" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>MovingSpeed</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1acc7c23b2bc02d64add31dbafe450fa25" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>ObjectMoved</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1aa7bd2317a6d29c540fea77cfb90ffe50" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>Rotate</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ad04fa4c3cbf8b481a3241f8aa05a13c0" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>Rotation</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ab30d03871a15e6b964096a31d873f687" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>RotationSpeed</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a8246c0d4e6a917b380633c4143fbc766" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>Translate</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1a5ee66f4ff6187fe4e23033ed81f6f438" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>TransmissionMode</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_1ab2a35a5b212f7912760f52bd569fcf4f" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::MovementComponent</scope><name>UpdateParametersWhileMoving</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

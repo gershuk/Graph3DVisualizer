@@ -1,40 +1,23 @@
 ---
 title: Assets/Player/Scripts/PlayerTools/GrabItemTool.cs
 
-
 ---
 
 # Assets/Player/Scripts/PlayerTools/GrabItemTool.cs
-
-
-
-
-
-
 
 ## Namespaces
 
 | Name           |
 | -------------- |
-| **[PlayerInputControls](Namespaces/namespace_player_input_controls.md)**  |
+| **[Graph3DVisualizer](Namespaces/namespace_graph3_d_visualizer.md)**  |
+| **[Graph3DVisualizer::PlayerInputControls](Namespaces/namespace_graph3_d_visualizer_1_1_player_input_controls.md)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[PlayerInputControls::GrabItemTool](Classes/class_player_input_controls_1_1_grab_item_tool.md)**  |
-
-
-
-
-
-
-
-
-
-
-
-
+| class | **[Graph3DVisualizer::PlayerInputControls::GrabItemTool](Classes/class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool.md)** <br>Tool for dragging objects with MovementComponent.  |
+| class | **[Graph3DVisualizer::PlayerInputControls::GrabItemToolParams](Classes/class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_params.md)** <br>Class that describes [GrabItemTool](Classes/class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool.md) parameters for ICustomizable<TParams>.  |
 
 
 
@@ -42,57 +25,63 @@ title: Assets/Player/Scripts/PlayerTools/GrabItemTool.cs
 ## Source code
 
 ```cpp
-// This file is part of Grpah3DVisualizer.
-// Copyright В© Gershuk Vladislav 2020.
+// This file is part of Graph3DVisualizer.
+// Copyright В© Gershuk Vladislav 2021.
 //
-// Grpah3DVisualizer is free software: you can redistribute it and/or modify
+// Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Grpah3DVisualizer is distributed in the hope that it will be useful,
+// Graph3DVisualizer is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY, without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+using System;
 using System.Collections;
 
-using SupportComponents;
+using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace PlayerInputControls
+namespace Graph3DVisualizer.PlayerInputControls
 {
     [RequireComponent(typeof(LaserPointer))]
-    public class GrabItemTool : PlayerTool
+    [CustomizableGrandType(Type = typeof(GrabItemToolParams))]
+    public class GrabItemTool : AbstractPlayerTool, ICustomizable<GrabItemToolParams>
     {
-        private const string _grabActionName = "GrabItemAction";
-        private const string _changeRangeActionName = "ChangeRangeAction";
         private const string _actionMapName = "GrabItemActionMap";
+        private const string _changeRangeActionName = "ChangeRangeAction";
+        private const string _grabActionName = "GrabItemAction";
 
         [SerializeField]
-        private float _rayCastRange = 1000;
-        [SerializeField]
         private float _capturedRange = 1000;
-        [SerializeField]
-        private float _rangeChangeSpeed = 30;
+
+        private Coroutine _changeRangeCoroutine;
 
         private InputActionMap _inputActions;
 
-        private IMoveable _moveable = null;
         private bool _isCapturedObject = false;
+
+        private bool _isChangingRange;
 
         private LaserPointer _laserPointer;
 
+        private IMoveable _moveable = null;
+
+        [SerializeField]
+        private float _rangeChangeSpeed = 30;
+
+        [SerializeField]
+        private float _rayCastRange = 1000;
+
         private Transform _transform;
-
-        private Coroutine _changeRangeCoroutine;
-        private bool _isChangingRange;
-
         public float CapturedRange { get => _capturedRange; set => _capturedRange = value; }
         public float RangeChangeSpeed { get => _rangeChangeSpeed; set => _rangeChangeSpeed = value; }
 
@@ -106,30 +95,13 @@ namespace PlayerInputControls
             _isChangingRange = false;
         }
 
-        private void LateUpdate ()
-        {
-            if (_isCapturedObject && _moveable != null)
-            {
-                _moveable.GlobalCoordinates = _transform.position + _transform.TransformDirection(new Vector3(0, 0, _capturedRange));
-            }
-        }
+        private void CallFreeItem (InputAction.CallbackContext obj) => FreeItem();
 
-        private void OnEnable ()
-        {
-            _inputActions?.Enable();
-            _laserPointer.LaserState = LaserState.On;
-            _laserPointer.Range = _rayCastRange;
-        }
+        private void CallGrabItem (InputAction.CallbackContext obj) => GrabItem();
 
-        private void OnDisable ()
-        {
-            if (_changeRangeCoroutine != null)
-                StopChangingRange();
-            _inputActions?.Disable();
-            _laserPointer.LaserState = LaserState.Off;
-            FreeItem();
-        }
+        private void CallStartChangingRange (InputAction.CallbackContext obj) => StartChangingRange();
 
+        private void CallStopChangingRange (InputAction.CallbackContext obj) => StopChangingRange();
 
         private IEnumerator ChangingRangeCoroutine ()
         {
@@ -143,15 +115,44 @@ namespace PlayerInputControls
             yield return null;
         }
 
-        private void CallGrabItem (InputAction.CallbackContext obj) => GrabItem();
+        private void LateUpdate ()
+        {
+            if (_isCapturedObject && _moveable != null)
+            {
+                _moveable.GlobalCoordinates = _transform.position + _transform.TransformDirection(new Vector3(0, 0, _capturedRange));
+            }
+        }
 
-        private void CallFreeItem (InputAction.CallbackContext obj) => FreeItem();
+        private void OnDisable ()
+        {
+            if (_changeRangeCoroutine != null)
+                StopChangingRange();
+            _inputActions?.Disable();
+            _laserPointer.LaserState = LaserState.Off;
+            FreeItem();
+        }
 
-        private void CallStartChangingRange (InputAction.CallbackContext obj) => StartChangingRange();
-
-        private void CallStopChangingRange (InputAction.CallbackContext obj) => StopChangingRange();
+        private void OnEnable ()
+        {
+            _inputActions?.Enable();
+            _laserPointer.LaserState = LaserState.On;
+            _laserPointer.Range = _rayCastRange;
+        }
 
         public void ChangeRange (float normalizedDelta) => _capturedRange = Mathf.Max(0, _capturedRange + normalizedDelta * Time.deltaTime * RangeChangeSpeed);
+
+        public GrabItemToolParams DownloadParams ()
+        {
+            Debug.LogWarning($"GrabItemTool.DownloadParams not implemented");
+            return new GrabItemToolParams();
+        }
+
+        public void FreeItem ()
+        {
+            _moveable = null;
+            _isCapturedObject = false;
+            _laserPointer.Range = _rayCastRange;
+        }
 
         public void GrabItem ()
         {
@@ -169,24 +170,6 @@ namespace PlayerInputControls
             }
         }
 
-        public void FreeItem ()
-        {
-            _moveable = null;
-            _isCapturedObject = false;
-            _laserPointer.Range = _rayCastRange;
-        }
-        public void StartChangingRange ()
-        {
-            _isChangingRange = true;
-            _changeRangeCoroutine = StartCoroutine(ChangingRangeCoroutine());
-        }
-
-        public void StopChangingRange ()
-        {
-            _isChangingRange = false;
-            StopCoroutine(_changeRangeCoroutine);
-        }
-
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
             _inputActions = new InputActionMap(_actionMapName);
@@ -200,11 +183,30 @@ namespace PlayerInputControls
             changeRangeAction.performed += CallStartChangingRange;
             changeRangeAction.canceled += CallStopChangingRange;
         }
+
+        public void SetupParams (GrabItemToolParams parameters) => Debug.LogWarning($"GrabItemTool.SetupParams not implemented");
+
+        public void StartChangingRange ()
+        {
+            _isChangingRange = true;
+            _changeRangeCoroutine = StartCoroutine(ChangingRangeCoroutine());
+        }
+
+        public void StopChangingRange ()
+        {
+            _isChangingRange = false;
+            StopCoroutine(_changeRangeCoroutine);
+        }
     }
+
+
+    [Serializable]
+    public class GrabItemToolParams : AbstractToolParams
+    { }
 }
 ```
 
 
 -------------------------------
 
-Updated on 12 December 2020 at 00:14:19 RTZ 9 (зима)
+Updated on 18 February 2021 at 16:24:40 RTZ 9 (зима)

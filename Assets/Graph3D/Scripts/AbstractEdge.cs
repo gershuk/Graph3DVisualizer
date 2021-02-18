@@ -22,6 +22,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.Graph3D
 {
+    /// <summary>
+    /// A class for describing adjacent vertexes.
+    /// </summary>
     public readonly struct AdjacentVertices
     {
         public AbstractVertex FromVertex { get; }
@@ -42,6 +45,9 @@ namespace Graph3DVisualizer.Graph3D
         public Vector3 GetUnitVector () => (ToVertex.transform.position - FromVertex.transform.position) / GetDistance();
     }
 
+    /// <summary>
+    /// Abstarct class for describing visual part of the graph edge.
+    /// </summary>
     [CustomizableGrandType(Type = typeof(EdgeParameters))]
     public abstract class AbstractEdge : AbstractGraphObject, ICustomizable<EdgeParameters>
     {
@@ -113,6 +119,9 @@ namespace Graph3DVisualizer.Graph3D
         public abstract void UpdateVisibility ();
     }
 
+    /// <summary>
+    /// A class that describes default edge parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
     [Serializable]
     public class EdgeParameters : AbstractGraphObjectParameters
     {

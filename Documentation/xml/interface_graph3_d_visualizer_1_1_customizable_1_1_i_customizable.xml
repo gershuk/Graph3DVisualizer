@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable" kind="interface" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Customizable::ICustomizable</compoundname>
+    <templateparamlist>
+      <param>
+        <type>TParams</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable_1a147e7cadaafcb6bb121bf16bbe5b13b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>TParams</type>
+        <definition>TParams Graph3DVisualizer.Customizable.ICustomizable&lt; TParams &gt;.DownloadParams</definition>
+        <argsstring>()</argsstring>
+        <name>DownloadParams</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" line="143" column="17"/>
+      </memberdef>
+      <memberdef kind="function" id="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable_1aa34dad1fba6887bc35ae88e559e1365f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Customizable.ICustomizable&lt; TParams &gt;.SetupParams</definition>
+        <argsstring>(TParams parameters)</argsstring>
+        <name>SetupParams</name>
+        <param>
+          <type>TParams</type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" line="145" column="14"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Interface for setup and download object parameters. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" line="141" column="22" bodyfile="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" bodystart="142" bodyend="146"/>
+    <listofallmembers>
+      <member refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable_1a147e7cadaafcb6bb121bf16bbe5b13b4" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Customizable::ICustomizable</scope><name>DownloadParams</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable_1aa34dad1fba6887bc35ae88e559e1365f" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Customizable::ICustomizable</scope><name>SetupParams</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

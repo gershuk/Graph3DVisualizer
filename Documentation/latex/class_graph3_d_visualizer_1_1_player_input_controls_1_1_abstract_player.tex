@@ -1,0 +1,74 @@
+\hypertarget{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player}{}\doxysection{Graph3\+DVisualizer.\+Player\+Input\+Controls.\+Abstract\+Player Class Reference}
+\label{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player}\index{Graph3DVisualizer.PlayerInputControls.AbstractPlayer@{Graph3DVisualizer.PlayerInputControls.AbstractPlayer}}
+
+
+Abstract class that describes player.  
+
+
+Inheritance diagram for Graph3\+DVisualizer.\+Player\+Input\+Controls.\+Abstract\+Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.043796cm]{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_ac2b6c9c557d7821cc2b72437ee7d9e17}\label{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_ac2b6c9c557d7821cc2b72437ee7d9e17}} 
+\mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters}{Player\+Parameters}} {\bfseries Download\+Params} ()
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_ad8259829462ca6dcef6d9a89ee2e9d9f}\label{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_ad8259829462ca6dcef6d9a89ee2e9d9f}} 
+void {\bfseries Select\+Tool} (int index)
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_ac576eb82ed145a55ee7d6a017d8f5427}\label{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_ac576eb82ed145a55ee7d6a017d8f5427}} 
+void {\bfseries Setup\+Params} (\mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters}{Player\+Parameters}} player\+Params)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_a582a031a7742efbfb988d47d9eefee19}\label{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_a582a031a7742efbfb988d47d9eefee19}} 
+abstract void {\bfseries Give\+New\+Tool} (params \mbox{\hyperlink{struct_graph3_d_visualizer_1_1_player_input_controls_1_1_tool_config}{Tool\+Config}}\mbox{[}$\,$\mbox{]} tools\+Config)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_add74b2de43f0786aa5bb96a3d2ac186f}\label{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_add74b2de43f0786aa5bb96a3d2ac186f}} 
+int {\bfseries \+\_\+current\+Tool\+Index} = 0
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_a9b453fb058873fab76f3d417e42f756d}\label{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_a9b453fb058873fab76f3d417e42f756d}} 
+\mbox{\hyperlink{namespace_graph3_d_visualizer_1_1_player_input_controls_a0b6006e268f4e24933c33ecba0b4f2ba}{Input\+Type}} {\bfseries \+\_\+input\+Type}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_ae0c0e9bc0689123c1ff0b37f4e565e9f}\label{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_ae0c0e9bc0689123c1ff0b37f4e565e9f}} 
+\mbox{\hyperlink{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component}{Movement\+Component}} {\bfseries \+\_\+move\+Component}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_a13f59346d6a43510d071c8794714449b}\label{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_a13f59346d6a43510d071c8794714449b}} 
+List$<$ \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool}{Abstract\+Player\+Tool}} $>$ {\bfseries \+\_\+player\+Tools} = new List$<$\mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool}{Abstract\+Player\+Tool}}$>$()
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_a8e1b82bd14f107e9e9ff251be20bf6c0}\label{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_a8e1b82bd14f107e9e9ff251be20bf6c0}} 
+int {\bfseries Current\+Tool\+Index}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_a1c22cf592d73f240fbc402701eacbda1}\label{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_a1c22cf592d73f240fbc402701eacbda1}} 
+IRead\+Only\+List$<$ \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool}{Abstract\+Player\+Tool}} $>$ {\bfseries Get\+Tools\+List}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_aa73efe485dda3e1d5ca8ae9064106220}\label{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_aa73efe485dda3e1d5ca8ae9064106220}} 
+abstract \mbox{\hyperlink{namespace_graph3_d_visualizer_1_1_player_input_controls_a0b6006e268f4e24933c33ecba0b4f2ba}{Input\+Type}} {\bfseries Input\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_a7e601c9281c2f0ce0abef104b00f9f35}\label{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_a7e601c9281c2f0ce0abef104b00f9f35}} 
+Action$<$ \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool}{Abstract\+Player\+Tool}} $>$ {\bfseries New\+Tool\+Selected}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class that describes player. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Player/\+Scripts/\+Fly\+Player/Abstract\+Player.\+cs\end{DoxyCompactItemize}

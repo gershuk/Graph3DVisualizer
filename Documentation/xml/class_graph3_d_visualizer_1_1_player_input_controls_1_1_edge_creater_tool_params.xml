@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::PlayerInputControls::EdgeCreaterToolParams</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_tool_params" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.AbstractToolParams</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params_1a5e23830c5e1b9607ffe4757950aa56df" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="yes" protectedsettable="no">
+        <type>IReadOnlyList&lt; Type &gt;</type>
+        <definition>IReadOnlyList&lt;Type&gt; Graph3DVisualizer.PlayerInputControls.EdgeCreaterToolParams.EdgeTypes</definition>
+        <argsstring></argsstring>
+        <name>EdgeTypes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="189" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="189" bodyend="189"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params_1a234080a7b9e59c9808c5bdb5096ebbd0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.PlayerInputControls.EdgeCreaterToolParams.EdgeCreaterToolParams</definition>
+        <argsstring>(IReadOnlyList&lt; Type &gt; edgeTypes)</argsstring>
+        <name>EdgeCreaterToolParams</name>
+        <param>
+          <type>IReadOnlyList&lt; Type &gt;</type>
+          <declname>edgeTypes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="191" column="16" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="191" bodyend="199"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class that describes <ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool" kindref="compound">EdgeCreaterTool</ref> parameters for ICustomizable&lt;TParams&gt;. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>AbstractToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_tool_params"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.EdgeCreaterToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>AbstractToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_tool_params"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.EdgeCreaterToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="187" column="11" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="188" bodyend="200"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params_1a234080a7b9e59c9808c5bdb5096ebbd0" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterToolParams</scope><name>EdgeCreaterToolParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params_1a5e23830c5e1b9607ffe4757950aa56df" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterToolParams</scope><name>EdgeTypes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

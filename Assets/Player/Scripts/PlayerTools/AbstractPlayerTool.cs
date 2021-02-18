@@ -25,6 +25,9 @@ using static UnityEngine.Physics;
 
 namespace Graph3DVisualizer.PlayerInputControls
 {
+    /// <summary>
+    /// Сlass that describes the data needed when creating a new player tool. <seealso cref="AbstractPlayer.GiveNewTool(ToolConfig[])"/>
+    /// </summary>
     [Serializable]
     public readonly struct ToolConfig
     {
@@ -40,6 +43,9 @@ namespace Graph3DVisualizer.PlayerInputControls
         }
     }
 
+    /// <summary>
+    /// Abstract class that describes the player's tool for interacting with the world.
+    /// </summary>
     public abstract class AbstractPlayerTool : MonoBehaviour
     {
         protected RaycastHit RayCast (float range)
@@ -51,6 +57,9 @@ namespace Graph3DVisualizer.PlayerInputControls
         public abstract void RegisterEvents (IInputActionCollection inputActions);
     }
 
+    /// <summary>
+    /// A class that describes default player's tool parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
     [Serializable]
     public abstract class AbstractToolParams : AbstractCustomizableParameter
     { }

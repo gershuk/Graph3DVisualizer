@@ -1,45 +1,25 @@
 ---
 title: Assets/SupportComponents/Scripts/ObjectEvents.cs
 
-
 ---
 
 # Assets/SupportComponents/Scripts/ObjectEvents.cs
-
-
-
-
-
-
 
 ## Namespaces
 
 | Name           |
 | -------------- |
-| **[SupportComponents](Namespaces/namespace_support_components.md)**  |
+| **[Graph3DVisualizer](Namespaces/namespace_graph3_d_visualizer.md)**  |
+| **[Graph3DVisualizer::SupportComponents](Namespaces/namespace_graph3_d_visualizer_1_1_support_components.md)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| interface | **[SupportComponents::IMoveable](Classes/interface_support_components_1_1_i_moveable.md)**  |
-| interface | **[SupportComponents::IDestructible](Classes/interface_support_components_1_1_i_destructible.md)**  |
-| interface | **[SupportComponents::IVisibile](Classes/interface_support_components_1_1_i_visibile.md)**  |
-| interface | **[SupportComponents::ISelectable](Classes/interface_support_components_1_1_i_selectable.md)**  |
-| interface | **[SupportComponents::ICustomizable](Classes/interface_support_components_1_1_i_customizable.md)**  |
-| class | **[SupportComponents::CustomizableExtension](Classes/class_support_components_1_1_customizable_extension.md)**  |
-
-
-
-
-
-
-
-
-
-
-
-
+| interface | **[Graph3DVisualizer::SupportComponents::IDestructible](Classes/interface_graph3_d_visualizer_1_1_support_components_1_1_i_destructible.md)** <br>Interface with notification of object destruction.  |
+| interface | **[Graph3DVisualizer::SupportComponents::IMoveable](Classes/interface_graph3_d_visualizer_1_1_support_components_1_1_i_moveable.md)** <br>Interface that controls the changing of Transform object. It can report changes coordinates of the object.  |
+| interface | **[Graph3DVisualizer::SupportComponents::ISelectable](Classes/interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable.md)** <br>Interface that allows you to select and highlight objects. It can report changes selected/highlighted state of the object.  |
+| interface | **[Graph3DVisualizer::SupportComponents::IVisibile](Classes/interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile.md)** <br>Interface that controls the visibility of an object. It can report changes visibility of the object.  |
 
 
 
@@ -47,107 +27,67 @@ title: Assets/SupportComponents/Scripts/ObjectEvents.cs
 ## Source code
 
 ```cpp
-// This file is part of Grpah3DVisualizer.
-// Copyright В© Gershuk Vladislav 2020.
+// This file is part of Graph3DVisualizer.
+// Copyright В© Gershuk Vladislav 2021.
 //
-// Grpah3DVisualizer is free software: you can redistribute it and/or modify
+// Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Grpah3DVisualizer is distributed in the hope that it will be useful,
+// Graph3DVisualizer is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY, without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 using UnityEngine;
 
-namespace SupportComponents
+namespace Graph3DVisualizer.SupportComponents
 {
-    public interface IMoveable
-    {
-        float MovingSpeed { get; set; }
-        float RotationSpeed { get; set; }
-        event Action<Vector3, UnityEngine.Object> ObjectMoved;
-        Vector3 GlobalCoordinates { get; set; }
-        Vector3 LocalCoordinates { get; set; }
-        void Translate (Vector3 moveVector, float deltaTime);
-        void Rotate (Vector2 rotationChange, float deltaTime);
-        IEnumerator MoveAlongTrajectory (ReadOnlyCollection<Vector3> trajectory);
-    }
-
     public interface IDestructible
     {
         event Action<UnityEngine.Object> Destroyed;
     }
 
-    public interface IVisibile
+    public interface IMoveable
     {
-        bool Visibility { get; set; }
-        event Action<bool, UnityEngine.Object> VisibleChanged;
+        event Action<Vector3, UnityEngine.Object> ObjectMoved;
+
+        Vector3 GlobalCoordinates { get; set; }
+        Vector3 LocalCoordinates { get; set; }
+        float MovingSpeed { get; set; }
+        float RotationSpeed { get; set; }
+
+        IEnumerator MoveAlongTrajectory (IReadOnlyList<Vector3> trajectory);
+
+        void Rotate (Vector2 rotationChange, float deltaTime);
+
+        void Translate (Vector3 moveVector, float deltaTime);
     }
 
     public interface ISelectable
     {
-        bool IsSelected { get; set; }
-        bool IsHighlighted { get; set; }
-        event Action<UnityEngine.Object, bool> SelectedChanged;
         event Action<UnityEngine.Object, bool> HighlightedChanged;
+
+        event Action<UnityEngine.Object, bool> SelectedChanged;
+
+        bool IsHighlighted { get; set; }
+        bool IsSelected { get; set; }
         Color SelectFrameColor { get; set; }
     }
 
-    public interface ICustomizable<TParams>
+    public interface IVisibile
     {
-        void SetupParams (TParams parameters);
-        TParams DownloadParams ();
-    }
+        event Action<bool, UnityEngine.Object> VisibleChanged;
 
-    public static class CustomizableExtension
-    {
-        //public static void SetupParams<T> (this ICustomizable<T> customizable, object parameters)
-        //{
-        //    if (parameters is T setupParams)
-        //        customizable.SetupParams(setupParams);
-        //    else
-        //        throw new InvalidCastException();
-        //}
-
-        public static void CallSetUpParams (object customizable, object[] parameters)
-        {
-            var isFinded = false;
-            foreach (var interfaceType in customizable.GetType().GetInterfaces())
-            {
-                if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>))
-                {
-                    interfaceType.GetMethod("SetupParams", interfaceType.GetGenericArguments()).Invoke(customizable, parameters);
-                    isFinded = true;
-                }
-            }
-
-            if (!isFinded)
-                throw new Exception("Customizable methods not found");
-        }
-
-        public static List<object> CallDownloadParams (object customizable)
-        {
-            var parameters = new List<object>();
-            foreach (var interfaceType in customizable.GetType().GetInterfaces())
-            {
-                if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>))
-                {
-                    parameters.Add(interfaceType.GetMethod("DownloadParams").Invoke(customizable, null));
-                }
-            }
-            return parameters;
-        }
+        bool Visibility { get; set; }
     }
 }
 ```
@@ -155,4 +95,4 @@ namespace SupportComponents
 
 -------------------------------
 
-Updated on 12 December 2020 at 00:14:19 RTZ 9 (зима)
+Updated on 18 February 2021 at 16:24:40 RTZ 9 (зима)

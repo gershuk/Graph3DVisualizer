@@ -22,6 +22,9 @@ using static UnityEngine.Physics;
 
 namespace Graph3DVisualizer.PlayerInputControls
 {
+    /// <summary>
+    /// A component that simulates a laser pointer. Simplifies the use of tools in VR.
+    /// </summary>
     [ExecuteInEditMode]
     [RequireComponent(typeof(LineRenderer))]
     public class LaserPointer : MonoBehaviour

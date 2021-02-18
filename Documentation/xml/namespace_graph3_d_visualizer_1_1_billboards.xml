@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespace_graph3_d_visualizer_1_1_billboards" kind="namespace" language="C#">
+    <compoundname>Graph3DVisualizer::Billboards</compoundname>
+    <innerclass refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard" prot="public">Graph3DVisualizer::Billboards::Billboard</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller" prot="public">Graph3DVisualizer::Billboards::BillboardController</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id" prot="public">Graph3DVisualizer::Billboards::BillboardId</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_parameters" prot="public">Graph3DVisualizer::Billboards::BillboardParameters</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Billboard/Scripts/BillboardController.cs" line="26" column="1"/>
+  </compounddef>
+</doxygen>

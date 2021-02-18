@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_scene_1_1_menu" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Scene::Menu</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1aacbc5ddd8735a770e1a47d9f3bb3facc" prot="private" static="no" strong="yes">
+        <type></type>
+        <name>State</name>
+        <enumvalue id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1aacbc5ddd8735a770e1a47d9f3bb3facca11be5a46cecdc713a8bf9daf0aca0590" prot="private">
+          <name>StartMenu</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1aacbc5ddd8735a770e1a47d9f3bb3facca52ef7c5a337de3ed0fb70f4191b6b12d" prot="private">
+          <name>TaskScene</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="30" column="16" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="31" bodyend="34"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1a8ffabc2c75f2fc75b9277bd0e700b13c" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.Scene.Menu._menuAction</definition>
+        <argsstring></argsstring>
+        <name>_menuAction</name>
+        <initializer>= &quot;Show/HideMenuAction&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="36" column="30" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1a933686cbed82d3c0768d204ef2804a69" prot="private" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject Graph3DVisualizer.Scene.Menu._content</definition>
+        <argsstring></argsstring>
+        <name>_content</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="39" column="28" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1ac43f404c67afb08e14cc2175fb45305d" prot="private" static="no" mutable="no">
+        <type>Font</type>
+        <definition>Font Graph3DVisualizer.Scene.Menu._font</definition>
+        <argsstring></argsstring>
+        <name>_font</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="42" column="22" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1a90daf46270965fd4ae4cce1f4806c4bd" prot="private" static="no" mutable="no">
+        <type>InputActionMap</type>
+        <definition>InputActionMap Graph3DVisualizer.Scene.Menu._inputActions</definition>
+        <argsstring></argsstring>
+        <name>_inputActions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="44" column="32" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1afd95d4a7949e127a93157f5e51b2b467" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Graph3DVisualizer.Scene.Menu._isActive</definition>
+        <argsstring></argsstring>
+        <name>_isActive</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="46" column="22" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1aebb2ef0f9988eade14f227eda662b66b" prot="private" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject Graph3DVisualizer.Scene.Menu._menu</definition>
+        <argsstring></argsstring>
+        <name>_menu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="49" column="28" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1a4ac0a7bf51e1457871b04640ceb1572b" prot="private" static="no" mutable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller" kindref="compound">SceneController</ref></type>
+        <definition>SceneController Graph3DVisualizer.Scene.Menu._sceneControler</definition>
+        <argsstring></argsstring>
+        <name>_sceneControler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="51" column="33" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1aea4342f45af28fd7f91e6f344960210d" prot="private" static="no" mutable="no">
+        <type>State</type>
+        <definition>State Graph3DVisualizer.Scene.Menu._state</definition>
+        <argsstring></argsstring>
+        <name>_state</name>
+        <initializer>= State.StartMenu</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="52" column="23" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1a6ba5031adc16e5b1a6393b270e383274" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Scene.Menu.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="54" column="22" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="54" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1ac933272174291f2a1721ced0ad1c033f" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Scene.Menu.CallChangeMenuState</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>CallChangeMenuState</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="160" column="22" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="160" bodyend="164"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_scene_1_1_menu_1a1cc0f9788d24e13e18c9bdfd0e7f6cd6" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Scene.Menu.ChangeMenuState</definition>
+        <argsstring>(bool state)</argsstring>
+        <name>ChangeMenuState</name>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/Menu.cs" line="166" column="22" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="166" bodyend="177"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Component that creates a menu for working with <ref refid="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller" kindref="compound">SceneController</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.Scene.Menu</label>
+        <link refid="class_graph3_d_visualizer_1_1_scene_1_1_menu"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.Scene.Menu</label>
+        <link refid="class_graph3_d_visualizer_1_1_scene_1_1_menu"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/SceneController/Scripts/Menu.cs" line="28" column="11" bodyfile="Assets/SceneController/Scripts/Menu.cs" bodystart="29" bodyend="178"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_menu_1a933686cbed82d3c0768d204ef2804a69" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Scene::Menu</scope><name>_content</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_menu_1ac43f404c67afb08e14cc2175fb45305d" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Scene::Menu</scope><name>_font</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_menu_1a90daf46270965fd4ae4cce1f4806c4bd" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Scene::Menu</scope><name>_inputActions</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_menu_1afd95d4a7949e127a93157f5e51b2b467" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Scene::Menu</scope><name>_isActive</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_menu_1aebb2ef0f9988eade14f227eda662b66b" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Scene::Menu</scope><name>_menu</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_menu_1a8ffabc2c75f2fc75b9277bd0e700b13c" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Scene::Menu</scope><name>_menuAction</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_menu_1a4ac0a7bf51e1457871b04640ceb1572b" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Scene::Menu</scope><name>_sceneControler</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_menu_1aea4342f45af28fd7f91e6f344960210d" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Scene::Menu</scope><name>_state</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_menu_1a6ba5031adc16e5b1a6393b270e383274" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Scene::Menu</scope><name>Awake</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_menu_1ac933272174291f2a1721ced0ad1c033f" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Scene::Menu</scope><name>CallChangeMenuState</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_menu_1a1cc0f9788d24e13e18c9bdfd0e7f6cd6" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Scene::Menu</scope><name>ChangeMenuState</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_menu_1aacbc5ddd8735a770e1a47d9f3bb3facc" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Scene::Menu</scope><name>State</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

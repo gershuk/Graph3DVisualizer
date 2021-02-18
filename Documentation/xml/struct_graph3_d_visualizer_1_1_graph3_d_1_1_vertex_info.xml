@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info" kind="struct" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Graph3D::VertexInfo</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1a91488ae9e5b7c1c19dac741b9bfa5734" prot="public" static="no" mutable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters" kindref="compound">VertexParameters</ref></type>
+        <definition>VertexParameters Graph3DVisualizer.Graph3D.VertexInfo.vertexParameters</definition>
+        <argsstring></argsstring>
+        <name>vertexParameters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="89" column="33" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1af0f253372c928ef566825d28b40bc214" prot="public" static="no" mutable="no">
+        <type>Type</type>
+        <definition>Type Graph3DVisualizer.Graph3D.VertexInfo.vertexType</definition>
+        <argsstring></argsstring>
+        <name>vertexType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="90" column="21" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1a5c82fdb0f1463797a2b84d2f43964353" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.Graph3D.VertexInfo.VertexInfo</definition>
+        <argsstring>(Type vertexType, VertexParameters vertexParameters)</argsstring>
+        <name>VertexInfo</name>
+        <param>
+          <type>Type</type>
+          <declname>vertexType</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters" kindref="compound">VertexParameters</ref></type>
+          <declname>vertexParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="92" column="16" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="92" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1a676e7f67f13e1a6caaed4f7773b3fd41" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Graph3D.VertexInfo.Deconstruct</definition>
+        <argsstring>(out Type vertexType, out VertexParameters vertexParameters)</argsstring>
+        <name>Deconstruct</name>
+        <param>
+          <type>out Type</type>
+          <declname>vertexType</declname>
+        </param>
+        <param>
+          <type>out <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters" kindref="compound">VertexParameters</ref></type>
+          <declname>vertexParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="108" column="21" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="108" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1a847bd015c8ac94177a191a19478ee0a3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override bool</type>
+        <definition>override bool Graph3DVisualizer.Graph3D.VertexInfo.Equals</definition>
+        <argsstring>(object obj)</argsstring>
+        <name>Equals</name>
+        <param>
+          <type>object</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="114" column="30" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="114" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1aece7c4f0042569b91f32ea46ce2023ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override int</type>
+        <definition>override int Graph3DVisualizer.Graph3D.VertexInfo.GetHashCode</definition>
+        <argsstring>()</argsstring>
+        <name>GetHashCode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="121" column="29" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="121" bodyend="127"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1a6e5a57d785f0c723cb34c86438ac90f8" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>implicit</type>
+        <definition>static implicit Graph3DVisualizer.Graph3D.VertexInfo.operator</definition>
+        <argsstring>(Type vertexType, VertexParameters vertexParameters)(VertexInfo value)</argsstring>
+        <name>operator</name>
+        <param>
+          <type>Type</type>
+          <declname>vertexType</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters" kindref="compound">VertexParameters</ref></type>
+          <declname>vertexParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="98" column="32" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="98" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1a727f75e5d8f054a2e996e1c865fd511e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>implicit</type>
+        <definition>static implicit Graph3DVisualizer.Graph3D.VertexInfo.operator VertexInfo</definition>
+        <argsstring>((Type vertexType, VertexParameters vertexParameters) value)</argsstring>
+        <name>operator VertexInfo</name>
+        <param>
+          <type>(Type vertexType, <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters" kindref="compound">VertexParameters</ref> vertexParameters)</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="103" column="32" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="103" bodyend="106"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Support class for vertex serialization. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Graph3DVisualizer.Graph3D.VertexParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.VertexInfo</label>
+        <link refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>vertexParameters</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AbstractGraphObjectParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="87" column="11" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="88" bodyend="128"/>
+    <listofallmembers>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1a676e7f67f13e1a6caaed4f7773b3fd41" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexInfo</scope><name>Deconstruct</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1a847bd015c8ac94177a191a19478ee0a3" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexInfo</scope><name>Equals</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1aece7c4f0042569b91f32ea46ce2023ec" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexInfo</scope><name>GetHashCode</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1a6e5a57d785f0c723cb34c86438ac90f8" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexInfo</scope><name>operator</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1a727f75e5d8f054a2e996e1c865fd511e" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexInfo</scope><name>operator VertexInfo</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1a5c82fdb0f1463797a2b84d2f43964353" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexInfo</scope><name>VertexInfo</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1a91488ae9e5b7c1c19dac741b9bfa5734" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexInfo</scope><name>vertexParameters</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info_1af0f253372c928ef566825d28b40bc214" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexInfo</scope><name>vertexType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

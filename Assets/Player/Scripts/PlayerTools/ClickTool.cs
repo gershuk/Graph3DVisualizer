@@ -24,6 +24,9 @@ using UnityEngine.InputSystem;
 
 namespace Graph3DVisualizer.PlayerInputControls
 {
+    /// <summary>
+    /// Tool for working with 3d menu components.
+    /// </summary>
     [RequireComponent(typeof(LaserPointer))]
     [CustomizableGrandType(Type = typeof(ClickToolParams))]
     public class ClickTool : AbstractPlayerTool, ICustomizable<ClickToolParams>
@@ -87,6 +90,9 @@ namespace Graph3DVisualizer.PlayerInputControls
         }
     }
 
+    /// <summary>
+    /// Class that describes <see cref="ClickTool"/> parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
     [Serializable]
     public class ClickToolParams : AbstractToolParams
     {

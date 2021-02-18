@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="interface_graph3_d_visualizer_1_1_support_components_1_1_i_destructible" kind="interface" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::SupportComponents::IDestructible</compoundname>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.AbstractVertex</derivedcompoundref>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="interface_graph3_d_visualizer_1_1_support_components_1_1_i_destructible_1a1366ecf23459e0b56fd3d87d7957ab73" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>Action&lt; UnityEngine.Object &gt;</type>
+        <definition>Action&lt;UnityEngine.Object&gt; Graph3DVisualizer.SupportComponents.IDestructible.Destroyed</definition>
+        <argsstring></argsstring>
+        <name>Destroyed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/ObjectEvents.cs" line="30" column="22" bodyfile="Assets/SupportComponents/Scripts/ObjectEvents.cs" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Interface with notification of object destruction. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.SupportComponents.IDestructible</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_destructible"/>
+      </node>
+      <node id="3">
+        <label>Graph3DVisualizer.Graph3D.Vertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Graph3DVisualizer.GraphTasks.DecembristVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Graph3DVisualizer.Graph3D.SelectableVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Graph3DVisualizer.Graph3D.AbstractVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="Assets/SupportComponents/Scripts/ObjectEvents.cs" line="28" column="22" bodyfile="Assets/SupportComponents/Scripts/ObjectEvents.cs" bodystart="29" bodyend="31"/>
+    <listofallmembers>
+      <member refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_destructible_1a1366ecf23459e0b56fd3d87d7957ab73" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::IDestructible</scope><name>Destroyed</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

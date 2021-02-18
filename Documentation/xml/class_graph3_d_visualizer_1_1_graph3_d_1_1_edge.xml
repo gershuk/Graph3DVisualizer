@@ -1,0 +1,500 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Graph3D::Edge</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.AbstractEdge</basecompoundref>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a3deaa469af627fcaa5c26e030fd5b71d" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.Graph3D.Edge._arrowTexturePath</definition>
+        <argsstring></argsstring>
+        <name>_arrowTexturePath</name>
+        <initializer>= &quot;Textures/Arrow&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="27" column="30" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a9cff95259e476188161302edb90be9cd" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.Graph3D.Edge._cutoff</definition>
+        <argsstring></argsstring>
+        <name>_cutoff</name>
+        <initializer>= &quot;_Cutoff&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="28" column="30" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1aa0de5dd9343ba566fd86f9620cde402e" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.Graph3D.Edge._edgeShaderPath</definition>
+        <argsstring></argsstring>
+        <name>_edgeShaderPath</name>
+        <initializer>= &quot;Custom/EdgeShader&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="29" column="30" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a8df9eb758bafa5434649f6fb377a7cac" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.Graph3D.Edge._lineTexturePath</definition>
+        <argsstring></argsstring>
+        <name>_lineTexturePath</name>
+        <initializer>= &quot;Textures/Line&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="30" column="30" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1ad78c9e4da9c531d20bedc003b372b8c5" prot="private" static="yes" mutable="no">
+        <type>Texture2D</type>
+        <definition>Texture2D Graph3DVisualizer.Graph3D.Edge._defaultArrowTexture</definition>
+        <argsstring></argsstring>
+        <name>_defaultArrowTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="31" column="34" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a6537cfca2ef67d1bbaf262b00e1553f3" prot="private" static="yes" mutable="no">
+        <type>Texture2D</type>
+        <definition>Texture2D Graph3DVisualizer.Graph3D.Edge._defaultLineTexture</definition>
+        <argsstring></argsstring>
+        <name>_defaultLineTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="32" column="34" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a8c5ec6bee704f025261adf278b370532" prot="private" static="yes" mutable="no">
+        <type>Shader</type>
+        <definition>Shader Graph3DVisualizer.Graph3D.Edge._shader</definition>
+        <argsstring></argsstring>
+        <name>_shader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="33" column="31" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a2cc111aa8c9c085696cf4453f6b1119f" prot="private" static="no" mutable="no">
+        <type>LineRenderer</type>
+        <definition>LineRenderer Graph3DVisualizer.Graph3D.Edge._lineRenderer</definition>
+        <argsstring></argsstring>
+        <name>_lineRenderer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="34" column="30" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a6bb51ec08b8ad4b7e4dab257c913381e" prot="private" static="no" mutable="no">
+        <type>Material</type>
+        <definition>Material Graph3DVisualizer.Graph3D.Edge._material</definition>
+        <argsstring></argsstring>
+        <name>_material</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="35" column="26" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1ada31a54cfa598d81c95829e103638622" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>override Texture2D</type>
+        <definition>override Texture2D Graph3DVisualizer.Graph3D.Edge.ArrowTexture</definition>
+        <argsstring></argsstring>
+        <name>ArrowTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="37" column="35" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a6a52ad64ea2551dbe934958ae92e99be" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>override Texture2D</type>
+        <definition>override Texture2D Graph3DVisualizer.Graph3D.Edge.LineTexture</definition>
+        <argsstring></argsstring>
+        <name>LineTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="43" column="35" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1aade073693de2a297b279c7967d17fc27" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>override float</type>
+        <definition>override float Graph3DVisualizer.Graph3D.Edge.SourceOffsetDist</definition>
+        <argsstring></argsstring>
+        <name>SourceOffsetDist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="49" column="31" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="50" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a4640f7157d98d5f18c6d69f4930106ab" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>override float</type>
+        <definition>override float Graph3DVisualizer.Graph3D.Edge.TargetOffsetDist</definition>
+        <argsstring></argsstring>
+        <name>TargetOffsetDist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="62" column="31" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="63" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1adbf063c9140939e466c245f12700d898" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>override EdgeType</type>
+        <definition>override EdgeType Graph3DVisualizer.Graph3D.Edge.Type</definition>
+        <argsstring></argsstring>
+        <name>Type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="75" column="34" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="76" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1aa5578c46678da6c0aa673e67f44dc16d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>override EdgeVisibility</type>
+        <definition>override EdgeVisibility Graph3DVisualizer.Graph3D.Edge.Visibility</definition>
+        <argsstring></argsstring>
+        <name>Visibility</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="88" column="40" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="89" bodyend="99"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1ad55a2dd2a180a6933708d13d49aee39b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Graph3D.Edge.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="101" column="22" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="101" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a99a9412f81ed75a37995dbe1b319d614" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Graph3D.Edge.OnDestroy</definition>
+        <argsstring>()</argsstring>
+        <name>OnDestroy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="128" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1aed78049fb78506a277f7268e21d9c653" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Graph3D.Edge.OnDestroyed</definition>
+        <argsstring>(UnityEngine.Object obj)</argsstring>
+        <name>OnDestroyed</name>
+        <param>
+          <type>UnityEngine.Object</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="130" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a3e70d40ee67c22460adaccb8c2ad448b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Graph3D.Edge.OnMove</definition>
+        <argsstring>(Vector3 arg1, UnityEngine.Object arg2)</argsstring>
+        <name>OnMove</name>
+        <param>
+          <type>Vector3</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>UnityEngine.Object</type>
+          <declname>arg2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="132" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a343c33eda6049b1f061541177e419423" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Graph3D.Edge.OnVisibilityChange</definition>
+        <argsstring>(bool visibility, UnityEngine.Object obj)</argsstring>
+        <name>OnVisibilityChange</name>
+        <param>
+          <type>bool</type>
+          <declname>visibility</declname>
+        </param>
+        <param>
+          <type>UnityEngine.Object</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="134" column="22"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a81b60bf97a8d8fbae36e4935a9ebd198" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.Graph3D.Edge.SubscribeOnVerticesEvents</definition>
+        <argsstring>()</argsstring>
+        <name>SubscribeOnVerticesEvents</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a0415799cee208f2f772d028438640566">SubscribeOnVerticesEvents</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="136" column="33" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="136" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a5e992129934246ddd48227962a0a346a" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.Graph3D.Edge.UnsubscribeOnVerticesEvents</definition>
+        <argsstring>()</argsstring>
+        <name>UnsubscribeOnVerticesEvents</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a7d6a1a3ae838313600154a4018c96fd3">UnsubscribeOnVerticesEvents</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="150" column="33" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="150" bodyend="162"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a59be3e0d209ac4791b31a5fb287e5763" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.Graph3D.Edge.UpdateCoordinates</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateCoordinates</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a83693a625fbcbfc062eba124c535b769">UpdateCoordinates</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="164" column="30" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="164" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1ad0c7d5f6d5c673d85c9ef435836e7061" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.Graph3D.Edge.UpdateEdge</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateEdge</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a74333f37017b7cbd202c917e291b4934">UpdateEdge</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="178" column="30" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="178" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a8d442f056a63b4aff571c16f288e3c40" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.Graph3D.Edge.UpdateType</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateType</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a2ce99f5dcb67770506b7b9d1fd070539">UpdateType</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="185" column="30" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="185" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1afddf0b14681052009abded83b309c1db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.Graph3D.Edge.UpdateVisibility</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateVisibility</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a9245de56af2635bc89e77cbbfb2d9090">UpdateVisibility</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/Edge.cs" line="199" column="30" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="199" bodyend="217"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Simple realization of <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge" kindref="compound">AbstractEdge</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>ICustomizable&lt; EdgeParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.Edge</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AbstractGraphObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="2">
+        <label>AbstractEdge</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="5">
+        <label>ICustomizable&lt; EdgeParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.Edge</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AbstractGraphObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="6">
+        <label>Graph3DVisualizer.Graph3D.AdjacentVertices</label>
+        <link refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices"/>
+      </node>
+      <node id="2">
+        <label>AbstractEdge</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="usage">
+          <edgelabel>_adjacentVertices</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Graph3D/Scripts/Edge.cs" line="25" column="11" bodyfile="Assets/Graph3D/Scripts/Edge.cs" bodystart="26" bodyend="218"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1aa85fea444d3a4344f03d085cff2a63c3" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_adjacentVertices</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1aadb3c54647e7ff3d5c9f0e04eb8fefdb" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_arrowTexture</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a3deaa469af627fcaa5c26e030fd5b71d" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_arrowTexturePath</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a9cff95259e476188161302edb90be9cd" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_cutoff</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1ad78c9e4da9c531d20bedc003b372b8c5" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_defaultArrowTexture</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a6537cfca2ef67d1bbaf262b00e1553f3" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_defaultLineTexture</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1aa0de5dd9343ba566fd86f9620cde402e" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_edgeShaderPath</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a02985aa5ad81a78c51d866085f120657" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_gameObject</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a2cc111aa8c9c085696cf4453f6b1119f" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_lineRenderer</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a0550efa49716a14c1d861b241b837cd9" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_lineTexture</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a8df9eb758bafa5434649f6fb377a7cac" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_lineTexturePath</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a6bb51ec08b8ad4b7e4dab257c913381e" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_material</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a8c5ec6bee704f025261adf278b370532" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_shader</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a94c12bec50c7640ee7982795a66a00f2" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_sourceOffsetDist</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a96013701919fdd65741fa158c8561f4d" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_targetOffsetDist</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1ae0d737a2a8f6616e98b13998a268d531" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_transform</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a2cbd7317a776b6d1b389deef0d4f63c5" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_type</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a6b891b07a0913512f0522ac1e51d2eb9" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>_visibility</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a5ec0baf401739bfb0ff01cc8465ca971" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>AdjacentVertices</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1ada31a54cfa598d81c95829e103638622" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>ArrowTexture</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1ad55a2dd2a180a6933708d13d49aee39b" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>Awake</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1aaf9e2860aa3e383ec73c5505da52d049" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>DownloadParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_1acb28d1479858c4b3d6119e98e058d210" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>Id</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a6a52ad64ea2551dbe934958ae92e99be" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>LineTexture</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a99a9412f81ed75a37995dbe1b319d614" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>OnDestroy</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1aed78049fb78506a277f7268e21d9c653" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>OnDestroyed</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a3e70d40ee67c22460adaccb8c2ad448b" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>OnMove</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a343c33eda6049b1f061541177e419423" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>OnVisibilityChange</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge_1a3eff68b103dc5e25cb25c25781c4e0a1" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>SetupParams</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable_1aa34dad1fba6887bc35ae88e559e1365f" prot="public" virt="non-virtual" ambiguityscope="ICustomizable&lt; EdgeParameters &gt;."><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>SetupParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1aade073693de2a297b279c7967d17fc27" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>SourceOffsetDist</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a81b60bf97a8d8fbae36e4935a9ebd198" prot="protected" virt="virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>SubscribeOnVerticesEvents</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a4640f7157d98d5f18c6d69f4930106ab" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>TargetOffsetDist</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1adbf063c9140939e466c245f12700d898" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>Type</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a5e992129934246ddd48227962a0a346a" prot="protected" virt="virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>UnsubscribeOnVerticesEvents</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a59be3e0d209ac4791b31a5fb287e5763" prot="public" virt="virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>UpdateCoordinates</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1ad0c7d5f6d5c673d85c9ef435836e7061" prot="public" virt="virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>UpdateEdge</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1a8d442f056a63b4aff571c16f288e3c40" prot="public" virt="virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>UpdateType</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1afddf0b14681052009abded83b309c1db" prot="public" virt="virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>UpdateVisibility</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_1aa5578c46678da6c0aa673e67f44dc16d" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Edge</scope><name>Visibility</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

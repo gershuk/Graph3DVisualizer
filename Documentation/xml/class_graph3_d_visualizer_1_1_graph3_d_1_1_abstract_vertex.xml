@@ -1,0 +1,593 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kind="class" language="C#" prot="public" abstract="yes">
+    <compoundname>Graph3DVisualizer::Graph3D::AbstractVertex</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.AbstractGraphObject</basecompoundref>
+    <basecompoundref refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile" prot="public" virt="non-virtual">Graph3DVisualizer.SupportComponents.IVisibile</basecompoundref>
+    <basecompoundref refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_destructible" prot="public" virt="non-virtual">Graph3DVisualizer.SupportComponents.IDestructible</basecompoundref>
+    <basecompoundref refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable" prot="public" virt="non-virtual">Graph3DVisualizer.Customizable.ICustomizable&lt; VertexParameters &gt;</basecompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.Vertex</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1acff979ff8f3ade8daf05fac440a74b61" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller" kindref="compound">BillboardController</ref></type>
+        <definition>BillboardController Graph3DVisualizer.Graph3D.AbstractVertex._billboardControler</definition>
+        <argsstring></argsstring>
+        <name>_billboardControler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="35" column="39" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1acf3bf37df3cfb423147a1dd0962a9df5" prot="protected" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject Graph3DVisualizer.Graph3D.AbstractVertex._edgePrefab</definition>
+        <argsstring></argsstring>
+        <name>_edgePrefab</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="38" column="30" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a5e84fb1f99e899f38b93f0059e4f99b7" prot="protected" static="no" mutable="no">
+        <type>List&lt; <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_link" kindref="compound">Link</ref> &gt;</type>
+        <definition>List&lt;Link&gt; Graph3DVisualizer.Graph3D.AbstractVertex._incomingLinks</definition>
+        <argsstring></argsstring>
+        <name>_incomingLinks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="40" column="24" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a2af4381e527357499e07ce3c87be46d3" prot="protected" static="no" mutable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id" kindref="compound">BillboardId</ref></type>
+        <definition>BillboardId Graph3DVisualizer.Graph3D.AbstractVertex._mainImageId</definition>
+        <argsstring></argsstring>
+        <name>_mainImageId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="41" column="31" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1aff4b4427ba18bf4758fd16e511e3134e" prot="protected" static="no" mutable="no">
+        <type>List&lt; <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_link" kindref="compound">Link</ref> &gt;</type>
+        <definition>List&lt;Link&gt; Graph3DVisualizer.Graph3D.AbstractVertex._outgoingLinks</definition>
+        <argsstring></argsstring>
+        <name>_outgoingLinks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="42" column="24" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a6b3d6fa8c2bd0fa45ccd4d07a76bbe41" prot="protected" static="no" mutable="no">
+        <type>Transform</type>
+        <definition>Transform Graph3DVisualizer.Graph3D.AbstractVertex._transform</definition>
+        <argsstring></argsstring>
+        <name>_transform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="43" column="29" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1af2f33c3af9c173a3733f7b56bdbf27e4" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Graph3DVisualizer.Graph3D.AbstractVertex._visible</definition>
+        <argsstring></argsstring>
+        <name>_visible</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="44" column="24" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a18ee97a7324e4b5179fb57b67b3ac742" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>abstract Action&lt; UnityEngine.Object &gt;</type>
+        <definition>abstract Action&lt;UnityEngine.Object&gt; Graph3DVisualizer.Graph3D.AbstractVertex.Destroyed</definition>
+        <argsstring></argsstring>
+        <name>Destroyed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="46" column="38" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="event" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a4348d862d156784ea069b17ec76879b8" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>abstract Action&lt; bool, UnityEngine.Object &gt;</type>
+        <definition>abstract Action&lt;bool, UnityEngine.Object&gt; Graph3DVisualizer.Graph3D.AbstractVertex.VisibleChanged</definition>
+        <argsstring></argsstring>
+        <name>VisibleChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="48" column="38" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a9292812e5aeba6d89bf58d151b9de1a9" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IReadOnlyList&lt; <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_link" kindref="compound">Link</ref> &gt;</type>
+        <definition>IReadOnlyList&lt;Link&gt; Graph3DVisualizer.Graph3D.AbstractVertex.IncomingLinks</definition>
+        <argsstring></argsstring>
+        <name>IncomingLinks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="50" column="30" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1ae04a1610ce04544fe653dfcb2e7f2272" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>abstract <ref refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component" kindref="compound">MovementComponent</ref></type>
+        <definition>abstract MovementComponent Graph3DVisualizer.Graph3D.AbstractVertex.MovementComponent</definition>
+        <argsstring></argsstring>
+        <name>MovementComponent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="51" column="43" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a6e1032a84bcd310bca966e8e2f8976b6" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>IReadOnlyList&lt; <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_link" kindref="compound">Link</ref> &gt;</type>
+        <definition>IReadOnlyList&lt;Link&gt; Graph3DVisualizer.Graph3D.AbstractVertex.OutgoingLinks</definition>
+        <argsstring></argsstring>
+        <name>OutgoingLinks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="52" column="30" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a9dca2e2f8fb39ed2a6592b3f7c3961df" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>abstract Vector2</type>
+        <definition>abstract Vector2 Graph3DVisualizer.Graph3D.AbstractVertex.SetMainImageSize</definition>
+        <argsstring></argsstring>
+        <name>SetMainImageSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="53" column="33" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1adccdd05a8b8659f2bd0150d87d6530a0" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>abstract bool</type>
+        <definition>abstract bool Graph3DVisualizer.Graph3D.AbstractVertex.Visibility</definition>
+        <argsstring></argsstring>
+        <name>Visibility</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="54" column="30" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="54" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1afa697c3e9c1eb3e6054fcaa2cd7872ed" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TEdge</type>
+        <definition>TEdge Graph3DVisualizer.Graph3D.AbstractVertex.CreateEdge&lt; TEdge, TParameters &gt;</definition>
+        <argsstring>(TParameters parameters, AbstractVertex toVertex)</argsstring>
+        <name>CreateEdge&lt; TEdge, TParameters &gt;</name>
+        <param>
+          <type>TParameters</type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>toVertex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="56" column="17" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="56" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1aefbf8368330007ec5df738b84ffb85ba" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge" kindref="compound">AbstractEdge</ref></type>
+        <definition>AbstractEdge Graph3DVisualizer.Graph3D.AbstractVertex.CreateEdge</definition>
+        <argsstring>(EdgeParameters parameters, Type edgeType, AbstractVertex toVertex)</argsstring>
+        <name>CreateEdge</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters" kindref="compound">EdgeParameters</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>edgeType</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>toVertex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="64" column="30" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="64" bodyend="72"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1ac1c565c552f7628a508868c7498ea835" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Graph3D.AbstractVertex.CheckLinkForCorrectness</definition>
+        <argsstring>(AbstractVertex toVertex, Type edgeType)</argsstring>
+        <name>CheckLinkForCorrectness</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>toVertex</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>edgeType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="74" column="24" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="74" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1acdb92baaff5ad0a343eea2852cb64145" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge" kindref="compound">AbstractEdge</ref></type>
+        <definition>AbstractEdge Graph3DVisualizer.Graph3D.AbstractVertex.FindOppositeEdge</definition>
+        <argsstring>(AbstractVertex toVertex, Type edgeType)</argsstring>
+        <name>FindOppositeEdge</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>toVertex</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>edgeType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="91" column="32" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="91" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a95498a1bff386e7fcff3958196e12ba6" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge" kindref="compound">AbstractEdge</ref></type>
+        <definition>AbstractEdge Graph3DVisualizer.Graph3D.AbstractVertex.RemoveLinkFromArray</definition>
+        <argsstring>(List&lt; Link &gt; links, AbstractVertex toVertex, Type edgeType)</argsstring>
+        <name>RemoveLinkFromArray</name>
+        <param>
+          <type>List&lt; <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_link" kindref="compound">Link</ref> &gt;</type>
+          <declname>links</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>toVertex</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>edgeType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="108" column="32" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="108" bodyend="121"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1adcbf05a9919097a9b99000a02de004ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters" kindref="compound">VertexParameters</ref></type>
+        <definition>VertexParameters Graph3DVisualizer.Graph3D.AbstractVertex.DownloadParams</definition>
+        <argsstring>()</argsstring>
+        <name>DownloadParams</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="123" column="33"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1ae4c795d847989a2a6e03ce6de3c9da63" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>TEdge</type>
+        <definition>TEdge Graph3DVisualizer.Graph3D.AbstractVertex.Link&lt; TEdge, TParameters &gt;</definition>
+        <argsstring>(AbstractVertex toVertex, TParameters edgeParameters)</argsstring>
+        <name>Link&lt; TEdge, TParameters &gt;</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>toVertex</declname>
+        </param>
+        <param>
+          <type>TParameters</type>
+          <declname>edgeParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="126" column="16" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="126" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a5c51fd3ccf5079e36696b6a7c25185c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge" kindref="compound">AbstractEdge</ref></type>
+        <definition>AbstractEdge Graph3DVisualizer.Graph3D.AbstractVertex.Link</definition>
+        <argsstring>(AbstractVertex toVertex, Type edgeType, EdgeParameters edgeParameters)</argsstring>
+        <name>Link</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>toVertex</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>edgeType</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters" kindref="compound">EdgeParameters</ref></type>
+          <declname>edgeParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="136" column="29" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="136" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a0867d49261fa854069102cbd7c50443d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract void</type>
+        <definition>abstract void Graph3DVisualizer.Graph3D.AbstractVertex.SetMainImage</definition>
+        <argsstring>(BillboardParameters billboardParameters)</argsstring>
+        <name>SetMainImage</name>
+        <reimplementedby refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_1ad2299949fc613403501d869d59e1db53">SetMainImage</reimplementedby>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_parameters" kindref="compound">BillboardParameters</ref></type>
+          <declname>billboardParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="146" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a5d82283efd9147b64976d65696bba8bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Graph3DVisualizer.Graph3D.AbstractVertex.SetupParams</definition>
+        <argsstring>(VertexParameters parameters)</argsstring>
+        <name>SetupParams</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters" kindref="compound">VertexParameters</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="148" column="29" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="148" bodyend="154"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1ad31d11cc96a926d149a7103d499c4494" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Graph3D.AbstractVertex.UnLink&lt; TEdge &gt;</definition>
+        <argsstring>(AbstractVertex toVertex)</argsstring>
+        <name>UnLink&lt; TEdge &gt;</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>toVertex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="156" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a78078255ef53cc462d4a3e66c3f99ffa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Graph3D.AbstractVertex.UnLink</definition>
+        <argsstring>(AbstractVertex toVertex, Type edgeType)</argsstring>
+        <name>UnLink</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>toVertex</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>edgeType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="158" column="21" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="158" bodyend="172"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract class that describes vertex component. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6">
+        <label>ICustomizable&lt; VertexParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+      <node id="7">
+        <label>Graph3DVisualizer.Graph3D.Vertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractGraphObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>IDestructible</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_destructible"/>
+      </node>
+      <node id="9">
+        <label>Graph3DVisualizer.GraphTasks.DecembristVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="4">
+        <label>IVisibile</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile"/>
+      </node>
+      <node id="8">
+        <label>Graph3DVisualizer.Graph3D.SelectableVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.AbstractVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="6">
+        <label>ICustomizable&lt; VertexParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+      <node id="7">
+        <label>Graph3DVisualizer.Billboards.BillboardId</label>
+        <link refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id"/>
+      </node>
+      <node id="8">
+        <label>Graph3DVisualizer.Billboards.BillboardController</label>
+        <link refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractGraphObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>IDestructible</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_destructible"/>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="4">
+        <label>IVisibile</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile"/>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.AbstractVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+        <childnode refid="7" relation="usage">
+          <edgelabel>_mainImageId</edgelabel>
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>_billboardControler</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="33" column="21" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="34" bodyend="173"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1acff979ff8f3ade8daf05fac440a74b61" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>_billboardControler</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1acf3bf37df3cfb423147a1dd0962a9df5" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>_edgePrefab</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a5e84fb1f99e899f38b93f0059e4f99b7" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>_incomingLinks</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a2af4381e527357499e07ce3c87be46d3" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>_mainImageId</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1aff4b4427ba18bf4758fd16e511e3134e" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>_outgoingLinks</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a6b3d6fa8c2bd0fa45ccd4d07a76bbe41" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>_transform</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1af2f33c3af9c173a3733f7b56bdbf27e4" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>_visible</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1ac1c565c552f7628a508868c7498ea835" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>CheckLinkForCorrectness</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1aefbf8368330007ec5df738b84ffb85ba" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>CreateEdge</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1afa697c3e9c1eb3e6054fcaa2cd7872ed" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>CreateEdge&lt; TEdge, TParameters &gt;</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a18ee97a7324e4b5179fb57b67b3ac742" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>Destroyed</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1adcbf05a9919097a9b99000a02de004ca" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>DownloadParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1acdb92baaff5ad0a343eea2852cb64145" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>FindOppositeEdge</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_1acb28d1479858c4b3d6119e98e058d210" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>Id</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a9292812e5aeba6d89bf58d151b9de1a9" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>IncomingLinks</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a5c51fd3ccf5079e36696b6a7c25185c8" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>Link</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1ae4c795d847989a2a6e03ce6de3c9da63" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>Link&lt; TEdge, TParameters &gt;</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1ae04a1610ce04544fe653dfcb2e7f2272" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>MovementComponent</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a6e1032a84bcd310bca966e8e2f8976b6" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>OutgoingLinks</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a95498a1bff386e7fcff3958196e12ba6" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>RemoveLinkFromArray</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a0867d49261fa854069102cbd7c50443d" prot="public" virt="pure-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>SetMainImage</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a9dca2e2f8fb39ed2a6592b3f7c3961df" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>SetMainImageSize</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a5d82283efd9147b64976d65696bba8bc" prot="public" virt="virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>SetupParams</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable_1aa34dad1fba6887bc35ae88e559e1365f" prot="public" virt="non-virtual" ambiguityscope="ICustomizable&lt; VertexParameters &gt;."><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>SetupParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a78078255ef53cc462d4a3e66c3f99ffa" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>UnLink</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1ad31d11cc96a926d149a7103d499c4494" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>UnLink&lt; TEdge &gt;</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1adccdd05a8b8659f2bd0150d87d6530a0" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>Visibility</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex_1a4348d862d156784ea069b17ec76879b8" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractVertex</scope><name>VisibleChanged</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

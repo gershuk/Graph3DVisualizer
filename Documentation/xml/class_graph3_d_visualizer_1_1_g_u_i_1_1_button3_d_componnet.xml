@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::GUI::Button3DComponnet</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object" prot="public" virt="non-virtual">Graph3DVisualizer.SupportComponents.AbstractClickableObject</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet_1add84f0da37df86c2888849ec22b34ae8" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Action&lt; GameObject &gt;</type>
+        <definition>Action&lt;GameObject&gt; Graph3DVisualizer.GUI.Button3DComponnet.Action</definition>
+        <argsstring></argsstring>
+        <name>Action</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/Button3DComponnet.cs" line="32" column="23" bodyfile="Assets/GUIFactory/Scripts/Button3DComponnet.cs" bodystart="32" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet_1a6ad7a7b1fb405db15c236511daab4987" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.GUI.Button3DComponnet.ClickAction</definition>
+        <argsstring>(GameObject gameObject)</argsstring>
+        <name>ClickAction</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a869d36ad036e55ea65fb8b71d06af6a1">ClickAction</reimplements>
+        <param>
+          <type>GameObject</type>
+          <declname>gameObject</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/Button3DComponnet.cs" line="34" column="33"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet_1a44e50000251e649572fa8af0ce6fc208" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.GUI.Button3DComponnet.SetDisabled</definition>
+        <argsstring>()</argsstring>
+        <name>SetDisabled</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a5b264799eb123cfe7054e0ba69d80933">SetDisabled</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/Button3DComponnet.cs" line="36" column="30" bodyfile="Assets/GUIFactory/Scripts/Button3DComponnet.cs" bodystart="36" bodyend="38"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A component that simulates a 3d button. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>AbstractClickableObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.GUI.Button3DComponnet</label>
+        <link refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>AbstractClickableObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.GUI.Button3DComponnet</label>
+        <link refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/GUIFactory/Scripts/Button3DComponnet.cs" line="29" column="11" bodyfile="Assets/GUIFactory/Scripts/Button3DComponnet.cs" bodystart="30" bodyend="39"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a0aa57543819f455eb94cf08ca686600e" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GUI::Button3DComponnet</scope><name>_gameObject</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a8bae0c769578106d77d550e65e84ccdc" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GUI::Button3DComponnet</scope><name>_transform</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet_1add84f0da37df86c2888849ec22b34ae8" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::Button3DComponnet</scope><name>Action</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a4b99d88769328e6ced96e3520447b5aa" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::Button3DComponnet</scope><name>Click</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet_1a6ad7a7b1fb405db15c236511daab4987" prot="protected" virt="virtual"><scope>Graph3DVisualizer::GUI::Button3DComponnet</scope><name>ClickAction</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a0c2e4dba850fa71df46909c6ae95af7b" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::Button3DComponnet</scope><name>Clicked</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet_1a44e50000251e649572fa8af0ce6fc208" prot="public" virt="virtual"><scope>Graph3DVisualizer::GUI::Button3DComponnet</scope><name>SetDisabled</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

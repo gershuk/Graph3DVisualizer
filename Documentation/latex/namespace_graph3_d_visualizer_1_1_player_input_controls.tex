@@ -1,0 +1,69 @@
+\hypertarget{namespace_graph3_d_visualizer_1_1_player_input_controls}{}\doxysection{Graph3\+DVisualizer.\+Player\+Input\+Controls Namespace Reference}
+\label{namespace_graph3_d_visualizer_1_1_player_input_controls}\index{Graph3DVisualizer.PlayerInputControls@{Graph3DVisualizer.PlayerInputControls}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player}{Abstract\+Player}}
+\begin{DoxyCompactList}\small\item\em Abstract class that describes player. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters}{Player\+Parameters}}
+\begin{DoxyCompactList}\small\item\em A class that describes default player parameters for ICustomizable$<$\+TParams$>$. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls}{Fly\+Controls}}
+\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_player}{Fly\+Player}}
+\begin{DoxyCompactList}\small\item\em Simple realization of \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player}{Abstract\+Player}} for keyboard/mouse controls. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_graph3_d_visualizer_1_1_player_input_controls_1_1_tool_config}{Tool\+Config}}
+\begin{DoxyCompactList}\small\item\em Сlass that describes the data needed when creating a new player tool. \begin{DoxySeeAlso}{See also}
+Abstract\+Player.\+Give\+New\+Tool(\+Tool\+Config\mbox{[}$\,$\mbox{]})
+
+
+\end{DoxySeeAlso}
+\end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool}{Abstract\+Player\+Tool}}
+\begin{DoxyCompactList}\small\item\em Abstract class that describes the player\textquotesingle{}s tool for interacting with the world. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_tool_params}{Abstract\+Tool\+Params}}
+\begin{DoxyCompactList}\small\item\em A class that describes default player\textquotesingle{}s tool parameters for ICustomizable$<$\+TParams$>$. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool}{Click\+Tool}}
+\begin{DoxyCompactList}\small\item\em Tool for working with 3d menu components. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool_params}{Click\+Tool\+Params}}
+\begin{DoxyCompactList}\small\item\em Class that describes \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool}{Click\+Tool}} parameters for ICustomizable$<$\+TParams$>$. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool}{Edge\+Creater\+Tool}}
+\begin{DoxyCompactList}\small\item\em Tool for creating links between vertexes. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params}{Edge\+Creater\+Tool\+Params}}
+\begin{DoxyCompactList}\small\item\em Class that describes \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool}{Edge\+Creater\+Tool}} parameters for ICustomizable$<$\+TParams$>$. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool}{Grab\+Item\+Tool}}
+\begin{DoxyCompactList}\small\item\em Tool for dragging objects with Movement\+Component. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_params}{Grab\+Item\+Tool\+Params}}
+\begin{DoxyCompactList}\small\item\em Class that describes \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool}{Grab\+Item\+Tool}} parameters for ICustomizable$<$\+TParams$>$. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_laser_pointer}{Laser\+Pointer}}
+\begin{DoxyCompactList}\small\item\em A component that simulates a laser pointer. Simplifies the use of tools in VR. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_select_item_tool}{Select\+Item\+Tool}}
+\begin{DoxyCompactList}\small\item\em The tool allows you to select objects with components that implement the ISelectable. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_select_item_tool_params}{Select\+Item\+Tool\+Params}}
+\begin{DoxyCompactList}\small\item\em Class that describes \mbox{\hyperlink{class_graph3_d_visualizer_1_1_player_input_controls_1_1_select_item_tool}{Select\+Item\+Tool}} parameters for ICustomizable$<$\+TParams$>$. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{namespace_graph3_d_visualizer_1_1_player_input_controls_a0b6006e268f4e24933c33ecba0b4f2ba}{Input\+Type}} \{ {\bfseries Off} = 0
+, {\bfseries Menu\+Only} = 1
+, {\bfseries Tools\+Only} = 2
+, {\bfseries All} = 3
+ \}
+\begin{DoxyCompactList}\small\item\em Player input type. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_graph3_d_visualizer_1_1_player_input_controls_a1bb2b0d1f6e4d96d59555baff0272150}\label{namespace_graph3_d_visualizer_1_1_player_input_controls_a1bb2b0d1f6e4d96d59555baff0272150}} 
+enum class {\bfseries Laser\+State} \{ {\bfseries On} = 0
+, {\bfseries Off} = 1
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespace_graph3_d_visualizer_1_1_player_input_controls_a0b6006e268f4e24933c33ecba0b4f2ba}\label{namespace_graph3_d_visualizer_1_1_player_input_controls_a0b6006e268f4e24933c33ecba0b4f2ba}} 
+\index{Graph3DVisualizer.PlayerInputControls@{Graph3DVisualizer.PlayerInputControls}!InputType@{InputType}}
+\index{InputType@{InputType}!Graph3DVisualizer.PlayerInputControls@{Graph3DVisualizer.PlayerInputControls}}
+\doxysubsubsection{\texorpdfstring{InputType}{InputType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_graph3_d_visualizer_1_1_player_input_controls_a0b6006e268f4e24933c33ecba0b4f2ba}{Graph3\+DVisualizer.\+Player\+Input\+Controls.\+Input\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Player input type. 
+

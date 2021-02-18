@@ -25,6 +25,9 @@ using UnityEngine.InputSystem;
 
 namespace Graph3DVisualizer.PlayerInputControls
 {
+    /// <summary>
+    /// Tool for dragging objects with <see cref="MovementComponent"/>.
+    /// </summary>
     [RequireComponent(typeof(LaserPointer))]
     [CustomizableGrandType(Type = typeof(GrabItemToolParams))]
     public class GrabItemTool : AbstractPlayerTool, ICustomizable<GrabItemToolParams>
@@ -172,6 +175,10 @@ namespace Graph3DVisualizer.PlayerInputControls
         }
     }
 
+
+    /// <summary>
+    /// Class that describes <see cref="GrabItemTool"/> parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
     [Serializable]
     public class GrabItemToolParams : AbstractToolParams
     { }

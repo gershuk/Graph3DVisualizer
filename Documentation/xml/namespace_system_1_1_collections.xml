@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="namespace_system_1_1_collections" kind="namespace" language="C#">
     <compoundname>System::Collections</compoundname>
     <briefdescription>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="4" column="25"/>
+    <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="18" column="25"/>
   </compounddef>
 </doxygen>

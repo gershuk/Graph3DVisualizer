@@ -1,0 +1,184 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::GUI::PopUpVerticalStackMenu</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object" prot="public" virt="non-virtual">Graph3DVisualizer.SupportComponents.AbstractClickableObject</basecompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.VertexLinksMenu</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a69fa2efc983428efbd643963a371ff90" prot="protected" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject Graph3DVisualizer.GUI.PopUpVerticalStackMenu._plane</definition>
+        <argsstring></argsstring>
+        <name>_plane</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" line="33" column="30" bodyfile="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a5103c8174a474bf11aeeec54d6e1dde4" prot="protected" static="no" mutable="no">
+        <type>List&lt;(float offset, Transform transform)&gt;</type>
+        <definition>List&lt;(float offset, Transform transform)&gt; Graph3DVisualizer.GUI.PopUpVerticalStackMenu._subObjects</definition>
+        <argsstring></argsstring>
+        <name>_subObjects</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" line="34" column="24" bodyfile="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a3307c32f7793f41496505b5776420bf6" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.GUI.PopUpVerticalStackMenu.PlainOffset</definition>
+        <argsstring></argsstring>
+        <name>PlainOffset</name>
+        <initializer>= 12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" line="35" column="22" bodyfile="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" bodystart="35" bodyend="35"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1acc8918d18db01681e11146eeaaed025c" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.GUI.PopUpVerticalStackMenu.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" line="37" column="22" bodyfile="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" bodystart="37" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a6396b3bb8ab1db35fd5e993c64fe638c" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.GUI.PopUpVerticalStackMenu.ClickAction</definition>
+        <argsstring>(GameObject gameObject)</argsstring>
+        <name>ClickAction</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a869d36ad036e55ea65fb8b71d06af6a1">ClickAction</reimplements>
+        <param>
+          <type>GameObject</type>
+          <declname>gameObject</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" line="44" column="33"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1ad01226ddd4c298b823caf3e5ad512fb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.GUI.PopUpVerticalStackMenu.SetDisabled</definition>
+        <argsstring>()</argsstring>
+        <name>SetDisabled</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a5b264799eb123cfe7054e0ba69d80933">SetDisabled</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" line="46" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a15cfdcb278a3a5ed58cbe596b0a3bc86" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.GUI.PopUpVerticalStackMenu.SetSubObjectList</definition>
+        <argsstring>(IReadOnlyList&lt;(float offset, Transform transform)&gt; subObjects, Transform source)</argsstring>
+        <name>SetSubObjectList</name>
+        <param>
+          <type>IReadOnlyList&lt;(float offset, Transform transform)&gt;</type>
+          <declname>subObjects</declname>
+        </param>
+        <param>
+          <type>Transform</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" line="48" column="21" bodyfile="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" bodystart="48" bodyend="69"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A component that simulates a 3d popup stack menu. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>In the next versions, it will be replaced with a regular UI interface. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>AbstractClickableObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.GUI.PopUpVerticalStackMenu</label>
+        <link refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Graph3DVisualizer.Graph3D.VertexLinksMenu</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>AbstractClickableObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.GUI.PopUpVerticalStackMenu</label>
+        <link refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" line="31" column="11" bodyfile="Assets/GUIFactory/Scripts/PopUpVerticalStackMenu.cs" bodystart="32" bodyend="70"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a0aa57543819f455eb94cf08ca686600e" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GUI::PopUpVerticalStackMenu</scope><name>_gameObject</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a69fa2efc983428efbd643963a371ff90" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GUI::PopUpVerticalStackMenu</scope><name>_plane</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a5103c8174a474bf11aeeec54d6e1dde4" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GUI::PopUpVerticalStackMenu</scope><name>_subObjects</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a8bae0c769578106d77d550e65e84ccdc" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GUI::PopUpVerticalStackMenu</scope><name>_transform</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1acc8918d18db01681e11146eeaaed025c" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::GUI::PopUpVerticalStackMenu</scope><name>Awake</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a4b99d88769328e6ced96e3520447b5aa" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::PopUpVerticalStackMenu</scope><name>Click</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a6396b3bb8ab1db35fd5e993c64fe638c" prot="protected" virt="virtual"><scope>Graph3DVisualizer::GUI::PopUpVerticalStackMenu</scope><name>ClickAction</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a0c2e4dba850fa71df46909c6ae95af7b" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::PopUpVerticalStackMenu</scope><name>Clicked</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a3307c32f7793f41496505b5776420bf6" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::PopUpVerticalStackMenu</scope><name>PlainOffset</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1ad01226ddd4c298b823caf3e5ad512fb1" prot="public" virt="virtual"><scope>Graph3DVisualizer::GUI::PopUpVerticalStackMenu</scope><name>SetDisabled</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a15cfdcb278a3a5ed58cbe596b0a3bc86" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::PopUpVerticalStackMenu</scope><name>SetSubObjectList</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

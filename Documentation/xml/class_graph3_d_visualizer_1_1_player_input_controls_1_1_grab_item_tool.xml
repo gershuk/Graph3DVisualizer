@@ -1,0 +1,559 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::PlayerInputControls::GrabItemTool</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.AbstractPlayerTool</basecompoundref>
+    <basecompoundref refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable" prot="public" virt="non-virtual">Graph3DVisualizer.Customizable.ICustomizable&lt; GrabItemToolParams &gt;</basecompoundref>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a6a240f07b3ef73587e305a104a0e9636" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.PlayerInputControls.GrabItemTool._actionMapName</definition>
+        <argsstring></argsstring>
+        <name>_actionMapName</name>
+        <initializer>= &quot;GrabItemActionMap&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="35" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a138e60a4d0d561c8eb00efd021a04898" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.PlayerInputControls.GrabItemTool._changeRangeActionName</definition>
+        <argsstring></argsstring>
+        <name>_changeRangeActionName</name>
+        <initializer>= &quot;ChangeRangeAction&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="36" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a090dd5797533e5593b20848718a98ae6" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.PlayerInputControls.GrabItemTool._grabActionName</definition>
+        <argsstring></argsstring>
+        <name>_grabActionName</name>
+        <initializer>= &quot;GrabItemAction&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="37" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a7c0c011dd2de18c369a4c9d2b9d91d91" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.PlayerInputControls.GrabItemTool._capturedRange</definition>
+        <argsstring></argsstring>
+        <name>_capturedRange</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="40" column="23" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1af964d6bca13fee6778defc12b234ed66" prot="private" static="no" mutable="no">
+        <type>Coroutine</type>
+        <definition>Coroutine Graph3DVisualizer.PlayerInputControls.GrabItemTool._changeRangeCoroutine</definition>
+        <argsstring></argsstring>
+        <name>_changeRangeCoroutine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="42" column="27" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a36c748c98dedd2c2a2ab74280ff8632f" prot="private" static="no" mutable="no">
+        <type>InputActionMap</type>
+        <definition>InputActionMap Graph3DVisualizer.PlayerInputControls.GrabItemTool._inputActions</definition>
+        <argsstring></argsstring>
+        <name>_inputActions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="44" column="32" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a9426df30a3d660cd6680ca054c4b419b" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Graph3DVisualizer.PlayerInputControls.GrabItemTool._isCapturedObject</definition>
+        <argsstring></argsstring>
+        <name>_isCapturedObject</name>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="46" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1af18ffc78540b04f31b70f5e0ea5c1e48" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Graph3DVisualizer.PlayerInputControls.GrabItemTool._isChangingRange</definition>
+        <argsstring></argsstring>
+        <name>_isChangingRange</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="48" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a8fc214eee8e90279fe3e8b99e8108c4a" prot="private" static="no" mutable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_laser_pointer" kindref="compound">LaserPointer</ref></type>
+        <definition>LaserPointer Graph3DVisualizer.PlayerInputControls.GrabItemTool._laserPointer</definition>
+        <argsstring></argsstring>
+        <name>_laserPointer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="50" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a1ea3f5ff58082bbc5b9760a32ed4250b" prot="private" static="no" mutable="no">
+        <type><ref refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_moveable" kindref="compound">IMoveable</ref></type>
+        <definition>IMoveable Graph3DVisualizer.PlayerInputControls.GrabItemTool._moveable</definition>
+        <argsstring></argsstring>
+        <name>_moveable</name>
+        <initializer>= null</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="52" column="27" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a237c0b6a03843e4df7c6625fe69f69d3" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.PlayerInputControls.GrabItemTool._rangeChangeSpeed</definition>
+        <argsstring></argsstring>
+        <name>_rangeChangeSpeed</name>
+        <initializer>= 30</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="55" column="23" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a31cfa39b667889e720b89c57070bc595" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.PlayerInputControls.GrabItemTool._rayCastRange</definition>
+        <argsstring></argsstring>
+        <name>_rayCastRange</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="58" column="23" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a7e808dd68fc0e95653ace2f971b9981e" prot="private" static="no" mutable="no">
+        <type>Transform</type>
+        <definition>Transform Graph3DVisualizer.PlayerInputControls.GrabItemTool._transform</definition>
+        <argsstring></argsstring>
+        <name>_transform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="60" column="27" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1ab3425013c0327abafa34d61c7f3aac6d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.PlayerInputControls.GrabItemTool.CapturedRange</definition>
+        <argsstring></argsstring>
+        <name>CapturedRange</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="61" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a45c88980ff78d48ea5960edfe4fcca8f" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.PlayerInputControls.GrabItemTool.RangeChangeSpeed</definition>
+        <argsstring></argsstring>
+        <name>RangeChangeSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="62" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="62" bodyend="62"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a4b04a1786d464724d3d18638af8e2732" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="64" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="64" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1afc15a75f4f80c7ccfed9b0507bf48dbb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.CallFreeItem</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>CallFreeItem</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="74" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1aebb2201d5e56013380916c6959b48e8d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.CallGrabItem</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>CallGrabItem</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="76" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a3064faf58007bf7e2aab20dc02fe462e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.CallStartChangingRange</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>CallStartChangingRange</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="78" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a08eef97f2cc1966a3373fce86760c9ec" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.CallStopChangingRange</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>CallStopChangingRange</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="80" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a758649b123a54f24aa52be8b57bcee72" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>IEnumerator</type>
+        <definition>IEnumerator Graph3DVisualizer.PlayerInputControls.GrabItemTool.ChangingRangeCoroutine</definition>
+        <argsstring>()</argsstring>
+        <name>ChangingRangeCoroutine</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="82" column="29" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="82" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a85edaf8dd241daf0ba4dacc060937d6f" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.LateUpdate</definition>
+        <argsstring>()</argsstring>
+        <name>LateUpdate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="94" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="94" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1ac9c82a0ce87697c663cebf50b297d511" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.OnDisable</definition>
+        <argsstring>()</argsstring>
+        <name>OnDisable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="102" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="102" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1aeb3bdd2a650e1f54151dc151dbc0d2c9" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.OnEnable</definition>
+        <argsstring>()</argsstring>
+        <name>OnEnable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="111" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="111" bodyend="116"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1ab48a0eee1d79c3692733f0b6e7b28aba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.ChangeRange</definition>
+        <argsstring>(float normalizedDelta)</argsstring>
+        <name>ChangeRange</name>
+        <param>
+          <type>float</type>
+          <declname>normalizedDelta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="118" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a9d526d383769b3a1318716e86e2ca1c6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_params" kindref="compound">GrabItemToolParams</ref></type>
+        <definition>GrabItemToolParams Graph3DVisualizer.PlayerInputControls.GrabItemTool.DownloadParams</definition>
+        <argsstring>()</argsstring>
+        <name>DownloadParams</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="120" column="35" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="120" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1afe53dd792a732e8a4b5df49789da6a93" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.FreeItem</definition>
+        <argsstring>()</argsstring>
+        <name>FreeItem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="126" column="21" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="126" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a2486c27721b57c1902d4189e3e8c9b26" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.GrabItem</definition>
+        <argsstring>()</argsstring>
+        <name>GrabItem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="133" column="21" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="133" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a098d73e967692e3fddf7c5ce664d990f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.PlayerInputControls.GrabItemTool.RegisterEvents</definition>
+        <argsstring>(IInputActionCollection inputActions)</argsstring>
+        <name>RegisterEvents</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool_1a9d9cc02c9939ce9dc87898ed730a655f">RegisterEvents</reimplements>
+        <param>
+          <type>IInputActionCollection</type>
+          <declname>inputActions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="149" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="149" bodyend="161"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a1ac1bce8771853b08a26c277963c9a7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.SetupParams</definition>
+        <argsstring>(GrabItemToolParams parameters)</argsstring>
+        <name>SetupParams</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_params" kindref="compound">GrabItemToolParams</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="163" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a0998079cabe49fed946c29cec4d06d4a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.StartChangingRange</definition>
+        <argsstring>()</argsstring>
+        <name>StartChangingRange</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="165" column="21" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="165" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a790e52e3d21f6b9cd15a4f61f8aebcec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.GrabItemTool.StopChangingRange</definition>
+        <argsstring>()</argsstring>
+        <name>StopChangingRange</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="171" column="21" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="171" bodyend="175"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Tool for dragging objects with MovementComponent. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.GrabItemTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractPlayerTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="4">
+        <label>ICustomizable&lt; GrabItemToolParams &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.GrabItemTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractPlayerTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="4">
+        <label>ICustomizable&lt; GrabItemToolParams &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" line="33" column="11" bodyfile="Assets/Player/Scripts/PlayerTools/GrabItemTool.cs" bodystart="34" bodyend="176"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a6a240f07b3ef73587e305a104a0e9636" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>_actionMapName</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a7c0c011dd2de18c369a4c9d2b9d91d91" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>_capturedRange</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a138e60a4d0d561c8eb00efd021a04898" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>_changeRangeActionName</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1af964d6bca13fee6778defc12b234ed66" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>_changeRangeCoroutine</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a090dd5797533e5593b20848718a98ae6" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>_grabActionName</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a36c748c98dedd2c2a2ab74280ff8632f" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>_inputActions</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a9426df30a3d660cd6680ca054c4b419b" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>_isCapturedObject</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1af18ffc78540b04f31b70f5e0ea5c1e48" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>_isChangingRange</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a8fc214eee8e90279fe3e8b99e8108c4a" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>_laserPointer</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a1ea3f5ff58082bbc5b9760a32ed4250b" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>_moveable</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a237c0b6a03843e4df7c6625fe69f69d3" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>_rangeChangeSpeed</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a31cfa39b667889e720b89c57070bc595" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>_rayCastRange</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a7e808dd68fc0e95653ace2f971b9981e" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>_transform</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a4b04a1786d464724d3d18638af8e2732" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>Awake</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1afc15a75f4f80c7ccfed9b0507bf48dbb" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>CallFreeItem</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1aebb2201d5e56013380916c6959b48e8d" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>CallGrabItem</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a3064faf58007bf7e2aab20dc02fe462e" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>CallStartChangingRange</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a08eef97f2cc1966a3373fce86760c9ec" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>CallStopChangingRange</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1ab3425013c0327abafa34d61c7f3aac6d" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>CapturedRange</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1ab48a0eee1d79c3692733f0b6e7b28aba" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>ChangeRange</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a758649b123a54f24aa52be8b57bcee72" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>ChangingRangeCoroutine</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a9d526d383769b3a1318716e86e2ca1c6" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>DownloadParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1afe53dd792a732e8a4b5df49789da6a93" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>FreeItem</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a2486c27721b57c1902d4189e3e8c9b26" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>GrabItem</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a85edaf8dd241daf0ba4dacc060937d6f" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>LateUpdate</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1ac9c82a0ce87697c663cebf50b297d511" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>OnDisable</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1aeb3bdd2a650e1f54151dc151dbc0d2c9" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>OnEnable</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a45c88980ff78d48ea5960edfe4fcca8f" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>RangeChangeSpeed</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool_1a3bbd4d60402bdfc4d057d42d5c581997" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>RayCast</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a098d73e967692e3fddf7c5ce664d990f" prot="public" virt="virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>RegisterEvents</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a1ac1bce8771853b08a26c277963c9a7f" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>SetupParams</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable_1aa34dad1fba6887bc35ae88e559e1365f" prot="public" virt="non-virtual" ambiguityscope="ICustomizable&lt; GrabItemToolParams &gt;."><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>SetupParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a0998079cabe49fed946c29cec4d06d4a" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>StartChangingRange</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a790e52e3d21f6b9cd15a4f61f8aebcec" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::GrabItemTool</scope><name>StopChangingRange</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

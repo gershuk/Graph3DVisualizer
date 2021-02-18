@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespace_graph3_d_visualizer_1_1_graph3_d" kind="namespace" language="C#">
+    <compoundname>Graph3DVisualizer::Graph3D</compoundname>
+    <innerclass refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices" prot="public">Graph3DVisualizer::Graph3D::AdjacentVertices</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge" prot="public">Graph3DVisualizer::Graph3D::AbstractEdge</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters" prot="public">Graph3DVisualizer::Graph3D::EdgeParameters</innerclass>
+    <innerclass refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info" prot="public">Graph3DVisualizer::Graph3D::LinkInfo</innerclass>
+    <innerclass refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_info" prot="public">Graph3DVisualizer::Graph3D::VertexInfo</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph" prot="public">Graph3DVisualizer::Graph3D::AbstractGraph</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_graph_parameters" prot="public">Graph3DVisualizer::Graph3D::GraphParameters</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" prot="public">Graph3DVisualizer::Graph3D::AbstractVertex</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_link" prot="public">Graph3DVisualizer::Graph3D::Link</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_link_not_found_exception" prot="public">Graph3DVisualizer::Graph3D::LinkNotFoundException</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters" prot="public">Graph3DVisualizer::Graph3D::VertexParameters</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge" prot="public">Graph3DVisualizer::Graph3D::Edge</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_graph" prot="public">Graph3DVisualizer::Graph3D::Graph</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object" prot="public">Graph3DVisualizer::Graph3D::AbstractGraphObject</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters" prot="public">Graph3DVisualizer::Graph3D::AbstractGraphObjectParameters</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex" prot="public">Graph3DVisualizer::Graph3D::SelectableVertex</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_parameters" prot="public">Graph3DVisualizer::Graph3D::SelectableVertexParameters</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex" prot="public">Graph3DVisualizer::Graph3D::Vertex</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu" prot="public">Graph3DVisualizer::Graph3D::VertexLinksMenu</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_graph3_d_visualizer_1_1_graph3_d_1a955daa7aa0c34914cf2bdfc8dfce73e9" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>EdgeType</name>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_graph3_d_1a955daa7aa0c34914cf2bdfc8dfce73e9a7c91d399b1b0815caa55eebe8056c2b7" prot="public">
+          <name>Unidirectional</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_graph3_d_1a955daa7aa0c34914cf2bdfc8dfce73e9aabd4328c725637aabedbd02d3b7ffd40" prot="public">
+          <name>Bidirectional</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="145" column="11" bodyfile="Assets/Graph3D/Scripts/AbstractEdge.cs" bodystart="146" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespace_graph3_d_visualizer_1_1_graph3_d_1a741c146fd2462b9d0222668f5c0f3399" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>EdgeVisibility</name>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_graph3_d_1a741c146fd2462b9d0222668f5c0f3399a7acdf85c69cc3c5305456a293524386e" prot="public">
+          <name>Hidden</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_graph3_d_1a741c146fd2462b9d0222668f5c0f3399aec24d78ce33048dc73a2b6b1a0690192" prot="public">
+          <name>Visible</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_graph3_d_1a741c146fd2462b9d0222668f5c0f3399a5b102e312ea97a003f936d204ebbddfb" prot="public">
+          <name>DependOnVertices</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="151" column="11" bodyfile="Assets/Graph3D/Scripts/AbstractEdge.cs" bodystart="152" bodyend="156"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="23" column="1"/>
+  </compounddef>
+</doxygen>

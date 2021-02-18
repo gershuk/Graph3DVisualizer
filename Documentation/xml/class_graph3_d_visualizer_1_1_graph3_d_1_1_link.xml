@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_graph3_d_1_1_link" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Graph3D::Link</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_link_1adda19f1b799c3856d3b30f73894b2a62" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+        <definition>AbstractVertex Graph3DVisualizer.Graph3D.Link.AdjacentVertex</definition>
+        <argsstring></argsstring>
+        <name>AdjacentVertex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="180" column="31" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="180" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_link_1a2eb88617c8b84c1e5252fb610a140f63" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge" kindref="compound">AbstractEdge</ref></type>
+        <definition>AbstractEdge Graph3DVisualizer.Graph3D.Link.Edge</definition>
+        <argsstring></argsstring>
+        <name>Edge</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="181" column="29" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="181" bodyend="181"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_link_1a431321b34cbccfe0656e26dc2b6ec539" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.Graph3D.Link.Link</definition>
+        <argsstring>(AbstractVertex adjacentVertex, AbstractEdge edge)</argsstring>
+        <name>Link</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>adjacentVertex</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge" kindref="compound">AbstractEdge</ref></type>
+          <declname>edge</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="183" column="16" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="183" bodyend="187"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract class that describes unidirectional link between to current and adjacent vertexes. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="178" column="11" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="179" bodyend="188"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_link_1adda19f1b799c3856d3b30f73894b2a62" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Link</scope><name>AdjacentVertex</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_link_1a2eb88617c8b84c1e5252fb610a140f63" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Link</scope><name>Edge</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_link_1a431321b34cbccfe0656e26dc2b6ec539" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::Link</scope><name>Link</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

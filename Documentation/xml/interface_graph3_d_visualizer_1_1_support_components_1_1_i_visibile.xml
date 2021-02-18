@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile" kind="interface" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::SupportComponents::IVisibile</compoundname>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller" prot="public" virt="non-virtual">Graph3DVisualizer.Billboards.BillboardController</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.AbstractVertex</derivedcompoundref>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile_1a6872f1f99b5ef97a08c5f42df4ee9913" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>Action&lt; bool, UnityEngine.Object &gt;</type>
+        <definition>Action&lt;bool, UnityEngine.Object&gt; Graph3DVisualizer.SupportComponents.IVisibile.VisibleChanged</definition>
+        <argsstring></argsstring>
+        <name>VisibleChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/ObjectEvents.cs" line="71" column="22" bodyfile="Assets/SupportComponents/Scripts/ObjectEvents.cs" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile_1a5148fb805ae4b8d5aaefda7dd0f8d6ff" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Graph3DVisualizer.SupportComponents.IVisibile.Visibility</definition>
+        <argsstring></argsstring>
+        <name>Visibility</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/ObjectEvents.cs" line="73" column="14" bodyfile="Assets/SupportComponents/Scripts/ObjectEvents.cs" bodystart="73" bodyend="73"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Interface that controls the visibility of an object. It can report changes visibility of the object. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.SupportComponents.IVisibile</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile"/>
+      </node>
+      <node id="4">
+        <label>Graph3DVisualizer.Graph3D.Vertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Graph3DVisualizer.Billboards.BillboardController</label>
+        <link refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Graph3DVisualizer.GraphTasks.DecembristVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Graph3DVisualizer.Graph3D.SelectableVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Graph3DVisualizer.Graph3D.AbstractVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="Assets/SupportComponents/Scripts/ObjectEvents.cs" line="69" column="22" bodyfile="Assets/SupportComponents/Scripts/ObjectEvents.cs" bodystart="70" bodyend="74"/>
+    <listofallmembers>
+      <member refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile_1a5148fb805ae4b8d5aaefda7dd0f8d6ff" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::IVisibile</scope><name>Visibility</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile_1a6872f1f99b5ef97a08c5f42df4ee9913" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::IVisibile</scope><name>VisibleChanged</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

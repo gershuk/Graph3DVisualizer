@@ -20,6 +20,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.SupportComponents
 {
+    /// <summary>
+    /// Component for interacting with an object using <see cref="Physics.Raycast(Ray)"/>.
+    /// </summary>
     public abstract class AbstractClickableObject : MonoBehaviour
     {
         protected GameObject _gameObject;

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespace_graph3_d_visualizer_1_1_scene" kind="namespace" language="C#">
+    <compoundname>Graph3DVisualizer::Scene</compoundname>
+    <innerclass refid="class_graph3_d_visualizer_1_1_scene_1_1_menu" prot="public">Graph3DVisualizer::Scene::Menu</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller" prot="public">Graph3DVisualizer::Scene::SceneController</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller_parameters" prot="public">Graph3DVisualizer::Scene::SceneControllerParameters</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/SceneController/Scripts/Menu.cs" line="22" column="1"/>
+  </compounddef>
+</doxygen>

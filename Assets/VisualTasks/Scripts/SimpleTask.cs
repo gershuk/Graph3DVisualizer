@@ -26,6 +26,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.GraphTasks
 {
+    /// <summary>
+    /// Example of implementing a graph visual task.
+    /// </summary>
     public class SimpleTask : AbstractVisualTask
     {
         private const string _fontPath = "Font/CustomFontDroidSans-Bold";
@@ -51,7 +54,7 @@ namespace Graph3DVisualizer.GraphTasks
             var TextTextureFactory = new TextTextureFactory(customFont, 32);
             var resizedTetxure = Texture2DExtension.ResizeTexture(mainTexture, 200, 200);
 
-            for (var i = 0; i < 2; ++i)
+            for (var i = 0; i < 200; ++i)
             {
                 var text = TextTextureFactory.MakeTextTexture($"Vertex{i}");
                 text = Texture2DExtension.ResizeTexture(text, 200, (int) (Math.Truncate(200.0 / text.width + 1)) * text.height);

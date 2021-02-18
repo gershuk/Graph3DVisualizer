@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object" kind="class" language="C#" prot="public" abstract="yes">
+    <compoundname>Graph3DVisualizer::SupportComponents::AbstractClickableObject</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet" prot="public" virt="non-virtual">Graph3DVisualizer.GUI.Button3DComponnet</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu" prot="public" virt="non-virtual">Graph3DVisualizer.GUI.PopUpVerticalStackMenu</derivedcompoundref>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a0aa57543819f455eb94cf08ca686600e" prot="protected" static="no" mutable="no">
+        <type>GameObject</type>
+        <definition>GameObject Graph3DVisualizer.SupportComponents.AbstractClickableObject._gameObject</definition>
+        <argsstring></argsstring>
+        <name>_gameObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/AbstractClickableObject.cs" line="28" column="30" bodyfile="Assets/SupportComponents/Scripts/AbstractClickableObject.cs" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a8bae0c769578106d77d550e65e84ccdc" prot="protected" static="no" mutable="no">
+        <type>Transform</type>
+        <definition>Transform Graph3DVisualizer.SupportComponents.AbstractClickableObject._transform</definition>
+        <argsstring></argsstring>
+        <name>_transform</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/AbstractClickableObject.cs" line="29" column="29" bodyfile="Assets/SupportComponents/Scripts/AbstractClickableObject.cs" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a0c2e4dba850fa71df46909c6ae95af7b" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>Action&lt; GameObject &gt;</type>
+        <definition>Action&lt;GameObject&gt; Graph3DVisualizer.SupportComponents.AbstractClickableObject.Clicked</definition>
+        <argsstring></argsstring>
+        <name>Clicked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/AbstractClickableObject.cs" line="31" column="29" bodyfile="Assets/SupportComponents/Scripts/AbstractClickableObject.cs" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a869d36ad036e55ea65fb8b71d06af6a1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract void</type>
+        <definition>abstract void Graph3DVisualizer.SupportComponents.AbstractClickableObject.ClickAction</definition>
+        <argsstring>(GameObject gameObject)</argsstring>
+        <name>ClickAction</name>
+        <reimplementedby refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu_1a3ca27c26926374446c099c3c610a8243">ClickAction</reimplementedby>
+        <reimplementedby refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet_1a6ad7a7b1fb405db15c236511daab4987">ClickAction</reimplementedby>
+        <reimplementedby refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a6396b3bb8ab1db35fd5e993c64fe638c">ClickAction</reimplementedby>
+        <param>
+          <type>GameObject</type>
+          <declname>gameObject</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/AbstractClickableObject.cs" line="33" column="33"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a4b99d88769328e6ced96e3520447b5aa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.SupportComponents.AbstractClickableObject.Click</definition>
+        <argsstring>(GameObject gameObject)</argsstring>
+        <name>Click</name>
+        <param>
+          <type>GameObject</type>
+          <declname>gameObject</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/AbstractClickableObject.cs" line="35" column="21" bodyfile="Assets/SupportComponents/Scripts/AbstractClickableObject.cs" bodystart="35" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a5b264799eb123cfe7054e0ba69d80933" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract void</type>
+        <definition>abstract void Graph3DVisualizer.SupportComponents.AbstractClickableObject.SetDisabled</definition>
+        <argsstring>()</argsstring>
+        <name>SetDisabled</name>
+        <reimplementedby refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet_1a44e50000251e649572fa8af0ce6fc208">SetDisabled</reimplementedby>
+        <reimplementedby refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1ad01226ddd4c298b823caf3e5ad512fb1">SetDisabled</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/AbstractClickableObject.cs" line="41" column="30"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Component for interacting with an object using Physics.Raycast(Ray). </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.SupportComponents.AbstractClickableObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Graph3DVisualizer.GUI.PopUpVerticalStackMenu</label>
+        <link refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Graph3DVisualizer.Graph3D.VertexLinksMenu</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="3">
+        <label>Graph3DVisualizer.GUI.Button3DComponnet</label>
+        <link refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.SupportComponents.AbstractClickableObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/SupportComponents/Scripts/AbstractClickableObject.cs" line="26" column="21" bodyfile="Assets/SupportComponents/Scripts/AbstractClickableObject.cs" bodystart="27" bodyend="42"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a0aa57543819f455eb94cf08ca686600e" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::AbstractClickableObject</scope><name>_gameObject</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a8bae0c769578106d77d550e65e84ccdc" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::AbstractClickableObject</scope><name>_transform</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a4b99d88769328e6ced96e3520447b5aa" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::AbstractClickableObject</scope><name>Click</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a869d36ad036e55ea65fb8b71d06af6a1" prot="protected" virt="pure-virtual"><scope>Graph3DVisualizer::SupportComponents::AbstractClickableObject</scope><name>ClickAction</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a0c2e4dba850fa71df46909c6ae95af7b" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::AbstractClickableObject</scope><name>Clicked</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a5b264799eb123cfe7054e0ba69d80933" prot="public" virt="pure-virtual"><scope>Graph3DVisualizer::SupportComponents::AbstractClickableObject</scope><name>SetDisabled</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

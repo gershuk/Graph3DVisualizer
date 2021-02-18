@@ -25,6 +25,9 @@ using UnityEngine.InputSystem;
 
 namespace Graph3DVisualizer.PlayerInputControls
 {
+    /// <summary>
+    /// The tool allows you to select objects with components that implement the <see cref="ISelectable"/>.
+    /// </summary>
     [RequireComponent(typeof(LaserPointer))]
     [CustomizableGrandType(Type = typeof(SelectItemToolParams))]
     public class SelectItemTool : AbstractPlayerTool, ICustomizable<SelectItemToolParams>
@@ -108,6 +111,10 @@ namespace Graph3DVisualizer.PlayerInputControls
         public void SetupParams (SelectItemToolParams parameters) => _colors = parameters.Colors;
     }
 
+
+    /// <summary>
+    /// Class that describes <see cref="SelectItemTool"/> parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
     [Serializable]
     public class SelectItemToolParams : AbstractToolParams
     {

@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Graph3D::EdgeParameters</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.AbstractGraphObjectParameters</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters_1afaa02c05805ada99765a5fc15df944f9" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Texture2D</type>
+        <definition>Texture2D Graph3DVisualizer.Graph3D.EdgeParameters.ArrowTexture</definition>
+        <argsstring></argsstring>
+        <name>ArrowTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="128" column="26" bodyfile="Assets/Graph3D/Scripts/AbstractEdge.cs" bodystart="128" bodyend="128"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters_1a97f28cc5795e40b04676352eebe1173a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Texture2D</type>
+        <definition>Texture2D Graph3DVisualizer.Graph3D.EdgeParameters.LineTexture</definition>
+        <argsstring></argsstring>
+        <name>LineTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="129" column="26" bodyfile="Assets/Graph3D/Scripts/AbstractEdge.cs" bodystart="129" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters_1afddbb998dfc7302f24d9a6a7041fa345" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.Graph3D.EdgeParameters.SourceOffsetDist</definition>
+        <argsstring></argsstring>
+        <name>SourceOffsetDist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="130" column="22" bodyfile="Assets/Graph3D/Scripts/AbstractEdge.cs" bodystart="130" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters_1aec3e68cf5eb4bb01ea9c61c97a98382d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.Graph3D.EdgeParameters.TargetOffsetDist</definition>
+        <argsstring></argsstring>
+        <name>TargetOffsetDist</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="131" column="22" bodyfile="Assets/Graph3D/Scripts/AbstractEdge.cs" bodystart="131" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters_1a3225873666b39e7b748cb3395109397d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>EdgeVisibility</type>
+        <definition>EdgeVisibility Graph3DVisualizer.Graph3D.EdgeParameters.Visibility</definition>
+        <argsstring></argsstring>
+        <name>Visibility</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="132" column="31" bodyfile="Assets/Graph3D/Scripts/AbstractEdge.cs" bodystart="132" bodyend="132"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters_1abdf7afb144690335a858209a59350674" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.Graph3D.EdgeParameters.EdgeParameters</definition>
+        <argsstring>(float sourceOffsetDist=1f, float targetOffsetDist=1f, Texture2D arrowTexture=null, Texture2D lineTexture=null, EdgeVisibility visibility=EdgeVisibility.DependOnVertices, string id=null)</argsstring>
+        <name>EdgeParameters</name>
+        <param>
+          <type>float</type>
+          <declname>sourceOffsetDist</declname>
+          <defval>1f</defval>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>targetOffsetDist</declname>
+          <defval>1f</defval>
+        </param>
+        <param>
+          <type>Texture2D</type>
+          <declname>arrowTexture</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>Texture2D</type>
+          <declname>lineTexture</declname>
+          <defval>null</defval>
+        </param>
+        <param>
+          <type>EdgeVisibility</type>
+          <declname>visibility</declname>
+          <defval>EdgeVisibility.DependOnVertices</defval>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>id</declname>
+          <defval>null</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="134" column="16" bodyfile="Assets/Graph3D/Scripts/AbstractEdge.cs" bodystart="134" bodyend="142"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A class that describes default edge parameters for ICustomizable&lt;TParams&gt;. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>AbstractGraphObjectParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.EdgeParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>AbstractGraphObjectParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.EdgeParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="126" column="11" bodyfile="Assets/Graph3D/Scripts/AbstractEdge.cs" bodystart="127" bodyend="143"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters_1a67eb768b7f1708e898652ccdafedc93b" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::EdgeParameters</scope><name>AbstractGraphObjectParameters</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters_1afaa02c05805ada99765a5fc15df944f9" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::EdgeParameters</scope><name>ArrowTexture</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters_1abdf7afb144690335a858209a59350674" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::EdgeParameters</scope><name>EdgeParameters</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters_1a68083adbb74c3b7ba27d6e62232eb145" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::EdgeParameters</scope><name>Id</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters_1a97f28cc5795e40b04676352eebe1173a" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::EdgeParameters</scope><name>LineTexture</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters_1afddbb998dfc7302f24d9a6a7041fa345" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::EdgeParameters</scope><name>SourceOffsetDist</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters_1aec3e68cf5eb4bb01ea9c61c97a98382d" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::EdgeParameters</scope><name>TargetOffsetDist</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters_1a3225873666b39e7b748cb3395109397d" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::EdgeParameters</scope><name>Visibility</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

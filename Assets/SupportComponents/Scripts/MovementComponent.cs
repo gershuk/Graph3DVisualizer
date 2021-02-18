@@ -22,6 +22,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.SupportComponents
 {
+    /// <summary>
+    /// Component that controls the movement of the object.
+    /// </summary>
     public class MovementComponent : MonoBehaviour, IMoveable
     {
         private const float _thresholdDistance = 0.1f;

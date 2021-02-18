@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_tool_params" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::PlayerInputControls::AbstractToolParams</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter" prot="public" virt="non-virtual">Graph3DVisualizer.Customizable.AbstractCustomizableParameter</basecompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool_params" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.ClickToolParams</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.EdgeCreaterToolParams</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_params" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.GrabItemToolParams</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_select_item_tool_params" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.SelectItemToolParams</derivedcompoundref>
+    <briefdescription>
+<para>A class that describes default player&apos;s tool parameters for ICustomizable&lt;TParams&gt;. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>Graph3DVisualizer.PlayerInputControls.GrabItemToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_params"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.AbstractToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_tool_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Graph3DVisualizer.PlayerInputControls.SelectItemToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_select_item_tool_params"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+      <node id="4">
+        <label>Graph3DVisualizer.PlayerInputControls.EdgeCreaterToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Graph3DVisualizer.PlayerInputControls.ClickToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool_params"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.AbstractToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_tool_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Player/Scripts/PlayerTools/AbstractPlayerTool.cs" line="64" column="21" bodyfile="Assets/Player/Scripts/PlayerTools/AbstractPlayerTool.cs" bodystart="65" bodyend="65"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

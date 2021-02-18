@@ -18,6 +18,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.SupportComponents
 {
+    /// <summary>
+    /// Simple implementation of the target tracking component.
+    /// </summary>
     public class LookAtObject : MonoBehaviour
     {
         [SerializeField]

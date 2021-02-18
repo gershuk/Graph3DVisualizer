@@ -33,6 +33,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.Scene
 {
+    /// <summary>
+    /// Component that manages the loading/saving of <see cref="AbstractVisualTask"/>.
+    /// </summary>
     [CustomizableGrandType(Type = typeof(SceneControllerParameters))]
     public class SceneController : MonoBehaviour, ICustomizable<SceneControllerParameters>
     {
@@ -188,6 +191,9 @@ namespace Graph3DVisualizer.Scene
         //}
     }
 
+    /// <summary>
+    /// Class that describes <see cref="SceneController"/> parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
     [Serializable]
     public class SceneControllerParameters : AbstractCustomizableParameter
     {

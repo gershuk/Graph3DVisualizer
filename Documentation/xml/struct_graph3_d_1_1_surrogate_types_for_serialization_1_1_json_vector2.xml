@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2" kind="struct" language="C#" prot="public">
+    <compoundname>Graph3D::SurrogateTypesForSerialization::JsonVector2</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2_1ab0c7771e294b3697a4d78f58dcbb7d82" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3D.SurrogateTypesForSerialization.JsonVector2.X</definition>
+        <argsstring></argsstring>
+        <name>X</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="43" column="22" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2_1af482c23192757673b2f7be44d8d83088" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3D.SurrogateTypesForSerialization.JsonVector2.Y</definition>
+        <argsstring></argsstring>
+        <name>Y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="45" column="22" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="45" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2_1acbee3fad7867afdc5c4b43382f833d20" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Graph3D.SurrogateTypesForSerialization.JsonVector2.JsonVector2</definition>
+        <argsstring>(float x, float y)</argsstring>
+        <name>JsonVector2</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="47" column="16"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2_1a836ccb84c827b23baf68e94767f83ab5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>implicit</type>
+        <definition>static implicit Graph3D.SurrogateTypesForSerialization.JsonVector2.operator JsonVector2</definition>
+        <argsstring>(Vector2 vector2)</argsstring>
+        <name>operator JsonVector2</name>
+        <param>
+          <type>Vector2</type>
+          <declname>vector2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="49" column="32"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2_1a4aa3ff3bf5ee00741829d64ecc0bc91e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>implicit</type>
+        <definition>static implicit Graph3D.SurrogateTypesForSerialization.JsonVector2.operator Vector2</definition>
+        <argsstring>(JsonVector2 jsonVector2)</argsstring>
+        <name>operator Vector2</name>
+        <param>
+          <type><ref refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2" kindref="compound">JsonVector2</ref></type>
+          <declname>jsonVector2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="51" column="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="41" column="11" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="42" bodyend="52"/>
+    <listofallmembers>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2_1acbee3fad7867afdc5c4b43382f833d20" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonVector2</scope><name>JsonVector2</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2_1a836ccb84c827b23baf68e94767f83ab5" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonVector2</scope><name>operator JsonVector2</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2_1a4aa3ff3bf5ee00741829d64ecc0bc91e" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonVector2</scope><name>operator Vector2</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2_1ab0c7771e294b3697a4d78f58dcbb7d82" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonVector2</scope><name>X</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2_1af482c23192757673b2f7be44d8d83088" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonVector2</scope><name>Y</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

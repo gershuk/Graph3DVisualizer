@@ -22,6 +22,12 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.GUI
 {
+    /// <summary>
+    /// Class that encapsulates 3D UI object creation functions.
+    /// </summary>
+    /// <remarks>
+    /// In the next versions, it will be deleted.
+    /// </remarks>
     public static class GUIFactory3D
     {
         public readonly struct TextMeshParameters

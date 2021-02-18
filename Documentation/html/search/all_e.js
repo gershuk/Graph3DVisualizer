@@ -1,19 +1,4 @@
 var searchData=
 [
-  ['parent_213',['Parent',['../struct_grpah3_d_visualizer_1_1_g_u_i_factory_1_1_rect_transform_parameters.html#a8f31c3e19663e37f118bde528602f8ef',1,'Grpah3DVisualizer::GUIFactory::RectTransformParameters']]],
-  ['permanently_214',['permanently',['../eula_8txt.html#a156c6abb5f5ea90347d457ca4018c16a',1,'eula.txt']]],
-  ['permission_215',['permission',['../eula_8txt.html#a35fb6afb06c49ba0f7d1cdf6e65a419c',1,'eula.txt']]],
-  ['platform_216',['platform',['../eula_8txt.html#a2fd9b1e8adbbd3a02ed1934ca57bee1d',1,'eula.txt']]],
-  ['playerinputcontrols_217',['PlayerInputControls',['../namespace_player_input_controls.html',1,'']]],
-  ['playerparams_218',['PlayerParams',['../class_player_input_controls_1_1_player_params.html',1,'PlayerInputControls.PlayerParams'],['../class_player_input_controls_1_1_player_params.html#a12164bcbb51fe8e733a5cae9e5e3398b',1,'PlayerInputControls.PlayerParams.PlayerParams()']]],
-  ['players_219',['Players',['../class_graph_tasks_1_1_history_task1.html#a8274e89aaeef8a691ce7039985a861fe',1,'GraphTasks.HistoryTask1.Players()'],['../class_graph_tasks_1_1_simple_task.html#aeba3b2b36a3378563c2df4acd205a879',1,'GraphTasks.SimpleTask.Players()'],['../class_graph_tasks_1_1_visual_task.html#a4a9a85a0add8be9a23a6ce2f6a852a35',1,'GraphTasks.VisualTask.Players()']]],
-  ['playertool_220',['PlayerTool',['../class_player_input_controls_1_1_player_tool.html',1,'PlayerInputControls']]],
-  ['playertool_2ecs_221',['PlayerTool.cs',['../_player_tool_8cs.html',1,'']]],
-  ['policy_222',['Policy',['../eula_8txt.html#a361dab8c234bb706ea5f068958d52d58',1,'eula.txt']]],
-  ['position_223',['Position',['../class_grpah3_d_visualizer_1_1_vertex_parameters.html#a38d84e3f7dc475c70dcaa55463aac1ee',1,'Grpah3DVisualizer.VertexParameters.Position()'],['../class_player_input_controls_1_1_player_params.html#a1c8ed821c8bbddba4a64ccab22287f6d',1,'PlayerInputControls.PlayerParams.Position()'],['../class_texture_factory_1_1_positioned_image.html#ae48a30586a2b009fe67b1bc1d1217969',1,'TextureFactory.PositionedImage.Position()']]],
-  ['positionedimage_224',['PositionedImage',['../class_texture_factory_1_1_positioned_image.html',1,'TextureFactory.PositionedImage'],['../class_texture_factory_1_1_positioned_image.html#a44c3e61e2ef6d8730ca6c6952d7a39a3',1,'TextureFactory.PositionedImage.PositionedImage()']]],
-  ['prior_225',['prior',['../eula_8txt.html#af239de98e128af32892de14949eaf664',1,'eula.txt']]],
-  ['product_226',['Product',['../eula_8txt.html#a5c3524f5a0ef18c75221bae15acbd3d9',1,'eula.txt']]],
-  ['products_227',['products',['../eula_8txt.html#a91085712a72988d5159421c060f79871',1,'eula.txt']]],
-  ['profits_228',['PROFITS',['../eula_8txt.html#a77d46d354b6dca6ac32f6ad530a05243',1,'eula.txt']]]
+  ['recttransformparameters_87',['RectTransformParameters',['../struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters.html',1,'Graph3DVisualizer::GUI::GUIFactory']]]
 ];

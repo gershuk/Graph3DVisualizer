@@ -1,8 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.20" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
   <compounddef id="dir_afa0c56e58c9faba2f100e127e0616ab" kind="dir">
     <compoundname>Assets/GUIFactory/Scripts</compoundname>
+    <innerfile refid="_button3_d_componnet_8cs">Button3DComponnet.cs</innerfile>
     <innerfile refid="_g_u_i_factory_8cs">GUIFactory.cs</innerfile>
+    <innerfile refid="_g_u_i_factory3_d_8cs">GUIFactory3D.cs</innerfile>
+    <innerfile refid="_pop_up_vertical_stack_menu_8cs">PopUpVerticalStackMenu.cs</innerfile>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

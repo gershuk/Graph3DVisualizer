@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_color" kind="class" language="C#" prot="public">
+    <compoundname>Graph3D::SurrogateTypesForSerialization::SurrogateColor</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ISerializationSurrogate</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_color_1a94414bffb77efbda4d3537408f430792" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3D.SurrogateTypesForSerialization.SurrogateColor.GetObjectData</definition>
+        <argsstring>(object obj, SerializationInfo info, StreamingContext context)</argsstring>
+        <name>GetObjectData</name>
+        <param>
+          <type>object</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>SerializationInfo</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type>StreamingContext</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="93" column="21" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="93" bodyend="100"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_color_1a3a893cd9e9bc631fbbba6e05f015d5e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>object</type>
+        <definition>object Graph3D.SurrogateTypesForSerialization.SurrogateColor.SetObjectData</definition>
+        <argsstring>(object obj, SerializationInfo info, StreamingContext context, ISurrogateSelector selector)</argsstring>
+        <name>SetObjectData</name>
+        <param>
+          <type>object</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>SerializationInfo</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type>StreamingContext</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>ISurrogateSelector</type>
+          <declname>selector</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="102" column="23" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="102" bodyend="110"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ISerializationSurrogate</label>
+      </node>
+      <node id="1">
+        <label>Graph3D.SurrogateTypesForSerialization.SurrogateColor</label>
+        <link refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_color"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ISerializationSurrogate</label>
+      </node>
+      <node id="1">
+        <label>Graph3D.SurrogateTypesForSerialization.SurrogateColor</label>
+        <link refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_color"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="91" column="11" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="92" bodyend="111"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_color_1a94414bffb77efbda4d3537408f430792" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::SurrogateColor</scope><name>GetObjectData</name></member>
+      <member refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_color_1a3a893cd9e9bc631fbbba6e05f015d5e1" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::SurrogateColor</scope><name>SetObjectData</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

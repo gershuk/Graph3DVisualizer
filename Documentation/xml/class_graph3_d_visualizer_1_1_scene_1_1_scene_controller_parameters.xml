@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller_parameters" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Scene::SceneControllerParameters</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter" prot="public" virt="non-virtual">Graph3DVisualizer.Customizable.AbstractCustomizableParameter</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller_parameters_1a31ccc27b47c91d772c7631a1debe3250" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Type</type>
+        <definition>Type Graph3DVisualizer.Scene.SceneControllerParameters.TaskType</definition>
+        <argsstring></argsstring>
+        <name>TaskType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="200" column="21" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="200" bodyend="200"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller_parameters_1ab2bc59474f3edfdfa55c19d73148fa33" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters" kindref="compound">VisualTaskParameters</ref></type>
+        <definition>VisualTaskParameters Graph3DVisualizer.Scene.SceneControllerParameters.VisualTaskParameters</definition>
+        <argsstring></argsstring>
+        <name>VisualTaskParameters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="201" column="37" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="201" bodyend="201"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller_parameters_1a639dca836d4f61153ffbcc20356ee5cd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.Scene.SceneControllerParameters.SceneControllerParameters</definition>
+        <argsstring>(Type taskType, VisualTaskParameters visualTaskParameters)</argsstring>
+        <name>SceneControllerParameters</name>
+        <param>
+          <type>Type</type>
+          <declname>taskType</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters" kindref="compound">VisualTaskParameters</ref></type>
+          <declname>visualTaskParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SceneController/Scripts/SceneController.cs" line="203" column="16" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="203" bodyend="207"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class that describes <ref refid="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller" kindref="compound">SceneController</ref> parameters for ICustomizable&lt;TParams&gt;. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.Scene.SceneControllerParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller_parameters"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.Scene.SceneControllerParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller_parameters"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/SceneController/Scripts/SceneController.cs" line="198" column="11" bodyfile="Assets/SceneController/Scripts/SceneController.cs" bodystart="199" bodyend="208"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller_parameters_1a639dca836d4f61153ffbcc20356ee5cd" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Scene::SceneControllerParameters</scope><name>SceneControllerParameters</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller_parameters_1a31ccc27b47c91d772c7631a1debe3250" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Scene::SceneControllerParameters</scope><name>TaskType</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller_parameters_1ab2bc59474f3edfdfa55c19d73148fa33" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Scene::SceneControllerParameters</scope><name>VisualTaskParameters</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

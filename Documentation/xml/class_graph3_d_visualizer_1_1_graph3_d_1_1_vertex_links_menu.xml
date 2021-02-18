@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Graph3D::VertexLinksMenu</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu" prot="public" virt="non-virtual">Graph3DVisualizer.GUI.PopUpVerticalStackMenu</basecompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu_1a224ec49753726150bc31df241777b558" prot="private" static="no" mutable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+        <definition>AbstractVertex Graph3DVisualizer.Graph3D.VertexLinksMenu._vertex</definition>
+        <argsstring></argsstring>
+        <name>_vertex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/VertexLinksMenu.cs" line="36" column="32" bodyfile="Assets/Graph3D/Scripts/VertexLinksMenu.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu_1aea145b8d49e424a400bf7591ca24f513" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Graph3D.VertexLinksMenu.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/VertexLinksMenu.cs" line="38" column="22" bodyfile="Assets/Graph3D/Scripts/VertexLinksMenu.cs" bodystart="38" bodyend="44"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu_1a3ca27c26926374446c099c3c610a8243" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.Graph3D.VertexLinksMenu.ClickAction</definition>
+        <argsstring>(GameObject callingObject)</argsstring>
+        <name>ClickAction</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a869d36ad036e55ea65fb8b71d06af6a1">ClickAction</reimplements>
+        <param>
+          <type>GameObject</type>
+          <declname>callingObject</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/VertexLinksMenu.cs" line="46" column="33" bodyfile="Assets/Graph3D/Scripts/VertexLinksMenu.cs" bodystart="46" bodyend="118"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A class that is temporarily used to create an interactive vertex menu. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>In the next versions, it will be replaced with a regular UI interface. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>AbstractClickableObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.VertexLinksMenu</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PopUpVerticalStackMenu</label>
+        <link refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>AbstractClickableObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.VertexLinksMenu</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>PopUpVerticalStackMenu</label>
+        <link refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Graph3D/Scripts/VertexLinksMenu.cs" line="34" column="11" bodyfile="Assets/Graph3D/Scripts/VertexLinksMenu.cs" bodystart="35" bodyend="119"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a0aa57543819f455eb94cf08ca686600e" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexLinksMenu</scope><name>_gameObject</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a69fa2efc983428efbd643963a371ff90" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexLinksMenu</scope><name>_plane</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a5103c8174a474bf11aeeec54d6e1dde4" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexLinksMenu</scope><name>_subObjects</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a8bae0c769578106d77d550e65e84ccdc" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexLinksMenu</scope><name>_transform</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu_1a224ec49753726150bc31df241777b558" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexLinksMenu</scope><name>_vertex</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu_1aea145b8d49e424a400bf7591ca24f513" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexLinksMenu</scope><name>Awake</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a4b99d88769328e6ced96e3520447b5aa" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexLinksMenu</scope><name>Click</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_links_menu_1a3ca27c26926374446c099c3c610a8243" prot="protected" virt="virtual"><scope>Graph3DVisualizer::Graph3D::VertexLinksMenu</scope><name>ClickAction</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object_1a0c2e4dba850fa71df46909c6ae95af7b" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexLinksMenu</scope><name>Clicked</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a3307c32f7793f41496505b5776420bf6" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexLinksMenu</scope><name>PlainOffset</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1ad01226ddd4c298b823caf3e5ad512fb1" prot="public" virt="virtual"><scope>Graph3DVisualizer::Graph3D::VertexLinksMenu</scope><name>SetDisabled</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu_1a15cfdcb278a3a5ed58cbe596b0a3bc86" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexLinksMenu</scope><name>SetSubObjectList</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespace_graph3_d_visualizer_1_1_g_u_i" kind="namespace" language="C#">
+    <compoundname>Graph3DVisualizer::GUI</compoundname>
+    <innerclass refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_button3_d_componnet" prot="public">Graph3DVisualizer::GUI::Button3DComponnet</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory" prot="public">Graph3DVisualizer::GUI::GUIFactory</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d" prot="public">Graph3DVisualizer::GUI::GUIFactory3D</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_pop_up_vertical_stack_menu" prot="public">Graph3DVisualizer::GUI::PopUpVerticalStackMenu</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/GUIFactory/Scripts/Button3DComponnet.cs" line="23" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::GraphTasks::SimpleTask</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task" prot="public" virt="non-virtual">Graph3DVisualizer.GraphTasks.AbstractVisualTask</basecompoundref>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a1530cadd001a042dfc9bec81d0883732" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.GraphTasks.SimpleTask._fontPath</definition>
+        <argsstring></argsstring>
+        <name>_fontPath</name>
+        <initializer>= &quot;Font/CustomFontDroidSans-Bold&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="34" column="30" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a05fb9b27e767d8edad64941875edb8b1" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.GraphTasks.SimpleTask._mainTexture</definition>
+        <argsstring></argsstring>
+        <name>_mainTexture</name>
+        <initializer>= &quot;Textures/Default&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="35" column="30" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a5d1ed76775d252274a79ec4491a497a6" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.GraphTasks.SimpleTask._playerPrefabPath</definition>
+        <argsstring></argsstring>
+        <name>_playerPrefabPath</name>
+        <initializer>= &quot;Prefabs/Player&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="36" column="30" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a981ffde90040222cfe005516b61a47dc" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.GraphTasks.SimpleTask._selectFrameTexture</definition>
+        <argsstring></argsstring>
+        <name>_selectFrameTexture</name>
+        <initializer>= &quot;Textures/SelectFrame&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="37" column="30" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a8f58256f4be5b13d72a5167d1fa0bbbb" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>override IReadOnlyCollection&lt; <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph" kindref="compound">AbstractGraph</ref> &gt;</type>
+        <definition>override IReadOnlyCollection&lt;AbstractGraph&gt; Graph3DVisualizer.GraphTasks.SimpleTask.Graphs</definition>
+        <argsstring></argsstring>
+        <name>Graphs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="39" column="45" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a07181952a728e2f56ba78785b7f7d208" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>override IReadOnlyCollection&lt; <ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player" kindref="compound">AbstractPlayer</ref> &gt;</type>
+        <definition>override IReadOnlyCollection&lt;AbstractPlayer&gt; Graph3DVisualizer.GraphTasks.SimpleTask.Players</definition>
+        <argsstring></argsstring>
+        <name>Players</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="40" column="45" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="40" bodyend="40"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1af627511997935a8372bd7172a4a73c5f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_graph" kindref="compound">Graph</ref></type>
+        <definition>Graph Graph3DVisualizer.GraphTasks.SimpleTask.CreateGraph</definition>
+        <argsstring>()</argsstring>
+        <name>CreateGraph</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="42" column="22" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="42" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a050e05797677e7855e2fbc031e4c62f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>override List&lt; <ref refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_verdict" kindref="compound">Verdict</ref> &gt;</type>
+        <definition>override List&lt;Verdict&gt; Graph3DVisualizer.GraphTasks.SimpleTask.GetResult</definition>
+        <argsstring>()</argsstring>
+        <name>GetResult</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1ada597253b27b65cf7cd8d22748400ca9">GetResult</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="92" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a8f57537406a10516279ae84b7aaaab52" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.GraphTasks.SimpleTask.InitTask</definition>
+        <argsstring>()</argsstring>
+        <name>InitTask</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1ae70a4df7f4e4822dd791007ee9303225">InitTask</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="94" column="30" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="94" bodyend="121"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Example of implementing a graph visual task. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.GraphTasks.SimpleTask</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ICustomizable&lt; VisualTaskParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+      <node id="2">
+        <label>AbstractVisualTask</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.GraphTasks.SimpleTask</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ICustomizable&lt; VisualTaskParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+      <node id="2">
+        <label>AbstractVisualTask</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/VisualTasks/Scripts/SimpleTask.cs" line="32" column="11" bodyfile="Assets/VisualTasks/Scripts/SimpleTask.cs" bodystart="33" bodyend="122"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a1530cadd001a042dfc9bec81d0883732" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>_fontPath</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1ab210229f94051f46aad99cfa14b99f04" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>_graphs</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a05fb9b27e767d8edad64941875edb8b1" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>_mainTexture</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a5d1ed76775d252274a79ec4491a497a6" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>_playerPrefabPath</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1afe7d88107642eebc5aef778c9b8c2a75" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>_players</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a981ffde90040222cfe005516b61a47dc" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>_selectFrameTexture</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1af627511997935a8372bd7172a4a73c5f" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>CreateGraph</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1aafeba838620094e38644fb6fe97fcaf3" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>DestroyTask</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1a4df4f4e3dfa608848aa05c479277cad7" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>DownloadParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a050e05797677e7855e2fbc031e4c62f6" prot="public" virt="virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>GetResult</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a8f58256f4be5b13d72a5167d1fa0bbbb" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>Graphs</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a8f57537406a10516279ae84b7aaaab52" prot="public" virt="virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>InitTask</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1a115be274f11996682b11516118f0a3c9" prot="protected" virt="virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>OnTaskDestoryed</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_simple_task_1a07181952a728e2f56ba78785b7f7d208" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>Players</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task_1adecec2ed25997f04fa245a8c3ce94bee" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>SetupParams</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable_1aa34dad1fba6887bc35ae88e559e1365f" prot="public" virt="non-virtual" ambiguityscope="ICustomizable&lt; VisualTaskParameters &gt;."><scope>Graph3DVisualizer::GraphTasks::SimpleTask</scope><name>SetupParams</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions" kind="struct" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a8aa0d401da8e44407d502413121c0aee" prot="private" static="no" mutable="no">
+        <type>readonly <ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls" kindref="compound">FlyControls</ref></type>
+        <definition>readonly FlyControls Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.m_Wrapper</definition>
+        <argsstring></argsstring>
+        <name>m_Wrapper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="30" column="42" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1aad5796ec765ab8af7124295cae9070c2" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>InputAction</type>
+        <definition>InputAction Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.ChangeAltitude</definition>
+        <argsstring></argsstring>
+        <name>ChangeAltitude</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="31" column="32" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a19fb0da6c4059d89be4bcaa1ded21312" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>InputAction</type>
+        <definition>InputAction Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.LookRotation</definition>
+        <argsstring></argsstring>
+        <name>LookRotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="33" column="32" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a83bb032ace29cfbafcdfd7225097b3d1" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>InputAction</type>
+        <definition>InputAction Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.Move</definition>
+        <argsstring></argsstring>
+        <name>Move</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="35" column="32" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1ab02e373bd00f6c51d8f7bb1a77f2aaed" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>InputAction</type>
+        <definition>InputAction Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.MoveToPoint</definition>
+        <argsstring></argsstring>
+        <name>MoveToPoint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="37" column="32" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1afdf95805b446562600840c76a9eb852c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>InputAction</type>
+        <definition>InputAction Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.ScrollItemList</definition>
+        <argsstring></argsstring>
+        <name>ScrollItemList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="39" column="32" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a0ad1cde3c1f7c49b4688221889fd66ce" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>InputAction</type>
+        <definition>InputAction Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.SelectItem</definition>
+        <argsstring></argsstring>
+        <name>SelectItem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="41" column="32" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a6f1043ceb4c662b398a1c995ed4471ee" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.enabled</definition>
+        <argsstring></argsstring>
+        <name>enabled</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="43" column="25" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1acd0b9e0392e1836276363e13ebdb9149" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.FlyModelActions</definition>
+        <argsstring>(@FlyControls wrapper)</argsstring>
+        <name>FlyModelActions</name>
+        <param>
+          <type>@<ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls" kindref="compound">FlyControls</ref></type>
+          <declname>wrapper</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="45" column="20"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a16570fa3f5fbf85e455dd3aea6cb56b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.Disable</definition>
+        <argsstring>()</argsstring>
+        <name>Disable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="49" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1ab56e3aea30d68389f23046423189d789" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.Enable</definition>
+        <argsstring>()</argsstring>
+        <name>Enable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="51" column="25"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1ac1bf092b1f7f09240d75a29a90519dd2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>InputActionMap</type>
+        <definition>InputActionMap Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.Get</definition>
+        <argsstring>()</argsstring>
+        <name>Get</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="53" column="35"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a4a96e30444a60b651648af6bdf2807df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.SetCallbacks</definition>
+        <argsstring>(IFlyModelActions instance)</argsstring>
+        <name>SetCallbacks</name>
+        <param>
+          <type><ref refid="interface_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_i_fly_model_actions" kindref="compound">IFlyModelActions</ref></type>
+          <declname>instance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="55" column="25" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" bodystart="55" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1ab363546e5cc87fb103b0edcd8bea2bc9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>implicit</type>
+        <definition>static implicit Graph3DVisualizer.PlayerInputControls.FlyControls.FlyModelActions.operator InputActionMap</definition>
+        <argsstring>(FlyModelActions set)</argsstring>
+        <name>operator InputActionMap</name>
+        <param>
+          <type><ref refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions" kindref="compound">FlyModelActions</ref></type>
+          <declname>set</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="47" column="36"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" line="28" column="15" bodyfile="Assets/Player/Scripts/FlyPlayer/FlyControls.cs" bodystart="29" bodyend="101"/>
+    <listofallmembers>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1aad5796ec765ab8af7124295cae9070c2" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>ChangeAltitude</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a16570fa3f5fbf85e455dd3aea6cb56b8" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>Disable</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1ab56e3aea30d68389f23046423189d789" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>Enable</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a6f1043ceb4c662b398a1c995ed4471ee" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>enabled</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1acd0b9e0392e1836276363e13ebdb9149" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>FlyModelActions</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1ac1bf092b1f7f09240d75a29a90519dd2" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>Get</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a19fb0da6c4059d89be4bcaa1ded21312" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>LookRotation</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a8aa0d401da8e44407d502413121c0aee" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>m_Wrapper</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a83bb032ace29cfbafcdfd7225097b3d1" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>Move</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1ab02e373bd00f6c51d8f7bb1a77f2aaed" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>MoveToPoint</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1ab363546e5cc87fb103b0edcd8bea2bc9" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>operator InputActionMap</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1afdf95805b446562600840c76a9eb852c" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>ScrollItemList</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a0ad1cde3c1f7c49b4688221889fd66ce" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>SelectItem</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls_1_1_fly_model_actions_1a4a96e30444a60b651648af6bdf2807df" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::FlyControls::FlyModelActions</scope><name>SetCallbacks</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

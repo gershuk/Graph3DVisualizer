@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Graph3D::VertexParameters</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.AbstractGraphObjectParameters</basecompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_parameters" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.SelectableVertexParameters</derivedcompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters_1ac950678a8f4d0c3faccaccf70058fe33" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_parameters" kindref="compound">BillboardParameters</ref></type>
+        <definition>BillboardParameters Graph3DVisualizer.Graph3D.VertexParameters.ImageParameters</definition>
+        <argsstring></argsstring>
+        <name>ImageParameters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="211" column="36" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="211" bodyend="211"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters_1a27a99ddee11f34f6cd5b70531b949cf3" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Vector3</type>
+        <definition>Vector3 Graph3DVisualizer.Graph3D.VertexParameters.Position</definition>
+        <argsstring></argsstring>
+        <name>Position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="212" column="24" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="212" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters_1a7625dcf741f4c68653d52f28fcb11b9d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Quaternion</type>
+        <definition>Quaternion Graph3DVisualizer.Graph3D.VertexParameters.Rotation</definition>
+        <argsstring></argsstring>
+        <name>Rotation</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="213" column="27" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="213" bodyend="213"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class that describes default vertex parameters for ICustomizable&lt;TParams&gt;. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.VertexParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractGraphObjectParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Graph3DVisualizer.Graph3D.SelectableVertexParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_parameters"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.VertexParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractGraphObjectParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Graph3D/Scripts/AbstractVertex.cs" line="209" column="11" bodyfile="Assets/Graph3D/Scripts/AbstractVertex.cs" bodystart="210" bodyend="217"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters_1a67eb768b7f1708e898652ccdafedc93b" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexParameters</scope><name>AbstractGraphObjectParameters</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters_1a68083adbb74c3b7ba27d6e62232eb145" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexParameters</scope><name>Id</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters_1ac950678a8f4d0c3faccaccf70058fe33" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexParameters</scope><name>ImageParameters</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters_1a27a99ddee11f34f6cd5b70531b949cf3" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexParameters</scope><name>Position</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters_1a7625dcf741f4c68653d52f28fcb11b9d" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::VertexParameters</scope><name>Rotation</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

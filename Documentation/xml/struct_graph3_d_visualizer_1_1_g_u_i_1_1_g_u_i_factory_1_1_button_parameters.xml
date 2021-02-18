@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_button_parameters" kind="struct" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::GUI::GUIFactory::ButtonParameters</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_button_parameters_1a97bfeb92040144fd2ebace35f3166ce5" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Image</type>
+        <definition>Image Graph3DVisualizer.GUI.GUIFactory.ButtonParameters.Image</definition>
+        <argsstring></argsstring>
+        <name>Image</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="32" column="26" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="32" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_button_parameters_1a55ec8153684c576d6b7249c786e301cd" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Graph3DVisualizer.GUI.GUIFactory.ButtonParameters.Name</definition>
+        <argsstring></argsstring>
+        <name>Name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="33" column="27" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_button_parameters_1a11b29154a84d1cd4f51f65f2157bf714" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>UnityAction</type>
+        <definition>UnityAction Graph3DVisualizer.GUI.GUIFactory.ButtonParameters.OnClickFunction</definition>
+        <argsstring></argsstring>
+        <name>OnClickFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="34" column="32" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_button_parameters_1a0efa350f30a5c9cda7cb90955681a00c" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters" kindref="compound">RectTransformParameters</ref></type>
+        <definition>RectTransformParameters Graph3DVisualizer.GUI.GUIFactory.ButtonParameters.RectTransformParameters</definition>
+        <argsstring></argsstring>
+        <name>RectTransformParameters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="35" column="44" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="35" bodyend="35"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_button_parameters_1a1ff836492f275039a2be20de9ffad940" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.GUI.GUIFactory.ButtonParameters.ButtonParameters</definition>
+        <argsstring>(string name=default, in RectTransformParameters rectTransformParameters=default, Image image=default, UnityAction onClickFunction=default)</argsstring>
+        <name>ButtonParameters</name>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+          <defval>default</defval>
+        </param>
+        <param>
+          <type>in <ref refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters" kindref="compound">RectTransformParameters</ref></type>
+          <declname>rectTransformParameters</declname>
+          <defval>default</defval>
+        </param>
+        <param>
+          <type>Image</type>
+          <declname>image</declname>
+          <defval>default</defval>
+        </param>
+        <param>
+          <type>UnityAction</type>
+          <declname>onClickFunction</declname>
+          <defval>default</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="37" column="20" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="37" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="30" column="24" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="31" bodyend="44"/>
+    <listofallmembers>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_button_parameters_1a1ff836492f275039a2be20de9ffad940" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory::ButtonParameters</scope><name>ButtonParameters</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_button_parameters_1a97bfeb92040144fd2ebace35f3166ce5" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory::ButtonParameters</scope><name>Image</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_button_parameters_1a55ec8153684c576d6b7249c786e301cd" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory::ButtonParameters</scope><name>Name</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_button_parameters_1a11b29154a84d1cd4f51f65f2157bf714" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory::ButtonParameters</scope><name>OnClickFunction</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_button_parameters_1a0efa350f30a5c9cda7cb90955681a00c" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory::ButtonParameters</scope><name>RectTransformParameters</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

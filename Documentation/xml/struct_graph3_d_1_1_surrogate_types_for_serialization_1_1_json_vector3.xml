@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3" kind="struct" language="C#" prot="public">
+    <compoundname>Graph3D::SurrogateTypesForSerialization::JsonVector3</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3_1a96dba8fd1034409ad8fd3fc3cdd07800" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3D.SurrogateTypesForSerialization.JsonVector3.X</definition>
+        <argsstring></argsstring>
+        <name>X</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="69" column="22" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3_1a97d3886ff889d34ad3105589c98dc3ea" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3D.SurrogateTypesForSerialization.JsonVector3.Y</definition>
+        <argsstring></argsstring>
+        <name>Y</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="71" column="22" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="71" bodyend="71"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3_1a1d783ea54bcc4d39cc2269f50e3fc1df" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3D.SurrogateTypesForSerialization.JsonVector3.Z</definition>
+        <argsstring></argsstring>
+        <name>Z</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="72" column="22" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="72" bodyend="72"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3_1a51e76a7c730a1f92e3bbb113a63c50d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Graph3D.SurrogateTypesForSerialization.JsonVector3.JsonVector3</definition>
+        <argsstring>(float x, float y, float z)</argsstring>
+        <name>JsonVector3</name>
+        <param>
+          <type>float</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>z</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="74" column="16"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3_1a6854c6ca25bd5576c52304a4d6f18d70" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>implicit</type>
+        <definition>static implicit Graph3D.SurrogateTypesForSerialization.JsonVector3.operator JsonVector3</definition>
+        <argsstring>(Vector3 vector3)</argsstring>
+        <name>operator JsonVector3</name>
+        <param>
+          <type>Vector3</type>
+          <declname>vector3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="76" column="32"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3_1ae70d70450f031daa989a42b0bb8f31e4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>implicit</type>
+        <definition>static implicit Graph3D.SurrogateTypesForSerialization.JsonVector3.operator Vector3</definition>
+        <argsstring>(JsonVector3 jsonVector3)</argsstring>
+        <name>operator Vector3</name>
+        <param>
+          <type><ref refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3" kindref="compound">JsonVector3</ref></type>
+          <declname>jsonVector3</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="78" column="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="67" column="11" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="68" bodyend="79"/>
+    <listofallmembers>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3_1a51e76a7c730a1f92e3bbb113a63c50d8" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonVector3</scope><name>JsonVector3</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3_1a6854c6ca25bd5576c52304a4d6f18d70" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonVector3</scope><name>operator JsonVector3</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3_1ae70d70450f031daa989a42b0bb8f31e4" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonVector3</scope><name>operator Vector3</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3_1a96dba8fd1034409ad8fd3fc3cdd07800" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonVector3</scope><name>X</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3_1a97d3886ff889d34ad3105589c98dc3ea" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonVector3</scope><name>Y</name></member>
+      <member refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3_1a1d783ea54bcc4d39cc2269f50e3fc1df" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::JsonVector3</scope><name>Z</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

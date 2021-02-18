@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespace_graph3_d_1_1_surrogate_types_for_serialization" kind="namespace" language="C#">
+    <compoundname>Graph3D::SurrogateTypesForSerialization</compoundname>
+    <innerclass refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_color" prot="public">Graph3D::SurrogateTypesForSerialization::JsonColor</innerclass>
+    <innerclass refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_quaternion" prot="public">Graph3D::SurrogateTypesForSerialization::JsonQuaternion</innerclass>
+    <innerclass refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2" prot="public">Graph3D::SurrogateTypesForSerialization::JsonVector2</innerclass>
+    <innerclass refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector2_int" prot="public">Graph3D::SurrogateTypesForSerialization::JsonVector2Int</innerclass>
+    <innerclass refid="struct_graph3_d_1_1_surrogate_types_for_serialization_1_1_json_vector3" prot="public">Graph3D::SurrogateTypesForSerialization::JsonVector3</innerclass>
+    <innerclass refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_newtonsoft_surrogate_converter" prot="public">Graph3D::SurrogateTypesForSerialization::NewtonsoftSurrogateConverter</innerclass>
+    <innerclass refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_color" prot="public">Graph3D::SurrogateTypesForSerialization::SurrogateColor</innerclass>
+    <innerclass refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_quaternion" prot="public">Graph3D::SurrogateTypesForSerialization::SurrogateQuaternion</innerclass>
+    <innerclass refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_texture2_d" prot="public">Graph3D::SurrogateTypesForSerialization::SurrogateTexture2D</innerclass>
+    <innerclass refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_vector2" prot="public">Graph3D::SurrogateTypesForSerialization::SurrogateVector2</innerclass>
+    <innerclass refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_vector2_int" prot="public">Graph3D::SurrogateTypesForSerialization::SurrogateVector2Int</innerclass>
+    <innerclass refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_vector3" prot="public">Graph3D::SurrogateTypesForSerialization::SurrogateVector3</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="9" column="1"/>
+  </compounddef>
+</doxygen>

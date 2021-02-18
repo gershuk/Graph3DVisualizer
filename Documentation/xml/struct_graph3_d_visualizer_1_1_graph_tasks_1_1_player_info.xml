@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info" kind="struct" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::GraphTasks::PlayerInfo</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1a6371679ecbd4a6d3d29738abddfb86b1" prot="public" static="no" mutable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters" kindref="compound">PlayerParameters</ref></type>
+        <definition>PlayerParameters Graph3DVisualizer.GraphTasks.PlayerInfo.playerParameters</definition>
+        <argsstring></argsstring>
+        <name>playerParameters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="82" column="33" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1a5fb42e27a1f3418bca997fd7bafdb4ac" prot="public" static="no" mutable="no">
+        <type>Type</type>
+        <definition>Type Graph3DVisualizer.GraphTasks.PlayerInfo.playerType</definition>
+        <argsstring></argsstring>
+        <name>playerType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="83" column="21" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1a5bc8479cb7ba2f592a22beb57dd15efd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.GraphTasks.PlayerInfo.PlayerInfo</definition>
+        <argsstring>(Type playerType, PlayerParameters playerParameters)</argsstring>
+        <name>PlayerInfo</name>
+        <param>
+          <type>Type</type>
+          <declname>playerType</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters" kindref="compound">PlayerParameters</ref></type>
+          <declname>playerParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="85" column="16" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="85" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1aa71b55dbe2d0ec47086fb5505da565df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.GraphTasks.PlayerInfo.Deconstruct</definition>
+        <argsstring>(out Type playerType, out PlayerParameters playerParameters)</argsstring>
+        <name>Deconstruct</name>
+        <param>
+          <type>out Type</type>
+          <declname>playerType</declname>
+        </param>
+        <param>
+          <type>out <ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters" kindref="compound">PlayerParameters</ref></type>
+          <declname>playerParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="101" column="21" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="101" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1a6d89762abaee35282632e6f75e56c9be" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override bool</type>
+        <definition>override bool Graph3DVisualizer.GraphTasks.PlayerInfo.Equals</definition>
+        <argsstring>(object obj)</argsstring>
+        <name>Equals</name>
+        <param>
+          <type>object</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="107" column="30" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="107" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1a9aa21c8ec49f06e621b7c9f292e1e144" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override int</type>
+        <definition>override int Graph3DVisualizer.GraphTasks.PlayerInfo.GetHashCode</definition>
+        <argsstring>()</argsstring>
+        <name>GetHashCode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="114" column="29" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="114" bodyend="120"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1ac556549a52708833a0c4bbead0b69b9f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>implicit</type>
+        <definition>static implicit Graph3DVisualizer.GraphTasks.PlayerInfo.operator</definition>
+        <argsstring>(Type playerType, PlayerParameters playerParameters)(PlayerInfo value)</argsstring>
+        <name>operator</name>
+        <param>
+          <type>Type</type>
+          <declname>playerType</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters" kindref="compound">PlayerParameters</ref></type>
+          <declname>playerParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="91" column="32" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="91" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1ab3d9c68caf94aa1c41a31a6bdf78d4fe" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>implicit</type>
+        <definition>static implicit Graph3DVisualizer.GraphTasks.PlayerInfo.operator PlayerInfo</definition>
+        <argsstring>((Type playerType, PlayerParameters playerParameters) value)</argsstring>
+        <name>operator PlayerInfo</name>
+        <param>
+          <type>(Type playerType, <ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters" kindref="compound">PlayerParameters</ref> playerParameters)</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="96" column="32" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="96" bodyend="99"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Support class for player serialization. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.GraphTasks.PlayerInfo</label>
+        <link refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>playerParameters</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Graph3DVisualizer.PlayerInputControls.PlayerParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="80" column="11" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="81" bodyend="121"/>
+    <listofallmembers>
+      <member refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1aa71b55dbe2d0ec47086fb5505da565df" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::PlayerInfo</scope><name>Deconstruct</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1a6d89762abaee35282632e6f75e56c9be" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::PlayerInfo</scope><name>Equals</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1a9aa21c8ec49f06e621b7c9f292e1e144" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::PlayerInfo</scope><name>GetHashCode</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1ac556549a52708833a0c4bbead0b69b9f" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::PlayerInfo</scope><name>operator</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1ab3d9c68caf94aa1c41a31a6bdf78d4fe" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::PlayerInfo</scope><name>operator PlayerInfo</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1a5bc8479cb7ba2f592a22beb57dd15efd" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::PlayerInfo</scope><name>PlayerInfo</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1a6371679ecbd4a6d3d29738abddfb86b1" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::PlayerInfo</scope><name>playerParameters</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info_1a5fb42e27a1f3418bca997fd7bafdb4ac" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::PlayerInfo</scope><name>playerType</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

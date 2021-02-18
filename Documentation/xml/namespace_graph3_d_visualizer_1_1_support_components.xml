@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespace_graph3_d_visualizer_1_1_support_components" kind="namespace" language="C#">
+    <compoundname>Graph3DVisualizer::SupportComponents</compoundname>
+    <innerclass refid="class_graph3_d_visualizer_1_1_support_components_1_1_abstract_clickable_object" prot="public">Graph3DVisualizer::SupportComponents::AbstractClickableObject</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_support_components_1_1_look_at_object" prot="public">Graph3DVisualizer::SupportComponents::LookAtObject</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_support_components_1_1_movement_component" prot="public">Graph3DVisualizer::SupportComponents::MovementComponent</innerclass>
+    <innerclass refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_destructible" prot="public">Graph3DVisualizer::SupportComponents::IDestructible</innerclass>
+    <innerclass refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_moveable" prot="public">Graph3DVisualizer::SupportComponents::IMoveable</innerclass>
+    <innerclass refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable" prot="public">Graph3DVisualizer::SupportComponents::ISelectable</innerclass>
+    <innerclass refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile" prot="public">Graph3DVisualizer::SupportComponents::IVisibile</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_graph3_d_visualizer_1_1_support_components_1a299ede89134a548cd31e9698670c90f9" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>TransmissionMode</name>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_support_components_1a299ede89134a548cd31e9698670c90f9a06b9281e396db002010bde1de57262eb" prot="public">
+          <name>Auto</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_support_components_1a299ede89134a548cd31e9698670c90f9ae1ba155a9f2e8c3be94020eef32a0301" prot="public">
+          <name>Manual</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_support_components_1a299ede89134a548cd31e9698670c90f9ae1b5d97c3571bc99470441a7e5962f69" prot="public">
+          <name>FirstGear</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_support_components_1a299ede89134a548cd31e9698670c90f9a6295ff1f22ab0bf7bd1a245390aee7c0" prot="public">
+          <name>TopGear</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/MovementComponent.cs" line="234" column="11" bodyfile="Assets/SupportComponents/Scripts/MovementComponent.cs" bodystart="235" bodyend="240"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/SupportComponents/Scripts/AbstractClickableObject.cs" line="21" column="1"/>
+  </compounddef>
+</doxygen>

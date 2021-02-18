@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespace_graph3_d_visualizer" kind="namespace" language="C#">
+    <compoundname>Graph3DVisualizer</compoundname>
+    <innernamespace refid="namespace_graph3_d_visualizer_1_1_billboards">Graph3DVisualizer::Billboards</innernamespace>
+    <innernamespace refid="namespace_graph3_d_visualizer_1_1_customizable">Graph3DVisualizer::Customizable</innernamespace>
+    <innernamespace refid="namespace_graph3_d_visualizer_1_1_graph3_d">Graph3DVisualizer::Graph3D</innernamespace>
+    <innernamespace refid="namespace_graph3_d_visualizer_1_1_graph_tasks">Graph3DVisualizer::GraphTasks</innernamespace>
+    <innernamespace refid="namespace_graph3_d_visualizer_1_1_g_u_i">Graph3DVisualizer::GUI</innernamespace>
+    <innernamespace refid="namespace_graph3_d_visualizer_1_1_player_input_controls">Graph3DVisualizer::PlayerInputControls</innernamespace>
+    <innernamespace refid="namespace_graph3_d_visualizer_1_1_scene">Graph3DVisualizer::Scene</innernamespace>
+    <innernamespace refid="namespace_graph3_d_visualizer_1_1_support_components">Graph3DVisualizer::SupportComponents</innernamespace>
+    <innernamespace refid="namespace_graph3_d_visualizer_1_1_texture_factory">Graph3DVisualizer::TextureFactory</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Billboard/Scripts/BillboardController.cs" line="26" column="1"/>
+  </compounddef>
+</doxygen>

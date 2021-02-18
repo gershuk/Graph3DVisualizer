@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices" kind="struct" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Graph3D::AdjacentVertices</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1a787c362bb500d9312ec5e5481219bd8b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+        <definition>AbstractVertex Graph3DVisualizer.Graph3D.AdjacentVertices.FromVertex</definition>
+        <argsstring></argsstring>
+        <name>FromVertex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="30" column="31" bodyfile="Assets/Graph3D/Scripts/AbstractEdge.cs" bodystart="30" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1a16a94532fa72e9eb0a15262ad9cacca2" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+        <definition>AbstractVertex Graph3DVisualizer.Graph3D.AdjacentVertices.ToVertex</definition>
+        <argsstring></argsstring>
+        <name>ToVertex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="31" column="31" bodyfile="Assets/Graph3D/Scripts/AbstractEdge.cs" bodystart="31" bodyend="31"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1a9b270af48af06d5052e766b4031a8908" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.Graph3D.AdjacentVertices.AdjacentVertices</definition>
+        <argsstring>(AbstractVertex fromVertex, AbstractVertex toVertex)</argsstring>
+        <name>AdjacentVertices</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>fromVertex</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>toVertex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="33" column="16" bodyfile="Assets/Graph3D/Scripts/AbstractEdge.cs" bodystart="33" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1afd9ba8c1a43cc6e441b73604eebb9b6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Graph3D.AdjacentVertices.Deconstruct</definition>
+        <argsstring>(out AbstractVertex fromVertex, out AbstractVertex toVertex)</argsstring>
+        <name>Deconstruct</name>
+        <param>
+          <type>out <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>fromVertex</declname>
+        </param>
+        <param>
+          <type>out <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" kindref="compound">AbstractVertex</ref></type>
+          <declname>toVertex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="39" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1ad759390d8891b0099a1c00a533e45c1d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.Graph3D.AdjacentVertices.GetDistance</definition>
+        <argsstring>()</argsstring>
+        <name>GetDistance</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="41" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1a5cb6b8b6b25a0a0c6407db21a4aaf78c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>Vector3 Graph3DVisualizer.Graph3D.AdjacentVertices.GetMiddlePoint</definition>
+        <argsstring>()</argsstring>
+        <name>GetMiddlePoint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="43" column="24"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1a8bd3fc20611d6462ac293dfe66a02770" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>Vector3</type>
+        <definition>Vector3 Graph3DVisualizer.Graph3D.AdjacentVertices.GetUnitVector</definition>
+        <argsstring>()</argsstring>
+        <name>GetUnitVector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="45" column="24"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A class for describing adjacent vertexes. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Graph3D/Scripts/AbstractEdge.cs" line="28" column="20" bodyfile="Assets/Graph3D/Scripts/AbstractEdge.cs" bodystart="29" bodyend="46"/>
+    <listofallmembers>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1a9b270af48af06d5052e766b4031a8908" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AdjacentVertices</scope><name>AdjacentVertices</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1afd9ba8c1a43cc6e441b73604eebb9b6a" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AdjacentVertices</scope><name>Deconstruct</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1a787c362bb500d9312ec5e5481219bd8b" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AdjacentVertices</scope><name>FromVertex</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1ad759390d8891b0099a1c00a533e45c1d" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AdjacentVertices</scope><name>GetDistance</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1a5cb6b8b6b25a0a0c6407db21a4aaf78c" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AdjacentVertices</scope><name>GetMiddlePoint</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1a8bd3fc20611d6462ac293dfe66a02770" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AdjacentVertices</scope><name>GetUnitVector</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_adjacent_vertices_1a16a94532fa72e9eb0a15262ad9cacca2" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AdjacentVertices</scope><name>ToVertex</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_texture_factory_1_1_texture2_d_extension" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::TextureFactory::Texture2DExtension</compoundname>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_texture_factory_1_1_texture2_d_extension_1a2edbd45bb0b3c8bd33fba14083f6fa5e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Texture2D</type>
+        <definition>static Texture2D Graph3DVisualizer.TextureFactory.Texture2DExtension.CombineTextures</definition>
+        <argsstring>(CombinedImages combinedImage)</argsstring>
+        <name>CombineTextures</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_texture_factory_1_1_combined_images" kindref="compound">CombinedImages</ref></type>
+          <declname>combinedImage</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/TextureFactory/Scripts/Texture2DExtension.cs" line="29" column="33" bodyfile="Assets/TextureFactory/Scripts/Texture2DExtension.cs" bodystart="29" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_texture_factory_1_1_texture2_d_extension_1a33f66d94950527ce5fd539ebafa9918f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>Texture2D</type>
+        <definition>static Texture2D Graph3DVisualizer.TextureFactory.Texture2DExtension.ResizeTexture</definition>
+        <argsstring>(Texture2D texture, int textureWidth, int textureHeight)</argsstring>
+        <name>ResizeTexture</name>
+        <param>
+          <type>Texture2D</type>
+          <declname>texture</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>textureWidth</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>textureHeight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/TextureFactory/Scripts/Texture2DExtension.cs" line="52" column="33" bodyfile="Assets/TextureFactory/Scripts/Texture2DExtension.cs" bodystart="52" bodyend="70"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Сlass containing functions for changing textures that are not included in Unity3D engine. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/TextureFactory/Scripts/Texture2DExtension.cs" line="27" column="19" bodyfile="Assets/TextureFactory/Scripts/Texture2DExtension.cs" bodystart="28" bodyend="71"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_texture_factory_1_1_texture2_d_extension_1a2edbd45bb0b3c8bd33fba14083f6fa5e" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::TextureFactory::Texture2DExtension</scope><name>CombineTextures</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_texture_factory_1_1_texture2_d_extension_1a33f66d94950527ce5fd539ebafa9918f" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::TextureFactory::Texture2DExtension</scope><name>ResizeTexture</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

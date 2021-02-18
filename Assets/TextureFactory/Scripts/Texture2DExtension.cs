@@ -21,6 +21,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.TextureFactory
 {
+    /// <summary>
+    /// Сlass containing functions for changing textures that are not included in Unity3D engine.
+    /// </summary>
     public static class Texture2DExtension
     {
         public static Texture2D CombineTextures (CombinedImages combinedImage)
@@ -46,26 +49,6 @@ namespace Graph3DVisualizer.TextureFactory
             return newTexture;
         }
 
-        public static Texture2D Decompress (this Texture2D source)
-        {
-            var renderTex = RenderTexture.GetTemporary(
-                        source.width,
-                        source.height,
-                        0,
-                        RenderTextureFormat.Default,
-                        RenderTextureReadWrite.Linear);
-
-            Graphics.Blit(source, renderTex);
-            var previous = RenderTexture.active;
-            RenderTexture.active = renderTex;
-            var readableText = new Texture2D(source.width, source.height);
-            readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
-            readableText.Apply();
-            RenderTexture.active = previous;
-            RenderTexture.ReleaseTemporary(renderTex);
-            return readableText;
-        }
-
         public static Texture2D ResizeTexture (Texture2D texture, int textureWidth, int textureHeight)
         {
             var renderTexture = RenderTexture.GetTemporary(textureWidth, textureHeight);
@@ -87,6 +70,9 @@ namespace Graph3DVisualizer.TextureFactory
         }
     }
 
+    /// <summary>
+    /// Class describing an image consisting of several pictures.
+    /// </summary>
     [Serializable]
     public class CombinedImages : ICloneable
     {
@@ -108,6 +94,9 @@ namespace Graph3DVisualizer.TextureFactory
         public object Clone () => new CombinedImages((PositionedImage[]) Images.Clone(), TextureWidth, TextureHeight, WrapMode, IsTransparentBackground);
     }
 
+    /// <summary>
+    /// Class that describes an image with a 2 dimensional coordinate reference.
+    /// </summary>
     [Serializable]
     public class PositionedImage
     {

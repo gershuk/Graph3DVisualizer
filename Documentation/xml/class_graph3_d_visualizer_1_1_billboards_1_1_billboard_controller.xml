@@ -1,0 +1,334 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Billboards::BillboardController</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+    <basecompoundref refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile" prot="public" virt="non-virtual">Graph3DVisualizer.SupportComponents.IVisibile</basecompoundref>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1aab451a1f5baa3da333e0607ca9f7787f" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.Billboards.BillboardController._billboardDefaultTexturePath</definition>
+        <argsstring></argsstring>
+        <name>_billboardDefaultTexturePath</name>
+        <initializer>= &quot;Textures/BillboardDefaultTexture&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="141" column="30" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1ac072fe867c77a05d4fe7db018aec8394" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.Billboards.BillboardController._billboardShaderPath</definition>
+        <argsstring></argsstring>
+        <name>_billboardShaderPath</name>
+        <initializer>= &quot;Custom/BillboardShader&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="142" column="30" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1ac47f409fa0eab624a5ec25b7e8f025ce" prot="private" static="yes" mutable="no">
+        <type>Texture2D</type>
+        <definition>Texture2D Graph3DVisualizer.Billboards.BillboardController._defaultTexture</definition>
+        <argsstring></argsstring>
+        <name>_defaultTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="145" column="34" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1acec5fcb755538abd8215320aae2ce176" prot="private" static="yes" mutable="no">
+        <type>Shader</type>
+        <definition>Shader Graph3DVisualizer.Billboards.BillboardController._shader</definition>
+        <argsstring></argsstring>
+        <name>_shader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="148" column="31" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a2ebaa70e6c1dc7f50598310a35146c2b" prot="private" static="no" mutable="no">
+        <type>Dictionary&lt; <ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id" kindref="compound">BillboardId</ref>, <ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard" kindref="compound">Billboard</ref> &gt;</type>
+        <definition>Dictionary&lt;BillboardId, Billboard&gt; Graph3DVisualizer.Billboards.BillboardController._billboards</definition>
+        <argsstring></argsstring>
+        <name>_billboards</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="150" column="28" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="150" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a19876816b4a0a80814c4b0f4281691fc" prot="private" static="no" mutable="no">
+        <type>MeshFilter</type>
+        <definition>MeshFilter Graph3DVisualizer.Billboards.BillboardController._meshFilter</definition>
+        <argsstring></argsstring>
+        <name>_meshFilter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="151" column="28" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="151" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a87f91c2a1b186cf630e55293fb86725d" prot="private" static="no" mutable="no">
+        <type>MeshRenderer</type>
+        <definition>MeshRenderer Graph3DVisualizer.Billboards.BillboardController._render</definition>
+        <argsstring></argsstring>
+        <name>_render</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="152" column="30" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="152" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1af873a108de623d6bcfaf9d3d9cf9bba1" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>Action&lt; bool, UnityEngine.Object &gt;</type>
+        <definition>Action&lt;bool, UnityEngine.Object&gt; Graph3DVisualizer.Billboards.BillboardController.VisibleChanged</definition>
+        <argsstring></argsstring>
+        <name>VisibleChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="154" column="29" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="154" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a4c90f902448262176d832f41a1bf0f6b" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool?</type>
+        <definition>bool? Graph3DVisualizer.Billboards.BillboardController.Visibility</definition>
+        <argsstring></argsstring>
+        <name>Visibility</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="156" column="21" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="157" bodyend="167"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1aab283039287f55b1484d2d4b3f6f94ca" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Billboards.BillboardController.AddBillboardMaterialToRender</definition>
+        <argsstring>(BillboardId billboardId)</argsstring>
+        <name>AddBillboardMaterialToRender</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id" kindref="compound">BillboardId</ref></type>
+          <declname>billboardId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="169" column="22" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="169" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a3b482885e53b1b3ad21bd7a61a22f7c5" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Billboards.BillboardController.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="185" column="22" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="185" bodyend="198"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1af18e2231a76a71afb5238db4f7eca34c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id" kindref="compound">BillboardId</ref></type>
+        <definition>BillboardId Graph3DVisualizer.Billboards.BillboardController.CreateBillboard</definition>
+        <argsstring>(in BillboardParameters parameters, string name, string description)</argsstring>
+        <name>CreateBillboard</name>
+        <param>
+          <type>in <ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_parameters" kindref="compound">BillboardParameters</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>description</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="200" column="28" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="200" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1af17d991625710457e14b35e08485bfae" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Billboards.BillboardController.DeleteBillboard</definition>
+        <argsstring>(BillboardId billboardId)</argsstring>
+        <name>DeleteBillboard</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id" kindref="compound">BillboardId</ref></type>
+          <declname>billboardId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="211" column="21" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="211" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1ade72220cae02db6c9f930935193e13d7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Billboards.BillboardController.DisableBillboard</definition>
+        <argsstring>(BillboardId billboardId)</argsstring>
+        <name>DisableBillboard</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id" kindref="compound">BillboardId</ref></type>
+          <declname>billboardId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="218" column="21" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="218" bodyend="237"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a9cef1749ef91d18a689717a4a1a2c2da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Billboards.BillboardController.EnableBillboard</definition>
+        <argsstring>(BillboardId billboardId)</argsstring>
+        <name>EnableBillboard</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id" kindref="compound">BillboardId</ref></type>
+          <declname>billboardId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="239" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a0d333c7a5cc4712c90c7b078f33007be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard" kindref="compound">Billboard</ref></type>
+        <definition>Billboard Graph3DVisualizer.Billboards.BillboardController.GetBillboard</definition>
+        <argsstring>(BillboardId billboardId)</argsstring>
+        <name>GetBillboard</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_id" kindref="compound">BillboardId</ref></type>
+          <declname>billboardId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="241" column="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a9804ba2d616adcbb479f53c472553ad1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Billboards.BillboardController.UpdateBounds</definition>
+        <argsstring>()</argsstring>
+        <name>UpdateBounds</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="244" column="21" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="244" bodyend="254"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A collection containing <ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard" kindref="compound">Billboard</ref>s. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.Billboards.BillboardController</label>
+        <link refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="3">
+        <label>IVisibile</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.Billboards.BillboardController</label>
+        <link refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="3">
+        <label>IVisibile</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_visibile"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Billboard/Scripts/BillboardController.cs" line="139" column="11" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="140" bodyend="255"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1aab451a1f5baa3da333e0607ca9f7787f" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>_billboardDefaultTexturePath</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a2ebaa70e6c1dc7f50598310a35146c2b" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>_billboards</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1ac072fe867c77a05d4fe7db018aec8394" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>_billboardShaderPath</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1ac47f409fa0eab624a5ec25b7e8f025ce" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>_defaultTexture</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a19876816b4a0a80814c4b0f4281691fc" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>_meshFilter</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a87f91c2a1b186cf630e55293fb86725d" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>_render</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1acec5fcb755538abd8215320aae2ce176" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>_shader</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1aab283039287f55b1484d2d4b3f6f94ca" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>AddBillboardMaterialToRender</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a3b482885e53b1b3ad21bd7a61a22f7c5" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>Awake</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1af18e2231a76a71afb5238db4f7eca34c" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>CreateBillboard</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1af17d991625710457e14b35e08485bfae" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>DeleteBillboard</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1ade72220cae02db6c9f930935193e13d7" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>DisableBillboard</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a9cef1749ef91d18a689717a4a1a2c2da" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>EnableBillboard</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a0d333c7a5cc4712c90c7b078f33007be" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>GetBillboard</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a9804ba2d616adcbb479f53c472553ad1" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>UpdateBounds</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1a4c90f902448262176d832f41a1bf0f6b" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>Visibility</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller_1af873a108de623d6bcfaf9d3d9cf9bba1" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::BillboardController</scope><name>VisibleChanged</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

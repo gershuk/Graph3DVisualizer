@@ -25,6 +25,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.Graph3D
 {
+    /// <summary>
+    /// Abstract class that describes vertex component.
+    /// </summary>
     [RequireComponent(typeof(MovementComponent))]
     [CustomizableGrandType(Type = typeof(VertexParameters))]
     public abstract class AbstractVertex : AbstractGraphObject, IVisibile, IDestructible, ICustomizable<VertexParameters>
@@ -169,6 +172,9 @@ namespace Graph3DVisualizer.Graph3D
         }
     }
 
+    /// <summary>
+    /// Abstract class that describes unidirectional link between to current and adjacent vertexes.
+    /// </summary>
     public class Link
     {
         public AbstractVertex AdjacentVertex { get; }
@@ -196,6 +202,9 @@ namespace Graph3DVisualizer.Graph3D
         }
     }
 
+    /// <summary>
+    /// Class that describes default vertex parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
     [Serializable]
     public class VertexParameters : AbstractGraphObjectParameters
     {

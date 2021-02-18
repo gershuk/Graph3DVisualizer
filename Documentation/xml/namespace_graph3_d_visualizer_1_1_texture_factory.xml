@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespace_graph3_d_visualizer_1_1_texture_factory" kind="namespace" language="C#">
+    <compoundname>Graph3DVisualizer::TextureFactory</compoundname>
+    <innerclass refid="class_graph3_d_visualizer_1_1_texture_factory_1_1_text_texture_factory" prot="public">Graph3DVisualizer::TextureFactory::TextTextureFactory</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_texture_factory_1_1_texture2_d_extension" prot="public">Graph3DVisualizer::TextureFactory::Texture2DExtension</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_texture_factory_1_1_combined_images" prot="public">Graph3DVisualizer::TextureFactory::CombinedImages</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_texture_factory_1_1_positioned_image" prot="public">Graph3DVisualizer::TextureFactory::PositionedImage</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/TextureFactory/Scripts/TextTextureFactory.cs" line="21" column="1"/>
+  </compounddef>
+</doxygen>

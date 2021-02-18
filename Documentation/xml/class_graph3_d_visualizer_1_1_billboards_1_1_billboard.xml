@@ -1,0 +1,352 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Billboards::Billboard</compoundname>
+    <basecompoundref refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable" prot="public" virt="non-virtual">Graph3DVisualizer.Customizable.ICustomizable&lt; BillboardParameters &gt;</basecompoundref>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ad7ac31374dc575c8f32cd528720d9ffd" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.Billboards.Billboard._cutoff</definition>
+        <argsstring></argsstring>
+        <name>_cutoff</name>
+        <initializer>= &quot;_Cutoff&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="34" column="30" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ac1efe90760e05a1ebbf0562bceede7c7" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.Billboards.Billboard._isMonoColor</definition>
+        <argsstring></argsstring>
+        <name>_isMonoColor</name>
+        <initializer>= &quot;_IsMonoColor&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="35" column="30" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1aaf1ea3a7dbc6cfbfdf21ca66ff234e5a" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.Billboards.Billboard._mainTextureName</definition>
+        <argsstring></argsstring>
+        <name>_mainTextureName</name>
+        <initializer>= &quot;_MainTex&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="36" column="30" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ac182d1df1f9da42ea4b96d5230f2ec3d" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.Billboards.Billboard._monoColor</definition>
+        <argsstring></argsstring>
+        <name>_monoColor</name>
+        <initializer>= &quot;_MonoColor&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="37" column="30" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a40ecc696e35cec03b30a4abcbc6e0597" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.Billboards.Billboard._scaleX</definition>
+        <argsstring></argsstring>
+        <name>_scaleX</name>
+        <initializer>= &quot;_ScaleX&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="38" column="30" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a3da46df7f6d5a409d1029ed2d9d72192" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.Billboards.Billboard._scaleY</definition>
+        <argsstring></argsstring>
+        <name>_scaleY</name>
+        <initializer>= &quot;_ScaleY&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="39" column="30" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ae41cb794e1115f4ebe4855ed4e0fa24f" prot="private" static="no" mutable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_texture_factory_1_1_combined_images" kindref="compound">CombinedImages</ref></type>
+        <definition>CombinedImages Graph3DVisualizer.Billboards.Billboard._combinedImage</definition>
+        <argsstring></argsstring>
+        <name>_combinedImage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="40" column="32" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a441de2d692bc64f78f55bb9ac6a05a2c" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>Action</type>
+        <definition>Action Graph3DVisualizer.Billboards.Billboard.ScaleChanged</definition>
+        <argsstring></argsstring>
+        <name>ScaleChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="42" column="29" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a2391491e92f3dcdb850b8202811b8e1d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.Billboards.Billboard.Cutoff</definition>
+        <argsstring></argsstring>
+        <name>Cutoff</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="44" column="22" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="45" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1af014a1d83aaaece58c1f2b0b294ee193" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Graph3DVisualizer.Billboards.Billboard.IsMonoColor</definition>
+        <argsstring></argsstring>
+        <name>IsMonoColor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="55" column="21" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="56" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a5ee9afaee3cb22fd4a608f4244d00c85" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Texture</type>
+        <definition>Texture Graph3DVisualizer.Billboards.Billboard.MainTexture</definition>
+        <argsstring></argsstring>
+        <name>MainTexture</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="61" column="24" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="62" bodyend="65"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a034d6266a661dad83aaca2ca83f86515" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Material</type>
+        <definition>Material Graph3DVisualizer.Billboards.Billboard.Material</definition>
+        <argsstring></argsstring>
+        <name>Material</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="67" column="25" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="67" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ab3818a39330b2013ff0d4a3f7187a0c4" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Color</type>
+        <definition>Color Graph3DVisualizer.Billboards.Billboard.MonoColor</definition>
+        <argsstring></argsstring>
+        <name>MonoColor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="69" column="22" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="70" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ab4f61266afcddbc7810dd67be2caae0a" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float?</type>
+        <definition>float? Graph3DVisualizer.Billboards.Billboard.ScaleX</definition>
+        <argsstring></argsstring>
+        <name>ScaleX</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="75" column="22" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="76" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a0c70b5a4ac2c3c41c9dbb02795a5a1ac" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>float?</type>
+        <definition>float? Graph3DVisualizer.Billboards.Billboard.ScaleY</definition>
+        <argsstring></argsstring>
+        <name>ScaleY</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="85" column="22" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="86" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a7673a1f98546d5d752037726b26a1002" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Vector2</type>
+        <definition>Vector2 Graph3DVisualizer.Billboards.Billboard.TextureOffset</definition>
+        <argsstring></argsstring>
+        <name>TextureOffset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="95" column="24" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="96" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a325bb00c73497fe32c2a9a3f2422fc95" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Vector2</type>
+        <definition>Vector2 Graph3DVisualizer.Billboards.Billboard.TextureScale</definition>
+        <argsstring></argsstring>
+        <name>TextureScale</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="101" column="24" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="102" bodyend="105"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ad83da4e3ac0e79c2a5538ad2f15a8ce8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.Billboards.Billboard.Billboard</definition>
+        <argsstring>(in BillboardParameters parameters, Shader shader, Texture2D defaultTexture)</argsstring>
+        <name>Billboard</name>
+        <param>
+          <type>in <ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_parameters" kindref="compound">BillboardParameters</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <param>
+          <type>Shader</type>
+          <declname>shader</declname>
+        </param>
+        <param>
+          <type>Texture2D</type>
+          <declname>defaultTexture</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="107" column="16" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="107" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1af6ce32fad8daa76e64265091bc6917c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_parameters" kindref="compound">BillboardParameters</ref></type>
+        <definition>BillboardParameters Graph3DVisualizer.Billboards.Billboard.DownloadParams</definition>
+        <argsstring>()</argsstring>
+        <name>DownloadParams</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="113" column="36"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1aa42bd944d44da4a7a00546c14c245b58" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Billboards.Billboard.SetupParams</definition>
+        <argsstring>(BillboardParameters billboardParameters)</argsstring>
+        <name>SetupParams</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_parameters" kindref="compound">BillboardParameters</ref></type>
+          <declname>billboardParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Billboard/Scripts/BillboardController.cs" line="116" column="21" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="116" bodyend="131"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>An object containing information for displaying the <ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard" kindref="compound">Billboard</ref> image. Contained in the <ref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_controller" kindref="compound">BillboardController</ref>. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.Billboards.Billboard</label>
+        <link refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ICustomizable&lt; BillboardParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.Billboards.Billboard</label>
+        <link refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>ICustomizable&lt; BillboardParameters &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Billboard/Scripts/BillboardController.cs" line="32" column="18" bodyfile="Assets/Billboard/Scripts/BillboardController.cs" bodystart="33" bodyend="132"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ae41cb794e1115f4ebe4855ed4e0fa24f" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>_combinedImage</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ad7ac31374dc575c8f32cd528720d9ffd" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>_cutoff</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ac1efe90760e05a1ebbf0562bceede7c7" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>_isMonoColor</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1aaf1ea3a7dbc6cfbfdf21ca66ff234e5a" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>_mainTextureName</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ac182d1df1f9da42ea4b96d5230f2ec3d" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>_monoColor</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a40ecc696e35cec03b30a4abcbc6e0597" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>_scaleX</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a3da46df7f6d5a409d1029ed2d9d72192" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>_scaleY</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ad83da4e3ac0e79c2a5538ad2f15a8ce8" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>Billboard</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a2391491e92f3dcdb850b8202811b8e1d" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>Cutoff</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1af6ce32fad8daa76e64265091bc6917c5" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>DownloadParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1af014a1d83aaaece58c1f2b0b294ee193" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>IsMonoColor</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a5ee9afaee3cb22fd4a608f4244d00c85" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>MainTexture</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a034d6266a661dad83aaca2ca83f86515" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>Material</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ab3818a39330b2013ff0d4a3f7187a0c4" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>MonoColor</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a441de2d692bc64f78f55bb9ac6a05a2c" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>ScaleChanged</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1ab4f61266afcddbc7810dd67be2caae0a" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>ScaleX</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a0c70b5a4ac2c3c41c9dbb02795a5a1ac" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>ScaleY</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1aa42bd944d44da4a7a00546c14c245b58" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>SetupParams</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable_1aa34dad1fba6887bc35ae88e559e1365f" prot="public" virt="non-virtual" ambiguityscope="ICustomizable&lt; BillboardParameters &gt;."><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>SetupParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a7673a1f98546d5d752037726b26a1002" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>TextureOffset</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_1a325bb00c73497fe32c2a9a3f2422fc95" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Billboards::Billboard</scope><name>TextureScale</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

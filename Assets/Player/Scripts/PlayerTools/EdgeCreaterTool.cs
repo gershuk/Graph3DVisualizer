@@ -26,6 +26,9 @@ using UnityEngine.InputSystem;
 
 namespace Graph3DVisualizer.PlayerInputControls
 {
+    /// <summary>
+    /// Tool for creating links between vertexes.
+    /// </summary>
     [RequireComponent(typeof(LaserPointer))]
     [CustomizableGrandType(Type = typeof(EdgeCreaterToolParams))]
     public class EdgeCreaterTool : AbstractPlayerTool, ICustomizable<EdgeCreaterToolParams>
@@ -177,6 +180,9 @@ namespace Graph3DVisualizer.PlayerInputControls
         public void SetupParams (EdgeCreaterToolParams parameters) => _edgeTypes = parameters.EdgeTypes.ToList();
     }
 
+    /// <summary>
+    /// Class that describes <see cref="EdgeCreaterTool"/> parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
     [Serializable]
     public class EdgeCreaterToolParams : AbstractToolParams
     {

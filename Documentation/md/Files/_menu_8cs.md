@@ -1,40 +1,23 @@
 ---
 title: Assets/SceneController/Scripts/Menu.cs
 
-
 ---
 
 # Assets/SceneController/Scripts/Menu.cs
-
-
-
-
-
-
 
 ## Namespaces
 
 | Name           |
 | -------------- |
-| **[Grpah3DVisualizer::GUIFactory](Namespaces/namespace_grpah3_d_visualizer_1_1_g_u_i_factory.md)**  |
+| **[Graph3DVisualizer](Namespaces/namespace_graph3_d_visualizer.md)**  |
+| **[Graph3DVisualizer::Scene](Namespaces/namespace_graph3_d_visualizer_1_1_scene.md)**  |
+| **[Graph3DVisualizer::GUI::GUIFactory](Namespaces/namespace_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory.md)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[Menu](Classes/class_menu.md)**  |
-
-
-
-
-
-
-
-
-
-
-
-
+| class | **[Graph3DVisualizer::Scene::Menu](Classes/class_graph3_d_visualizer_1_1_scene_1_1_menu.md)** <br>Component that creates a menu for working with [SceneController]().  |
 
 
 
@@ -42,141 +25,179 @@ title: Assets/SceneController/Scripts/Menu.cs
 ## Source code
 
 ```cpp
-// This file is part of Grpah3DVisualizer.
-// Copyright В© Gershuk Vladislav 2020.
+// This file is part of Graph3DVisualizer.
+// Copyright В© Gershuk Vladislav 2021.
 //
-// Grpah3DVisualizer is free software: you can redistribute it and/or modify
+// Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Grpah3DVisualizer is distributed in the hope that it will be useful,
+// Graph3DVisualizer is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY, without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
-
-using Grpah3DVisualizer;
+// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using static Grpah3DVisualizer.GUIFactory;
+using static Graph3DVisualizer.GUI.GUIFactory;
 
-[RequireComponent(typeof(SceneController))]
-public class Menu : MonoBehaviour
+namespace Graph3DVisualizer.Scene
 {
-    private enum State
+    [RequireComponent(typeof(SceneController))]
+    public class Menu : MonoBehaviour
     {
-        StartMenu,
-        TaskScene,
-    }
-
-    private const string _menuAction = "Show/HideMenuAction";
-
-    [SerializeField]
-    private GameObject _content;
-    [SerializeField]
-    private GameObject _menu;
-    [SerializeField]
-    private Font _font;
-
-    private State _state = State.StartMenu;
-    private InputActionMap _inputActions;
-    private bool _isActive = true;
-    private SceneController _sceneControler;
-
-    private void Awake ()
-    {
-        _inputActions = new InputActionMap("SceneControlletActionMap");
-        var selectItemAction = _inputActions.AddAction(_menuAction, InputActionType.Button, "<Keyboard>/Escape");
-        selectItemAction.performed += CallChangeMenuState;
-        _inputActions.Enable();
-        _sceneControler = GetComponent<SceneController>();
-        _sceneControler.LoadMods();
-        _sceneControler.FindAllTasks();
-
-        var taskList = _sceneControler.TaskList;
-
-        var buttonHeight = _content.GetComponent<RectTransform>().sizeDelta.y / 5;
-        var buttonWidth = _content.GetComponent<RectTransform>().sizeDelta.x;
-        for (var i = 0; i < taskList.Count; i++)
+        private enum State
         {
-            var task = taskList[i];
+            StartMenu,
+            TaskScene,
+        }
+
+        private const string _menuAction = "Show/HideMenuAction";
+
+        [SerializeField]
+        private GameObject _content;
+
+        [SerializeField]
+        private Font _font;
+
+        private InputActionMap _inputActions;
+
+        private bool _isActive = true;
+
+        [SerializeField]
+        private GameObject _menu;
+
+        private SceneController _sceneControler;
+        private State _state = State.StartMenu;
+
+        private void Awake ()
+        {
+            _inputActions = new InputActionMap("SceneControlletActionMap");
+            var selectItemAction = _inputActions.AddAction(_menuAction, InputActionType.Button, "<Keyboard>/Escape");
+            selectItemAction.performed += CallChangeMenuState;
+            _inputActions.Enable();
+            _sceneControler = GetComponent<SceneController>();
+            _sceneControler.LoadMods();
+            _sceneControler.FindAllTasks();
+
+            var taskList = _sceneControler.TaskList;
+
+            var buttonHeight = _content.GetComponent<RectTransform>().sizeDelta.y / 8;
+            var buttonWidth = _content.GetComponent<RectTransform>().sizeDelta.x;
+            var i = 0;
+            for (i = 0; i < taskList.Count; i++)
+            {
+                var task = taskList[i];
+                {
+                    var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
+                        new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
+                    var index = i;
+                    var buttonParameters = new ButtonParameters(task.Name, buttonRectParameters, null,
+                        () =>
+                        {
+                            _state = State.TaskScene;
+                            ChangeMenuState(false);
+                            if (_sceneControler.ActiveTask)
+                                _sceneControler.StopTask();
+                            _sceneControler.StartTask(index);
+                        });
+                    var newButton = CreateButton(buttonParameters);
+                    var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+                    var textParameters = new TextParameters(task.Name, Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
+                    var newText = CreateText(textParameters);
+                }
+            }
+
             {
                 var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
-                    new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
-                var buttonParameters = new ButtonParameters(task.Name, buttonRectParameters,
+                            new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
+                var buttonParameters = new ButtonParameters("StartMenu", buttonRectParameters, null,
                     () =>
                     {
-                        _state = State.TaskScene;
-                        _sceneControler.CurrentTaskType = task;
-                        ChangeMenuState(false);
-                        if (_sceneControler.VisualTask != null)
-                            _sceneControler.VisualTask.DestroyTask();
-                        CreateTask();
+                        _state = State.StartMenu;
+                        if (_sceneControler.ActiveTask)
+                            _sceneControler.StopTask();
+                        ChangeMenuState(true);
                     });
                 var newButton = CreateButton(buttonParameters);
                 var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
-                var textParameters = new TextParameters(task.Name, Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
+                var textParameters = new TextParameters("StartMenu", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
+                var newText = CreateText(textParameters);
+                i++;
+            }
+
+            {
+                var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
+                            new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
+                var buttonParameters = new ButtonParameters("Check", buttonRectParameters, null,
+                    () =>
+                    {
+                        if (_state == State.TaskScene)
+                        {
+                            Debug.LogError($"{_sceneControler.ActiveTask.name} result:");
+                            foreach (var verdict in _sceneControler.ActiveTask.GetResult())
+                                Debug.LogError(verdict);
+                            Debug.LogError("=================================");
+                        }
+                    });
+                var newButton = CreateButton(buttonParameters);
+                var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+                var textParameters = new TextParameters("Check", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
+                var newText = CreateText(textParameters);
+                i++;
+            }
+
+            {
+                var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
+                            new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
+                var buttonParameters = new ButtonParameters("Save", buttonRectParameters, null, () => _sceneControler.SaveBinary("saveFile.binary"));
+                var newButton = CreateButton(buttonParameters);
+                var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+                var textParameters = new TextParameters("Save", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
+                var newText = CreateText(textParameters);
+                i++;
+            }
+
+            {
+                var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
+                            new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
+                var buttonParameters = new ButtonParameters("Load", buttonRectParameters, null, () =>
+                {
+                    _state = State.TaskScene;
+                    if (_sceneControler.ActiveTask)
+                        _sceneControler.StopTask();
+                    _sceneControler.LoadBinary("saveFile.binary");
+                    ChangeMenuState(false);
+                });
+                var newButton = CreateButton(buttonParameters);
+                var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+                var textParameters = new TextParameters("Load", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
                 var newText = CreateText(textParameters);
             }
         }
 
+        private void CallChangeMenuState (InputAction.CallbackContext obj)
         {
-            var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
-                        new Vector2(buttonWidth / 2, -buttonHeight * (taskList.Count + 0.5f)));
-            var buttonParameters = new ButtonParameters("StartMenu", buttonRectParameters,
-                () =>
-                {
-                    _state = State.StartMenu;
-                    _sceneControler.CurrentTaskType = null;
-                    ChangeMenuState(true);
-                    if (_sceneControler.VisualTask != null)
-                        _sceneControler.VisualTask.DestroyTask();
-                });
-            var newButton = CreateButton(buttonParameters);
-            var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
-            var textParameters = new TextParameters("StartMenu", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
-            var newText = CreateText(textParameters);
+            if (_state != State.StartMenu)
+                ChangeMenuState(!_isActive);
         }
 
+        private void ChangeMenuState (bool state)
         {
-            var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
-                        new Vector2(buttonWidth / 2, -buttonHeight * (taskList.Count + 1 + 0.5f)));
-            var buttonParameters = new ButtonParameters("Check", buttonRectParameters,
-                () => { if (_state == State.TaskScene) foreach (var verdict in _sceneControler.VisualTask.GetResult()) Debug.Log(verdict); });
-            var newButton = CreateButton(buttonParameters);
-            var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
-            var textParameters = new TextParameters("Check", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
-            var newText = CreateText(textParameters);
-        }
-    }
+            _isActive = state;
+            _menu.SetActive(_isActive);
+            Cursor.visible = state;
 
-    private void CreateTask ()
-    {
-        if (_state == State.TaskScene)
-            _sceneControler.CreateTask();
-    }
-
-    private void CallChangeMenuState (InputAction.CallbackContext obj)
-    {
-        if (_state != State.StartMenu)
-            ChangeMenuState(!_isActive);
-    }
-
-    private void ChangeMenuState (bool state)
-    {
-        _isActive = state;
-        _menu.SetActive(_isActive);
-        Cursor.visible = state;
-
-        if (_sceneControler.VisualTask != null)
-        {
-            foreach (var player in _sceneControler.VisualTask.Players)
-                player.gameObject.SetActive(!state);
+            if (_sceneControler.ActiveTask != null)
+            {
+                foreach (var player in _sceneControler.ActiveTask.Players)
+                    player.gameObject.SetActive(!state);
+            }
         }
     }
 }
@@ -185,4 +206,4 @@ public class Menu : MonoBehaviour
 
 -------------------------------
 
-Updated on 12 December 2020 at 00:14:19 RTZ 9 (зима)
+Updated on 18 February 2021 at 16:24:40 RTZ 9 (зима)

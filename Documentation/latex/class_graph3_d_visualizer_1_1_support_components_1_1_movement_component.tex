@@ -1,0 +1,68 @@
+\hypertarget{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component}{}\doxysection{Graph3\+DVisualizer.\+Support\+Components.\+Movement\+Component Class Reference}
+\label{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component}\index{Graph3DVisualizer.SupportComponents.MovementComponent@{Graph3DVisualizer.SupportComponents.MovementComponent}}
+
+
+Component that controls the movement of the object.  
+
+
+Inheritance diagram for Graph3\+DVisualizer.\+Support\+Components.\+Movement\+Component\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.517615cm]{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_ae38ca4b9e0c6be314fe075dd7cc34ba7}\label{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_ae38ca4b9e0c6be314fe075dd7cc34ba7}} 
+IEnumerator {\bfseries Move\+Along\+Trajectory} (IRead\+Only\+List$<$ Vector3 $>$ trajectory)
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_aa7bd2317a6d29c540fea77cfb90ffe50}\label{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_aa7bd2317a6d29c540fea77cfb90ffe50}} 
+void {\bfseries Rotate} (Vector2 rotation\+Change, float delta\+Time)
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_a8246c0d4e6a917b380633c4143fbc766}\label{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_a8246c0d4e6a917b380633c4143fbc766}} 
+void {\bfseries Translate} (Vector3 direction\+Vector, float delta\+Time)
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_a713a8f4011f7e417e302c1679644b5df}\label{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_a713a8f4011f7e417e302c1679644b5df}} 
+int? {\bfseries Current\+Gear\+Index}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_afbe76951199d419eafdc956f37e8d0d7}\label{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_afbe76951199d419eafdc956f37e8d0d7}} 
+List$<$(float delta\+Time\+From\+Start, float multiplier)$>$? {\bfseries Gears}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_a68f8f96569cd562cbbf833151fcf5c78}\label{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_a68f8f96569cd562cbbf833151fcf5c78}} 
+Vector3? {\bfseries Global\+Coordinates}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_a5b4b71c8a2a6818a227ca82d1203c892}\label{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_a5b4b71c8a2a6818a227ca82d1203c892}} 
+Vector3? {\bfseries Local\+Coordinates}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_a7ba4c75449b9e8cf3bd1bbd59a1999b4}\label{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_a7ba4c75449b9e8cf3bd1bbd59a1999b4}} 
+float {\bfseries Moving\+Speed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_ad04fa4c3cbf8b481a3241f8aa05a13c0}\label{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_ad04fa4c3cbf8b481a3241f8aa05a13c0}} 
+Vector3 {\bfseries Rotation}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_ab30d03871a15e6b964096a31d873f687}\label{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_ab30d03871a15e6b964096a31d873f687}} 
+float {\bfseries Rotation\+Speed}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_a5ee66f4ff6187fe4e23033ed81f6f438}\label{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_a5ee66f4ff6187fe4e23033ed81f6f438}} 
+Transmission\+Mode {\bfseries Transmission\+Mode}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_acc7c23b2bc02d64add31dbafe450fa25}\label{class_graph3_d_visualizer_1_1_support_components_1_1_movement_component_acc7c23b2bc02d64add31dbafe450fa25}} 
+Action$<$ Vector3, Unity\+Engine.\+Object $>$ {\bfseries Object\+Moved}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Component that controls the movement of the object. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Support\+Components/\+Scripts/Movement\+Component.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Graph3D::AbstractGraphObject</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.AbstractEdge</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.AbstractGraph</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.AbstractVertex</derivedcompoundref>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_1add4e67c315e88ece93beff1566746d6e" prot="private" static="no" mutable="no">
+        <type>string</type>
+        <definition>string Graph3DVisualizer.Graph3D.AbstractGraphObject._id</definition>
+        <argsstring></argsstring>
+        <name>_id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/GraphObject.cs" line="32" column="24" bodyfile="Assets/Graph3D/Scripts/GraphObject.cs" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_1acb28d1479858c4b3d6119e98e058d210" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>string??</type>
+        <definition>string?? Graph3DVisualizer.Graph3D.AbstractGraphObject.Id</definition>
+        <argsstring></argsstring>
+        <name>Id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/GraphObject.cs" line="34" column="23" bodyfile="Assets/Graph3D/Scripts/GraphObject.cs" bodystart="34" bodyend="34"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class for all <ref refid="namespace_graph3_d_visualizer_1_1_graph3_d" kindref="compound">Graph3D</ref> objects. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>Graph3DVisualizer.Graph3D.AbstractEdge</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_edge"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Graph3DVisualizer.Graph3D.Edge</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Graph3DVisualizer.Graph3D.Vertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Graph3DVisualizer.Graph3D.AbstractGraph</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>Graph3DVisualizer.GraphTasks.DecembristVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.AbstractGraphObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Graph3DVisualizer.Graph3D.SelectableVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex"/>
+        <childnode refid="8" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Graph3DVisualizer.Graph3D.AbstractVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Graph3DVisualizer.Graph3D.Graph</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_graph"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.AbstractGraphObject</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Graph3D/Scripts/GraphObject.cs" line="28" column="21" bodyfile="Assets/Graph3D/Scripts/GraphObject.cs" bodystart="29" bodyend="35"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_1add4e67c315e88ece93beff1566746d6e" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractGraphObject</scope><name>_id</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_1acb28d1479858c4b3d6119e98e058d210" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractGraphObject</scope><name>Id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -254,6 +254,9 @@ namespace Graph3DVisualizer.Billboards
         }
     }
 
+    /// <summary>
+    /// Id to search for a billboard in <see cref="BillboardController"/>.
+    /// </summary>
     public class BillboardId
     {
         public string Description { get; }

@@ -1,0 +1,65 @@
+\hypertarget{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph}{}\doxysection{Graph3\+DVisualizer.\+Graph3\+D.\+Abstract\+Graph Class Reference}
+\label{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph}\index{Graph3DVisualizer.Graph3D.AbstractGraph@{Graph3DVisualizer.Graph3D.AbstractGraph}}
+
+
+Abstract class that describes graph component.  
+
+
+Inheritance diagram for Graph3\+DVisualizer.\+Graph3\+D.\+Abstract\+Graph\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.738386cm]{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a2eec2caee8de8afb50dac881a36c81b9}\label{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a2eec2caee8de8afb50dac881a36c81b9}} 
+abstract bool {\bfseries Contains\+Vertex} (string id)
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a2235d83126ebc2b999cb4ec8c92ff47c}\label{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a2235d83126ebc2b999cb4ec8c92ff47c}} 
+abstract bool {\bfseries Delete\+Veretex} (string id)
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_ac2aa4d4d83ebe9af0e6c59c026912148}\label{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_ac2aa4d4d83ebe9af0e6c59c026912148}} 
+\mbox{\hyperlink{class_graph3_d_visualizer_1_1_graph3_d_1_1_graph_parameters}{Graph\+Parameters}} {\bfseries Download\+Params} ()
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a31dbd1ec2986848c1c5ada905998ba77}\label{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a31dbd1ec2986848c1c5ada905998ba77}} 
+abstract \mbox{\hyperlink{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex}{Abstract\+Vertex}} {\bfseries Get\+Vertex\+By\+Id} (string id)
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_ad4d6121f33e59f61b1455967ffb509eb}\label{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_ad4d6121f33e59f61b1455967ffb509eb}} 
+abstract IRead\+Only\+List$<$ \mbox{\hyperlink{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex}{Abstract\+Vertex}} $>$ {\bfseries Get\+Vertexes} ()
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a6420400ce8904d3967bd255e107b195a}\label{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a6420400ce8904d3967bd255e107b195a}} 
+void {\bfseries Setup\+Params} (\mbox{\hyperlink{class_graph3_d_visualizer_1_1_graph3_d_1_1_graph_parameters}{Graph\+Parameters}} parameters)
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_ad1d721b1450252246dc652a41e93deb2}\label{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_ad1d721b1450252246dc652a41e93deb2}} 
+abstract TVertex {\bfseries Spawn\+Vertex$<$ TVertex, TParams $>$} (TParams vertex\+Parameters)
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a6c81ca2fb47ee22a6e7fa10217fe4a81}\label{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a6c81ca2fb47ee22a6e7fa10217fe4a81}} 
+abstract \mbox{\hyperlink{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_vertex}{Abstract\+Vertex}} {\bfseries Spawn\+Vertex} (Type vertex\+Type, \mbox{\hyperlink{class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters}{Vertex\+Parameters}} parameters)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a939baa49f2c6ce5311206424f403b63e}\label{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a939baa49f2c6ce5311206424f403b63e}} 
+Transform {\bfseries \+\_\+transform}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a8e42e49ae741630073822e2191b3b148}\label{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_a8e42e49ae741630073822e2191b3b148}} 
+Game\+Object {\bfseries \+\_\+vertex\+Prefab}
+\end{DoxyCompactItemize}
+\doxysubsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_aa83c86eb137dcf1d1009fb54e7e56f08}\label{class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_aa83c86eb137dcf1d1009fb54e7e56f08}} 
+abstract int {\bfseries Vertexes\+Count}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract class that describes graph component. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Assets/\+Graph3\+D/\+Scripts/Abstract\+Graph.\+cs\end{DoxyCompactItemize}

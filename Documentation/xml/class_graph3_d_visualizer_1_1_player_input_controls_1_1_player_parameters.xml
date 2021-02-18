@@ -1,0 +1,147 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::PlayerInputControls::PlayerParameters</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter" prot="public" virt="non-virtual">Graph3DVisualizer.Customizable.AbstractCustomizableParameter</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters_1af1cb53a74e33f64d8e03559f1083819e" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Vector3</type>
+        <definition>Vector3 Graph3DVisualizer.PlayerInputControls.PlayerParameters.EulerAngles</definition>
+        <argsstring></argsstring>
+        <name>EulerAngles</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" line="87" column="24" bodyfile="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" bodystart="87" bodyend="87"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters_1a3b4b85da2963ff2dff0ea7fb8503dcf3" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.PlayerInputControls.PlayerParameters.MovingSpeed</definition>
+        <argsstring></argsstring>
+        <name>MovingSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" line="88" column="22" bodyfile="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters_1ad407446c017e9519431b870f356e0b5d" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Vector3</type>
+        <definition>Vector3 Graph3DVisualizer.PlayerInputControls.PlayerParameters.Position</definition>
+        <argsstring></argsstring>
+        <name>Position</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" line="89" column="24" bodyfile="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" bodystart="89" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters_1a6b798c30c899e09be56879df6d77adf4" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.PlayerInputControls.PlayerParameters.RotationSpeed</definition>
+        <argsstring></argsstring>
+        <name>RotationSpeed</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" line="90" column="22" bodyfile="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters_1aaa7968e961225963baade7269af0ba84" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_tool_config" kindref="compound">ToolConfig</ref>[]</type>
+        <definition>ToolConfig [] Graph3DVisualizer.PlayerInputControls.PlayerParameters.ToolConfigs</definition>
+        <argsstring></argsstring>
+        <name>ToolConfigs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" line="91" column="27" bodyfile="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" bodystart="91" bodyend="91"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters_1a9f6ec77b8368a8e4ff2c2f94c0095123" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.PlayerInputControls.PlayerParameters.PlayerParameters</definition>
+        <argsstring>(Vector3 position, Vector3 eulerAngles, float movingSpeed, float rotationSpeed, ToolConfig[] toolConfigs)</argsstring>
+        <name>PlayerParameters</name>
+        <param>
+          <type>Vector3</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>eulerAngles</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>movingSpeed</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>rotationSpeed</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_tool_config" kindref="compound">ToolConfig</ref>[]</type>
+          <declname>toolConfigs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" line="93" column="16" bodyfile="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" bodystart="93" bodyend="100"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>A class that describes default player parameters for ICustomizable&lt;TParams&gt;. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.PlayerParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.PlayerParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" line="85" column="11" bodyfile="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" bodystart="86" bodyend="101"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters_1af1cb53a74e33f64d8e03559f1083819e" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::PlayerParameters</scope><name>EulerAngles</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters_1a3b4b85da2963ff2dff0ea7fb8503dcf3" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::PlayerParameters</scope><name>MovingSpeed</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters_1a9f6ec77b8368a8e4ff2c2f94c0095123" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::PlayerParameters</scope><name>PlayerParameters</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters_1ad407446c017e9519431b870f356e0b5d" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::PlayerParameters</scope><name>Position</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters_1a6b798c30c899e09be56879df6d77adf4" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::PlayerParameters</scope><name>RotationSpeed</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters_1aaa7968e961225963baade7269af0ba84" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::PlayerParameters</scope><name>ToolConfigs</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

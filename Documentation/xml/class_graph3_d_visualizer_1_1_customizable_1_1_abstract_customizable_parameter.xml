@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Customizable::AbstractCustomizableParameter</compoundname>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_parameters" prot="public" virt="non-virtual">Graph3DVisualizer.Billboards.BillboardParameters</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.AbstractGraphObjectParameters</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters" prot="public" virt="non-virtual">Graph3DVisualizer.GraphTasks.VisualTaskParameters</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_tool_params" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.AbstractToolParams</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.PlayerParameters</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller_parameters" prot="public" virt="non-virtual">Graph3DVisualizer.Scene.SceneControllerParameters</derivedcompoundref>
+    <briefdescription>
+<para>Abstract class for setup and download object parameters. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6">
+        <label>Graph3DVisualizer.Graph3D.VertexParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>Graph3DVisualizer.PlayerInputControls.GrabItemToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_params"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Graph3DVisualizer.GraphTasks.VisualTaskParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Graph3DVisualizer.Graph3D.GraphParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_graph_parameters"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>Graph3DVisualizer.PlayerInputControls.AbstractToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_tool_params"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Graph3DVisualizer.Graph3D.AbstractGraphObjectParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Customizable.AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+      <node id="13">
+        <label>Graph3DVisualizer.PlayerInputControls.SelectItemToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_select_item_tool_params"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Graph3DVisualizer.Billboards.BillboardParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_billboards_1_1_billboard_parameters"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>Graph3DVisualizer.Graph3D.SelectableVertexParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_parameters"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>Graph3DVisualizer.Scene.SceneControllerParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_scene_1_1_scene_controller_parameters"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>Graph3DVisualizer.PlayerInputControls.PlayerParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Graph3DVisualizer.Graph3D.EdgeParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>Graph3DVisualizer.PlayerInputControls.EdgeCreaterToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>Graph3DVisualizer.PlayerInputControls.ClickToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool_params"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" line="103" column="21" bodyfile="Assets/CustomizableExtension/Scripts/CustomizableExtension.cs" bodystart="103" bodyend="103"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

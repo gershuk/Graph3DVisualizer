@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_newtonsoft_surrogate_converter" kind="class" language="C#" prot="public">
+    <compoundname>Graph3D::SurrogateTypesForSerialization::NewtonsoftSurrogateConverter</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">JsonConverter</basecompoundref>
+    <templateparamlist>
+      <param>
+        <type>TReal</type>
+      </param>
+      <param>
+        <type>TSurrogate</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_newtonsoft_surrogate_converter_1adbbf4dfc0befa06fbe39f4afec53493a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>override bool</type>
+        <definition>override bool Graph3D.SurrogateTypesForSerialization.NewtonsoftSurrogateConverter&lt; TReal, TSurrogate &gt;.CanConvert</definition>
+        <argsstring>(Type objectType)</argsstring>
+        <name>CanConvert</name>
+        <param>
+          <type>Type</type>
+          <declname>objectType</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="83" column="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_newtonsoft_surrogate_converter_1a916c6f422c54369853affdf350820b68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>override object</type>
+        <definition>override object Graph3D.SurrogateTypesForSerialization.NewtonsoftSurrogateConverter&lt; TReal, TSurrogate &gt;.ReadJson</definition>
+        <argsstring>(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)</argsstring>
+        <name>ReadJson</name>
+        <param>
+          <type>JsonReader</type>
+          <declname>reader</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>objectType</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>existingValue</declname>
+        </param>
+        <param>
+          <type>JsonSerializer</type>
+          <declname>serializer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="85" column="32"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_newtonsoft_surrogate_converter_1acecd76b590aa9d23da81488c7d1610fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>override void</type>
+        <definition>override void Graph3D.SurrogateTypesForSerialization.NewtonsoftSurrogateConverter&lt; TReal, TSurrogate &gt;.WriteJson</definition>
+        <argsstring>(JsonWriter writer, object value, JsonSerializer serializer)</argsstring>
+        <name>WriteJson</name>
+        <param>
+          <type>JsonWriter</type>
+          <declname>writer</declname>
+        </param>
+        <param>
+          <type>object</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>JsonSerializer</type>
+          <declname>serializer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="88" column="30"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3D.SurrogateTypesForSerialization.NewtonsoftSurrogateConverter&lt; TReal, TSurrogate &gt;</label>
+        <link refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_newtonsoft_surrogate_converter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>JsonConverter</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3D.SurrogateTypesForSerialization.NewtonsoftSurrogateConverter&lt; TReal, TSurrogate &gt;</label>
+        <link refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_newtonsoft_surrogate_converter"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>JsonConverter</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="81" column="11" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="82" bodyend="89"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_newtonsoft_surrogate_converter_1adbbf4dfc0befa06fbe39f4afec53493a" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::NewtonsoftSurrogateConverter</scope><name>CanConvert</name></member>
+      <member refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_newtonsoft_surrogate_converter_1a916c6f422c54369853affdf350820b68" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::NewtonsoftSurrogateConverter</scope><name>ReadJson</name></member>
+      <member refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_newtonsoft_surrogate_converter_1acecd76b590aa9d23da81488c7d1610fd" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::NewtonsoftSurrogateConverter</scope><name>WriteJson</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable" kind="interface" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::SupportComponents::ISelectable</compoundname>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.SelectableVertex</derivedcompoundref>
+      <sectiondef kind="event">
+      <memberdef kind="event" id="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable_1a8dc1532dbacdf0a6c774af2648b3eaaf" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>Action&lt; UnityEngine.Object, bool &gt;</type>
+        <definition>Action&lt;UnityEngine.Object, bool&gt; Graph3DVisualizer.SupportComponents.ISelectable.HighlightedChanged</definition>
+        <argsstring></argsstring>
+        <name>HighlightedChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/ObjectEvents.cs" line="57" column="22" bodyfile="Assets/SupportComponents/Scripts/ObjectEvents.cs" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="event" id="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable_1a2e58971a5f2330b26fcf47eb254543e5" prot="public" static="no" add="no" remove="no" raise="no">
+        <type>Action&lt; UnityEngine.Object, bool &gt;</type>
+        <definition>Action&lt;UnityEngine.Object, bool&gt; Graph3DVisualizer.SupportComponents.ISelectable.SelectedChanged</definition>
+        <argsstring></argsstring>
+        <name>SelectedChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/ObjectEvents.cs" line="59" column="22" bodyfile="Assets/SupportComponents/Scripts/ObjectEvents.cs" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable_1a546e7d3a1fdee5aa69cc87ceb2bf3631" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Graph3DVisualizer.SupportComponents.ISelectable.IsHighlighted</definition>
+        <argsstring></argsstring>
+        <name>IsHighlighted</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/ObjectEvents.cs" line="61" column="14" bodyfile="Assets/SupportComponents/Scripts/ObjectEvents.cs" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable_1a501413b2fdffc544ab917e65ab120592" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool Graph3DVisualizer.SupportComponents.ISelectable.IsSelected</definition>
+        <argsstring></argsstring>
+        <name>IsSelected</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/ObjectEvents.cs" line="62" column="14" bodyfile="Assets/SupportComponents/Scripts/ObjectEvents.cs" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="property" id="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable_1ada04a106eecb5d6c18c173386031a578" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>Color</type>
+        <definition>Color Graph3DVisualizer.SupportComponents.ISelectable.SelectFrameColor</definition>
+        <argsstring></argsstring>
+        <name>SelectFrameColor</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SupportComponents/Scripts/ObjectEvents.cs" line="63" column="15" bodyfile="Assets/SupportComponents/Scripts/ObjectEvents.cs" bodystart="63" bodyend="63"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Interface that allows you to select and highlight objects. It can report changes selected/highlighted state of the object. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>Graph3DVisualizer.GraphTasks.DecembristVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_decembrist_vertex"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.SupportComponents.ISelectable</label>
+        <link refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable"/>
+      </node>
+      <node id="2">
+        <label>Graph3DVisualizer.Graph3D.SelectableVertex</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="Assets/SupportComponents/Scripts/ObjectEvents.cs" line="55" column="22" bodyfile="Assets/SupportComponents/Scripts/ObjectEvents.cs" bodystart="56" bodyend="64"/>
+    <listofallmembers>
+      <member refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable_1a8dc1532dbacdf0a6c774af2648b3eaaf" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::ISelectable</scope><name>HighlightedChanged</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable_1a546e7d3a1fdee5aa69cc87ceb2bf3631" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::ISelectable</scope><name>IsHighlighted</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable_1a501413b2fdffc544ab917e65ab120592" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::ISelectable</scope><name>IsSelected</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable_1a2e58971a5f2330b26fcf47eb254543e5" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::ISelectable</scope><name>SelectedChanged</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_support_components_1_1_i_selectable_1ada04a106eecb5d6c18c173386031a578" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::SupportComponents::ISelectable</scope><name>SelectFrameColor</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

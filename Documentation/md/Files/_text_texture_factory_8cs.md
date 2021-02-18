@@ -1,40 +1,22 @@
 ---
 title: Assets/TextureFactory/Scripts/TextTextureFactory.cs
 
-
 ---
 
 # Assets/TextureFactory/Scripts/TextTextureFactory.cs
-
-
-
-
-
-
 
 ## Namespaces
 
 | Name           |
 | -------------- |
-| **[TextureFactory](Namespaces/namespace_texture_factory.md)**  |
+| **[Graph3DVisualizer](Namespaces/namespace_graph3_d_visualizer.md)**  |
+| **[Graph3DVisualizer::TextureFactory](Namespaces/namespace_graph3_d_visualizer_1_1_texture_factory.md)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[TextureFactory::TextTextureFactory](Classes/class_texture_factory_1_1_text_texture_factory.md)**  |
-
-
-
-
-
-
-
-
-
-
-
-
+| class | **[Graph3DVisualizer::TextureFactory::TextTextureFactory](Classes/class_graph3_d_visualizer_1_1_texture_factory_1_1_text_texture_factory.md)** <br>Fabricator that allows you to create text on a texture.  |
 
 
 
@@ -42,54 +24,53 @@ title: Assets/TextureFactory/Scripts/TextTextureFactory.cs
 ## Source code
 
 ```cpp
-// This file is part of Grpah3DVisualizer.
-// Copyright © Gershuk Vladislav 2020.
+// This file is part of Graph3DVisualizer.
+// Copyright © Gershuk Vladislav 2021.
 //
-// Grpah3DVisualizer is free software: you can redistribute it and/or modify
+// Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Grpah3DVisualizer is distributed in the hope that it will be useful,
+// Graph3DVisualizer is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY, without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
 using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace TextureFactory
+namespace Graph3DVisualizer.TextureFactory
 {
     public class TextTextureFactory
     {
-        private readonly Font _customFont;
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Стили именования", Justification = "<Ожидание>")]
-        private readonly int _ASCIIOffset;
         private readonly Texture2D[] _alphabet;
+        private readonly Font _customFont;
 
         public TextTextureFactory (Font customFont, int ASCIIOffset)
         {
             _customFont = customFont;
-            _ASCIIOffset = ASCIIOffset;
-
             var fontTexture = (Texture2D) _customFont.material.mainTexture;
 
-            _alphabet = new Texture2D[_customFont.characterInfo.Length];
+            _alphabet = new Texture2D[256];
 
             foreach (var characterInfo in _customFont.characterInfo)
             {
+                var width = Mathf.RoundToInt((characterInfo.uvTopRight.x - characterInfo.uvBottomLeft.x) * fontTexture.width);
+                var height = Mathf.RoundToInt((characterInfo.uvTopRight.y - characterInfo.uvBottomLeft.y) * fontTexture.height);
+
                 //ToDo : Change to GetPixels32
                 var pixels = fontTexture.GetPixels((int) (characterInfo.uvBottomLeft.x * fontTexture.width),
                                                     (int) (characterInfo.uvBottomLeft.y * fontTexture.height),
-                                                    characterInfo.glyphWidth, characterInfo.glyphHeight);
+                                                    width, height);
 
-                _alphabet[characterInfo.index] = new Texture2D(characterInfo.glyphWidth, characterInfo.glyphHeight);
-                _alphabet[characterInfo.index].SetPixels(pixels);
-                _alphabet[characterInfo.index].Apply(true);
+                _alphabet[ASCIIOffset + characterInfo.index] = new Texture2D(width, height);
+                _alphabet[ASCIIOffset + characterInfo.index].SetPixels(pixels);
+                _alphabet[ASCIIOffset + characterInfo.index].Apply(true);
             }
         }
 
@@ -105,7 +86,7 @@ namespace TextureFactory
             {
                 var character = text[i];
 
-                lineWidth += (character != '\n') ? _alphabet[character - _ASCIIOffset].width : 0;
+                lineWidth += (character != '\n') ? _alphabet[character].width : 0;
 
                 if (character == '\n' || i == text.Length - 1)
                 {
@@ -137,9 +118,8 @@ namespace TextureFactory
                 }
                 else
                 {
-                    var glyphIndex = character - _ASCIIOffset;
-                    textTexture.SetPixels32(posX, posY, _alphabet[glyphIndex].width, _alphabet[glyphIndex].height, _alphabet[glyphIndex].GetPixels32());
-                    posX += _alphabet[glyphIndex].width;
+                    textTexture.SetPixels32(posX, posY, _alphabet[character].width, _alphabet[character].height, _alphabet[character].GetPixels32());
+                    posX += _alphabet[character].width;
                 }
             }
 
@@ -154,4 +134,4 @@ namespace TextureFactory
 
 -------------------------------
 
-Updated on 12 December 2020 at 00:14:19 RTZ 9 (����)
+Updated on 18 February 2021 at 16:24:40 RTZ 9 (����)

@@ -25,6 +25,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.Graph3D
 {
+    /// <summary>
+    /// Realization of <see cref="Vertex"/> with selection support.
+    /// </summary>
     [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(MovementComponent))]
     [RequireComponent(typeof(SphereCollider))]
@@ -128,6 +131,9 @@ namespace Graph3DVisualizer.Graph3D
         }
     }
 
+    /// <summary>
+    /// Class that describes <see cref="SelectableVertex"/> parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
     [Serializable]
     public class SelectableVertexParameters : VertexParameters
     {

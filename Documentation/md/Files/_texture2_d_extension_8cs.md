@@ -1,42 +1,24 @@
 ---
 title: Assets/TextureFactory/Scripts/Texture2DExtension.cs
 
-
 ---
 
 # Assets/TextureFactory/Scripts/Texture2DExtension.cs
-
-
-
-
-
-
 
 ## Namespaces
 
 | Name           |
 | -------------- |
-| **[TextureFactory](Namespaces/namespace_texture_factory.md)**  |
+| **[Graph3DVisualizer](Namespaces/namespace_graph3_d_visualizer.md)**  |
+| **[Graph3DVisualizer::TextureFactory](Namespaces/namespace_graph3_d_visualizer_1_1_texture_factory.md)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[TextureFactory::Texture2DExtension](Classes/class_texture_factory_1_1_texture2_d_extension.md)**  |
-| class | **[TextureFactory::PositionedImage](Classes/class_texture_factory_1_1_positioned_image.md)**  |
-| class | **[TextureFactory::CombinedImages](Classes/class_texture_factory_1_1_combined_images.md)**  |
-
-
-
-
-
-
-
-
-
-
-
-
+| class | **[Graph3DVisualizer::TextureFactory::Texture2DExtension](Classes/class_graph3_d_visualizer_1_1_texture_factory_1_1_texture2_d_extension.md)** <br>Ð¡lass containing functions for changing textures that are not included in Unity3D engine.  |
+| class | **[Graph3DVisualizer::TextureFactory::CombinedImages](Classes/class_graph3_d_visualizer_1_1_texture_factory_1_1_combined_images.md)** <br>Class describing an image consisting of several pictures.  |
+| class | **[Graph3DVisualizer::TextureFactory::PositionedImage](Classes/class_graph3_d_visualizer_1_1_texture_factory_1_1_positioned_image.md)** <br>Class that describes an image with a 2 dimensional coordinate reference.  |
 
 
 
@@ -44,28 +26,28 @@ title: Assets/TextureFactory/Scripts/Texture2DExtension.cs
 ## Source code
 
 ```cpp
-// This file is part of Grpah3DVisualizer.
-// Copyright Â© Gershuk Vladislav 2020.
+// This file is part of Graph3DVisualizer.
+// Copyright Â© Gershuk Vladislav 2021.
 //
-// Grpah3DVisualizer is free software: you can redistribute it and/or modify
+// Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Grpah3DVisualizer is distributed in the hope that it will be useful,
+// Graph3DVisualizer is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY, without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
 using System;
 using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace TextureFactory
+namespace Graph3DVisualizer.TextureFactory
 {
     public static class Texture2DExtension
     {
@@ -113,44 +95,14 @@ namespace TextureFactory
         }
     }
 
-    public class PositionedImage
-    {
-        public Texture2D Texture;
-        public Vector2Int Position;
-
-        public PositionedImage (Texture2D texture, Vector2Int position)
-        {
-            Texture = texture;
-            Position = position;
-        }
-
-        public override bool Equals (object obj) => obj is PositionedImage other && EqualityComparer<Texture2D>.Default.Equals(Texture, other.Texture) && Position.Equals(other.Position);
-
-        public override int GetHashCode ()
-        {
-            var hashCode = -1773728546;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Texture2D>.Default.GetHashCode(Texture);
-            hashCode = hashCode * -1521134295 + Position.GetHashCode();
-            return hashCode;
-        }
-
-        public void Deconstruct (out Texture2D texture, out Vector2Int position)
-        {
-            texture = Texture;
-            position = Position;
-        }
-
-        public static implicit operator (Texture2D Texture, Vector2Int Position) (PositionedImage value) => (value.Texture, value.Position);
-        public static implicit operator PositionedImage ((Texture2D Texture, Vector2Int Position) value) => new PositionedImage(value.Texture, value.Position);
-    }
-
+    [Serializable]
     public class CombinedImages : ICloneable
     {
         public PositionedImage[] Images { get; set; }
-        public int TextureWidth { get; set; }
-        public int TextureHeight { get; set; }
-        public TextureWrapMode WrapMode { get; set; }
         public bool IsTransparentBackground { get; set; }
+        public int TextureHeight { get; set; }
+        public int TextureWidth { get; set; }
+        public TextureWrapMode WrapMode { get; set; }
 
         public CombinedImages (PositionedImage[] images, int textureWidth, int textureHeight, TextureWrapMode wrapMode, bool isTransparentBackground)
         {
@@ -163,10 +115,43 @@ namespace TextureFactory
 
         public object Clone () => new CombinedImages((PositionedImage[]) Images.Clone(), TextureWidth, TextureHeight, WrapMode, IsTransparentBackground);
     }
+
+    [Serializable]
+    public class PositionedImage
+    {
+        public Vector2Int Position;
+        public Texture2D Texture;
+
+        public PositionedImage (Texture2D texture, Vector2Int position)
+        {
+            Texture = texture;
+            Position = position;
+        }
+
+        public static implicit operator (Texture2D Texture, Vector2Int Position) (PositionedImage value) => (value.Texture, value.Position);
+
+        public static implicit operator PositionedImage ((Texture2D Texture, Vector2Int Position) value) => new PositionedImage(value.Texture, value.Position);
+
+        public void Deconstruct (out Texture2D texture, out Vector2Int position)
+        {
+            texture = Texture;
+            position = Position;
+        }
+
+        public override bool Equals (object obj) => obj is PositionedImage other && EqualityComparer<Texture2D>.Default.Equals(Texture, other.Texture) && Position.Equals(other.Position);
+
+        public override int GetHashCode ()
+        {
+            var hashCode = -1773728546;
+            hashCode = hashCode * -1521134295 + EqualityComparer<Texture2D>.Default.GetHashCode(Texture);
+            hashCode = hashCode * -1521134295 + Position.GetHashCode();
+            return hashCode;
+        }
+    }
 }
 ```
 
 
 -------------------------------
 
-Updated on 12 December 2020 at 00:14:19 RTZ 9 (çèìà)
+Updated on 18 February 2021 at 16:24:40 RTZ 9 (çèìà)

@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::GUI::GUIFactory</compoundname>
+    <innerclass refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_button_parameters" prot="public">Graph3DVisualizer::GUI::GUIFactory::ButtonParameters</innerclass>
+    <innerclass refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters" prot="public">Graph3DVisualizer::GUI::GUIFactory::RectTransformParameters</innerclass>
+    <innerclass refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_text_parameters" prot="public">Graph3DVisualizer::GUI::GUIFactory::TextParameters</innerclass>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1ad0785c0f175d481eb7c493261a2d15fe" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>GameObject</type>
+        <definition>static GameObject Graph3DVisualizer.GUI.GUIFactory.CreateButton</definition>
+        <argsstring>(in ButtonParameters parameters)</argsstring>
+        <name>CreateButton</name>
+        <param>
+          <type>in <ref refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_button_parameters" kindref="compound">ButtonParameters</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="84" column="34" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="84" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1a7c69ab0d745890f916724e3bc8e34814" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>GameObject</type>
+        <definition>static GameObject Graph3DVisualizer.GUI.GUIFactory.CreateText</definition>
+        <argsstring>(in TextParameters parameters)</argsstring>
+        <name>CreateText</name>
+        <param>
+          <type>in <ref refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_text_parameters" kindref="compound">TextParameters</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="98" column="34" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="98" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1ae2f8f29565ea71908789e9e4d0ba811c" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Graph3DVisualizer.GUI.GUIFactory.SetUpRectTransform</definition>
+        <argsstring>(this RectTransform rectTransform, in RectTransformParameters parameters)</argsstring>
+        <name>SetUpRectTransform</name>
+        <param>
+          <type>this RectTransform</type>
+          <declname>rectTransform</declname>
+        </param>
+        <param>
+          <type>in <ref refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1_1_rect_transform_parameters" kindref="compound">RectTransformParameters</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="111" column="28" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="111" bodyend="118"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class that encapsulates UnityEngine.UI object creation functions. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/GUIFactory/Scripts/GUIFactory.cs" line="28" column="19" bodyfile="Assets/GUIFactory/Scripts/GUIFactory.cs" bodystart="29" bodyend="119"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1ad0785c0f175d481eb7c493261a2d15fe" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory</scope><name>CreateButton</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1a7c69ab0d745890f916724e3bc8e34814" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory</scope><name>CreateText</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory_1ae2f8f29565ea71908789e9e4d0ba811c" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory</scope><name>SetUpRectTransform</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::GraphTasks::VisualTaskParameters</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter" prot="public" virt="non-virtual">Graph3DVisualizer.Customizable.AbstractCustomizableParameter</basecompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters_1a09cf41db71110e66f36ee9af2101b769" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_graph_info" kindref="compound">GraphInfo</ref>[]</type>
+        <definition>GraphInfo [] Graph3DVisualizer.GraphTasks.VisualTaskParameters.GraphsParameters</definition>
+        <argsstring></argsstring>
+        <name>GraphsParameters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="196" column="26" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="196" bodyend="196"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters_1a22eaea096f11d4acabd5be19d898c3ee" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type><ref refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info" kindref="compound">PlayerInfo</ref>[]</type>
+        <definition>PlayerInfo [] Graph3DVisualizer.GraphTasks.VisualTaskParameters.PlayersParameters</definition>
+        <argsstring></argsstring>
+        <name>PlayersParameters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="197" column="27" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="197" bodyend="197"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters_1ad310e919bd241ccf592164bbbaf2813e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.GraphTasks.VisualTaskParameters.VisualTaskParameters</definition>
+        <argsstring>(PlayerInfo[] playersParameters, GraphInfo[] graphsParameters)</argsstring>
+        <name>VisualTaskParameters</name>
+        <param>
+          <type><ref refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_player_info" kindref="compound">PlayerInfo</ref>[]</type>
+          <declname>playersParameters</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_graph3_d_visualizer_1_1_graph_tasks_1_1_graph_info" kindref="compound">GraphInfo</ref>[]</type>
+          <declname>graphsParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="199" column="16" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="199" bodyend="216"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class that describes <ref refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_abstract_visual_task" kindref="compound">AbstractVisualTask</ref> parameters for ICustomizable&lt;TParams&gt;. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Graph3DVisualizer.GraphTasks.VisualTaskParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.GraphTasks.VisualTaskParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="194" column="11" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="195" bodyend="217"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters_1a09cf41db71110e66f36ee9af2101b769" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::VisualTaskParameters</scope><name>GraphsParameters</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters_1a22eaea096f11d4acabd5be19d898c3ee" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::VisualTaskParameters</scope><name>PlayersParameters</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_visual_task_parameters_1ad310e919bd241ccf592164bbbaf2813e" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::VisualTaskParameters</scope><name>VisualTaskParameters</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool_params" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::PlayerInputControls::ClickToolParams</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_tool_params" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.AbstractToolParams</basecompoundref>
+    <briefdescription>
+<para>Class that describes <ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool" kindref="compound">ClickTool</ref> parameters for ICustomizable&lt;TParams&gt;. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>AbstractToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_tool_params"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.ClickToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>AbstractToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_tool_params"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.ClickToolParams</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool_params"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Player/Scripts/PlayerTools/ClickTool.cs" line="97" column="11" bodyfile="Assets/Player/Scripts/PlayerTools/ClickTool.cs" bodystart="98" bodyend="102"/>
+    <listofallmembers>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_verdict" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::GraphTasks::Verdict</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_verdict_1a12a33b46d9eaf757bcf8acf1b7f263bf" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Graph3DVisualizer.GraphTasks.Verdict.Description</definition>
+        <argsstring></argsstring>
+        <name>Description</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="182" column="23" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="182" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_verdict_1aeeb8bdb7c6ab93ffec8364a3875a7f9e" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="yes" privatesettable="no" protectedsettable="no">
+        <type>VerdictStatus</type>
+        <definition>VerdictStatus Graph3DVisualizer.GraphTasks.Verdict.Status</definition>
+        <argsstring></argsstring>
+        <name>Status</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="183" column="30" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="183" bodyend="183"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_verdict_1a1a2f28c4e1f51503b1b9429218009615" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.GraphTasks.Verdict.Verdict</definition>
+        <argsstring>(string description, VerdictStatus status)</argsstring>
+        <name>Verdict</name>
+        <param>
+          <type>string</type>
+          <declname>description</declname>
+        </param>
+        <param>
+          <type>VerdictStatus</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="185" column="16"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph_tasks_1_1_verdict_1a84c61184f253aedd94c35ecc12fdae3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>override string</type>
+        <definition>override string Graph3DVisualizer.GraphTasks.Verdict.ToString</definition>
+        <argsstring>()</argsstring>
+        <name>ToString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="187" column="32"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class that describes the state of execution of some part of the task. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" line="180" column="11" bodyfile="Assets/VisualTasks/Scripts/AbstractVisualTask.cs" bodystart="181" bodyend="188"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_verdict_1a12a33b46d9eaf757bcf8acf1b7f263bf" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::Verdict</scope><name>Description</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_verdict_1aeeb8bdb7c6ab93ffec8364a3875a7f9e" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::Verdict</scope><name>Status</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_verdict_1a84c61184f253aedd94c35ecc12fdae3c" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::Verdict</scope><name>ToString</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph_tasks_1_1_verdict_1a1a2f28c4e1f51503b1b9429218009615" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GraphTasks::Verdict</scope><name>Verdict</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

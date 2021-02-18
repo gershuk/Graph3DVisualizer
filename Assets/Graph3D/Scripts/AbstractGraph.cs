@@ -23,6 +23,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.Graph3D
 {
+    /// <summary>
+    /// Support class for edge serialization.
+    /// </summary>
     [Serializable]
     public struct LinkInfo
     {
@@ -77,6 +80,9 @@ namespace Graph3DVisualizer.Graph3D
         }
     }
 
+    /// <summary>
+    /// Support class for vertex serialization.
+    /// </summary>
     [Serializable]
     public struct VertexInfo
     {
@@ -121,6 +127,9 @@ namespace Graph3DVisualizer.Graph3D
         }
     }
 
+    /// <summary>
+    /// Abstract class that describes graph component.
+    /// </summary>
     [CustomizableGrandType(Type = typeof(GraphParameters))]
     public abstract class AbstractGraph : AbstractGraphObject, ICustomizable<GraphParameters>
     {
@@ -191,6 +200,9 @@ namespace Graph3DVisualizer.Graph3D
         public abstract AbstractVertex SpawnVertex (Type vertexType, VertexParameters parameters);
     }
 
+    /// <summary>
+    /// Class that describes default graph parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
     [Serializable]
     public class GraphParameters : AbstractGraphObjectParameters
     {

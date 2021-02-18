@@ -26,6 +26,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.GraphTasks
 {
+    /// <summary>
+    /// Support class for graph serialization.
+    /// </summary>
     [Serializable]
     public struct GraphInfo
     {
@@ -70,6 +73,9 @@ namespace Graph3DVisualizer.GraphTasks
         }
     }
 
+    /// <summary>
+    /// Support class for player serialization.
+    /// </summary>
     [Serializable]
     public struct PlayerInfo
     {
@@ -114,6 +120,9 @@ namespace Graph3DVisualizer.GraphTasks
         }
     }
 
+    /// <summary>
+    /// Class that describes a task for working with a graph in 3d
+    /// </summary>
     [CustomizableGrandType(Type = typeof(VisualTaskParameters))]
     public abstract class AbstractVisualTask : MonoBehaviour, ICustomizable<VisualTaskParameters>
     {
@@ -164,6 +173,10 @@ namespace Graph3DVisualizer.GraphTasks
         }
     }
 
+
+    /// <summary>
+    /// Class that describes the state of execution of some part of the task.
+    /// </summary>
     public class Verdict
     {
         public string Description { get; set; }
@@ -174,6 +187,9 @@ namespace Graph3DVisualizer.GraphTasks
         public override string ToString () => $"{Description} Status:{Status}";
     }
 
+    /// <summary>
+    /// Class that describes <see cref="AbstractVisualTask"/> parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
     [Serializable]
     public class VisualTaskParameters : AbstractCustomizableParameter
     {

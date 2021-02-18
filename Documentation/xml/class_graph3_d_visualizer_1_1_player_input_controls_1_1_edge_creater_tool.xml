@@ -1,0 +1,533 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.AbstractPlayerTool</basecompoundref>
+    <basecompoundref refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable" prot="public" virt="non-virtual">Graph3DVisualizer.Customizable.ICustomizable&lt; EdgeCreaterToolParams &gt;</basecompoundref>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a6b52cde1956baf0b5d075c8a12d4071c" prot="private" static="no" strong="yes">
+        <type></type>
+        <name>State</name>
+        <enumvalue id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a6b52cde1956baf0b5d075c8a12d4071ca6adf97f83acf6453d4a6a4b1070f3754" prot="private">
+          <name>None</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a6b52cde1956baf0b5d075c8a12d4071ca7df03dec0845db7d2b8df32c4d3532cb" prot="private">
+          <name>Selecting</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a6b52cde1956baf0b5d075c8a12d4071ca3f3fd305853cd7feadbab8b5af8a6b0f" prot="private">
+          <name>LinkChanging</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="36" column="16" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="37" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ae22e1e526ca2efd440c6741311ae3010" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool._actionMapName</definition>
+        <argsstring></argsstring>
+        <name>_actionMapName</name>
+        <initializer>= &quot;EdgeCreaterActionMap&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="43" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ada1a3e676571f6326b3881e75c8849a8" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool._changeRangeActionName</definition>
+        <argsstring></argsstring>
+        <name>_changeRangeActionName</name>
+        <initializer>= &quot;ChangeEdgeType&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="44" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a3e2f936613cd1f202eb7a18d2043b582" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool._createEdgeActionName</definition>
+        <argsstring></argsstring>
+        <name>_createEdgeActionName</name>
+        <initializer>= &quot;CreateEdgeAction&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="45" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a51a0c7734fad9a5aba43b24337369d95" prot="private" static="yes" mutable="no">
+        <type>const string</type>
+        <definition>const string Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool._deleteEdgeActionName</definition>
+        <argsstring></argsstring>
+        <name>_deleteEdgeActionName</name>
+        <initializer>= &quot;DeleteEdgeAction&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="46" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ae6ef220364cf4d0a0cdc3421ffc6e381" prot="private" static="no" mutable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters" kindref="compound">EdgeParameters</ref></type>
+        <definition>EdgeParameters Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool._edgeParameters</definition>
+        <argsstring></argsstring>
+        <name>_edgeParameters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="47" column="32" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1afcb1c76b0bac7c9a28089044660cd6fb" prot="private" static="no" mutable="no">
+        <type>List&lt; Type &gt;</type>
+        <definition>List&lt;Type&gt; Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool._edgeTypes</definition>
+        <argsstring></argsstring>
+        <name>_edgeTypes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="49" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a84c40e742b206d0c2711c6bf4952d908" prot="private" static="no" mutable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex" kindref="compound">Vertex</ref></type>
+        <definition>Vertex Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool._firstVertex</definition>
+        <argsstring></argsstring>
+        <name>_firstVertex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="51" column="24" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a72d21dc70defd23de71c08661cf7655f" prot="private" static="no" mutable="no">
+        <type>InputActionMap</type>
+        <definition>InputActionMap Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool._inputActions</definition>
+        <argsstring></argsstring>
+        <name>_inputActions</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="53" column="32" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a22be81f08793e6a1a6a51a35b8e6dda2" prot="private" static="no" mutable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_laser_pointer" kindref="compound">LaserPointer</ref></type>
+        <definition>LaserPointer Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool._laserPointer</definition>
+        <argsstring></argsstring>
+        <name>_laserPointer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="55" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a41068a1f6161a290c6e80b0925a3cfc1" prot="private" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool._rayCastRange</definition>
+        <argsstring></argsstring>
+        <name>_rayCastRange</name>
+        <initializer>= 1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="58" column="23" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a4ad9011f9f8431a9228246a7195bb524" prot="private" static="no" mutable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex" kindref="compound">Vertex</ref></type>
+        <definition>Vertex Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool._secondVertex</definition>
+        <argsstring></argsstring>
+        <name>_secondVertex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="60" column="24" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ab8b88f0fc9c2a8fd6f29151e8b6d6d2b" prot="private" static="no" mutable="no">
+        <type>State</type>
+        <definition>State Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool._state</definition>
+        <argsstring></argsstring>
+        <name>_state</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="61" column="23" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a1a90bf81643b97bdea2b6a7a1f8d9002" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool._typeIndex</definition>
+        <argsstring></argsstring>
+        <name>_typeIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="62" column="21" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a8022f6cc611f0fc1d6cc51d0d659da02" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.Awake</definition>
+        <argsstring>()</argsstring>
+        <name>Awake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="64" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="64" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a25e7a355f5ab4caf3d488b165b4bbbfd" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.CallChangeEdgeType</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>CallChangeEdgeType</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="72" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a4b42d43304ac6266601eaaab8cdf5e3a" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.CallCreateEdge</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>CallCreateEdge</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="74" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="74" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a14e1e4c149bdf10d344801657ce3c55b" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.CallDeleteEdge</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>CallDeleteEdge</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="80" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="80" bodyend="84"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ab7f8983e2542dcd227850f635f8e4175" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.CallSelectFirstPoint</definition>
+        <argsstring>(InputAction.CallbackContext obj)</argsstring>
+        <name>CallSelectFirstPoint</name>
+        <param>
+          <type>InputAction.CallbackContext</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="86" column="22"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a26880a3dc34678a4b7bbecdecf4db824" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.OnDisable</definition>
+        <argsstring>()</argsstring>
+        <name>OnDisable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="88" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="88" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a944a98c6c8d06ad95c8e45f777ee44f5" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.OnEnable</definition>
+        <argsstring>()</argsstring>
+        <name>OnEnable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="94" column="22" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="94" bodyend="99"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a5742882133dac7b064226c34d87e1962" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.ChangeIndex</definition>
+        <argsstring>(int deltaIndex)</argsstring>
+        <name>ChangeIndex</name>
+        <param>
+          <type>int</type>
+          <declname>deltaIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="101" column="21"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a4cd82659f134730a3637c920bd6f9429" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.CreateEdge</definition>
+        <argsstring>()</argsstring>
+        <name>CreateEdge</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="103" column="21" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="103" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ad596660b979325f4c67e289230de1059" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.DeleteEdge</definition>
+        <argsstring>()</argsstring>
+        <name>DeleteEdge</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="122" column="21" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="122" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a588e19724753f82e9ddcc07ce22fc902" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params" kindref="compound">EdgeCreaterToolParams</ref></type>
+        <definition>EdgeCreaterToolParams Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.DownloadParams</definition>
+        <argsstring>()</argsstring>
+        <name>DownloadParams</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="141" column="38"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a78153e298c6bb802ce0099bed666ac6f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>override void</type>
+        <definition>override void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.RegisterEvents</definition>
+        <argsstring>(IInputActionCollection inputActions)</argsstring>
+        <name>RegisterEvents</name>
+        <reimplements refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool_1a9d9cc02c9939ce9dc87898ed730a655f">RegisterEvents</reimplements>
+        <param>
+          <type>IInputActionCollection</type>
+          <declname>inputActions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="143" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="143" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1aed4a68431c4fcab724425deddaf09484" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.SelectFirstPoint</definition>
+        <argsstring>()</argsstring>
+        <name>SelectFirstPoint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="160" column="21" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="160" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a2d70f0c1794511f76fc0534830913153" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.SelectSecondPoint</definition>
+        <argsstring>()</argsstring>
+        <name>SelectSecondPoint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="170" column="21" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="170" bodyend="178"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ad675f03250f3ecc586eb924bfa1638ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool.SetupParams</definition>
+        <argsstring>(EdgeCreaterToolParams parameters)</argsstring>
+        <name>SetupParams</name>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params" kindref="compound">EdgeCreaterToolParams</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="180" column="21"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Tool for creating links between vertexes. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>AbstractPlayerTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ICustomizable&lt; EdgeCreaterToolParams &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>AbstractPlayerTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>ICustomizable&lt; EdgeCreaterToolParams &gt;</label>
+        <link refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" line="34" column="11" bodyfile="Assets/Player/Scripts/PlayerTools/EdgeCreaterTool.cs" bodystart="35" bodyend="181"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ae22e1e526ca2efd440c6741311ae3010" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>_actionMapName</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ada1a3e676571f6326b3881e75c8849a8" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>_changeRangeActionName</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a3e2f936613cd1f202eb7a18d2043b582" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>_createEdgeActionName</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a51a0c7734fad9a5aba43b24337369d95" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>_deleteEdgeActionName</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ae6ef220364cf4d0a0cdc3421ffc6e381" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>_edgeParameters</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1afcb1c76b0bac7c9a28089044660cd6fb" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>_edgeTypes</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a84c40e742b206d0c2711c6bf4952d908" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>_firstVertex</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a72d21dc70defd23de71c08661cf7655f" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>_inputActions</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a22be81f08793e6a1a6a51a35b8e6dda2" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>_laserPointer</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a41068a1f6161a290c6e80b0925a3cfc1" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>_rayCastRange</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a4ad9011f9f8431a9228246a7195bb524" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>_secondVertex</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ab8b88f0fc9c2a8fd6f29151e8b6d6d2b" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>_state</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a1a90bf81643b97bdea2b6a7a1f8d9002" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>_typeIndex</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a8022f6cc611f0fc1d6cc51d0d659da02" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>Awake</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a25e7a355f5ab4caf3d488b165b4bbbfd" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>CallChangeEdgeType</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a4b42d43304ac6266601eaaab8cdf5e3a" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>CallCreateEdge</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a14e1e4c149bdf10d344801657ce3c55b" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>CallDeleteEdge</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ab7f8983e2542dcd227850f635f8e4175" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>CallSelectFirstPoint</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a5742882133dac7b064226c34d87e1962" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>ChangeIndex</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a4cd82659f134730a3637c920bd6f9429" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>CreateEdge</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ad596660b979325f4c67e289230de1059" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>DeleteEdge</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a588e19724753f82e9ddcc07ce22fc902" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>DownloadParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a26880a3dc34678a4b7bbecdecf4db824" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>OnDisable</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a944a98c6c8d06ad95c8e45f777ee44f5" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>OnEnable</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool_1a3bbd4d60402bdfc4d057d42d5c581997" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>RayCast</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a78153e298c6bb802ce0099bed666ac6f" prot="public" virt="virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>RegisterEvents</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1aed4a68431c4fcab724425deddaf09484" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>SelectFirstPoint</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a2d70f0c1794511f76fc0534830913153" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>SelectSecondPoint</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1ad675f03250f3ecc586eb924bfa1638ae" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>SetupParams</name></member>
+      <member refid="interface_graph3_d_visualizer_1_1_customizable_1_1_i_customizable_1aa34dad1fba6887bc35ae88e559e1365f" prot="public" virt="non-virtual" ambiguityscope="ICustomizable&lt; EdgeCreaterToolParams &gt;."><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>SetupParams</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a6b52cde1956baf0b5d075c8a12d4071c" prot="private" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</scope><name>State</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

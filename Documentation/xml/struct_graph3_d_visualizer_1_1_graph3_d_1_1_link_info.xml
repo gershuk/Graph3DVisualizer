@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info" kind="struct" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Graph3D::LinkInfo</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a1f5e6a074f95ede382ef995e4915b043" prot="public" static="no" mutable="no">
+        <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters" kindref="compound">EdgeParameters</ref></type>
+        <definition>EdgeParameters Graph3DVisualizer.Graph3D.LinkInfo.edgeParameters</definition>
+        <argsstring></argsstring>
+        <name>edgeParameters</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="32" column="31" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a702c9d2b2d54b91f4ac3ab02c4f0820c" prot="public" static="no" mutable="no">
+        <type>Type</type>
+        <definition>Type Graph3DVisualizer.Graph3D.LinkInfo.edgeType</definition>
+        <argsstring></argsstring>
+        <name>edgeType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="33" column="21" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1ab7640530f163f8545529ecbebbccc8d4" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string Graph3DVisualizer.Graph3D.LinkInfo.firstVertexId</definition>
+        <argsstring></argsstring>
+        <name>firstVertexId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="34" column="23" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1ade6dbfbc9a5f531143aa85907f42d5ac" prot="public" static="no" mutable="no">
+        <type>string</type>
+        <definition>string Graph3DVisualizer.Graph3D.LinkInfo.secondVertexId</definition>
+        <argsstring></argsstring>
+        <name>secondVertexId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="35" column="23" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a9cc755c70c8ca41a72863439e1e9176b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.Graph3D.LinkInfo.LinkInfo</definition>
+        <argsstring>(string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters)</argsstring>
+        <name>LinkInfo</name>
+        <param>
+          <type>string</type>
+          <declname>firstVertexId</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>secondVertexId</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>edgeType</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters" kindref="compound">EdgeParameters</ref></type>
+          <declname>edgeParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="37" column="16" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="37" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a5d99180292dd2aa2a30546a5fb15bd2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3DVisualizer.Graph3D.LinkInfo.Deconstruct</definition>
+        <argsstring>(out string firstVertexId, out string secondVertexId, out Type edgeType, out EdgeParameters edgeParameters)</argsstring>
+        <name>Deconstruct</name>
+        <param>
+          <type>out string</type>
+          <declname>firstVertexId</declname>
+        </param>
+        <param>
+          <type>out string</type>
+          <declname>secondVertexId</declname>
+        </param>
+        <param>
+          <type>out Type</type>
+          <declname>edgeType</declname>
+        </param>
+        <param>
+          <type>out <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters" kindref="compound">EdgeParameters</ref></type>
+          <declname>edgeParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="55" column="21" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="55" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a0ebde0a2aa77fab94604ea82d4a798fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override bool</type>
+        <definition>override bool Graph3DVisualizer.Graph3D.LinkInfo.Equals</definition>
+        <argsstring>(object obj)</argsstring>
+        <name>Equals</name>
+        <param>
+          <type>object</type>
+          <declname>obj</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="63" column="30" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="63" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a04bdf09316d47630321f4e8bd83cdbb1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>override int</type>
+        <definition>override int Graph3DVisualizer.Graph3D.LinkInfo.GetHashCode</definition>
+        <argsstring>()</argsstring>
+        <name>GetHashCode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="72" column="29" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="72" bodyend="80"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1aa79ec8dcff5a3cf29b8b86296a275b86" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>implicit</type>
+        <definition>static implicit Graph3DVisualizer.Graph3D.LinkInfo.operator</definition>
+        <argsstring>(string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters)(LinkInfo value)</argsstring>
+        <name>operator</name>
+        <param>
+          <type>string</type>
+          <declname>firstVertexId</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>secondVertexId</declname>
+        </param>
+        <param>
+          <type>Type</type>
+          <declname>edgeType</declname>
+        </param>
+        <param>
+          <type><ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters" kindref="compound">EdgeParameters</ref></type>
+          <declname>edgeParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="45" column="32" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="45" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a8a396abecd0db3934cec30036e6f07f0" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>implicit</type>
+        <definition>static implicit Graph3DVisualizer.Graph3D.LinkInfo.operator LinkInfo</definition>
+        <argsstring>((string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters) value)</argsstring>
+        <name>operator LinkInfo</name>
+        <param>
+          <type>(string firstVertexId, string secondVertexId, Type edgeType, <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters" kindref="compound">EdgeParameters</ref> edgeParameters)</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="50" column="32" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="50" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Support class for edge serialization. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3">
+        <label>AbstractGraphObjectParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters"/>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.LinkInfo</label>
+        <link refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>edgeParameters</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Graph3DVisualizer.Graph3D.EdgeParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Graph3D/Scripts/AbstractGraph.cs" line="30" column="11" bodyfile="Assets/Graph3D/Scripts/AbstractGraph.cs" bodystart="31" bodyend="81"/>
+    <listofallmembers>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a5d99180292dd2aa2a30546a5fb15bd2d" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::LinkInfo</scope><name>Deconstruct</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a1f5e6a074f95ede382ef995e4915b043" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::LinkInfo</scope><name>edgeParameters</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a702c9d2b2d54b91f4ac3ab02c4f0820c" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::LinkInfo</scope><name>edgeType</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a0ebde0a2aa77fab94604ea82d4a798fe" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::LinkInfo</scope><name>Equals</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1ab7640530f163f8545529ecbebbccc8d4" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::LinkInfo</scope><name>firstVertexId</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a04bdf09316d47630321f4e8bd83cdbb1" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::LinkInfo</scope><name>GetHashCode</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a9cc755c70c8ca41a72863439e1e9176b" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::LinkInfo</scope><name>LinkInfo</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1aa79ec8dcff5a3cf29b8b86296a275b86" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::LinkInfo</scope><name>operator</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1a8a396abecd0db3934cec30036e6f07f0" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::LinkInfo</scope><name>operator LinkInfo</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_graph3_d_1_1_link_info_1ade6dbfbc9a5f531143aa85907f42d5ac" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::LinkInfo</scope><name>secondVertexId</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

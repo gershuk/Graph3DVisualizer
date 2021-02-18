@@ -22,6 +22,9 @@ using UnityEngine.UI;
 
 namespace Graph3DVisualizer.GUI
 {
+    /// <summary>
+    /// Class that encapsulates <see cref="UnityEngine.UI"/> object creation functions.
+    /// </summary>
     public static class GUIFactory
     {
         public readonly struct ButtonParameters

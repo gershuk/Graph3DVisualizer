@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters" kind="struct" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::GUI::GUIFactory3D::TextMeshParameters</compoundname>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a07a4ce99f7780ad257b3a78cf3802231" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Color</type>
+        <definition>Color Graph3DVisualizer.GUI.GUIFactory3D.TextMeshParameters.Color</definition>
+        <argsstring></argsstring>
+        <name>Color</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="35" column="26" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a5588fdbb9b69367470f5341dd7fa3aeb" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Font</type>
+        <definition>Font Graph3DVisualizer.GUI.GUIFactory3D.TextMeshParameters.Font</definition>
+        <argsstring></argsstring>
+        <name>Font</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="36" column="25" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a8b4640dc775737a60f97135a63535e33" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>int</type>
+        <definition>int Graph3DVisualizer.GUI.GUIFactory3D.TextMeshParameters.FontSize</definition>
+        <argsstring></argsstring>
+        <name>FontSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="37" column="24" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a5135561bae249d1a105fae06a76a1b08" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Vector3</type>
+        <definition>Vector3 Graph3DVisualizer.GUI.GUIFactory3D.TextMeshParameters.LocalPos</definition>
+        <argsstring></argsstring>
+        <name>LocalPos</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="38" column="28" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1ae5fd564c836f99a7622096a5251b05ed" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Graph3DVisualizer.GUI.GUIFactory3D.TextMeshParameters.ObjectName</definition>
+        <argsstring></argsstring>
+        <name>ObjectName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="39" column="27" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a081607b5377d87c4134344d142bd7dec" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>Transform</type>
+        <definition>Transform Graph3DVisualizer.GUI.GUIFactory3D.TextMeshParameters.Parent</definition>
+        <argsstring></argsstring>
+        <name>Parent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="40" column="30" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="40" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a58493017d9ae2b3caa739d9e156f9d07" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.GUI.GUIFactory3D.TextMeshParameters.TabSize</definition>
+        <argsstring></argsstring>
+        <name>TabSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="41" column="26" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a110c7e9ff899ef95aa79c9335f150d6e" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>string</type>
+        <definition>string Graph3DVisualizer.GUI.GUIFactory3D.TextMeshParameters.Text</definition>
+        <argsstring></argsstring>
+        <name>Text</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="42" column="27" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="property" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a9d5f931316a1a2bcf9c5598ce55326af" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>float</type>
+        <definition>float Graph3DVisualizer.GUI.GUIFactory3D.TextMeshParameters.TextSize</definition>
+        <argsstring></argsstring>
+        <name>TextSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="43" column="26" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="43" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a3c0af013a5f44c51897959c8d3bd3eaa" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.GUI.GUIFactory3D.TextMeshParameters.TextMeshParameters</definition>
+        <argsstring>(Transform parent, Vector3 localPos, string objectName, string text, float textSize, Font font, int fontSize, float tabSize, Color color)</argsstring>
+        <name>TextMeshParameters</name>
+        <param>
+          <type>Transform</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>Vector3</type>
+          <declname>localPos</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>objectName</declname>
+        </param>
+        <param>
+          <type>string</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>textSize</declname>
+        </param>
+        <param>
+          <type>Font</type>
+          <declname>font</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>fontSize</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>tabSize</declname>
+        </param>
+        <param>
+          <type>Color</type>
+          <declname>color</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="45" column="20" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="45" bodyend="56"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="33" column="24" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="34" bodyend="57"/>
+    <listofallmembers>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a07a4ce99f7780ad257b3a78cf3802231" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory3D::TextMeshParameters</scope><name>Color</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a5588fdbb9b69367470f5341dd7fa3aeb" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory3D::TextMeshParameters</scope><name>Font</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a8b4640dc775737a60f97135a63535e33" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory3D::TextMeshParameters</scope><name>FontSize</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a5135561bae249d1a105fae06a76a1b08" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory3D::TextMeshParameters</scope><name>LocalPos</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1ae5fd564c836f99a7622096a5251b05ed" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory3D::TextMeshParameters</scope><name>ObjectName</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a081607b5377d87c4134344d142bd7dec" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory3D::TextMeshParameters</scope><name>Parent</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a58493017d9ae2b3caa739d9e156f9d07" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory3D::TextMeshParameters</scope><name>TabSize</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a110c7e9ff899ef95aa79c9335f150d6e" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory3D::TextMeshParameters</scope><name>Text</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a3c0af013a5f44c51897959c8d3bd3eaa" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory3D::TextMeshParameters</scope><name>TextMeshParameters</name></member>
+      <member refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters_1a9d5f931316a1a2bcf9c5598ce55326af" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory3D::TextMeshParameters</scope><name>TextSize</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

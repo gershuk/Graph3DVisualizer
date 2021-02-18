@@ -21,6 +21,9 @@ using static Graph3DVisualizer.GUI.GUIFactory;
 
 namespace Graph3DVisualizer.Scene
 {
+    /// <summary>
+    /// Component that creates a menu for working with <see cref="SceneController"/>.
+    /// </summary>
     [RequireComponent(typeof(SceneController))]
     public class Menu : MonoBehaviour
     {

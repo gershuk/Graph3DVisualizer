@@ -22,6 +22,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.Graph3D
 {
+    /// <summary>
+    /// Base class for all Graph3D objects.
+    /// </summary>
     public abstract class AbstractGraphObject : MonoBehaviour
     {
         //attribute for debug only
@@ -31,6 +34,9 @@ namespace Graph3DVisualizer.Graph3D
         public string Id { get => _id; protected set => _id = value ?? Guid.NewGuid().ToString(); }
     }
 
+    /// <summary>
+    /// Class that describes common <see cref="AbstractGraphObject"/> parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
     [Serializable]
     public abstract class AbstractGraphObjectParameters : AbstractCustomizableParameter
     {

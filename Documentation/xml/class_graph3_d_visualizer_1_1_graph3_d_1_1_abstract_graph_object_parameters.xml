@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::Graph3D::AbstractGraphObjectParameters</compoundname>
+    <basecompoundref refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter" prot="public" virt="non-virtual">Graph3DVisualizer.Customizable.AbstractCustomizableParameter</basecompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.EdgeParameters</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_graph_parameters" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.GraphParameters</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters" prot="public" virt="non-virtual">Graph3DVisualizer.Graph3D.VertexParameters</derivedcompoundref>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters_1a68083adbb74c3b7ba27d6e62232eb145" prot="public" static="no" readable="no" writable="no" gettable="yes" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="yes">
+        <type>string</type>
+        <definition>string Graph3DVisualizer.Graph3D.AbstractGraphObjectParameters.Id</definition>
+        <argsstring></argsstring>
+        <name>Id</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/GraphObject.cs" line="43" column="23" bodyfile="Assets/Graph3D/Scripts/GraphObject.cs" bodystart="43" bodyend="43"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters_1a67eb768b7f1708e898652ccdafedc93b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Graph3DVisualizer.Graph3D.AbstractGraphObjectParameters.AbstractGraphObjectParameters</definition>
+        <argsstring>(string id)</argsstring>
+        <name>AbstractGraphObjectParameters</name>
+        <param>
+          <type>string</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Graph3D/Scripts/GraphObject.cs" line="45" column="16"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class that describes common <ref refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object" kindref="compound">AbstractGraphObject</ref> parameters for ICustomizable&lt;TParams&gt;. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>Graph3DVisualizer.Graph3D.VertexParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_vertex_parameters"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Graph3DVisualizer.Graph3D.GraphParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_graph_parameters"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.AbstractGraphObjectParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Graph3DVisualizer.Graph3D.SelectableVertexParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_selectable_vertex_parameters"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+      <node id="3">
+        <label>Graph3DVisualizer.Graph3D.EdgeParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_edge_parameters"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.Graph3D.AbstractGraphObjectParameters</label>
+        <link refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>AbstractCustomizableParameter</label>
+        <link refid="class_graph3_d_visualizer_1_1_customizable_1_1_abstract_customizable_parameter"/>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Graph3D/Scripts/GraphObject.cs" line="41" column="21" bodyfile="Assets/Graph3D/Scripts/GraphObject.cs" bodystart="42" bodyend="46"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters_1a67eb768b7f1708e898652ccdafedc93b" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractGraphObjectParameters</scope><name>AbstractGraphObjectParameters</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_graph3_d_1_1_abstract_graph_object_parameters_1a68083adbb74c3b7ba27d6e62232eb145" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::Graph3D::AbstractGraphObjectParameters</scope><name>Id</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

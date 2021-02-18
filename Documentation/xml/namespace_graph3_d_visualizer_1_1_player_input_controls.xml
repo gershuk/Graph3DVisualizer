@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespace_graph3_d_visualizer_1_1_player_input_controls" kind="namespace" language="C#">
+    <compoundname>Graph3DVisualizer::PlayerInputControls</compoundname>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player" prot="public">Graph3DVisualizer::PlayerInputControls::AbstractPlayer</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_player_parameters" prot="public">Graph3DVisualizer::PlayerInputControls::PlayerParameters</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_controls" prot="public">Graph3DVisualizer::PlayerInputControls::FlyControls</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_fly_player" prot="public">Graph3DVisualizer::PlayerInputControls::FlyPlayer</innerclass>
+    <innerclass refid="struct_graph3_d_visualizer_1_1_player_input_controls_1_1_tool_config" prot="public">Graph3DVisualizer::PlayerInputControls::ToolConfig</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool" prot="public">Graph3DVisualizer::PlayerInputControls::AbstractPlayerTool</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_tool_params" prot="public">Graph3DVisualizer::PlayerInputControls::AbstractToolParams</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool" prot="public">Graph3DVisualizer::PlayerInputControls::ClickTool</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool_params" prot="public">Graph3DVisualizer::PlayerInputControls::ClickToolParams</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool" prot="public">Graph3DVisualizer::PlayerInputControls::EdgeCreaterTool</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_params" prot="public">Graph3DVisualizer::PlayerInputControls::EdgeCreaterToolParams</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool" prot="public">Graph3DVisualizer::PlayerInputControls::GrabItemTool</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_params" prot="public">Graph3DVisualizer::PlayerInputControls::GrabItemToolParams</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_laser_pointer" prot="public">Graph3DVisualizer::PlayerInputControls::LaserPointer</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_select_item_tool" prot="public">Graph3DVisualizer::PlayerInputControls::SelectItemTool</innerclass>
+    <innerclass refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_select_item_tool_params" prot="public">Graph3DVisualizer::PlayerInputControls::SelectItemToolParams</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespace_graph3_d_visualizer_1_1_player_input_controls_1a0b6006e268f4e24933c33ecba0b4f2ba" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>InputType</name>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_player_input_controls_1a0b6006e268f4e24933c33ecba0b4f2baad15305d7a4e34e02489c74a5ef542f36" prot="public">
+          <name>Off</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_player_input_controls_1a0b6006e268f4e24933c33ecba0b4f2baa32be0f45035a8e01272e3765f3e53623" prot="public">
+          <name>MenuOnly</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_player_input_controls_1a0b6006e268f4e24933c33ecba0b4f2baafc40bbee027dad61976b95074962a489" prot="public">
+          <name>ToolsOnly</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_player_input_controls_1a0b6006e268f4e24933c33ecba0b4f2baab1c94ca2fbc3e78fc30069c8d0f01680" prot="public">
+          <name>All</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Player input type. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" line="106" column="11" bodyfile="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" bodystart="107" bodyend="112"/>
+      </memberdef>
+      <memberdef kind="enum" id="namespace_graph3_d_visualizer_1_1_player_input_controls_1a1bb2b0d1f6e4d96d59555baff0272150" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>LaserState</name>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_player_input_controls_1a1bb2b0d1f6e4d96d59555baff0272150a521c36a31c2762741cf0f8890cbe05e3" prot="public">
+          <name>On</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespace_graph3_d_visualizer_1_1_player_input_controls_1a1bb2b0d1f6e4d96d59555baff0272150ad15305d7a4e34e02489c74a5ef542f36" prot="public">
+          <name>Off</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" line="118" column="11" bodyfile="Assets/Player/Scripts/PlayerTools/LaserPointer.cs" bodystart="119" bodyend="122"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="Assets/Player/Scripts/FlyPlayer/AbstractPlayer.cs" line="26" column="1"/>
+  </compounddef>
+</doxygen>

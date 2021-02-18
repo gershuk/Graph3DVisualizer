@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d" kind="class" language="C#" prot="public">
+    <compoundname>Graph3DVisualizer::GUI::GUIFactory3D</compoundname>
+    <innerclass refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters" prot="public">Graph3DVisualizer::GUI::GUIFactory3D::TextMeshParameters</innerclass>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1a937be166906b29d9a078a8b035d55bd9" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>GameObject</type>
+        <definition>static GameObject Graph3DVisualizer.GUI.GUIFactory3D.CreateButton&lt; T &gt;</definition>
+        <argsstring>(TextMeshParameters textParameters)</argsstring>
+        <name>CreateButton&lt; T &gt;</name>
+        <param>
+          <type><ref refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters" kindref="compound">TextMeshParameters</ref></type>
+          <declname>textParameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="59" column="23" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="59" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1a4f498651a7f37775a08f8fc11e0e5685" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>GameObject</type>
+        <definition>static GameObject Graph3DVisualizer.GUI.GUIFactory3D.CreateText</definition>
+        <argsstring>(TextMeshParameters parameters)</argsstring>
+        <name>CreateText</name>
+        <param>
+          <type><ref refid="struct_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1_1_text_mesh_parameters" kindref="compound">TextMeshParameters</ref></type>
+          <declname>parameters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="71" column="34" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="71" bodyend="85"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Class that encapsulates 3D UI object creation functions. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>In the next versions, it will be deleted. </para>
+    </detaileddescription>
+    <location file="Assets/GUIFactory/Scripts/GUIFactory3D.cs" line="31" column="19" bodyfile="Assets/GUIFactory/Scripts/GUIFactory3D.cs" bodystart="32" bodyend="86"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1a937be166906b29d9a078a8b035d55bd9" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory3D</scope><name>CreateButton&lt; T &gt;</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_g_u_i_1_1_g_u_i_factory3_d_1a4f498651a7f37775a08f8fc11e0e5685" prot="public" virt="non-virtual"><scope>Graph3DVisualizer::GUI::GUIFactory3D</scope><name>CreateText</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

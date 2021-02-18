@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_texture2_d" kind="class" language="C#" prot="public">
+    <compoundname>Graph3D::SurrogateTypesForSerialization::SurrogateTexture2D</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">ISerializationSurrogate</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_texture2_d_1a79e34572701ef1971b0764beee260922" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Graph3D.SurrogateTypesForSerialization.SurrogateTexture2D.GetObjectData</definition>
+        <argsstring>(object obj, SerializationInfo info, StreamingContext context)</argsstring>
+        <name>GetObjectData</name>
+        <param>
+          <type>object</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>SerializationInfo</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type>StreamingContext</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="144" column="21" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="144" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_texture2_d_1aca6be8883df883c30c1daf7e38a0b535" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>object</type>
+        <definition>object Graph3D.SurrogateTypesForSerialization.SurrogateTexture2D.SetObjectData</definition>
+        <argsstring>(object obj, SerializationInfo info, StreamingContext context, ISurrogateSelector selector)</argsstring>
+        <name>SetObjectData</name>
+        <param>
+          <type>object</type>
+          <declname>obj</declname>
+        </param>
+        <param>
+          <type>SerializationInfo</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type>StreamingContext</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>ISurrogateSelector</type>
+          <declname>selector</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="154" column="23" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="154" bodyend="165"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>ISerializationSurrogate</label>
+      </node>
+      <node id="1">
+        <label>Graph3D.SurrogateTypesForSerialization.SurrogateTexture2D</label>
+        <link refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_texture2_d"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>ISerializationSurrogate</label>
+      </node>
+      <node id="1">
+        <label>Graph3D.SurrogateTypesForSerialization.SurrogateTexture2D</label>
+        <link refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_texture2_d"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" line="136" column="11" bodyfile="Assets/SurrogateTypesForSerialization/Scripts/SurrogateTypesForSerialization.cs" bodystart="137" bodyend="166"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_texture2_d_1a79e34572701ef1971b0764beee260922" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::SurrogateTexture2D</scope><name>GetObjectData</name></member>
+      <member refid="class_graph3_d_1_1_surrogate_types_for_serialization_1_1_surrogate_texture2_d_1aca6be8883df883c30c1daf7e38a0b535" prot="public" virt="non-virtual"><scope>Graph3D::SurrogateTypesForSerialization::SurrogateTexture2D</scope><name>SetObjectData</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

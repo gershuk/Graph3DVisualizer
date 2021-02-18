@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool" kind="class" language="C#" prot="public" abstract="yes">
+    <compoundname>Graph3DVisualizer::PlayerInputControls::AbstractPlayerTool</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">MonoBehaviour</basecompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.ClickTool</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.GrabItemTool</derivedcompoundref>
+    <derivedcompoundref refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_select_item_tool" prot="public" virt="non-virtual">Graph3DVisualizer.PlayerInputControls.SelectItemTool</derivedcompoundref>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool_1a3bbd4d60402bdfc4d057d42d5c581997" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>RaycastHit</type>
+        <definition>RaycastHit Graph3DVisualizer.PlayerInputControls.AbstractPlayerTool.RayCast</definition>
+        <argsstring>(float range)</argsstring>
+        <name>RayCast</name>
+        <param>
+          <type>float</type>
+          <declname>range</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/AbstractPlayerTool.cs" line="51" column="30" bodyfile="Assets/Player/Scripts/PlayerTools/AbstractPlayerTool.cs" bodystart="51" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool_1a9d9cc02c9939ce9dc87898ed730a655f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>abstract void</type>
+        <definition>abstract void Graph3DVisualizer.PlayerInputControls.AbstractPlayerTool.RegisterEvents</definition>
+        <argsstring>(IInputActionCollection inputActions)</argsstring>
+        <name>RegisterEvents</name>
+        <reimplementedby refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool_1a2c7a06b1b1e63e5c01aca46d3780d654">RegisterEvents</reimplementedby>
+        <reimplementedby refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool_1a78153e298c6bb802ce0099bed666ac6f">RegisterEvents</reimplementedby>
+        <reimplementedby refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool_1a098d73e967692e3fddf7c5ce664d990f">RegisterEvents</reimplementedby>
+        <reimplementedby refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_select_item_tool_1aae8d365bd7214362ca9d6993bd4942dd">RegisterEvents</reimplementedby>
+        <param>
+          <type>IInputActionCollection</type>
+          <declname>inputActions</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="Assets/Player/Scripts/PlayerTools/AbstractPlayerTool.cs" line="57" column="30"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract class that describes the player&apos;s tool for interacting with the world. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="5">
+        <label>Graph3DVisualizer.PlayerInputControls.GrabItemTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_grab_item_tool"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.AbstractPlayerTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Graph3DVisualizer.PlayerInputControls.ClickTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_click_tool"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Graph3DVisualizer.PlayerInputControls.SelectItemTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_select_item_tool"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+      <node id="4">
+        <label>Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_edge_creater_tool"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Graph3DVisualizer.PlayerInputControls.AbstractPlayerTool</label>
+        <link refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MonoBehaviour</label>
+      </node>
+    </collaborationgraph>
+    <location file="Assets/Player/Scripts/PlayerTools/AbstractPlayerTool.cs" line="49" column="21" bodyfile="Assets/Player/Scripts/PlayerTools/AbstractPlayerTool.cs" bodystart="50" bodyend="58"/>
+    <listofallmembers>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool_1a3bbd4d60402bdfc4d057d42d5c581997" prot="protected" virt="non-virtual"><scope>Graph3DVisualizer::PlayerInputControls::AbstractPlayerTool</scope><name>RayCast</name></member>
+      <member refid="class_graph3_d_visualizer_1_1_player_input_controls_1_1_abstract_player_tool_1a9d9cc02c9939ce9dc87898ed730a655f" prot="public" virt="pure-virtual"><scope>Graph3DVisualizer::PlayerInputControls::AbstractPlayerTool</scope><name>RegisterEvents</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

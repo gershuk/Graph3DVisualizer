@@ -25,6 +25,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.PlayerInputControls
 {
+    /// <summary>
+    /// Abstract class that describes player.
+    /// </summary>
     [CustomizableGrandType(Type = typeof(PlayerParameters))]
     [RequireComponent(typeof(Camera))]
     public abstract class AbstractPlayer : MonoBehaviour, ICustomizable<PlayerParameters>
@@ -40,7 +43,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         public IReadOnlyList<AbstractPlayerTool> GetToolsList => _playerTools;
         public abstract InputType InputType { get; set; }
 
-        protected abstract void CreateTool (params ToolConfig[] toolsConfig);
+        protected abstract void GiveNewTool (params ToolConfig[] toolsConfig);
 
         public PlayerParameters DownloadParams () =>
             new PlayerParameters(transform.position, transform.eulerAngles, _moveComponent.MovingSpeed, _moveComponent.RotationSpeed,
@@ -71,10 +74,13 @@ namespace Graph3DVisualizer.PlayerInputControls
             _moveComponent.MovingSpeed = playerParams.MovingSpeed;
             _moveComponent.RotationSpeed = playerParams.RotationSpeed;
             _moveComponent.Rotation = playerParams.EulerAngles;
-            CreateTool(playerParams.ToolConfigs);
+            GiveNewTool(playerParams.ToolConfigs);
         }
     }
 
+    /// <summary>
+    /// A class that describes default player parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
     [Serializable]
     public class PlayerParameters : AbstractCustomizableParameter
     {
@@ -94,6 +100,9 @@ namespace Graph3DVisualizer.PlayerInputControls
         }
     }
 
+    /// <summary>
+    /// Player input type.
+    /// </summary>
     public enum InputType
     {
         Off = 0,

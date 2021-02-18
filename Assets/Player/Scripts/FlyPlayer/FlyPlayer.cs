@@ -25,6 +25,9 @@ using UnityEngine.InputSystem;
 
 namespace Graph3DVisualizer.PlayerInputControls
 {
+    /// <summary>
+    /// Simple realization of <see cref="AbstractPlayer"/> for keyboard/mouse controls.
+    /// </summary>
     [RequireComponent(typeof(MovementComponent))]
     [RequireComponent(typeof(Camera))]
     public sealed class FlyPlayer : AbstractPlayer
@@ -139,7 +142,7 @@ namespace Graph3DVisualizer.PlayerInputControls
                 _inputActions.Disable();
         }
 
-        protected override void CreateTool (params ToolConfig[] toolsConfig)
+        protected override void GiveNewTool (params ToolConfig[] toolsConfig)
         {
             var clonedList = _playerTools.GetRange(0, _playerTools.Count);
             try

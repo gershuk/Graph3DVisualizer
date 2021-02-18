@@ -25,6 +25,12 @@ using static Graph3DVisualizer.GUI.GUIFactory3D;
 
 namespace Graph3DVisualizer.Graph3D
 {
+    /// <summary>
+    /// A class that is temporarily used to create an interactive vertex menu. 
+    /// </summary>
+    /// <remarks>
+    /// In the next versions, it will be replaced with a regular UI interface.
+    /// </remarks>
     public class VertexLinksMenu : PopUpVerticalStackMenu
     {
         private AbstractVertex _vertex;

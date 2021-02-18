@@ -24,6 +24,9 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.Graph3D
 {
+    /// <summary>
+    /// Simple realization of <see cref="AbstractGraph"/>.
+    /// </summary>
     public class Graph : AbstractGraph
     {
         private Dictionary<string, AbstractVertex> _vertexes;

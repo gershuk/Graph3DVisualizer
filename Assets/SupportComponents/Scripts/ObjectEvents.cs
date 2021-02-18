@@ -22,11 +22,17 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.SupportComponents
 {
+    /// <summary>
+    /// Interface with notification of object destruction.
+    /// </summary>
     public interface IDestructible
     {
         event Action<UnityEngine.Object> Destroyed;
     }
 
+    /// <summary>
+    /// Interface that controls the changing of <see cref="Transform"/> object. It can report changes coordinates of the object.
+    /// </summary>
     public interface IMoveable
     {
         event Action<Vector3, UnityEngine.Object> ObjectMoved;
@@ -43,6 +49,9 @@ namespace Graph3DVisualizer.SupportComponents
         void Translate (Vector3 moveVector, float deltaTime);
     }
 
+    /// <summary>
+    /// Interface that allows you to select and highlight objects. It can report changes selected/highlighted state of the object.
+    /// </summary>
     public interface ISelectable
     {
         event Action<UnityEngine.Object, bool> HighlightedChanged;
@@ -54,6 +63,9 @@ namespace Graph3DVisualizer.SupportComponents
         Color SelectFrameColor { get; set; }
     }
 
+    /// <summary>
+    /// Interface that controls the visibility of an object. It can report changes visibility of the object.
+    /// </summary>
     public interface IVisibile
     {
         event Action<bool, UnityEngine.Object> VisibleChanged;

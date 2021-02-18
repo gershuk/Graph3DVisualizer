@@ -1,42 +1,27 @@
 ---
 title: Assets/SceneController/Scripts/SceneController.cs
 
-
 ---
 
 # Assets/SceneController/Scripts/SceneController.cs
-
-
-
-
-
-
 
 ## Namespaces
 
 | Name           |
 | -------------- |
-| **[Grpah3DVisualizer](Namespaces/namespace_grpah3_d_visualizer.md)**  |
+| **[Graph3DVisualizer](Namespaces/namespace_graph3_d_visualizer.md)**  |
+| **[Graph3DVisualizer::Scene](Namespaces/namespace_graph3_d_visualizer_1_1_scene.md)**  |
+| **[System::IO](Namespaces/namespace_system_1_1_i_o.md)**  |
 | **[System::Reflection](Namespaces/namespace_system_1_1_reflection.md)**  |
-| **[UnityEngine::SceneManagement](Namespaces/namespace_unity_engine_1_1_scene_management.md)**  |
+| **[System::Runtime::Serialization::Formatters::Binary](Namespaces/namespace_system_1_1_runtime_1_1_serialization_1_1_formatters_1_1_binary.md)**  |
+| **[Newtonsoft::Json](Namespaces/namespace_newtonsoft_1_1_json.md)**  |
 
 ## Classes
 
 |                | Name           |
 | -------------- | -------------- |
-| class | **[Grpah3DVisualizer::SceneController](Classes/class_grpah3_d_visualizer_1_1_scene_controller.md)**  |
-
-
-
-
-
-
-
-
-
-
-
-
+| class | **[Graph3DVisualizer::Scene::SceneController](Classes/class_graph3_d_visualizer_1_1_scene_1_1_scene_controller.md)** <br>Component that manages the loading/saving of AbstractVisualTask.  |
+| class | **[Graph3DVisualizer::Scene::SceneControllerParameters](Classes/class_graph3_d_visualizer_1_1_scene_1_1_scene_controller_parameters.md)** <br>Class that describes [SceneController](Classes/class_graph3_d_visualizer_1_1_scene_1_1_scene_controller.md) parameters for ICustomizable<TParams>.  |
 
 
 
@@ -44,56 +29,72 @@ title: Assets/SceneController/Scripts/SceneController.cs
 ## Source code
 
 ```cpp
-// This file is part of Grpah3DVisualizer.
-// Copyright В© Gershuk Vladislav 2020.
+// This file is part of Graph3DVisualizer.
+// Copyright В© Gershuk Vladislav 2021.
 //
-// Grpah3DVisualizer is free software: you can redistribute it and/or modify
+// Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Grpah3DVisualizer is distributed in the hope that it will be useful,
+// Graph3DVisualizer is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY, without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
-using GraphTasks;
+using Graph3D.SurrogateTypesForSerialization;
+
+using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.GraphTasks;
+
+using Newtonsoft.Json;
 
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-namespace Grpah3DVisualizer
+namespace Graph3DVisualizer.Scene
 {
-    public class SceneController : MonoBehaviour
+    [CustomizableGrandType(Type = typeof(SceneControllerParameters))]
+    public class SceneController : MonoBehaviour, ICustomizable<SceneControllerParameters>
     {
+        private static readonly List<JsonConverter> _jsonConverters = new List<JsonConverter>(4)
+        {
+            new NewtonsoftSurrogateConverter<Vector2, JsonVector2>(),
+            new NewtonsoftSurrogateConverter<Vector2Int, JsonVector2Int>(),
+            new NewtonsoftSurrogateConverter<Vector3,JsonVector3>(),
+            new NewtonsoftSurrogateConverter<Color,JsonColor>(),
+            new NewtonsoftSurrogateConverter<Quaternion,JsonQuaternion>(),
+        };
+
+        private static SurrogateSelector _surrogateSelector;
+
+        private AbstractVisualTask _activeTask;
         private Dictionary<string, Assembly> _asseblies;
-        private Type _currentTaskType;
-        private VisualTask _visualTask;
         private List<Type> _taskList;
 
-        public Type CurrentTaskType
-        {
-            get => _currentTaskType;
-            set => _currentTaskType = value == null || value.IsSubclassOf(typeof(VisualTask)) ? value : throw new Exception($"You can't cast {value.Name} to a VisualTask");
-        }
-
+        public AbstractVisualTask ActiveTask { get => _activeTask; private set => _activeTask = value; }
         public List<Type> TaskList { get => _taskList; private set => _taskList = value; }
-
-        public VisualTask VisualTask { get => _visualTask; private set => _visualTask = value; }
-
 
         private void Awake ()
         {
             _asseblies = new Dictionary<string, Assembly>();
+            _surrogateSelector = new SurrogateSelector();
+            _surrogateSelector.AddSurrogate(typeof(Vector2), new StreamingContext(StreamingContextStates.All), new SurrogateVector2());
+            _surrogateSelector.AddSurrogate(typeof(Vector2Int), new StreamingContext(StreamingContextStates.All), new SurrogateVector2Int());
+            _surrogateSelector.AddSurrogate(typeof(Vector3), new StreamingContext(StreamingContextStates.All), new SurrogateVector3());
+            _surrogateSelector.AddSurrogate(typeof(Color), new StreamingContext(StreamingContextStates.All), new SurrogateColor());
+            _surrogateSelector.AddSurrogate(typeof(Quaternion), new StreamingContext(StreamingContextStates.All), new SurrogateQuaternion());
+            _surrogateSelector.AddSurrogate(typeof(Texture2D), new StreamingContext(StreamingContextStates.All), new SurrogateTexture2D());
             DontDestroyOnLoad(gameObject);
         }
 
@@ -110,9 +111,45 @@ namespace Grpah3DVisualizer
                     Debug.LogError($"{ex} - {assembly.path} can't be loaded");
                 }
             }
-
         }
 
+        public SceneControllerParameters DownloadParams () => new SceneControllerParameters(_activeTask.GetType(), (VisualTaskParameters) CustomizableExtension.CallDownloadParams(_activeTask));
+
+        public void FindAllTasks ()
+        {
+            var assemblys = AppDomain.CurrentDomain.GetAssemblies();
+            _taskList = new List<Type>();
+            foreach (var assembly in assemblys)
+            {
+                var types = assembly.GetTypes();
+                foreach (var type in types)
+                {
+                    if (type.IsSubclassOf(typeof(AbstractVisualTask)))
+                        _taskList.Add(type);
+                }
+            }
+        }
+
+        public void Load ()
+        {
+        }
+
+        public void LoadBinary (string path)
+        {
+            using (var fs = new FileStream(path, FileMode.Open))
+            {
+                var formatter = new BinaryFormatter { SurrogateSelector = _surrogateSelector };
+                var parameters = (SceneControllerParameters) formatter.Deserialize(fs);
+                SetupParams(parameters);
+            }
+        }
+
+        //public void StopAllTasks ()
+        //{
+        //    foreach (var acitveTask in ActiveTasks)
+        //        acitveTask.StopTask();
+        //    ActiveTasks.Clear();
+        //}
         public void LoadMods ()
         {
             var assembliesPath = Application.dataPath + "/ModAssemblies";
@@ -126,33 +163,72 @@ namespace Grpah3DVisualizer
             }
         }
 
-        public void LoadScene (string name) => SceneManager.LoadScene(name);
-
-        public void SetTaskByName (string name) => CurrentTaskType = Type.GetType(name);
-
-        public void FindAllTasks ()
+        public void SaveBinary (string path)
         {
-            var assemblys = AppDomain.CurrentDomain.GetAssemblies();
-            _taskList = new List<Type>();
-            foreach (var assembly in assemblys)
+            using (var fs = new FileStream(path, FileMode.Create))
             {
-                var types = assembly.GetTypes();
-                foreach (var type in types)
-                {
-                    if (type.IsSubclassOf(typeof(VisualTask)))
-                        _taskList.Add(type);
-                }
+                var formatter = new BinaryFormatter { SurrogateSelector = _surrogateSelector };
+                formatter.Serialize(fs, DownloadParams());
             }
         }
 
-        public void CreateTask ()
+        public void SaveJson (string path)
         {
-            if (_currentTaskType != null)
+            using (var sw = new StreamWriter(path))
             {
-                var gameObject = new GameObject("VisualTask");
-                _visualTask = (VisualTask) gameObject.AddComponent(_currentTaskType);
-                _visualTask.InitTask();
+                var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, ReferenceLoopHandling = ReferenceLoopHandling.Error, Converters = _jsonConverters };
+                sw.WriteLine(JsonConvert.SerializeObject(DownloadParams(), Formatting.Indented, settings));
             }
+        }
+
+        public void SetupParams (SceneControllerParameters parameters)
+        {
+            var index = TaskList.FindIndex(x => x == parameters.TaskType);
+            if (index > -1)
+            {
+                StartTask(index, parameters.VisualTaskParameters);
+            }
+        }
+
+        public void StartTask (int taskIndex, VisualTaskParameters visualTaskParameters = null)
+        {
+            var gameObject = new GameObject("VisualTask");
+            ActiveTask = (AbstractVisualTask) gameObject.AddComponent(TaskList[taskIndex]);
+            if (visualTaskParameters == null)
+                ActiveTask.InitTask();
+            else
+                CustomizableExtension.CallSetUpParams(ActiveTask, visualTaskParameters);
+        }
+
+        public void StopTask ()
+        {
+            _activeTask.DestroyTask();
+            Destroy(_activeTask.gameObject);
+        }
+
+        //public void StopTask<T> (Predicate<T> predicate) where T : AbstractVisualTask
+        //{
+        //    foreach (var acitveTask in ActiveTasks)
+        //    {
+        //        if (acitveTask is T task && predicate(task))
+        //        {
+        //            ActiveTasks.Remove(task);
+        //            task.StopTask();
+        //        }
+        //    }
+        //}
+    }
+
+    [Serializable]
+    public class SceneControllerParameters : AbstractCustomizableParameter
+    {
+        public Type TaskType { get; }
+        public VisualTaskParameters VisualTaskParameters { get; }
+
+        public SceneControllerParameters (Type taskType, VisualTaskParameters visualTaskParameters)
+        {
+            TaskType = taskType ?? throw new ArgumentNullException(nameof(taskType));
+            VisualTaskParameters = visualTaskParameters ?? throw new ArgumentNullException(nameof(visualTaskParameters));
         }
     }
 }
@@ -161,4 +237,4 @@ namespace Grpah3DVisualizer
 
 -------------------------------
 
-Updated on 12 December 2020 at 00:14:19 RTZ 9 (зима)
+Updated on 18 February 2021 at 16:24:40 RTZ 9 (зима)
