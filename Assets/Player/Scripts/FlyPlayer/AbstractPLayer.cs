@@ -23,6 +23,8 @@ using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.PlayerInputControls
 {
     /// <summary>
@@ -82,21 +84,23 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// A class that describes default player parameters for <see cref="ICustomizable{TParams}"/>.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("PlayerParameters")]
     public class PlayerParameters : AbstractCustomizableParameter
     {
-        public Vector3 EulerAngles { get; }
-        public float MovingSpeed { get; }
-        public Vector3 Position { get; }
-        public float RotationSpeed { get; }
-        public ToolConfig[] ToolConfigs { get; }
+        public Vector3 EulerAngles { get; set; }
+        public float MovingSpeed { get; set; }
+        public Vector3 Position { get; set; }
+        public float RotationSpeed { get; set; }
+        public ToolConfig[] ToolConfigs { get; set; }
 
-        public PlayerParameters (Vector3 position, Vector3 eulerAngles, float movingSpeed, float rotationSpeed, ToolConfig[] toolConfigs)
+        public PlayerParameters (Vector3 position = default, Vector3 eulerAngles = default, float movingSpeed = 10, float rotationSpeed = 10, ToolConfig[] toolConfigs = default)
         {
             Position = position;
             EulerAngles = eulerAngles;
             RotationSpeed = rotationSpeed;
             MovingSpeed = movingSpeed;
-            ToolConfigs = toolConfigs ?? throw new ArgumentNullException(nameof(toolConfigs));
+            ToolConfigs = toolConfigs ?? new ToolConfig[0];
         }
     }
 

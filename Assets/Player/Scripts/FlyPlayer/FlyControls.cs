@@ -1,18 +1,4 @@
-// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
-//
-// Graph3DVisualizer is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Graph3DVisualizer is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY, without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+// GENERATED AUTOMATICALLY FROM 'Assets/Player/Scripts/FlyPlayer/FlyControls.inputactions'
 
 using System;
 using System.Collections;
@@ -27,7 +13,7 @@ namespace Graph3DVisualizer.PlayerInputControls
     {
         public struct FlyModelActions
         {
-            private readonly @FlyControls m_Wrapper;
+            private @FlyControls m_Wrapper;
             public InputAction @ChangeAltitude => m_Wrapper.m_FlyModel_ChangeAltitude;
 
             public InputAction @LookRotation => m_Wrapper.m_FlyModel_LookRotation;
@@ -42,15 +28,30 @@ namespace Graph3DVisualizer.PlayerInputControls
 
             public bool enabled => Get().enabled;
 
-            public FlyModelActions (@FlyControls wrapper) => m_Wrapper = wrapper;
+            public FlyModelActions (@FlyControls wrapper)
+            {
+                m_Wrapper = wrapper;
+            }
 
-            public static implicit operator InputActionMap (FlyModelActions set) => set.Get();
+            public static implicit operator InputActionMap (FlyModelActions set)
+            {
+                return set.Get();
+            }
 
-            public void Disable () => Get().Disable();
+            public void Disable ()
+            {
+                Get().Disable();
+            }
 
-            public void Enable () => Get().Enable();
+            public void Enable ()
+            {
+                Get().Enable();
+            }
 
-            public InputActionMap Get () => m_Wrapper.m_FlyModel;
+            public InputActionMap Get ()
+            {
+                return m_Wrapper.m_FlyModel;
+            }
 
             public void SetCallbacks (IFlyModelActions instance)
             {
@@ -436,16 +437,34 @@ namespace Graph3DVisualizer.PlayerInputControls
             void OnSelectItem (InputAction.CallbackContext context);
         }
 
-        public bool Contains (InputAction action) => asset.Contains(action);
+        public bool Contains (InputAction action)
+        {
+            return asset.Contains(action);
+        }
 
-        public void Disable () => asset.Disable();
+        public void Disable ()
+        {
+            asset.Disable();
+        }
 
-        public void Dispose () => UnityEngine.Object.Destroy(asset);
+        public void Dispose ()
+        {
+            UnityEngine.Object.Destroy(asset);
+        }
 
-        public void Enable () => asset.Enable();
+        public void Enable ()
+        {
+            asset.Enable();
+        }
 
-        public IEnumerator<InputAction> GetEnumerator () => asset.GetEnumerator();
+        public IEnumerator<InputAction> GetEnumerator ()
+        {
+            return asset.GetEnumerator();
+        }
 
-        IEnumerator IEnumerable.GetEnumerator () => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator ()
+        {
+            return GetEnumerator();
+        }
     }
 }

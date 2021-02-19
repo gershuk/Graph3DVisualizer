@@ -23,6 +23,8 @@ using Graph3DVisualizer.SupportComponents;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.PlayerInputControls
 {
     /// <summary>
@@ -111,11 +113,12 @@ namespace Graph3DVisualizer.PlayerInputControls
         public void SetupParams (SelectItemToolParams parameters) => _colors = parameters.Colors;
     }
 
-
     /// <summary>
     /// Class that describes <see cref="SelectItemTool"/> parameters for <see cref="ICustomizable{TParams}"/>.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("SelectItemToolParams")]
     public class SelectItemToolParams : AbstractToolParams
     {
         public IReadOnlyList<Color> Colors { get; }

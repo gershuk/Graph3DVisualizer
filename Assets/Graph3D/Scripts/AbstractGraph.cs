@@ -21,12 +21,16 @@ using Graph3DVisualizer.Customizable;
 
 using UnityEngine;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.Graph3D
 {
     /// <summary>
     /// Support class for edge serialization.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("LinkInfo")]
     public struct LinkInfo
     {
         public EdgeParameters edgeParameters;
@@ -84,6 +88,8 @@ namespace Graph3DVisualizer.Graph3D
     /// Support class for vertex serialization.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("VertexInfo")]
     public struct VertexInfo
     {
         public VertexParameters vertexParameters;

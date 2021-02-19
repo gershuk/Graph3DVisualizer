@@ -20,6 +20,8 @@ using Graph3DVisualizer.Customizable;
 
 using UnityEngine;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.Graph3D
 {
     /// <summary>
@@ -123,13 +125,15 @@ namespace Graph3DVisualizer.Graph3D
     /// A class that describes default edge parameters for <see cref="ICustomizable{TParams}"/>.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("EdgeParameters")]
     public class EdgeParameters : AbstractGraphObjectParameters
     {
-        public Texture2D ArrowTexture { get; }
-        public Texture2D LineTexture { get; }
-        public float SourceOffsetDist { get; }
-        public float TargetOffsetDist { get; }
-        public EdgeVisibility Visibility { get; }
+        public Texture2D ArrowTexture { get; set; }
+        public Texture2D LineTexture { get; set; }
+        public float SourceOffsetDist { get; set; }
+        public float TargetOffsetDist { get; set; }
+        public EdgeVisibility Visibility { get; set; }
 
         public EdgeParameters (float sourceOffsetDist = 1f, float targetOffsetDist = 1f,
             Texture2D arrowTexture = null, Texture2D lineTexture = null, EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string id = null) : base(id)

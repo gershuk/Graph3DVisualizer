@@ -1,0 +1,580 @@
+{
+  "TaskType": "Graph3DVisualizer.GraphTasks.SimpleTask, Graph3DVisualizer.VisualTasks, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+  "VisualTaskParameters": {
+    "GraphsParameters": [
+      {
+        "graphParameters": {
+          "Links": [
+            {
+              "edgeParameters": {
+                "ArrowTexture": {
+                  "format": 12,
+                  "isReadable": true,
+                  "vtOnly": false,
+                  "streamingMipmaps": false,
+                  "streamingMipmapsPriority": 0,
+                  "requestedMipmapLevel": -1,
+                  "minimumMipmapLevel": -1,
+                  "calculatedMipmapLevel": -1,
+                  "desiredMipmapLevel": -1,
+                  "loadingMipmapLevel": 0,
+                  "loadedMipmapLevel": 0,
+                  "alphaIsTransparency": false,
+                  "mipmapCount": 10,
+                  "graphicsFormat": 101,
+                  "width": 512,
+                  "height": 256,
+                  "dimension": 2,
+                  "wrapMode": 0,
+                  "wrapModeU": 0,
+                  "wrapModeV": 0,
+                  "wrapModeW": 0,
+                  "filterMode": 1,
+                  "anisoLevel": 1,
+                  "mipMapBias": 0.0,
+                  "texelSize": {
+                    "X": 0.001953125,
+                    "Y": 0.00390625
+                  },
+                  "updateCount": 0,
+                  "imageContentsHash": {
+                    "isValid": true
+                  },
+                  "name": "Arrow",
+                  "hideFlags": 8
+                },
+                "LineTexture": {
+                  "format": 10,
+                  "isReadable": true,
+                  "vtOnly": false,
+                  "streamingMipmaps": false,
+                  "streamingMipmapsPriority": 0,
+                  "requestedMipmapLevel": -1,
+                  "minimumMipmapLevel": -1,
+                  "calculatedMipmapLevel": -1,
+                  "desiredMipmapLevel": -1,
+                  "loadingMipmapLevel": 0,
+                  "loadedMipmapLevel": 0,
+                  "alphaIsTransparency": false,
+                  "mipmapCount": 10,
+                  "graphicsFormat": 97,
+                  "width": 512,
+                  "height": 256,
+                  "dimension": 2,
+                  "wrapMode": 0,
+                  "wrapModeU": 0,
+                  "wrapModeV": 0,
+                  "wrapModeW": 0,
+                  "filterMode": 1,
+                  "anisoLevel": 1,
+                  "mipMapBias": 0.0,
+                  "texelSize": {
+                    "X": 0.001953125,
+                    "Y": 0.00390625
+                  },
+                  "updateCount": 0,
+                  "imageContentsHash": {
+                    "isValid": true
+                  },
+                  "name": "Line",
+                  "hideFlags": 8
+                },
+                "SourceOffsetDist": 6.0,
+                "TargetOffsetDist": 6.0,
+                "Visibility": 2,
+                "Id": "4e16ab07-1a3c-443c-b650-58d81466d8fb"
+              },
+              "edgeType": "Graph3DVisualizer.Graph3D.Edge, Graph3DVisualizer.Graph3D, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+              "firstVertexId": "b44c7ca7-a673-4539-9e83-6fc83c767672",
+              "secondVertexId": "7224dc20-a4a5-4a9c-90cb-82ef5cd1e8a7"
+            }
+          ],
+          "VertexParameters": [
+            {
+              "vertexParameters": {
+                "$type": "Graph3DVisualizer.Graph3D.SelectableVertexParameters, Graph3DVisualizer.Graph3D",
+                "IsSelected": false,
+                "SelectFrameParameters": {
+                  "CombinedImages": {
+                    "Images": [
+                      {
+                        "Position": {
+                          "X": 0,
+                          "Y": 0
+                        },
+                        "Texture": {
+                          "format": 12,
+                          "isReadable": true,
+                          "vtOnly": false,
+                          "streamingMipmaps": false,
+                          "streamingMipmapsPriority": 0,
+                          "requestedMipmapLevel": -1,
+                          "minimumMipmapLevel": -1,
+                          "calculatedMipmapLevel": -1,
+                          "desiredMipmapLevel": -1,
+                          "loadingMipmapLevel": 0,
+                          "loadedMipmapLevel": 0,
+                          "alphaIsTransparency": false,
+                          "mipmapCount": 9,
+                          "graphicsFormat": 101,
+                          "width": 256,
+                          "height": 256,
+                          "dimension": 2,
+                          "wrapMode": 0,
+                          "wrapModeU": 0,
+                          "wrapModeV": 0,
+                          "wrapModeW": 0,
+                          "filterMode": 1,
+                          "anisoLevel": 1,
+                          "mipMapBias": 0.0,
+                          "texelSize": {
+                            "X": 0.00390625,
+                            "Y": 0.00390625
+                          },
+                          "updateCount": 0,
+                          "imageContentsHash": {
+                            "isValid": true
+                          },
+                          "name": "SelectFrame",
+                          "hideFlags": 8
+                        }
+                      }
+                    ],
+                    "IsTransparentBackground": false,
+                    "TextureHeight": 256,
+                    "TextureWidth": 256,
+                    "WrapMode": 1
+                  },
+                  "Compressed": true,
+                  "Cutoff": 0.1,
+                  "IsMonoColor": true,
+                  "MonoColor": {
+                    "A": 1.0,
+                    "B": 0.0,
+                    "G": 0.0,
+                    "R": 1.0
+                  },
+                  "Scale": {
+                    "X": 18.6,
+                    "Y": 18.6
+                  }
+                },
+                "ImageParameters": {
+                  "CombinedImages": {
+                    "Images": [
+                      {
+                        "Position": {
+                          "X": 0,
+                          "Y": 102
+                        },
+                        "Texture": {
+                          "format": 4,
+                          "isReadable": true,
+                          "vtOnly": false,
+                          "streamingMipmaps": false,
+                          "streamingMipmapsPriority": 0,
+                          "requestedMipmapLevel": -1,
+                          "minimumMipmapLevel": -1,
+                          "calculatedMipmapLevel": -1,
+                          "desiredMipmapLevel": -1,
+                          "loadingMipmapLevel": 0,
+                          "loadedMipmapLevel": 0,
+                          "alphaIsTransparency": false,
+                          "mipmapCount": 8,
+                          "graphicsFormat": 8,
+                          "width": 200,
+                          "height": 200,
+                          "dimension": 2,
+                          "wrapMode": 0,
+                          "wrapModeU": 0,
+                          "wrapModeV": 0,
+                          "wrapModeW": 0,
+                          "filterMode": 1,
+                          "anisoLevel": 1,
+                          "mipMapBias": 0.0,
+                          "texelSize": {
+                            "X": 0.005,
+                            "Y": 0.005
+                          },
+                          "updateCount": 1,
+                          "imageContentsHash": {
+                            "isValid": true
+                          },
+                          "name": "",
+                          "hideFlags": 0
+                        }
+                      },
+                      {
+                        "Position": {
+                          "X": 0,
+                          "Y": 0
+                        },
+                        "Texture": {
+                          "format": 4,
+                          "isReadable": true,
+                          "vtOnly": false,
+                          "streamingMipmaps": false,
+                          "streamingMipmapsPriority": 0,
+                          "requestedMipmapLevel": -1,
+                          "minimumMipmapLevel": -1,
+                          "calculatedMipmapLevel": -1,
+                          "desiredMipmapLevel": -1,
+                          "loadingMipmapLevel": 0,
+                          "loadedMipmapLevel": 0,
+                          "alphaIsTransparency": false,
+                          "mipmapCount": 8,
+                          "graphicsFormat": 8,
+                          "width": 200,
+                          "height": 102,
+                          "dimension": 2,
+                          "wrapMode": 0,
+                          "wrapModeU": 0,
+                          "wrapModeV": 0,
+                          "wrapModeW": 0,
+                          "filterMode": 1,
+                          "anisoLevel": 1,
+                          "mipMapBias": 0.0,
+                          "texelSize": {
+                            "X": 0.005,
+                            "Y": 0.009803922
+                          },
+                          "updateCount": 1,
+                          "imageContentsHash": {
+                            "isValid": true
+                          },
+                          "name": "",
+                          "hideFlags": 0
+                        }
+                      }
+                    ],
+                    "IsTransparentBackground": false,
+                    "TextureHeight": 302,
+                    "TextureWidth": 200,
+                    "WrapMode": 1
+                  },
+                  "Compressed": false,
+                  "Cutoff": 0.1,
+                  "IsMonoColor": false,
+                  "MonoColor": {
+                    "A": 1.0,
+                    "B": 1.0,
+                    "G": 1.0,
+                    "R": 1.0
+                  },
+                  "Scale": {
+                    "X": 10.0,
+                    "Y": 15.1
+                  }
+                },
+                "Position": {
+                  "X": 0.0,
+                  "Y": 0.0,
+                  "Z": 0.0
+                },
+                "Rotation": {
+                  "W": 1.0,
+                  "X": 0.0,
+                  "Y": 0.0,
+                  "Z": 0.0
+                },
+                "Id": "b44c7ca7-a673-4539-9e83-6fc83c767672"
+              },
+              "vertexType": "Graph3DVisualizer.Graph3D.SelectableVertex, Graph3DVisualizer.Graph3D, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            },
+            {
+              "vertexParameters": {
+                "$type": "Graph3DVisualizer.Graph3D.SelectableVertexParameters, Graph3DVisualizer.Graph3D",
+                "IsSelected": false,
+                "SelectFrameParameters": {
+                  "CombinedImages": {
+                    "Images": [
+                      {
+                        "Position": {
+                          "X": 0,
+                          "Y": 0
+                        },
+                        "Texture": {
+                          "format": 12,
+                          "isReadable": true,
+                          "vtOnly": false,
+                          "streamingMipmaps": false,
+                          "streamingMipmapsPriority": 0,
+                          "requestedMipmapLevel": -1,
+                          "minimumMipmapLevel": -1,
+                          "calculatedMipmapLevel": -1,
+                          "desiredMipmapLevel": -1,
+                          "loadingMipmapLevel": 0,
+                          "loadedMipmapLevel": 0,
+                          "alphaIsTransparency": false,
+                          "mipmapCount": 9,
+                          "graphicsFormat": 101,
+                          "width": 256,
+                          "height": 256,
+                          "dimension": 2,
+                          "wrapMode": 0,
+                          "wrapModeU": 0,
+                          "wrapModeV": 0,
+                          "wrapModeW": 0,
+                          "filterMode": 1,
+                          "anisoLevel": 1,
+                          "mipMapBias": 0.0,
+                          "texelSize": {
+                            "X": 0.00390625,
+                            "Y": 0.00390625
+                          },
+                          "updateCount": 0,
+                          "imageContentsHash": {
+                            "isValid": true
+                          },
+                          "name": "SelectFrame",
+                          "hideFlags": 8
+                        }
+                      }
+                    ],
+                    "IsTransparentBackground": false,
+                    "TextureHeight": 256,
+                    "TextureWidth": 256,
+                    "WrapMode": 1
+                  },
+                  "Compressed": true,
+                  "Cutoff": 0.1,
+                  "IsMonoColor": true,
+                  "MonoColor": {
+                    "A": 1.0,
+                    "B": 0.0,
+                    "G": 0.0,
+                    "R": 1.0
+                  },
+                  "Scale": {
+                    "X": 18.6,
+                    "Y": 18.6
+                  }
+                },
+                "ImageParameters": {
+                  "CombinedImages": {
+                    "Images": [
+                      {
+                        "Position": {
+                          "X": 0,
+                          "Y": 102
+                        },
+                        "Texture": {
+                          "format": 4,
+                          "isReadable": true,
+                          "vtOnly": false,
+                          "streamingMipmaps": false,
+                          "streamingMipmapsPriority": 0,
+                          "requestedMipmapLevel": -1,
+                          "minimumMipmapLevel": -1,
+                          "calculatedMipmapLevel": -1,
+                          "desiredMipmapLevel": -1,
+                          "loadingMipmapLevel": 0,
+                          "loadedMipmapLevel": 0,
+                          "alphaIsTransparency": false,
+                          "mipmapCount": 8,
+                          "graphicsFormat": 8,
+                          "width": 200,
+                          "height": 200,
+                          "dimension": 2,
+                          "wrapMode": 0,
+                          "wrapModeU": 0,
+                          "wrapModeV": 0,
+                          "wrapModeW": 0,
+                          "filterMode": 1,
+                          "anisoLevel": 1,
+                          "mipMapBias": 0.0,
+                          "texelSize": {
+                            "X": 0.005,
+                            "Y": 0.005
+                          },
+                          "updateCount": 1,
+                          "imageContentsHash": {
+                            "isValid": true
+                          },
+                          "name": "",
+                          "hideFlags": 0
+                        }
+                      },
+                      {
+                        "Position": {
+                          "X": 0,
+                          "Y": 0
+                        },
+                        "Texture": {
+                          "format": 4,
+                          "isReadable": true,
+                          "vtOnly": false,
+                          "streamingMipmaps": false,
+                          "streamingMipmapsPriority": 0,
+                          "requestedMipmapLevel": -1,
+                          "minimumMipmapLevel": -1,
+                          "calculatedMipmapLevel": -1,
+                          "desiredMipmapLevel": -1,
+                          "loadingMipmapLevel": 0,
+                          "loadedMipmapLevel": 0,
+                          "alphaIsTransparency": false,
+                          "mipmapCount": 8,
+                          "graphicsFormat": 8,
+                          "width": 200,
+                          "height": 102,
+                          "dimension": 2,
+                          "wrapMode": 0,
+                          "wrapModeU": 0,
+                          "wrapModeV": 0,
+                          "wrapModeW": 0,
+                          "filterMode": 1,
+                          "anisoLevel": 1,
+                          "mipMapBias": 0.0,
+                          "texelSize": {
+                            "X": 0.005,
+                            "Y": 0.009803922
+                          },
+                          "updateCount": 1,
+                          "imageContentsHash": {
+                            "isValid": true
+                          },
+                          "name": "",
+                          "hideFlags": 0
+                        }
+                      }
+                    ],
+                    "IsTransparentBackground": false,
+                    "TextureHeight": 302,
+                    "TextureWidth": 200,
+                    "WrapMode": 1
+                  },
+                  "Compressed": false,
+                  "Cutoff": 0.1,
+                  "IsMonoColor": false,
+                  "MonoColor": {
+                    "A": 1.0,
+                    "B": 1.0,
+                    "G": 1.0,
+                    "R": 1.0
+                  },
+                  "Scale": {
+                    "X": 10.0,
+                    "Y": 15.1
+                  }
+                },
+                "Position": {
+                  "X": 100.0,
+                  "Y": 0.0,
+                  "Z": 0.0
+                },
+                "Rotation": {
+                  "W": 1.0,
+                  "X": 0.0,
+                  "Y": 0.0,
+                  "Z": 0.0
+                },
+                "Id": "7224dc20-a4a5-4a9c-90cb-82ef5cd1e8a7"
+              },
+              "vertexType": "Graph3DVisualizer.Graph3D.SelectableVertex, Graph3DVisualizer.Graph3D, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          ],
+          "Id": "ec292492-12e4-4d8a-a813-6b0aeb073c8b"
+        },
+        "graphType": "Graph3DVisualizer.Graph3D.Graph, Graph3DVisualizer.Graph3D, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      }
+    ],
+    "PlayersParameters": [
+      {
+        "playerParameters": {
+          "EulerAngles": {
+            "X": 13.38577,
+            "Y": 9.152336,
+            "Z": 1.09701936E-07
+          },
+          "MovingSpeed": 40.0,
+          "Position": {
+            "X": 100.0,
+            "Y": 20.0,
+            "Z": -50.0
+          },
+          "RotationSpeed": 20.0,
+          "ToolConfigs": [
+            {
+              "ToolParams": {
+                "$type": "Graph3DVisualizer.PlayerInputControls.SelectItemToolParams, Graph3DVisualizer.Player",
+                "Colors": {
+                  "$type": "System.Collections.Generic.List`1[[UnityEngine.Color, UnityEngine.CoreModule]], mscorlib",
+                  "$values": [
+                    {
+                      "A": 1.0,
+                      "B": 0.0,
+                      "G": 0.0,
+                      "R": 1.0
+                    },
+                    {
+                      "A": 1.0,
+                      "B": 0.0,
+                      "G": 0.498039216,
+                      "R": 1.0
+                    },
+                    {
+                      "A": 1.0,
+                      "B": 0.0,
+                      "G": 1.0,
+                      "R": 1.0
+                    },
+                    {
+                      "A": 1.0,
+                      "B": 0.0,
+                      "G": 1.0,
+                      "R": 0.0
+                    },
+                    {
+                      "A": 1.0,
+                      "B": 1.0,
+                      "G": 0.0,
+                      "R": 0.0
+                    },
+                    {
+                      "A": 1.0,
+                      "B": 0.509803951,
+                      "G": 0.0,
+                      "R": 0.294117659
+                    },
+                    {
+                      "A": 1.0,
+                      "B": 1.0,
+                      "G": 0.0,
+                      "R": 143.0
+                    }
+                  ]
+                }
+              },
+              "ToolType": "Graph3DVisualizer.PlayerInputControls.SelectItemTool, Graph3DVisualizer.Player, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            },
+            {
+              "ToolParams": {
+                "$type": "Graph3DVisualizer.PlayerInputControls.GrabItemToolParams, Graph3DVisualizer.Player"
+              },
+              "ToolType": "Graph3DVisualizer.PlayerInputControls.GrabItemTool, Graph3DVisualizer.Player, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            },
+            {
+              "ToolParams": {
+                "$type": "Graph3DVisualizer.PlayerInputControls.EdgeCreaterToolParams, Graph3DVisualizer.Player",
+                "EdgeTypes": {
+                  "$type": "System.Collections.Generic.List`1[[System.Type, mscorlib]], mscorlib",
+                  "$values": [
+                    "Graph3DVisualizer.Graph3D.Edge, Graph3DVisualizer.Graph3D, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+                  ]
+                }
+              },
+              "ToolType": "Graph3DVisualizer.PlayerInputControls.EdgeCreaterTool, Graph3DVisualizer.Player, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            },
+            {
+              "ToolParams": {
+                "$type": "Graph3DVisualizer.PlayerInputControls.ClickToolParams, Graph3DVisualizer.Player"
+              },
+              "ToolType": "Graph3DVisualizer.PlayerInputControls.ClickTool, Graph3DVisualizer.Player, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+            }
+          ]
+        },
+        "playerType": "Graph3DVisualizer.PlayerInputControls.FlyPlayer, Graph3DVisualizer.Player, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null"
+      }
+    ]
+  }
+}

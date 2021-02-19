@@ -21,6 +21,8 @@ using Graph3DVisualizer.Customizable;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+using Yuzu;
+
 using static UnityEngine.Physics;
 
 namespace Graph3DVisualizer.PlayerInputControls
@@ -29,6 +31,8 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// Сlass that describes the data needed when creating a new player tool. <seealso cref="AbstractPlayer.GiveNewTool(ToolConfig[])"/>
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("ToolConfig")]
     public readonly struct ToolConfig
     {
         public AbstractToolParams ToolParams { get; }
@@ -61,6 +65,8 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// A class that describes default player's tool parameters for <see cref="ICustomizable{TParams}"/>.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("AbstractToolParams")]
     public abstract class AbstractToolParams : AbstractCustomizableParameter
     { }
 }

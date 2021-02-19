@@ -24,6 +24,8 @@ using Graph3DVisualizer.Graph3D;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.PlayerInputControls
 {
     /// <summary>
@@ -184,6 +186,8 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// Class that describes <see cref="EdgeCreaterTool"/> parameters for <see cref="ICustomizable{TParams}"/>.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("EdgeCreaterToolParams")]
     public class EdgeCreaterToolParams : AbstractToolParams
     {
         public IReadOnlyList<Type> EdgeTypes { get; private set; }

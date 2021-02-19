@@ -23,6 +23,8 @@ using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.Graph3D
 {
     /// <summary>
@@ -135,10 +137,12 @@ namespace Graph3DVisualizer.Graph3D
     /// Class that describes <see cref="SelectableVertex"/> parameters for <see cref="ICustomizable{TParams}"/>.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("SelectableVertexParameters")]
     public class SelectableVertexParameters : VertexParameters
     {
-        public bool IsSelected { get; }
-        public BillboardParameters SelectFrameParameters { get; }
+        public bool IsSelected { get; set; }
+        public BillboardParameters SelectFrameParameters { get; set; }
 
         public SelectableVertexParameters (BillboardParameters imageParameters, BillboardParameters selectFrameParameters,
                Vector3 position = default, Quaternion rotation = default, bool isSelected = false, string id = null) : base(imageParameters, position, rotation, id) =>

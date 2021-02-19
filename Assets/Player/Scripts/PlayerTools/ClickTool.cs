@@ -22,6 +22,8 @@ using Graph3DVisualizer.SupportComponents;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.PlayerInputControls
 {
     /// <summary>
@@ -94,6 +96,8 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// Class that describes <see cref="ClickTool"/> parameters for <see cref="ICustomizable{TParams}"/>.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("ClickToolParams")]
     public class ClickToolParams : AbstractToolParams
     {
         //public GameObject Owner { get; private set; }

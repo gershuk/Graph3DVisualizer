@@ -20,6 +20,8 @@ using Graph3DVisualizer.Customizable;
 
 using UnityEngine;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.Graph3D
 {
     /// <summary>
@@ -38,6 +40,8 @@ namespace Graph3DVisualizer.Graph3D
     /// Class that describes common <see cref="AbstractGraphObject"/> parameters for <see cref="ICustomizable{TParams}"/>.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("AbstractGraphObjectParameters")]
     public abstract class AbstractGraphObjectParameters : AbstractCustomizableParameter
     {
         public string Id { get; protected set; }

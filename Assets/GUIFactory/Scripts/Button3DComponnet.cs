@@ -22,7 +22,6 @@ using UnityEngine;
 
 namespace Graph3DVisualizer.GUI
 {
-
     /// <summary>
     /// A component that simulates a 3d button.
     /// </summary>

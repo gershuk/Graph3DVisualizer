@@ -23,6 +23,8 @@ using Graph3DVisualizer.SupportComponents;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.PlayerInputControls
 {
     /// <summary>
@@ -175,11 +177,12 @@ namespace Graph3DVisualizer.PlayerInputControls
         }
     }
 
-
     /// <summary>
     /// Class that describes <see cref="GrabItemTool"/> parameters for <see cref="ICustomizable{TParams}"/>.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("GrabItemToolParams")]
     public class GrabItemToolParams : AbstractToolParams
     { }
 }

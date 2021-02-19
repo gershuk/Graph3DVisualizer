@@ -23,6 +23,8 @@ using Graph3DVisualizer.TextureFactory;
 
 using UnityEngine;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.Billboards
 {
     /// <summary>
@@ -274,37 +276,39 @@ namespace Graph3DVisualizer.Billboards
     /// Parameters for creating a new <see cref="Billboard"/> object.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("BillboardParameters")]
     public sealed class BillboardParameters : AbstractCustomizableParameter
     {
         /// <summary>
         /// Used to set position of images on the Billboard.
         /// </summary>
-        public CombinedImages CombinedImages { get; }
+        public CombinedImages CombinedImages { get; set; }
 
         /// <summary>
         /// Used to determine whether the display texture is compressed.
         /// </summary>
-        public bool Compressed { get; }
+        public bool Compressed { get; set; }
 
         /// <summary>
         /// Used to determine the lower bound of the texel clipping, based on the alpha channel summary.
         /// </summary>
-        public float Cutoff { get; }
+        public float Cutoff { get; set; }
 
         /// <summary>
         /// Used to determine image output mode. If true, image is displayed in one color, false-according to the texture.
         /// </summary>
-        public bool IsMonoColor { get; }
+        public bool IsMonoColor { get; set; }
 
         /// <summary>
         /// Used to determine image color in MonoColor mode.
         /// </summary>
-        public Color MonoColor { get; }
+        public Color MonoColor { get; set; }
 
         /// <summary>
         /// Used to set Billboard size in units.
         /// </summary>
-        public Vector2 Scale { get; }
+        public Vector2 Scale { get; set; }
 
         /// <summary>
         /// The class constructor.
@@ -328,7 +332,7 @@ namespace Graph3DVisualizer.Billboards
         /// Used to determine image color in MonoColor mode.</param>
         public BillboardParameters (CombinedImages combinedImage, Vector2 scale, float cutoff, bool compressed, bool isMonoColor, Color monoColor)
         {
-            CombinedImages = combinedImage ?? throw new ArgumentNullException(nameof(combinedImage));
+            CombinedImages = combinedImage;
             Scale = scale;
             Cutoff = cutoff;
             Compressed = compressed;

@@ -18,6 +18,8 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
+using Yuzu;
+
 //ToDo : need to refactor this module
 namespace Graph3DVisualizer.Customizable
 {
@@ -100,6 +102,8 @@ namespace Graph3DVisualizer.Customizable
     /// Abstract class for setup and download object parameters.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("AbstractCustomizableParameter")]
     public abstract class AbstractCustomizableParameter { };
 
     /// <summary>

@@ -23,6 +23,8 @@ using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.Graph3D
 {
     /// <summary>
@@ -206,11 +208,13 @@ namespace Graph3DVisualizer.Graph3D
     /// Class that describes default vertex parameters for <see cref="ICustomizable{TParams}"/>.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("VertexParameters")]
     public class VertexParameters : AbstractGraphObjectParameters
     {
-        public BillboardParameters ImageParameters { get; }
-        public Vector3 Position { get; }
-        public Quaternion Rotation { get; }
+        public BillboardParameters ImageParameters { get; set; }
+        public Vector3 Position { get; set; }
+        public Quaternion Rotation { get; set; }
 
         public VertexParameters (BillboardParameters imageParameters, Vector3 position = default, Quaternion rotation = default, string id = null) : base(id)
             => (ImageParameters, Position, Rotation) = (imageParameters, position, rotation);

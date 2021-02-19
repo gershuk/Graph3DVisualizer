@@ -24,12 +24,16 @@ using Graph3DVisualizer.PlayerInputControls;
 
 using UnityEngine;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.GraphTasks
 {
     /// <summary>
     /// Support class for graph serialization.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("GraphInfo")]
     public struct GraphInfo
     {
         public GraphParameters graphParameters;
@@ -77,6 +81,8 @@ namespace Graph3DVisualizer.GraphTasks
     /// Support class for player serialization.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("PlayerInfo")]
     public struct PlayerInfo
     {
         public PlayerParameters playerParameters;
@@ -173,7 +179,6 @@ namespace Graph3DVisualizer.GraphTasks
         }
     }
 
-
     /// <summary>
     /// Class that describes the state of execution of some part of the task.
     /// </summary>
@@ -191,6 +196,8 @@ namespace Graph3DVisualizer.GraphTasks
     /// Class that describes <see cref="AbstractVisualTask"/> parameters for <see cref="ICustomizable{TParams}"/>.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("VisualTaskParameters")]
     public class VisualTaskParameters : AbstractCustomizableParameter
     {
         public GraphInfo[] GraphsParameters { get; }

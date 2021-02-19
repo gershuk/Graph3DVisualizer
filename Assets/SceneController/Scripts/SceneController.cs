@@ -22,14 +22,14 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-using Graph3D.SurrogateTypesForSerialization;
-
 using Graph3DVisualizer.Customizable;
 using Graph3DVisualizer.GraphTasks;
-
-using Newtonsoft.Json;
+using Graph3DVisualizer.SurrogateTypesForSerialization;
 
 using UnityEngine;
+
+using Yuzu;
+using Yuzu.Json;
 
 namespace Graph3DVisualizer.Scene
 {
@@ -39,20 +39,12 @@ namespace Graph3DVisualizer.Scene
     [CustomizableGrandType(Type = typeof(SceneControllerParameters))]
     public class SceneController : MonoBehaviour, ICustomizable<SceneControllerParameters>
     {
-        private static readonly List<JsonConverter> _jsonConverters = new List<JsonConverter>(4)
-        {
-            new NewtonsoftSurrogateConverter<Vector2, JsonVector2>(),
-            new NewtonsoftSurrogateConverter<Vector2Int, JsonVector2Int>(),
-            new NewtonsoftSurrogateConverter<Vector3,JsonVector3>(),
-            new NewtonsoftSurrogateConverter<Color,JsonColor>(),
-            new NewtonsoftSurrogateConverter<Quaternion,JsonQuaternion>(),
-        };
-
         private static SurrogateSelector _surrogateSelector;
 
         private AbstractVisualTask _activeTask;
         private Dictionary<string, Assembly> _asseblies;
         private List<Type> _taskList;
+        private CommonOptions _yuzuCommonOptions;
 
         public AbstractVisualTask ActiveTask { get => _activeTask; private set => _activeTask = value; }
         public List<Type> TaskList { get => _taskList; private set => _taskList = value; }
@@ -68,6 +60,35 @@ namespace Graph3DVisualizer.Scene
             _surrogateSelector.AddSurrogate(typeof(Quaternion), new StreamingContext(StreamingContextStates.All), new SurrogateQuaternion());
             _surrogateSelector.AddSurrogate(typeof(Texture2D), new StreamingContext(StreamingContextStates.All), new SurrogateTexture2D());
             DontDestroyOnLoad(gameObject);
+
+            _yuzuCommonOptions = new CommonOptions()
+            {
+                Meta = new MetaOptions().
+                AddOverride(typeof(Vector2), o => o.AddAttr(new YuzuAlias("Vector2")).AddItem(nameof(Vector2.x), i => i.AddAttr(new YuzuMember("X"))).
+                                                                                      AddItem(nameof(Vector2.y), i => i.AddAttr(new YuzuMember("Y")))).
+
+                AddOverride(typeof(Vector2Int), o => o.AddAttr(new YuzuAlias("Vector2Int")).AddItem(nameof(Vector2Int.x), i => i.AddAttr(new YuzuMember("X"))).
+                                                                                      AddItem(nameof(Vector2Int.y), i => i.AddAttr(new YuzuMember("Y")))).
+
+                AddOverride(typeof(Vector3), o => o.AddAttr(new YuzuAlias("Vector3")).AddItem(nameof(Vector3.x), i => i.AddAttr(new YuzuMember("X"))).
+                                                                                      AddItem(nameof(Vector3.y), i => i.AddAttr(new YuzuMember("Y"))).
+                                                                                      AddItem(nameof(Vector3.z), i => i.AddAttr(new YuzuMember("Z")))).
+
+                AddOverride(typeof(Vector3Int), o => o.AddAttr(new YuzuAlias("Vector3Int")).AddItem(nameof(Vector3Int.x), i => i.AddAttr(new YuzuMember("X"))).
+                                                                                      AddItem(nameof(Vector3Int.y), i => i.AddAttr(new YuzuMember("Y"))).
+                                                                                      AddItem(nameof(Vector3Int.z), i => i.AddAttr(new YuzuMember("Z")))).
+
+                AddOverride(typeof(Quaternion), o => o.AddAttr(new YuzuAlias("Quaternion")).AddItem(nameof(Quaternion.x), i => i.AddAttr(new YuzuMember("X"))).
+                                                                                      AddItem(nameof(Quaternion.y), i => i.AddAttr(new YuzuMember("Y"))).
+                                                                                      AddItem(nameof(Quaternion.z), i => i.AddAttr(new YuzuMember("Z"))).
+                                                                                      AddItem(nameof(Quaternion.w), i => i.AddAttr(new YuzuMember("W")))).
+
+                AddOverride(typeof(Color), o => o.AddAttr(new YuzuAlias("Color")).AddItem(nameof(Color.r), i => i.AddAttr(new YuzuMember("R"))).
+                                                                                      AddItem(nameof(Color.g), i => i.AddAttr(new YuzuMember("G"))).
+                                                                                      AddItem(nameof(Color.b), i => i.AddAttr(new YuzuMember("B"))).
+                                                                                      AddItem(nameof(Color.a), i => i.AddAttr(new YuzuMember("A")))),
+                AllowEmptyTypes = true,
+            };
         }
 
         private void LoadAssemblies (params (string name, string path)[] assemblies)
@@ -116,12 +137,15 @@ namespace Graph3DVisualizer.Scene
             }
         }
 
-        //public void StopAllTasks ()
-        //{
-        //    foreach (var acitveTask in ActiveTasks)
-        //        acitveTask.StopTask();
-        //    ActiveTasks.Clear();
-        //}
+        public void LoadJson (string path)
+        {
+            using (var sr = new StreamReader(path))
+            {
+                var jsonDeserializer = new JsonDeserializer() { Options = _yuzuCommonOptions };
+                SetupParams(jsonDeserializer.FromString<SceneControllerParameters>(sr.ReadToEnd()));
+            }
+        }
+
         public void LoadMods ()
         {
             var assembliesPath = Application.dataPath + "/ModAssemblies";
@@ -148,8 +172,8 @@ namespace Graph3DVisualizer.Scene
         {
             using (var sw = new StreamWriter(path))
             {
-                var settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.Auto, ReferenceLoopHandling = ReferenceLoopHandling.Error, Converters = _jsonConverters };
-                sw.WriteLine(JsonConvert.SerializeObject(DownloadParams(), Formatting.Indented, settings));
+                var jsonSerializer = new JsonSerializer() { Options = _yuzuCommonOptions };
+                sw.WriteLine(jsonSerializer.ToString(DownloadParams()));
             }
         }
 
@@ -177,26 +201,17 @@ namespace Graph3DVisualizer.Scene
             _activeTask.DestroyTask();
             Destroy(_activeTask.gameObject);
         }
-
-        //public void StopTask<T> (Predicate<T> predicate) where T : AbstractVisualTask
-        //{
-        //    foreach (var acitveTask in ActiveTasks)
-        //    {
-        //        if (acitveTask is T task && predicate(task))
-        //        {
-        //            ActiveTasks.Remove(task);
-        //            task.StopTask();
-        //        }
-        //    }
-        //}
     }
 
     /// <summary>
     /// Class that describes <see cref="SceneController"/> parameters for <see cref="ICustomizable{TParams}"/>.
     /// </summary>
     [Serializable]
+    [YuzuAll]
+    [YuzuAlias("SceneControllerParameters")]
     public class SceneControllerParameters : AbstractCustomizableParameter
     {
+        [YuzuMerge]
         public Type TaskType { get; }
         public VisualTaskParameters VisualTaskParameters { get; }
 

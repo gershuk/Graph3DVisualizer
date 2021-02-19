@@ -63,7 +63,7 @@ namespace Graph3DVisualizer.Scene
 
             var taskList = _sceneControler.TaskList;
 
-            var buttonHeight = _content.GetComponent<RectTransform>().sizeDelta.y / 8;
+            var buttonHeight = _content.GetComponent<RectTransform>().sizeDelta.y / 15;
             var buttonWidth = _content.GetComponent<RectTransform>().sizeDelta.x;
             var i = 0;
             for (i = 0; i < taskList.Count; i++)
@@ -131,10 +131,10 @@ namespace Graph3DVisualizer.Scene
             {
                 var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
                             new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
-                var buttonParameters = new ButtonParameters("Save", buttonRectParameters, null, () => _sceneControler.SaveBinary("saveFile.binary"));
+                var buttonParameters = new ButtonParameters("SaveBinary", buttonRectParameters, null, () => _sceneControler.SaveBinary("saveFile.binary"));
                 var newButton = CreateButton(buttonParameters);
                 var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
-                var textParameters = new TextParameters("Save", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
+                var textParameters = new TextParameters("SaveBinary", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
                 var newText = CreateText(textParameters);
                 i++;
             }
@@ -142,7 +142,7 @@ namespace Graph3DVisualizer.Scene
             {
                 var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
                             new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
-                var buttonParameters = new ButtonParameters("Load", buttonRectParameters, null, () =>
+                var buttonParameters = new ButtonParameters("LoadBinary", buttonRectParameters, null, () =>
                 {
                     _state = State.TaskScene;
                     if (_sceneControler.ActiveTask)
@@ -152,8 +152,38 @@ namespace Graph3DVisualizer.Scene
                 });
                 var newButton = CreateButton(buttonParameters);
                 var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
-                var textParameters = new TextParameters("Load", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
+                var textParameters = new TextParameters("LoadBinary", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
                 var newText = CreateText(textParameters);
+                i++;
+            }
+
+            {
+                var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
+                            new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
+                var buttonParameters = new ButtonParameters("SaveJson", buttonRectParameters, null, () => _sceneControler.SaveJson("saveFile.json"));
+                var newButton = CreateButton(buttonParameters);
+                var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+                var textParameters = new TextParameters("SaveJson", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
+                var newText = CreateText(textParameters);
+                i++;
+            }
+
+            {
+                var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
+                            new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
+                var buttonParameters = new ButtonParameters("LoadJson", buttonRectParameters, null, () =>
+                {
+                    _state = State.TaskScene;
+                    if (_sceneControler.ActiveTask)
+                        _sceneControler.StopTask();
+                    _sceneControler.LoadJson("saveFile.json");
+                    ChangeMenuState(false);
+                });
+                var newButton = CreateButton(buttonParameters);
+                var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+                var textParameters = new TextParameters("LoadJson", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
+                var newText = CreateText(textParameters);
+                i++;
             }
         }
 

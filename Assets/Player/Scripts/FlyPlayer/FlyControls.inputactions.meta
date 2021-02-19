@@ -11,4 +11,4 @@ ScriptedImporter:
   generateWrapperCode: 1
   wrapperCodePath: Assets/Player/Scripts/FlyPlayer/FlyControls.cs
   wrapperClassName: FlyControls
-  wrapperCodeNamespace: Grpah3DVisualizer.PlayerInputControls
+  wrapperCodeNamespace: Graph3DVisualizer.PlayerInputControls
