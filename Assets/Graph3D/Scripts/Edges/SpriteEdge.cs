@@ -59,58 +59,6 @@ namespace Graph3DVisualizer.Graph3D
             set => _lineTexture = value;
         }
 
-        public override float SourceOffsetDist
-        {
-            get => _sourceOffsetDist;
-            set
-            {
-                if (_sourceOffsetDist != value)
-                {
-                    _sourceOffsetDist = value;
-                    UpdateCoordinates();
-                }
-            }
-        }
-
-        public override float TargetOffsetDist
-        {
-            get => _targetOffsetDist;
-            set
-            {
-                if (_targetOffsetDist != value)
-                {
-                    _targetOffsetDist = value;
-                    UpdateCoordinates();
-                }
-            }
-        }
-
-        public override EdgeType Type
-        {
-            get => _type;
-            set
-            {
-                if (_type != value)
-                {
-                    _type = value;
-                    UpdateType();
-                }
-            }
-        }
-
-        public override EdgeVisibility Visibility
-        {
-            get => _visibility;
-            set
-            {
-                if (_visibility != value)
-                {
-                    _visibility = value;
-                    UpdateVisibility();
-                }
-            }
-        }
-
         private void Awake ()
         {
             _transform = GetComponent<Transform>();
@@ -133,46 +81,12 @@ namespace Graph3DVisualizer.Graph3D
             _lineRenderer.positionCount = 2;
             _lineRenderer.useWorldSpace = false;
 
-            SourceOffsetDist = 1f;
-            TargetOffsetDist = 1f;
-            Type = EdgeType.Unidirectional;
+            _sourceOffsetDist = 1f;
+            _targetOffsetDist = 1f;
+            _type = EdgeType.Unidirectional;
         }
 
         private void OnDestroy () => UnsubscribeOnVerticesEvents();
-
-        private void OnDestroyed (UnityEngine.Object obj) => Destroy(gameObject);
-
-        private void OnMove (Vector3 arg1, UnityEngine.Object arg2) => UpdateCoordinates();
-
-        private void OnVisibilityChange (bool visibility, UnityEngine.Object obj) => UpdateVisibility();
-
-        protected override void SubscribeOnVerticesEvents ()
-        {
-            var vertexes = new[] { AdjacentVertices.FromVertex, AdjacentVertices.ToVertex };
-            foreach (var vertex in vertexes)
-            {
-                if (vertex != null)
-                {
-                    vertex.Destroyed += OnDestroyed;
-                    vertex.VisibleChanged += OnVisibilityChange;
-                    vertex.MovementComponent.ObjectMoved += OnMove;
-                }
-            }
-        }
-
-        protected override void UnsubscribeOnVerticesEvents ()
-        {
-            var vertexes = new[] { AdjacentVertices.FromVertex, AdjacentVertices.ToVertex };
-            foreach (var vertex in vertexes)
-            {
-                if (vertex != null)
-                {
-                    vertex.Destroyed -= OnDestroyed;
-                    vertex.VisibleChanged -= OnVisibilityChange;
-                    vertex.MovementComponent.ObjectMoved -= OnMove;
-                }
-            }
-        }
 
         public new SpriteEdgeParameters DownloadParams () => new SpriteEdgeParameters((this as ICustomizable<EdgeParameters>).DownloadParams(), ArrowTexture, LineTexture);
 
@@ -187,23 +101,17 @@ namespace Graph3DVisualizer.Graph3D
 
         public override void UpdateCoordinates ()
         {
-            if (Visibility == EdgeVisibility.DependOnVertices)
+            if (Visibility == EdgeVisibility.DependOnVertices || Visibility == EdgeVisibility.Visible)
             {
-                _transform.position = _adjacentVertices.GetMiddlePoint();
-                var from = _adjacentVertices.FromVertex.transform.position + _adjacentVertices.GetUnitVector() * SourceOffsetDist;
-                var to = _adjacentVertices.ToVertex.transform.position - _adjacentVertices.GetUnitVector() * TargetOffsetDist;
+                _transform.position = AdjacentVertices.MiddlePoint;
+                var from = AdjacentVertices.FromVertex.transform.position + AdjacentVertices.UnitVector * SourceOffsetDist;
+                var to = AdjacentVertices.ToVertex.transform.position - AdjacentVertices.UnitVector * TargetOffsetDist;
                 from -= _transform.position;
                 to -= _transform.position;
                 _lineRenderer.SetPosition(0, from);
                 _lineRenderer.SetPosition(1, to);
+                _lineRenderer.widthCurve = new AnimationCurve(new Keyframe(0, Width), new Keyframe(1, Width));
             }
-        }
-
-        public override void UpdateEdge ()
-        {
-            UpdateType();
-            UpdateVisibility();
-            UpdateCoordinates();
         }
 
         public override void UpdateType ()
@@ -233,7 +141,7 @@ namespace Graph3DVisualizer.Graph3D
                     break;
 
                 case EdgeVisibility.DependOnVertices:
-                    _lineRenderer.enabled = _adjacentVertices.FromVertex.Visibility && _adjacentVertices.ToVertex.Visibility;
+                    _lineRenderer.enabled = AdjacentVertices.FromVertex.Visibility && AdjacentVertices.ToVertex.Visibility;
                     break;
             }
 
@@ -249,11 +157,7 @@ namespace Graph3DVisualizer.Graph3D
         public Texture2D LineTexture { get; set; }
 
         public SpriteEdgeParameters (float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f, EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string id = null,
-            Texture2D arrowTexture = null, Texture2D lineTexture = null) : base(sourceOffsetDist, targetOffsetDist, width, visibility, id)
-        {
-            ArrowTexture = arrowTexture;
-            LineTexture = lineTexture;
-        }
+            Texture2D arrowTexture = null, Texture2D lineTexture = null) : base(sourceOffsetDist, targetOffsetDist, width, visibility, id) => (ArrowTexture, LineTexture) = (arrowTexture, lineTexture);
 
         public SpriteEdgeParameters (EdgeParameters edgeParameters, Texture2D arrowTexture = null, Texture2D lineTexture = null) :
             this(edgeParameters.SourceOffsetDist, edgeParameters.TargetOffsetDist, edgeParameters.Width, edgeParameters.Visibility, edgeParameters.Id, arrowTexture, lineTexture)

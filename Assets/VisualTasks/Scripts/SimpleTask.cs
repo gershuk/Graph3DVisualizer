@@ -54,7 +54,7 @@ namespace Graph3DVisualizer.GraphTasks
             var TextTextureFactory = new TextTextureFactory(customFont, 32);
             var resizedTetxure = Texture2DExtension.ResizeTexture(mainTexture, 200, 200);
 
-            for (var i = 0; i < 200; ++i)
+            for (var i = 0; i < 500; ++i)
             {
                 var text = TextTextureFactory.MakeTextTexture($"Vertex{i}");
                 text = Texture2DExtension.ResizeTexture(text, 200, (int) (Math.Truncate(200.0 / text.width + 1)) * text.height);
@@ -73,14 +73,14 @@ namespace Graph3DVisualizer.GraphTasks
                 var combIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height);
                 var billPar2 = new BillboardParameters(combIm2, new Vector2(value, value), 0.1f, true, true, Color.red);
 
-                var verPar = new SelectableVertexParameters(billPar1, billPar2, new Vector3(i % 30 * 100, i / 30 * 100, 0));
+                var verPar = new SelectableVertexParameters(billPar1, billPar2, new Vector3(i % 30 * 40, i / 30 * 40, 0));
                 var currentVertex = graphControler.SpawnVertex<SelectableVertex, SelectableVertexParameters>(verPar);
                 currentVertex.gameObject.AddComponent<VertexLinksMenu>();
                 currentVertex.gameObject.name = $"Vertex{i}";
-                var edgeParams = new SpriteEdgeParameters(6, 6);
-                lastVertex?.Link<SpriteEdge, SpriteEdgeParameters>(currentVertex, edgeParams);
+                var edgeParams = new StretchableEdgeParameters(6, 6, 6, 16, Color.green);
+                lastVertex?.Link<StretchableEdge, StretchableEdgeParameters>(currentVertex, edgeParams);
                 if (lastVertex != null && i % 2 == 0)
-                    currentVertex.Link<SpriteEdge, SpriteEdgeParameters>(lastVertex, edgeParams);
+                    currentVertex.Link<StretchableEdge, StretchableEdgeParameters>(lastVertex, edgeParams);
                 lastVertex = currentVertex;
 
                 //Destroy(text);

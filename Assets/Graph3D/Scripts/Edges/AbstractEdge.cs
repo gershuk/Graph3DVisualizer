@@ -40,11 +40,11 @@ namespace Graph3DVisualizer.Graph3D
 
         public void Deconstruct (out AbstractVertex fromVertex, out AbstractVertex toVertex) => (fromVertex, toVertex) = (FromVertex, ToVertex);
 
-        public float GetDistance () => Vector3.Distance(FromVertex.transform.position, ToVertex.transform.position);
+        public float Distance => Vector3.Distance(FromVertex.transform.position, ToVertex.transform.position);
 
-        public Vector3 GetMiddlePoint () => (FromVertex.transform.position + ToVertex.transform.position) / 2;
+        public Vector3 MiddlePoint => (FromVertex.transform.position + ToVertex.transform.position) / 2;
 
-        public Vector3 GetUnitVector () => (ToVertex.transform.position - FromVertex.transform.position) / GetDistance();
+        public Vector3 UnitVector => (ToVertex.transform.position - FromVertex.transform.position) / Distance;
     }
 
     /// <summary>
@@ -77,15 +77,70 @@ namespace Graph3DVisualizer.Graph3D
             }
         }
 
-        public virtual float SourceOffsetDist { get => _sourceOffsetDist; set => _sourceOffsetDist = value; }
-        public virtual float TargetOffsetDist { get => _targetOffsetDist; set => _targetOffsetDist = value; }
-        public virtual EdgeType Type { get => _type; set => _type = value; }
-        public virtual EdgeVisibility Visibility { get => _visibility; set => _visibility = value; }
-        public virtual float Width { get => _width; set => _width = value; }
+        public virtual float SourceOffsetDist
+        {
+            get => _sourceOffsetDist;
+            set
+            {
+                if (_sourceOffsetDist != value)
+                {
+                    _sourceOffsetDist = value;
+                    UpdateCoordinates();
+                }
+            }
+        }
 
-        protected abstract void SubscribeOnVerticesEvents ();
+        public virtual float TargetOffsetDist
+        {
+            get => _targetOffsetDist;
+            set
+            {
+                if (_targetOffsetDist != value)
+                {
+                    _targetOffsetDist = value;
+                    UpdateCoordinates();
+                }
+            }
+        }
 
-        protected abstract void UnsubscribeOnVerticesEvents ();
+        public virtual EdgeType Type
+        {
+            get => _type;
+            set
+            {
+                if (_type != value)
+                {
+                    _type = value;
+                    UpdateType();
+                }
+            }
+        }
+
+        public virtual EdgeVisibility Visibility
+        {
+            get => _visibility;
+            set
+            {
+                if (_visibility != value)
+                {
+                    _visibility = value;
+                    UpdateVisibility();
+                }
+            }
+        }
+
+        public virtual float Width
+        {
+            get => _width;
+            set
+            {
+                if (_width != value)
+                {
+                    _width = value;
+                    UpdateType();
+                }
+            }
+        }
 
         public EdgeParameters DownloadParams () => new EdgeParameters(SourceOffsetDist, TargetOffsetDist, Width, Visibility, Id);
 
@@ -95,6 +150,7 @@ namespace Graph3DVisualizer.Graph3D
 
             SourceOffsetDist = parameters.SourceOffsetDist;
             TargetOffsetDist = parameters.TargetOffsetDist;
+            Width = parameters.Width;
 
             Visibility = parameters.Visibility;
 
@@ -103,11 +159,57 @@ namespace Graph3DVisualizer.Graph3D
 
         public abstract void UpdateCoordinates ();
 
-        public abstract void UpdateEdge ();
+#if UNITY_EDITOR
+
+        [ContextMenu("UpdateEdge")]
+        private void CallUpdateEdge () => UpdateEdge();
+
+#endif
+
+        public void UpdateEdge ()
+        {
+            UpdateType();
+            UpdateVisibility();
+            UpdateCoordinates();
+        }
 
         public abstract void UpdateType ();
 
         public abstract void UpdateVisibility ();
+
+        private void OnDestroyed (UnityEngine.Object obj) => Destroy(gameObject);
+
+        private void OnMove (Vector3 arg1, UnityEngine.Object arg2) => UpdateCoordinates();
+
+        private void OnVisibilityChange (bool visibility, UnityEngine.Object obj) => UpdateVisibility();
+
+        protected virtual void SubscribeOnVerticesEvents ()
+        {
+            var vertexes = new[] { AdjacentVertices.FromVertex, AdjacentVertices.ToVertex };
+            foreach (var vertex in vertexes)
+            {
+                if (vertex != null)
+                {
+                    vertex.Destroyed += OnDestroyed;
+                    vertex.VisibleChanged += OnVisibilityChange;
+                    vertex.MovementComponent.ObjectMoved += OnMove;
+                }
+            }
+        }
+
+        protected virtual void UnsubscribeOnVerticesEvents ()
+        {
+            var vertexes = new[] { AdjacentVertices.FromVertex, AdjacentVertices.ToVertex };
+            foreach (var vertex in vertexes)
+            {
+                if (vertex != null)
+                {
+                    vertex.Destroyed -= OnDestroyed;
+                    vertex.VisibleChanged -= OnVisibilityChange;
+                    vertex.MovementComponent.ObjectMoved -= OnMove;
+                }
+            }
+        }
     }
 
     /// <summary>
