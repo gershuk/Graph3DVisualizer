@@ -40,7 +40,6 @@ namespace Graph3DVisualizer.TextureFactory
                 var width = Mathf.RoundToInt((characterInfo.uvTopRight.x - characterInfo.uvBottomLeft.x) * fontTexture.width);
                 var height = Mathf.RoundToInt((characterInfo.uvTopRight.y - characterInfo.uvBottomLeft.y) * fontTexture.height);
 
-                //ToDo : Change to GetPixels32
                 var pixels = fontTexture.GetPixels((int) (characterInfo.uvBottomLeft.x * fontTexture.width),
                                                     (int) (characterInfo.uvBottomLeft.y * fontTexture.height),
                                                     width, height);

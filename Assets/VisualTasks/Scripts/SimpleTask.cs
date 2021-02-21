@@ -64,23 +64,23 @@ namespace Graph3DVisualizer.GraphTasks
 
                 var width = resizedTetxure.width;
                 var height = resizedTetxure.height + text.height;
-                var scale = 10f;
+                const float scale = 10f;
 
-                var combIm1 = new CombinedImages(image1, width, height, TextureWrapMode.Clamp, false);
+                var combIm1 = new CombinedImages(image1, width, height);
                 var billPar1 = new BillboardParameters(combIm1, new Vector2(scale, height * scale / width), 0.1f, true, false, Color.white);
 
                 var value = Mathf.Max(scale + 3.5f, height * scale / width + 3.5f);
-                var combIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height, TextureWrapMode.Clamp, false);
+                var combIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height);
                 var billPar2 = new BillboardParameters(combIm2, new Vector2(value, value), 0.1f, true, true, Color.red);
 
                 var verPar = new SelectableVertexParameters(billPar1, billPar2, new Vector3(i % 30 * 100, i / 30 * 100, 0));
                 var currentVertex = graphControler.SpawnVertex<SelectableVertex, SelectableVertexParameters>(verPar);
                 currentVertex.gameObject.AddComponent<VertexLinksMenu>();
                 currentVertex.gameObject.name = $"Vertex{i}";
-                var edgeParams = new EdgeParameters(6, 6);
-                lastVertex?.Link<Edge, EdgeParameters>(currentVertex, edgeParams);
+                var edgeParams = new SpriteEdgeParameters(6, 6);
+                lastVertex?.Link<SpriteEdge, SpriteEdgeParameters>(currentVertex, edgeParams);
                 if (lastVertex != null && i % 2 == 0)
-                    currentVertex.Link<Edge, EdgeParameters>(lastVertex, edgeParams);
+                    currentVertex.Link<SpriteEdge, SpriteEdgeParameters>(lastVertex, edgeParams);
                 lastVertex = currentVertex;
 
                 //Destroy(text);
@@ -89,7 +89,7 @@ namespace Graph3DVisualizer.GraphTasks
             return graphControler;
         }
 
-        public override List<Verdict> GetResult () => throw new NotImplementedException();
+        public override List<Verdict> GetResult () => new List<Verdict>(1) { new Verdict("Test", VerdictStatus.Correct) };
 
         public override void InitTask ()
         {
@@ -106,7 +106,7 @@ namespace Graph3DVisualizer.GraphTasks
                              new Color(143f,0f,1f),
                          };
 
-            var edgeTypes = new List<Type>(1) { typeof(Edge) };
+            var edgeTypes = new List<Type>(1) { typeof(SpriteEdge) };
 
             var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath)).GetComponent<FlyPlayer>();
             _players.Add(player);

@@ -182,7 +182,6 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// </summary>
     [Serializable]
     [YuzuAll]
-    [YuzuAlias("GrabItemToolParams")]
     public class GrabItemToolParams : AbstractToolParams
     { }
 }

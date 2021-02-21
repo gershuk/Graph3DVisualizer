@@ -30,7 +30,7 @@ namespace Graph3DVisualizer.SupportComponents
 
         public event Action<GameObject> Clicked;
 
-        protected abstract void ClickAction (GameObject gameObject);
+        protected abstract void ClickAction (GameObject callingObject);
 
         public void Click (GameObject gameObject)
         {

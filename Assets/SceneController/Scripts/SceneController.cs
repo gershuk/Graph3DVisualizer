@@ -30,6 +30,7 @@ using UnityEngine;
 
 using Yuzu;
 using Yuzu.Json;
+using Yuzu.Metadata;
 
 namespace Graph3DVisualizer.Scene
 {
@@ -40,14 +41,11 @@ namespace Graph3DVisualizer.Scene
     public class SceneController : MonoBehaviour, ICustomizable<SceneControllerParameters>
     {
         private static SurrogateSelector _surrogateSelector;
-
-        private AbstractVisualTask _activeTask;
         private Dictionary<string, Assembly> _asseblies;
-        private List<Type> _taskList;
         private CommonOptions _yuzuCommonOptions;
 
-        public AbstractVisualTask ActiveTask { get => _activeTask; private set => _activeTask = value; }
-        public List<Type> TaskList { get => _taskList; private set => _taskList = value; }
+        public AbstractVisualTask ActiveTask { get; private set; }
+        public List<Type> TaskList { get; private set; }
 
         private void Awake ()
         {
@@ -89,6 +87,16 @@ namespace Graph3DVisualizer.Scene
                                                                                       AddItem(nameof(Color.a), i => i.AddAttr(new YuzuMember("A")))),
                 AllowEmptyTypes = true,
             };
+
+            var surrogateTexture2D = Meta.Get(typeof(Texture2D), _yuzuCommonOptions).Surrogate;
+            surrogateTexture2D.SurrogateType = typeof(JsonTexture2D);
+            surrogateTexture2D.FuncTo = JsonTexture2D.ToSurrogate;
+            surrogateTexture2D.FuncFrom = JsonTexture2D.FromSurrogate;
+
+            var surrogateType = Meta.Get(typeof(Type), _yuzuCommonOptions).Surrogate;
+            surrogateType.SurrogateType = typeof(JsonSystemType);
+            surrogateType.FuncTo = JsonSystemType.ToSurrogate;
+            surrogateType.FuncFrom = JsonSystemType.FromSurrogate;
         }
 
         private void LoadAssemblies (params (string name, string path)[] assemblies)
@@ -106,30 +114,26 @@ namespace Graph3DVisualizer.Scene
             }
         }
 
-        public SceneControllerParameters DownloadParams () => new SceneControllerParameters(_activeTask.GetType(), (VisualTaskParameters) CustomizableExtension.CallDownloadParams(_activeTask));
+        public SceneControllerParameters DownloadParams () => new SceneControllerParameters(ActiveTask.GetType(), (VisualTaskParameters) CustomizableExtension.CallDownloadParams(ActiveTask));
 
         public void FindAllTasks ()
         {
             var assemblys = AppDomain.CurrentDomain.GetAssemblies();
-            _taskList = new List<Type>();
+            TaskList = new List<Type>();
             foreach (var assembly in assemblys)
             {
                 var types = assembly.GetTypes();
                 foreach (var type in types)
                 {
                     if (type.IsSubclassOf(typeof(AbstractVisualTask)))
-                        _taskList.Add(type);
+                        TaskList.Add(type);
                 }
             }
         }
 
-        public void Load ()
+        public void LoadBinary (string name)
         {
-        }
-
-        public void LoadBinary (string path)
-        {
-            using (var fs = new FileStream(path, FileMode.Open))
+            using (var fs = new FileStream(name, FileMode.Open))
             {
                 var formatter = new BinaryFormatter { SurrogateSelector = _surrogateSelector };
                 var parameters = (SceneControllerParameters) formatter.Deserialize(fs);
@@ -137,9 +141,9 @@ namespace Graph3DVisualizer.Scene
             }
         }
 
-        public void LoadJson (string path)
+        public void LoadJson (string name)
         {
-            using (var sr = new StreamReader(path))
+            using (var sr = new StreamReader(name))
             {
                 var jsonDeserializer = new JsonDeserializer() { Options = _yuzuCommonOptions };
                 SetupParams(jsonDeserializer.FromString<SceneControllerParameters>(sr.ReadToEnd()));
@@ -159,18 +163,18 @@ namespace Graph3DVisualizer.Scene
             }
         }
 
-        public void SaveBinary (string path)
+        public void SaveBinary (string name)
         {
-            using (var fs = new FileStream(path, FileMode.Create))
+            using (var fs = new FileStream(name, FileMode.Create))
             {
                 var formatter = new BinaryFormatter { SurrogateSelector = _surrogateSelector };
                 formatter.Serialize(fs, DownloadParams());
             }
         }
 
-        public void SaveJson (string path)
+        public void SaveJson (string name)
         {
-            using (var sw = new StreamWriter(path))
+            using (var sw = new StreamWriter(name))
             {
                 var jsonSerializer = new JsonSerializer() { Options = _yuzuCommonOptions };
                 sw.WriteLine(jsonSerializer.ToString(DownloadParams()));
@@ -198,8 +202,8 @@ namespace Graph3DVisualizer.Scene
 
         public void StopTask ()
         {
-            _activeTask.DestroyTask();
-            Destroy(_activeTask.gameObject);
+            ActiveTask.DestroyTask();
+            Destroy(ActiveTask.gameObject);
         }
     }
 
@@ -208,12 +212,11 @@ namespace Graph3DVisualizer.Scene
     /// </summary>
     [Serializable]
     [YuzuAll]
-    [YuzuAlias("SceneControllerParameters")]
     public class SceneControllerParameters : AbstractCustomizableParameter
     {
-        [YuzuMerge]
-        public Type TaskType { get; }
-        public VisualTaskParameters VisualTaskParameters { get; }
+        public Type TaskType { get; set; }
+
+        public VisualTaskParameters VisualTaskParameters { get; set; }
 
         public SceneControllerParameters (Type taskType, VisualTaskParameters visualTaskParameters)
         {

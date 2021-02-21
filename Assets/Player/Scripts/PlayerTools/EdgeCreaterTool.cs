@@ -187,17 +187,16 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// </summary>
     [Serializable]
     [YuzuAll]
-    [YuzuAlias("EdgeCreaterToolParams")]
     public class EdgeCreaterToolParams : AbstractToolParams
     {
-        public IReadOnlyList<Type> EdgeTypes { get; private set; }
+        public IReadOnlyList<Type> EdgeTypes { get; set; }
 
         public EdgeCreaterToolParams (IReadOnlyList<Type> edgeTypes)
         {
             EdgeTypes = edgeTypes ?? throw new ArgumentNullException(nameof(edgeTypes));
             foreach (var type in EdgeTypes)
             {
-                if (!type.IsSubclassOf(typeof(Edge)) && type != typeof(Edge))
+                if (!type.IsSubclassOf(typeof(SpriteEdge)) && type != typeof(SpriteEdge))
                     throw new Exception($"{type} isn't subclass of Edge");
             }
         }

@@ -27,10 +27,10 @@ namespace Graph3DVisualizer.GUI
     /// </summary>
     public class Button3DComponnet : AbstractClickableObject
     {
-        //ToDo : change to expression
+        //ToDo : Change to expression
         public Action<GameObject> Action { get; set; }
 
-        protected override void ClickAction (GameObject gameObject) => Action?.Invoke(gameObject);
+        protected override void ClickAction (GameObject callingObject) => Action?.Invoke(callingObject);
 
         public override void SetDisabled ()
         {

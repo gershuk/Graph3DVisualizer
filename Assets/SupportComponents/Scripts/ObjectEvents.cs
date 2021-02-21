@@ -46,7 +46,7 @@ namespace Graph3DVisualizer.SupportComponents
 
         void Rotate (Vector2 rotationChange, float deltaTime);
 
-        void Translate (Vector3 moveVector, float deltaTime);
+        void Translate (Vector3 directionVector, float deltaTime);
     }
 
     /// <summary>

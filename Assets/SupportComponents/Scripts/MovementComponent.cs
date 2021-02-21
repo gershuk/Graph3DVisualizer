@@ -58,11 +58,6 @@ namespace Graph3DVisualizer.SupportComponents
         [SerializeField]
         private float _movingSpeed = 10;
 
-        private Vector3 _rotation;
-
-        [SerializeField]
-        private float _rotationSpeed = 1f;
-
         private float _startMovingTime;
         private Transform _transform;
         private TransmissionMode _transmissionMode;
@@ -76,7 +71,7 @@ namespace Graph3DVisualizer.SupportComponents
             {
                 if (TransmissionMode == TransmissionMode.Manual)
                 {
-                    _currentGearIndex = (value > -1 && value < Gears.Count) ? value : throw new ArgumentOutOfRangeException();
+                    _currentGearIndex = (value > -1 && value < Gears.Count) ? value : throw new ArgumentOutOfRangeException($"Max gear is {Gears.Count}");
                 }
                 else
                 {
@@ -125,8 +120,8 @@ namespace Graph3DVisualizer.SupportComponents
 
         public float MovingSpeed { get => _movingSpeed * Gears[CurrentGearIndex].multiplier; set => _movingSpeed = value; }
 
-        public Vector3 Rotation { get => _rotation; set => _rotation = value; }
-        public float RotationSpeed { get => _rotationSpeed; set => _rotationSpeed = value; }
+        public Vector3 Rotation { get; set; }
+        public float RotationSpeed { get; set; }
 
         public TransmissionMode TransmissionMode
         {
@@ -160,7 +155,6 @@ namespace Graph3DVisualizer.SupportComponents
             Rotation = _transform.eulerAngles;
         }
 
-        //ToDo : Check only when automatic or always?
         private void UpdateParametersWhileMoving (float deltaTime)
         {
             if (Mathf.Abs(_lastTimeCheck + deltaTime - Time.time) < _timeCheckThreshold)
@@ -183,7 +177,6 @@ namespace Graph3DVisualizer.SupportComponents
             }
         }
 
-        //ToDo : Change
         public IEnumerator MoveAlongTrajectory (IReadOnlyList<Vector3> trajectory)
         {
             _isMoving = true;

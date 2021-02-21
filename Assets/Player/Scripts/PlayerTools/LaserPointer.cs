@@ -50,7 +50,6 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private Shader _shader;
         private Texture2D _texture2D;
-        private Transform _transform;
 
         public LaserState LaserState
         {
@@ -80,7 +79,6 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private void Awake ()
         {
-            _transform = transform;
             _gameObject = gameObject;
 
             _texture2D = _texture2D == null ? Resources.Load<Texture2D>(_lineTexturePath) : _texture2D;

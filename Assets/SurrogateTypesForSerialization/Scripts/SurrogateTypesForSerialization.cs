@@ -1,9 +1,67 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.IO;
+using System.Runtime.Serialization;
 
 using UnityEngine;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.SurrogateTypesForSerialization
 {
+    [YuzuAll]
+    public class JsonSystemType
+    {
+        public string Name { get; set; }
+
+        public JsonSystemType (string name) => Name = name ?? throw new ArgumentNullException(nameof(name));
+
+        public static Type FromSurrogate (object obj) => Type.GetType((obj as JsonSystemType).Name);
+
+        public static implicit operator JsonSystemType (Type type) => ToSurrogate(type);
+
+        public static implicit operator Type (JsonSystemType jsonSystemType) => FromSurrogate(jsonSystemType);
+
+        public static JsonSystemType ToSurrogate (object obj) => new JsonSystemType((obj as Type).AssemblyQualifiedName);
+    }
+
+    [YuzuAll]
+    public class JsonTexture2D
+    {
+        public string Path { get; set; }
+
+        public JsonTexture2D (string filePath) => Path = filePath ?? Guid.NewGuid().ToString();
+
+        public static Texture2D FromSurrogate (object obj)
+        {
+            var jsonTexture2D = (JsonTexture2D) obj;
+            var texture2D = new Texture2D(1, 1);
+            using (var fs = new FileStream(jsonTexture2D.Path, FileMode.Open))
+            {
+                var bytes = new byte[fs.Length];
+                fs.Read(bytes, 0, bytes.Length);
+                texture2D.LoadImage(bytes);
+            }
+            return texture2D;
+        }
+
+        public static JsonTexture2D ToSurrogate (object obj)
+        {
+            var texture2D = (Texture2D) obj;
+            var path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"Graph3DVisualizer\");
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            var fileName = (texture2D.name != string.Empty ? texture2D.name : Guid.NewGuid().ToString()) + ".jpg";
+            path = System.IO.Path.Combine(path, fileName);
+            using (var fs = new FileStream(path, FileMode.OpenOrCreate))
+            {
+                var bytes = texture2D.EncodeToJPG();
+                fs.Write(bytes, 0, bytes.Length);
+            }
+
+            return new JsonTexture2D(path);
+        }
+    }
+
     public class SurrogateColor : ISerializationSurrogate
     {
         public void GetObjectData (object obj, SerializationInfo info, StreamingContext context)

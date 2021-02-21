@@ -49,7 +49,7 @@ namespace Graph3DVisualizer.Billboards
             set
             {
                 if (value > 1 || value < 0)
-                    throw new Exception("Cutoff parameter out of range");
+                    throw new ArgumentOutOfRangeException("Cutoff parameter out of range");
                 Material.SetFloat(_cutoff, value);
             }
         }
@@ -277,7 +277,6 @@ namespace Graph3DVisualizer.Billboards
     /// </summary>
     [Serializable]
     [YuzuAll]
-    [YuzuAlias("BillboardParameters")]
     public sealed class BillboardParameters : AbstractCustomizableParameter
     {
         /// <summary>

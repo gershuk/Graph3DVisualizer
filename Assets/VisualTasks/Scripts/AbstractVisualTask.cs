@@ -33,46 +33,36 @@ namespace Graph3DVisualizer.GraphTasks
     /// </summary>
     [Serializable]
     [YuzuAll]
-    [YuzuAlias("GraphInfo")]
     public struct GraphInfo
     {
-        public GraphParameters graphParameters;
-        public Type graphType;
+        public GraphParameters GraphParameters { get; set; }
+        public Type GraphType { get; set; }
 
         public GraphInfo (Type graphType, GraphParameters graphParameters)
         {
-            this.graphType = graphType;
-            this.graphParameters = graphParameters;
+            GraphType = graphType;
+            GraphParameters = graphParameters;
         }
 
-        public static implicit operator (Type graphType, GraphParameters graphParameters) (GraphInfo value)
-        {
-            return (value.graphType, value.graphParameters);
-        }
+        public static implicit operator (Type graphType, GraphParameters graphParameters) (GraphInfo value) => (value.GraphType, value.GraphParameters);
 
-        public static implicit operator GraphInfo ((Type graphType, GraphParameters graphParameters) value)
-        {
-            return new GraphInfo(value.graphType, value.graphParameters);
-        }
+        public static implicit operator GraphInfo ((Type graphType, GraphParameters graphParameters) value) => new GraphInfo(value.graphType, value.graphParameters);
 
         public void Deconstruct (out Type graphType, out GraphParameters graphParameters)
         {
-            graphType = this.graphType;
-            graphParameters = this.graphParameters;
+            graphType = GraphType;
+            graphParameters = GraphParameters;
         }
 
-        public override bool Equals (object obj)
-        {
-            return obj is GraphInfo other &&
-                   EqualityComparer<Type>.Default.Equals(graphType, other.graphType) &&
-                   EqualityComparer<GraphParameters>.Default.Equals(graphParameters, other.graphParameters);
-        }
+        public override bool Equals (object obj) => obj is GraphInfo other &&
+                   EqualityComparer<Type>.Default.Equals(GraphType, other.GraphType) &&
+                   EqualityComparer<GraphParameters>.Default.Equals(GraphParameters, other.GraphParameters);
 
         public override int GetHashCode ()
         {
             var hashCode = 459771302;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(graphType);
-            hashCode = hashCode * -1521134295 + EqualityComparer<GraphParameters>.Default.GetHashCode(graphParameters);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(GraphType);
+            hashCode = hashCode * -1521134295 + EqualityComparer<GraphParameters>.Default.GetHashCode(GraphParameters);
             return hashCode;
         }
     }
@@ -82,46 +72,36 @@ namespace Graph3DVisualizer.GraphTasks
     /// </summary>
     [Serializable]
     [YuzuAll]
-    [YuzuAlias("PlayerInfo")]
     public struct PlayerInfo
     {
-        public PlayerParameters playerParameters;
-        public Type playerType;
+        public PlayerParameters PlayerParameters { get; set; }
+        public Type PlayerType { get; set; }
 
         public PlayerInfo (Type playerType, PlayerParameters playerParameters)
         {
-            this.playerType = playerType;
-            this.playerParameters = playerParameters;
+            PlayerType = playerType;
+            PlayerParameters = playerParameters;
         }
 
-        public static implicit operator (Type playerType, PlayerParameters playerParameters) (PlayerInfo value)
-        {
-            return (value.playerType, value.playerParameters);
-        }
+        public static implicit operator (Type playerType, PlayerParameters playerParameters) (PlayerInfo value) => (value.PlayerType, value.PlayerParameters);
 
-        public static implicit operator PlayerInfo ((Type playerType, PlayerParameters playerParameters) value)
-        {
-            return new PlayerInfo(value.playerType, value.playerParameters);
-        }
+        public static implicit operator PlayerInfo ((Type playerType, PlayerParameters playerParameters) value) => new PlayerInfo(value.playerType, value.playerParameters);
 
         public void Deconstruct (out Type playerType, out PlayerParameters playerParameters)
         {
-            playerType = this.playerType;
-            playerParameters = this.playerParameters;
+            playerType = PlayerType;
+            playerParameters = PlayerParameters;
         }
 
-        public override bool Equals (object obj)
-        {
-            return obj is PlayerInfo other &&
-                   EqualityComparer<Type>.Default.Equals(playerType, other.playerType) &&
-                   EqualityComparer<PlayerParameters>.Default.Equals(playerParameters, other.playerParameters);
-        }
+        public override bool Equals (object obj) => obj is PlayerInfo other &&
+                   EqualityComparer<Type>.Default.Equals(PlayerType, other.PlayerType) &&
+                   EqualityComparer<PlayerParameters>.Default.Equals(PlayerParameters, other.PlayerParameters);
 
         public override int GetHashCode ()
         {
             var hashCode = -640872516;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(playerType);
-            hashCode = hashCode * -1521134295 + EqualityComparer<PlayerParameters>.Default.GetHashCode(playerParameters);
+            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(PlayerType);
+            hashCode = hashCode * -1521134295 + EqualityComparer<PlayerParameters>.Default.GetHashCode(PlayerParameters);
             return hashCode;
         }
     }
@@ -197,11 +177,10 @@ namespace Graph3DVisualizer.GraphTasks
     /// </summary>
     [Serializable]
     [YuzuAll]
-    [YuzuAlias("VisualTaskParameters")]
     public class VisualTaskParameters : AbstractCustomizableParameter
     {
-        public GraphInfo[] GraphsParameters { get; }
-        public PlayerInfo[] PlayersParameters { get; }
+        public GraphInfo[] GraphsParameters { get; set; }
+        public PlayerInfo[] PlayersParameters { get; set; }
 
         public VisualTaskParameters (PlayerInfo[] playersParameters,
                                         GraphInfo[] graphsParameters)

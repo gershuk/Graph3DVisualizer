@@ -41,7 +41,7 @@ namespace Graph3DVisualizer.GUI
             _subObjects = new List<(float offset, Transform transform)>();
         }
 
-        protected override void ClickAction (GameObject gameObject) => _plane.SetActive(true);
+        protected override void ClickAction (GameObject callingObject) => _plane.SetActive(true);
 
         public override void SetDisabled () => _plane.SetActive(false);
 

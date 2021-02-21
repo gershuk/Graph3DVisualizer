@@ -20,7 +20,6 @@ using System.Runtime.Serialization;
 
 using Yuzu;
 
-//ToDo : need to refactor this module
 namespace Graph3DVisualizer.Customizable
 {
     /// <summary>
@@ -30,7 +29,7 @@ namespace Graph3DVisualizer.Customizable
     {
         public static AbstractCustomizableParameter CallDownloadParams (object customizable)
         {
-            var methodName = nameof(ICustomizable<AbstractCustomizableParameter>.DownloadParams);
+            const string methodName = nameof(ICustomizable<AbstractCustomizableParameter>.DownloadParams);
             var attribute = (CustomizableGrandTypeAttribute) Attribute.GetCustomAttribute(customizable.GetType(), typeof(CustomizableGrandTypeAttribute), true);
             foreach (var interfaceType in customizable.GetType().GetInterfaces())
             {
@@ -44,7 +43,6 @@ namespace Graph3DVisualizer.Customizable
             throw new MissingMethodException(customizable.GetType().Name, methodName);
         }
 
-        [Obsolete]
         public static List<T> CallDownloadParams<T> (object customizable) where T : AbstractCustomizableParameter
         {
             var parameters = new List<T>();
@@ -61,7 +59,7 @@ namespace Graph3DVisualizer.Customizable
 
         public static void CallSetUpParams (object customizable, object parameter)
         {
-            var methodName = nameof(ICustomizable<AbstractCustomizableParameter>.SetupParams);
+            const string methodName = nameof(ICustomizable<AbstractCustomizableParameter>.SetupParams);
             var attribute = (CustomizableGrandTypeAttribute) Attribute.GetCustomAttribute(customizable.GetType(), typeof(CustomizableGrandTypeAttribute), true);
             foreach (var interfaceType in customizable.GetType().GetInterfaces())
             {
@@ -73,10 +71,9 @@ namespace Graph3DVisualizer.Customizable
                 }
             }
 
-            throw new MissingMethodException();
+            throw new MissingMethodException($"Customizable methods with parameter type {attribute.Type} not found");
         }
 
-        [Obsolete]
         public static void CallSetUpParams (object customizable, object[] parameters)
         {
             foreach (var param in parameters)
@@ -93,7 +90,7 @@ namespace Graph3DVisualizer.Customizable
                 }
 
                 if (!isFinded)
-                    throw new Exception($"Customizable methods with parameter type {param.GetType()} not found");
+                    throw new MissingMethodException($"Customizable methods with parameter type {param.GetType()} not found");
             }
         }
     }
@@ -103,7 +100,6 @@ namespace Graph3DVisualizer.Customizable
     /// </summary>
     [Serializable]
     [YuzuAll]
-    [YuzuAlias("AbstractCustomizableParameter")]
     public abstract class AbstractCustomizableParameter { };
 
     /// <summary>

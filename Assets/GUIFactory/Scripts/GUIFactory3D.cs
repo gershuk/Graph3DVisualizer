@@ -49,7 +49,7 @@ namespace Graph3DVisualizer.GUI
                 ObjectName = objectName ?? throw new ArgumentNullException(nameof(objectName));
                 Text = text ?? throw new ArgumentNullException(nameof(text));
                 TextSize = textSize;
-                Font = font ?? throw new ArgumentNullException(nameof(font));
+                Font = font != null ? font : throw new ArgumentNullException(nameof(font));
                 FontSize = fontSize;
                 TabSize = tabSize;
                 Color = color;

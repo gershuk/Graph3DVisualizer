@@ -118,10 +118,9 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// </summary>
     [Serializable]
     [YuzuAll]
-    [YuzuAlias("SelectItemToolParams")]
     public class SelectItemToolParams : AbstractToolParams
     {
-        public IReadOnlyList<Color> Colors { get; }
+        public IReadOnlyList<Color> Colors { get; set; }
 
         public SelectItemToolParams (IReadOnlyList<Color> colors) => Colors = colors ?? throw new ArgumentNullException(nameof(colors));
     }

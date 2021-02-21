@@ -85,7 +85,6 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// </summary>
     [Serializable]
     [YuzuAll]
-    [YuzuAlias("PlayerParameters")]
     public class PlayerParameters : AbstractCustomizableParameter
     {
         public Vector3 EulerAngles { get; set; }

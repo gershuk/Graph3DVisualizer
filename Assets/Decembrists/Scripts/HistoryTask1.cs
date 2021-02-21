@@ -39,10 +39,9 @@ namespace Graph3DVisualizer.GraphTasks
 
         private DecembristVertex AddPeople (TextTextureFactory textTextureFactory, UnityEngine.Object man, Graph graphController, Texture2D selectFrame, bool isDec)
         {
-            var rand = new System.Random();
             var picked = (Texture2D) man;
             var name = textTextureFactory.MakeTextTexture(picked.name.Replace(',', '\n').Replace(' ', '\n').Replace("\n\n", "\n"), true);
-            var scale = 15f;
+            const float scale = 15f;
 
             var resizedTexture = Texture2DExtension.ResizeTexture(picked, name.width, picked.height / picked.width * name.width);
             var image1 = new PositionedImage[2] { (resizedTexture, new Vector2Int(0, name.height)), (name, new Vector2Int(0, 0)) };
@@ -51,10 +50,10 @@ namespace Graph3DVisualizer.GraphTasks
             var width = Math.Max(resizedTexture.width, name.width);
             var height = resizedTexture.height + name.height;
 
-            var comIm1 = new CombinedImages(image1, width, height, TextureWrapMode.Clamp, true);
+            var comIm1 = new CombinedImages(image1, width, height, initTransparentBackground: true);
             var billPar1 = new BillboardParameters(comIm1, new Vector2(scale, height * scale / width), 0.1f, true, false, Color.white);
 
-            var comIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height, TextureWrapMode.Clamp, true);
+            var comIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height, initTransparentBackground: true);
             var value = Mathf.Max(scale + 3.5f, height * scale / width + 3.5f);
             var billPar2 = new BillboardParameters(comIm2, new Vector2(value, value), 0.1f, true, true, Color.red);
 
@@ -75,7 +74,7 @@ namespace Graph3DVisualizer.GraphTasks
             var decembrists = Resources.LoadAll(_decembristsPath, typeof(Texture2D));
             var notDecembrists = Resources.LoadAll(_notDecembristsPath, typeof(Texture2D));
 
-            var decCount = 6;
+            const int decCount = 6;
             var notdecCount = 4;
             var customFont = Resources.Load<Font>(_fontPath);
             var textTextureFactory = new TextTextureFactory(customFont, 32);
@@ -89,7 +88,7 @@ namespace Graph3DVisualizer.GraphTasks
             for (var i = 0; i < notdecCount; ++i)
                 people.Add(AddPeople(textTextureFactory, notDecembrists[i], graphControler, selectFrame, false));
 
-            people = people.OrderBy(x => rand.Next()).ToList();
+            people = people.OrderBy(_ => rand.Next()).ToList();
 
             var p = 0;
             foreach (var man in people)
@@ -127,7 +126,7 @@ namespace Graph3DVisualizer.GraphTasks
                              //new Color(143f,0f,1f),
                          };
 
-            var edgeTypes = new List<Type>(1) { typeof(Edge) };
+            var edgeTypes = new List<Type>(1) { typeof(SpriteEdge) };
 
             _graphs.Add(CreateGraph());
             var player = Instantiate(Resources.Load<GameObject>(_playerPath));

@@ -97,7 +97,6 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// </summary>
     [Serializable]
     [YuzuAll]
-    [YuzuAlias("ClickToolParams")]
     public class ClickToolParams : AbstractToolParams
     {
         //public GameObject Owner { get; private set; }

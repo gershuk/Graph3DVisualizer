@@ -19,6 +19,8 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
+using Yuzu;
+
 namespace Graph3DVisualizer.TextureFactory
 {
     /// <summary>
@@ -28,10 +30,13 @@ namespace Graph3DVisualizer.TextureFactory
     {
         public static Texture2D CombineTextures (CombinedImages combinedImage)
         {
-            var newTexture = new Texture2D(combinedImage.TextureWidth, combinedImage.TextureHeight);
+            var newTexture = new Texture2D(combinedImage.TextureWidth, combinedImage.TextureHeight, combinedImage.TextureFormat, combinedImage.IsMipChain)
+            {
+                wrapMode = combinedImage.WrapMode
+            };
 
             //ToDo : Rewrite to CLI/C++
-            if (combinedImage.IsTransparentBackground)
+            if (combinedImage.InitTransparentBackground)
             {
                 newTexture.SetPixels32(new Color32[combinedImage.TextureWidth * combinedImage.TextureHeight]);
             }
@@ -43,7 +48,6 @@ namespace Graph3DVisualizer.TextureFactory
                                      image.Texture.GetPixels32());
             }
 
-            newTexture.wrapMode = combinedImage.WrapMode;
             newTexture.Apply();
 
             return newTexture;
@@ -74,34 +78,41 @@ namespace Graph3DVisualizer.TextureFactory
     /// Class describing an image consisting of several pictures.
     /// </summary>
     [Serializable]
+    [YuzuAll]
     public class CombinedImages : ICloneable
     {
         public PositionedImage[] Images { get; set; }
-        public bool IsTransparentBackground { get; set; }
+        public bool InitTransparentBackground { get; set; }
+        public bool IsMipChain { get; set; }
+        public TextureFormat TextureFormat { get; set; }
         public int TextureHeight { get; set; }
         public int TextureWidth { get; set; }
         public TextureWrapMode WrapMode { get; set; }
 
-        public CombinedImages (PositionedImage[] images, int textureWidth, int textureHeight, TextureWrapMode wrapMode, bool isTransparentBackground)
+        public CombinedImages (PositionedImage[] images, int textureWidth, int textureHeight,
+            TextureFormat textureFormat = TextureFormat.RGBA32, bool isMipChain = true, TextureWrapMode wrapMode = TextureWrapMode.Clamp, bool initTransparentBackground = false)
         {
             Images = images ?? throw new System.ArgumentNullException(nameof(images));
+            InitTransparentBackground = initTransparentBackground;
             TextureWidth = textureWidth;
             TextureHeight = textureHeight;
+            TextureFormat = textureFormat;
+            IsMipChain = isMipChain;
             WrapMode = wrapMode;
-            IsTransparentBackground = isTransparentBackground;
         }
 
-        public object Clone () => new CombinedImages((PositionedImage[]) Images.Clone(), TextureWidth, TextureHeight, WrapMode, IsTransparentBackground);
+        public object Clone () => new CombinedImages((PositionedImage[]) Images.Clone(), TextureWidth, TextureHeight, TextureFormat, IsMipChain, WrapMode, InitTransparentBackground);
     }
 
     /// <summary>
     /// Class that describes an image with a 2 dimensional coordinate reference.
     /// </summary>
     [Serializable]
+    [YuzuAll]
     public class PositionedImage
     {
-        public Vector2Int Position;
-        public Texture2D Texture;
+        public Vector2Int Position { get; set; }
+        public Texture2D Texture { get; set; }
 
         public PositionedImage (Texture2D texture, Vector2Int position)
         {

@@ -32,11 +32,10 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// </summary>
     [Serializable]
     [YuzuAll]
-    [YuzuAlias("ToolConfig")]
-    public readonly struct ToolConfig
+    public struct ToolConfig
     {
-        public AbstractToolParams ToolParams { get; }
-        public Type ToolType { get; }
+        public AbstractToolParams ToolParams { get; set; }
+        public Type ToolType { get; set; }
 
         public ToolConfig (Type toolType, AbstractToolParams toolParams)
         {
@@ -66,7 +65,6 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// </summary>
     [Serializable]
     [YuzuAll]
-    [YuzuAlias("AbstractToolParams")]
     public abstract class AbstractToolParams : AbstractCustomizableParameter
     { }
 }
