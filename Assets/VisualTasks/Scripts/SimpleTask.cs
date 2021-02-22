@@ -67,11 +67,11 @@ namespace Graph3DVisualizer.GraphTasks
                 const float scale = 10f;
 
                 var combIm1 = new CombinedImages(image1, width, height);
-                var billPar1 = new BillboardParameters(combIm1, new Vector2(scale, height * scale / width), 0.1f, true, false, Color.white);
+                var billPar1 = new BillboardParameters(Texture2DExtension.CombineTextures(combIm1), Vector4.zero, new Vector2(scale, height * scale / width), 0.1f, false, Color.white);
 
                 var value = Mathf.Max(scale + 3.5f, height * scale / width + 3.5f);
                 var combIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height);
-                var billPar2 = new BillboardParameters(combIm2, new Vector2(value, value), 0.1f, true, true, Color.red);
+                var billPar2 = new BillboardParameters(Texture2DExtension.CombineTextures(combIm2), Vector4.zero, new Vector2(value, value), 0.1f, true, Color.red);
 
                 var verPar = new SelectableVertexParameters(billPar1, billPar2, new Vector3(i % 30 * 40, i / 30 * 40, 0));
                 var currentVertex = graphControler.SpawnVertex<SelectableVertex, SelectableVertexParameters>(verPar);

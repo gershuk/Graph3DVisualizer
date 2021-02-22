@@ -54,6 +54,7 @@ namespace Graph3DVisualizer.Scene
             _surrogateSelector.AddSurrogate(typeof(Vector2), new StreamingContext(StreamingContextStates.All), new SurrogateVector2());
             _surrogateSelector.AddSurrogate(typeof(Vector2Int), new StreamingContext(StreamingContextStates.All), new SurrogateVector2Int());
             _surrogateSelector.AddSurrogate(typeof(Vector3), new StreamingContext(StreamingContextStates.All), new SurrogateVector3());
+            _surrogateSelector.AddSurrogate(typeof(Vector4), new StreamingContext(StreamingContextStates.All), new SurrogateVector4());
             _surrogateSelector.AddSurrogate(typeof(Color), new StreamingContext(StreamingContextStates.All), new SurrogateColor());
             _surrogateSelector.AddSurrogate(typeof(Quaternion), new StreamingContext(StreamingContextStates.All), new SurrogateQuaternion());
             _surrogateSelector.AddSurrogate(typeof(Texture2D), new StreamingContext(StreamingContextStates.All), new SurrogateTexture2D());
@@ -72,9 +73,10 @@ namespace Graph3DVisualizer.Scene
                                                                                       AddItem(nameof(Vector3.y), i => i.AddAttr(new YuzuMember("Y"))).
                                                                                       AddItem(nameof(Vector3.z), i => i.AddAttr(new YuzuMember("Z")))).
 
-                AddOverride(typeof(Vector3Int), o => o.AddAttr(new YuzuAlias("Vector3Int")).AddItem(nameof(Vector3Int.x), i => i.AddAttr(new YuzuMember("X"))).
-                                                                                      AddItem(nameof(Vector3Int.y), i => i.AddAttr(new YuzuMember("Y"))).
-                                                                                      AddItem(nameof(Vector3Int.z), i => i.AddAttr(new YuzuMember("Z")))).
+                AddOverride(typeof(Vector4), o => o.AddAttr(new YuzuAlias("Vector4")).AddItem(nameof(Vector4.x), i => i.AddAttr(new YuzuMember("X"))).
+                                                                                      AddItem(nameof(Vector4.y), i => i.AddAttr(new YuzuMember("Y"))).
+                                                                                      AddItem(nameof(Vector4.z), i => i.AddAttr(new YuzuMember("Z"))).
+                                                                                      AddItem(nameof(Vector4.w), i => i.AddAttr(new YuzuMember("W")))).
 
                 AddOverride(typeof(Quaternion), o => o.AddAttr(new YuzuAlias("Quaternion")).AddItem(nameof(Quaternion.x), i => i.AddAttr(new YuzuMember("X"))).
                                                                                       AddItem(nameof(Quaternion.y), i => i.AddAttr(new YuzuMember("Y"))).

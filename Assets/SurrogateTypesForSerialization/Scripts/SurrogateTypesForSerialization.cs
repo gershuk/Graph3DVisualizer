@@ -106,6 +106,28 @@ namespace Graph3DVisualizer.SurrogateTypesForSerialization
         }
     }
 
+    public class SurrogateVector4 : ISerializationSurrogate
+    {
+        public void GetObjectData (object obj, SerializationInfo info, StreamingContext context)
+        {
+            var vector4 = (Vector4) obj;
+            info.AddValue("W", vector4.w);
+            info.AddValue("X", vector4.x);
+            info.AddValue("Y", vector4.y);
+            info.AddValue("Z", vector4.z);
+        }
+
+        public object SetObjectData (object obj, SerializationInfo info, StreamingContext context, ISurrogateSelector selector)
+        {
+            var vector4 = (Vector4) obj;
+            vector4.w = info.GetSingle("W");
+            vector4.x = info.GetSingle("X");
+            vector4.y = info.GetSingle("Y");
+            vector4.z = info.GetSingle("Z");
+            return vector4;
+        }
+    }
+
     public class SurrogateTexture2D : ISerializationSurrogate
     {
         public void GetObjectData (object obj, SerializationInfo info, StreamingContext context)
