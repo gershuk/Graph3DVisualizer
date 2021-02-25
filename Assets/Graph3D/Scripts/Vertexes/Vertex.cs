@@ -42,17 +42,6 @@ namespace Graph3DVisualizer.Graph3D
 
         public override MovementComponent MovementComponent { get; protected set; }
 
-        public override Vector2 SetMainImageSize
-        {
-            get => new Vector2(_billboardControler.GetBillboard(_mainImageId).ScaleX, _billboardControler.GetBillboard(_mainImageId).ScaleY);
-            set
-            {
-                _billboardControler.GetBillboard(_mainImageId).ScaleX = value.x;
-                _billboardControler.GetBillboard(_mainImageId).ScaleY = value.y;
-                UpdateColliderRange();
-            }
-        }
-
         public override bool Visibility
         {
             set
@@ -77,27 +66,48 @@ namespace Graph3DVisualizer.Graph3D
             _outgoingLinks = new List<Link>();
             _billboardControler = GetComponent<BillboardController>();
             MovementComponent = GetComponent<MovementComponent>();
+            ImageIds = new List<BillboardId>();
         }
 
         private void OnDestroy () => Destroyed?.Invoke(this);
 
         protected virtual void UpdateColliderRange ()
         {
-            var newRadius = _sphereCollider.radius;
-            if (_mainImageId != null)
+            var newRadius = 0f;
+            foreach (var id in ImageIds)
             {
-                var mainImage = _billboardControler.GetBillboard(_mainImageId);
-                newRadius = Mathf.Max(mainImage.ScaleX / 2, mainImage.ScaleY / 2);
+                var image = _billboardControler.GetBillboard(id);
+                newRadius = Mathf.Max(image.ScaleX / 2, image.ScaleY / 2, newRadius);
             }
             _sphereCollider.radius = newRadius;
         }
 
-        public override void SetMainImage (BillboardParameters billboardParameters)
+        public override void SetImageSize (BillboardId id, Vector2 vector2)
         {
-            if (_mainImageId == null)
-                _mainImageId = _billboardControler.CreateBillboard(billboardParameters, "MainImage", "Vertex image");
-            else
-                _billboardControler.GetBillboard(_mainImageId).SetupParams(billboardParameters);
+            var billboard = _billboardControler.GetBillboard(id);
+            billboard.ScaleX = vector2.x;
+            billboard.ScaleY = vector2.y;
+            UpdateColliderRange();
+        }
+
+        public override Vector2 GetImageSize (BillboardId id) => new Vector2(_billboardControler.GetBillboard(id).ScaleX, _billboardControler.GetBillboard(id).ScaleY);
+
+        public override void DeleteImage (BillboardId billboardId)
+        {
+            base.DeleteImage(billboardId);
+            UpdateColliderRange();
+        }
+
+        public override BillboardId AddImage (BillboardParameters billboardParameters, string name, string description)
+        {
+            var res = base.AddImage(billboardParameters, name, description);
+            UpdateColliderRange();
+            return res;
+        }
+
+        public override void SetupParams (VertexParameters parameters)
+        {
+            base.SetupParams(parameters);
             UpdateColliderRange();
         }
     }

@@ -51,13 +51,13 @@ namespace Graph3DVisualizer.GraphTasks
             var height = resizedTexture.height + name.height;
 
             var comIm1 = new CombinedImages(image1, width, height, initTransparentBackground: true);
-            var billPar1 = new BillboardParameters(Texture2DExtension.CombineTextures(comIm1), Vector4.zero, new Vector2(scale, height * scale / width), 0.1f,  false, Color.white);
+            var billPar1 = new BillboardParameters[1]{new BillboardParameters(Texture2DExtension.CombineTextures(comIm1), Vector4.zero, new Vector2(scale, height * scale / width), 0.1f, false, Color.white)};
 
             var comIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height, initTransparentBackground: true);
             var value = Mathf.Max(scale + 3.5f, height * scale / width + 3.5f);
-            var billPar2 = new BillboardParameters(Texture2DExtension.CombineTextures(comIm2), Vector4.zero, new Vector2(value, value), 0.1f,  true, Color.red);
+            var billPar2 = new BillboardParameters(Texture2DExtension.CombineTextures(comIm2), Vector4.zero, new Vector2(value, value), 0.1f, true, Color.red);
 
-            var verPar = new SelectableVertexParameters(billPar1, billPar2);
+            var verPar = new SelectableVertexParameters(billPar1,billPar2);
             var vertex = graphController.SpawnVertex<DecembristVertex, SelectableVertexParameters>(verPar);
             vertex.IsDec = isDec;
             vertex.Name = picked.name;
@@ -126,17 +126,13 @@ namespace Graph3DVisualizer.GraphTasks
                              //new Color(143f,0f,1f),
                          };
 
-            var edgeTypes = new List<Type>(1) { typeof(SpriteEdge) };
-
             _graphs.Add(CreateGraph());
             var player = Instantiate(Resources.Load<GameObject>(_playerPath));
             var flyPlayer = player.GetComponent<FlyPlayer>();
             flyPlayer.SetupParams(new PlayerParameters(Vector3.back * 20, Vector3.zero, 40, 20,
-                new ToolConfig[3]
+                new ToolConfig[1]
                 {
                     new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)),
-                    new ToolConfig(typeof(GrabItemTool), null),
-                    new ToolConfig(typeof(EdgeCreaterTool), new EdgeCreaterToolParams(edgeTypes))
                 }));
             _players.Add(flyPlayer);
         }

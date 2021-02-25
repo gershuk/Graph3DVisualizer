@@ -16,6 +16,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Graph3DVisualizer.Billboards;
 using Graph3DVisualizer.Customizable;
@@ -40,7 +41,6 @@ namespace Graph3DVisualizer.Graph3D
         protected GameObject _edgePrefab;
 
         protected List<Link> _incomingLinks;
-        protected BillboardId _mainImageId;
         protected List<Link> _outgoingLinks;
         protected Transform _transform;
         protected bool _visible = true;
@@ -52,8 +52,10 @@ namespace Graph3DVisualizer.Graph3D
         public IReadOnlyList<Link> IncomingLinks => _incomingLinks;
         public abstract MovementComponent MovementComponent { get; protected set; }
         public IReadOnlyList<Link> OutgoingLinks => _outgoingLinks;
-        public abstract Vector2 SetMainImageSize { get; set; }
+        public abstract void SetImageSize (BillboardId id, Vector2 vector2);
+        public abstract Vector2 GetImageSize (BillboardId id);
         public abstract bool Visibility { get; set; }
+        public virtual IList<BillboardId> ImageIds { get; set; }
 
         private TEdge CreateEdge<TEdge, TParameters> (TParameters parameters, AbstractVertex toVertex) where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
@@ -122,8 +124,7 @@ namespace Graph3DVisualizer.Graph3D
             throw new LinkNotFoundException();
         }
 
-        public VertexParameters DownloadParams () => new VertexParameters(_billboardControler.GetBillboard(_mainImageId).DownloadParams(),
-            _transform.position, _transform.rotation, Id);
+        public VertexParameters DownloadParams () => new VertexParameters(ImageIds.Select(id => (_billboardControler.GetBillboard(id).DownloadParams())).ToArray(),_transform.position, _transform.rotation, Id);
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0029:Используйте выражение объединения", Justification = "<Ожидание>")]
         public TEdge Link<TEdge, TParameters> (AbstractVertex toVertex, TParameters edgeParameters) where TEdge : AbstractEdge where TParameters : EdgeParameters
@@ -146,14 +147,18 @@ namespace Graph3DVisualizer.Graph3D
             return edge;
         }
 
-        public abstract void SetMainImage (BillboardParameters billboardParameters);
+        public virtual BillboardId AddImage (BillboardParameters billboardParameters, string name, string description) =>
+            _billboardControler.CreateBillboard(billboardParameters, name, description);
+
+        public virtual void DeleteImage (BillboardId billboardId) => _billboardControler.DeleteBillboard(billboardId);
 
         public virtual void SetupParams (VertexParameters parameters)
         {
             Id = parameters.Id;
 
             (_transform.position, _transform.rotation) = (parameters.Position, parameters.Rotation);
-            SetMainImage(parameters.ImageParameters);
+            foreach (var param in parameters.ImageParameters)
+                ImageIds.Add(AddImage(param, param.Name, param.Description));
         }
 
         public void UnLink<TEdge> (AbstractVertex toVertex) where TEdge : AbstractEdge => UnLink(toVertex, typeof(SpriteEdge));
@@ -212,11 +217,11 @@ namespace Graph3DVisualizer.Graph3D
     [YuzuAll]
     public class VertexParameters : AbstractGraphObjectParameters
     {
-        public BillboardParameters ImageParameters { get; set; }
+        public BillboardParameters[] ImageParameters { get; set; }
         public Vector3 Position { get; set; }
         public Quaternion Rotation { get; set; }
 
-        public VertexParameters (BillboardParameters imageParameters, Vector3 position = default, Quaternion rotation = default, string id = null) : base(id)
+        public VertexParameters (BillboardParameters[] imageParameters, Vector3 position = default, Quaternion rotation = default, string id = null) : base(id)
             => (ImageParameters, Position, Rotation) = (imageParameters, position, rotation);
     }
 }

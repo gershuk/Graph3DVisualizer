@@ -95,16 +95,18 @@ namespace Graph3DVisualizer.Graph3D
             _outgoingLinks = new List<Link>();
             _billboardControler = GetComponent<BillboardController>();
             MovementComponent = GetComponent<MovementComponent>();
+            ImageIds = new List<BillboardId>();
         }
 
         protected override void UpdateColliderRange ()
         {
-            var newRadius = _sphereCollider.radius;
-            if (_mainImageId != null)
+            var newRadius = 0f;
+            foreach (var id in ImageIds)
             {
-                var mainImage = _billboardControler.GetBillboard(_mainImageId);
-                newRadius = Mathf.Max(mainImage.ScaleX / 2, mainImage.ScaleY / 2);
+                var image = _billboardControler.GetBillboard(id);
+                newRadius = Mathf.Max(image.ScaleX / 2, image.ScaleY / 2, newRadius);
             }
+
             if (_selectFrameId != null)
             {
                 var selectFrame = _billboardControler.GetBillboard(_selectFrameId);
@@ -114,7 +116,8 @@ namespace Graph3DVisualizer.Graph3D
         }
 
         public new SelectableVertexParameters DownloadParams () =>
-            new SelectableVertexParameters((this as ICustomizable<VertexParameters>).DownloadParams(), _billboardControler.GetBillboard(_selectFrameId).DownloadParams(), IsSelected, Id);
+            new SelectableVertexParameters((this as ICustomizable<VertexParameters>).DownloadParams(), 
+                (BillboardParameters) CustomizableExtension.CallDownloadParams(_billboardControler.GetBillboard(_selectFrameId)), IsSelected, Id);
 
         public void SetSelectFrame (BillboardParameters billboardParameters)
         {
@@ -130,6 +133,8 @@ namespace Graph3DVisualizer.Graph3D
             SetupParams((VertexParameters) parameters);
             SetSelectFrame(parameters.SelectFrameParameters);
             IsSelected = parameters.IsSelected;
+
+            UpdateColliderRange();
         }
     }
 
@@ -143,9 +148,9 @@ namespace Graph3DVisualizer.Graph3D
         public bool IsSelected { get; set; }
         public BillboardParameters SelectFrameParameters { get; set; }
 
-        public SelectableVertexParameters (BillboardParameters imageParameters, BillboardParameters selectFrameParameters,
-               Vector3 position = default, Quaternion rotation = default, bool isSelected = false, string id = null) : base(imageParameters, position, rotation, id) =>
-               (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
+        public SelectableVertexParameters (BillboardParameters[] imageParameters, BillboardParameters selectFrameParameters,
+            Vector3 position = default, Quaternion rotation = default, bool isSelected = false, string id = null) : 
+                base(imageParameters,position, rotation, id) =>(SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
 
         public SelectableVertexParameters (VertexParameters vertexParameters, BillboardParameters selectFrameParameters, bool isSelected = false, string id = null) :
                                   this(vertexParameters.ImageParameters, selectFrameParameters, vertexParameters.Position, vertexParameters.Rotation, isSelected, id)

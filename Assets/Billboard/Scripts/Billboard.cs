@@ -26,6 +26,9 @@ namespace Graph3DVisualizer.Billboards
 
         public event Action ScaleChanged;
 
+        public string Name { get; set; }
+        public string Description { get; set; }
+
         public float Cutoff
         {
             get => Material.GetFloat(_cutoff);
@@ -96,7 +99,7 @@ namespace Graph3DVisualizer.Billboards
         }
 
         public BillboardParameters DownloadParams () =>
-            new BillboardParameters(MainTexture, Offset, new Vector2(ScaleX, ScaleY), Cutoff, IsMonoColor, MonoColor);
+            new BillboardParameters(MainTexture, Offset, new Vector2(ScaleX, ScaleY), Cutoff, IsMonoColor, MonoColor, Name, Description);
 
         public void SetupParams (BillboardParameters billboardParameters)
         {
@@ -108,6 +111,8 @@ namespace Graph3DVisualizer.Billboards
             Cutoff = billboardParameters.Cutoff;
             IsMonoColor = billboardParameters.IsMonoColor;
             MonoColor = billboardParameters.MonoColor;
+            Name = billboardParameters.Name;
+            Description = billboardParameters.Description;
         }
     }
 
@@ -148,6 +153,9 @@ namespace Graph3DVisualizer.Billboards
         /// </summary>
         public Color MonoColor { get; set; }
 
+        public string Name { get; set; }
+
+        public string Description { get; set; }
 
         /// <summary>
         /// The class constructor.
@@ -165,7 +173,8 @@ namespace Graph3DVisualizer.Billboards
         /// </param>
         /// <param name="monoColor">
         /// Used to determine image color in MonoColor mode.</param>
-        public BillboardParameters (Texture2D texture, Vector4 offset, Vector2 scale = default, float cutoff = 1f, bool isMonoColor = false, Color monoColor = default)
+        public BillboardParameters (Texture2D texture, Vector4 offset = default, Vector2 scale = default, float cutoff = 0.1f, bool isMonoColor = false, Color monoColor = default, 
+            string name = default, string description = default)
         {
             Texture = texture;
             Offset = offset;
@@ -173,6 +182,8 @@ namespace Graph3DVisualizer.Billboards
             Cutoff = cutoff;
             IsMonoColor = isMonoColor;
             MonoColor = monoColor;
+            Name = name ?? string.Empty;
+            Description = description ?? string.Empty;
         }
     }
 }

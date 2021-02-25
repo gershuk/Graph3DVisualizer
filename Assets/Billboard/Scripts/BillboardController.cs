@@ -135,7 +135,7 @@ namespace Graph3DVisualizer.Billboards
             var newValue = 0f;
             foreach (var billboard in _billboards)
             {
-                newValue = Mathf.Max(billboard.Value.ScaleX, billboard.Value.ScaleY);
+                newValue = Mathf.Max(billboard.Value.ScaleX + billboard.Value.Offset.x * 2, billboard.Value.ScaleY + billboard.Value.Offset.y * 2, newValue);
             }
             bounds.size = new Vector3(newValue, newValue, newValue);
             _meshFilter.mesh.bounds = bounds;
