@@ -46,9 +46,8 @@ namespace Graph3DVisualizer.PlayerInputControls
         private const string _changeRangeActionName = "ChangeEdgeType";
         private const string _createEdgeActionName = "CreateEdgeAction";
         private const string _deleteEdgeActionName = "DeleteEdgeAction";
-        private EdgeParameters _edgeParameters;
 
-        private List<Type> _edgeTypes;
+        private List<(Type type, EdgeParameters parameters)> _edgeData;
 
         private Vertex _firstVertex;
 
@@ -66,9 +65,8 @@ namespace Graph3DVisualizer.PlayerInputControls
         private void Awake ()
         {
             _state = State.None;
-            _edgeTypes = new List<Type>();
+            _edgeData = new List<(Type, EdgeParameters)>();
             _laserPointer = GetComponent<LaserPointer>();
-            _edgeParameters = new EdgeParameters(6, 6);
         }
 
         private void CallChangeEdgeType (InputAction.CallbackContext obj) => ChangeIndex(Mathf.RoundToInt(obj.ReadValue<float>()));
@@ -100,7 +98,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             _laserPointer.Range = _rayCastRange;
         }
 
-        public void ChangeIndex (int deltaIndex) => _typeIndex = (_typeIndex + deltaIndex) < 0 ? _edgeTypes.Count - 1 : (_typeIndex + deltaIndex) % _edgeTypes.Count;
+        public void ChangeIndex (int deltaIndex) => _typeIndex = (_typeIndex + deltaIndex) < 0 ? _edgeData.Count - 1 : (_typeIndex + deltaIndex) % _edgeData.Count;
 
         public void CreateEdge ()
         {
@@ -108,7 +106,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             {
                 try
                 {
-                    _firstVertex.Link(_secondVertex, _edgeTypes[_typeIndex], _edgeParameters);
+                    _firstVertex.Link(_secondVertex, _edgeData[_typeIndex].type, _edgeData[_typeIndex].parameters);
                 }
                 catch (Exception ex)
                 {
@@ -127,7 +125,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             {
                 try
                 {
-                    _firstVertex.UnLink(_secondVertex, _edgeTypes[_typeIndex]);
+                    _firstVertex.UnLink(_secondVertex, _edgeData[_typeIndex].type);
                 }
                 catch (Exception ex)
                 {
@@ -140,7 +138,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             }
         }
 
-        public EdgeCreaterToolParams DownloadParams () => new EdgeCreaterToolParams(_edgeTypes);
+        public EdgeCreaterToolParams DownloadParams () => new EdgeCreaterToolParams(_edgeData);
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
@@ -179,7 +177,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             }
         }
 
-        public void SetupParams (EdgeCreaterToolParams parameters) => _edgeTypes = parameters.EdgeTypes.ToList();
+        public void SetupParams (EdgeCreaterToolParams parameters) => _edgeData = parameters.EdgeTypes.ToList();
     }
 
     /// <summary>
@@ -189,12 +187,12 @@ namespace Graph3DVisualizer.PlayerInputControls
     [YuzuAll]
     public class EdgeCreaterToolParams : AbstractToolParams
     {
-        public IReadOnlyList<Type> EdgeTypes { get; set; }
+        public IReadOnlyList<(Type, EdgeParameters)> EdgeTypes { get; set; }
 
-        public EdgeCreaterToolParams (IReadOnlyList<Type> edgeTypes)
+        public EdgeCreaterToolParams (IReadOnlyList<(Type, EdgeParameters)> edgeTypes)
         {
             EdgeTypes = edgeTypes ?? throw new ArgumentNullException(nameof(edgeTypes));
-            foreach (var type in EdgeTypes)
+            foreach (var (type, parameters) in EdgeTypes)
             {
                 if (!type.IsSubclassOf(typeof(SpriteEdge)) && type != typeof(SpriteEdge))
                     throw new Exception($"{type} isn't subclass of Edge");
