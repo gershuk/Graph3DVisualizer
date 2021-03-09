@@ -75,7 +75,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             transform.position = playerParams.Position;
             _moveComponent.MovingSpeed = playerParams.MovingSpeed;
             _moveComponent.RotationSpeed = playerParams.RotationSpeed;
-            _moveComponent.Rotation = playerParams.EulerAngles;
+            _moveComponent.EulerAngles = playerParams.EulerAngles;
             GiveNewTool(playerParams.ToolConfigs);
         }
     }

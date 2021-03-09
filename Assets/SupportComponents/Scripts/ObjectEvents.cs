@@ -35,7 +35,8 @@ namespace Graph3DVisualizer.SupportComponents
     /// </summary>
     public interface IMoveable
     {
-        event Action<Vector3, UnityEngine.Object> ObjectMoved;
+        event Action<Vector3, UnityEngine.Object> ObjectPositionChanged;
+        event Action<Vector3, UnityEngine.Object> ObjectEulerAnglesChanged;
 
         Vector3 GlobalCoordinates { get; set; }
         Vector3 LocalCoordinates { get; set; }

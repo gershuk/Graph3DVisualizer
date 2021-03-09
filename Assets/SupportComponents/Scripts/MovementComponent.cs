@@ -61,8 +61,10 @@ namespace Graph3DVisualizer.SupportComponents
         private float _startMovingTime;
         private Transform _transform;
         private TransmissionMode _transmissionMode;
+        private Vector3 _eulerAngles;
 
-        public event Action<Vector3, UnityEngine.Object> ObjectMoved;
+        public event Action<Vector3, UnityEngine.Object> ObjectPositionChanged;
+        public event Action<Vector3, UnityEngine.Object> ObjectEulerAnglesChanged;
 
         public int CurrentGearIndex
         {
@@ -99,7 +101,7 @@ namespace Graph3DVisualizer.SupportComponents
                 if (!_isMoving && _transform.position != value)
                 {
                     _transform.position = value;
-                    ObjectMoved?.Invoke(value, this);
+                    ObjectPositionChanged?.Invoke(value, this);
                 }
             }
             get => _transform.position;
@@ -112,7 +114,7 @@ namespace Graph3DVisualizer.SupportComponents
                 if (!_isMoving && _transform.localPosition != value)
                 {
                     _transform.localPosition = value;
-                    ObjectMoved?.Invoke(_transform.position, this);
+                    ObjectPositionChanged?.Invoke(_transform.position, this);
                 }
             }
             get => _transform.localPosition;
@@ -120,7 +122,19 @@ namespace Graph3DVisualizer.SupportComponents
 
         public float MovingSpeed { get => _movingSpeed * Gears[CurrentGearIndex].multiplier; set => _movingSpeed = value; }
 
-        public Vector3 Rotation { get; set; }
+        public Vector3 EulerAngles
+        {
+            get => _eulerAngles;
+            set
+            {
+                if (_eulerAngles != value)
+                {
+                    _eulerAngles = value;
+                    _transform.eulerAngles = _eulerAngles;
+                    ObjectEulerAnglesChanged?.Invoke(value, this);
+                }
+            }
+        }
         public float RotationSpeed { get; set; }
 
         public TransmissionMode TransmissionMode
@@ -132,6 +146,8 @@ namespace Graph3DVisualizer.SupportComponents
                 switch (_transmissionMode)
                 {
                     //use a field instead of a property because the property only switches in manual mode
+                    case TransmissionMode.Manual:
+                    case TransmissionMode.Auto:
                     case TransmissionMode.FirstGear:
                         _currentGearIndex = 0;
                         break;
@@ -152,7 +168,7 @@ namespace Graph3DVisualizer.SupportComponents
 
             _isMoving = false;
             _transform = transform;
-            Rotation = _transform.eulerAngles;
+            EulerAngles = _transform.eulerAngles;
         }
 
         private void UpdateParametersWhileMoving (float deltaTime)
@@ -193,7 +209,7 @@ namespace Graph3DVisualizer.SupportComponents
                         : point;
 
                     _transform.position = newCoord;
-                    ObjectMoved?.Invoke(newCoord, this);
+                    ObjectPositionChanged?.Invoke(newCoord, this);
                     yield return null;
                 }
             }
@@ -207,11 +223,10 @@ namespace Graph3DVisualizer.SupportComponents
         {
             var rotDiv = rotationChange * RotationSpeed * deltaTime;
 
-            Rotation = new Vector3((Rotation.x - rotDiv.y) % 360f, (Rotation.y + rotDiv.x) % 360f, 0);
-            Rotation = new Vector3(Mathf.Min(Rotation.x, _maxRotX), Mathf.Min(Rotation.y, _maxRotY), 0);
-            Rotation = new Vector3(Mathf.Max(Rotation.x, _minRotX), Mathf.Max(Rotation.y, _minRotY), 0);
-
-            _transform.eulerAngles = Rotation;
+            var eulerAngles = new Vector3((EulerAngles.x - rotDiv.y) % 360f, (EulerAngles.y + rotDiv.x) % 360f, 0);
+            eulerAngles = new Vector3(Mathf.Min(eulerAngles.x, _maxRotX), Mathf.Min(eulerAngles.y, _maxRotY), 0);
+            eulerAngles = new Vector3(Mathf.Max(eulerAngles.x, _minRotX), Mathf.Max(eulerAngles.y, _minRotY), 0);
+            EulerAngles = eulerAngles;
         }
 
         public void Translate (Vector3 directionVector, float deltaTime)
@@ -220,6 +235,7 @@ namespace Graph3DVisualizer.SupportComponents
             {
                 UpdateParametersWhileMoving(deltaTime);
                 _transform.Translate(directionVector * MovingSpeed * deltaTime);
+                ObjectPositionChanged?.Invoke(_transform.position, this);
             }
         }
     }

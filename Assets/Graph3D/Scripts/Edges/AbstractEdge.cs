@@ -192,7 +192,7 @@ namespace Graph3DVisualizer.Graph3D
                 {
                     vertex.Destroyed += OnDestroyed;
                     vertex.VisibleChanged += OnVisibilityChange;
-                    vertex.MovementComponent.ObjectMoved += OnMove;
+                    vertex.MovementComponent.ObjectPositionChanged += OnMove;
                 }
             }
         }
@@ -206,7 +206,7 @@ namespace Graph3DVisualizer.Graph3D
                 {
                     vertex.Destroyed -= OnDestroyed;
                     vertex.VisibleChanged -= OnVisibilityChange;
-                    vertex.MovementComponent.ObjectMoved -= OnMove;
+                    vertex.MovementComponent.ObjectPositionChanged -= OnMove;
                 }
             }
         }
