@@ -106,7 +106,7 @@ namespace Graph3DVisualizer.Customizable
     /// An attribute that specifies which type of parameters to use for <see cref="CustomizableExtension.CallDownloadParams(object)"/>, <see cref="CustomizableExtension.CallSetUpParams(object, object)"/>.
     /// </summary>
     [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
-    sealed public class CustomizableGrandTypeAttribute : Attribute
+    public sealed class CustomizableGrandTypeAttribute : Attribute
     {
         private Type _type;
         public Type Type { get => _type; set => _type = value.IsSubclassOf(typeof(AbstractCustomizableParameter)) ? value : throw new WrongTypeInCustomizableParameterException(); }

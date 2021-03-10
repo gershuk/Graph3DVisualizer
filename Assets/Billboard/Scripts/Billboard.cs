@@ -1,4 +1,20 @@
-﻿using System;
+﻿// This file is part of Graph3DVisualizer.
+// Copyright © Gershuk Vladislav 2021.
+//
+// Graph3DVisualizer is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Graph3DVisualizer is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY, without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+
+using System;
 
 using Graph3DVisualizer.Customizable;
 
@@ -13,21 +29,17 @@ namespace Graph3DVisualizer.Billboards
     [CustomizableGrandType(Type = typeof(BillboardParameters))]
     public sealed class Billboard : ICustomizable<BillboardParameters>
     {
+        private const string _billboardShaderPath = "Custom/BillboardShader";
         private const string _cutoff = "_Cutoff";
         private const string _isMonoColor = "_IsMonoColor";
         private const string _mainTextureName = "_MainTex";
         private const string _monoColor = "_MonoColor";
+        private const string _offset = "_Offset";
         private const string _scaleX = "_ScaleX";
         private const string _scaleY = "_ScaleY";
-        private const string _offset = "_Offset";
-        private const string _billboardShaderPath = "Custom/BillboardShader";
-
-        private Shader _shader = Shader.Find(_billboardShaderPath);
+        private readonly Shader _shader = Shader.Find(_billboardShaderPath);
 
         public event Action ScaleChanged;
-
-        public string Name { get; set; }
-        public string Description { get; set; }
 
         public float Cutoff
         {
@@ -39,6 +51,8 @@ namespace Graph3DVisualizer.Billboards
                 Material.SetFloat(_cutoff, value);
             }
         }
+
+        public string Description { get; set; }
 
         public bool IsMonoColor
         {
@@ -58,6 +72,14 @@ namespace Graph3DVisualizer.Billboards
         {
             get => Material.GetColor(_monoColor);
             set => Material.SetColor(_monoColor, value);
+        }
+
+        public string Name { get; set; }
+
+        public Vector4 Offset
+        {
+            get => Material.GetVector(_offset);
+            set => Material.SetVector(_offset, value);
         }
 
         public float ScaleX
@@ -92,12 +114,6 @@ namespace Graph3DVisualizer.Billboards
             set => Material.SetTextureScale(_mainTextureName, value);
         }
 
-        public Vector4 Offset
-        {
-            get => Material.GetVector(_offset);
-            set => Material.SetVector(_offset, value);
-        }
-
         public BillboardParameters DownloadParams () =>
             new BillboardParameters(MainTexture, Offset, new Vector2(ScaleX, ScaleY), Cutoff, IsMonoColor, MonoColor, Name, Description);
 
@@ -124,24 +140,13 @@ namespace Graph3DVisualizer.Billboards
     public sealed class BillboardParameters : AbstractCustomizableParameter
     {
         /// <summary>
-        /// The texture that is shown by the billboard.
-        /// </summary>
-        public Texture2D Texture { get; set; }
-
-        /// <summary>
-        /// Used to set the offset of the texture relative to the center of the billboard
-        /// </summary>
-        public Vector4 Offset { get; set; }
-
-        /// <summary>
-        /// Used to set Billboard size in units.
-        /// </summary>
-        public Vector2 Scale { get; set; }
-
-        /// <summary>
         /// Used to determine the lower bound of the texel clipping, based on the alpha channel summary.
         /// </summary>
         public float Cutoff { get; set; }
+
+        public string Description { get; set; }
+
+        public Guid Guid { get; set; }
 
         /// <summary>
         /// Used to determine image output mode. If true, image is displayed in one color, false-according to the texture.
@@ -155,7 +160,20 @@ namespace Graph3DVisualizer.Billboards
 
         public string Name { get; set; }
 
-        public string Description { get; set; }
+        /// <summary>
+        /// Used to set the offset of the texture relative to the center of the billboard
+        /// </summary>
+        public Vector4 Offset { get; set; }
+
+        /// <summary>
+        /// Used to set Billboard size in units.
+        /// </summary>
+        public Vector2 Scale { get; set; }
+
+        /// <summary>
+        /// The texture that is shown by the billboard.
+        /// </summary>
+        public Texture2D Texture { get; set; }
 
         /// <summary>
         /// The class constructor.
@@ -173,7 +191,7 @@ namespace Graph3DVisualizer.Billboards
         /// </param>
         /// <param name="monoColor">
         /// Used to determine image color in MonoColor mode.</param>
-        public BillboardParameters (Texture2D texture, Vector4 offset = default, Vector2 scale = default, float cutoff = 0.1f, bool isMonoColor = false, Color monoColor = default, 
+        public BillboardParameters (Texture2D texture, Vector4 offset = default, Vector2 scale = default, float cutoff = 0.1f, bool isMonoColor = false, Color monoColor = default,
             string name = default, string description = default)
         {
             Texture = texture;

@@ -43,6 +43,22 @@ namespace Graph3DVisualizer.GUI
             }
         }
 
+        public readonly struct CanvasParameters
+        {
+            public Camera Camera { get; }
+
+            public RectTransformParameters RectTransformParameters { get; }
+
+            public RenderMode RenderMode { get; }
+
+            public CanvasParameters (RectTransformParameters rectTransformParameters, RenderMode renderMode, Camera camera)
+            {
+                RectTransformParameters = rectTransformParameters;
+                RenderMode = renderMode;
+                Camera = camera != null ? camera : throw new ArgumentNullException(nameof(camera));
+            }
+        }
+
         public readonly struct RectTransformParameters
         {
             public Vector2 AnchoredPosition { get; }
@@ -81,20 +97,6 @@ namespace Graph3DVisualizer.GUI
             }
         }
 
-        public readonly struct CanvasParameters
-        {
-            public CanvasParameters (RectTransformParameters rectTransformParameters, RenderMode renderMode, Camera camera)
-            {
-                RectTransformParameters = rectTransformParameters;
-                RenderMode = renderMode;
-                Camera = camera != null ? camera : throw new ArgumentNullException(nameof(camera));
-            }
-
-            public RectTransformParameters RectTransformParameters { get; }
-            public RenderMode RenderMode { get; }
-            public Camera Camera { get; }
-        }
-
         public static GameObject CreateButton (in ButtonParameters parameters)
         {
             var newButton = new GameObject($"{parameters.Name}Button", typeof(Image), typeof(Button), typeof(LayoutElement));
@@ -109,6 +111,16 @@ namespace Graph3DVisualizer.GUI
             return newButton;
         }
 
+        public static GameObject CreateCanvas (in CanvasParameters parameters)
+        {
+            var newCanvas = new GameObject("Canvas", typeof(Canvas), typeof(GraphicRaycaster));
+            newCanvas.GetComponent<RectTransform>().SetUpRectTransform(parameters.RectTransformParameters);
+            var canvas = newCanvas.GetComponent<Canvas>();
+            canvas.renderMode = parameters.RenderMode;
+            canvas.worldCamera = parameters.Camera;
+            return newCanvas;
+        }
+
         public static GameObject CreateText (in TextParameters parameters)
         {
             var newText = new GameObject($"{parameters.Text}Text", typeof(Text));
@@ -120,16 +132,6 @@ namespace Graph3DVisualizer.GUI
             textComponent.alignment = parameters.Anchor;
             textComponent.fontSize = parameters.Size;
             return newText;
-        }
-
-        public static GameObject CreateCanvas (in CanvasParameters parameters)
-        {
-            var newCanvas = new GameObject("Canvas", typeof(Canvas), typeof(GraphicRaycaster));
-            newCanvas.GetComponent<RectTransform>().SetUpRectTransform(parameters.RectTransformParameters);
-            var canvas = newCanvas.GetComponent<Canvas>();
-            canvas.renderMode = parameters.RenderMode;
-            canvas.worldCamera = parameters.Camera;
-            return newCanvas;
         }
 
         public static void SetUpRectTransform (this RectTransform rectTransform, in RectTransformParameters parameters)

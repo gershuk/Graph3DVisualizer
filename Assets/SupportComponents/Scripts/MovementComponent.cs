@@ -33,6 +33,7 @@ namespace Graph3DVisualizer.SupportComponents
         [SerializeField]
         private int _currentGearIndex;
 
+        private Vector3 _eulerAngles;
         private List<(float deltaTimeFromStart, float multiplier)> _gears;
 
         private bool _isMoving;
@@ -61,10 +62,10 @@ namespace Graph3DVisualizer.SupportComponents
         private float _startMovingTime;
         private Transform _transform;
         private TransmissionMode _transmissionMode;
-        private Vector3 _eulerAngles;
+
+        public event Action<Vector3, UnityEngine.Object> ObjectEulerAnglesChanged;
 
         public event Action<Vector3, UnityEngine.Object> ObjectPositionChanged;
-        public event Action<Vector3, UnityEngine.Object> ObjectEulerAnglesChanged;
 
         public int CurrentGearIndex
         {
@@ -78,6 +79,20 @@ namespace Graph3DVisualizer.SupportComponents
                 else
                 {
                     Debug.LogError($"Transmission in {TransmissionMode} mode, you can't change gear");
+                }
+            }
+        }
+
+        public Vector3 EulerAngles
+        {
+            get => _eulerAngles;
+            set
+            {
+                if (_eulerAngles != value)
+                {
+                    _eulerAngles = value;
+                    _transform.eulerAngles = _eulerAngles;
+                    ObjectEulerAnglesChanged?.Invoke(value, this);
                 }
             }
         }
@@ -121,20 +136,6 @@ namespace Graph3DVisualizer.SupportComponents
         }
 
         public float MovingSpeed { get => _movingSpeed * Gears[CurrentGearIndex].multiplier; set => _movingSpeed = value; }
-
-        public Vector3 EulerAngles
-        {
-            get => _eulerAngles;
-            set
-            {
-                if (_eulerAngles != value)
-                {
-                    _eulerAngles = value;
-                    _transform.eulerAngles = _eulerAngles;
-                    ObjectEulerAnglesChanged?.Invoke(value, this);
-                }
-            }
-        }
         public float RotationSpeed { get; set; }
 
         public TransmissionMode TransmissionMode

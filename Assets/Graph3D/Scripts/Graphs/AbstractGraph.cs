@@ -51,10 +51,10 @@ namespace Graph3DVisualizer.Graph3D
 
         public void Deconstruct (out string firstVertexId, out string secondVertexId, out Type edgeType, out EdgeParameters edgeParameters)
         {
-            firstVertexId = this.FirstVertexId;
-            secondVertexId = this.SecondVertexId;
-            edgeType = this.EdgeType;
-            edgeParameters = this.EdgeParameters;
+            firstVertexId = FirstVertexId;
+            secondVertexId = SecondVertexId;
+            edgeType = EdgeType;
+            edgeParameters = EdgeParameters;
         }
 
         public override bool Equals (object obj) => obj is LinkInfo other &&
@@ -92,8 +92,8 @@ namespace Graph3DVisualizer.Graph3D
 
         public void Deconstruct (out Type vertexType, out VertexParameters vertexParameters)
         {
-            vertexType = this.VertexType;
-            vertexParameters = this.VertexParameters;
+            vertexType = VertexType;
+            vertexParameters = VertexParameters;
         }
 
         public override bool Equals (object obj) => obj is VertexInfo other &&

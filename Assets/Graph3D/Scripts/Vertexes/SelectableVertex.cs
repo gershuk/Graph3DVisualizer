@@ -116,7 +116,7 @@ namespace Graph3DVisualizer.Graph3D
         }
 
         public new SelectableVertexParameters DownloadParams () =>
-            new SelectableVertexParameters((this as ICustomizable<VertexParameters>).DownloadParams(), 
+            new SelectableVertexParameters((this as ICustomizable<VertexParameters>).DownloadParams(),
                 (BillboardParameters) CustomizableExtension.CallDownloadParams(_billboardControler.GetBillboard(_selectFrameId)), IsSelected, Id);
 
         public void SetSelectFrame (BillboardParameters billboardParameters)
@@ -149,8 +149,8 @@ namespace Graph3DVisualizer.Graph3D
         public BillboardParameters SelectFrameParameters { get; set; }
 
         public SelectableVertexParameters (BillboardParameters[] imageParameters, BillboardParameters selectFrameParameters,
-            Vector3 position = default, Quaternion rotation = default, bool isSelected = false, string id = null) : 
-                base(imageParameters,position, rotation, id) =>(SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
+            Vector3 position = default, Quaternion rotation = default, bool isSelected = false, string id = null) :
+                base(imageParameters, position, rotation, id) => (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
 
         public SelectableVertexParameters (VertexParameters vertexParameters, BillboardParameters selectFrameParameters, bool isSelected = false, string id = null) :
                                   this(vertexParameters.ImageParameters, selectFrameParameters, vertexParameters.Position, vertexParameters.Rotation, isSelected, id)

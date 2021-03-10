@@ -67,13 +67,13 @@ namespace Graph3DVisualizer.GraphTasks
                 const float scale = 10f;
 
                 var combIm1 = new CombinedImages(image1, width, height);
-                var billPar1 = new BillboardParameters[1] { new BillboardParameters(Texture2DExtension.CombineTextures(combIm1), Vector4.zero, new Vector2(scale, height * scale / width))};
+                var billPar1 = new BillboardParameters[1] { new BillboardParameters(Texture2DExtension.CombineTextures(combIm1), Vector4.zero, new Vector2(scale, height * scale / width)) };
 
                 var value = Mathf.Max(scale + 3.5f, height * scale / width + 3.5f);
                 var combIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height);
                 var billPar2 = new BillboardParameters(Texture2DExtension.CombineTextures(combIm2), Vector4.zero, new Vector2(value, value), 0.1f, true);
 
-                var verPar = new SelectableVertexParameters(billPar1,billPar2, new Vector3(i % 30 * 40, i / 30 * 40, 0));
+                var verPar = new SelectableVertexParameters(billPar1, billPar2, new Vector3(i % 30 * 40, i / 30 * 40, 0));
                 var currentVertex = graphControler.SpawnVertex<SelectableVertex, SelectableVertexParameters>(verPar);
                 currentVertex.gameObject.AddComponent<VertexLinksMenu>();
                 currentVertex.gameObject.name = $"Vertex{i}";
@@ -106,7 +106,7 @@ namespace Graph3DVisualizer.GraphTasks
                              new Color(143f,0f,1f),
                          };
 
-            var edgeTypes = new List<(Type type, EdgeParameters parameters)>(1) { (typeof(SpriteEdge), new SpriteEdgeParameters(1,1)) };
+            var edgeTypes = new List<(Type type, EdgeParameters parameters)>(1) { (typeof(SpriteEdge), new SpriteEdgeParameters(1, 1)) };
 
             var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath)).GetComponent<FlyPlayer>();
             _players.Add(player);

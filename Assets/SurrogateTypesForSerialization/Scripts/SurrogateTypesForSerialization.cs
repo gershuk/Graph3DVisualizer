@@ -1,4 +1,20 @@
-﻿using System;
+﻿// This file is part of Graph3DVisualizer.
+// Copyright © Gershuk Vladislav 2021.
+//
+// Graph3DVisualizer is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Graph3DVisualizer is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY, without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+
+using System;
 using System.IO;
 using System.Runtime.Serialization;
 
@@ -106,28 +122,6 @@ namespace Graph3DVisualizer.SurrogateTypesForSerialization
         }
     }
 
-    public class SurrogateVector4 : ISerializationSurrogate
-    {
-        public void GetObjectData (object obj, SerializationInfo info, StreamingContext context)
-        {
-            var vector4 = (Vector4) obj;
-            info.AddValue("W", vector4.w);
-            info.AddValue("X", vector4.x);
-            info.AddValue("Y", vector4.y);
-            info.AddValue("Z", vector4.z);
-        }
-
-        public object SetObjectData (object obj, SerializationInfo info, StreamingContext context, ISurrogateSelector selector)
-        {
-            var vector4 = (Vector4) obj;
-            vector4.w = info.GetSingle("W");
-            vector4.x = info.GetSingle("X");
-            vector4.y = info.GetSingle("Y");
-            vector4.z = info.GetSingle("Z");
-            return vector4;
-        }
-    }
-
     public class SurrogateTexture2D : ISerializationSurrogate
     {
         public void GetObjectData (object obj, SerializationInfo info, StreamingContext context)
@@ -207,6 +201,28 @@ namespace Graph3DVisualizer.SurrogateTypesForSerialization
             vector3.y = info.GetSingle("Y");
             vector3.z = info.GetSingle("Z");
             return vector3;
+        }
+    }
+
+    public class SurrogateVector4 : ISerializationSurrogate
+    {
+        public void GetObjectData (object obj, SerializationInfo info, StreamingContext context)
+        {
+            var vector4 = (Vector4) obj;
+            info.AddValue("W", vector4.w);
+            info.AddValue("X", vector4.x);
+            info.AddValue("Y", vector4.y);
+            info.AddValue("Z", vector4.z);
+        }
+
+        public object SetObjectData (object obj, SerializationInfo info, StreamingContext context, ISurrogateSelector selector)
+        {
+            var vector4 = (Vector4) obj;
+            vector4.w = info.GetSingle("W");
+            vector4.x = info.GetSingle("X");
+            vector4.y = info.GetSingle("Y");
+            vector4.z = info.GetSingle("Z");
+            return vector4;
         }
     }
 }
