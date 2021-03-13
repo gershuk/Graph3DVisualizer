@@ -179,8 +179,8 @@ namespace Graph3DVisualizer.GraphTasks
     [YuzuAll]
     public class VisualTaskParameters : AbstractCustomizableParameter
     {
-        public GraphInfo[] GraphsParameters { get; set; }
-        public PlayerInfo[] PlayersParameters { get; set; }
+        public GraphInfo[] GraphsParameters { get; protected set; }
+        public PlayerInfo[] PlayersParameters { get; protected set; }
 
         public VisualTaskParameters (PlayerInfo[] playersParameters,
                                         GraphInfo[] graphsParameters)

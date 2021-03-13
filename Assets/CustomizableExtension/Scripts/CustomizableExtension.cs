@@ -100,7 +100,7 @@ namespace Graph3DVisualizer.Customizable
     /// </summary>
     [Serializable]
     [YuzuAll]
-    public abstract class AbstractCustomizableParameter { };
+    public abstract class AbstractCustomizableParameter { }
 
     /// <summary>
     /// An attribute that specifies which type of parameters to use for <see cref="CustomizableExtension.CallDownloadParams(object)"/>, <see cref="CustomizableExtension.CallSetUpParams(object, object)"/>.

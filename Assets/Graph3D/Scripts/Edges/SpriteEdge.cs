@@ -153,8 +153,8 @@ namespace Graph3DVisualizer.Graph3D
     [YuzuAll]
     public class SpriteEdgeParameters : EdgeParameters
     {
-        public Texture2D ArrowTexture { get; set; }
-        public Texture2D LineTexture { get; set; }
+        public Texture2D ArrowTexture { get; protected set; }
+        public Texture2D LineTexture { get; protected set; }
 
         public SpriteEdgeParameters (float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f, EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string id = null,
             Texture2D arrowTexture = null, Texture2D lineTexture = null) : base(sourceOffsetDist, targetOffsetDist, width, visibility, id) => (ArrowTexture, LineTexture) = (arrowTexture, lineTexture);

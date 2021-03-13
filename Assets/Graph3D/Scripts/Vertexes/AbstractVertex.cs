@@ -219,9 +219,9 @@ namespace Graph3DVisualizer.Graph3D
     [YuzuAll]
     public class VertexParameters : AbstractGraphObjectParameters
     {
-        public BillboardParameters[] ImageParameters { get; set; }
-        public Vector3 Position { get; set; }
-        public Quaternion Rotation { get; set; }
+        public BillboardParameters[] ImageParameters { get; protected set; }
+        public Vector3 Position { get; protected set; }
+        public Quaternion Rotation { get; protected set; }
 
         public VertexParameters (BillboardParameters[] imageParameters, Vector3 position = default, Quaternion rotation = default, string id = null) : base(id)
             => (ImageParameters, Position, Rotation) = (imageParameters, position, rotation);

@@ -187,7 +187,7 @@ namespace Graph3DVisualizer.PlayerInputControls
     [YuzuAll]
     public class EdgeCreaterToolParams : AbstractToolParams
     {
-        public IReadOnlyList<(Type, EdgeParameters)> EdgeTypes { get; set; }
+        public IReadOnlyList<(Type, EdgeParameters)> EdgeTypes { get; protected set; }
 
         public EdgeCreaterToolParams (IReadOnlyList<(Type, EdgeParameters)> edgeTypes)
         {

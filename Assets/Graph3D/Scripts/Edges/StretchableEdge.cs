@@ -166,8 +166,8 @@ namespace Graph3DVisualizer.Graph3D
     [YuzuAll]
     public class StretchableEdgeParameters : EdgeParameters
     {
-        public Color Color { get; set; }
-        public float HeadLength { get; set; }
+        public Color Color { get; protected set; }
+        public float HeadLength { get; protected set; }
 
         public StretchableEdgeParameters (float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f, float headLength = 1f, Color color = default,
             EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string id = null) : base(sourceOffsetDist, targetOffsetDist, width, visibility, id) => (Color, HeadLength) = (color, headLength);

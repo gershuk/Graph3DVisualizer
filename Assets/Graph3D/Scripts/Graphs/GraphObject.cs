@@ -43,7 +43,7 @@ namespace Graph3DVisualizer.Graph3D
     [YuzuAll]
     public abstract class AbstractGraphObjectParameters : AbstractCustomizableParameter
     {
-        public string Id { get; set; }
+        public string Id { get; protected set; }
 
         public AbstractGraphObjectParameters (string id) => Id = id;
     }

@@ -45,9 +45,11 @@ namespace Graph3DVisualizer.Graph3D
             EdgeParameters = edgeParameters;
         }
 
-        public static implicit operator (string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters) (LinkInfo value) => (value.FirstVertexId, value.SecondVertexId, value.EdgeType, value.EdgeParameters);
+        public static implicit operator (string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters) (LinkInfo value) =>
+            (value.FirstVertexId, value.SecondVertexId, value.EdgeType, value.EdgeParameters);
 
-        public static implicit operator LinkInfo ((string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters) value) => new LinkInfo(value.firstVertexId, value.secondVertexId, value.edgeType, value.edgeParameters);
+        public static implicit operator LinkInfo ((string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters) value) =>
+            new LinkInfo(value.firstVertexId, value.secondVertexId, value.edgeType, value.edgeParameters);
 
         public void Deconstruct (out string firstVertexId, out string secondVertexId, out Type edgeType, out EdgeParameters edgeParameters)
         {
@@ -183,8 +185,8 @@ namespace Graph3DVisualizer.Graph3D
     [YuzuAll]
     public class GraphParameters : AbstractGraphObjectParameters
     {
-        public List<LinkInfo> Links { get; set; }
-        public VertexInfo[] VertexParameters { get; set; }
+        public List<LinkInfo> Links { get; protected set; }
+        public VertexInfo[] VertexParameters { get; protected set; }
 
         public GraphParameters (VertexInfo[] vertexParameters = default,
                                 List<LinkInfo> links = default,

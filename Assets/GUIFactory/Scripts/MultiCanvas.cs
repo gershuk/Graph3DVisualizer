@@ -71,9 +71,9 @@ namespace Graph3DVisualizer.VrHud
 
     public class CanvasControllerParameters : AbstractCustomizableParameter
     {
-        public Vector3 LocalEulerAngles { get; set; }
-        public Vector3 LocalPosition { get; set; }
-        public Vector3 Scale { get; set; }
+        public Vector3 LocalEulerAngles { get; protected set; }
+        public Vector3 LocalPosition { get; protected set; }
+        public Vector3 Scale { get; protected set; }
 
         public CanvasControllerParameters (Vector3 localPosition, Vector3 localEulerAngles, Vector3 scale) => (LocalPosition, LocalEulerAngles, Scale) = (localPosition, localEulerAngles, scale);
     }
@@ -115,7 +115,7 @@ namespace Graph3DVisualizer.VrHud
 
     public class MultiCanvasParameters : AbstractCustomizableParameter
     {
-        public CanvasControllerInfo[] CanvasControllerInfos { get; set; }
+        public CanvasControllerInfo[] CanvasControllerInfos { get; protected set; }
 
         public MultiCanvasParameters (CanvasControllerInfo[] canvasControllerTypes) =>
            CanvasControllerInfos = canvasControllerTypes ?? throw new ArgumentNullException(nameof(canvasControllerTypes));

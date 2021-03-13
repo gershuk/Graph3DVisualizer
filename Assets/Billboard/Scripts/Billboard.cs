@@ -142,38 +142,38 @@ namespace Graph3DVisualizer.Billboards
         /// <summary>
         /// Used to determine the lower bound of the texel clipping, based on the alpha channel summary.
         /// </summary>
-        public float Cutoff { get; set; }
+        public float Cutoff { get; private set; }
 
-        public string Description { get; set; }
+        public string Description { get; private set; }
 
-        public Guid Guid { get; set; }
+        public Guid Guid { get; private set; }
 
         /// <summary>
         /// Used to determine image output mode. If true, image is displayed in one color, false-according to the texture.
         /// </summary>
-        public bool IsMonoColor { get; set; }
+        public bool IsMonoColor { get; private set; }
 
         /// <summary>
         /// Used to determine image color in MonoColor mode.
         /// </summary>
-        public Color MonoColor { get; set; }
+        public Color MonoColor { get; private set; }
 
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Used to set the offset of the texture relative to the center of the billboard
         /// </summary>
-        public Vector4 Offset { get; set; }
+        public Vector4 Offset { get; private set; }
 
         /// <summary>
         /// Used to set Billboard size in units.
         /// </summary>
-        public Vector2 Scale { get; set; }
+        public Vector2 Scale { get; private set; }
 
         /// <summary>
         /// The texture that is shown by the billboard.
         /// </summary>
-        public Texture2D Texture { get; set; }
+        public Texture2D Texture { get; private set; }
 
         /// <summary>
         /// The class constructor.

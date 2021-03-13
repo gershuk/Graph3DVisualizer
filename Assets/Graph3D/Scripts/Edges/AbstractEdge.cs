@@ -29,8 +29,12 @@ namespace Graph3DVisualizer.Graph3D
     /// </summary>
     public readonly struct AdjacentVertices
     {
+        public float Distance => Vector3.Distance(FromVertex.transform.position, ToVertex.transform.position);
         public AbstractVertex FromVertex { get; }
+        public Vector3 MiddlePoint => (FromVertex.transform.position + ToVertex.transform.position) / 2;
         public AbstractVertex ToVertex { get; }
+
+        public Vector3 UnitVector => (ToVertex.transform.position - FromVertex.transform.position) / Distance;
 
         public AdjacentVertices (AbstractVertex fromVertex, AbstractVertex toVertex)
         {
@@ -39,12 +43,6 @@ namespace Graph3DVisualizer.Graph3D
         }
 
         public void Deconstruct (out AbstractVertex fromVertex, out AbstractVertex toVertex) => (fromVertex, toVertex) = (FromVertex, ToVertex);
-
-        public float Distance => Vector3.Distance(FromVertex.transform.position, ToVertex.transform.position);
-
-        public Vector3 MiddlePoint => (FromVertex.transform.position + ToVertex.transform.position) / 2;
-
-        public Vector3 UnitVector => (ToVertex.transform.position - FromVertex.transform.position) / Distance;
     }
 
     /// <summary>
@@ -142,40 +140,8 @@ namespace Graph3DVisualizer.Graph3D
             }
         }
 
-        public EdgeParameters DownloadParams () => new EdgeParameters(SourceOffsetDist, TargetOffsetDist, Width, Visibility, Id);
-
-        public void SetupParams (EdgeParameters parameters)
-        {
-            Id = parameters.Id;
-
-            SourceOffsetDist = parameters.SourceOffsetDist;
-            TargetOffsetDist = parameters.TargetOffsetDist;
-            Width = parameters.Width;
-
-            Visibility = parameters.Visibility;
-
-            UpdateEdge();
-        }
-
-        public abstract void UpdateCoordinates ();
-
-#if UNITY_EDITOR
-
         [ContextMenu("UpdateEdge")]
         private void CallUpdateEdge () => UpdateEdge();
-
-#endif
-
-        public void UpdateEdge ()
-        {
-            UpdateType();
-            UpdateVisibility();
-            UpdateCoordinates();
-        }
-
-        public abstract void UpdateType ();
-
-        public abstract void UpdateVisibility ();
 
         private void OnDestroyed (UnityEngine.Object obj) => Destroy(gameObject);
 
@@ -210,6 +176,37 @@ namespace Graph3DVisualizer.Graph3D
                 }
             }
         }
+
+        public EdgeParameters DownloadParams () => new EdgeParameters(SourceOffsetDist, TargetOffsetDist, Width, Visibility, Id);
+
+        public void SetupParams (EdgeParameters parameters)
+        {
+            Id = parameters.Id;
+
+            SourceOffsetDist = parameters.SourceOffsetDist;
+            TargetOffsetDist = parameters.TargetOffsetDist;
+            Width = parameters.Width;
+
+            Visibility = parameters.Visibility;
+
+            UpdateEdge();
+        }
+
+        public abstract void UpdateCoordinates ();
+
+#if UNITY_EDITOR
+#endif
+
+        public void UpdateEdge ()
+        {
+            UpdateType();
+            UpdateVisibility();
+            UpdateCoordinates();
+        }
+
+        public abstract void UpdateType ();
+
+        public abstract void UpdateVisibility ();
     }
 
     /// <summary>
@@ -219,10 +216,10 @@ namespace Graph3DVisualizer.Graph3D
     [YuzuAll]
     public class EdgeParameters : AbstractGraphObjectParameters
     {
-        public float SourceOffsetDist { get; set; }
-        public float TargetOffsetDist { get; set; }
-        public EdgeVisibility Visibility { get; set; }
-        public float Width { get; set; }
+        public float SourceOffsetDist { get; protected set; }
+        public float TargetOffsetDist { get; protected set; }
+        public EdgeVisibility Visibility { get; protected set; }
+        public float Width { get; protected set; }
 
         public EdgeParameters (float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f, EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string id = null) : base(id)
         {

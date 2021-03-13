@@ -145,8 +145,8 @@ namespace Graph3DVisualizer.Graph3D
     [YuzuAll]
     public class SelectableVertexParameters : VertexParameters
     {
-        public bool IsSelected { get; set; }
-        public BillboardParameters SelectFrameParameters { get; set; }
+        public bool IsSelected { get; protected set; }
+        public BillboardParameters SelectFrameParameters { get; protected set; }
 
         public SelectableVertexParameters (BillboardParameters[] imageParameters, BillboardParameters selectFrameParameters,
             Vector3 position = default, Quaternion rotation = default, bool isSelected = false, string id = null) :

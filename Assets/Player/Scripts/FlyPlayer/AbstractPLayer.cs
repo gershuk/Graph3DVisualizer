@@ -87,11 +87,11 @@ namespace Graph3DVisualizer.PlayerInputControls
     [YuzuAll]
     public class PlayerParameters : AbstractCustomizableParameter
     {
-        public Vector3 EulerAngles { get; set; }
-        public float MovingSpeed { get; set; }
-        public Vector3 Position { get; set; }
-        public float RotationSpeed { get; set; }
-        public ToolConfig[] ToolConfigs { get; set; }
+        public Vector3 EulerAngles { get; protected set; }
+        public float MovingSpeed { get; protected set; }
+        public Vector3 Position { get; protected set; }
+        public float RotationSpeed { get; protected set; }
+        public ToolConfig[] ToolConfigs { get; protected set; }
 
         public PlayerParameters (Vector3 position = default, Vector3 eulerAngles = default, float movingSpeed = 10, float rotationSpeed = 10, ToolConfig[] toolConfigs = default)
         {

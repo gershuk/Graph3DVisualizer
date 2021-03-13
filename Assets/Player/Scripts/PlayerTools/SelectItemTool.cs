@@ -120,7 +120,7 @@ namespace Graph3DVisualizer.PlayerInputControls
     [YuzuAll]
     public class SelectItemToolParams : AbstractToolParams
     {
-        public IReadOnlyList<Color> Colors { get; set; }
+        public IReadOnlyList<Color> Colors { get; protected set; }
 
         public SelectItemToolParams (IReadOnlyList<Color> colors) => Colors = colors ?? throw new ArgumentNullException(nameof(colors));
     }

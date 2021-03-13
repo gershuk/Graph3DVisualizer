@@ -216,9 +216,9 @@ namespace Graph3DVisualizer.Scene
     [YuzuAll]
     public class SceneControllerParameters : AbstractCustomizableParameter
     {
-        public Type TaskType { get; set; }
+        public Type TaskType { get; protected set; }
 
-        public VisualTaskParameters VisualTaskParameters { get; set; }
+        public VisualTaskParameters VisualTaskParameters { get; protected set; }
 
         public SceneControllerParameters (Type taskType, VisualTaskParameters visualTaskParameters)
         {
