@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class ToolTip : MonoBehaviour
  {
-	 public RectTransform toolTip;
+	 private RectTransform _toolTip;
 
-	 void Update(){
-		 toolTip.anchoredPosition = Input.mousePosition;
+	 void Update()
+     {
+		 _toolTip.anchoredPosition = Input.mousePosition;
 	 }
  }

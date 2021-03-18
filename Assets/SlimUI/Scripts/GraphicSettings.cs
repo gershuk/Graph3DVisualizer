@@ -22,18 +22,18 @@ using UnityEngine.UI;
 
 public class GraphicSettings : MonoBehaviour
 {
-    public TMPro.TMP_Dropdown dropdown;
+    [SerializeField]
+    private TMPro.TMP_Dropdown _dropdown;
     
     void Start()
     {
-
-        dropdown.ClearOptions();
-        dropdown.AddOptions(QualitySettings.names.ToList());
-        dropdown.value = QualitySettings.GetQualityLevel();
+        _dropdown.ClearOptions();
+        _dropdown.AddOptions(QualitySettings.names.ToList());
+        _dropdown.value = QualitySettings.GetQualityLevel();
     }
 
     public void SetQuality ()
     {
-        QualitySettings.SetQualityLevel(dropdown.value);
+        QualitySettings.SetQualityLevel(_dropdown.value);
     }
 }
