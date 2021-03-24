@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 
 using Graph3DVisualizer.Customizable;
@@ -30,13 +32,12 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// Tool for working with 3d menu components.
     /// </summary>
     [RequireComponent(typeof(LaserPointer))]
-    [CustomizableGrandType(Type = typeof(ClickToolParams))]
+    [CustomizableGrandType(typeof(ClickToolParams))]
     public class ClickTool : AbstractPlayerTool, ICustomizable<ClickToolParams>
     {
         private const string _inputActionName = "ClickObjectActionMap";
         private const string _selectActionName = "ClickObjectAction";
-        private AbstractClickableObject _clickableObject;
-        private InputActionMap _inputActions;
+        private AbstractClickableObject? _clickableObject;
         private LaserPointer _laserPointer;
         private GameObject _owner;
 
@@ -73,7 +74,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             //    _clickableObject.SetDisabled();
 
             _clickableObject = RayCast(_rayCastRange).transform?.GetComponent<AbstractClickableObject>();
-            if (_clickableObject)
+            if (_clickableObject != null)
                 _clickableObject.Click(_owner);
         }
 

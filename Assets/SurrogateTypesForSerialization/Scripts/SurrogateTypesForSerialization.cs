@@ -14,7 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 
@@ -43,26 +46,52 @@ namespace Graph3DVisualizer.SurrogateTypesForSerialization
     [YuzuAll]
     public class JsonTexture2D
     {
+        private static Dictionary<string, Texture2D> _readCache;
+        private static Dictionary<Texture2D, JsonTexture2D> _writeCache;
+
         public string Path { get; set; }
+
+        static JsonTexture2D ()
+        {
+            _readCache = new Dictionary<string, Texture2D>();
+            _writeCache = new Dictionary<Texture2D, JsonTexture2D>();
+        }
 
         public JsonTexture2D (string filePath) => Path = filePath ?? Guid.NewGuid().ToString();
 
         public static Texture2D FromSurrogate (object obj)
         {
             var jsonTexture2D = (JsonTexture2D) obj;
-            var texture2D = new Texture2D(1, 1);
+
+            if (_readCache.TryGetValue(jsonTexture2D.Path, out var texture2D))
+                return texture2D;
+
+            texture2D = new Texture2D(1, 1) { name = jsonTexture2D.Path };
             using (var fs = new FileStream(jsonTexture2D.Path, FileMode.Open))
             {
                 var bytes = new byte[fs.Length];
                 fs.Read(bytes, 0, bytes.Length);
                 texture2D.LoadImage(bytes);
             }
+
+            _readCache.Add(jsonTexture2D.Path, texture2D);
+
             return texture2D;
+        }
+
+        public static void ReinitializeCache ()
+        {
+            _readCache = new Dictionary<string, Texture2D>();
+            _writeCache = new Dictionary<Texture2D, JsonTexture2D>();
         }
 
         public static JsonTexture2D ToSurrogate (object obj)
         {
             var texture2D = (Texture2D) obj;
+
+            if (_writeCache.TryGetValue(texture2D, out var jsonTexture2D))
+                return jsonTexture2D;
+
             var path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"Graph3DVisualizer\");
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
@@ -74,7 +103,9 @@ namespace Graph3DVisualizer.SurrogateTypesForSerialization
                 fs.Write(bytes, 0, bytes.Length);
             }
 
-            return new JsonTexture2D(path);
+            jsonTexture2D = new JsonTexture2D(path);
+            _writeCache.Add(texture2D, jsonTexture2D);
+            return jsonTexture2D;
         }
     }
 
@@ -122,20 +153,64 @@ namespace Graph3DVisualizer.SurrogateTypesForSerialization
         }
     }
 
+    public class SurrogateShader : ISerializationSurrogate
+    {
+        private readonly Dictionary<string, Shader> _readCache = new Dictionary<string, Shader>();
+
+        public void GetObjectData (object obj, SerializationInfo info, StreamingContext context) => info.AddValue("Path", (obj as Shader).name);
+
+        public object SetObjectData (object obj, SerializationInfo info, StreamingContext context, ISurrogateSelector selector)
+        {
+            var path = info.GetString("Path");
+            if (_readCache.TryGetValue(path, out var shader))
+                return shader;
+
+            shader = Shader.Find(path);
+            _readCache.Add(path, shader);
+            return shader;
+        }
+    }
+
+    //ToDo : Add compression
     public class SurrogateTexture2D : ISerializationSurrogate
     {
+        private readonly Dictionary<Guid, Texture2D> _readCache = new Dictionary<Guid, Texture2D>();
+        private readonly Dictionary<Texture2D, (Guid guid, byte[] data)> _writeCache = new Dictionary<Texture2D, (Guid, byte[])>();
+
         public void GetObjectData (object obj, SerializationInfo info, StreamingContext context)
         {
             var texture2D = (Texture2D) obj;
+            Guid guid;
+            byte[] data;
+            if (_writeCache.TryGetValue(texture2D, out var textureCache))
+            {
+                guid = textureCache.guid;
+                data = textureCache.data;
+            }
+            else
+            {
+                guid = Guid.NewGuid();
+                data = texture2D.GetRawTextureData();
+                _writeCache.Add(texture2D, (guid, data));
+            }
+
             info.AddValue("Width", texture2D.width);
             info.AddValue("Height", texture2D.height);
             info.AddValue("MipmapCount", texture2D.mipmapCount);
             info.AddValue("TextureFormat", texture2D.format);
-            info.AddValue("Pixels", texture2D.GetRawTextureData());
+            info.AddValue("Guid", guid);
+            info.AddValue("Pixels", data);
         }
 
         public object SetObjectData (object obj, SerializationInfo info, StreamingContext context, ISurrogateSelector selector)
         {
+            var guid = (Guid) info.GetValue("Guid", typeof(Guid));
+
+            if (_readCache.TryGetValue(guid, out var texture))
+            {
+                return texture;
+            }
+
             var width = info.GetInt32("Width");
             var height = info.GetInt32("Height");
             var mipMapCount = info.GetInt32("MipmapCount");
@@ -144,6 +219,7 @@ namespace Graph3DVisualizer.SurrogateTypesForSerialization
             var texture2D = new Texture2D(width, height, textureFormat, mipMapCount, false);
             texture2D.LoadRawTextureData(pixels);
             texture2D.Apply();
+            _readCache.Add(guid, texture);
             return texture2D;
         }
     }

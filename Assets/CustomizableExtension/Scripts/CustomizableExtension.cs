@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
@@ -22,6 +24,81 @@ using Yuzu;
 
 namespace Graph3DVisualizer.Customizable
 {
+    public static class CacheForCustomizableObjects
+    {
+        private static readonly Dictionary<Type, SortedDictionary<AbstractCustomizableParameter, object>> _cache = new Dictionary<Type, SortedDictionary<AbstractCustomizableParameter, object>>();
+
+        public static void Add (AbstractCustomizableParameter parameter, object customizableObject)
+        {
+            if (!_cache.TryGetValue(parameter.GetType(), out var dictionary))
+            {
+                dictionary = new SortedDictionary<AbstractCustomizableParameter, object>();
+                _cache.Add(parameter.GetType(), dictionary);
+            }
+            dictionary.Add(parameter, customizableObject);
+        }
+
+        public static void Clear (Type type, bool useDispose = default)
+        {
+            if (useDispose)
+            {
+                foreach (var value in _cache[type].Values)
+                {
+                    if (value is IDisposable disposable)
+                        disposable.Dispose();
+                }
+            }
+
+            _cache[type].Clear();
+        }
+
+        public static void ClearAll (bool useDispose = default)
+        {
+            if (useDispose)
+            {
+                foreach (var type in _cache.Keys)
+                {
+                    Clear(type, true);
+                }
+            }
+
+            _cache.Clear();
+        }
+
+        public static bool ContainsKey (AbstractCustomizableParameter parameter) => _cache[parameter.GetType()].ContainsKey(parameter);
+
+        public static bool ContainsValue<T> (object customizableObject) => _cache.TryGetValue(typeof(T), out var dictionary) ? dictionary.ContainsValue(customizableObject) : false;
+
+        public static void Remove (AbstractCustomizableParameter parameter, bool useDispose = default)
+        {
+            if (useDispose && _cache[parameter.GetType()][parameter] is IDisposable disposable)
+                disposable.Dispose();
+
+            _cache[parameter.GetType()].Remove(parameter);
+        }
+
+        public static bool TryGetParameter<T> (object customizableObject, out T? parameter) where T : AbstractCustomizableParameter
+        {
+            parameter = null;
+            foreach (var pair in _cache[typeof(T)])
+            {
+                if (pair.Value.Equals(customizableObject) && pair.Key.GetType() == typeof(T))
+                {
+                    parameter = (T) pair.Key;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public static bool TryGetValue (AbstractCustomizableParameter parameter, out object? customizableObject)
+        {
+            customizableObject = null;
+            return _cache.TryGetValue(parameter.GetType(), out var dictionary) && dictionary.TryGetValue(parameter, out customizableObject);
+        }
+    }
+
     /// <summary>
     ///  A class containing functions for dynamically calling methods <see cref="ICustomizable{TParams}.DownloadParams"/>, <see cref="ICustomizable{TParams}.SetupParams(TParams)"/>.
     /// </summary>
@@ -100,7 +177,16 @@ namespace Graph3DVisualizer.Customizable
     /// </summary>
     [Serializable]
     [YuzuAll]
-    public abstract class AbstractCustomizableParameter { }
+    public abstract class AbstractCustomizableParameter : IComparable<AbstractCustomizableParameter>
+    {
+        private string _id;
+
+        public string Id { get => _id; protected set => _id = value ?? Guid.NewGuid().ToString(); }
+
+        protected AbstractCustomizableParameter (string? id) => Id = id;
+
+        public int CompareTo (AbstractCustomizableParameter other) => Id.CompareTo(other.Id);
+    }
 
     /// <summary>
     /// An attribute that specifies which type of parameters to use for <see cref="CustomizableExtension.CallDownloadParams(object)"/>, <see cref="CustomizableExtension.CallSetUpParams(object, object)"/>.
@@ -109,7 +195,10 @@ namespace Graph3DVisualizer.Customizable
     public sealed class CustomizableGrandTypeAttribute : Attribute
     {
         private Type _type;
+
         public Type Type { get => _type; set => _type = value.IsSubclassOf(typeof(AbstractCustomizableParameter)) ? value : throw new WrongTypeInCustomizableParameterException(); }
+
+        public CustomizableGrandTypeAttribute (Type type) => Type = type ?? throw new ArgumentNullException(nameof(type));
     }
 
     public class WrongTypeInCustomizableParameterException : Exception

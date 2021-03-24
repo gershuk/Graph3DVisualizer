@@ -14,9 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 
+using Graph3DVisualizer.Customizable;
 using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
@@ -30,16 +33,11 @@ namespace Graph3DVisualizer.Billboards
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
     public class BillboardController : MonoBehaviour, IVisibile
     {
-        private const string _billboardDefaultTexturePath = "Textures/BillboardDefaultTexture";
-
-        [SerializeField]
-        private static Texture2D _defaultTexture;
-
-        private Dictionary<BillboardId, Billboard> _billboards;
+        private readonly Dictionary<BillboardId, Billboard> _billboards = new Dictionary<BillboardId, Billboard>();
         private MeshFilter _meshFilter;
         private MeshRenderer _render;
 
-        public event Action<bool, UnityEngine.Object> VisibleChanged;
+        public event Action<bool, UnityEngine.Object>? VisibleChanged;
 
         public bool Visibility
         {
@@ -72,23 +70,47 @@ namespace Graph3DVisualizer.Billboards
 
         private void Awake ()
         {
-            _billboards = new Dictionary<BillboardId, Billboard>();
-
             _meshFilter = GetComponent<MeshFilter>();
             _render = GetComponent<MeshRenderer>();
 
             var bounds = _meshFilter.mesh.bounds;
             bounds.size = new Vector3(0.5f, 0.5f, 0.5f);
             _meshFilter.mesh.bounds = bounds;
-
-            _defaultTexture = _defaultTexture == null ? Resources.Load<Texture2D>(_billboardDefaultTexturePath) : _defaultTexture;
         }
 
-        public BillboardId CreateBillboard (BillboardParameters parameters, string name, string description)
+        private void OnDestroy ()
         {
-            var billboardId = new BillboardId(name, description);
-            var billboard = new Billboard();
-            billboard.SetupParams(parameters);
+            foreach (var billboard in _billboards)
+            {
+                if (!CacheForCustomizableObjects.ContainsValue<BillboardParameters>(billboard))
+                    billboard.Value.Material = null;
+            }
+        }
+
+        public BillboardId CreateBillboard (BillboardParameters parameters)
+        {
+            var billboardId = new BillboardId(parameters.Name, parameters.Description);
+
+            Billboard billboard;
+            if (parameters.UseCash)
+            {
+                if (!CacheForCustomizableObjects.TryGetValue(parameters, out var customizableObject))
+                {
+                    billboard = new Billboard();
+                    billboard.SetupParams(parameters);
+                    CacheForCustomizableObjects.Add(parameters, billboard);
+                }
+                else
+                {
+                    billboard = (customizableObject as Billboard) ?? throw new NullReferenceException();
+                }
+            }
+            else
+            {
+                billboard = new Billboard();
+                billboard.SetupParams(parameters);
+            }
+
             _billboards.Add(billboardId, billboard);
 
             AddBillboardMaterialToRender(billboardId);
@@ -127,6 +149,8 @@ namespace Graph3DVisualizer.Billboards
         public void EnableBillboard (BillboardId billboardId) => AddBillboardMaterialToRender(billboardId);
 
         public Billboard GetBillboard (BillboardId billboardId) => _billboards[billboardId];
+
+        public void RemoveFromCache (BillboardParameters billboardParameters) => CacheForCustomizableObjects.Remove(billboardParameters, true);
 
         //ToDo : Rewrite to multiple meshes
         public void UpdateBounds ()

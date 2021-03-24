@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 
 using Graph3DVisualizer.SupportComponents;
@@ -37,12 +39,12 @@ namespace Graph3DVisualizer.GUI
             public int FontSize { get; }
             public Vector3 LocalPos { get; }
             public string ObjectName { get; }
-            public Transform Parent { get; }
+            public Transform? Parent { get; }
             public float TabSize { get; }
             public string Text { get; }
             public float TextSize { get; }
 
-            public TextMeshParameters (Transform parent, Vector3 localPos, string objectName, string text, float textSize, Font font, int fontSize, float tabSize, Color color)
+            public TextMeshParameters (Transform? parent, Vector3 localPos, string objectName, string text, float textSize, Font font, int fontSize, float tabSize, Color color)
             {
                 Parent = parent;
                 LocalPos = localPos;

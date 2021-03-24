@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +32,7 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// <summary>
     /// Abstract class that describes player.
     /// </summary>
-    [CustomizableGrandType(Type = typeof(PlayerParameters))]
+    [CustomizableGrandType(typeof(PlayerParameters))]
     [RequireComponent(typeof(Camera))]
     public abstract class AbstractPlayer : MonoBehaviour, ICustomizable<PlayerParameters>
     {
@@ -39,7 +41,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         protected MovementComponent _moveComponent;
         protected List<AbstractPlayerTool> _playerTools = new List<AbstractPlayerTool>();
 
-        public event Action<AbstractPlayerTool> NewToolSelected;
+        public event Action<AbstractPlayerTool>? NewToolSelected;
 
         public int CurrentToolIndex { get => _currentToolIndex; set => SelectTool(value); }
         public IReadOnlyList<AbstractPlayerTool> GetToolsList => _playerTools;
@@ -93,7 +95,8 @@ namespace Graph3DVisualizer.PlayerInputControls
         public float RotationSpeed { get; protected set; }
         public ToolConfig[] ToolConfigs { get; protected set; }
 
-        public PlayerParameters (Vector3 position = default, Vector3 eulerAngles = default, float movingSpeed = 10, float rotationSpeed = 10, ToolConfig[] toolConfigs = default)
+        public PlayerParameters (Vector3 position = default, Vector3 eulerAngles = default, float movingSpeed = 10, float rotationSpeed = 10, ToolConfig[]? toolConfigs = default,
+            string? parameterId = default) : base(parameterId)
         {
             Position = position;
             EulerAngles = eulerAngles;

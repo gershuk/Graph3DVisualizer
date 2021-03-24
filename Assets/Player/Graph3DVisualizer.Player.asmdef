@@ -1,11 +1,11 @@
 {
     "name": "Graph3DVisualizer.Player",
+    "rootNamespace": "Graph3DVisualizer.Player",
     "references": [
         "GUID:75469ad4d38634e559750d17036d5f7c",
         "GUID:c714d0b183033d44cb9541a269246798",
         "GUID:68f547e922d4cac48980104337bf6a86",
-        "GUID:a251807422a267846803e3939918e146",
-        "GUID:bbb638d765d50ba4886c5596a1a28f94"
+        "GUID:a251807422a267846803e3939918e146"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

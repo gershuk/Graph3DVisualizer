@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,7 +60,7 @@ namespace Graph3DVisualizer.VrHud
         }
     }
 
-    [CustomizableGrandType(Type = typeof(CanvasControllerParameters))]
+    [CustomizableGrandType(typeof(CanvasControllerParameters))]
     public abstract class AbstractCanvasController : ICustomizable<CanvasControllerParameters>
     {
         public GameObject Root { get; protected set; }
@@ -75,10 +77,11 @@ namespace Graph3DVisualizer.VrHud
         public Vector3 LocalPosition { get; protected set; }
         public Vector3 Scale { get; protected set; }
 
-        public CanvasControllerParameters (Vector3 localPosition, Vector3 localEulerAngles, Vector3 scale) => (LocalPosition, LocalEulerAngles, Scale) = (localPosition, localEulerAngles, scale);
+        public CanvasControllerParameters (Vector3 localPosition, Vector3 localEulerAngles, Vector3 scale, string? parameterId = default) : base(parameterId) =>
+            (LocalPosition, LocalEulerAngles, Scale) = (localPosition, localEulerAngles, scale);
     }
 
-    [CustomizableGrandType(Type = typeof(MultiCanvasParameters))]
+    [CustomizableGrandType(typeof(MultiCanvasParameters))]
     public class MultiCanvas : MonoBehaviour, ICustomizable<MultiCanvasParameters>
     {
         protected HashSet<AbstractCanvasController> _canvasControllers;
@@ -117,7 +120,7 @@ namespace Graph3DVisualizer.VrHud
     {
         public CanvasControllerInfo[] CanvasControllerInfos { get; protected set; }
 
-        public MultiCanvasParameters (CanvasControllerInfo[] canvasControllerTypes) =>
+        public MultiCanvasParameters (CanvasControllerInfo[] canvasControllerTypes, string? parameterId = default) : base(parameterId) =>
            CanvasControllerInfos = canvasControllerTypes ?? throw new ArgumentNullException(nameof(canvasControllerTypes));
     }
 }

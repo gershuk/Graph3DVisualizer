@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 
 using Graph3DVisualizer.Customizable;
@@ -51,6 +53,8 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// </summary>
     public abstract class AbstractPlayerTool : MonoBehaviour
     {
+        protected InputActionMap _inputActions;
+
         protected RaycastHit RayCast (float range)
         {
             Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, range);
@@ -66,5 +70,8 @@ namespace Graph3DVisualizer.PlayerInputControls
     [Serializable]
     [YuzuAll]
     public abstract class AbstractToolParams : AbstractCustomizableParameter
-    { }
+    {
+        protected AbstractToolParams (string? parameterId = default) : base(parameterId)
+        { }
+    }
 }

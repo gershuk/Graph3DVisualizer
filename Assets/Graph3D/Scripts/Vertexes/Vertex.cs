@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 
@@ -36,9 +38,9 @@ namespace Graph3DVisualizer.Graph3D
 
         protected SphereCollider _sphereCollider;
 
-        public override event Action<UnityEngine.Object> Destroyed;
+        public override event Action<UnityEngine.Object>? Destroyed;
 
-        public override event Action<bool, UnityEngine.Object> VisibleChanged;
+        public override event Action<bool, UnityEngine.Object>? VisibleChanged;
 
         public override MovementComponent MovementComponent { get; protected set; }
 
@@ -82,9 +84,9 @@ namespace Graph3DVisualizer.Graph3D
             _sphereCollider.radius = newRadius;
         }
 
-        public override BillboardId AddImage (BillboardParameters billboardParameters, string name, string description)
+        public override BillboardId AddImage (BillboardParameters billboardParameters)
         {
-            var res = base.AddImage(billboardParameters, name, description);
+            var res = base.AddImage(billboardParameters);
             UpdateColliderRange();
             return res;
         }

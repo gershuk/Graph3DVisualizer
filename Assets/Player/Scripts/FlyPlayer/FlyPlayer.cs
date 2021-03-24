@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 
@@ -50,7 +52,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         private void Awake ()
         {
             _transform = transform;
-
+            _inputActions = new FlyControls();
             _hand = new GameObject("Hand");
             _hand.transform.parent = _transform;
             _hand.transform.localPosition = new Vector3(2, -2, 0);
@@ -58,7 +60,6 @@ namespace Graph3DVisualizer.PlayerInputControls
 
             _playerTools = new List<AbstractPlayerTool>();
 
-            _inputActions = new FlyControls();
             _moveComponent = GetComponent<MovementComponent>();
             _inputType = InputType.ToolsOnly;
         }
@@ -137,9 +138,9 @@ namespace Graph3DVisualizer.PlayerInputControls
             Cursor.visible = state.cursor;
 
             if (state.movement)
-                _inputActions.Enable();
+                _inputActions?.Enable();
             else
-                _inputActions.Disable();
+                _inputActions?.Disable();
         }
 
         protected override void GiveNewTool (params ToolConfig[] toolsConfig)

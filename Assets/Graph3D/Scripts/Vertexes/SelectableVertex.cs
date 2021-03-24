@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 
@@ -33,7 +35,7 @@ namespace Graph3DVisualizer.Graph3D
     [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(MovementComponent))]
     [RequireComponent(typeof(SphereCollider))]
-    [CustomizableGrandType(Type = typeof(SelectableVertexParameters))]
+    [CustomizableGrandType(typeof(SelectableVertexParameters))]
     public class SelectableVertex : Vertex, ICustomizable<SelectableVertexParameters>, ISelectable
     {
         private const string _edgePrefabPath = "Prefabs/Edge";
@@ -41,9 +43,9 @@ namespace Graph3DVisualizer.Graph3D
         private BillboardId _selectFrameId;
 
         //ToDo : Add highlight effect
-        public event Action<UnityEngine.Object, bool> HighlightedChanged;
+        public event Action<UnityEngine.Object, bool>? HighlightedChanged;
 
-        public event Action<UnityEngine.Object, bool> SelectedChanged;
+        public event Action<UnityEngine.Object, bool>? SelectedChanged;
 
         public bool IsHighlighted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
@@ -95,7 +97,6 @@ namespace Graph3DVisualizer.Graph3D
             _outgoingLinks = new List<Link>();
             _billboardControler = GetComponent<BillboardController>();
             MovementComponent = GetComponent<MovementComponent>();
-            ImageIds = new List<BillboardId>();
         }
 
         protected override void UpdateColliderRange ()
@@ -122,7 +123,7 @@ namespace Graph3DVisualizer.Graph3D
         public void SetSelectFrame (BillboardParameters billboardParameters)
         {
             if (_selectFrameId == null)
-                _selectFrameId = _billboardControler.CreateBillboard(billboardParameters, "SelectFrameImage", "Vertex select frame");
+                _selectFrameId = _billboardControler.CreateBillboard(billboardParameters);
             else
                 _billboardControler.GetBillboard(_selectFrameId).SetupParams(billboardParameters);
             UpdateColliderRange();
@@ -149,10 +150,10 @@ namespace Graph3DVisualizer.Graph3D
         public BillboardParameters SelectFrameParameters { get; protected set; }
 
         public SelectableVertexParameters (BillboardParameters[] imageParameters, BillboardParameters selectFrameParameters,
-            Vector3 position = default, Quaternion rotation = default, bool isSelected = false, string id = null) :
+            Vector3 position = default, Quaternion rotation = default, bool isSelected = false, string? id = default) :
                 base(imageParameters, position, rotation, id) => (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
 
-        public SelectableVertexParameters (VertexParameters vertexParameters, BillboardParameters selectFrameParameters, bool isSelected = false, string id = null) :
+        public SelectableVertexParameters (VertexParameters vertexParameters, BillboardParameters selectFrameParameters, bool isSelected = false, string? id = default) :
                                   this(vertexParameters.ImageParameters, selectFrameParameters, vertexParameters.Position, vertexParameters.Rotation, isSelected, id)
         { }
     }

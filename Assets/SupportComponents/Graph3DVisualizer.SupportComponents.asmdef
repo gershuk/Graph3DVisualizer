@@ -1,5 +1,6 @@
 {
     "name": "Graph3DVisualizer.SupportComponents",
+    "rootNamespace": "Graph3DVisualizer.SupportComponents",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

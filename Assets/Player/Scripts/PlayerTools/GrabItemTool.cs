@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections;
 
@@ -31,7 +33,7 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// Tool for dragging objects with <see cref="MovementComponent"/>.
     /// </summary>
     [RequireComponent(typeof(LaserPointer))]
-    [CustomizableGrandType(Type = typeof(GrabItemToolParams))]
+    [CustomizableGrandType(typeof(GrabItemToolParams))]
     public class GrabItemTool : AbstractPlayerTool, ICustomizable<GrabItemToolParams>
     {
         private const string _actionMapName = "GrabItemActionMap";
@@ -41,9 +43,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         [SerializeField]
         private float _capturedRange = 1000;
 
-        private Coroutine _changeRangeCoroutine;
-
-        private InputActionMap _inputActions;
+        private Coroutine? _changeRangeCoroutine;
 
         private bool _isCapturedObject = false;
 
@@ -51,7 +51,7 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private LaserPointer _laserPointer;
 
-        private IMoveable _moveable = null;
+        private IMoveable? _moveable;
 
         [SerializeField]
         private float _rangeChangeSpeed = 30;

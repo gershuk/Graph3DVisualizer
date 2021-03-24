@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 
 using Graph3DVisualizer.Customizable;
@@ -28,7 +30,7 @@ namespace Graph3DVisualizer.Graph3D
     /// Simple realization of <see cref="AbstractEdge"/>.
     /// </summary>
     [RequireComponent(typeof(LineRenderer))]
-    [CustomizableGrandType(Type = typeof(SpriteEdgeParameters))]
+    [CustomizableGrandType(typeof(SpriteEdgeParameters))]
     public class SpriteEdge : AbstractEdge, ICustomizable<SpriteEdgeParameters>
     {
         private const string _arrowTexturePath = "Textures/Arrow";
@@ -74,8 +76,6 @@ namespace Graph3DVisualizer.Graph3D
             _material.SetFloat(_cutoff, 0.8f);
 
             _lineRenderer = GetComponent<LineRenderer>();
-            if (_lineRenderer == null)
-                _lineRenderer = gameObject.AddComponent<LineRenderer>();
             _lineRenderer.sharedMaterial = _material;
             _material = _lineRenderer.sharedMaterial;
             _lineRenderer.positionCount = 2;
@@ -153,14 +153,14 @@ namespace Graph3DVisualizer.Graph3D
     [YuzuAll]
     public class SpriteEdgeParameters : EdgeParameters
     {
-        public Texture2D ArrowTexture { get; protected set; }
-        public Texture2D LineTexture { get; protected set; }
+        public Texture2D? ArrowTexture { get; protected set; }
+        public Texture2D? LineTexture { get; protected set; }
 
-        public SpriteEdgeParameters (float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f, EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string id = null,
-            Texture2D arrowTexture = null, Texture2D lineTexture = null) : base(sourceOffsetDist, targetOffsetDist, width, visibility, id) => (ArrowTexture, LineTexture) = (arrowTexture, lineTexture);
+        public SpriteEdgeParameters (float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f, EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string? id = default,
+            Texture2D? arrowTexture = null, Texture2D? lineTexture = null) : base(null, sourceOffsetDist, targetOffsetDist, width, visibility, id) => (ArrowTexture, LineTexture) = (arrowTexture, lineTexture);
 
-        public SpriteEdgeParameters (EdgeParameters edgeParameters, Texture2D arrowTexture = null, Texture2D lineTexture = null) :
-            this(edgeParameters.SourceOffsetDist, edgeParameters.TargetOffsetDist, edgeParameters.Width, edgeParameters.Visibility, edgeParameters.Id, arrowTexture, lineTexture)
+        public SpriteEdgeParameters (EdgeParameters edgeParameters, Texture2D? arrowTexture = default, Texture2D? lineTexture = default) :
+            this(edgeParameters.SourceOffsetDist, edgeParameters.TargetOffsetDist, edgeParameters.Width, edgeParameters.Visibility, edgeParameters.ObjectId, arrowTexture, lineTexture)
         { }
     }
 }

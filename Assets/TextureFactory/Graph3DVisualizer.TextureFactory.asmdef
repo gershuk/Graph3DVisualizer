@@ -1,8 +1,7 @@
 {
     "name": "Graph3DVisualizer.TextureFactory",
-    "references": [
-        "GUID:bbb638d765d50ba4886c5596a1a28f94"
-    ],
+    "rootNamespace": "Graph3DVisualizer.TextureFactory",
+    "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

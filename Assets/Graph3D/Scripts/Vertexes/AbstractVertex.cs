@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +34,7 @@ namespace Graph3DVisualizer.Graph3D
     /// Abstract class that describes vertex component.
     /// </summary>
     [RequireComponent(typeof(MovementComponent))]
-    [CustomizableGrandType(Type = typeof(VertexParameters))]
+    [CustomizableGrandType(typeof(VertexParameters))]
     public abstract class AbstractVertex : AbstractGraphObject, IVisibile, IDestructible, ICustomizable<VertexParameters>
     {
         protected BillboardController _billboardControler;
@@ -49,7 +51,7 @@ namespace Graph3DVisualizer.Graph3D
 
         public abstract event Action<bool, UnityEngine.Object> VisibleChanged;
 
-        public virtual IList<BillboardId> ImageIds { get; set; }
+        public virtual IList<BillboardId> ImageIds { get; set; } = new List<BillboardId>();
         public IReadOnlyList<Link> IncomingLinks => _incomingLinks;
         public abstract MovementComponent MovementComponent { get; protected set; }
         public IReadOnlyList<Link> OutgoingLinks => _outgoingLinks;
@@ -90,9 +92,9 @@ namespace Graph3DVisualizer.Graph3D
             }
         }
 
-        protected AbstractEdge FindOppositeEdge (AbstractVertex toVertex, Type edgeType)
+        protected AbstractEdge? FindOppositeEdge (AbstractVertex toVertex, Type edgeType)
         {
-            AbstractEdge edge = null;
+            AbstractEdge? edge = null;
 
             foreach (var link in _incomingLinks)
             {
@@ -122,8 +124,7 @@ namespace Graph3DVisualizer.Graph3D
             throw new LinkNotFoundException();
         }
 
-        public virtual BillboardId AddImage (BillboardParameters billboardParameters, string name, string description) =>
-            _billboardControler.CreateBillboard(billboardParameters, name, description);
+        public virtual BillboardId AddImage (BillboardParameters billboardParameters) => _billboardControler.CreateBillboard(billboardParameters);
 
         public virtual void DeleteImage (BillboardId billboardId) => _billboardControler.DeleteBillboard(billboardId);
 
@@ -135,7 +136,7 @@ namespace Graph3DVisualizer.Graph3D
         public TEdge Link<TEdge, TParameters> (AbstractVertex toVertex, TParameters edgeParameters) where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
             CheckLinkForCorrectness(toVertex, typeof(TEdge));
-            var edge = (TEdge) FindOppositeEdge(toVertex, typeof(TEdge));
+            var edge = FindOppositeEdge(toVertex, typeof(TEdge)) as TEdge;
             edge = edge != null ? edge : CreateEdge<TEdge, TParameters>(edgeParameters, toVertex);
             _outgoingLinks.Add(new Link(toVertex, edge));
             toVertex._incomingLinks.Add(new Link(this, edge));
@@ -156,11 +157,11 @@ namespace Graph3DVisualizer.Graph3D
 
         public virtual void SetupParams (VertexParameters parameters)
         {
-            Id = parameters.Id;
+            Id = parameters.ObjectId;
 
             (_transform.position, _transform.rotation) = (parameters.Position, parameters.Rotation);
             foreach (var param in parameters.ImageParameters)
-                ImageIds.Add(AddImage(param, param.Name, param.Description));
+                ImageIds.Add(AddImage(param));
         }
 
         public void UnLink<TEdge> (AbstractVertex toVertex) where TEdge : AbstractEdge => UnLink(toVertex, typeof(SpriteEdge));
@@ -223,7 +224,7 @@ namespace Graph3DVisualizer.Graph3D
         public Vector3 Position { get; protected set; }
         public Quaternion Rotation { get; protected set; }
 
-        public VertexParameters (BillboardParameters[] imageParameters, Vector3 position = default, Quaternion rotation = default, string id = null) : base(id)
+        public VertexParameters (BillboardParameters[] imageParameters, Vector3 position = default, Quaternion rotation = default, string? id = default) : base(id)
             => (ImageParameters, Position, Rotation) = (imageParameters, position, rotation);
     }
 }

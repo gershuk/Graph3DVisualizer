@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -37,30 +39,31 @@ namespace Graph3DVisualizer.Scene
     /// <summary>
     /// Component that manages the loading/saving of <see cref="AbstractVisualTask"/>.
     /// </summary>
-    [CustomizableGrandType(Type = typeof(SceneControllerParameters))]
+    [CustomizableGrandType(typeof(SceneControllerParameters))]
     public class SceneController : MonoBehaviour, ICustomizable<SceneControllerParameters>
     {
-        private static SurrogateSelector _surrogateSelector;
-        private Dictionary<string, Assembly> _asseblies;
-        private CommonOptions _yuzuCommonOptions;
+        private readonly Dictionary<string, Assembly> _asseblies = new Dictionary<string, Assembly>();
 
-        public AbstractVisualTask ActiveTask { get; private set; }
-        public List<Type> TaskList { get; private set; }
+        public AbstractVisualTask? ActiveTask { get; private set; }
+        public List<Type> TaskList { get; } = new List<Type>();
 
-        private void Awake ()
+        private static SurrogateSelector MakeSurrogateSelector ()
         {
-            _asseblies = new Dictionary<string, Assembly>();
-            _surrogateSelector = new SurrogateSelector();
-            _surrogateSelector.AddSurrogate(typeof(Vector2), new StreamingContext(StreamingContextStates.All), new SurrogateVector2());
-            _surrogateSelector.AddSurrogate(typeof(Vector2Int), new StreamingContext(StreamingContextStates.All), new SurrogateVector2Int());
-            _surrogateSelector.AddSurrogate(typeof(Vector3), new StreamingContext(StreamingContextStates.All), new SurrogateVector3());
-            _surrogateSelector.AddSurrogate(typeof(Vector4), new StreamingContext(StreamingContextStates.All), new SurrogateVector4());
-            _surrogateSelector.AddSurrogate(typeof(Color), new StreamingContext(StreamingContextStates.All), new SurrogateColor());
-            _surrogateSelector.AddSurrogate(typeof(Quaternion), new StreamingContext(StreamingContextStates.All), new SurrogateQuaternion());
-            _surrogateSelector.AddSurrogate(typeof(Texture2D), new StreamingContext(StreamingContextStates.All), new SurrogateTexture2D());
-            DontDestroyOnLoad(gameObject);
+            var surrogateSelector = new SurrogateSelector();
+            surrogateSelector.AddSurrogate(typeof(Vector2), new StreamingContext(StreamingContextStates.All), new SurrogateVector2());
+            surrogateSelector.AddSurrogate(typeof(Vector2Int), new StreamingContext(StreamingContextStates.All), new SurrogateVector2Int());
+            surrogateSelector.AddSurrogate(typeof(Vector3), new StreamingContext(StreamingContextStates.All), new SurrogateVector3());
+            surrogateSelector.AddSurrogate(typeof(Vector4), new StreamingContext(StreamingContextStates.All), new SurrogateVector4());
+            surrogateSelector.AddSurrogate(typeof(Color), new StreamingContext(StreamingContextStates.All), new SurrogateColor());
+            surrogateSelector.AddSurrogate(typeof(Quaternion), new StreamingContext(StreamingContextStates.All), new SurrogateQuaternion());
+            surrogateSelector.AddSurrogate(typeof(Texture2D), new StreamingContext(StreamingContextStates.All), new SurrogateTexture2D());
+            surrogateSelector.AddSurrogate(typeof(Shader), new StreamingContext(StreamingContextStates.All), new SurrogateShader());
+            return surrogateSelector;
+        }
 
-            _yuzuCommonOptions = new CommonOptions()
+        private static CommonOptions MakeYuzuCommonOptions ()
+        {
+            var yuzuCommonOptions = new CommonOptions()
             {
                 Meta = new MetaOptions().
                 AddOverride(typeof(Vector2), o => o.AddAttr(new YuzuAlias("Vector2")).AddItem(nameof(Vector2.x), i => i.AddAttr(new YuzuMember("X"))).
@@ -90,16 +93,21 @@ namespace Graph3DVisualizer.Scene
                 AllowEmptyTypes = true,
             };
 
-            var surrogateTexture2D = Meta.Get(typeof(Texture2D), _yuzuCommonOptions).Surrogate;
+            var surrogateTexture2D = Meta.Get(typeof(Texture2D), yuzuCommonOptions).Surrogate;
             surrogateTexture2D.SurrogateType = typeof(JsonTexture2D);
             surrogateTexture2D.FuncTo = JsonTexture2D.ToSurrogate;
             surrogateTexture2D.FuncFrom = JsonTexture2D.FromSurrogate;
+            JsonTexture2D.ReinitializeCache();
 
-            var surrogateType = Meta.Get(typeof(Type), _yuzuCommonOptions).Surrogate;
+            var surrogateType = Meta.Get(typeof(Type), yuzuCommonOptions).Surrogate;
             surrogateType.SurrogateType = typeof(JsonSystemType);
             surrogateType.FuncTo = JsonSystemType.ToSurrogate;
             surrogateType.FuncFrom = JsonSystemType.FromSurrogate;
+
+            return yuzuCommonOptions;
         }
+
+        private void Awake () => DontDestroyOnLoad(gameObject);
 
         private void LoadAssemblies (params (string name, string path)[] assemblies)
         {
@@ -120,12 +128,9 @@ namespace Graph3DVisualizer.Scene
 
         public void FindAllTasks ()
         {
-            var assemblys = AppDomain.CurrentDomain.GetAssemblies();
-            TaskList = new List<Type>();
-            foreach (var assembly in assemblys)
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-                var types = assembly.GetTypes();
-                foreach (var type in types)
+                foreach (var type in assembly.GetTypes())
                 {
                     if (type.IsSubclassOf(typeof(AbstractVisualTask)))
                         TaskList.Add(type);
@@ -135,21 +140,17 @@ namespace Graph3DVisualizer.Scene
 
         public void LoadBinary (string name)
         {
-            using (var fs = new FileStream(name, FileMode.Open))
-            {
-                var formatter = new BinaryFormatter { SurrogateSelector = _surrogateSelector };
-                var parameters = (SceneControllerParameters) formatter.Deserialize(fs);
-                SetupParams(parameters);
-            }
+            using var fs = new FileStream(name, FileMode.Open);
+            var formatter = new BinaryFormatter { SurrogateSelector = MakeSurrogateSelector() };
+            var parameters = (SceneControllerParameters) formatter.Deserialize(fs);
+            SetupParams(parameters);
         }
 
         public void LoadJson (string name)
         {
-            using (var sr = new StreamReader(name))
-            {
-                var jsonDeserializer = new JsonDeserializer() { Options = _yuzuCommonOptions };
-                SetupParams(jsonDeserializer.FromString<SceneControllerParameters>(sr.ReadToEnd()));
-            }
+            using var sr = new StreamReader(name);
+            var jsonDeserializer = new JsonDeserializer() { Options = MakeYuzuCommonOptions() };
+            SetupParams(jsonDeserializer.FromString<SceneControllerParameters>(sr.ReadToEnd()));
         }
 
         public void LoadMods ()
@@ -167,20 +168,16 @@ namespace Graph3DVisualizer.Scene
 
         public void SaveBinary (string name)
         {
-            using (var fs = new FileStream(name, FileMode.Create))
-            {
-                var formatter = new BinaryFormatter { SurrogateSelector = _surrogateSelector };
-                formatter.Serialize(fs, DownloadParams());
-            }
+            using var fs = new FileStream(name, FileMode.Create);
+            var formatter = new BinaryFormatter { SurrogateSelector = MakeSurrogateSelector() };
+            formatter.Serialize(fs, DownloadParams());
         }
 
         public void SaveJson (string name)
         {
-            using (var sw = new StreamWriter(name))
-            {
-                var jsonSerializer = new JsonSerializer() { Options = _yuzuCommonOptions };
-                sw.WriteLine(jsonSerializer.ToString(DownloadParams()));
-            }
+            using var sw = new StreamWriter(name);
+            var jsonSerializer = new JsonSerializer() { Options = MakeYuzuCommonOptions() };
+            sw.WriteLine(jsonSerializer.ToString(DownloadParams()));
         }
 
         public void SetupParams (SceneControllerParameters parameters)
@@ -192,8 +189,10 @@ namespace Graph3DVisualizer.Scene
             }
         }
 
-        public void StartTask (int taskIndex, VisualTaskParameters visualTaskParameters = null)
+        public void StartTask (int taskIndex, VisualTaskParameters? visualTaskParameters = default)
         {
+            if (ActiveTask != null)
+                StopTask();
             var gameObject = new GameObject("VisualTask");
             ActiveTask = (AbstractVisualTask) gameObject.AddComponent(TaskList[taskIndex]);
             if (visualTaskParameters == null)
@@ -204,8 +203,18 @@ namespace Graph3DVisualizer.Scene
 
         public void StopTask ()
         {
-            ActiveTask.DestroyTask();
-            Destroy(ActiveTask.gameObject);
+            CacheForCustomizableObjects.ClearAll(true);
+
+            if (ActiveTask != null)
+            {
+                ActiveTask.DestroyTask();
+                DestroyImmediate(ActiveTask.gameObject);
+                Resources.UnloadUnusedAssets();
+            }
+            else
+            {
+                Debug.LogWarning("No active tasks");
+            }
         }
     }
 
@@ -220,7 +229,7 @@ namespace Graph3DVisualizer.Scene
 
         public VisualTaskParameters VisualTaskParameters { get; protected set; }
 
-        public SceneControllerParameters (Type taskType, VisualTaskParameters visualTaskParameters)
+        public SceneControllerParameters (Type taskType, VisualTaskParameters visualTaskParameters, string? parameterId = default) : base(parameterId)
         {
             TaskType = taskType ?? throw new ArgumentNullException(nameof(taskType));
             VisualTaskParameters = visualTaskParameters ?? throw new ArgumentNullException(nameof(visualTaskParameters));

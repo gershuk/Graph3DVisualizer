@@ -1,5 +1,6 @@
 {
     "name": "Graph3DVisualizer.Decembrists",
+    "rootNamespace": "Graph3DVisualizer.Decembrists",
     "references": [
         "GUID:08b6197bb3dceda4ab0f9de5f81ddea9",
         "GUID:c714d0b183033d44cb9541a269246798",

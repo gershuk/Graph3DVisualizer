@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -34,7 +36,7 @@ namespace Graph3DVisualizer.SupportComponents
         private int _currentGearIndex;
 
         private Vector3 _eulerAngles;
-        private List<(float deltaTimeFromStart, float multiplier)> _gears;
+        private List<(float deltaTimeFromStart, float multiplier)> _gears = new List<(float deltaTimeFromStart, float multiplier)>(4) { (0f, 1f), (10, 3f), (20, 5f), (40, 8f) };
 
         private bool _isMoving;
 
@@ -63,9 +65,9 @@ namespace Graph3DVisualizer.SupportComponents
         private Transform _transform;
         private TransmissionMode _transmissionMode;
 
-        public event Action<Vector3, UnityEngine.Object> ObjectEulerAnglesChanged;
+        public event Action<Vector3, UnityEngine.Object>? ObjectEulerAnglesChanged;
 
-        public event Action<Vector3, UnityEngine.Object> ObjectPositionChanged;
+        public event Action<Vector3, UnityEngine.Object>? ObjectPositionChanged;
 
         public int CurrentGearIndex
         {

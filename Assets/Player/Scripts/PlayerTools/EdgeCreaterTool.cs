@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +34,7 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// Tool for creating links between vertexes.
     /// </summary>
     [RequireComponent(typeof(LaserPointer))]
-    [CustomizableGrandType(Type = typeof(EdgeCreaterToolParams))]
+    [CustomizableGrandType(typeof(EdgeCreaterToolParams))]
     public class EdgeCreaterTool : AbstractPlayerTool, ICustomizable<EdgeCreaterToolParams>
     {
         private enum State
@@ -47,25 +49,22 @@ namespace Graph3DVisualizer.PlayerInputControls
         private const string _createEdgeActionName = "CreateEdgeAction";
         private const string _deleteEdgeActionName = "DeleteEdgeAction";
 
-        private List<(Type type, EdgeParameters parameters)> _edgeData;
+        private List<(Type type, EdgeParameters parameters)> _edgeData = new List<(Type, EdgeParameters)>();
 
-        private Vertex _firstVertex;
-
-        private InputActionMap _inputActions;
+        private Vertex? _firstVertex;
 
         private LaserPointer _laserPointer;
 
         [SerializeField]
         private float _rayCastRange = 1000;
 
-        private Vertex _secondVertex;
+        private Vertex? _secondVertex;
         private State _state;
         private int _typeIndex;
 
         private void Awake ()
         {
             _state = State.None;
-            _edgeData = new List<(Type, EdgeParameters)>();
             _laserPointer = GetComponent<LaserPointer>();
         }
 
@@ -106,7 +105,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             {
                 try
                 {
-                    _firstVertex.Link(_secondVertex, _edgeData[_typeIndex].type, _edgeData[_typeIndex].parameters);
+                    _firstVertex!.Link(_secondVertex!, _edgeData[_typeIndex].type, _edgeData[_typeIndex].parameters);
                 }
                 catch (Exception ex)
                 {
@@ -125,7 +124,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             {
                 try
                 {
-                    _firstVertex.UnLink(_secondVertex, _edgeData[_typeIndex].type);
+                    _firstVertex!.UnLink(_secondVertex!, _edgeData[_typeIndex].type);
                 }
                 catch (Exception ex)
                 {

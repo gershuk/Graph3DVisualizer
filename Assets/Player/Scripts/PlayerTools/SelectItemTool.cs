@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 
@@ -31,15 +33,14 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// The tool allows you to select objects with components that implement the <see cref="ISelectable"/>.
     /// </summary>
     [RequireComponent(typeof(LaserPointer))]
-    [CustomizableGrandType(Type = typeof(SelectItemToolParams))]
+    [CustomizableGrandType(typeof(SelectItemToolParams))]
     public class SelectItemTool : AbstractPlayerTool, ICustomizable<SelectItemToolParams>
     {
         private const string _changeColorActionName = "ChangeColorAction";
         private const string _inputActionName = "SelectItemActionMap";
         private const string _selectActionName = "SelectItemAction";
         private int _colorIndex;
-        private IReadOnlyList<Color> _colors;
-        private InputActionMap _inputActions;
+        private IReadOnlyList<Color> _colors = new List<Color>(1) { Color.red };
 
         private LaserPointer _laserPointer;
 

@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 
 using Graph3DVisualizer.Customizable;
@@ -25,34 +27,23 @@ using Yuzu;
 namespace Graph3DVisualizer.Graph3D
 {
     [RequireComponent(typeof(LineRenderer))]
-    [CustomizableGrandType(Type = typeof(StretchableEdgeParameters))]
-    public class StretchableEdge : AbstractEdge, ICustomizable<StretchableEdgeParameters>
+    [CustomizableGrandType(typeof(StretchableEdgeParameters))]
+    public sealed class StretchableEdge : AbstractEdge, ICustomizable<StretchableEdgeParameters>
     {
         private const string _edgeShaderPath = "Custom/MonoColorSurface";
         private const string _shaderColor = "_Color";
-
-        private static Shader _shader;
-
-        [SerializeField]
-        private Color _color;
 
         [SerializeField]
         private float _headLength;
 
         private LineRenderer _lineRenderer;
-        private Material _material;
+
+        public static Shader Shader { get; set; } = Shader.Find(_edgeShaderPath);
 
         public Color Color
         {
-            get => _color;
-            set
-            {
-                if (_color != value)
-                {
-                    _color = value;
-                    _material.SetColor(_shaderColor, value);
-                }
-            }
+            get => _material.GetColor(_shaderColor);
+            set => _material.SetColor(_shaderColor, value);
         }
 
         public float HeadLength
@@ -77,34 +68,48 @@ namespace Graph3DVisualizer.Graph3D
         private void Awake ()
         {
             _transform = GetComponent<Transform>();
-
-            _shader = _shader == null ? Shader.Find(_edgeShaderPath) : _shader;
-            _material = new Material(_shader);
-            _material.SetColor(_shaderColor, Color.yellow);
-            _material.enableInstancing = true;
-            Color = Color.yellow;
-
             _lineRenderer = GetComponent<LineRenderer>();
-            if (_lineRenderer == null)
-                _lineRenderer = gameObject.AddComponent<LineRenderer>();
-            _lineRenderer.sharedMaterial = _material;
-            _material = _lineRenderer.sharedMaterial;
-            _lineRenderer.positionCount = 2;
-            _lineRenderer.useWorldSpace = false;
+            //_material = new Material(_shader);
+            //_material.enableInstancing = true;
+            //Color = Color.yellow;
+
+            //_lineRenderer = GetComponent<LineRenderer>();
+            //if (_lineRenderer == null)
+            //    _lineRenderer = gameObject.AddComponent<LineRenderer>();
+            //_lineRenderer.sharedMaterial = _material;
+            //_material = _lineRenderer.sharedMaterial;
+            //_lineRenderer.positionCount = 2;
+            //_lineRenderer.useWorldSpace = false;
 
             _sourceOffsetDist = 1f;
             _targetOffsetDist = 1f;
             Type = EdgeType.Unidirectional;
         }
 
-        public new StretchableEdgeParameters DownloadParams () => new StretchableEdgeParameters((this as ICustomizable<EdgeParameters>).DownloadParams(), HeadLength, Color);
+        public new StretchableEdgeParameters DownloadParams ()
+        {
+            if (!CacheForCustomizableObjects.TryGetParameter<StretchableEdgeMaterialParameters>(_material, out var stretchableEdgeMaterialParameters))
+                stretchableEdgeMaterialParameters = new StretchableEdgeMaterialParameters(color: Color);
+            return new StretchableEdgeParameters(stretchableEdgeMaterialParameters!, HeadLength, (this as ICustomizable<EdgeParameters>).DownloadParams());
+        }
 
         public void SetupParams (StretchableEdgeParameters parameters)
         {
+            if (parameters.AbstarctEdgeMaterialParameters == null)
+                throw new NullReferenceException();
+
             SetupParams((EdgeParameters) parameters);
 
-            Color = parameters.Color;
-            HeadLength = parameters.HeadLength;
+            if (!parameters.AbstarctEdgeMaterialParameters.UseCache)
+                Color = (parameters.AbstarctEdgeMaterialParameters as StretchableEdgeMaterialParameters)!.Color;
+
+            _lineRenderer.sharedMaterial = _material;
+            _material = _lineRenderer.sharedMaterial;
+            _lineRenderer.positionCount = 2;
+            _lineRenderer.useWorldSpace = false;
+
+            //Do not use the property to avoid unnecessary update
+            _headLength = parameters.HeadLength;
 
             UpdateEdge();
         }
@@ -162,18 +167,33 @@ namespace Graph3DVisualizer.Graph3D
         }
     }
 
+    [YuzuAll]
+    [Serializable]
+    public class StretchableEdgeMaterialParameters : AbstarctEdgeMaterialParameters
+    {
+        public Color Color { get; protected set; }
+
+        public StretchableEdgeMaterialParameters (Color color = default, bool useCache = default, string? id = default) : base(StretchableEdge.Shader, useCache, id) => Color = color;
+
+        //Need for serialization in Json to ignore the Shader property in the AbstarctEdgeMaterialParameters class.
+        public StretchableEdgeMaterialParameters () : base(StretchableEdge.Shader)
+        { }
+    }
+
     [Serializable]
     [YuzuAll]
     public class StretchableEdgeParameters : EdgeParameters
     {
-        public Color Color { get; protected set; }
         public float HeadLength { get; protected set; }
 
-        public StretchableEdgeParameters (float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f, float headLength = 1f, Color color = default,
-            EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string id = null) : base(sourceOffsetDist, targetOffsetDist, width, visibility, id) => (Color, HeadLength) = (color, headLength);
+        public StretchableEdgeParameters (StretchableEdgeMaterialParameters stretchableEdgeMaterialParameters, float headLength = 1f,
+            float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f,
+            EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string? id = default) :
+            base(stretchableEdgeMaterialParameters, sourceOffsetDist, targetOffsetDist, width, visibility, id) => HeadLength = headLength;
 
-        public StretchableEdgeParameters (EdgeParameters edgeParameters, float headLength = 1f, Color color = default) :
-            this(edgeParameters.SourceOffsetDist, edgeParameters.TargetOffsetDist, edgeParameters.Width, headLength, color, edgeParameters.Visibility, edgeParameters.Id)
+        public StretchableEdgeParameters (StretchableEdgeMaterialParameters stretchableEdgeMaterialParameters, float headLength, EdgeParameters edgeParameters) :
+            this(stretchableEdgeMaterialParameters, headLength, edgeParameters.SourceOffsetDist, edgeParameters.TargetOffsetDist, edgeParameters.Width,
+                edgeParameters.Visibility, edgeParameters.ObjectId)
         { }
     }
 }

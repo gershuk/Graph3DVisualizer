@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 
 using UnityEngine;
@@ -28,7 +30,7 @@ namespace Graph3DVisualizer.SupportComponents
         protected GameObject _gameObject;
         protected Transform _transform;
 
-        public event Action<GameObject> Clicked;
+        public event Action<GameObject>? Clicked;
 
         protected abstract void ClickAction (GameObject callingObject);
 

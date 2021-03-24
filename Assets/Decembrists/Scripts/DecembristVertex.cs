@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using Graph3DVisualizer.Graph3D;
 
 namespace Graph3DVisualizer.GraphTasks
@@ -21,6 +23,6 @@ namespace Graph3DVisualizer.GraphTasks
     public class DecembristVertex : SelectableVertex
     {
         public bool IsDec { get; set; } = false;
-        public string Name { get; set; }
+        public string? Name { get; set; }
     }
 }

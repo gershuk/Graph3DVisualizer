@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -75,7 +77,7 @@ namespace Graph3DVisualizer.GraphTasks
             var notDecembrists = Resources.LoadAll(_notDecembristsPath, typeof(Texture2D));
 
             const int decCount = 6;
-            var notdecCount = 4;
+            const int notdecCount = 4;
             var customFont = Resources.Load<Font>(_fontPath);
             var textTextureFactory = new TextTextureFactory(customFont, 32);
             var selectFrame = Resources.Load<Texture2D>(_selectFramePath);

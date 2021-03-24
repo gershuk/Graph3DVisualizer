@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -41,8 +43,8 @@ namespace Graph3DVisualizer.TextureFactory
                 var height = Mathf.RoundToInt((characterInfo.uvTopRight.y - characterInfo.uvBottomLeft.y) * fontTexture.height);
 
                 var pixels = fontTexture.GetPixels((int) (characterInfo.uvBottomLeft.x * fontTexture.width),
-                                                    (int) (characterInfo.uvBottomLeft.y * fontTexture.height),
-                                                    width, height);
+                                                   (int) (characterInfo.uvBottomLeft.y * fontTexture.height),
+                                                   width, height);
 
                 _alphabet[ASCIIOffset + characterInfo.index] = new Texture2D(width, height);
                 _alphabet[ASCIIOffset + characterInfo.index].SetPixels(pixels);

@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 
 using Graph3DVisualizer.Customizable;
@@ -45,14 +47,27 @@ namespace Graph3DVisualizer.Graph3D
         public void Deconstruct (out AbstractVertex fromVertex, out AbstractVertex toVertex) => (fromVertex, toVertex) = (FromVertex, ToVertex);
     }
 
+    [Serializable]
+    [YuzuAll]
+    public abstract class AbstarctEdgeMaterialParameters : AbstractCustomizableParameter
+    {
+        [YuzuExclude]
+        public Shader Shader { get; }
+
+        public bool UseCache { get; protected set; }
+
+        protected AbstarctEdgeMaterialParameters (Shader shader, bool useCache = default, string? id = default) : base(id) => (Shader, UseCache) = (shader, useCache);
+    }
+
     /// <summary>
     /// Abstarct class for describing visual part of the graph edge.
     /// </summary>
-    [CustomizableGrandType(Type = typeof(EdgeParameters))]
+    [CustomizableGrandType(typeof(EdgeParameters))]
     public abstract class AbstractEdge : AbstractGraphObject, ICustomizable<EdgeParameters>
     {
         protected AdjacentVertices _adjacentVertices;
         protected GameObject _gameObject;
+        protected Material _material;
         protected float _sourceOffsetDist;
         protected float _targetOffsetDist;
         protected Transform _transform;
@@ -177,17 +192,32 @@ namespace Graph3DVisualizer.Graph3D
             }
         }
 
-        public EdgeParameters DownloadParams () => new EdgeParameters(SourceOffsetDist, TargetOffsetDist, Width, Visibility, Id);
+        public EdgeParameters DownloadParams () => new EdgeParameters(null, SourceOffsetDist, TargetOffsetDist, Width, Visibility, Id);
 
         public void SetupParams (EdgeParameters parameters)
         {
-            Id = parameters.Id;
+            Id = parameters.ObjectId;
 
             SourceOffsetDist = parameters.SourceOffsetDist;
             TargetOffsetDist = parameters.TargetOffsetDist;
             Width = parameters.Width;
 
             Visibility = parameters.Visibility;
+
+            if (parameters.AbstarctEdgeMaterialParameters == null)
+                throw new NullReferenceException();
+
+            if (parameters.AbstarctEdgeMaterialParameters.UseCache && CacheForCustomizableObjects.TryGetValue(parameters.AbstarctEdgeMaterialParameters, out var custimizableObject))
+            {
+                _material = (Material) custimizableObject!;
+            }
+            else
+            {
+                _material = new Material(parameters.AbstarctEdgeMaterialParameters.Shader) { enableInstancing = true };
+
+                if (parameters.AbstarctEdgeMaterialParameters.UseCache)
+                    CacheForCustomizableObjects.Add(parameters.AbstarctEdgeMaterialParameters, _material);
+            }
 
             UpdateEdge();
         }
@@ -216,13 +246,16 @@ namespace Graph3DVisualizer.Graph3D
     [YuzuAll]
     public class EdgeParameters : AbstractGraphObjectParameters
     {
+        public AbstarctEdgeMaterialParameters? AbstarctEdgeMaterialParameters { get; protected set; }
         public float SourceOffsetDist { get; protected set; }
         public float TargetOffsetDist { get; protected set; }
         public EdgeVisibility Visibility { get; protected set; }
         public float Width { get; protected set; }
 
-        public EdgeParameters (float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f, EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string id = null) : base(id)
+        public EdgeParameters (AbstarctEdgeMaterialParameters? abstarctEdgeMaterialParameters, float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f,
+            EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string? id = default) : base(id)
         {
+            AbstarctEdgeMaterialParameters = abstarctEdgeMaterialParameters;
             SourceOffsetDist = sourceOffsetDist;
             TargetOffsetDist = targetOffsetDist;
             Width = width;

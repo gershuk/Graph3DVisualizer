@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,7 +111,7 @@ namespace Graph3DVisualizer.GraphTasks
     /// <summary>
     /// Class that describes a task for working with a graph in 3d
     /// </summary>
-    [CustomizableGrandType(Type = typeof(VisualTaskParameters))]
+    [CustomizableGrandType(typeof(VisualTaskParameters))]
     public abstract class AbstractVisualTask : MonoBehaviour, ICustomizable<VisualTaskParameters>
     {
         protected List<AbstractGraph> _graphs = new List<AbstractGraph>();
@@ -182,8 +184,7 @@ namespace Graph3DVisualizer.GraphTasks
         public GraphInfo[] GraphsParameters { get; protected set; }
         public PlayerInfo[] PlayersParameters { get; protected set; }
 
-        public VisualTaskParameters (PlayerInfo[] playersParameters,
-                                        GraphInfo[] graphsParameters)
+        public VisualTaskParameters (PlayerInfo[] playersParameters, GraphInfo[] graphsParameters, string? parameterId = default) : base(parameterId)
         {
             PlayersParameters = playersParameters ?? throw new ArgumentNullException(nameof(playersParameters));
             GraphsParameters = graphsParameters ?? throw new ArgumentNullException(nameof(graphsParameters));

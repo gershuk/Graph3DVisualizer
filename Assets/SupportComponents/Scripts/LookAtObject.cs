@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using UnityEngine;
 
 namespace Graph3DVisualizer.SupportComponents
@@ -26,7 +28,7 @@ namespace Graph3DVisualizer.SupportComponents
         [SerializeField]
         private Vector3 _vectorUp = Vector3.up;
 
-        public Transform TargetObject { get; set; }
+        public Transform? TargetObject { get; set; }
         public Vector3 VectorWorldUp { get => _vectorUp; set => _vectorUp = value; }
 
         private void LateUpdate ()

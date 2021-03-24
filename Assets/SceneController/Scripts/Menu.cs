@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,13 +37,13 @@ namespace Graph3DVisualizer.Scene
 
         private const string _menuAction = "Show/HideMenuAction";
 
+        private readonly InputActionMap _inputActions = new InputActionMap("SceneControlletActionMap");
+
         [SerializeField]
         private GameObject _content;
 
         [SerializeField]
         private Font _font;
-
-        private InputActionMap _inputActions;
 
         private bool _isActive = true;
 
@@ -53,7 +55,6 @@ namespace Graph3DVisualizer.Scene
 
         private void Awake ()
         {
-            _inputActions = new InputActionMap("SceneControlletActionMap");
             var selectItemAction = _inputActions.AddAction(_menuAction, InputActionType.Button, "<Keyboard>/Escape");
             selectItemAction.performed += CallChangeMenuState;
             _inputActions.Enable();
@@ -73,15 +74,13 @@ namespace Graph3DVisualizer.Scene
                     var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
                         new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
                     var index = i;
-                    var buttonParameters = new ButtonParameters(task.Name, buttonRectParameters, null,
+                    var buttonParameters = new ButtonParameters(
                         () =>
                         {
                             _state = State.TaskScene;
                             ChangeMenuState(false);
-                            if (_sceneControler.ActiveTask)
-                                _sceneControler.StopTask();
                             _sceneControler.StartTask(index);
-                        });
+                        }, task.Name, buttonRectParameters, null);
                     var newButton = CreateButton(buttonParameters);
                     var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
                     var textParameters = new TextParameters(task.Name, Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
@@ -92,14 +91,13 @@ namespace Graph3DVisualizer.Scene
             {
                 var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
                             new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
-                var buttonParameters = new ButtonParameters("StartMenu", buttonRectParameters, null,
+                var buttonParameters = new ButtonParameters(
                     () =>
                     {
                         _state = State.StartMenu;
-                        if (_sceneControler.ActiveTask)
-                            _sceneControler.StopTask();
+                        _sceneControler.StopTask();
                         ChangeMenuState(true);
-                    });
+                    }, "StartMenu", buttonRectParameters, null);
                 var newButton = CreateButton(buttonParameters);
                 var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
                 var textParameters = new TextParameters("StartMenu", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
@@ -110,7 +108,7 @@ namespace Graph3DVisualizer.Scene
             {
                 var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
                             new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
-                var buttonParameters = new ButtonParameters("Check", buttonRectParameters, null,
+                var buttonParameters = new ButtonParameters(
                     () =>
                     {
                         if (_state == State.TaskScene)
@@ -120,7 +118,7 @@ namespace Graph3DVisualizer.Scene
                                 Debug.LogError(verdict);
                             Debug.LogError("=================================");
                         }
-                    });
+                    }, "Check", buttonRectParameters, null);
                 var newButton = CreateButton(buttonParameters);
                 var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
                 var textParameters = new TextParameters("Check", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
@@ -131,7 +129,7 @@ namespace Graph3DVisualizer.Scene
             {
                 var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
                             new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
-                var buttonParameters = new ButtonParameters("SaveBinary", buttonRectParameters, null, () => _sceneControler.SaveBinary("saveFile.binary"));
+                var buttonParameters = new ButtonParameters(() => _sceneControler.SaveBinary("saveFile.binary"), "SaveBinary", buttonRectParameters, null);
                 var newButton = CreateButton(buttonParameters);
                 var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
                 var textParameters = new TextParameters("SaveBinary", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
@@ -142,14 +140,12 @@ namespace Graph3DVisualizer.Scene
             {
                 var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
                             new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
-                var buttonParameters = new ButtonParameters("LoadBinary", buttonRectParameters, null, () =>
+                var buttonParameters = new ButtonParameters(() =>
                 {
                     _state = State.TaskScene;
-                    if (_sceneControler.ActiveTask)
-                        _sceneControler.StopTask();
                     _sceneControler.LoadBinary("saveFile.binary");
                     ChangeMenuState(false);
-                });
+                }, "LoadBinary", buttonRectParameters, null);
                 var newButton = CreateButton(buttonParameters);
                 var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
                 var textParameters = new TextParameters("LoadBinary", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
@@ -160,7 +156,7 @@ namespace Graph3DVisualizer.Scene
             {
                 var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
                             new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
-                var buttonParameters = new ButtonParameters("SaveJson", buttonRectParameters, null, () => _sceneControler.SaveJson("saveFile.json"));
+                var buttonParameters = new ButtonParameters(() => _sceneControler.SaveJson("saveFile.json"), "SaveJson", buttonRectParameters, null);
                 var newButton = CreateButton(buttonParameters);
                 var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
                 var textParameters = new TextParameters("SaveJson", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);
@@ -171,14 +167,12 @@ namespace Graph3DVisualizer.Scene
             {
                 var buttonRectParameters = new RectTransformParameters(_content.transform, Vector2.up, Vector2.up, new Vector2(buttonWidth, buttonHeight),
                             new Vector2(buttonWidth / 2, -buttonHeight * (i + 0.5f)));
-                var buttonParameters = new ButtonParameters("LoadJson", buttonRectParameters, null, () =>
+                var buttonParameters = new ButtonParameters(() =>
                 {
                     _state = State.TaskScene;
-                    if (_sceneControler.ActiveTask)
-                        _sceneControler.StopTask();
                     _sceneControler.LoadJson("saveFile.json");
                     ChangeMenuState(false);
-                });
+                }, "LoadJson", buttonRectParameters, null);
                 var newButton = CreateButton(buttonParameters);
                 var textRectParameters = new RectTransformParameters(newButton.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
                 var textParameters = new TextParameters("LoadJson", Color.black, _font, TextAnchor.MiddleCenter, 24, textRectParameters);

@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 
 using UnityEngine;
@@ -29,12 +31,12 @@ namespace Graph3DVisualizer.GUI
     {
         public readonly struct ButtonParameters
         {
-            public Image Image { get; }
+            public Image? Image { get; }
             public string Name { get; }
             public UnityAction OnClickFunction { get; }
             public RectTransformParameters RectTransformParameters { get; }
 
-            public ButtonParameters (string name = default, in RectTransformParameters rectTransformParameters = default, Image image = default, UnityAction onClickFunction = default)
+            public ButtonParameters (UnityAction onClickFunction, string? name = default, in RectTransformParameters rectTransformParameters = default, Image? image = default)
             {
                 Name = name ?? string.Empty;
                 RectTransformParameters = rectTransformParameters;

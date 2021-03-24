@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 
 using Graph3DVisualizer.Customizable;
@@ -26,8 +28,8 @@ namespace Graph3DVisualizer.Billboards
 {    /// <summary>
      /// An object containing information for displaying the Billboard image. Contained in the <see cref="BillboardController"/>.
      /// </summary>
-    [CustomizableGrandType(Type = typeof(BillboardParameters))]
-    public sealed class Billboard : ICustomizable<BillboardParameters>
+    [CustomizableGrandType(typeof(BillboardParameters))]
+    public sealed class Billboard : ICustomizable<BillboardParameters>, IDisposable
     {
         private const string _billboardShaderPath = "Custom/BillboardShader";
         private const string _cutoff = "_Cutoff";
@@ -38,8 +40,9 @@ namespace Graph3DVisualizer.Billboards
         private const string _scaleX = "_ScaleX";
         private const string _scaleY = "_ScaleY";
         private readonly Shader _shader = Shader.Find(_billboardShaderPath);
+        private bool _disposed = false;
 
-        public event Action ScaleChanged;
+        public event Action? ScaleChanged;
 
         public float Cutoff
         {
@@ -52,7 +55,7 @@ namespace Graph3DVisualizer.Billboards
             }
         }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         public bool IsMonoColor
         {
@@ -62,8 +65,8 @@ namespace Graph3DVisualizer.Billboards
 
         public Texture2D MainTexture
         {
-            get => (Texture2D) Material.GetTexture(_mainTextureName);
-            set => Material.SetTexture(_mainTextureName, value);
+            get => (Texture2D) Material.mainTexture;
+            set => Material.mainTexture = value;
         }
 
         public Material Material { get; set; }
@@ -74,7 +77,7 @@ namespace Graph3DVisualizer.Billboards
             set => Material.SetColor(_monoColor, value);
         }
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         public Vector4 Offset
         {
@@ -114,12 +117,32 @@ namespace Graph3DVisualizer.Billboards
             set => Material.SetTextureScale(_mainTextureName, value);
         }
 
-        public BillboardParameters DownloadParams () =>
-            new BillboardParameters(MainTexture, Offset, new Vector2(ScaleX, ScaleY), Cutoff, IsMonoColor, MonoColor, Name, Description);
+        ~Billboard () => Dispose();
+
+        //Release material
+        public void Dispose ()
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            Material = null;
+            GC.SuppressFinalize(this);
+            _disposed = true;
+        }
+
+        // ToDo : Add ICustomizable to BillboardController
+        public BillboardParameters DownloadParams () => CacheForCustomizableObjects.TryGetParameter<BillboardParameters>(this, out var parameters)
+                ? parameters!
+                : new BillboardParameters(MainTexture, Offset, new Vector2(ScaleX, ScaleY), Cutoff, IsMonoColor, MonoColor, false, Name, Description);
 
         public void SetupParams (BillboardParameters billboardParameters)
         {
-            Material = new Material(_shader);
+            Material = new Material(_shader)
+            {
+                enableInstancing = true
+            };
             MainTexture = billboardParameters.Texture;
             Offset = billboardParameters.Offset;
             ScaleX = billboardParameters.Scale.x;
@@ -145,8 +168,6 @@ namespace Graph3DVisualizer.Billboards
         public float Cutoff { get; private set; }
 
         public string Description { get; private set; }
-
-        public Guid Guid { get; private set; }
 
         /// <summary>
         /// Used to determine image output mode. If true, image is displayed in one color, false-according to the texture.
@@ -175,6 +196,8 @@ namespace Graph3DVisualizer.Billboards
         /// </summary>
         public Texture2D Texture { get; private set; }
 
+        public bool UseCash { get; private set; }
+
         /// <summary>
         /// The class constructor.
         /// </summary>
@@ -192,16 +215,17 @@ namespace Graph3DVisualizer.Billboards
         /// <param name="monoColor">
         /// Used to determine image color in MonoColor mode.</param>
         public BillboardParameters (Texture2D texture, Vector4 offset = default, Vector2 scale = default, float cutoff = 0.1f, bool isMonoColor = false, Color monoColor = default,
-            string name = default, string description = default)
+            bool useCache = false, string? name = default, string? description = default, string? parameterId = default) : base(parameterId)
         {
             Texture = texture;
-            Offset = offset;
             Scale = scale;
             Cutoff = cutoff;
             IsMonoColor = isMonoColor;
             MonoColor = monoColor;
+            Offset = offset;
             Name = name ?? string.Empty;
             Description = description ?? string.Empty;
+            UseCash = useCache;
         }
     }
 }

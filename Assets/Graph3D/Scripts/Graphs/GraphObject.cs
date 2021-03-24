@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 
 using Graph3DVisualizer.Customizable;
@@ -43,8 +45,8 @@ namespace Graph3DVisualizer.Graph3D
     [YuzuAll]
     public abstract class AbstractGraphObjectParameters : AbstractCustomizableParameter
     {
-        public string Id { get; protected set; }
+        public string? ObjectId { get; protected set; }
 
-        public AbstractGraphObjectParameters (string id) => Id = id;
+        protected AbstractGraphObjectParameters (string? objectId, string? parameterId = default) : base(parameterId) => ObjectId = objectId;
     }
 }

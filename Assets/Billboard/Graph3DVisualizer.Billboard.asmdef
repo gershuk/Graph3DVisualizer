@@ -1,10 +1,10 @@
 {
     "name": "Graph3DVisualizer.Billboard",
+    "rootNamespace": "Graph3DVisualizer.Billboard",
     "references": [
         "GUID:a251807422a267846803e3939918e146",
         "GUID:de927d21316a8a447912b685b91e2a7f",
-        "GUID:68f547e922d4cac48980104337bf6a86",
-        "GUID:bbb638d765d50ba4886c5596a1a28f94"
+        "GUID:68f547e922d4cac48980104337bf6a86"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

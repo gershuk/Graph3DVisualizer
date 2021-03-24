@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 
@@ -114,7 +116,7 @@ namespace Graph3DVisualizer.Graph3D
     /// <summary>
     /// Abstract class that describes graph component.
     /// </summary>
-    [CustomizableGrandType(Type = typeof(GraphParameters))]
+    [CustomizableGrandType(typeof(GraphParameters))]
     public abstract class AbstractGraph : AbstractGraphObject, ICustomizable<GraphParameters>
     {
         protected Transform _transform;
@@ -152,7 +154,7 @@ namespace Graph3DVisualizer.Graph3D
 
         public void SetupParams (GraphParameters parameters)
         {
-            Id = parameters.Id;
+            Id = parameters.ObjectId;
 
             if (parameters.VertexParameters != null)
             {
@@ -185,12 +187,12 @@ namespace Graph3DVisualizer.Graph3D
     [YuzuAll]
     public class GraphParameters : AbstractGraphObjectParameters
     {
-        public List<LinkInfo> Links { get; protected set; }
-        public VertexInfo[] VertexParameters { get; protected set; }
+        public List<LinkInfo>? Links { get; protected set; }
+        public VertexInfo[]? VertexParameters { get; protected set; }
 
-        public GraphParameters (VertexInfo[] vertexParameters = default,
-                                List<LinkInfo> links = default,
-                                string id = null) : base(id)
+        public GraphParameters (VertexInfo[]? vertexParameters = default,
+                                List<LinkInfo>? links = default,
+                                string? id = default) : base(id)
         {
             Links = links;
             if (vertexParameters != null)

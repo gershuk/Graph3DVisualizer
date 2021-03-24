@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 
 using Graph3DVisualizer.SupportComponents;
@@ -28,7 +30,7 @@ namespace Graph3DVisualizer.GUI
     public class Button3DComponnet : AbstractClickableObject
     {
         //ToDo : Change to expression
-        public Action<GameObject> Action { get; set; }
+        public Action<GameObject>? Action { get; set; }
 
         protected override void ClickAction (GameObject callingObject) => Action?.Invoke(callingObject);
 

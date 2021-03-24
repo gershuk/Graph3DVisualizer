@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+#nullable enable
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +31,7 @@ namespace Graph3DVisualizer.Graph3D
     /// </summary>
     public class Graph : AbstractGraph
     {
-        private Dictionary<string, AbstractVertex> _vertexes;
+        private readonly Dictionary<string, AbstractVertex> _vertexes = new Dictionary<string, AbstractVertex>();
 
         public override int VertexesCount => _vertexes.Count;
 
@@ -37,7 +39,6 @@ namespace Graph3DVisualizer.Graph3D
         {
             _vertexPrefab = _vertexPrefab == null ? Resources.Load<GameObject>("Prefabs/Vertex") : _vertexPrefab;
             _transform = GetComponent<Transform>();
-            _vertexes = new Dictionary<string, AbstractVertex>();
         }
 
         public override bool ContainsVertex (string id) => _vertexes.ContainsKey(id);
