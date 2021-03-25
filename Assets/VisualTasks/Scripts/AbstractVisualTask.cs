@@ -143,7 +143,7 @@ namespace Graph3DVisualizer.GraphTasks
 
         public abstract void InitTask ();
 
-        public void SetupParams (VisualTaskParameters parameters)
+        public virtual void SetupParams (VisualTaskParameters parameters)
         {
             foreach (var (graphType, graphParameters) in parameters.GraphsParameters)
             {
