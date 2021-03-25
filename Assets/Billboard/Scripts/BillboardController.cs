@@ -108,8 +108,9 @@ namespace Graph3DVisualizer.Billboards
             else
             {
                 billboard = new Billboard();
-                billboard.SetupParams(parameters);
             }
+
+            billboard.SetupParams(parameters);
 
             _billboards.Add(billboardId, billboard);
 

@@ -74,7 +74,7 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public void ChangeColor (int deltaIndex) => _colorIndex = (_colorIndex + deltaIndex) < 0 ? _colors.Count - 1 : (_colorIndex + deltaIndex) % _colors.Count;
 
-        public SelectItemToolParams DownloadParams () => new SelectItemToolParams(_colors);
+        public SelectItemToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new SelectItemToolParams(_colors);
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {

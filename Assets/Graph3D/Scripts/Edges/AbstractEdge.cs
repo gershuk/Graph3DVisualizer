@@ -17,6 +17,7 @@
 #nullable enable
 
 using System;
+using System.Collections.Generic;
 
 using Graph3DVisualizer.Customizable;
 
@@ -56,7 +57,7 @@ namespace Graph3DVisualizer.Graph3D
 
         public bool UseCache { get; protected set; }
 
-        protected AbstarctEdgeMaterialParameters (Shader shader, bool useCache = default, string? id = default) : base(id) => (Shader, UseCache) = (shader, useCache);
+        protected AbstarctEdgeMaterialParameters (Shader shader, bool useCache = default, Guid? id = default) : base(id) => (Shader, UseCache) = (shader, useCache);
     }
 
     /// <summary>
@@ -89,6 +90,8 @@ namespace Graph3DVisualizer.Graph3D
                 }
             }
         }
+
+        public Guid? CacheGuid { get; private set; }
 
         public virtual float SourceOffsetDist
         {
@@ -192,7 +195,7 @@ namespace Graph3DVisualizer.Graph3D
             }
         }
 
-        public EdgeParameters DownloadParams () => new EdgeParameters(null, SourceOffsetDist, TargetOffsetDist, Width, Visibility, Id);
+        public EdgeParameters DownloadParams (Dictionary<Guid, object> writeCache) => new EdgeParameters(null, SourceOffsetDist, TargetOffsetDist, Width, Visibility, Id);
 
         public void SetupParams (EdgeParameters parameters)
         {
@@ -206,6 +209,9 @@ namespace Graph3DVisualizer.Graph3D
 
             if (parameters.AbstarctEdgeMaterialParameters == null)
                 throw new NullReferenceException();
+
+            if (parameters.AbstarctEdgeMaterialParameters.UseCache)
+                CacheGuid = parameters.AbstarctEdgeMaterialParameters.Id;
 
             if (parameters.AbstarctEdgeMaterialParameters.UseCache && CacheForCustomizableObjects.TryGetValue(parameters.AbstarctEdgeMaterialParameters, out var custimizableObject))
             {
@@ -223,9 +229,6 @@ namespace Graph3DVisualizer.Graph3D
         }
 
         public abstract void UpdateCoordinates ();
-
-#if UNITY_EDITOR
-#endif
 
         public void UpdateEdge ()
         {

@@ -134,10 +134,10 @@ namespace Graph3DVisualizer.GraphTasks
             Destroy(gameObject);
         }
 
-        public VisualTaskParameters DownloadParams () =>
+        public VisualTaskParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
             new VisualTaskParameters
-                (_players.Select(x => new PlayerInfo(x.GetType(), (PlayerParameters) CustomizableExtension.CallDownloadParams(x))).ToArray(),
-                 _graphs.Select(x => new GraphInfo(x.GetType(), (GraphParameters) CustomizableExtension.CallDownloadParams(x))).ToArray());
+                (_players.Select(x => new PlayerInfo(x.GetType(), (PlayerParameters) CustomizableExtension.CallDownloadParams(x, writeCache))).ToArray(),
+                 _graphs.Select(x => new GraphInfo(x.GetType(), (GraphParameters) CustomizableExtension.CallDownloadParams(x, writeCache))).ToArray());
 
         public abstract List<Verdict> GetResult ();
 
@@ -184,7 +184,7 @@ namespace Graph3DVisualizer.GraphTasks
         public GraphInfo[] GraphsParameters { get; protected set; }
         public PlayerInfo[] PlayersParameters { get; protected set; }
 
-        public VisualTaskParameters (PlayerInfo[] playersParameters, GraphInfo[] graphsParameters, string? parameterId = default) : base(parameterId)
+        public VisualTaskParameters (PlayerInfo[] playersParameters, GraphInfo[] graphsParameters, Guid? parameterId = default) : base(parameterId)
         {
             PlayersParameters = playersParameters ?? throw new ArgumentNullException(nameof(playersParameters));
             GraphsParameters = graphsParameters ?? throw new ArgumentNullException(nameof(graphsParameters));

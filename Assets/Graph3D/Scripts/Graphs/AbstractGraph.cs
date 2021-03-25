@@ -130,18 +130,18 @@ namespace Graph3DVisualizer.Graph3D
 
         public abstract bool DeleteVeretex (string id);
 
-        public GraphParameters DownloadParams ()
+        public GraphParameters DownloadParams (Dictionary<Guid, object> writeCache)
         {
             var vertexParameters = new List<VertexInfo>();
             var links = new List<LinkInfo>();
 
             foreach (var vertex in GetVertexes())
             {
-                vertexParameters.Add((vertex.GetType(), (VertexParameters) CustomizableExtension.CallDownloadParams(vertex)));
+                vertexParameters.Add((vertex.GetType(), (VertexParameters) CustomizableExtension.CallDownloadParams(vertex, writeCache)));
 
                 foreach (var outgoingLink in vertex.OutgoingLinks)
                 {
-                    links.Add((vertex.Id, outgoingLink.AdjacentVertex.Id, outgoingLink.Edge.GetType(), (EdgeParameters) CustomizableExtension.CallDownloadParams(outgoingLink.Edge)));
+                    links.Add((vertex.Id, outgoingLink.AdjacentVertex.Id, outgoingLink.Edge.GetType(), (EdgeParameters) CustomizableExtension.CallDownloadParams(outgoingLink.Edge, writeCache)));
                 }
             }
 

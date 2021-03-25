@@ -18,6 +18,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 using Graph3DVisualizer.Customizable;
 using Graph3DVisualizer.SupportComponents;
@@ -119,7 +120,7 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public void ChangeRange (float normalizedDelta) => _capturedRange = Mathf.Max(0, _capturedRange + normalizedDelta * Time.deltaTime * RangeChangeSpeed);
 
-        public GrabItemToolParams DownloadParams ()
+        public GrabItemToolParams DownloadParams (Dictionary<Guid, object> writeCache)
         {
             Debug.LogWarning($"GrabItemTool.DownloadParams not implemented");
             return new GrabItemToolParams();

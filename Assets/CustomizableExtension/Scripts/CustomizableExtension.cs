@@ -26,16 +26,16 @@ namespace Graph3DVisualizer.Customizable
 {
     public static class CacheForCustomizableObjects
     {
-        private static readonly Dictionary<Type, SortedDictionary<AbstractCustomizableParameter, object>> _cache = new Dictionary<Type, SortedDictionary<AbstractCustomizableParameter, object>>();
+        private static readonly Dictionary<Type, SortedDictionary<Guid, object>> _cache = new Dictionary<Type, SortedDictionary<Guid, object>>();
 
         public static void Add (AbstractCustomizableParameter parameter, object customizableObject)
         {
             if (!_cache.TryGetValue(parameter.GetType(), out var dictionary))
             {
-                dictionary = new SortedDictionary<AbstractCustomizableParameter, object>();
+                dictionary = new SortedDictionary<Guid, object>();
                 _cache.Add(parameter.GetType(), dictionary);
             }
-            dictionary.Add(parameter, customizableObject);
+            dictionary.Add(parameter.Id, customizableObject);
         }
 
         public static void Clear (Type type, bool useDispose = default)
@@ -65,37 +65,22 @@ namespace Graph3DVisualizer.Customizable
             _cache.Clear();
         }
 
-        public static bool ContainsKey (AbstractCustomizableParameter parameter) => _cache[parameter.GetType()].ContainsKey(parameter);
+        public static bool ContainsKey (AbstractCustomizableParameter parameter) => _cache[parameter.GetType()].ContainsKey(parameter.Id);
 
         public static bool ContainsValue<T> (object customizableObject) => _cache.TryGetValue(typeof(T), out var dictionary) ? dictionary.ContainsValue(customizableObject) : false;
 
         public static void Remove (AbstractCustomizableParameter parameter, bool useDispose = default)
         {
-            if (useDispose && _cache[parameter.GetType()][parameter] is IDisposable disposable)
+            if (useDispose && _cache[parameter.GetType()][parameter.Id] is IDisposable disposable)
                 disposable.Dispose();
 
-            _cache[parameter.GetType()].Remove(parameter);
-        }
-
-        public static bool TryGetParameter<T> (object customizableObject, out T? parameter) where T : AbstractCustomizableParameter
-        {
-            parameter = null;
-            foreach (var pair in _cache[typeof(T)])
-            {
-                if (pair.Value.Equals(customizableObject) && pair.Key.GetType() == typeof(T))
-                {
-                    parameter = (T) pair.Key;
-                    return true;
-                }
-            }
-
-            return false;
+            _cache[parameter.GetType()].Remove(parameter.Id);
         }
 
         public static bool TryGetValue (AbstractCustomizableParameter parameter, out object? customizableObject)
         {
             customizableObject = null;
-            return _cache.TryGetValue(parameter.GetType(), out var dictionary) && dictionary.TryGetValue(parameter, out customizableObject);
+            return _cache.TryGetValue(parameter.GetType(), out var dictionary) && dictionary.TryGetValue(parameter.Id, out customizableObject);
         }
     }
 
@@ -104,7 +89,7 @@ namespace Graph3DVisualizer.Customizable
     /// </summary>
     public static class CustomizableExtension
     {
-        public static AbstractCustomizableParameter CallDownloadParams (object customizable)
+        public static AbstractCustomizableParameter CallDownloadParams (object customizable, Dictionary<Guid, object> writeCache)
         {
             const string methodName = nameof(ICustomizable<AbstractCustomizableParameter>.DownloadParams);
             var attribute = (CustomizableGrandTypeAttribute) Attribute.GetCustomAttribute(customizable.GetType(), typeof(CustomizableGrandTypeAttribute), true);
@@ -113,14 +98,14 @@ namespace Graph3DVisualizer.Customizable
                 if (interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>) && interfaceType.GetGenericArguments()[0] == attribute.Type)
                 {
                     var method = interfaceType.GetMethod(methodName);
-                    return (AbstractCustomizableParameter) method.Invoke(customizable, null);
+                    return (AbstractCustomizableParameter) method.Invoke(customizable, new[] { writeCache });
                 }
             }
 
             throw new MissingMethodException(customizable.GetType().Name, methodName);
         }
 
-        public static List<T> CallDownloadParams<T> (object customizable) where T : AbstractCustomizableParameter
+        public static List<T> CallDownloadParams<T> (object customizable, Dictionary<Guid, object> writeCache) where T : AbstractCustomizableParameter
         {
             var parameters = new List<T>();
             foreach (var interfaceType in customizable.GetType().GetInterfaces())
@@ -128,7 +113,7 @@ namespace Graph3DVisualizer.Customizable
                 if (interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>)
                     && (interfaceType.GetGenericArguments()[0].IsSubclassOf(typeof(T)) || interfaceType.GetGenericArguments()[0] == typeof(T)))
                 {
-                    parameters.Add((T) interfaceType.GetMethod(nameof(ICustomizable<AbstractCustomizableParameter>.DownloadParams)).Invoke(customizable, null));
+                    parameters.Add((T) interfaceType.GetMethod(nameof(ICustomizable<AbstractCustomizableParameter>.DownloadParams)).Invoke(customizable, new[] { writeCache }));
                 }
             }
             return parameters;
@@ -179,11 +164,11 @@ namespace Graph3DVisualizer.Customizable
     [YuzuAll]
     public abstract class AbstractCustomizableParameter : IComparable<AbstractCustomizableParameter>
     {
-        private string _id;
+        public Guid Id { get; protected set; }
 
-        public string Id { get => _id; protected set => _id = value ?? Guid.NewGuid().ToString(); }
+        protected AbstractCustomizableParameter (Guid? id) => Id = id ?? Guid.NewGuid();
 
-        protected AbstractCustomizableParameter (string? id) => Id = id;
+        protected AbstractCustomizableParameter () => Id = Guid.NewGuid();
 
         public int CompareTo (AbstractCustomizableParameter other) => Id.CompareTo(other.Id);
     }
@@ -229,7 +214,7 @@ namespace Graph3DVisualizer.Customizable
     /// </summary>
     public interface ICustomizable<TParams> where TParams : AbstractCustomizableParameter
     {
-        TParams DownloadParams ();
+        TParams DownloadParams (Dictionary<Guid, object> writeCache);
 
         void SetupParams (TParams parameters);
     }

@@ -124,7 +124,8 @@ namespace Graph3DVisualizer.Scene
             }
         }
 
-        public SceneControllerParameters DownloadParams () => new SceneControllerParameters(ActiveTask.GetType(), (VisualTaskParameters) CustomizableExtension.CallDownloadParams(ActiveTask));
+        public SceneControllerParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
+            new SceneControllerParameters(ActiveTask.GetType(), (VisualTaskParameters) CustomizableExtension.CallDownloadParams(ActiveTask, writeCache));
 
         public void FindAllTasks ()
         {
@@ -170,14 +171,14 @@ namespace Graph3DVisualizer.Scene
         {
             using var fs = new FileStream(name, FileMode.Create);
             var formatter = new BinaryFormatter { SurrogateSelector = MakeSurrogateSelector() };
-            formatter.Serialize(fs, DownloadParams());
+            formatter.Serialize(fs, DownloadParams(new Dictionary<Guid, object>()));
         }
 
         public void SaveJson (string name)
         {
             using var sw = new StreamWriter(name);
             var jsonSerializer = new JsonSerializer() { Options = MakeYuzuCommonOptions() };
-            sw.WriteLine(jsonSerializer.ToString(DownloadParams()));
+            sw.WriteLine(jsonSerializer.ToString(DownloadParams(new Dictionary<Guid, object>())));
         }
 
         public void SetupParams (SceneControllerParameters parameters)
@@ -229,7 +230,7 @@ namespace Graph3DVisualizer.Scene
 
         public VisualTaskParameters VisualTaskParameters { get; protected set; }
 
-        public SceneControllerParameters (Type taskType, VisualTaskParameters visualTaskParameters, string? parameterId = default) : base(parameterId)
+        public SceneControllerParameters (Type taskType, VisualTaskParameters visualTaskParameters, Guid? parameterId = default) : base(parameterId)
         {
             TaskType = taskType ?? throw new ArgumentNullException(nameof(taskType));
             VisualTaskParameters = visualTaskParameters ?? throw new ArgumentNullException(nameof(visualTaskParameters));

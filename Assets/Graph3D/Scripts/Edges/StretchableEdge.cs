@@ -17,6 +17,7 @@
 #nullable enable
 
 using System;
+using System.Collections.Generic;
 
 using Graph3DVisualizer.Customizable;
 
@@ -86,11 +87,20 @@ namespace Graph3DVisualizer.Graph3D
             Type = EdgeType.Unidirectional;
         }
 
-        public new StretchableEdgeParameters DownloadParams ()
+        public new StretchableEdgeParameters DownloadParams (Dictionary<Guid, object> writeCache)
         {
-            if (!CacheForCustomizableObjects.TryGetParameter<StretchableEdgeMaterialParameters>(_material, out var stretchableEdgeMaterialParameters))
-                stretchableEdgeMaterialParameters = new StretchableEdgeMaterialParameters(color: Color);
-            return new StretchableEdgeParameters(stretchableEdgeMaterialParameters!, HeadLength, (this as ICustomizable<EdgeParameters>).DownloadParams());
+            var edgeParameters = (this as ICustomizable<EdgeParameters>).DownloadParams(writeCache);
+            object edgeMaterialParameters = null;
+            if (CacheGuid.HasValue)
+            {
+                if (!writeCache.TryGetValue(CacheGuid.Value, out edgeMaterialParameters))
+                {
+                    edgeMaterialParameters = new StretchableEdgeMaterialParameters(Color, true);
+                    writeCache.Add(CacheGuid.Value, edgeMaterialParameters);
+                }
+            }
+            edgeMaterialParameters ??= new StretchableEdgeMaterialParameters(color: Color);
+            return new StretchableEdgeParameters((StretchableEdgeMaterialParameters) edgeMaterialParameters, HeadLength, edgeParameters);
         }
 
         public void SetupParams (StretchableEdgeParameters parameters)
@@ -100,8 +110,7 @@ namespace Graph3DVisualizer.Graph3D
 
             SetupParams((EdgeParameters) parameters);
 
-            if (!parameters.AbstarctEdgeMaterialParameters.UseCache)
-                Color = (parameters.AbstarctEdgeMaterialParameters as StretchableEdgeMaterialParameters)!.Color;
+            Color = (parameters.AbstarctEdgeMaterialParameters as StretchableEdgeMaterialParameters)!.Color;
 
             _lineRenderer.sharedMaterial = _material;
             _material = _lineRenderer.sharedMaterial;
@@ -173,7 +182,7 @@ namespace Graph3DVisualizer.Graph3D
     {
         public Color Color { get; protected set; }
 
-        public StretchableEdgeMaterialParameters (Color color = default, bool useCache = default, string? id = default) : base(StretchableEdge.Shader, useCache, id) => Color = color;
+        public StretchableEdgeMaterialParameters (Color color = default, bool useCache = default, Guid? id = default) : base(StretchableEdge.Shader, useCache, id) => Color = color;
 
         //Need for serialization in Json to ignore the Shader property in the AbstarctEdgeMaterialParameters class.
         public StretchableEdgeMaterialParameters () : base(StretchableEdge.Shader)

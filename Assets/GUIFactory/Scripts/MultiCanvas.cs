@@ -65,7 +65,7 @@ namespace Graph3DVisualizer.VrHud
     {
         public GameObject Root { get; protected set; }
 
-        public CanvasControllerParameters DownloadParams () => new CanvasControllerParameters(Root.transform.localPosition, Root.transform.localEulerAngles, Root.transform.localScale);
+        public CanvasControllerParameters DownloadParams (Dictionary<Guid, object> writeCache) => new CanvasControllerParameters(Root.transform.localPosition, Root.transform.localEulerAngles, Root.transform.localScale);
 
         public void SetupParams (CanvasControllerParameters parameters) =>
             (Root.transform.localPosition, Root.transform.localEulerAngles, Root.transform.localScale) = (parameters.LocalPosition, parameters.LocalEulerAngles, parameters.Scale);
@@ -77,7 +77,7 @@ namespace Graph3DVisualizer.VrHud
         public Vector3 LocalPosition { get; protected set; }
         public Vector3 Scale { get; protected set; }
 
-        public CanvasControllerParameters (Vector3 localPosition, Vector3 localEulerAngles, Vector3 scale, string? parameterId = default) : base(parameterId) =>
+        public CanvasControllerParameters (Vector3 localPosition, Vector3 localEulerAngles, Vector3 scale, Guid? parameterId = default) : base(parameterId) =>
             (LocalPosition, LocalEulerAngles, Scale) = (localPosition, localEulerAngles, scale);
     }
 
@@ -103,8 +103,8 @@ namespace Graph3DVisualizer.VrHud
             _canvasControllers.Add(canvasController);
         }
 
-        public MultiCanvasParameters DownloadParams () =>
-            new MultiCanvasParameters(_canvasControllers.Select(c => new CanvasControllerInfo(c.GetType(), (CanvasControllerParameters) CustomizableExtension.CallDownloadParams(c))).ToArray());
+        public MultiCanvasParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
+            new MultiCanvasParameters(_canvasControllers.Select(c => new CanvasControllerInfo(c.GetType(), (CanvasControllerParameters) CustomizableExtension.CallDownloadParams(c, writeCache))).ToArray());
 
         public void SetupParams (MultiCanvasParameters parameters)
         {
@@ -120,7 +120,7 @@ namespace Graph3DVisualizer.VrHud
     {
         public CanvasControllerInfo[] CanvasControllerInfos { get; protected set; }
 
-        public MultiCanvasParameters (CanvasControllerInfo[] canvasControllerTypes, string? parameterId = default) : base(parameterId) =>
+        public MultiCanvasParameters (CanvasControllerInfo[] canvasControllerTypes, Guid? parameterId = default) : base(parameterId) =>
            CanvasControllerInfos = canvasControllerTypes ?? throw new ArgumentNullException(nameof(canvasControllerTypes));
     }
 }

@@ -128,7 +128,8 @@ namespace Graph3DVisualizer.Graph3D
 
         public virtual void DeleteImage (BillboardId billboardId) => _billboardControler.DeleteBillboard(billboardId);
 
-        public VertexParameters DownloadParams () => new VertexParameters(ImageIds.Select(id => (_billboardControler.GetBillboard(id).DownloadParams())).ToArray(), _transform.position, _transform.rotation, Id);
+        public VertexParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
+            new VertexParameters(ImageIds.Select(id => (_billboardControler.GetBillboard(id).DownloadParams(writeCache))).ToArray(), _transform.position, _transform.rotation, Id);
 
         public abstract Vector2 GetImageSize (BillboardId id);
 

@@ -17,6 +17,7 @@
 #nullable enable
 
 using System;
+using System.Collections.Generic;
 
 using Graph3DVisualizer.Customizable;
 
@@ -43,6 +44,8 @@ namespace Graph3DVisualizer.Billboards
         private bool _disposed = false;
 
         public event Action? ScaleChanged;
+
+        public Guid? CacheGuid { get; private set; }
 
         public float Cutoff
         {
@@ -132,13 +135,25 @@ namespace Graph3DVisualizer.Billboards
             _disposed = true;
         }
 
-        // ToDo : Add ICustomizable to BillboardController
-        public BillboardParameters DownloadParams () => CacheForCustomizableObjects.TryGetParameter<BillboardParameters>(this, out var parameters)
-                ? parameters!
-                : new BillboardParameters(MainTexture, Offset, new Vector2(ScaleX, ScaleY), Cutoff, IsMonoColor, MonoColor, false, Name, Description);
+        public BillboardParameters DownloadParams (Dictionary<Guid, object> writeCache)
+        {
+            if (CacheGuid.HasValue)
+            {
+                if (!writeCache.TryGetValue(CacheGuid.Value, out var billboardParameters))
+                {
+                    billboardParameters = new BillboardParameters(MainTexture, Offset, new Vector2(ScaleX, ScaleY), Cutoff, IsMonoColor, MonoColor, true, Name, Description, CacheGuid);
+                    writeCache.Add(CacheGuid.Value, billboardParameters);
+                }
+
+                return (BillboardParameters) billboardParameters;
+            }
+
+            return new BillboardParameters(MainTexture, Offset, new Vector2(ScaleX, ScaleY), Cutoff, IsMonoColor, MonoColor, false, Name, Description);
+        }
 
         public void SetupParams (BillboardParameters billboardParameters)
         {
+            CacheGuid = billboardParameters.UseCash ? billboardParameters.Id : default(Guid?);
             Material = new Material(_shader)
             {
                 enableInstancing = true
@@ -215,7 +230,7 @@ namespace Graph3DVisualizer.Billboards
         /// <param name="monoColor">
         /// Used to determine image color in MonoColor mode.</param>
         public BillboardParameters (Texture2D texture, Vector4 offset = default, Vector2 scale = default, float cutoff = 0.1f, bool isMonoColor = false, Color monoColor = default,
-            bool useCache = false, string? name = default, string? description = default, string? parameterId = default) : base(parameterId)
+            bool useCache = false, string? name = default, string? description = default, Guid? parameterId = default) : base(parameterId)
         {
             Texture = texture;
             Scale = scale;

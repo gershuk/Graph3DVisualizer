@@ -49,9 +49,9 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         protected abstract void GiveNewTool (params ToolConfig[] toolsConfig);
 
-        public PlayerParameters DownloadParams () =>
+        public PlayerParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
             new PlayerParameters(transform.position, transform.eulerAngles, _moveComponent.MovingSpeed, _moveComponent.RotationSpeed,
-            _playerTools.Select(tool => new ToolConfig(tool.GetType(), (AbstractToolParams) CustomizableExtension.CallDownloadParams(tool))).ToArray());
+            _playerTools.Select(tool => new ToolConfig(tool.GetType(), (AbstractToolParams) CustomizableExtension.CallDownloadParams(tool, writeCache))).ToArray());
 
         public void SelectTool (int index)
         {
@@ -96,7 +96,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         public ToolConfig[] ToolConfigs { get; protected set; }
 
         public PlayerParameters (Vector3 position = default, Vector3 eulerAngles = default, float movingSpeed = 10, float rotationSpeed = 10, ToolConfig[]? toolConfigs = default,
-            string? parameterId = default) : base(parameterId)
+            Guid? parameterId = default) : base(parameterId)
         {
             Position = position;
             EulerAngles = eulerAngles;

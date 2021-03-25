@@ -47,6 +47,6 @@ namespace Graph3DVisualizer.Graph3D
     {
         public string? ObjectId { get; protected set; }
 
-        protected AbstractGraphObjectParameters (string? objectId, string? parameterId = default) : base(parameterId) => ObjectId = objectId;
+        protected AbstractGraphObjectParameters (string? objectId, Guid? parameterId = default) : base(parameterId) => ObjectId = objectId;
     }
 }

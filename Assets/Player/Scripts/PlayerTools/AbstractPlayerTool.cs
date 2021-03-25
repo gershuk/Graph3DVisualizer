@@ -71,7 +71,7 @@ namespace Graph3DVisualizer.PlayerInputControls
     [YuzuAll]
     public abstract class AbstractToolParams : AbstractCustomizableParameter
     {
-        protected AbstractToolParams (string? parameterId = default) : base(parameterId)
+        protected AbstractToolParams (Guid? parameterId = default) : base(parameterId)
         { }
     }
 }

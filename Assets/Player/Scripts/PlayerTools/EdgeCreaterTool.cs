@@ -137,7 +137,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             }
         }
 
-        public EdgeCreaterToolParams DownloadParams () => new EdgeCreaterToolParams(_edgeData);
+        public EdgeCreaterToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new EdgeCreaterToolParams(_edgeData);
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {

@@ -17,6 +17,7 @@
 #nullable enable
 
 using System;
+using System.Collections.Generic;
 
 using Graph3DVisualizer.Customizable;
 
@@ -88,7 +89,8 @@ namespace Graph3DVisualizer.Graph3D
 
         private void OnDestroy () => UnsubscribeOnVerticesEvents();
 
-        public new SpriteEdgeParameters DownloadParams () => new SpriteEdgeParameters((this as ICustomizable<EdgeParameters>).DownloadParams(), ArrowTexture, LineTexture);
+        public new SpriteEdgeParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
+            new SpriteEdgeParameters((this as ICustomizable<EdgeParameters>).DownloadParams(writeCache), ArrowTexture, LineTexture);
 
         public void SetupParams (SpriteEdgeParameters parameters)
         {

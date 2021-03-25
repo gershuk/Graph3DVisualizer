@@ -17,6 +17,7 @@
 #nullable enable
 
 using System;
+using System.Collections.Generic;
 
 using Graph3DVisualizer.Customizable;
 using Graph3DVisualizer.SupportComponents;
@@ -78,7 +79,7 @@ namespace Graph3DVisualizer.PlayerInputControls
                 _clickableObject.Click(_owner);
         }
 
-        public ClickToolParams DownloadParams () => new ClickToolParams();
+        public ClickToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new ClickToolParams();
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {

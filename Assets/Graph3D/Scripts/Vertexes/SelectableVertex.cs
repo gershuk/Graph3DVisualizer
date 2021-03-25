@@ -116,9 +116,9 @@ namespace Graph3DVisualizer.Graph3D
             _sphereCollider.radius = newRadius;
         }
 
-        public new SelectableVertexParameters DownloadParams () =>
-            new SelectableVertexParameters((this as ICustomizable<VertexParameters>).DownloadParams(),
-                (BillboardParameters) CustomizableExtension.CallDownloadParams(_billboardControler.GetBillboard(_selectFrameId)), IsSelected, Id);
+        public new SelectableVertexParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
+            new SelectableVertexParameters((this as ICustomizable<VertexParameters>).DownloadParams(writeCache),
+                (BillboardParameters) CustomizableExtension.CallDownloadParams(_billboardControler.GetBillboard(_selectFrameId), writeCache), IsSelected, Id);
 
         public void SetSelectFrame (BillboardParameters billboardParameters)
         {
