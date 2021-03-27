@@ -49,13 +49,11 @@ namespace Graph3DVisualizer.Graph3D
 
         public abstract event Action<bool, UnityEngine.Object> VisibleChanged;
 
+        public virtual IList<BillboardId> ImageIds { get; set; }
         public IReadOnlyList<Link> IncomingLinks => _incomingLinks;
         public abstract MovementComponent MovementComponent { get; protected set; }
         public IReadOnlyList<Link> OutgoingLinks => _outgoingLinks;
-        public abstract void SetImageSize (BillboardId id, Vector2 vector2);
-        public abstract Vector2 GetImageSize (BillboardId id);
         public abstract bool Visibility { get; set; }
-        public virtual IList<BillboardId> ImageIds { get; set; }
 
         private TEdge CreateEdge<TEdge, TParameters> (TParameters parameters, AbstractVertex toVertex) where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
@@ -124,7 +122,14 @@ namespace Graph3DVisualizer.Graph3D
             throw new LinkNotFoundException();
         }
 
-        public VertexParameters DownloadParams () => new VertexParameters(ImageIds.Select(id => (_billboardControler.GetBillboard(id).DownloadParams())).ToArray(),_transform.position, _transform.rotation, Id);
+        public virtual BillboardId AddImage (BillboardParameters billboardParameters, string name, string description) =>
+            _billboardControler.CreateBillboard(billboardParameters, name, description);
+
+        public virtual void DeleteImage (BillboardId billboardId) => _billboardControler.DeleteBillboard(billboardId);
+
+        public VertexParameters DownloadParams () => new VertexParameters(ImageIds.Select(id => (_billboardControler.GetBillboard(id).DownloadParams())).ToArray(), _transform.position, _transform.rotation, Id);
+
+        public abstract Vector2 GetImageSize (BillboardId id);
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0029:Используйте выражение объединения", Justification = "<Ожидание>")]
         public TEdge Link<TEdge, TParameters> (AbstractVertex toVertex, TParameters edgeParameters) where TEdge : AbstractEdge where TParameters : EdgeParameters
@@ -147,10 +152,7 @@ namespace Graph3DVisualizer.Graph3D
             return edge;
         }
 
-        public virtual BillboardId AddImage (BillboardParameters billboardParameters, string name, string description) =>
-            _billboardControler.CreateBillboard(billboardParameters, name, description);
-
-        public virtual void DeleteImage (BillboardId billboardId) => _billboardControler.DeleteBillboard(billboardId);
+        public abstract void SetImageSize (BillboardId id, Vector2 vector2);
 
         public virtual void SetupParams (VertexParameters parameters)
         {

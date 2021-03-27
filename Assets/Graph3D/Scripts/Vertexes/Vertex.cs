@@ -82,15 +82,12 @@ namespace Graph3DVisualizer.Graph3D
             _sphereCollider.radius = newRadius;
         }
 
-        public override void SetImageSize (BillboardId id, Vector2 vector2)
+        public override BillboardId AddImage (BillboardParameters billboardParameters, string name, string description)
         {
-            var billboard = _billboardControler.GetBillboard(id);
-            billboard.ScaleX = vector2.x;
-            billboard.ScaleY = vector2.y;
+            var res = base.AddImage(billboardParameters, name, description);
             UpdateColliderRange();
+            return res;
         }
-
-        public override Vector2 GetImageSize (BillboardId id) => new Vector2(_billboardControler.GetBillboard(id).ScaleX, _billboardControler.GetBillboard(id).ScaleY);
 
         public override void DeleteImage (BillboardId billboardId)
         {
@@ -98,11 +95,14 @@ namespace Graph3DVisualizer.Graph3D
             UpdateColliderRange();
         }
 
-        public override BillboardId AddImage (BillboardParameters billboardParameters, string name, string description)
+        public override Vector2 GetImageSize (BillboardId id) => new Vector2(_billboardControler.GetBillboard(id).ScaleX, _billboardControler.GetBillboard(id).ScaleY);
+
+        public override void SetImageSize (BillboardId id, Vector2 vector2)
         {
-            var res = base.AddImage(billboardParameters, name, description);
+            var billboard = _billboardControler.GetBillboard(id);
+            billboard.ScaleX = vector2.x;
+            billboard.ScaleY = vector2.y;
             UpdateColliderRange();
-            return res;
         }
 
         public override void SetupParams (VertexParameters parameters)

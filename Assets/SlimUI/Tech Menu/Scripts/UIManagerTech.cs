@@ -14,159 +14,247 @@
 // You should have received a copy of the GNU General Public License
 // along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEditor;
-using UnityEngine.UI;
+
 using TMPro;
-using System;
+
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManagerTech : MonoBehaviour
 {
-    [Header("What Menu Is Active?")]
-    public bool simpleMenu = false;
-    public bool advancedMenu = true;
-
-    [Header("Simple Panels")]
-    [Tooltip("The UI Panel holding the Home Screen elements")]
-    public GameObject homeScreen;
-    [Tooltip("The UI Panel holding the credits")]
-    public GameObject creditsScreen;
-    [Tooltip("The UI Panel holding the settings")]
-    public GameObject systemScreen;
-    [Tooltip("The UI Panel holding the CANCEL or ACCEPT Options for New Game")]
-    public GameObject newGameScreen;
-    [Tooltip("The UI Panel holding the YES or NO Options for Load Game")]
-    public GameObject loadGameScreen;
-    [Tooltip("The Loading Screen holding loading bar")]
-    public GameObject loadingScreen;
-
-    [Header("COLORS - Tint")]
-    public Image[] panelGraphics;
-    public Image[] blurs;
-    public Color tint;
-
-    [Header("ADVANDED - Panels")]
-    [Tooltip("The UI Panel holding the New Account Screen elements")]
-    public GameObject newAccountScreen;
-    [Tooltip("The UI Panel holding the Delete Account Screen elements")]
-    public GameObject deleteAccountScreen;
-    [Tooltip("The UI Panel holding Log-In Buttons")]
-    public GameObject loginScreen;
-    [Tooltip("The UI Panel holding account and load menu")]
-    public GameObject databaseScreen;
-    [Tooltip("The UI Menu Bar at the edge of the screen")]
-    public GameObject menuBar;
-
-    [Header("ADVANDED - UI Elements & User Data")]
-    [Tooltip("The Main Canvas Gameobject")]
-    public CanvasScaler mainCanvas;
-    [Tooltip("The dropdown menu containing all the resolutions that your game can adapt to")]
-    public TMP_Dropdown ResolutionDropDown;
-    private Resolution[] _resolutions;
-    [Tooltip("The text object in the Settings Panel displaying the current quality setting enabled")]
-    public TMP_Text qualityText; // text displaying current selected quality
-    [Tooltip("The icon showing the current quality selected in the Settings Panels")]
-    public Animator qualityDisplay;
-    private string[] _qualityNames;
-    private int _tempQualityLevel;// store it for start up text update
-    [Tooltip("The volume slider UI element in the Settings Screen")]
-    public Slider audioSlider;
-
-    [Tooltip("If a message is displaying indiciating FAILURE, this is the color of that error text")]
-    public Color errorColor;
-    [Tooltip("If a message is displaying indiciating SUCCESS, this is the color of that success text")]
-    public Color successColor;
-    public float messageDisplayLength = 2.0f;
-    public Slider uiScaleSlider;
-    float _xScale = 0f;
-    float _yScale = 0f;
-
-    [Header("Menu Bar")]
-    public bool showMenuBar = true;
-    [Tooltip("The Arrow at the corner of the screen activating and de-activating the menu bar")]
-    public GameObject menuBarButton;
-    [Tooltip("The date and time display text at the bottom of the screen")]
-    public TMP_Text dateDisplay;
-    public TMP_Text timeDisplay;
-    public bool showDate = true;
-    public bool showTime = true;
-
-    [Header("Loading Screen Elements")]
-    [Tooltip("The name of the scene loaded when a 'NEW GAME' is started")]
-    public string newSceneName;
-    [Tooltip("The loading bar Slider UI element in the Loading Screen")]
-    public Slider loadingBar;
-    private readonly string _loadSceneName; // scene name is defined when the load game data is retrieved
-
-    [Header("Register Account")]
-    public TMP_InputField username;
-    public TMP_InputField password;
-    public TMP_InputField confPassword;
-    public TMP_Text error_NewAccount;
-    public TMP_Text messageDisplayDatabase;
-    public string newAccountMessageDisplay = "ACCOUNT CREATED";
-    private string _username;
-    private string _password;
-    private string _confPassword;
-    private string _form;
-    string _path;
     private readonly string[] _characters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
                                    "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",
                                    "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "_",
                                    "-"};
 
-    [Header("Login Account")]
-    public TMP_InputField logUsername;
-    public TMP_InputField logPassword;
-    private string _logUsernameString; // the input in logUsername
-    private string _logPasswordString; // the input in logPassword
-    private String[] _lines;
+    private readonly string _delDecryptedPass;
+
+    private readonly String[] _delLines;
+
+    private readonly string _loadSceneName;
+
+    private string _confPassword;
+
     private string _decryptedPass;
-    public TMP_Text error_LogIn;
-    public TMP_Text profileDisplay;
-    public string loginMessageDisplay = "LOGGED IN";
+
+    private string _delPasswordString;
+
+    private string _delUsernameString;
+
+    private string _form;
+
+    private String[] _lines;
+
+    private string _logPasswordString;
+
+    private string _logUsernameString;
+
+    private string _password;
+
+    private string _path;
+
+    private string[] _qualityNames;
+
+    private Resolution[] _resolutions;
+
+    [Header("List Indexing")]
+    private int _speakersIndex = 0;
+
+    private int _subtitleLanguageIndex = 0;
+
+    private Transform _tempParent;
+
+    private int _tempQualityLevel;
+
+    private string _username;
+
+    private float _xScale = 0f;
+
+    private float _yScale = 0f;
+
+    public bool advancedMenu = true;
+
+    // store it for start up text update
+    [Tooltip("The volume slider UI element in the Settings Screen")]
+    public Slider audioSlider;
+
+    public Image[] blurs;
+
+    public TMP_InputField confPassword;
+
+    [Tooltip("The UI Panel holding the credits")]
+    public GameObject creditsScreen;
+
+    [Tooltip("The UI Panel holding account and load menu")]
+    public GameObject databaseScreen;
+
+    [Tooltip("The date and time display text at the bottom of the screen")]
+    public TMP_Text dateDisplay;
+
+    [Tooltip("The UI Panel holding the Delete Account Screen elements")]
+    public GameObject deleteAccountScreen;
+
+    public string deletedMessageDisplay = "ACCOUNT DELETED";
+
+    public TMP_InputField delPassword;
 
     [Header("Delete Account")]
     public TMP_InputField delUsername;
-    public TMP_InputField delPassword;
-    private string _delUsernameString; // the input in delUsername
-    private string _delPasswordString; // the input in delPassword
-    private readonly String[] _delLines;
-    private readonly string _delDecryptedPass;
+
+    // the input in delUsername
+    // the input in delPassword
     public TMP_Text error_Delete;
-    public string deletedMessageDisplay = "ACCOUNT DELETED";
 
-    [Header("Settings Screen")]
-    public TMP_Text textSpeakers;
-    public TMP_Text textSubtitleLanguage;
-    public List<string> speakers = new List<string>();
-    public List<string> subtitleLanguage = new List<string>();
+    // the input in logUsername
+    // the input in logPassword
+    public TMP_Text error_LogIn;
 
-    [Header("Starting Options Values")]
-    public int speakersDefault = 0;
-    public int subtitleLanguageDefault = 0;
+    public TMP_Text error_NewAccount;
 
-    [Header("List Indexing")]
-    int _speakersIndex = 0;
-    int _subtitleLanguageIndex = 0;
+    [Tooltip("If a message is displaying indiciating FAILURE, this is the color of that error text")]
+    public Color errorColor;
+
+    [Header("Simple Panels")]
+    [Tooltip("The UI Panel holding the Home Screen elements")]
+    public GameObject homeScreen;
+
+    [Tooltip("The UI Panel holding the YES or NO Options for Load Game")]
+    public GameObject loadGameScreen;
+
+    [Tooltip("The loading bar Slider UI element in the Loading Screen")]
+    public Slider loadingBar;
+
+    [Tooltip("The Loading Screen holding loading bar")]
+    public GameObject loadingScreen;
+
+    public string loginMessageDisplay = "LOGGED IN";
+
+    [Tooltip("The UI Panel holding Log-In Buttons")]
+    public GameObject loginScreen;
+
+    public TMP_InputField logPassword;
+
+    [Header("Login Account")]
+    public TMP_InputField logUsername;
+
+    [Header("ADVANDED - UI Elements & User Data")]
+    [Tooltip("The Main Canvas Gameobject")]
+    public CanvasScaler mainCanvas;
+
+    [Tooltip("The UI Menu Bar at the edge of the screen")]
+    public GameObject menuBar;
+
+    [Tooltip("The Arrow at the corner of the screen activating and de-activating the menu bar")]
+    public GameObject menuBarButton;
+
+    public TMP_Text messageDisplayDatabase;
+
+    public float messageDisplayLength = 2.0f;
+
+    public string newAccountMessageDisplay = "ACCOUNT CREATED";
+
+    [Header("ADVANDED - Panels")]
+    [Tooltip("The UI Panel holding the New Account Screen elements")]
+    public GameObject newAccountScreen;
+
+    [Tooltip("The UI Panel holding the CANCEL or ACCEPT Options for New Game")]
+    public GameObject newGameScreen;
+
+    [Header("Loading Screen Elements")]
+    [Tooltip("The name of the scene loaded when a 'NEW GAME' is started")]
+    public string newSceneName;
+
+    [Header("COLORS - Tint")]
+    public Image[] panelGraphics;
+
+    public TMP_InputField password;
+
+    public TMP_Text profileDisplay;
+
+    [Tooltip("The icon showing the current quality selected in the Settings Panels")]
+    public Animator qualityDisplay;
+
+    [Tooltip("The text object in the Settings Panel displaying the current quality setting enabled")]
+    public TMP_Text qualityText;
 
     [Header("Debug")]
     [Tooltip("If this is true, pressing 'R' will reload the scene.")]
     public bool reloadSceneButton = true;
-    Transform _tempParent;
 
-    public void MoveToFront (GameObject currentObj)
-    {
-        //tempParent = currentObj.transform.parent;
-        _tempParent = currentObj.transform;
-        _tempParent.SetAsLastSibling();
+    [Tooltip("The dropdown menu containing all the resolutions that your game can adapt to")]
+    public TMP_Dropdown ResolutionDropDown;
+
+    public bool showDate = true;
+
+    [Header("Menu Bar")]
+    public bool showMenuBar = true;
+
+    public bool showTime = true;
+
+    [Header("What Menu Is Active?")]
+    public bool simpleMenu = false;
+
+    public List<string> speakers = new List<string>();
+
+    [Header("Starting Options Values")]
+    public int speakersDefault = 0;
+
+    public List<string> subtitleLanguage = new List<string>();
+
+    public int subtitleLanguageDefault = 0;
+
+    // text displaying current selected quality
+    [Tooltip("If a message is displaying indiciating SUCCESS, this is the color of that success text")]
+    public Color successColor;
+
+    [Tooltip("The UI Panel holding the settings")]
+    public GameObject systemScreen;
+
+    [Header("Settings Screen")]
+    public TMP_Text textSpeakers;
+
+    public TMP_Text textSubtitleLanguage;
+    public TMP_Text timeDisplay;
+    public Color tint;
+    public Slider uiScaleSlider;
+    // scene name is defined when the load game data is retrieved
+
+    [Header("Register Account")]
+    public TMP_InputField username;
+
+    // Load Bar synching animation
+    private IEnumerator LoadAsynchronously (string sceneName)
+    { // scene name is just the name of the current scene being loaded
+        var operation = SceneManager.LoadSceneAsync(sceneName);
+        while (!operation.isDone)
+        {
+            var progress = Mathf.Clamp01(operation.progress / .9f);
+
+            loadingBar.value = progress;
+
+            yield return null;
+        }
     }
 
-    void Start ()
+    private IEnumerator MessageDisplay (string message, Color col)
+    { // Display and then clear
+        messageDisplayDatabase.color = col;
+        messageDisplayDatabase.text = message;
+        yield return new WaitForSeconds(messageDisplayLength);
+        messageDisplayDatabase.text = "";
+    }
+
+    // Converts the resolution into a string form that is then used in the dropdown list as the options
+    private string ResToString (Resolution res)
+    {
+        return res.width + " x " + res.height;
+    }
+
+    private void Start ()
     {
         // By default, starts on the home screen, disables others
         homeScreen.SetActive(true);
@@ -218,7 +306,8 @@ public class UIManagerTech : MonoBehaviour
 
                 ResolutionDropDown.value = i;
 
-                ResolutionDropDown.onValueChanged.AddListener(delegate {
+                ResolutionDropDown.onValueChanged.AddListener(delegate
+                {
                     Screen.SetResolution(_resolutions
                     [ResolutionDropDown.value].width, _resolutions[ResolutionDropDown.value].height, true);
                 });
@@ -245,76 +334,8 @@ public class UIManagerTech : MonoBehaviour
         textSubtitleLanguage.text = subtitleLanguage[subtitleLanguageDefault];
     }
 
-    public void IncreaseIndex (int i)
-    {
-        switch (i)
-        {
-            case 0:
-                if (_speakersIndex != speakers.Count - 1)
-                { 
-                    _speakersIndex++;
-                }
-                else
-                { 
-                    _speakersIndex = 0;
-                }
-                textSpeakers.text = speakers[_speakersIndex];
-                break;
-            case 1:
-                if (_subtitleLanguageIndex != subtitleLanguage.Count - 1)
-                { 
-                    _subtitleLanguageIndex++;
-                }
-                else
-                { 
-                    _subtitleLanguageIndex = 0;
-                }
-                textSubtitleLanguage.text = subtitleLanguage[_subtitleLanguageIndex];
-                break;
-            default:
-                break;
-        }
-    }
-
-    public void DecreaseIndex (int i)
-    {
-        switch (i)
-        {
-            case 0:
-                if (_speakersIndex == 0)
-                { 
-                    _speakersIndex = speakers.Count; 
-                }
-                _speakersIndex--;
-                textSpeakers.text = speakers[_speakersIndex];
-                break;
-            case 1:
-                if (_subtitleLanguageIndex == 0)
-                { 
-                    _subtitleLanguageIndex = subtitleLanguage.Count; 
-                }
-                _subtitleLanguageIndex--;
-                textSubtitleLanguage.text = subtitleLanguage[_subtitleLanguageIndex];
-                break;
-            default:
-                break;
-        }
-    }
-
-    public void SetTint ()
-    {
-        for (var i = 0; i < panelGraphics.Length; i++)
-        {
-            panelGraphics[i].color = tint;
-        }
-        for (var i = 0; i < blurs.Length; i++)
-        {
-            blurs[i].material.SetColor("_Color", tint);
-        }
-    }
-
     // Just for reloading the scene! You can delete this function entirely if you want to
-    void Update ()
+    private void Update ()
     {
         if (reloadSceneButton)
         {
@@ -349,25 +370,12 @@ public class UIManagerTech : MonoBehaviour
         }
     }
 
-    // called when returned back to the database menu, confirmation message displays temporarily
-    public void MessageDisplayDatabase (string message, Color col)
+    // Whenever a value on the audio slider in the settings panel is changed, this
+    // function is called and updated the overall game volume
+    public void AudioSlider ()
     {
-        StartCoroutine(MessageDisplay(message, col));
-    }
-
-    IEnumerator MessageDisplay (string message, Color col)
-    { // Display and then clear
-        messageDisplayDatabase.color = col;
-        messageDisplayDatabase.text = message;
-        yield return new WaitForSeconds(messageDisplayLength);
-        messageDisplayDatabase.text = "";
-    }
-
-    public void UIScaler ()
-    {
-        _xScale = 1920 * uiScaleSlider.value;
-        _yScale = 1080 * uiScaleSlider.value;
-        mainCanvas.referenceResolution = new Vector2(_xScale, _yScale);
+        AudioListener.volume = audioSlider.value;
+        PlayerPrefs.SetFloat("volume", audioSlider.value);
     }
 
     // Make sure all the settings panel text are displaying current quality settings properly and updating UI
@@ -396,98 +404,76 @@ public class UIManagerTech : MonoBehaviour
         }
     }
 
-    // Converts the resolution into a string form that is then used in the dropdown list as the options
-    string ResToString (Resolution res)
+    public void ConfirmDeleteAccount ()
     {
-        return res.width + " x " + res.height;
-    }
-
-    // Whenever a value on the audio slider in the settings panel is changed, this 
-    // function is called and updated the overall game volume
-    public void AudioSlider ()
-    {
-        AudioListener.volume = audioSlider.value;
-        PlayerPrefs.SetFloat("volume", audioSlider.value);
-    }
-
-    // When accepting the QUIT question, the application will close 
-    // (Only works in Executable. Disabled in Editor)
-    public void Quit ()
-    {
-        Application.Quit();
-    }
-
-    // Changes the current quality settings by taking the number passed in from the UI 
-    // element and matching it to the index of the Quality Settings
-    public void QualityChange (int x)
-    {
-        if (x == 0)
+        var UN = false;
+        var PW = false;
+        if (_delUsernameString != "" && profileDisplay.text != _delUsernameString)
         {
-            QualitySettings.SetQualityLevel(x, true);
-            qualityText.text = _qualityNames[0];
+            if (System.IO.File.Exists(_path + "_" + _delUsernameString + ".txt"))
+            {
+                UN = true;
+                _lines = System.IO.File.ReadAllLines(_path + "_" + _delUsernameString + ".txt");
+            }
+            else
+            {
+                error_Delete.color = errorColor;
+                error_Delete.text = "INVALID USERNAME";
+            }
         }
-        else if (x == 1)
+        else
         {
-            QualitySettings.SetQualityLevel(x, true);
-            qualityText.text = _qualityNames[1];
+            error_Delete.color = errorColor;
+            error_Delete.text = "ENTER VALID USERNAME";
         }
-        else if (x == 2)
+        if (_delPasswordString != "")
         {
-            QualitySettings.SetQualityLevel(x, true);
-            qualityText.text = _qualityNames[2];
+            if (System.IO.File.Exists(_path + "_" + _delUsernameString + ".txt"))
+            {
+                var i = 1;
+                foreach (var c in _lines[2])
+                {
+                    i++;
+                    var Decrypted = (char) (c / i);
+                    _decryptedPass += Decrypted.ToString();
+                }
+                if (_delPasswordString == _decryptedPass)
+                {
+                    PW = true;
+                }
+                else
+                {
+                    error_Delete.color = errorColor;
+                    error_Delete.text = "PASSWORD INCORRECT";
+                }
+            }
+            else
+            {
+                error_Delete.color = errorColor;
+                error_Delete.text = "PASSWORD INCORRECT";
+            }
         }
-        if (x == 3)
+        else
         {
-            QualitySettings.SetQualityLevel(x, true);
-            qualityText.text = _qualityNames[3];
+            error_Delete.color = errorColor;
+            error_Delete.text = "PLEASE ENTER PASSWORD";
         }
-    }
-
-    // Called when loading new game scene
-    public void LoadNewLevel ()
-    {
-        if (newSceneName != "")
+        if (UN == true && PW == true)
         {
-            StartCoroutine(LoadAsynchronously(newSceneName));
+            System.IO.File.Delete(_path + "_" + _delUsernameString + ".txt");
+            _delUsernameString = "";
+            _delPasswordString = "";
+            delUsername.text = "";
+            delPassword.text = "";
+            error_Delete.text = "";
+            _decryptedPass = "";
+
+            MessageDisplayDatabase(deletedMessageDisplay, successColor);
+            print("Deletion Successful");
+
+            deleteAccountScreen.SetActive(false);
+            databaseScreen.SetActive(true);
         }
-    }
-
-    // Called when loading saved scene
-    // Add the save code in this function!
-    public void LoadSavedLevel ()
-    {
-        if (_loadSceneName != "")
-        {
-            StartCoroutine(LoadAsynchronously(newSceneName)); // temporarily uses New Scene Name. Change this to 'loadSceneName' when you program the save data
-        }
-    }
-
-    // Load Bar synching animation
-    IEnumerator LoadAsynchronously (string sceneName)
-    { // scene name is just the name of the current scene being loaded
-        var operation = SceneManager.LoadSceneAsync(sceneName);
-        while (!operation.isDone)
-        {
-            var progress = Mathf.Clamp01(operation.progress / .9f);
-
-            loadingBar.value = progress;
-
-            yield return null;
-        }
-    }
-
-    public void UpdateAccountValues ()
-    {
-        // Register
-        _username = username.text;
-        _password = password.text;
-        _confPassword = confPassword.text;
-        // Log In
-        _logUsernameString = logUsername.text;
-        _logPasswordString = logPassword.text;
-        // Delete
-        _delUsernameString = delUsername.text;
-        _delPasswordString = delPassword.text;
     }
 
     public void ConfirmNewAccount ()
@@ -580,6 +566,85 @@ public class UIManagerTech : MonoBehaviour
         }
     }
 
+    public void DecreaseIndex (int i)
+    {
+        switch (i)
+        {
+            case 0:
+                if (_speakersIndex == 0)
+                {
+                    _speakersIndex = speakers.Count;
+                }
+                _speakersIndex--;
+                textSpeakers.text = speakers[_speakersIndex];
+                break;
+
+            case 1:
+                if (_subtitleLanguageIndex == 0)
+                {
+                    _subtitleLanguageIndex = subtitleLanguage.Count;
+                }
+                _subtitleLanguageIndex--;
+                textSubtitleLanguage.text = subtitleLanguage[_subtitleLanguageIndex];
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    public void IncreaseIndex (int i)
+    {
+        switch (i)
+        {
+            case 0:
+                if (_speakersIndex != speakers.Count - 1)
+                {
+                    _speakersIndex++;
+                }
+                else
+                {
+                    _speakersIndex = 0;
+                }
+                textSpeakers.text = speakers[_speakersIndex];
+                break;
+
+            case 1:
+                if (_subtitleLanguageIndex != subtitleLanguage.Count - 1)
+                {
+                    _subtitleLanguageIndex++;
+                }
+                else
+                {
+                    _subtitleLanguageIndex = 0;
+                }
+                textSubtitleLanguage.text = subtitleLanguage[_subtitleLanguageIndex];
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    // Called when loading new game scene
+    public void LoadNewLevel ()
+    {
+        if (newSceneName != "")
+        {
+            StartCoroutine(LoadAsynchronously(newSceneName));
+        }
+    }
+
+    // Called when loading saved scene
+    // Add the save code in this function!
+    public void LoadSavedLevel ()
+    {
+        if (_loadSceneName != "")
+        {
+            StartCoroutine(LoadAsynchronously(newSceneName)); // temporarily uses New Scene Name. Change this to 'loadSceneName' when you program the save data
+        }
+    }
+
     public void LoginButton ()
     {
         var UN = false;
@@ -652,75 +717,82 @@ public class UIManagerTech : MonoBehaviour
         }
     }
 
-    public void ConfirmDeleteAccount ()
+    // called when returned back to the database menu, confirmation message displays temporarily
+    public void MessageDisplayDatabase (string message, Color col)
     {
-        var UN = false;
-        var PW = false;
-        if (_delUsernameString != "" && profileDisplay.text != _delUsernameString)
-        {
-            if (System.IO.File.Exists(_path + "_" + _delUsernameString + ".txt"))
-            {
-                UN = true;
-                _lines = System.IO.File.ReadAllLines(_path + "_" + _delUsernameString + ".txt");
-            }
-            else
-            {
-                error_Delete.color = errorColor;
-                error_Delete.text = "INVALID USERNAME";
-            }
-        }
-        else
-        {
-            error_Delete.color = errorColor;
-            error_Delete.text = "ENTER VALID USERNAME";
-        }
-        if (_delPasswordString != "")
-        {
-            if (System.IO.File.Exists(_path + "_" + _delUsernameString + ".txt"))
-            {
-                var i = 1;
-                foreach (var c in _lines[2])
-                {
-                    i++;
-                    var Decrypted = (char) (c / i);
-                    _decryptedPass += Decrypted.ToString();
-                }
-                if (_delPasswordString == _decryptedPass)
-                {
-                    PW = true;
-                }
-                else
-                {
-                    error_Delete.color = errorColor;
-                    error_Delete.text = "PASSWORD INCORRECT";
-                }
-            }
-            else
-            {
-                error_Delete.color = errorColor;
-                error_Delete.text = "PASSWORD INCORRECT";
-            }
-        }
-        else
-        {
-            error_Delete.color = errorColor;
-            error_Delete.text = "PLEASE ENTER PASSWORD";
-        }
-        if (UN == true && PW == true)
-        {
-            System.IO.File.Delete(_path + "_" + _delUsernameString + ".txt");
-            _delUsernameString = "";
-            _delPasswordString = "";
-            delUsername.text = "";
-            delPassword.text = "";
-            error_Delete.text = "";
-            _decryptedPass = "";
+        StartCoroutine(MessageDisplay(message, col));
+    }
 
-            MessageDisplayDatabase(deletedMessageDisplay, successColor);
-            print("Deletion Successful");
+    public void MoveToFront (GameObject currentObj)
+    {
+        //tempParent = currentObj.transform.parent;
+        _tempParent = currentObj.transform;
+        _tempParent.SetAsLastSibling();
+    }
 
-            deleteAccountScreen.SetActive(false);
-            databaseScreen.SetActive(true);
+    // Changes the current quality settings by taking the number passed in from the UI
+    // element and matching it to the index of the Quality Settings
+    public void QualityChange (int x)
+    {
+        if (x == 0)
+        {
+            QualitySettings.SetQualityLevel(x, true);
+            qualityText.text = _qualityNames[0];
         }
+        else if (x == 1)
+        {
+            QualitySettings.SetQualityLevel(x, true);
+            qualityText.text = _qualityNames[1];
+        }
+        else if (x == 2)
+        {
+            QualitySettings.SetQualityLevel(x, true);
+            qualityText.text = _qualityNames[2];
+        }
+        if (x == 3)
+        {
+            QualitySettings.SetQualityLevel(x, true);
+            qualityText.text = _qualityNames[3];
+        }
+    }
+
+    // When accepting the QUIT question, the application will close
+    // (Only works in Executable. Disabled in Editor)
+    public void Quit ()
+    {
+        Application.Quit();
+    }
+
+    public void SetTint ()
+    {
+        for (var i = 0; i < panelGraphics.Length; i++)
+        {
+            panelGraphics[i].color = tint;
+        }
+        for (var i = 0; i < blurs.Length; i++)
+        {
+            blurs[i].material.SetColor("_Color", tint);
+        }
+    }
+
+    public void UIScaler ()
+    {
+        _xScale = 1920 * uiScaleSlider.value;
+        _yScale = 1080 * uiScaleSlider.value;
+        mainCanvas.referenceResolution = new Vector2(_xScale, _yScale);
+    }
+
+    public void UpdateAccountValues ()
+    {
+        // Register
+        _username = username.text;
+        _password = password.text;
+        _confPassword = confPassword.text;
+        // Log In
+        _logUsernameString = logUsername.text;
+        _logPasswordString = logPassword.text;
+        // Delete
+        _delUsernameString = delUsername.text;
+        _delPasswordString = delPassword.text;
     }
 }
