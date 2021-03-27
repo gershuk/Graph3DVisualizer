@@ -1,4 +1,20 @@
-﻿using System.Collections;
+﻿// This file is part of Grpah3DVisualizer.
+// Copyright © Gershuk Vladislav 2020.
+//
+// Grpah3DVisualizer is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Grpah3DVisualizer is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY, without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -35,7 +51,7 @@ public class UIManagerTech : MonoBehaviour
 
     [Header("ADVANDED - Panels")]
     [Tooltip("The UI Panel holding the New Account Screen elements")]
-    public GameObject newAccountScreen ;
+    public GameObject newAccountScreen;
     [Tooltip("The UI Panel holding the Delete Account Screen elements")]
     public GameObject deleteAccountScreen;
     [Tooltip("The UI Panel holding Log-In Buttons")]
@@ -154,7 +170,7 @@ public class UIManagerTech : MonoBehaviour
     {
         // By default, starts on the home screen, disables others
         homeScreen.SetActive(true);
-        var Screens = new GameObject[] {newAccountScreen, deleteAccountScreen, loginScreen, databaseScreen, creditsScreen, systemScreen,
+        var Screens = new GameObject[] { creditsScreen, systemScreen,
                                         loadingScreen, loadGameScreen, newGameScreen};
         for (var i = 0; i < Screens.Length; i++)
         {

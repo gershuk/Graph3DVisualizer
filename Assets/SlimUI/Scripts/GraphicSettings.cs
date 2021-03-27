@@ -24,14 +24,12 @@ public class GraphicSettings : MonoBehaviour
 {
     [SerializeField]
     private TMPro.TMP_Dropdown _dropdown;
-    
     void Start()
     {
         _dropdown.ClearOptions();
         _dropdown.AddOptions(QualitySettings.names.ToList());
         _dropdown.value = QualitySettings.GetQualityLevel();
     }
-
     public void SetQuality ()
     {
         QualitySettings.SetQualityLevel(_dropdown.value);
