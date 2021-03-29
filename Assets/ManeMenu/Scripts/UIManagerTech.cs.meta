@@ -1,0 +1,46 @@
+fileFormatVersion: 2
+guid: 296007ee8e8c83b46af6e81654b53065
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - homeScreen: {fileID: 1835116622386160, guid: 01044c4c715e1884580e5999e054a88d, type: 3}
+  - creditsScreen: {fileID: 1835116622386160, guid: 01044c4c715e1884580e5999e054a88d, type: 3}
+  - systemScreen: {fileID: 1835116622386160, guid: 01044c4c715e1884580e5999e054a88d, type: 3}
+  - newGameScreen: {fileID: 1835116622386160, guid: 01044c4c715e1884580e5999e054a88d, type: 3}
+  - loadGameScreen: {fileID: 1835116622386160, guid: 01044c4c715e1884580e5999e054a88d, type: 3}
+  - loadingScreen: {fileID: 1835116622386160, guid: 01044c4c715e1884580e5999e054a88d, type: 3}
+  - newAccountScreen: {fileID: 1835116622386160, guid: 01044c4c715e1884580e5999e054a88d, type: 3}
+  - deleteAccountScreen: {fileID: 1835116622386160, guid: 01044c4c715e1884580e5999e054a88d, type: 3}
+  - loginScreen: {fileID: 1835116622386160, guid: 01044c4c715e1884580e5999e054a88d, type: 3}
+  - databaseScreen: {fileID: 1835116622386160, guid: 01044c4c715e1884580e5999e054a88d, type: 3}
+  - menuBar: {fileID: 1835116622386160, guid: 01044c4c715e1884580e5999e054a88d, type: 3}
+  - mainCanvas: {instanceID: 0}
+  - ResolutionDropDown: {instanceID: 0}
+  - qualityText: {instanceID: 0}
+  - qualityDisplay: {instanceID: 0}
+  - audioSlider: {instanceID: 0}
+  - uiScaleSlider: {instanceID: 0}
+  - menuBarButton: {instanceID: 0}
+  - dateDisplay: {instanceID: 0}
+  - timeDisplay: {instanceID: 0}
+  - loadingBar: {instanceID: 0}
+  - username: {instanceID: 0}
+  - password: {instanceID: 0}
+  - confPassword: {instanceID: 0}
+  - error_NewAccount: {instanceID: 0}
+  - messageDisplayDatabase: {instanceID: 0}
+  - logUsername: {instanceID: 0}
+  - logPassword: {instanceID: 0}
+  - error_LogIn: {instanceID: 0}
+  - profileDisplay: {instanceID: 0}
+  - delUsername: {instanceID: 0}
+  - delPassword: {instanceID: 0}
+  - error_Delete: {instanceID: 0}
+  - textSpeakers: {instanceID: 0}
+  - textSubtitleLanguage: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
