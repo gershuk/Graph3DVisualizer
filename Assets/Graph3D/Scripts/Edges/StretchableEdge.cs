@@ -87,6 +87,8 @@ namespace Graph3DVisualizer.Graph3D
             Type = EdgeType.Unidirectional;
         }
 
+        private void OnDestroy () => UnsubscribeOnVerticesEvents();
+
         public new StretchableEdgeParameters DownloadParams (Dictionary<Guid, object> writeCache)
         {
             var edgeParameters = (this as ICustomizable<EdgeParameters>).DownloadParams(writeCache);

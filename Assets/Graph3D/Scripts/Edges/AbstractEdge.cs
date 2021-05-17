@@ -48,6 +48,14 @@ namespace Graph3DVisualizer.Graph3D
         public void Deconstruct (out AbstractVertex fromVertex, out AbstractVertex toVertex) => (fromVertex, toVertex) = (FromVertex, ToVertex);
     }
 
+    public struct SpringParameters
+    {
+        public float Length { get; set; }
+        public float StiffnessCoefficient { get; set; }
+
+        public SpringParameters (float stiffnessCoefficient, float length) => (StiffnessCoefficient, Length) = (stiffnessCoefficient, length);
+    }
+
     [Serializable]
     [YuzuAll]
     public abstract class AbstarctEdgeMaterialParameters : AbstractCustomizableParameter
@@ -105,6 +113,8 @@ namespace Graph3DVisualizer.Graph3D
                 }
             }
         }
+
+        public SpringParameters SpringParameters { get; protected set; } = new SpringParameters(1, 40);
 
         public virtual float TargetOffsetDist
         {

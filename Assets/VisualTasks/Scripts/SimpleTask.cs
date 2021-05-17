@@ -99,7 +99,7 @@ namespace Graph3DVisualizer.GraphTasks
                              new Color(143f,0f,1f),
                          };
 
-            var edgeTypes = new List<(Type type, EdgeParameters parameters)>(1) { (typeof(SpriteEdge), new SpriteEdgeParameters(1, 1)) };
+            var edgeTypes = new List<(Type type, EdgeParameters parameters)>(1) {(typeof(StretchableEdge), new StretchableEdgeParameters(new StretchableEdgeMaterialParameters())) };
 
             var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath)).GetComponent<FlyPlayer>();
             _players.Add(player);

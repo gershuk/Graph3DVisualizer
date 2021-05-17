@@ -193,8 +193,8 @@ namespace Graph3DVisualizer.PlayerInputControls
             EdgeTypes = edgeTypes ?? throw new ArgumentNullException(nameof(edgeTypes));
             foreach (var (type, parameters) in EdgeTypes)
             {
-                if (!type.IsSubclassOf(typeof(SpriteEdge)) && type != typeof(SpriteEdge))
-                    throw new Exception($"{type} isn't subclass of Edge");
+                if (!type.IsSubclassOf(typeof(AbstractEdge)))
+                    throw new WrongTypeInCustomizableParameterException(typeof(AbstractEdge), type);
             }
         }
     }

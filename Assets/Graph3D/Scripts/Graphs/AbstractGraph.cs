@@ -17,7 +17,9 @@
 #nullable enable
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 using Graph3DVisualizer.Customizable;
 
@@ -126,6 +128,40 @@ namespace Graph3DVisualizer.Graph3D
 
         public abstract int VertexesCount { get; }
 
+        private IEnumerator ForceBasedLayoutCoroutine ()
+        {
+            const float eps = 1E-1f;
+            const float speed = 5E-1f;
+            var list = new List<(AbstractVertex abstractVertex, Vector3 force)>();
+            var vertexMustMove = false;
+            while (!vertexMustMove)
+            {
+                vertexMustMove = true;
+                foreach (var vertex in GetVertexes())
+                {
+                    var sumForce = Vector3.zero;
+
+                    foreach (var link in vertex.IncomingLinks.Concat(vertex.OutgoingLinks))
+                    {
+                        var dir = link.AdjacentVertex.transform.position - vertex.transform.position;
+                        sumForce += (dir.magnitude - link.Edge.SpringParameters.Length) * link.Edge.SpringParameters.StiffnessCoefficient * dir.normalized;
+                    }
+
+                    if (sumForce.magnitude > eps)
+                    {
+                        list.Add((vertex, sumForce));
+                        vertexMustMove = false;
+                    }
+                }
+                foreach (var (veretx, force) in list)
+                {
+                    veretx.MovementComponent.GlobalCoordinates += force * speed * Time.deltaTime;
+                }
+                list.Clear();
+                yield return null;
+            }
+        }
+
         public abstract bool ContainsVertex (string id);
 
         public abstract bool DeleteVeretex (string id);
@@ -178,6 +214,9 @@ namespace Graph3DVisualizer.Graph3D
                     where TParams : VertexParameters;
 
         public abstract AbstractVertex SpawnVertex (Type vertexType, VertexParameters parameters);
+
+        [ContextMenu("ForceBasedLayout")]
+        public void StartForceBasedLayout () => StartCoroutine(ForceBasedLayoutCoroutine());
     }
 
     /// <summary>

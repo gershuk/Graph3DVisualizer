@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -21,13 +20,13 @@ namespace Graph3DVisualizer.TextureFactory
         }
 
         public static Font GetOrCreateFont (string name, int size)
-        { 
+        {
             if (!_fonts.ContainsKey((name, size)))
             {
                 _fonts.Add((name, size), Font.CreateDynamicFontFromOSFont(name, size));
                 _fonts[(name, 128)].RequestCharactersInTexture(_alphabet);
             }
-            
+
             return _fonts[(name, size)];
         }
     }

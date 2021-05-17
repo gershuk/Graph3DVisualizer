@@ -31,10 +31,7 @@ namespace Graph3DVisualizer.Graph3D
     /// </summary>
     public abstract class AbstractGraphObject : MonoBehaviour
     {
-        //attribute for debug only
-        [SerializeField]
         private string _id;
-
         public string Id { get => _id; protected set => _id = value ?? Guid.NewGuid().ToString(); }
     }
 

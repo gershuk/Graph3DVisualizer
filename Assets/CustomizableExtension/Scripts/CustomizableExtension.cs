@@ -18,7 +18,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Runtime.Serialization;
 
 using Yuzu;
 
@@ -188,19 +187,7 @@ namespace Graph3DVisualizer.Customizable
 
     public class WrongTypeInCustomizableParameterException : Exception
     {
-        protected WrongTypeInCustomizableParameterException (SerializationInfo info, StreamingContext context) : base(info, context)
-        {
-        }
-
         public WrongTypeInCustomizableParameterException ()
-        {
-        }
-
-        public WrongTypeInCustomizableParameterException (string message) : base(message)
-        {
-        }
-
-        public WrongTypeInCustomizableParameterException (string message, Exception innerException) : base(message, innerException)
         {
         }
 
