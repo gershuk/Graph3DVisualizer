@@ -74,6 +74,67 @@ namespace Graph3DVisualizer.TextureFactory
 
             return newTexture;
         }
+
+        public static Texture2D RotateImage90Right(Texture2D originTexture)
+        {
+
+            var result = new Texture2D(originTexture.height, originTexture.width);
+            for (var i = 0; i < originTexture.width; ++i)
+                for (var j = 0; j < originTexture.height; ++j)
+                    result.SetPixel(j, i, originTexture.GetPixel(originTexture.width - 1 - i, j));
+            result.Apply();
+            return result;
+        }
+
+        public static Texture2D RotateImage90Left (Texture2D originTexture)
+        {
+
+            var result = new Texture2D(originTexture.height, originTexture.width);
+            for (var i = 0; i < originTexture.width; ++i)
+                for (var j = 0; j < originTexture.height; ++j)
+                    result.SetPixel(j, i, originTexture.GetPixel(i, originTexture.height - 1 - j));
+            result.Apply();
+            return result;
+        }
+
+        public static Texture2D RotateImage180Rigth (Texture2D originTexture)
+        {
+            var result = new Texture2D(originTexture.width, originTexture.height);
+            for (var i = 0; i < originTexture.width; ++i)
+                for (var j = 0; j < originTexture.height; ++j)
+                    result.SetPixel(i, j, originTexture.GetPixel(originTexture.width - 1 - i, originTexture.height - 1 - j));
+            result.Apply();
+            return result;
+        }
+
+        private static Color32[] RotateSquare (Color32[] arr, double phi, Texture2D originTexture)
+        {
+            int x;
+            int y;
+            int i;
+            int j;
+            var sn = Math.Sin(phi);
+            var cs = Math.Cos(phi);
+            var arr2 = originTexture.GetPixels32();
+            var W = originTexture.width;
+            var H = originTexture.height;
+            var xc = W / 2;
+            var yc = H / 2;
+            for (j = 0; j < H; j++)
+            {
+                for (i = 0; i < W; i++)
+                {
+                    arr2[j * W + i] = new Color32(0, 0, 0, 0);
+                    x = (int) (cs * (i - xc) + sn * (j - yc) + xc);
+                    y = (int) (-sn * (i - xc) + cs * (j - yc) + yc);
+                    if ((x > -1) && (x < W) && (y > -1) && (y < H))
+                    {
+                        arr2[j * W + i] = arr[y * W + x];
+                    }
+                }
+            }
+            return arr2;
+        }
     }
 
     /// <summary>
