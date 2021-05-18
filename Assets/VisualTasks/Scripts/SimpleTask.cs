@@ -48,13 +48,13 @@ namespace Graph3DVisualizer.GraphTasks
             _graphs.Add(graphControler);
             graphControler.SetupParams(new GraphParameters());
 
-            var customFont = Resources.Load<Font>(_fontPath);
+            var customFont = FontsGenerator.GetOrCreateFont("Broadway", 32);//Resources.Load<Font>(_fontPath);
             var mainTexture = Texture2DExtension.ResizeTexture(Resources.Load<Texture2D>(_mainTexture), 200, 200);
             mainTexture.name = "Target";
             var selectFrame = Texture2DExtension.ResizeTexture(Resources.Load<Texture2D>(_selectFrameTexture), 200, 200);
             mainTexture.name = "SelectFrame";
 
-            var TextTextureFactory = new TextTextureFactory(customFont, 32);
+            var TextTextureFactory = new TextTextureFactory(customFont, 0);
             var resizedTetxure = Texture2DExtension.ResizeTexture(mainTexture, 200, 200);
 
             var baseScale = Vector2.one;
@@ -67,7 +67,7 @@ namespace Graph3DVisualizer.GraphTasks
             Vertex? vertex = null;
             for (var i = 0; i < 1000; ++i)
             {
-                var text = TextTextureFactory.MakeTextTexture($"Vertex{i}");
+                var text = TextTextureFactory.MakeTextTexture($"Vertex{i}", true);
                 const float scale = 10;
                 var textParameters = new BillboardParameters(text, new Vector4(0, -5, 0, 0), new Vector2(scale, text.height * 1.0f / text.width * scale));
 
@@ -99,7 +99,7 @@ namespace Graph3DVisualizer.GraphTasks
                              new Color(143f,0f,1f),
                          };
 
-            var edgeTypes = new List<(Type type, EdgeParameters parameters)>(1) {(typeof(StretchableEdge), new StretchableEdgeParameters(new StretchableEdgeMaterialParameters())) };
+            var edgeTypes = new List<(Type type, EdgeParameters parameters)>(1) { (typeof(StretchableEdge), new StretchableEdgeParameters(new StretchableEdgeMaterialParameters())) };
 
             var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath)).GetComponent<FlyPlayer>();
             _players.Add(player);
