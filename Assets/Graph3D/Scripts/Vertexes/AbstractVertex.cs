@@ -34,13 +34,14 @@ namespace Graph3DVisualizer.Graph3D
     /// Abstract class that describes vertex component.
     /// </summary>
     [RequireComponent(typeof(MovementComponent))]
+    [RequireComponent(typeof(MeshRenderer))]
+    [RequireComponent(typeof(MeshFilter))]
+    [RequireComponent(typeof(BillboardController))]
+    [RequireComponent(typeof(SphereCollider))]
     [CustomizableGrandType(typeof(VertexParameters))]
     public abstract class AbstractVertex : AbstractGraphObject, IVisibile, IDestructible, ICustomizable<VertexParameters>
     {
         protected BillboardController _billboardControler;
-
-        [SerializeField]
-        protected GameObject _edgePrefab;
 
         protected List<Link> _incomingLinks;
         protected List<Link> _outgoingLinks;
@@ -59,7 +60,7 @@ namespace Graph3DVisualizer.Graph3D
 
         private TEdge CreateEdge<TEdge, TParameters> (TParameters parameters, AbstractVertex toVertex) where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
-            var edge = Instantiate(_edgePrefab, _transform.position, Quaternion.identity, _transform.parent).AddComponent<TEdge>();
+            var edge = CreateEdgeGameObject().AddComponent<TEdge>();
             edge.AdjacentVertices = new AdjacentVertices(this, toVertex);
             (edge as ICustomizable<TParameters>).SetupParams(parameters);
             return edge;
@@ -69,10 +70,30 @@ namespace Graph3DVisualizer.Graph3D
         {
             if (!edgeType.IsSubclassOf(typeof(AbstractEdge)))
                 throw new WrongTypeInCustomizableParameterException(typeof(AbstractEdge), edgeType);
-            var edge = (AbstractEdge) Instantiate(_edgePrefab, _transform.position, Quaternion.identity, _transform.parent).AddComponent(edgeType);
+            var edge = (AbstractEdge) CreateEdgeGameObject().AddComponent(edgeType);
             edge.AdjacentVertices = new AdjacentVertices(this, toVertex);
             CustomizableExtension.CallSetUpParams(edge, parameters);
             return edge;
+        }
+
+        private GameObject CreateEdgeGameObject ()
+        {
+            var edgeObject = new GameObject("Edge");
+            edgeObject.transform.position = _transform.position;
+            edgeObject.transform.parent = _transform.parent;
+
+            var lineRender = edgeObject.AddComponent<LineRenderer>();
+            lineRender.alignment = LineAlignment.View;
+            lineRender.textureMode = LineTextureMode.Stretch;
+            lineRender.useWorldSpace = false;
+            lineRender.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            lineRender.receiveShadows = false;
+            lineRender.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
+            lineRender.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
+            lineRender.motionVectorGenerationMode = MotionVectorGenerationMode.Camera;
+            lineRender.allowOcclusionWhenDynamic = true;
+
+            return edgeObject;
         }
 
         protected void CheckLinkForCorrectness (AbstractVertex toVertex, Type edgeType)

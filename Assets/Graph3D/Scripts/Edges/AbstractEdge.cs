@@ -72,6 +72,7 @@ namespace Graph3DVisualizer.Graph3D
     /// Abstarct class for describing visual part of the graph edge.
     /// </summary>
     [CustomizableGrandType(typeof(EdgeParameters))]
+    [RequireComponent(typeof(LineRenderer))]
     public abstract class AbstractEdge : AbstractGraphObject, ICustomizable<EdgeParameters>
     {
         protected AdjacentVertices _adjacentVertices;

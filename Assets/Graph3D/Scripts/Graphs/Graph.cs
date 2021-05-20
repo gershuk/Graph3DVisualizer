@@ -31,14 +31,82 @@ namespace Graph3DVisualizer.Graph3D
     /// </summary>
     public class Graph : AbstractGraph
     {
-        private readonly Dictionary<string, AbstractVertex> _vertexes = new Dictionary<string, AbstractVertex>();
+        [SerializeField]
+        private static Mesh _vertexMesh;
 
+        private readonly Dictionary<string, AbstractVertex> _vertexes = new Dictionary<string, AbstractVertex>();
         public override int VertexesCount => _vertexes.Count;
+
+        private static Mesh CreateQuadMesh ()
+        {
+            const float width = 0.5f;
+            const float height = 0.5f;
+            var mesh = new Mesh();
+
+            var vertices = new Vector3[4]
+            {
+            new Vector3(-width, -height, 0),
+            new Vector3(width, -height, 0),
+            new Vector3(-width, height, 0),
+            new Vector3(width, height, 0)
+            };
+            mesh.vertices = vertices;
+
+            var tris = new int[6]
+            {
+            // lower left triangle
+            0, 2, 1,
+            // upper right triangle
+            2, 3, 1
+            };
+            mesh.triangles = tris;
+
+            var normals = new Vector3[4]
+            {
+            -Vector3.forward,
+            -Vector3.forward,
+            -Vector3.forward,
+            -Vector3.forward
+            };
+            mesh.normals = normals;
+
+            var uv = new Vector2[4]
+            {
+            new Vector2(0, 0),
+            new Vector2(1, 0),
+            new Vector2(0, 1),
+            new Vector2(1, 1)
+            };
+            mesh.uv = uv;
+
+            return mesh;
+        }
 
         private void Awake ()
         {
-            _vertexPrefab = _vertexPrefab == null ? Resources.Load<GameObject>("Prefabs/Vertex") : _vertexPrefab;
+            _vertexMesh ??= CreateQuadMesh();
             _transform = GetComponent<Transform>();
+        }
+
+        private GameObject CreateVertexBody ()
+        {
+            var vertex = new GameObject("Vertex");
+            var meshRender = vertex.AddComponent<MeshRenderer>();
+            meshRender.sharedMaterials = new Material[0];
+            meshRender.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            meshRender.receiveShadows = false;
+            meshRender.receiveGI = ReceiveGI.LightProbes;
+            meshRender.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
+            meshRender.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
+            meshRender.motionVectorGenerationMode = MotionVectorGenerationMode.Object;
+            meshRender.allowOcclusionWhenDynamic = true;
+
+            var meshFilter = vertex.AddComponent<MeshFilter>();
+
+            meshFilter.sharedMesh = _vertexMesh;
+            _vertexMesh = meshFilter.sharedMesh;
+
+            return vertex;
         }
 
         public override bool ContainsVertex (string id) => _vertexes.ContainsKey(id);
@@ -57,7 +125,7 @@ namespace Graph3DVisualizer.Graph3D
 
         public override TVertex SpawnVertex<TVertex, TParams> (TParams vertexParameters)
         {
-            var vertex = Instantiate(_vertexPrefab, vertexParameters.Position, vertexParameters.Rotation, _transform);
+            var vertex = CreateVertexBody();
             var vertexComponent = vertex.gameObject.AddComponent<TVertex>();
             (vertexComponent as ICustomizable<TParams>).SetupParams(vertexParameters);
             _vertexes.Add(vertexComponent.Id, vertexComponent);
@@ -69,7 +137,7 @@ namespace Graph3DVisualizer.Graph3D
             if (!vertexType.IsSubclassOf(typeof(AbstractVertex)))
                 throw new WrongTypeInCustomizableParameterException(typeof(AbstractVertex), vertexType);
 
-            var vertex = Instantiate(_vertexPrefab, parameters.Position, parameters.Rotation, _transform);
+            var vertex = CreateVertexBody();
             var vertexComponent = (AbstractVertex) vertex.gameObject.AddComponent(vertexType);
             CustomizableExtension.CallSetUpParams(vertexComponent, parameters);
             _vertexes.Add(vertexComponent.Id, vertexComponent);

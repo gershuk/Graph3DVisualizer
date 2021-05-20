@@ -161,10 +161,12 @@ namespace Graph3DVisualizer.Scene
             {
                 LoadAssemblies(Directory.GetFiles(assembliesPath, "*.dll").Select((path) => (path, path)).ToArray());
             }
+#if !UNITY_EDITOR
             else
             {
                 Directory.CreateDirectory(assembliesPath);
             }
+#endif
         }
 
         public void SaveBinary (string name)

@@ -29,8 +29,10 @@ namespace Graph3DVisualizer.Graph3D
     /// <summary>
     /// Simple realization of <see cref="AbstractVertex"/>.
     /// </summary>
-    [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(MovementComponent))]
+    [RequireComponent(typeof(MeshRenderer))]
+    [RequireComponent(typeof(MeshFilter))]
+    [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(SphereCollider))]
     public class Vertex : AbstractVertex
     {
@@ -63,7 +65,6 @@ namespace Graph3DVisualizer.Graph3D
             _transform = transform;
             _sphereCollider = GetComponent<SphereCollider>();
             _visible = true;
-            _edgePrefab = _edgePrefab == null ? Resources.Load<GameObject>(_edgePrefabPath) : _edgePrefab;
             _incomingLinks = new List<Link>();
             _outgoingLinks = new List<Link>();
             _billboardControler = GetComponent<BillboardController>();

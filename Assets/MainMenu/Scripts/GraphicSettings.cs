@@ -18,17 +18,20 @@ using System.Linq;
 
 using UnityEngine;
 
-public class GraphicSettings : MonoBehaviour
+namespace Graph3DVisualizer.MainMenu
 {
-    [SerializeField]
-    private TMPro.TMP_Dropdown _dropdown;
-
-    private void Start ()
+    public class GraphicSettings : MonoBehaviour
     {
-        _dropdown.ClearOptions();
-        _dropdown.AddOptions(QualitySettings.names.ToList());
-        _dropdown.value = QualitySettings.GetQualityLevel();
-    }
+        [SerializeField]
+        private TMPro.TMP_Dropdown _dropdown;
 
-    public void SetQuality () => QualitySettings.SetQualityLevel(_dropdown.value);
+        private void Start ()
+        {
+            _dropdown.ClearOptions();
+            _dropdown.AddOptions(QualitySettings.names.ToList());
+            _dropdown.value = QualitySettings.GetQualityLevel();
+        }
+
+        public void SetQuality () => QualitySettings.SetQualityLevel(_dropdown.value);
+    }
 }

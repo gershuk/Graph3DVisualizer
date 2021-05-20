@@ -16,12 +16,15 @@
 
 using UnityEngine;
 
-public class ToolTip : MonoBehaviour
+namespace Graph3DVisualizer.MainMenu
 {
-    private readonly RectTransform _toolTip;
-
-    private void Update ()
+    public class ToolTip : MonoBehaviour
     {
-        _toolTip.anchoredPosition = Input.mousePosition;
+        private readonly RectTransform _toolTip;
+
+        private void Update ()
+        {
+            _toolTip.anchoredPosition = Input.mousePosition;
+        }
     }
 }

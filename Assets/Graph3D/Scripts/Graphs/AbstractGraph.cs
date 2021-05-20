@@ -122,10 +122,6 @@ namespace Graph3DVisualizer.Graph3D
     public abstract class AbstractGraph : AbstractGraphObject, ICustomizable<GraphParameters>
     {
         protected Transform _transform;
-
-        [SerializeField]
-        protected GameObject _vertexPrefab;
-
         public abstract int VertexesCount { get; }
 
         private IEnumerator ForceBasedLayoutCoroutine ()

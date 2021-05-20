@@ -42,7 +42,6 @@ namespace Graph3DVisualizer.Graph3D
         private static Texture2D _defaultLineTexture;
         private static Shader _shader;
         private LineRenderer _lineRenderer;
-        private Material _material;
 
         [SerializeField]
         protected Texture2D _arrowTexture;
