@@ -24,7 +24,7 @@ using Graph3DVisualizer.Customizable;
 
 using UnityEngine;
 
-namespace Graph3DVisualizer.VrHud
+namespace Graph3DVisualizer.Gui
 {
     public struct CanvasControllerInfo
     {

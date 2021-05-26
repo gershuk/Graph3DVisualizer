@@ -24,6 +24,8 @@ using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SpatialTracking;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace Graph3DVisualizer.PlayerInputControls
 {
@@ -31,44 +33,83 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// Simple realization of <see cref="AbstractPlayer"/> for keyboard/mouse controls.
     /// </summary>
     [RequireComponent(typeof(MovementComponent))]
-    [RequireComponent(typeof(Camera))]
     public sealed class FlyPlayer : AbstractPlayer
     {
-        private GameObject _hand;
-        private FlyControls _inputActions;
-        private Vector3 _moveDirVector;
-        private Transform _transform;
+        [SerializeField]
+        private GameObject _head;
 
-        public override InputType InputType
+        [SerializeField]
+        private FlyControls _inputActions;
+
+        private bool _isVr = true;
+
+        [SerializeField]
+        private UnityEngine.XR.Interaction.Toolkit.XRController _leftController;
+
+        [SerializeField]
+        private GameObject _leftHand;
+
+        [SerializeField]
+        private XRRayInteractor _leftRayInteractor;
+
+        private Vector3 _moveDirVector;
+
+        [SerializeField]
+        private XRRig _rig;
+
+        [SerializeField]
+        private UnityEngine.XR.Interaction.Toolkit.XRController _rightController;
+
+        [SerializeField]
+        private GameObject _rightHand;
+
+        [SerializeField]
+        private XRRayInteractor _rightRayInteractor;
+
+        [SerializeField]
+        private TrackedPoseDriver _trackedPoseDriver;
+
+        public bool IsVr
         {
-            get => _inputType;
+            get => _isVr;
             set
             {
-                _inputType = value;
-                UpdateInputs();
+                if (_isVr == value)
+                    return;
+
+                _isVr = value;
+                _rig.enabled = _isVr;
+                _trackedPoseDriver.enabled = _isVr;
+                _leftController.enabled = _isVr;
+                _rightController.enabled = _isVr;
+                _leftRayInteractor.enabled = _isVr;
+                _rightRayInteractor.enabled = _isVr;
             }
         }
 
         private void Awake ()
         {
-            _transform = transform;
+            //Controls is a resource, so it can't be loaded from the constructor.
             _inputActions = new FlyControls();
-            _hand = new GameObject("Hand");
-            _hand.transform.parent = _transform;
-            _hand.transform.localPosition = new Vector3(2, -2, 0);
-            _hand.AddComponent(typeof(LaserPointer));
-
-            _playerTools = new List<AbstractPlayerTool>();
-
             _moveComponent = GetComponent<MovementComponent>();
-            _inputType = InputType.ToolsOnly;
+
+            CursorEnable = false;
+            MovementEnable = true;
+            ToolsEnable = true;
+
+            IsVr = false;
         }
 
         private void LateUpdate ()
         {
-            _moveComponent.Rotate(_inputActions.FlyModel.LookRotation.ReadValue<Vector2>(), Time.deltaTime);
-            _moveComponent.Translate(_moveDirVector, Time.deltaTime);
+            if (MovementEnable)
+            {
+                _moveComponent.Rotate(_inputActions.FlyModel.LookRotation.ReadValue<Vector2>(), Time.deltaTime);
+                _moveComponent.Translate(_moveDirVector, Time.deltaTime, _head.transform);
+            }
         }
+
+        private void OnChangeInputType (InputAction.CallbackContext obj) => (CursorEnable, ToolsEnable, MovementEnable) = (!CursorEnable, !ToolsEnable, !MovementEnable);
 
         private void OnDisable ()
         {
@@ -77,10 +118,15 @@ namespace Graph3DVisualizer.PlayerInputControls
             _inputActions.FlyModel.Move.performed -= OnPlayerMove;
             _inputActions.FlyModel.Move.canceled -= OnPlayerMove;
 
+            _inputActions.FlyModel.MoveFromTrackPad.performed -= OnPlayerMove;
+            _inputActions.FlyModel.MoveFromTrackPad.canceled -= OnPlayerMove;
+
             _inputActions.FlyModel.MoveToPoint.performed -= OnMoveToPoint;
 
             _inputActions.FlyModel.ChangeAltitude.performed -= OnPlayerChangeAltitude;
             _inputActions.FlyModel.ChangeAltitude.canceled -= OnPlayerChangeAltitude;
+
+            _inputActions.FlyModel.ChangeInputType.performed -= OnChangeInputType;
 
             _inputActions.FlyModel.Disable();
         }
@@ -92,65 +138,30 @@ namespace Graph3DVisualizer.PlayerInputControls
             _inputActions.FlyModel.Move.performed += OnPlayerMove;
             _inputActions.FlyModel.Move.canceled += OnPlayerMove;
 
+            _inputActions.FlyModel.MoveFromTrackPad.performed += OnPlayerMove;
+            _inputActions.FlyModel.MoveFromTrackPad.canceled += OnPlayerMove;
+
             _inputActions.FlyModel.MoveToPoint.performed += OnMoveToPoint;
 
             _inputActions.FlyModel.ChangeAltitude.performed += OnPlayerChangeAltitude;
             _inputActions.FlyModel.ChangeAltitude.canceled += OnPlayerChangeAltitude;
 
+            _inputActions.FlyModel.ChangeInputType.performed += OnChangeInputType;
+
             _inputActions.FlyModel.Enable();
-
-            UpdateInputs();
-        }
-
-        private void UpdateInputs ()
-        {
-            (bool tools, bool cursor, bool movement) state = (false, false, false);
-            switch (_inputType)
-            {
-                case InputType.Off:
-                    state = (false, false, false);
-                    break;
-
-                case InputType.MenuOnly:
-                    state = (false, true, false);
-                    break;
-
-                case InputType.ToolsOnly:
-                    state = (true, false, true);
-                    break;
-
-                case InputType.All:
-                    state = (true, true, true);
-                    break;
-            }
-
-            if (state.tools)
-            {
-                if (_playerTools.Count > 0)
-                    _playerTools[_currentToolIndex].enabled = true;
-            }
-            else
-            {
-                foreach (var tool in _playerTools)
-                    tool.enabled = false;
-            }
-
-            Cursor.visible = state.cursor;
-
-            if (state.movement)
-                _inputActions?.Enable();
-            else
-                _inputActions?.Disable();
         }
 
         protected override void GiveNewTool (params ToolConfig[] toolsConfig)
         {
+            if (toolsConfig.Length == 0)
+                return;
+
             var clonedList = _playerTools.GetRange(0, _playerTools.Count);
             try
             {
                 foreach (var config in toolsConfig)
                 {
-                    var newTool = ((AbstractPlayerTool) _hand.AddComponent(config.ToolType));
+                    var newTool = ((AbstractPlayerTool) _rightHand.AddComponent(config.ToolType));
                     newTool.RegisterEvents(_inputActions);
 
                     try
@@ -178,7 +189,7 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public void OnMoveToPoint (InputAction.CallbackContext obj)
         {
-            if (Physics.Raycast(_hand.transform.position, transform.TransformDirection(Vector3.forward), out var hit, Mathf.Infinity))
+            if (Physics.Raycast(_leftHand.transform.position, _leftHand.transform.TransformDirection(Vector3.forward), out var hit, Mathf.Infinity) && MovementEnable)
                 StartCoroutine(_moveComponent.MoveAlongTrajectory(new List<Vector3>(1) { hit.point }));
         }
 
@@ -186,7 +197,7 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public void OnPlayerMove (InputAction.CallbackContext obj)
         {
-            var direction = obj.ReadValue<Vector2>();
+            var direction = obj.ReadValue<Vector2>().normalized;
             _moveDirVector = new Vector3(direction.x, _moveDirVector.y, direction.y);
         }
 

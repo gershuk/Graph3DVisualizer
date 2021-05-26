@@ -20,7 +20,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+using Graph3DVisualizer.Billboards;
 using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.TextureFactory;
 
 using UnityEngine;
 
@@ -29,12 +31,51 @@ namespace Graph3DVisualizer.Graph3D
     /// <summary>
     /// Simple realization of <see cref="AbstractGraph"/>.
     /// </summary>
+    [CustomizableGrandType(typeof(GraphParameters))]
+    [RequireComponent(typeof(BillboardController))]
+    [RequireComponent(typeof(SphereCollider))]
+    [RequireComponent(typeof(MeshFilter))]
+    [RequireComponent(typeof(MeshRenderer))]
     public class Graph : AbstractGraph
     {
         [SerializeField]
-        private static Mesh _vertexMesh;
+        protected static Mesh _vertexMesh;
 
-        private readonly Dictionary<string, AbstractVertex> _vertexes = new Dictionary<string, AbstractVertex>();
+        protected readonly Dictionary<string, AbstractVertex> _vertexes = new Dictionary<string, AbstractVertex>();
+        protected BillboardController _billboardController;
+        protected BillboardId _imageId;
+        protected MeshFilter _meshFilter;
+
+        protected string? _name;
+
+        protected SphereCollider _sphereCollider;
+
+        protected TextTextureFactory _textTextureFactory;
+
+        public override string? Name
+        {
+            get => _name;
+            set
+            {
+                if (_name == value)
+                    return;
+
+                _name = value;
+
+                if (_imageId != null)
+                    _billboardController.DeleteBillboard(_imageId);
+
+                if (_name != null)
+                {
+                    var text = _textTextureFactory.MakeTextTexture(_name, true);
+                    var scale = new Vector2(10, text.height * 1.0f / text.width * 10);
+                    var textParameters = new BillboardParameters(text, Vector4.zero, scale);
+                    _imageId = _billboardController.CreateBillboard(textParameters);
+                    _sphereCollider.radius = Mathf.Max(scale.x / 2, scale.y / 2);
+                }
+            }
+        }
+
         public override int VertexesCount => _vertexes.Count;
 
         private static Mesh CreateQuadMesh ()
@@ -86,16 +127,25 @@ namespace Graph3DVisualizer.Graph3D
         {
             _vertexMesh ??= CreateQuadMesh();
             _transform = GetComponent<Transform>();
+            _meshFilter = GetComponent<MeshFilter>();
+            _meshFilter.sharedMesh = _vertexMesh;
+            GetComponent<MeshRenderer>().sharedMaterials = new Material[0];
+            _vertexMesh = _meshFilter.sharedMesh;
+            _billboardController = GetComponent<BillboardController>();
+            _sphereCollider = GetComponent<SphereCollider>();
+            _textTextureFactory = new TextTextureFactory(FontsGenerator.GetOrCreateFont("Arial", 32), 0);
         }
 
         private GameObject CreateVertexBody ()
         {
             var vertex = new GameObject("Vertex");
+            vertex.transform.parent = _transform;
+
             var meshRender = vertex.AddComponent<MeshRenderer>();
             meshRender.sharedMaterials = new Material[0];
             meshRender.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             meshRender.receiveShadows = false;
-            meshRender.receiveGI = ReceiveGI.LightProbes;
+            //meshRender.receiveGI = ReceiveGI.LightProbes;
             meshRender.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
             meshRender.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
             meshRender.motionVectorGenerationMode = MotionVectorGenerationMode.Object;

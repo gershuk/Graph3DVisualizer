@@ -1,25 +1,8 @@
-// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
-//
-// Graph3DVisualizer is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Graph3DVisualizer is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY, without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
-
-#nullable enable
+// GENERATED AUTOMATICALLY FROM 'Assets/Player/Scripts/FlyPlayer/FlyControls.inputactions'
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
@@ -27,109 +10,8 @@ namespace Graph3DVisualizer.PlayerInputControls
 {
     public class @FlyControls : IInputActionCollection, IDisposable
     {
-        public struct FlyModelActions
-        {
-            private readonly @FlyControls m_Wrapper;
-            public InputAction @ChangeAltitude => m_Wrapper.m_FlyModel_ChangeAltitude;
-
-            public InputAction @LookRotation => m_Wrapper.m_FlyModel_LookRotation;
-
-            public InputAction @Move => m_Wrapper.m_FlyModel_Move;
-
-            public InputAction @MoveToPoint => m_Wrapper.m_FlyModel_MoveToPoint;
-
-            public InputAction @ScrollItemList => m_Wrapper.m_FlyModel_ScrollItemList;
-
-            public InputAction @SelectItem => m_Wrapper.m_FlyModel_SelectItem;
-
-            public bool enabled => Get().enabled;
-
-            public FlyModelActions (@FlyControls wrapper) => m_Wrapper = wrapper;
-
-            public static implicit operator InputActionMap (FlyModelActions set) => set.Get();
-
-            public void Disable () => Get().Disable();
-
-            public void Enable () => Get().Enable();
-
-            public InputActionMap Get () => m_Wrapper.m_FlyModel;
-
-            public void SetCallbacks (IFlyModelActions instance)
-            {
-                if (m_Wrapper.m_FlyModelActionsCallbackInterface != null)
-                {
-                    @MoveToPoint.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMoveToPoint;
-                    @MoveToPoint.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMoveToPoint;
-                    @MoveToPoint.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMoveToPoint;
-                    @Move.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMove;
-                    @Move.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMove;
-                    @Move.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMove;
-                    @LookRotation.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnLookRotation;
-                    @LookRotation.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnLookRotation;
-                    @LookRotation.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnLookRotation;
-                    @ChangeAltitude.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnChangeAltitude;
-                    @ChangeAltitude.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnChangeAltitude;
-                    @ChangeAltitude.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnChangeAltitude;
-                    @ScrollItemList.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnScrollItemList;
-                    @ScrollItemList.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnScrollItemList;
-                    @ScrollItemList.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnScrollItemList;
-                    @SelectItem.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnSelectItem;
-                    @SelectItem.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnSelectItem;
-                    @SelectItem.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnSelectItem;
-                }
-                m_Wrapper.m_FlyModelActionsCallbackInterface = instance;
-                if (instance != null)
-                {
-                    @MoveToPoint.started += instance.OnMoveToPoint;
-                    @MoveToPoint.performed += instance.OnMoveToPoint;
-                    @MoveToPoint.canceled += instance.OnMoveToPoint;
-                    @Move.started += instance.OnMove;
-                    @Move.performed += instance.OnMove;
-                    @Move.canceled += instance.OnMove;
-                    @LookRotation.started += instance.OnLookRotation;
-                    @LookRotation.performed += instance.OnLookRotation;
-                    @LookRotation.canceled += instance.OnLookRotation;
-                    @ChangeAltitude.started += instance.OnChangeAltitude;
-                    @ChangeAltitude.performed += instance.OnChangeAltitude;
-                    @ChangeAltitude.canceled += instance.OnChangeAltitude;
-                    @ScrollItemList.started += instance.OnScrollItemList;
-                    @ScrollItemList.performed += instance.OnScrollItemList;
-                    @ScrollItemList.canceled += instance.OnScrollItemList;
-                    @SelectItem.started += instance.OnSelectItem;
-                    @SelectItem.performed += instance.OnSelectItem;
-                    @SelectItem.canceled += instance.OnSelectItem;
-                }
-            }
-        }
-
-        // FlyModel
-        private readonly InputActionMap m_FlyModel;
-
-        private readonly InputAction m_FlyModel_ChangeAltitude;
-        private readonly InputAction m_FlyModel_LookRotation;
-        private readonly InputAction m_FlyModel_Move;
-        private readonly InputAction m_FlyModel_MoveToPoint;
-        private readonly InputAction m_FlyModel_ScrollItemList;
-        private readonly InputAction m_FlyModel_SelectItem;
-        private IFlyModelActions m_FlyModelActionsCallbackInterface;
-        public FlyModelActions @FlyModel => new FlyModelActions(this);
         public InputActionAsset asset { get; }
-
-        public InputBinding? bindingMask
-        {
-            get => asset.bindingMask;
-            set => asset.bindingMask = value;
-        }
-
-        public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
-
-        public ReadOnlyArray<InputDevice>? devices
-        {
-            get => asset.devices;
-            set => asset.devices = value;
-        }
-
-        public @FlyControls ()
+        public @FlyControls()
         {
             asset = InputActionAsset.FromJson(@"{
     ""name"": ""FlyControls"",
@@ -182,6 +64,22 @@ namespace Graph3DVisualizer.PlayerInputControls
                     ""name"": ""SelectItem"",
                     ""type"": ""Button"",
                     ""id"": ""4b3ee49a-5ad7-4301-856f-f1a5e4a6f701"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MoveFromTrackPad"",
+                    ""type"": ""Value"",
+                    ""id"": ""e24c424a-573d-4aa0-89ee-56fada34d149"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ChangeInputType"",
+                    ""type"": ""Button"",
+                    ""id"": ""d849b80a-5e58-4543-8be6-bf5042b34dc2"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -300,8 +198,30 @@ namespace Graph3DVisualizer.PlayerInputControls
                 },
                 {
                     ""name"": """",
+                    ""id"": ""8033daa4-4df5-429c-96c4-854611aff93a"",
+                    ""path"": ""<XRInputV1::HTC::HTCViveControllerOpenXR>{LeftHand}/triggerpressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveToPoint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""bf532e83-8400-4e06-9018-4e85431dc937"",
                     ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ScrollItemList"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9244af59-d3c8-4ad8-b214-36b525d30136"",
+                    ""path"": ""<ViveController>{RightHand}/trackpad/y"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -407,6 +327,28 @@ namespace Graph3DVisualizer.PlayerInputControls
                     ""action"": ""SelectItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd44f3b8-59d8-4349-80e9-7b86383e1550"",
+                    ""path"": ""<ViveController>{LeftHand}/trackpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveFromTrackPad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eea2e58b-0c49-4a20-abca-d3548bfdc224"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeInputType"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -421,33 +363,152 @@ namespace Graph3DVisualizer.PlayerInputControls
             m_FlyModel_ChangeAltitude = m_FlyModel.FindAction("ChangeAltitude", throwIfNotFound: true);
             m_FlyModel_ScrollItemList = m_FlyModel.FindAction("ScrollItemList", throwIfNotFound: true);
             m_FlyModel_SelectItem = m_FlyModel.FindAction("SelectItem", throwIfNotFound: true);
+            m_FlyModel_MoveFromTrackPad = m_FlyModel.FindAction("MoveFromTrackPad", throwIfNotFound: true);
+            m_FlyModel_ChangeInputType = m_FlyModel.FindAction("ChangeInputType", throwIfNotFound: true);
         }
 
+        public void Dispose()
+        {
+            UnityEngine.Object.Destroy(asset);
+        }
+
+        public InputBinding? bindingMask
+        {
+            get => asset.bindingMask;
+            set => asset.bindingMask = value;
+        }
+
+        public ReadOnlyArray<InputDevice>? devices
+        {
+            get => asset.devices;
+            set => asset.devices = value;
+        }
+
+        public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
+
+        public bool Contains(InputAction action)
+        {
+            return asset.Contains(action);
+        }
+
+        public IEnumerator<InputAction> GetEnumerator()
+        {
+            return asset.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public void Enable()
+        {
+            asset.Enable();
+        }
+
+        public void Disable()
+        {
+            asset.Disable();
+        }
+
+        // FlyModel
+        private readonly InputActionMap m_FlyModel;
+        private IFlyModelActions m_FlyModelActionsCallbackInterface;
+        private readonly InputAction m_FlyModel_MoveToPoint;
+        private readonly InputAction m_FlyModel_Move;
+        private readonly InputAction m_FlyModel_LookRotation;
+        private readonly InputAction m_FlyModel_ChangeAltitude;
+        private readonly InputAction m_FlyModel_ScrollItemList;
+        private readonly InputAction m_FlyModel_SelectItem;
+        private readonly InputAction m_FlyModel_MoveFromTrackPad;
+        private readonly InputAction m_FlyModel_ChangeInputType;
+        public struct FlyModelActions
+        {
+            private @FlyControls m_Wrapper;
+            public FlyModelActions(@FlyControls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @MoveToPoint => m_Wrapper.m_FlyModel_MoveToPoint;
+            public InputAction @Move => m_Wrapper.m_FlyModel_Move;
+            public InputAction @LookRotation => m_Wrapper.m_FlyModel_LookRotation;
+            public InputAction @ChangeAltitude => m_Wrapper.m_FlyModel_ChangeAltitude;
+            public InputAction @ScrollItemList => m_Wrapper.m_FlyModel_ScrollItemList;
+            public InputAction @SelectItem => m_Wrapper.m_FlyModel_SelectItem;
+            public InputAction @MoveFromTrackPad => m_Wrapper.m_FlyModel_MoveFromTrackPad;
+            public InputAction @ChangeInputType => m_Wrapper.m_FlyModel_ChangeInputType;
+            public InputActionMap Get() { return m_Wrapper.m_FlyModel; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(FlyModelActions set) { return set.Get(); }
+            public void SetCallbacks(IFlyModelActions instance)
+            {
+                if (m_Wrapper.m_FlyModelActionsCallbackInterface != null)
+                {
+                    @MoveToPoint.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMoveToPoint;
+                    @MoveToPoint.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMoveToPoint;
+                    @MoveToPoint.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMoveToPoint;
+                    @Move.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMove;
+                    @Move.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMove;
+                    @Move.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMove;
+                    @LookRotation.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnLookRotation;
+                    @LookRotation.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnLookRotation;
+                    @LookRotation.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnLookRotation;
+                    @ChangeAltitude.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnChangeAltitude;
+                    @ChangeAltitude.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnChangeAltitude;
+                    @ChangeAltitude.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnChangeAltitude;
+                    @ScrollItemList.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnScrollItemList;
+                    @ScrollItemList.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnScrollItemList;
+                    @ScrollItemList.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnScrollItemList;
+                    @SelectItem.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnSelectItem;
+                    @SelectItem.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnSelectItem;
+                    @SelectItem.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnSelectItem;
+                    @MoveFromTrackPad.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMoveFromTrackPad;
+                    @MoveFromTrackPad.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMoveFromTrackPad;
+                    @MoveFromTrackPad.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnMoveFromTrackPad;
+                    @ChangeInputType.started -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnChangeInputType;
+                    @ChangeInputType.performed -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnChangeInputType;
+                    @ChangeInputType.canceled -= m_Wrapper.m_FlyModelActionsCallbackInterface.OnChangeInputType;
+                }
+                m_Wrapper.m_FlyModelActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @MoveToPoint.started += instance.OnMoveToPoint;
+                    @MoveToPoint.performed += instance.OnMoveToPoint;
+                    @MoveToPoint.canceled += instance.OnMoveToPoint;
+                    @Move.started += instance.OnMove;
+                    @Move.performed += instance.OnMove;
+                    @Move.canceled += instance.OnMove;
+                    @LookRotation.started += instance.OnLookRotation;
+                    @LookRotation.performed += instance.OnLookRotation;
+                    @LookRotation.canceled += instance.OnLookRotation;
+                    @ChangeAltitude.started += instance.OnChangeAltitude;
+                    @ChangeAltitude.performed += instance.OnChangeAltitude;
+                    @ChangeAltitude.canceled += instance.OnChangeAltitude;
+                    @ScrollItemList.started += instance.OnScrollItemList;
+                    @ScrollItemList.performed += instance.OnScrollItemList;
+                    @ScrollItemList.canceled += instance.OnScrollItemList;
+                    @SelectItem.started += instance.OnSelectItem;
+                    @SelectItem.performed += instance.OnSelectItem;
+                    @SelectItem.canceled += instance.OnSelectItem;
+                    @MoveFromTrackPad.started += instance.OnMoveFromTrackPad;
+                    @MoveFromTrackPad.performed += instance.OnMoveFromTrackPad;
+                    @MoveFromTrackPad.canceled += instance.OnMoveFromTrackPad;
+                    @ChangeInputType.started += instance.OnChangeInputType;
+                    @ChangeInputType.performed += instance.OnChangeInputType;
+                    @ChangeInputType.canceled += instance.OnChangeInputType;
+                }
+            }
+        }
+        public FlyModelActions @FlyModel => new FlyModelActions(this);
         public interface IFlyModelActions
         {
-            void OnChangeAltitude (InputAction.CallbackContext context);
-
-            void OnLookRotation (InputAction.CallbackContext context);
-
-            void OnMove (InputAction.CallbackContext context);
-
-            void OnMoveToPoint (InputAction.CallbackContext context);
-
-            void OnScrollItemList (InputAction.CallbackContext context);
-
-            void OnSelectItem (InputAction.CallbackContext context);
+            void OnMoveToPoint(InputAction.CallbackContext context);
+            void OnMove(InputAction.CallbackContext context);
+            void OnLookRotation(InputAction.CallbackContext context);
+            void OnChangeAltitude(InputAction.CallbackContext context);
+            void OnScrollItemList(InputAction.CallbackContext context);
+            void OnSelectItem(InputAction.CallbackContext context);
+            void OnMoveFromTrackPad(InputAction.CallbackContext context);
+            void OnChangeInputType(InputAction.CallbackContext context);
         }
-
-        public bool Contains (InputAction action) => asset.Contains(action);
-
-        public void Disable () => asset.Disable();
-
-        public void Dispose () => UnityEngine.Object.Destroy(asset);
-
-        public void Enable () => asset.Enable();
-
-        public IEnumerator<InputAction> GetEnumerator () => asset.GetEnumerator();
-
-        IEnumerator IEnumerable.GetEnumerator () => GetEnumerator();
     }
 }

@@ -74,7 +74,7 @@ namespace Graph3DVisualizer.Graph3D
 
         private void OnDestroy () => Destroyed?.Invoke(this);
 
-        protected virtual void UpdateColliderRange ()
+        protected override void UpdateColliderRange ()
         {
             var newRadius = 0f;
             foreach (var id in ImageIds)

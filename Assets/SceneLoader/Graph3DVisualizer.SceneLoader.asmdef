@@ -1,0 +1,23 @@
+{
+    "name": "Graph3DVisualizer.SceneLoader",
+    "rootNamespace": "Graph3DVisualizer.SceneLoader",
+    "references": [
+        "GUID:c714d0b183033d44cb9541a269246798",
+        "GUID:d93d376db5257d64e880282318a2ebb9",
+        "GUID:de927d21316a8a447912b685b91e2a7f",
+        "GUID:78a8b2fd7b196d34690589f8eb2bb22d",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:ca7da413e36d8f54488571500d50f9a3",
+        "GUID:a251807422a267846803e3939918e146",
+        "GUID:fb51a9a8d22cea043a7323d7946ab2c5"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

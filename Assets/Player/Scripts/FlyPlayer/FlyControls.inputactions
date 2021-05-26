@@ -52,6 +52,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "MoveFromTrackPad",
+                    "type": "Value",
+                    "id": "e24c424a-573d-4aa0-89ee-56fada34d149",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ChangeInputType",
+                    "type": "Button",
+                    "id": "d849b80a-5e58-4543-8be6-bf5042b34dc2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -167,8 +183,30 @@
                 },
                 {
                     "name": "",
+                    "id": "8033daa4-4df5-429c-96c4-854611aff93a",
+                    "path": "<XRInputV1::HTC::HTCViveControllerOpenXR>{LeftHand}/triggerpressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveToPoint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "bf532e83-8400-4e06-9018-4e85431dc937",
                     "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScrollItemList",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9244af59-d3c8-4ad8-b214-36b525d30136",
+                    "path": "<ViveController>{RightHand}/trackpad/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -272,6 +310,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "SelectItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd44f3b8-59d8-4349-80e9-7b86383e1550",
+                    "path": "<ViveController>{LeftHand}/trackpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveFromTrackPad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eea2e58b-0c49-4a20-abca-d3548bfdc224",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeInputType",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

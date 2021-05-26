@@ -22,7 +22,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Graph3DVisualizer.GUI
+namespace Graph3DVisualizer.Gui
 {
     /// <summary>
     /// Class that encapsulates <see cref="UnityEngine.UI"/> object creation functions.
@@ -99,6 +99,18 @@ namespace Graph3DVisualizer.GUI
             }
         }
 
+        public readonly struct Vector3ViewParameters
+        {
+            public string Name { get; }
+            public RectTransformParameters RectTransformParameters { get; }
+            public Vector3 Vector { get; }
+
+            public Vector3ViewParameters (Vector3 vector, string name, RectTransformParameters rectTransformParameters) =>
+                (Vector, Name, RectTransformParameters) = (vector, name, rectTransformParameters);
+        }
+
+        private static GameObject? _vector3ViewPrefab;
+
         public static GameObject CreateButton (in ButtonParameters parameters)
         {
             var newButton = new GameObject($"{parameters.Name}Button", typeof(Image), typeof(Button), typeof(LayoutElement));
@@ -134,6 +146,20 @@ namespace Graph3DVisualizer.GUI
             textComponent.alignment = parameters.Anchor;
             textComponent.fontSize = parameters.Size;
             return newText;
+        }
+
+        public static GameObject CreateVector3View (in Vector3ViewParameters parameters)
+        {
+            _vector3ViewPrefab ??= (Resources.Load<GameObject>(@"Prefabs\Vector3View"));
+            var vector3View = UnityEngine.Object.Instantiate(_vector3ViewPrefab);
+
+            var vector3ViewComponent = vector3View.GetComponent<Vector3View>();
+            vector3ViewComponent.Name = parameters.Name;
+            vector3ViewComponent.Vector = parameters.Vector;
+
+            vector3View.GetComponent<RectTransform>().SetUpRectTransform(parameters.RectTransformParameters);
+
+            return vector3View;
         }
 
         public static void SetUpRectTransform (this RectTransform rectTransform, in RectTransformParameters parameters)

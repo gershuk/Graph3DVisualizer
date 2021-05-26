@@ -33,19 +33,56 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// Abstract class that describes player.
     /// </summary>
     [CustomizableGrandType(typeof(PlayerParameters))]
-    [RequireComponent(typeof(Camera))]
     public abstract class AbstractPlayer : MonoBehaviour, ICustomizable<PlayerParameters>
     {
         protected int _currentToolIndex = 0;
-        protected InputType _inputType;
+        protected bool _cursorEnable;
         protected MovementComponent _moveComponent;
         protected List<AbstractPlayerTool> _playerTools = new List<AbstractPlayerTool>();
+        protected bool _toolsEnable;
 
         public event Action<AbstractPlayerTool>? NewToolSelected;
 
+        protected bool CursorEnable
+        {
+            get => _cursorEnable;
+            set
+            {
+                if (_cursorEnable == value)
+                    return;
+
+                _cursorEnable = value;
+                Cursor.visible = _cursorEnable;
+            }
+        }
+
+        protected virtual bool MovementEnable { get; set; }
+
+        protected virtual bool ToolsEnable
+        {
+            get => _toolsEnable;
+            set
+            {
+                if (_toolsEnable == value)
+                    return;
+                _toolsEnable = value;
+                if (_playerTools.Count == 0)
+                    return;
+                if (value)
+                {
+                    if (_playerTools.Count > 0)
+                        _playerTools[_currentToolIndex].enabled = true;
+                }
+                else
+                {
+                    foreach (var tool in _playerTools)
+                        tool.enabled = false;
+                }
+            }
+        }
+
         public int CurrentToolIndex { get => _currentToolIndex; set => SelectTool(value); }
         public IReadOnlyList<AbstractPlayerTool> GetToolsList => _playerTools;
-        public abstract InputType InputType { get; set; }
 
         protected abstract void GiveNewTool (params ToolConfig[] toolsConfig);
 
@@ -55,6 +92,9 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public void SelectTool (int index)
         {
+            if (!ToolsEnable)
+                return;
+
             var lastIndex = _currentToolIndex;
             try
             {

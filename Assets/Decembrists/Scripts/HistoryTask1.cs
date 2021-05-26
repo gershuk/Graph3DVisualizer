@@ -27,17 +27,14 @@ using Graph3DVisualizer.TextureFactory;
 
 using UnityEngine;
 
-namespace Graph3DVisualizer.GraphTasks
+namespace Graph3DVisualizer.SceneController
 {
-    public class HistoryTask1 : AbstractVisualTask
+    public class HistoryTask1 : VisualTaskController
     {
         private const string _decembristsPath = "Textures/Decembrists";
         private const string _fontPath = "Font/CustomFontArial";
         private const string _notDecembristsPath = "Textures/NotDecembrists";
-        private const string _playerPath = "Prefabs/Player";
         private const string _selectFramePath = "Textures/SelectFrame";
-        public override IReadOnlyCollection<AbstractGraph> Graphs { get => _graphs; protected set => _graphs = (List<AbstractGraph>) value; }
-        public override IReadOnlyCollection<AbstractPlayer> Players { get => _players; protected set => _players = (List<AbstractPlayer>) value; }
 
         private DecembristVertex AddPeople (TextTextureFactory textTextureFactory, UnityEngine.Object man, Graph graphController, Texture2D selectFrame, bool isDec)
         {
@@ -104,8 +101,8 @@ namespace Graph3DVisualizer.GraphTasks
 
         public override List<Verdict> GetResult ()
         {
-            var verdicts = new List<Verdict>(_graphs[0].GetComponent<Graph>().VertexesCount);
-            foreach (DecembristVertex vertex in _graphs[0].GetComponent<Graph>().GetVertexes())
+            var verdicts = new List<Verdict>(base.Graphs[0].GetComponent<Graph>().VertexesCount);
+            foreach (DecembristVertex vertex in base.Graphs[0].GetComponent<Graph>().GetVertexes())
             {
                 var type = vertex.IsDec ? "Декабрист" : "Не декабрист";
                 var act = vertex.IsSelected ? "выбрали" : "не выбрали";
@@ -128,15 +125,11 @@ namespace Graph3DVisualizer.GraphTasks
                              //new Color(143f,0f,1f),
                          };
 
-            _graphs.Add(CreateGraph());
-            var player = Instantiate(Resources.Load<GameObject>(_playerPath));
+            base.Graphs.Add(CreateGraph());
+            var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath));
             var flyPlayer = player.GetComponent<FlyPlayer>();
-            flyPlayer.SetupParams(new PlayerParameters(Vector3.back * 20, Vector3.zero, 40, 20,
-                new ToolConfig[1]
-                {
-                    new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)),
-                }));
-            _players.Add(flyPlayer);
+            flyPlayer.SetupParams(new PlayerParameters());
+            Players.Add(flyPlayer);
         }
     }
 }

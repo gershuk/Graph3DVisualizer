@@ -49,6 +49,8 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         [SerializeField]
         private float _range;
+        [SerializeField]
+        private float _width;
 
         private Shader _shader;
         private Texture2D _texture2D;
@@ -100,18 +102,14 @@ namespace Graph3DVisualizer.PlayerInputControls
 
             _lineRender.positionCount = 2;
             _lineRender.useWorldSpace = false;
-            _lineRender.endWidth = 0.5f;
-            _lineRender.startWidth = 0.5f;
-
-            Range = 1000f;
+            _lineRender.endWidth = _width;
+            _lineRender.startWidth = _width;
         }
 
         private void LateUpdate ()
         {
             Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, Range);
-
-            _lineRender.SetPosition(0, Vector3.zero);
-            _lineRender.SetPosition(1, hit.transform == null ? Vector3.forward * Range : Vector3.forward * hit.distance);
+            //_lineRender.SetPosition(1, hit.transform == null ? Vector3.forward * Range : Vector3.forward * hit.distance);
         }
     }
 

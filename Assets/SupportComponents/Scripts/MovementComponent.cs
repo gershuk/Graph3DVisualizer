@@ -198,6 +198,8 @@ namespace Graph3DVisualizer.SupportComponents
 
         public IEnumerator MoveAlongTrajectory (IReadOnlyList<Vector3> trajectory)
         {
+            if (_isMoving)
+                yield break;
             _isMoving = true;
             foreach (var point in trajectory)
             {
@@ -219,7 +221,7 @@ namespace Graph3DVisualizer.SupportComponents
 
             _isMoving = false;
 
-            yield return null;
+            yield break;
         }
 
         public void Rotate (Vector2 rotationChange, float deltaTime)
@@ -232,12 +234,13 @@ namespace Graph3DVisualizer.SupportComponents
             EulerAngles = eulerAngles;
         }
 
-        public void Translate (Vector3 directionVector, float deltaTime)
+        public void Translate (Vector3 directionVector, float deltaTime, Transform? relativeTo = default)
         {
+            relativeTo ??= _transform;
             if (!_isMoving && directionVector != Vector3.zero)
             {
                 UpdateParametersWhileMoving(deltaTime);
-                _transform.Translate(directionVector * MovingSpeed * deltaTime);
+                _transform.Translate(directionVector * MovingSpeed * deltaTime, relativeTo);
                 ObjectPositionChanged?.Invoke(_transform.position, this);
             }
         }

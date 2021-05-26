@@ -122,6 +122,8 @@ namespace Graph3DVisualizer.Graph3D
     public abstract class AbstractGraph : AbstractGraphObject, ICustomizable<GraphParameters>
     {
         protected Transform _transform;
+        public abstract string? Name { get; set; }
+
         public abstract int VertexesCount { get; }
 
         private IEnumerator ForceBasedLayoutCoroutine ()
@@ -177,7 +179,7 @@ namespace Graph3DVisualizer.Graph3D
                 }
             }
 
-            return new GraphParameters(vertexParameters.ToArray(), links, Id);
+            return new GraphParameters(Name, vertexParameters, links, Id);
         }
 
         public abstract AbstractVertex GetVertexById (string id);
@@ -186,6 +188,8 @@ namespace Graph3DVisualizer.Graph3D
 
         public void SetupParams (GraphParameters parameters)
         {
+            Name = parameters.Name;
+
             Id = parameters.ObjectId;
 
             if (parameters.VertexParameters != null)
@@ -223,12 +227,15 @@ namespace Graph3DVisualizer.Graph3D
     public class GraphParameters : AbstractGraphObjectParameters
     {
         public List<LinkInfo>? Links { get; protected set; }
-        public VertexInfo[]? VertexParameters { get; protected set; }
+        public string? Name { get; protected set; }
+        public List<VertexInfo>? VertexParameters { get; protected set; }
 
-        public GraphParameters (VertexInfo[]? vertexParameters = default,
+        public GraphParameters (string? name = default,
+                                List<VertexInfo>? vertexParameters = default,
                                 List<LinkInfo>? links = default,
                                 string? id = default) : base(id)
         {
+            Name = name;
             Links = links;
             if (vertexParameters != null)
             {

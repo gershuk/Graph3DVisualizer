@@ -44,8 +44,11 @@ namespace Graph3DVisualizer.Graph3D
         protected BillboardController _billboardControler;
 
         protected List<Link> _incomingLinks;
+
         protected List<Link> _outgoingLinks;
+
         protected Transform _transform;
+
         protected bool _visible = true;
 
         public abstract event Action<UnityEngine.Object> Destroyed;
@@ -53,9 +56,13 @@ namespace Graph3DVisualizer.Graph3D
         public abstract event Action<bool, UnityEngine.Object> VisibleChanged;
 
         public virtual IList<BillboardId> ImageIds { get; set; } = new List<BillboardId>();
+
         public IReadOnlyList<Link> IncomingLinks => _incomingLinks;
+
         public abstract MovementComponent MovementComponent { get; protected set; }
+
         public IReadOnlyList<Link> OutgoingLinks => _outgoingLinks;
+
         public abstract bool Visibility { get; set; }
 
         private TEdge CreateEdge<TEdge, TParameters> (TParameters parameters, AbstractVertex toVertex) where TEdge : AbstractEdge where TParameters : EdgeParameters
@@ -144,6 +151,8 @@ namespace Graph3DVisualizer.Graph3D
             }
             throw new LinkNotFoundException();
         }
+
+        protected abstract void UpdateColliderRange ();
 
         public virtual BillboardId AddImage (BillboardParameters billboardParameters) => _billboardControler.CreateBillboard(billboardParameters);
 

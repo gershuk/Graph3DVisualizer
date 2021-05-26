@@ -18,7 +18,7 @@
 
 using Graph3DVisualizer.Graph3D;
 
-namespace Graph3DVisualizer.GraphTasks
+namespace Graph3DVisualizer.SceneController
 {
     public class DecembristVertex : SelectableVertex
     {
