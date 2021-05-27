@@ -12,7 +12,7 @@ namespace Graph3DVisualizer.SceneController
         {
             Players = new List<AbstractPlayer>();
             var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath)).GetComponent<FlyPlayer>();
-            player.SetupParams(new PlayerParameters(new Vector3(0, 0, -50)));
+            player.SetupParams(new PlayerParameters(new Vector3(0, 0, -50), sceneInfo: "Hub scene"));
             Players.Add(player);
         }
     }

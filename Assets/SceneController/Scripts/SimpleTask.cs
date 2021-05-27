@@ -61,7 +61,7 @@ namespace Graph3DVisualizer.SceneController
             var edgeParameters = new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(Color.white, true));
 
             Vertex? vertex = null;
-            for (var i = 0; i < 0; ++i)
+            for (var i = 0; i < 1000; ++i)
             {
                 var text = TextTextureFactory.MakeTextTexture($"Vertex{i}", true);
                 const float scale = 10;

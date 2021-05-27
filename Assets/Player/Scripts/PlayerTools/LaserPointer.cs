@@ -49,11 +49,13 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         [SerializeField]
         private float _range;
-        [SerializeField]
-        private float _width;
 
         private Shader _shader;
+
         private Texture2D _texture2D;
+
+        [SerializeField]
+        private float _width;
 
         public LaserState LaserState
         {

@@ -20,6 +20,7 @@ using System;
 using System.Collections.Generic;
 
 using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.Player.HUD;
 using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
@@ -36,7 +37,16 @@ namespace Graph3DVisualizer.PlayerInputControls
     public sealed class FlyPlayer : AbstractPlayer
     {
         [SerializeField]
+        private GameObject _cameraOffSet;
+
+        [SerializeField]
+        private GameObject _crosshair;
+
+        [SerializeField]
         private GameObject _head;
+
+        [SerializeField]
+        private HUDController _hudController;
 
         [SerializeField]
         private FlyControls _inputActions;
@@ -44,7 +54,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         private bool _isVr = true;
 
         [SerializeField]
-        private UnityEngine.XR.Interaction.Toolkit.XRController _leftController;
+        private XRController _leftController;
 
         [SerializeField]
         private GameObject _leftHand;
@@ -58,7 +68,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         private XRRig _rig;
 
         [SerializeField]
-        private UnityEngine.XR.Interaction.Toolkit.XRController _rightController;
+        private XRController _rightController;
 
         [SerializeField]
         private GameObject _rightHand;
@@ -78,13 +88,29 @@ namespace Graph3DVisualizer.PlayerInputControls
                     return;
 
                 _isVr = value;
-                _rig.enabled = _isVr;
-                _trackedPoseDriver.enabled = _isVr;
-                _leftController.enabled = _isVr;
-                _rightController.enabled = _isVr;
-                _leftRayInteractor.enabled = _isVr;
-                _rightRayInteractor.enabled = _isVr;
+
+                foreach (var controller in new MonoBehaviour[] { _rig, _trackedPoseDriver, _leftController, _rightController, _leftRayInteractor, _rightRayInteractor })
+                    controller.enabled = _isVr;
+
+                if (!_isVr)
+                {
+                    _moveComponent.EulerAngles = Vector3.zero;
+                    foreach (var bodyPart in new[] { _leftHand, _rightHand, _head, _cameraOffSet })
+                    {
+                        bodyPart.transform.localPosition = Vector3.zero;
+                        bodyPart.transform.localEulerAngles = Vector3.zero;
+                        bodyPart.transform.rotation = Quaternion.identity;
+                    }
+                }
+
+                _crosshair.SetActive(!_isVr);
             }
+        }
+
+        public override string SceneInfo
+        {
+            get => _hudController.SceneInfo;
+            set => _hudController.SceneInfo = value;
         }
 
         private void Awake ()
@@ -97,14 +123,22 @@ namespace Graph3DVisualizer.PlayerInputControls
             MovementEnable = true;
             ToolsEnable = true;
 
+            _hudController.Visibility = false;
+
             IsVr = false;
         }
+
+        [ContextMenu("ChangeControllerType")]
+        private void ChangeControllerType () => IsVr = !IsVr;
+
+        private void ChangeHUDState_performed (InputAction.CallbackContext obj) => _hudController.Visibility = !_hudController.Visibility;
 
         private void LateUpdate ()
         {
             if (MovementEnable)
             {
-                _moveComponent.Rotate(_inputActions.FlyModel.LookRotation.ReadValue<Vector2>(), Time.deltaTime);
+                if (!IsVr)
+                    _moveComponent.Rotate(_inputActions.FlyModel.LookRotation.ReadValue<Vector2>(), Time.deltaTime);
                 _moveComponent.Translate(_moveDirVector, Time.deltaTime, _head.transform);
             }
         }
@@ -128,6 +162,8 @@ namespace Graph3DVisualizer.PlayerInputControls
 
             _inputActions.FlyModel.ChangeInputType.performed -= OnChangeInputType;
 
+            _inputActions.FlyModel.ScrollItemList.performed -= OnScrollItemList;
+
             _inputActions.FlyModel.Disable();
         }
 
@@ -148,7 +184,20 @@ namespace Graph3DVisualizer.PlayerInputControls
 
             _inputActions.FlyModel.ChangeInputType.performed += OnChangeInputType;
 
+            _inputActions.FlyModel.ScrollItemList.performed += OnScrollItemList;
+
+            _inputActions.FlyModel.ChangeHUDState.performed += ChangeHUDState_performed;
+
             _inputActions.FlyModel.Enable();
+        }
+
+        private void OnScrollItemList (InputAction.CallbackContext obj)
+        {
+            if (_playerTools.Count == 0)
+                return;
+            var value = _currentToolIndex + Mathf.RoundToInt(obj.ReadValue<float>());
+            value = value < 0 ? _playerTools.Count + value : value % _playerTools.Count;
+            SelectTool(value);
         }
 
         protected override void GiveNewTool (params ToolConfig[] toolsConfig)

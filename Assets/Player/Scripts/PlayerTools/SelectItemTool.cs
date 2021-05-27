@@ -32,17 +32,15 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// <summary>
     /// The tool allows you to select objects with components that implement the <see cref="ISelectable"/>.
     /// </summary>
-    [RequireComponent(typeof(LaserPointer))]
     [CustomizableGrandType(typeof(SelectItemToolParams))]
     public class SelectItemTool : AbstractPlayerTool, ICustomizable<SelectItemToolParams>
     {
         private const string _changeColorActionName = "ChangeColorAction";
         private const string _inputActionName = "SelectItemActionMap";
-        private const string _selectActionName = "SelectItemAction";
+        private const string _selectActionNamePC = "SelectItemActionPC";
+        private const string _selectActionNameVR = "SelectItemActionVR";
         private int _colorIndex;
         private IReadOnlyList<Color> _colors = new List<Color>(1) { Color.red };
-
-        private LaserPointer _laserPointer;
 
         [SerializeField]
         private float _rayCastRange = 1000;
@@ -51,7 +49,6 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private void Awake ()
         {
-            _laserPointer = GetComponent<LaserPointer>();
             _colorIndex = 0;
         }
 
@@ -62,14 +59,11 @@ namespace Graph3DVisualizer.PlayerInputControls
         private void OnDisable ()
         {
             _inputActions?.Disable();
-            _laserPointer.LaserState = LaserState.Off;
         }
 
         private void OnEnable ()
         {
             _inputActions?.Enable();
-            _laserPointer.LaserState = LaserState.On;
-            _laserPointer.Range = _rayCastRange;
         }
 
         public void ChangeColor (int deltaIndex) => _colorIndex = (_colorIndex + deltaIndex) < 0 ? _colors.Count - 1 : (_colorIndex + deltaIndex) % _colors.Count;
@@ -79,11 +73,13 @@ namespace Graph3DVisualizer.PlayerInputControls
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
             _inputActions = new InputActionMap(_inputActionName);
-            var selectItemAction = _inputActions.AddAction(_selectActionName, InputActionType.Button, "<Mouse>/leftButton");
+            var selectItemActionPC = _inputActions.AddAction(_selectActionNamePC, InputActionType.Button, "<Mouse>/leftButton");
+            var selectItemActionVR = _inputActions.AddAction(_selectActionNameVR, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
             var changeColorAction = _inputActions.AddAction(_changeColorActionName, InputActionType.Button);
             changeColorAction.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
 
-            selectItemAction.canceled += CallSelectItem;
+            selectItemActionPC.canceled += CallSelectItem;
+            selectItemActionVR.canceled += CallSelectItem;
             changeColorAction.performed += CallChangeColor;
         }
 

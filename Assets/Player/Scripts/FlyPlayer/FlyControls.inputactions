@@ -68,6 +68,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ChangeHUDState",
+                    "type": "Button",
+                    "id": "9edcc78b-6b6d-4ba6-89d3-01ebf408dde3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -327,11 +335,33 @@
                 {
                     "name": "",
                     "id": "eea2e58b-0c49-4a20-abca-d3548bfdc224",
-                    "path": "<Keyboard>/escape",
+                    "path": "<Keyboard>/alt",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "ChangeInputType",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1903eb06-14af-4942-8dd4-20c468a51cbd",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeHUDState",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93fa82ad-d64b-40be-a0d7-d53877de1da7",
+                    "path": "<ViveController>{RightHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeHUDState",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

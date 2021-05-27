@@ -33,13 +33,13 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// <summary>
     /// Tool for dragging objects with <see cref="MovementComponent"/>.
     /// </summary>
-    [RequireComponent(typeof(LaserPointer))]
     [CustomizableGrandType(typeof(GrabItemToolParams))]
     public class GrabItemTool : AbstractPlayerTool, ICustomizable<GrabItemToolParams>
     {
         private const string _actionMapName = "GrabItemActionMap";
         private const string _changeRangeActionName = "ChangeRangeAction";
-        private const string _grabActionName = "GrabItemAction";
+        private const string _grabActionNamePC = "GrabItemActionPC";
+        private const string _grabActionNameVR = "GrabItemActionVR";
 
         [SerializeField]
         private float _capturedRange = 1000;
@@ -49,8 +49,6 @@ namespace Graph3DVisualizer.PlayerInputControls
         private bool _isCapturedObject = false;
 
         private bool _isChangingRange;
-
-        private LaserPointer _laserPointer;
 
         private IMoveable? _moveable;
 
@@ -66,7 +64,6 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private void Awake ()
         {
-            _laserPointer = GetComponent<LaserPointer>();
             _transform = transform;
             _moveable = null;
             _isCapturedObject = false;
@@ -107,15 +104,12 @@ namespace Graph3DVisualizer.PlayerInputControls
             if (_changeRangeCoroutine != null)
                 StopChangingRange();
             _inputActions?.Disable();
-            _laserPointer.LaserState = LaserState.Off;
             FreeItem();
         }
 
         private void OnEnable ()
         {
             _inputActions?.Enable();
-            _laserPointer.LaserState = LaserState.On;
-            _laserPointer.Range = _rayCastRange;
         }
 
         public void ChangeRange (float normalizedDelta) => _capturedRange = Mathf.Max(0, _capturedRange + normalizedDelta * Time.deltaTime * RangeChangeSpeed);
@@ -130,7 +124,6 @@ namespace Graph3DVisualizer.PlayerInputControls
         {
             _moveable = null;
             _isCapturedObject = false;
-            _laserPointer.Range = _rayCastRange;
         }
 
         public void GrabItem ()
@@ -143,7 +136,6 @@ namespace Graph3DVisualizer.PlayerInputControls
                 {
                     _moveable = hit.transform.GetComponent<IMoveable>();
                     _capturedRange = Vector3.Distance(hit.transform.position, _transform.position);
-                    _laserPointer.Range = _capturedRange;
                     _isCapturedObject = true;
                 }
             }
@@ -152,12 +144,16 @@ namespace Graph3DVisualizer.PlayerInputControls
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
             _inputActions = new InputActionMap(_actionMapName);
-            var grabItemAction = _inputActions.AddAction(_grabActionName, InputActionType.Button, "<Mouse>/leftButton");
+            var grabItemActionPC = _inputActions.AddAction(_grabActionNamePC, InputActionType.Button, "<Mouse>/leftButton");
+            var grabItemActionVR = _inputActions.AddAction(_grabActionNameVR, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
             var changeRangeAction = _inputActions.AddAction(_changeRangeActionName, InputActionType.Button);
             changeRangeAction.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
 
-            grabItemAction.performed += CallGrabItem;
-            grabItemAction.canceled += CallFreeItem;
+            grabItemActionPC.performed += CallGrabItem;
+            grabItemActionPC.canceled += CallFreeItem;
+
+            grabItemActionVR.performed += CallGrabItem;
+            grabItemActionVR.canceled += CallFreeItem;
 
             changeRangeAction.performed += CallStartChangingRange;
             changeRangeAction.canceled += CallStopChangingRange;

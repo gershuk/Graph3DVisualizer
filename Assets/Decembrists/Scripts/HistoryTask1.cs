@@ -128,7 +128,7 @@ namespace Graph3DVisualizer.SceneController
             base.Graphs.Add(CreateGraph());
             var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath));
             var flyPlayer = player.GetComponent<FlyPlayer>();
-            flyPlayer.SetupParams(new PlayerParameters());
+            flyPlayer.SetupParams(new PlayerParameters(toolConfigs: new[] { new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)), new ToolConfig(typeof(GrabItemTool), new GrabItemToolParams()) }));
             Players.Add(flyPlayer);
         }
     }

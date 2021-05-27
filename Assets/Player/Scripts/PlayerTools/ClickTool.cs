@@ -37,9 +37,9 @@ namespace Graph3DVisualizer.PlayerInputControls
     public class ClickTool : AbstractPlayerTool, ICustomizable<ClickToolParams>
     {
         private const string _inputActionName = "ClickObjectActionMap";
-        private const string _selectActionName = "ClickObjectAction";
+        private const string _selectActionNamePC = "ClickObjectActionPC";
+        private const string _selectActionNameVR = "ClickObjectActionVR";
         private AbstractClickableObject? _clickableObject;
-        private LaserPointer _laserPointer;
         private GameObject _owner;
 
         [SerializeField]
@@ -49,7 +49,6 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private void Awake ()
         {
-            _laserPointer = GetComponent<LaserPointer>();
             //due to problems with serialization, you have to search for it from inside
             _owner = transform.parent.gameObject;
         }
@@ -59,14 +58,11 @@ namespace Graph3DVisualizer.PlayerInputControls
         private void OnDisable ()
         {
             _inputActions?.Disable();
-            _laserPointer.LaserState = LaserState.Off;
         }
 
         private void OnEnable ()
         {
             _inputActions?.Enable();
-            _laserPointer.LaserState = LaserState.On;
-            _laserPointer.Range = _rayCastRange;
         }
 
         public void Click ()
@@ -84,9 +80,11 @@ namespace Graph3DVisualizer.PlayerInputControls
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
             _inputActions = new InputActionMap(_inputActionName);
-            var selectItemAction = _inputActions.AddAction(_selectActionName, InputActionType.Button, "<Mouse>/leftButton");
+            var selectItemActionPC = _inputActions.AddAction(_selectActionNamePC, InputActionType.Button, "<Mouse>/leftButton");
+            var selectItemActionVR = _inputActions.AddAction(_selectActionNameVR, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
 
-            selectItemAction.canceled += CallClick;
+            selectItemActionPC.canceled += CallClick;
+            selectItemActionVR.canceled += CallClick;
         }
 
         public void SetupParams (ClickToolParams parameters)

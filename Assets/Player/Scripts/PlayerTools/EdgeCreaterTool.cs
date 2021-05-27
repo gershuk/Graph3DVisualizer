@@ -33,7 +33,6 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// <summary>
     /// Tool for creating links between vertexes.
     /// </summary>
-    [RequireComponent(typeof(LaserPointer))]
     [CustomizableGrandType(typeof(EdgeCreaterToolParams))]
     public class EdgeCreaterTool : AbstractPlayerTool, ICustomizable<EdgeCreaterToolParams>
     {
@@ -53,8 +52,6 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private Vertex? _firstVertex;
 
-        private LaserPointer _laserPointer;
-
         [SerializeField]
         private float _rayCastRange = 1000;
 
@@ -65,7 +62,6 @@ namespace Graph3DVisualizer.PlayerInputControls
         private void Awake ()
         {
             _state = State.None;
-            _laserPointer = GetComponent<LaserPointer>();
         }
 
         private void CallChangeEdgeType (InputAction.CallbackContext obj) => ChangeIndex(Mathf.RoundToInt(obj.ReadValue<float>()));
@@ -87,14 +83,11 @@ namespace Graph3DVisualizer.PlayerInputControls
         private void OnDisable ()
         {
             _inputActions?.Disable();
-            _laserPointer.LaserState = LaserState.Off;
         }
 
         private void OnEnable ()
         {
             _inputActions?.Enable();
-            _laserPointer.LaserState = LaserState.On;
-            _laserPointer.Range = _rayCastRange;
         }
 
         public void ChangeIndex (int deltaIndex) => _typeIndex = (_typeIndex + deltaIndex) < 0 ? _edgeData.Count - 1 : (_typeIndex + deltaIndex) % _edgeData.Count;
