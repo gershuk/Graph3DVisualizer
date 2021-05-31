@@ -1,8 +1,12 @@
 using System;
+using System.Collections.Generic;
+using System.Text;
 
 using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
+
+#nullable enable
 
 namespace Graph3DVisualizer.Player.HUD
 {
@@ -13,6 +17,9 @@ namespace Graph3DVisualizer.Player.HUD
 
         [SerializeField]
         private GameObject _head;
+
+        [SerializeField]
+        private GameObject _menuExit;
 
         [SerializeField]
         private ObjectInfoPanelController _objectInfoPanel;
@@ -29,6 +36,9 @@ namespace Graph3DVisualizer.Player.HUD
         public event Action<bool, UnityEngine.Object> VisibleChanged;
 
         public float Dist { get => _dist; set => _dist = value; }
+
+        public Func<List<Verdict>>? GetResultFromTask { get; set; }
+        public Action GoPrevScene { get; set; }
 
         public string SceneInfo
         {
@@ -49,6 +59,7 @@ namespace Graph3DVisualizer.Player.HUD
                 _objectInfoPanel.Visibility = value;
                 _taskPanel.Visibility = value;
                 _toolsPanel.Visibility = value;
+                _menuExit.SetActive(value);
 
                 VisibleChanged?.Invoke(value, this);
 
@@ -64,7 +75,7 @@ namespace Graph3DVisualizer.Player.HUD
 
         private void LateUpdate ()
         {
-            const float eps = 0.2f;
+            const float eps = 1.2f;
             var targetPoint = _head.transform.position + _head.transform.forward * Dist;
 
             if (Vector3.Distance(transform.position, targetPoint) > eps)
@@ -72,5 +83,24 @@ namespace Graph3DVisualizer.Player.HUD
 
             transform.LookAt(_head.transform, Vector3.up);
         }
+
+        public void GetResult ()
+        {
+            if (GetResultFromTask != null)
+            {
+                var stringBuilder = new StringBuilder();
+                foreach (var verdict in GetResultFromTask())
+                {
+                    stringBuilder.Append($"{ verdict}{Environment.NewLine}");
+                }
+                _objectInfoPanel.Text = stringBuilder.ToString();
+            }
+            else
+            {
+                _objectInfoPanel.Text = "Tasks not found";
+            }
+        }
+
+        public void GoBack () => GoPrevScene();
     }
 }

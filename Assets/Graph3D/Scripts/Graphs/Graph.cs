@@ -22,6 +22,7 @@ using System.Linq;
 
 using Graph3DVisualizer.Billboards;
 using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.SupportComponents;
 using Graph3DVisualizer.TextureFactory;
 
 using UnityEngine;
@@ -34,10 +35,13 @@ namespace Graph3DVisualizer.Graph3D
     [CustomizableGrandType(typeof(GraphParameters))]
     [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(SphereCollider))]
+    [RequireComponent(typeof(MovementComponent))]
     [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(MeshRenderer))]
     public class Graph : AbstractGraph
     {
+        private MovementComponent _movementComponent;
+
         [SerializeField]
         protected static Mesh _vertexMesh;
 
@@ -51,6 +55,7 @@ namespace Graph3DVisualizer.Graph3D
         protected SphereCollider _sphereCollider;
 
         protected TextTextureFactory _textTextureFactory;
+        public override MovementComponent MovementComponent { get => _movementComponent; protected set => _movementComponent = value; }
 
         public override string? Name
         {
@@ -125,6 +130,7 @@ namespace Graph3DVisualizer.Graph3D
 
         private void Awake ()
         {
+            MovementComponent = GetComponent<MovementComponent>();
             _vertexMesh ??= CreateQuadMesh();
             _transform = GetComponent<Transform>();
             _meshFilter = GetComponent<MeshFilter>();
@@ -182,7 +188,7 @@ namespace Graph3DVisualizer.Graph3D
             return vertexComponent;
         }
 
-        public override AbstractVertex SpawnVertex (Type vertexType, VertexParameters parameters)
+        public override AbstractVertex SpawnVertex (Type vertexType, AbstractVertexParameters parameters)
         {
             if (!vertexType.IsSubclassOf(typeof(AbstractVertex)))
                 throw new WrongTypeInCustomizableParameterException(typeof(AbstractVertex), vertexType);

@@ -79,14 +79,13 @@ namespace Graph3DVisualizer.PlayerInputControls
         [SerializeField]
         private TrackedPoseDriver _trackedPoseDriver;
 
+        public override HUDController HUDController => _hudController;
+
         public bool IsVr
         {
             get => _isVr;
             set
             {
-                if (_isVr == value)
-                    return;
-
                 _isVr = value;
 
                 foreach (var controller in new MonoBehaviour[] { _rig, _trackedPoseDriver, _leftController, _rightController, _leftRayInteractor, _rightRayInteractor })
@@ -94,7 +93,7 @@ namespace Graph3DVisualizer.PlayerInputControls
 
                 if (!_isVr)
                 {
-                    _moveComponent.EulerAngles = Vector3.zero;
+                    _moveComponent.GlobalEulerAngles = Vector3.zero;
                     foreach (var bodyPart in new[] { _leftHand, _rightHand, _head, _cameraOffSet })
                     {
                         bodyPart.transform.localPosition = Vector3.zero;
@@ -196,7 +195,9 @@ namespace Graph3DVisualizer.PlayerInputControls
             if (_playerTools.Count == 0)
                 return;
             var value = _currentToolIndex + Mathf.RoundToInt(obj.ReadValue<float>());
-            value = value < 0 ? _playerTools.Count + value : value % _playerTools.Count;
+            value %= _playerTools.Count;
+            if (value < 0)
+                value = _playerTools.Count + value;
             SelectTool(value);
         }
 

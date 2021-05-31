@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.Player.HUD;
 using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
@@ -82,9 +83,8 @@ namespace Graph3DVisualizer.PlayerInputControls
         }
 
         public int CurrentToolIndex { get => _currentToolIndex; set => SelectTool(value); }
-
         public IReadOnlyList<AbstractPlayerTool> GetToolsList => _playerTools;
-
+        public abstract HUDController HUDController { get; }
         public abstract string SceneInfo { get; set; }
 
         protected abstract void GiveNewTool (params ToolConfig[] toolsConfig);
@@ -120,7 +120,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             transform.position = playerParams.Position;
             _moveComponent.MovingSpeed = playerParams.MovingSpeed;
             _moveComponent.RotationSpeed = playerParams.RotationSpeed;
-            _moveComponent.EulerAngles = playerParams.EulerAngles;
+            _moveComponent.GlobalEulerAngles = playerParams.EulerAngles;
             SceneInfo = playerParams.SceneInfo;
             GiveNewTool(playerParams.ToolConfigs);
         }

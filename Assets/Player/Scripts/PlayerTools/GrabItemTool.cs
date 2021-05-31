@@ -34,12 +34,17 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// Tool for dragging objects with <see cref="MovementComponent"/>.
     /// </summary>
     [CustomizableGrandType(typeof(GrabItemToolParams))]
-    public class GrabItemTool : AbstractPlayerTool, ICustomizable<GrabItemToolParams>
+    public sealed class GrabItemTool : AbstractPlayerTool, ICustomizable<GrabItemToolParams>
     {
-        private const string _actionMapName = "GrabItemActionMap";
-        private const string _changeRangeActionName = "ChangeRangeAction";
-        private const string _grabActionNamePC = "GrabItemActionPC";
-        private const string _grabActionNameVR = "GrabItemActionVR";
+        #region Input names PC
+        private const string _changeRangeActionPCName = "ChangeRangeActionPC";
+        private const string _grabActionPCName = "GrabItemActionPC";
+        #endregion Input names PC
+
+        #region Input names VR
+        private const string _changeRangeActionVRName = "ChangeRangeActionVR";
+        private const string _grabActionVRName = "GrabItemActionVR";
+        #endregion Input names VR
 
         [SerializeField]
         private float _capturedRange = 1000;
@@ -81,7 +86,7 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private IEnumerator ChangingRangeCoroutine ()
         {
-            var changeRangeAction = _inputActions.FindAction(_changeRangeActionName);
+            var changeRangeAction = _inputActionsPC.FindAction(_changeRangeActionPCName);
             while (_isChangingRange)
             {
                 ChangeRange(changeRangeAction.ReadValue<float>());
@@ -103,13 +108,13 @@ namespace Graph3DVisualizer.PlayerInputControls
         {
             if (_changeRangeCoroutine != null)
                 StopChangingRange();
-            _inputActions?.Disable();
+            _inputActionsPC?.Disable();
             FreeItem();
         }
 
         private void OnEnable ()
         {
-            _inputActions?.Enable();
+            _inputActionsPC?.Enable();
         }
 
         public void ChangeRange (float normalizedDelta) => _capturedRange = Mathf.Max(0, _capturedRange + normalizedDelta * Time.deltaTime * RangeChangeSpeed);
@@ -143,20 +148,24 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
-            _inputActions = new InputActionMap(_actionMapName);
-            var grabItemActionPC = _inputActions.AddAction(_grabActionNamePC, InputActionType.Button, "<Mouse>/leftButton");
-            var grabItemActionVR = _inputActions.AddAction(_grabActionNameVR, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
-            var changeRangeAction = _inputActions.AddAction(_changeRangeActionName, InputActionType.Button);
-            changeRangeAction.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
+            base.RegisterEvents(inputActions);
+
+            #region Bind PC input
+            var grabItemActionPC = _inputActionsPC.AddAction(_grabActionPCName, InputActionType.Button, "<Mouse>/leftButton");
+            var changeRangeActionPC = _inputActionsPC.AddAction(_changeRangeActionPCName, InputActionType.Button);
+            changeRangeActionPC.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
 
             grabItemActionPC.performed += CallGrabItem;
             grabItemActionPC.canceled += CallFreeItem;
+            changeRangeActionPC.performed += CallStartChangingRange;
+            changeRangeActionPC.canceled += CallStopChangingRange;
+            #endregion Bind PC input
 
+            #region Bind VR input
+            var grabItemActionVR = _inputActionsVR.AddAction(_grabActionVRName, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
             grabItemActionVR.performed += CallGrabItem;
             grabItemActionVR.canceled += CallFreeItem;
-
-            changeRangeAction.performed += CallStartChangingRange;
-            changeRangeAction.canceled += CallStopChangingRange;
+            #endregion Bind VR input
         }
 
         public void SetupParams (GrabItemToolParams parameters) => Debug.LogWarning($"GrabItemTool.SetupParams not implemented");

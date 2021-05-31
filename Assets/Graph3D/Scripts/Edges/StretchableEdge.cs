@@ -102,7 +102,7 @@ namespace Graph3DVisualizer.Graph3D
                 }
             }
             edgeMaterialParameters ??= new StretchableEdgeMaterialParameters(color: Color);
-            return new StretchableEdgeParameters((StretchableEdgeMaterialParameters) edgeMaterialParameters, HeadLength, edgeParameters);
+            return new StretchableEdgeParameters((StretchableEdgeMaterialParameters) edgeMaterialParameters, SpringParameters, HeadLength);
         }
 
         public void SetupParams (StretchableEdgeParameters parameters)
@@ -197,13 +197,13 @@ namespace Graph3DVisualizer.Graph3D
     {
         public float HeadLength { get; protected set; }
 
-        public StretchableEdgeParameters (StretchableEdgeMaterialParameters stretchableEdgeMaterialParameters, float headLength = 1f,
+        public StretchableEdgeParameters (StretchableEdgeMaterialParameters stretchableEdgeMaterialParameters, SpringParameters springParameters, float headLength = 1f,
             float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f,
             EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string? id = default) :
-            base(stretchableEdgeMaterialParameters, sourceOffsetDist, targetOffsetDist, width, visibility, id) => HeadLength = headLength;
+            base(stretchableEdgeMaterialParameters, springParameters, sourceOffsetDist, targetOffsetDist, width, visibility, id) => HeadLength = headLength;
 
-        public StretchableEdgeParameters (StretchableEdgeMaterialParameters stretchableEdgeMaterialParameters, float headLength, EdgeParameters edgeParameters) :
-            this(stretchableEdgeMaterialParameters, headLength, edgeParameters.SourceOffsetDist, edgeParameters.TargetOffsetDist, edgeParameters.Width,
+        public StretchableEdgeParameters (EdgeParameters edgeParameters, float headLength) :
+            this((StretchableEdgeMaterialParameters) edgeParameters.AbstarctEdgeMaterialParameters, edgeParameters.SpringParameters, headLength, edgeParameters.SourceOffsetDist, edgeParameters.TargetOffsetDist, edgeParameters.Width,
                 edgeParameters.Visibility, edgeParameters.ObjectId)
         { }
     }

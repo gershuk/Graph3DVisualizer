@@ -30,7 +30,7 @@ using Yuzu;
 namespace Graph3DVisualizer.Graph3D
 {
     /// <summary>
-    /// Realization of <see cref="Vertex"/> with selection support.
+    /// Realization of <see cref="BillboardVertex"/> with selection support.
     /// </summary>
     [RequireComponent(typeof(MovementComponent))]
     [RequireComponent(typeof(MeshRenderer))]
@@ -38,7 +38,7 @@ namespace Graph3DVisualizer.Graph3D
     [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(SphereCollider))]
     [CustomizableGrandType(typeof(SelectableVertexParameters))]
-    public class SelectableVertex : Vertex, ICustomizable<SelectableVertexParameters>, ISelectable
+    public class SelectableVertex : BillboardVertex, ICustomizable<SelectableVertexParameters>, ISelectable
     {
         private const string _edgePrefabPath = "Prefabs/Edge";
         private bool _isSelected = true;
@@ -94,8 +94,6 @@ namespace Graph3DVisualizer.Graph3D
             _transform = transform;
             _sphereCollider = GetComponent<SphereCollider>();
             _visible = true;
-            _incomingLinks = new List<Link>();
-            _outgoingLinks = new List<Link>();
             _billboardControler = GetComponent<BillboardController>();
             MovementComponent = GetComponent<MovementComponent>();
         }
@@ -118,7 +116,7 @@ namespace Graph3DVisualizer.Graph3D
         }
 
         public new SelectableVertexParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
-            new SelectableVertexParameters((this as ICustomizable<VertexParameters>).DownloadParams(writeCache),
+            new SelectableVertexParameters((this as ICustomizable<BillboardVertexParameters>).DownloadParams(writeCache),
                 (BillboardParameters) CustomizableExtension.CallDownloadParams(_billboardControler.GetBillboard(_selectFrameId), writeCache), IsSelected, Id);
 
         public void SetSelectFrame (BillboardParameters billboardParameters)
@@ -132,7 +130,7 @@ namespace Graph3DVisualizer.Graph3D
 
         public void SetupParams (SelectableVertexParameters parameters)
         {
-            SetupParams((VertexParameters) parameters);
+            SetupParams((BillboardVertexParameters) parameters);
             SetSelectFrame(parameters.SelectFrameParameters);
             IsSelected = parameters.IsSelected;
 
@@ -145,17 +143,17 @@ namespace Graph3DVisualizer.Graph3D
     /// </summary>
     [Serializable]
     [YuzuAll]
-    public class SelectableVertexParameters : VertexParameters
+    public class SelectableVertexParameters : BillboardVertexParameters
     {
         public bool IsSelected { get; protected set; }
         public BillboardParameters SelectFrameParameters { get; protected set; }
 
         public SelectableVertexParameters (BillboardParameters[] imageParameters, BillboardParameters selectFrameParameters,
-            Vector3 position = default, Quaternion rotation = default, bool isSelected = false, string? id = default) :
-                base(imageParameters, position, rotation, id) => (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
+            Vector3 position = default, Vector3 eulerAngles = default, bool isSelected = false, string? id = default) :
+                base(imageParameters, position, eulerAngles, id) => (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
 
-        public SelectableVertexParameters (VertexParameters vertexParameters, BillboardParameters selectFrameParameters, bool isSelected = false, string? id = default) :
-                                  this(vertexParameters.ImageParameters, selectFrameParameters, vertexParameters.Position, vertexParameters.Rotation, isSelected, id)
+        public SelectableVertexParameters (BillboardVertexParameters vertexParameters, BillboardParameters selectFrameParameters, bool isSelected = false, string? id = default) :
+                                  this(vertexParameters.ImageParameters, selectFrameParameters, vertexParameters.Position, vertexParameters.EulerAngles, isSelected, id)
         { }
     }
 }

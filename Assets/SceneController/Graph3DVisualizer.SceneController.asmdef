@@ -2,13 +2,14 @@
     "name": "Graph3DVisualizer.SceneController",
     "rootNamespace": "Graph3DVisualizer.SceneController",
     "references": [
-        "GUID:c714d0b183033d44cb9541a269246798",
         "GUID:de927d21316a8a447912b685b91e2a7f",
         "GUID:5dcc6a26a69a87d46a6a7aeaeb426547",
         "GUID:d93d376db5257d64e880282318a2ebb9",
         "GUID:68f547e922d4cac48980104337bf6a86",
         "GUID:78a8b2fd7b196d34690589f8eb2bb22d",
-        "GUID:a251807422a267846803e3939918e146"
+        "GUID:a251807422a267846803e3939918e146",
+        "GUID:ca7da413e36d8f54488571500d50f9a3",
+        "GUID:c714d0b183033d44cb9541a269246798"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

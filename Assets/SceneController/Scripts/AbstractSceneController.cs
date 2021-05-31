@@ -23,6 +23,7 @@ using System.Linq;
 using Graph3DVisualizer.Customizable;
 using Graph3DVisualizer.Graph3D;
 using Graph3DVisualizer.PlayerInputControls;
+using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 
@@ -111,8 +112,8 @@ namespace Graph3DVisualizer.SceneController
     /// <summary>
     /// Class that describes a task for working with a graph in 3d
     /// </summary>
-    [CustomizableGrandType(typeof(VisualTaskParameters))]
-    public abstract class AbstractSceneController : MonoBehaviour, ICustomizable<VisualTaskParameters>
+    [CustomizableGrandType(typeof(SceneParameters))]
+    public abstract class AbstractSceneController : MonoBehaviour, ICustomizable<SceneParameters>
     {
         protected const string _playerPrefabPath = "Prefabs/Players/XR Player";
         protected List<AbstractGraph> Graphs { get; set; } = new List<AbstractGraph>();
@@ -120,6 +121,14 @@ namespace Graph3DVisualizer.SceneController
 
         public IReadOnlyList<AbstractGraph> GetGraphs => Graphs;
         public IReadOnlyList<AbstractPlayer> GetPlayers => Players;
+
+        protected virtual FlyPlayer CreatePlayer ()
+        {
+            var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath)).GetComponent<FlyPlayer>();
+            Players.Add(player);
+            player.HUDController.GoPrevScene = () => SceneLoader.Instance.LoadScene<HubScene>();
+            return player;
+        }
 
         protected virtual void OnTaskDestoryed ()
         {
@@ -135,14 +144,14 @@ namespace Graph3DVisualizer.SceneController
             Destroy(gameObject);
         }
 
-        public VisualTaskParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
-            new VisualTaskParameters
+        public SceneParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
+            new SceneParameters
                 (Players.Select(x => new PlayerInfo(x.GetType(), (PlayerParameters) CustomizableExtension.CallDownloadParams(x, writeCache))).ToArray(),
                  Graphs.Select(x => new GraphInfo(x.GetType(), (GraphParameters) CustomizableExtension.CallDownloadParams(x, writeCache))).ToArray());
 
         public abstract void InitTask ();
 
-        public virtual void SetupParams (VisualTaskParameters parameters)
+        public virtual void SetupParams (SceneParameters parameters)
         {
             foreach (var (graphType, graphParameters) in parameters.GraphsParameters)
             {
@@ -155,29 +164,10 @@ namespace Graph3DVisualizer.SceneController
             {
                 //ToDo : Think about how to handle the player type
                 //var player = new GameObject("Player").AddComponent(playerType);
-                var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath)).GetComponent<FlyPlayer>();
-                Players.Add(player);
+                var player = CreatePlayer();
                 CustomizableExtension.CallSetUpParams(player, playerParameters);
             }
         }
-    }
-
-    /// <summary>
-    /// Class that describes the state of execution of some part of the task.
-    /// </summary>
-    public class Verdict
-    {
-        public string Description { get; set; }
-        public VerdictStatus Status { get; set; }
-
-        public Verdict (string description, VerdictStatus status) => (Description, Status) = (description, status);
-
-        public override string ToString () => $"{Description} Status:{Status}";
-    }
-
-    public abstract class VisualTaskController : AbstractSceneController
-    {
-        public abstract List<Verdict> GetResult ();
     }
 
     /// <summary>
@@ -185,12 +175,12 @@ namespace Graph3DVisualizer.SceneController
     /// </summary>
     [Serializable]
     [YuzuAll]
-    public class VisualTaskParameters : AbstractCustomizableParameter
+    public class SceneParameters : AbstractCustomizableParameter
     {
         public GraphInfo[] GraphsParameters { get; protected set; }
         public PlayerInfo[] PlayersParameters { get; protected set; }
 
-        public VisualTaskParameters (PlayerInfo[] playersParameters, GraphInfo[] graphsParameters, Guid? parameterId = default) : base(parameterId)
+        public SceneParameters (PlayerInfo[] playersParameters, GraphInfo[] graphsParameters, Guid? parameterId = default) : base(parameterId)
         {
             PlayersParameters = playersParameters ?? throw new ArgumentNullException(nameof(playersParameters));
             GraphsParameters = graphsParameters ?? throw new ArgumentNullException(nameof(graphsParameters));
@@ -209,10 +199,15 @@ namespace Graph3DVisualizer.SceneController
         }
     }
 
-    public enum VerdictStatus
+    public abstract class VisualTaskController : AbstractSceneController
     {
-        Correct = 0,
-        Incorrect = 1,
-        Undefined = 2,
+        protected override FlyPlayer CreatePlayer ()
+        {
+            var player = base.CreatePlayer();
+            player.HUDController.GetResultFromTask = GetResult;
+            return player;
+        }
+
+        public abstract List<Verdict> GetResult ();
     }
 }

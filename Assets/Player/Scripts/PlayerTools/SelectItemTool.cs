@@ -33,12 +33,18 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// The tool allows you to select objects with components that implement the <see cref="ISelectable"/>.
     /// </summary>
     [CustomizableGrandType(typeof(SelectItemToolParams))]
-    public class SelectItemTool : AbstractPlayerTool, ICustomizable<SelectItemToolParams>
+    public sealed class SelectItemTool : AbstractPlayerTool, ICustomizable<SelectItemToolParams>
     {
-        private const string _changeColorActionName = "ChangeColorAction";
-        private const string _inputActionName = "SelectItemActionMap";
-        private const string _selectActionNamePC = "SelectItemActionPC";
-        private const string _selectActionNameVR = "SelectItemActionVR";
+        #region Input names PC
+        private const string _changeColorActionPCName = "ChangeColorActionPC";
+        private const string _selectActionPCName = "SelectItemActionPC";
+        #endregion Input names PC
+
+        #region Input names VR
+        private const string _changeColorActionVRName = "ChangeColorActionVR";
+        private const string _selectActionVRName = "SelectItemActionVR";
+        #endregion Input names VR
+
         private int _colorIndex;
         private IReadOnlyList<Color> _colors = new List<Color>(1) { Color.red };
 
@@ -58,12 +64,12 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private void OnDisable ()
         {
-            _inputActions?.Disable();
+            _inputActionsPC?.Disable();
         }
 
         private void OnEnable ()
         {
-            _inputActions?.Enable();
+            _inputActionsPC?.Enable();
         }
 
         public void ChangeColor (int deltaIndex) => _colorIndex = (_colorIndex + deltaIndex) < 0 ? _colors.Count - 1 : (_colorIndex + deltaIndex) % _colors.Count;
@@ -72,15 +78,20 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
-            _inputActions = new InputActionMap(_inputActionName);
-            var selectItemActionPC = _inputActions.AddAction(_selectActionNamePC, InputActionType.Button, "<Mouse>/leftButton");
-            var selectItemActionVR = _inputActions.AddAction(_selectActionNameVR, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
-            var changeColorAction = _inputActions.AddAction(_changeColorActionName, InputActionType.Button);
-            changeColorAction.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
+            base.RegisterEvents(inputActions);
 
+            #region Bind PC input
+            var selectItemActionPC = _inputActionsPC.AddAction(_selectActionPCName, InputActionType.Button, "<Mouse>/leftButton");
+            var changeColorActionPC = _inputActionsPC.AddAction(_changeColorActionPCName, InputActionType.Button);
+            changeColorActionPC.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
             selectItemActionPC.canceled += CallSelectItem;
+            changeColorActionPC.performed += CallChangeColor;
+            #endregion Bind PC input
+
+            #region Bind VR input
+            var selectItemActionVR = _inputActionsVR.AddAction(_selectActionVRName, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
             selectItemActionVR.canceled += CallSelectItem;
-            changeColorAction.performed += CallChangeColor;
+            #endregion Bind VR input
         }
 
         public void SelectItem ()

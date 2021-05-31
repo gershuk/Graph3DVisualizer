@@ -32,13 +32,17 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// <summary>
     /// Tool for working with 3d menu components.
     /// </summary>
-    [RequireComponent(typeof(LaserPointer))]
     [CustomizableGrandType(typeof(ClickToolParams))]
-    public class ClickTool : AbstractPlayerTool, ICustomizable<ClickToolParams>
+    public sealed class ClickTool : AbstractPlayerTool, ICustomizable<ClickToolParams>
     {
-        private const string _inputActionName = "ClickObjectActionMap";
+        #region Input names PC
         private const string _selectActionNamePC = "ClickObjectActionPC";
+        #endregion Input names PC
+
+        #region Input names VR
         private const string _selectActionNameVR = "ClickObjectActionVR";
+        #endregion Input names VR
+
         private AbstractClickableObject? _clickableObject;
         private GameObject _owner;
 
@@ -57,12 +61,12 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private void OnDisable ()
         {
-            _inputActions?.Disable();
+            _inputActionsPC?.Disable();
         }
 
         private void OnEnable ()
         {
-            _inputActions?.Enable();
+            _inputActionsPC?.Enable();
         }
 
         public void Click ()
@@ -79,12 +83,17 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
-            _inputActions = new InputActionMap(_inputActionName);
-            var selectItemActionPC = _inputActions.AddAction(_selectActionNamePC, InputActionType.Button, "<Mouse>/leftButton");
-            var selectItemActionVR = _inputActions.AddAction(_selectActionNameVR, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
+            base.RegisterEvents(inputActions);
 
+            #region Bind PC input
+            var selectItemActionPC = _inputActionsPC.AddAction(_selectActionNamePC, InputActionType.Button, "<Mouse>/leftButton");
             selectItemActionPC.canceled += CallClick;
+            #endregion Bind PC input
+
+            #region Bind VR input
+            var selectItemActionVR = _inputActionsVR.AddAction(_selectActionNameVR, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
             selectItemActionVR.canceled += CallClick;
+            #endregion Bind VR input
         }
 
         public void SetupParams (ClickToolParams parameters)

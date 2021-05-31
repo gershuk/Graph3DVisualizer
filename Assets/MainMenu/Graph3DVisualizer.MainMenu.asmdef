@@ -1,8 +1,9 @@
 {
     "name": "Graph3DVisualizer.MainMenu",
-    "rootNamespace": "Graph3DVisualizer.Player",
+    "rootNamespace": "Graph3DVisualizer.MainMenu",
     "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:fb51a9a8d22cea043a7323d7946ab2c5"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

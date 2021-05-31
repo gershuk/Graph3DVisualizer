@@ -157,11 +157,11 @@ namespace Graph3DVisualizer.Graph3D
         public Texture2D? ArrowTexture { get; protected set; }
         public Texture2D? LineTexture { get; protected set; }
 
-        public SpriteEdgeParameters (float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f, EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string? id = default,
-            Texture2D? arrowTexture = null, Texture2D? lineTexture = null) : base(null, sourceOffsetDist, targetOffsetDist, width, visibility, id) => (ArrowTexture, LineTexture) = (arrowTexture, lineTexture);
+        public SpriteEdgeParameters (SpringParameters springParameters, float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f, EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string? id = default,
+            Texture2D? arrowTexture = null, Texture2D? lineTexture = null) : base(null, springParameters, sourceOffsetDist, targetOffsetDist, width, visibility, id) => (ArrowTexture, LineTexture) = (arrowTexture, lineTexture);
 
         public SpriteEdgeParameters (EdgeParameters edgeParameters, Texture2D? arrowTexture = default, Texture2D? lineTexture = default) :
-            this(edgeParameters.SourceOffsetDist, edgeParameters.TargetOffsetDist, edgeParameters.Width, edgeParameters.Visibility, edgeParameters.ObjectId, arrowTexture, lineTexture)
+            this(edgeParameters.SpringParameters, edgeParameters.SourceOffsetDist, edgeParameters.TargetOffsetDist, edgeParameters.Width, edgeParameters.Visibility, edgeParameters.ObjectId, arrowTexture, lineTexture)
         { }
     }
 }

@@ -34,7 +34,7 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// Tool for creating links between vertexes.
     /// </summary>
     [CustomizableGrandType(typeof(EdgeCreaterToolParams))]
-    public class EdgeCreaterTool : AbstractPlayerTool, ICustomizable<EdgeCreaterToolParams>
+    public sealed class EdgeCreaterTool : AbstractPlayerTool, ICustomizable<EdgeCreaterToolParams>
     {
         private enum State
         {
@@ -43,26 +43,30 @@ namespace Graph3DVisualizer.PlayerInputControls
             LinkChanging
         }
 
-        private const string _actionMapName = "EdgeCreaterActionMap";
-        private const string _changeRangeActionName = "ChangeEdgeType";
-        private const string _createEdgeActionName = "CreateEdgeAction";
-        private const string _deleteEdgeActionName = "DeleteEdgeAction";
+        #region Input names PC
+        private const string _changeRangeActionPCName = "ChangeEdgeTypeActionPC";
+        private const string _createEdgeActionPCName = "CreateEdgeActionPC";
+        private const string _deleteEdgeActionPCName = "DeleteEdgeActionPC";
+        #endregion Input names PC
+
+        #region Input names VR
+        private const string _changeRangeActionVRName = "ChangeEdgeTypeActionVR";
+        private const string _createEdgeActionVRName = "CreateEdgeActionVR";
+        private const string _deleteEdgeActionVRName = "DeleteEdgeActionVR";
+        #endregion Input names VR
 
         private List<(Type type, EdgeParameters parameters)> _edgeData = new List<(Type, EdgeParameters)>();
 
-        private Vertex? _firstVertex;
+        private BillboardVertex? _firstVertex;
 
         [SerializeField]
         private float _rayCastRange = 1000;
 
-        private Vertex? _secondVertex;
+        private BillboardVertex? _secondVertex;
         private State _state;
         private int _typeIndex;
 
-        private void Awake ()
-        {
-            _state = State.None;
-        }
+        private void Awake () => _state = State.None;
 
         private void CallChangeEdgeType (InputAction.CallbackContext obj) => ChangeIndex(Mathf.RoundToInt(obj.ReadValue<float>()));
 
@@ -80,15 +84,9 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private void CallSelectFirstPoint (InputAction.CallbackContext obj) => SelectFirstPoint();
 
-        private void OnDisable ()
-        {
-            _inputActions?.Disable();
-        }
+        private void OnDisable () => _inputActionsPC?.Disable();
 
-        private void OnEnable ()
-        {
-            _inputActions?.Enable();
-        }
+        private void OnEnable () => _inputActionsPC?.Enable();
 
         public void ChangeIndex (int deltaIndex) => _typeIndex = (_typeIndex + deltaIndex) < 0 ? _edgeData.Count - 1 : (_typeIndex + deltaIndex) % _edgeData.Count;
 
@@ -134,26 +132,35 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
-            _inputActions = new InputActionMap(_actionMapName);
-            var createEdgeAction = _inputActions.AddAction(_createEdgeActionName, InputActionType.Button, "<Mouse>/leftButton");
-            var deleteEdgeAction = _inputActions.AddAction(_deleteEdgeActionName, InputActionType.Button, "<Mouse>/rightButton");
-            var changeEdgeTypeAction = _inputActions.AddAction(_changeRangeActionName, InputActionType.Button);
-            changeEdgeTypeAction.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
+            base.RegisterEvents(inputActions);
 
-            createEdgeAction.performed += CallSelectFirstPoint;
-            createEdgeAction.canceled += CallCreateEdge;
+            #region Bind PC input
+            var createEdgeActionPC = _inputActionsPC.AddAction(_createEdgeActionPCName, InputActionType.Button, "<Mouse>/leftButton");
+            var deleteEdgeActionPC = _inputActionsPC.AddAction(_deleteEdgeActionPCName, InputActionType.Button, "<Mouse>/rightButton");
+            var changeEdgeTypeActionPC = _inputActionsPC.AddAction(_changeRangeActionPCName, InputActionType.Button);
+            changeEdgeTypeActionPC.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
 
-            deleteEdgeAction.performed += CallSelectFirstPoint;
-            deleteEdgeAction.canceled += CallDeleteEdge;
+            createEdgeActionPC.performed += CallSelectFirstPoint;
+            createEdgeActionPC.canceled += CallCreateEdge;
 
-            changeEdgeTypeAction.started += CallChangeEdgeType;
+            deleteEdgeActionPC.performed += CallSelectFirstPoint;
+            deleteEdgeActionPC.canceled += CallDeleteEdge;
+
+            changeEdgeTypeActionPC.started += CallChangeEdgeType;
+            #endregion Bind PC input
+
+            #region Bind VR input
+            var createEdgeActionVR = _inputActionsVR.AddAction(_createEdgeActionVRName, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
+            createEdgeActionVR.performed += CallSelectFirstPoint;
+            createEdgeActionVR.canceled += CallCreateEdge;
+            #endregion Bind VR input
         }
 
         public void SelectFirstPoint ()
         {
             if (_state == State.None)
             {
-                _firstVertex = RayCast(_rayCastRange).transform?.GetComponent<Vertex>();
+                _firstVertex = RayCast(_rayCastRange).transform?.GetComponent<BillboardVertex>();
                 if (_firstVertex != null)
                     _state = State.Selecting;
             }
@@ -163,7 +170,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         {
             if (_state == State.Selecting)
             {
-                _secondVertex = RayCast(_rayCastRange).transform?.GetComponent<Vertex>();
+                _secondVertex = RayCast(_rayCastRange).transform?.GetComponent<BillboardVertex>();
                 if (_secondVertex != null)
                     _state = State.LinkChanging;
             }

@@ -53,7 +53,15 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// </summary>
     public abstract class AbstractPlayerTool : MonoBehaviour
     {
-        protected InputActionMap _inputActions;
+        #region Input PC
+        protected const string _inputActionMapPCName = "InputActionMapPC";
+        protected InputActionMap _inputActionsPC;
+        #endregion Input PC
+
+        #region Input VR
+        protected const string _inputActionMapVRName = "InputActionMapVR";
+        protected InputActionMap _inputActionsVR;
+        #endregion Input VR
 
         protected RaycastHit RayCast (float range)
         {
@@ -61,7 +69,11 @@ namespace Graph3DVisualizer.PlayerInputControls
             return hit;
         }
 
-        public abstract void RegisterEvents (IInputActionCollection inputActions);
+        public virtual void RegisterEvents (IInputActionCollection inputActions)
+        {
+            _inputActionsPC = new InputActionMap(_inputActionMapPCName);
+            _inputActionsVR = new InputActionMap(_inputActionMapVRName);
+        }
     }
 
     /// <summary>

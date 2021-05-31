@@ -18,11 +18,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 using Graph3DVisualizer.Billboards;
+using Graph3DVisualizer.Customizable;
 using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
+
+using Yuzu;
 
 namespace Graph3DVisualizer.Graph3D
 {
@@ -34,16 +38,16 @@ namespace Graph3DVisualizer.Graph3D
     [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(SphereCollider))]
-    public class Vertex : AbstractVertex
+    public class BillboardVertex : AbstractVertex, ICustomizable<BillboardVertexParameters>
     {
-        private const string _edgePrefabPath = "Prefabs/Edge";
-
+        protected BillboardController _billboardControler;
         protected SphereCollider _sphereCollider;
 
         public override event Action<UnityEngine.Object>? Destroyed;
 
         public override event Action<bool, UnityEngine.Object>? VisibleChanged;
 
+        public virtual IList<BillboardId> ImageIds { get; protected set; } = new List<BillboardId>();
         public override MovementComponent MovementComponent { get; protected set; }
 
         public override bool Visibility
@@ -65,8 +69,6 @@ namespace Graph3DVisualizer.Graph3D
             _transform = transform;
             _sphereCollider = GetComponent<SphereCollider>();
             _visible = true;
-            _incomingLinks = new List<Link>();
-            _outgoingLinks = new List<Link>();
             _billboardControler = GetComponent<BillboardController>();
             MovementComponent = GetComponent<MovementComponent>();
             ImageIds = new List<BillboardId>();
@@ -74,7 +76,7 @@ namespace Graph3DVisualizer.Graph3D
 
         private void OnDestroy () => Destroyed?.Invoke(this);
 
-        protected override void UpdateColliderRange ()
+        protected virtual void UpdateColliderRange ()
         {
             var newRadius = 0f;
             foreach (var id in ImageIds)
@@ -85,22 +87,26 @@ namespace Graph3DVisualizer.Graph3D
             _sphereCollider.radius = newRadius;
         }
 
-        public override BillboardId AddImage (BillboardParameters billboardParameters)
+        public BillboardId AddImage (BillboardParameters billboardParameters)
         {
-            var res = base.AddImage(billboardParameters);
+            var res = _billboardControler.CreateBillboard(billboardParameters);
             UpdateColliderRange();
             return res;
         }
 
-        public override void DeleteImage (BillboardId billboardId)
+        public void DeleteImage (BillboardId billboardId)
         {
-            base.DeleteImage(billboardId);
+            _billboardControler.DeleteBillboard(billboardId);
             UpdateColliderRange();
         }
 
-        public override Vector2 GetImageSize (BillboardId id) => new Vector2(_billboardControler.GetBillboard(id).ScaleX, _billboardControler.GetBillboard(id).ScaleY);
+        public new BillboardVertexParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
+                                            new BillboardVertexParameters(ImageIds.Select(id => (_billboardControler.GetBillboard(id).DownloadParams(writeCache))).ToArray(),
+                (this as ICustomizable<AbstractVertexParameters>).DownloadParams(writeCache));
 
-        public override void SetImageSize (BillboardId id, Vector2 vector2)
+        public virtual Vector2 GetImageSize (BillboardId id) => new Vector2(_billboardControler.GetBillboard(id).ScaleX, _billboardControler.GetBillboard(id).ScaleY);
+
+        public virtual void SetImageSize (BillboardId id, Vector2 vector2)
         {
             var billboard = _billboardControler.GetBillboard(id);
             billboard.ScaleX = vector2.x;
@@ -108,10 +114,29 @@ namespace Graph3DVisualizer.Graph3D
             UpdateColliderRange();
         }
 
-        public override void SetupParams (VertexParameters parameters)
+        public void SetupParams (BillboardVertexParameters parameters)
         {
             base.SetupParams(parameters);
+            foreach (var param in parameters.ImageParameters)
+                ImageIds.Add(AddImage(param));
             UpdateColliderRange();
         }
+    }
+
+    /// <summary>
+    /// Class that describes default vertex parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
+    [Serializable]
+    [YuzuAll]
+    public class BillboardVertexParameters : AbstractVertexParameters
+    {
+        public BillboardParameters[] ImageParameters { get; protected set; }
+
+        public BillboardVertexParameters (BillboardParameters[] imageParameters, Vector3 position = default, Vector3 eulerAngles = default, string? id = default) : base(position, eulerAngles, id)
+            => ImageParameters = imageParameters;
+
+        public BillboardVertexParameters (BillboardParameters[] imageParameters, AbstractVertexParameters abstractVertexParameters) :
+            this(imageParameters, abstractVertexParameters.Position, abstractVertexParameters.EulerAngles, abstractVertexParameters.Id.ToString())
+        { }
     }
 }

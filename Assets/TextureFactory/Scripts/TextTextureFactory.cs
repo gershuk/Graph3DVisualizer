@@ -46,6 +46,9 @@ namespace Graph3DVisualizer.TextureFactory
 
             _alphabet = new Texture2D[256];
 
+            var maxWidth = 0;
+            var maxHeight = 0;
+
             foreach (var characterInfo in _customFont.characterInfo)
             {
                 var deltaX = characterInfo.uvTopRight.x - characterInfo.uvBottomLeft.x;
@@ -53,6 +56,9 @@ namespace Graph3DVisualizer.TextureFactory
                 // For accuracy, you can use : var width = characterInfo.glyphWidth; var height = characterInfo.glyphHeight; But they are not defined for all fonts.
                 var width = Mathf.Abs(Mathf.RoundToInt(deltaX * fontTexture.width));
                 var height = Mathf.Abs(Mathf.RoundToInt(deltaY * fontTexture.height));
+
+                maxWidth = Math.Max(maxWidth, width);
+                maxHeight = Math.Max(maxHeight, height);
 
                 var pixels = fontTexture.GetPixels((int) (Mathf.Min(characterInfo.uvBottomLeft.x, characterInfo.uvTopRight.x) * fontTexture.width),
                                                    (int) (Mathf.Min(characterInfo.uvBottomLeft.y, characterInfo.uvTopRight.y) * fontTexture.height),
@@ -162,6 +168,10 @@ namespace Graph3DVisualizer.TextureFactory
                 _alphabet[ASCIIOffset + characterInfo.index].SetPixels(pixels);
                 _alphabet[ASCIIOffset + characterInfo.index].Apply(true);
             }
+
+            //set whitespace
+            _alphabet[32] = new Texture2D(maxWidth, maxHeight);
+            _alphabet[32].SetPixels32(new Color32[maxWidth * maxHeight]);
         }
 
         public Texture2D MakeTextTexture (string text, bool isTransparentBackground = false)

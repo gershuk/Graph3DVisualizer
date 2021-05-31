@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using Graph3DVisualizer.Billboards;
 using Graph3DVisualizer.Graph3D;
 using Graph3DVisualizer.PlayerInputControls;
+using Graph3DVisualizer.SupportComponents;
 using Graph3DVisualizer.TextureFactory;
 
 using UnityEngine;
@@ -42,7 +43,7 @@ namespace Graph3DVisualizer.SceneController
             var graph = new GameObject("Graph");
             var graphControler = graph.AddComponent<Graph>();
             Graphs.Add(graphControler);
-            graphControler.SetupParams(new GraphParameters("Test"));
+            graphControler.SetupParams(new GraphParameters(new Vector3(0, -20), "Test"));
 
             var customFont = FontsGenerator.GetOrCreateFont("Broadway", 32);
             var mainTexture = Texture2DExtension.ResizeTexture(Resources.Load<Texture2D>(_mainTexture), 200, 200);
@@ -50,20 +51,19 @@ namespace Graph3DVisualizer.SceneController
             var selectFrame = Texture2DExtension.ResizeTexture(Resources.Load<Texture2D>(_selectFrameTexture), 200, 200);
             selectFrame.name = "SelectFrame";
 
-            var TextTextureFactory = new TextTextureFactory(customFont, 0);
-            var resizedTetxure = Texture2DExtension.ResizeTexture(mainTexture, 200, 200);
+            var textTextureFactory = new TextTextureFactory(customFont, 0);
 
             var baseScale = Vector2.one;
 
-            var imageParameters = new BillboardParameters(resizedTetxure, scale: baseScale * 3f, useCache: true);
+            var imageParameters = new BillboardParameters(mainTexture, scale: baseScale * 3f, useCache: true);
             var selectFrameParameters = new BillboardParameters(selectFrame, scale: baseScale * 6f, isMonoColor: true, useCache: false);
 
-            var edgeParameters = new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(Color.white, true));
+            var edgeParameters = new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(Color.white, true), new SpringParameters(1, 10));
 
-            Vertex? vertex = null;
+            BillboardVertex? vertex = null;
             for (var i = 0; i < 1000; ++i)
             {
-                var text = TextTextureFactory.MakeTextTexture($"Vertex{i}", true);
+                var text = textTextureFactory.MakeTextTexture($"Vertex{i}", true);
                 const float scale = 10;
                 var textParameters = new BillboardParameters(text, new Vector4(0, -5, 0, 0), new Vector2(scale, text.height * 1.0f / text.width * scale));
 
@@ -95,7 +95,7 @@ namespace Graph3DVisualizer.SceneController
                              new Color(143f,0f,1f),
                          };
 
-            var edgeTypes = new List<(Type type, EdgeParameters parameters)>(1) { (typeof(StretchableEdge), new StretchableEdgeParameters(new StretchableEdgeMaterialParameters())) };
+            var edgeTypes = new List<(Type type, EdgeParameters parameters)>(1) { (typeof(StretchableEdge), new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(), new SpringParameters(1, 10))) };
 
             var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath)).GetComponent<FlyPlayer>();
             Players.Add(player);

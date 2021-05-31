@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Graph3DVisualizer.Customizable;
+using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 
@@ -87,16 +88,16 @@ namespace Graph3DVisualizer.Graph3D
     [YuzuAll]
     public struct VertexInfo
     {
-        public VertexParameters VertexParameters { get; set; }
+        public AbstractVertexParameters VertexParameters { get; set; }
         public Type VertexType { get; set; }
 
-        public VertexInfo (Type vertexType, VertexParameters vertexParameters) => (VertexType, VertexParameters) = (vertexType, vertexParameters);
+        public VertexInfo (Type vertexType, AbstractVertexParameters vertexParameters) => (VertexType, VertexParameters) = (vertexType, vertexParameters);
 
-        public static implicit operator (Type vertexType, VertexParameters vertexParameters) (VertexInfo value) => (value.VertexType, value.VertexParameters);
+        public static implicit operator (Type vertexType, AbstractVertexParameters vertexParameters) (VertexInfo value) => (value.VertexType, value.VertexParameters);
 
-        public static implicit operator VertexInfo ((Type vertexType, VertexParameters vertexParameters) value) => new VertexInfo(value.vertexType, value.vertexParameters);
+        public static implicit operator VertexInfo ((Type vertexType, AbstractVertexParameters vertexParameters) value) => new VertexInfo(value.vertexType, value.vertexParameters);
 
-        public void Deconstruct (out Type vertexType, out VertexParameters vertexParameters)
+        public void Deconstruct (out Type vertexType, out AbstractVertexParameters vertexParameters)
         {
             vertexType = VertexType;
             vertexParameters = VertexParameters;
@@ -104,13 +105,13 @@ namespace Graph3DVisualizer.Graph3D
 
         public override bool Equals (object obj) => obj is VertexInfo other &&
                    EqualityComparer<Type>.Default.Equals(VertexType, other.VertexType) &&
-                   EqualityComparer<VertexParameters>.Default.Equals(VertexParameters, other.VertexParameters);
+                   EqualityComparer<AbstractVertexParameters>.Default.Equals(VertexParameters, other.VertexParameters);
 
         public override int GetHashCode ()
         {
             var hashCode = -2103449114;
             hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(VertexType);
-            hashCode = hashCode * -1521134295 + EqualityComparer<VertexParameters>.Default.GetHashCode(VertexParameters);
+            hashCode = hashCode * -1521134295 + EqualityComparer<AbstractVertexParameters>.Default.GetHashCode(VertexParameters);
             return hashCode;
         }
     }
@@ -119,15 +120,19 @@ namespace Graph3DVisualizer.Graph3D
     /// Abstract class that describes graph component.
     /// </summary>
     [CustomizableGrandType(typeof(GraphParameters))]
+    [RequireComponent(typeof(MovementComponent))]
     public abstract class AbstractGraph : AbstractGraphObject, ICustomizable<GraphParameters>
     {
+        private bool _isChanging = false;
         protected Transform _transform;
+        public abstract MovementComponent MovementComponent { get; protected set; }
         public abstract string? Name { get; set; }
 
         public abstract int VertexesCount { get; }
 
         private IEnumerator ForceBasedLayoutCoroutine ()
         {
+            _isChanging = true;
             const float eps = 1E-1f;
             const float speed = 5E-1f;
             var list = new List<(AbstractVertex abstractVertex, Vector3 force)>();
@@ -158,6 +163,7 @@ namespace Graph3DVisualizer.Graph3D
                 list.Clear();
                 yield return null;
             }
+            _isChanging = false;
         }
 
         public abstract bool ContainsVertex (string id);
@@ -171,7 +177,7 @@ namespace Graph3DVisualizer.Graph3D
 
             foreach (var vertex in GetVertexes())
             {
-                vertexParameters.Add((vertex.GetType(), (VertexParameters) CustomizableExtension.CallDownloadParams(vertex, writeCache)));
+                vertexParameters.Add((vertex.GetType(), (AbstractVertexParameters) CustomizableExtension.CallDownloadParams(vertex, writeCache)));
 
                 foreach (var outgoingLink in vertex.OutgoingLinks)
                 {
@@ -179,7 +185,7 @@ namespace Graph3DVisualizer.Graph3D
                 }
             }
 
-            return new GraphParameters(Name, vertexParameters, links, Id);
+            return new GraphParameters(MovementComponent.GlobalCoordinates, Name, vertexParameters, links, Id);
         }
 
         public abstract AbstractVertex GetVertexById (string id);
@@ -188,6 +194,8 @@ namespace Graph3DVisualizer.Graph3D
 
         public void SetupParams (GraphParameters parameters)
         {
+            MovementComponent.GlobalCoordinates = parameters.Position;
+
             Name = parameters.Name;
 
             Id = parameters.ObjectId;
@@ -211,12 +219,16 @@ namespace Graph3DVisualizer.Graph3D
 
         public abstract TVertex SpawnVertex<TVertex, TParams> (TParams vertexParameters)
                     where TVertex : AbstractVertex, new()
-                    where TParams : VertexParameters;
+                    where TParams : AbstractVertexParameters;
 
-        public abstract AbstractVertex SpawnVertex (Type vertexType, VertexParameters parameters);
+        public abstract AbstractVertex SpawnVertex (Type vertexType, AbstractVertexParameters parameters);
 
         [ContextMenu("ForceBasedLayout")]
-        public void StartForceBasedLayout () => StartCoroutine(ForceBasedLayoutCoroutine());
+        public void StartForceBasedLayout ()
+        {
+            if (!_isChanging)
+                StartCoroutine(ForceBasedLayoutCoroutine());
+        }
     }
 
     /// <summary>
@@ -228,13 +240,16 @@ namespace Graph3DVisualizer.Graph3D
     {
         public List<LinkInfo>? Links { get; protected set; }
         public string? Name { get; protected set; }
+        public Vector3 Position { get; protected set; }
         public List<VertexInfo>? VertexParameters { get; protected set; }
 
-        public GraphParameters (string? name = default,
+        public GraphParameters (Vector3 position = default,
+                                string? name = default,
                                 List<VertexInfo>? vertexParameters = default,
                                 List<LinkInfo>? links = default,
                                 string? id = default) : base(id)
         {
+            Position = position;
             Name = name;
             Links = links;
             if (vertexParameters != null)

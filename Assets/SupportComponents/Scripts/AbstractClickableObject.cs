@@ -39,7 +39,5 @@ namespace Graph3DVisualizer.SupportComponents
             ClickAction(gameObject);
             Clicked?.Invoke(gameObject);
         }
-
-        public abstract void SetDisabled ();
     }
 }

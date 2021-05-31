@@ -206,7 +206,7 @@ namespace Graph3DVisualizer.Graph3D
             }
         }
 
-        public EdgeParameters DownloadParams (Dictionary<Guid, object> writeCache) => new EdgeParameters(null, SourceOffsetDist, TargetOffsetDist, Width, Visibility, Id);
+        public EdgeParameters DownloadParams (Dictionary<Guid, object> writeCache) => new EdgeParameters(null, SpringParameters, SourceOffsetDist, TargetOffsetDist, Width, Visibility, Id);
 
         public void SetupParams (EdgeParameters parameters)
         {
@@ -236,6 +236,8 @@ namespace Graph3DVisualizer.Graph3D
                     CacheForCustomizableObjects.Add(parameters.AbstarctEdgeMaterialParameters, _material);
             }
 
+            SpringParameters = parameters.SpringParameters;
+
             UpdateEdge();
         }
 
@@ -262,14 +264,16 @@ namespace Graph3DVisualizer.Graph3D
     {
         public AbstarctEdgeMaterialParameters? AbstarctEdgeMaterialParameters { get; protected set; }
         public float SourceOffsetDist { get; protected set; }
+        public SpringParameters SpringParameters { get; protected set; }
         public float TargetOffsetDist { get; protected set; }
         public EdgeVisibility Visibility { get; protected set; }
         public float Width { get; protected set; }
 
-        public EdgeParameters (AbstarctEdgeMaterialParameters? abstarctEdgeMaterialParameters, float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f,
+        public EdgeParameters (AbstarctEdgeMaterialParameters? abstarctEdgeMaterialParameters, SpringParameters springParameters = default, float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f,
             EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string? id = default) : base(id)
         {
             AbstarctEdgeMaterialParameters = abstarctEdgeMaterialParameters;
+            SpringParameters = springParameters;
             SourceOffsetDist = sourceOffsetDist;
             TargetOffsetDist = targetOffsetDist;
             Width = width;

@@ -85,7 +85,7 @@ namespace Graph3DVisualizer.SupportComponents
             }
         }
 
-        public Vector3 EulerAngles
+        public Vector3 GlobalEulerAngles
         {
             get => _eulerAngles;
             set
@@ -171,7 +171,7 @@ namespace Graph3DVisualizer.SupportComponents
 
             _isMoving = false;
             _transform = transform;
-            EulerAngles = _transform.eulerAngles;
+            GlobalEulerAngles = _transform.eulerAngles;
         }
 
         private void UpdateParametersWhileMoving (float deltaTime)
@@ -228,10 +228,10 @@ namespace Graph3DVisualizer.SupportComponents
         {
             var rotDiv = rotationChange * RotationSpeed * deltaTime;
 
-            var eulerAngles = new Vector3((EulerAngles.x - rotDiv.y) % 360f, (EulerAngles.y + rotDiv.x) % 360f, 0);
+            var eulerAngles = new Vector3((GlobalEulerAngles.x - rotDiv.y) % 360f, (GlobalEulerAngles.y + rotDiv.x) % 360f, 0);
             eulerAngles = new Vector3(Mathf.Min(eulerAngles.x, _maxRotX), Mathf.Min(eulerAngles.y, _maxRotY), 0);
             eulerAngles = new Vector3(Mathf.Max(eulerAngles.x, _minRotX), Mathf.Max(eulerAngles.y, _minRotY), 0);
-            EulerAngles = eulerAngles;
+            GlobalEulerAngles = eulerAngles;
         }
 
         public void Translate (Vector3 directionVector, float deltaTime, Transform? relativeTo = default)

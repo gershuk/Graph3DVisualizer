@@ -23,6 +23,7 @@ using System.Linq;
 using Graph3DVisualizer.Billboards;
 using Graph3DVisualizer.Graph3D;
 using Graph3DVisualizer.PlayerInputControls;
+using Graph3DVisualizer.SupportComponents;
 using Graph3DVisualizer.TextureFactory;
 
 using UnityEngine;

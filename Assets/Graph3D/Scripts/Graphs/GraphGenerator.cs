@@ -82,7 +82,7 @@ namespace Graph3DVisualizer.Graph3D
             }
 
             foreach (var (firstVertex, secondVertex, color) in Edges)
-                createdVertexes[firstVertex].Link<StretchableEdge, StretchableEdgeParameters>(createdVertexes[secondVertex], new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(color)));
+                createdVertexes[firstVertex].Link<StretchableEdge, StretchableEdgeParameters>(createdVertexes[secondVertex], new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(color), new SpringParameters(1, 10)));
         }
     }
 }

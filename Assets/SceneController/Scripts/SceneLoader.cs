@@ -25,7 +25,6 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 using Graph3DVisualizer.Customizable;
-using Graph3DVisualizer.SceneController;
 using Graph3DVisualizer.SurrogateTypesForSerialization;
 
 using UnityEngine;
@@ -34,7 +33,7 @@ using Yuzu;
 using Yuzu.Json;
 using Yuzu.Metadata;
 
-namespace Graph3DVisualizer.SceneLoader
+namespace Graph3DVisualizer.SceneController
 {
     /// <summary>
     /// Class that describes <see cref="SceneLoader"/> parameters for <see cref="ICustomizable{TParams}"/>.
@@ -45,9 +44,9 @@ namespace Graph3DVisualizer.SceneLoader
     {
         public Type TaskType { get; protected set; }
 
-        public VisualTaskParameters VisualTaskParameters { get; protected set; }
+        public SceneParameters VisualTaskParameters { get; protected set; }
 
-        public SceneControllerParameters (Type taskType, VisualTaskParameters visualTaskParameters, Guid? parameterId = default) : base(parameterId)
+        public SceneControllerParameters (Type taskType, SceneParameters visualTaskParameters, Guid? parameterId = default) : base(parameterId)
         {
             TaskType = taskType ?? throw new ArgumentNullException(nameof(taskType));
             VisualTaskParameters = visualTaskParameters ?? throw new ArgumentNullException(nameof(visualTaskParameters));
@@ -58,12 +57,22 @@ namespace Graph3DVisualizer.SceneLoader
     /// Component that manages the loading/saving of <see cref="AbstractSceneController"/>.
     /// </summary>
     [CustomizableGrandType(typeof(SceneControllerParameters))]
-    public class SceneLoader : MonoBehaviour, ICustomizable<SceneControllerParameters>
+    public class SceneLoader : ICustomizable<SceneControllerParameters>
     {
-        private readonly Dictionary<string, Assembly> _asseblies = new Dictionary<string, Assembly>();
+        private static readonly SceneLoader _sceneLoader;
+        private readonly Dictionary<string, Assembly> _assemblies = new Dictionary<string, Assembly>();
+
+        public static SceneLoader Instance => _sceneLoader;
 
         public AbstractSceneController? ActiveTask { get; private set; }
+
         public List<Type> TaskList { get; } = new List<Type>();
+
+        static SceneLoader ()
+        {
+            _sceneLoader = new SceneLoader();
+            _sceneLoader.LoadMods();
+        }
 
         private static SurrogateSelector MakeSurrogateSelector ()
         {
@@ -125,28 +134,23 @@ namespace Graph3DVisualizer.SceneLoader
             return yuzuCommonOptions;
         }
 
-        private void Awake ()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
-
         private void LoadAssemblies (params (string name, string path)[] assemblies)
         {
-            foreach (var assembly in assemblies)
+            foreach (var (name, path) in assemblies)
             {
                 try
                 {
-                    _asseblies[assembly.name] = !_asseblies.ContainsKey(name) ? Assembly.LoadFrom(assembly.path) : throw new Exception("This assembly alias is already used");
+                    _assemblies[name] = !_assemblies.ContainsKey(name) ? Assembly.LoadFrom(path) : throw new Exception("This assembly alias is already used");
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogError($"{ex} - {assembly.path} can't be loaded");
+                    Debug.LogError($"{ex} - {path} can't be loaded");
                 }
             }
         }
 
         public SceneControllerParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
-            new SceneControllerParameters(ActiveTask.GetType(), (VisualTaskParameters) CustomizableExtension.CallDownloadParams(ActiveTask, writeCache));
+            new SceneControllerParameters(ActiveTask.GetType(), (SceneParameters) CustomizableExtension.CallDownloadParams(ActiveTask, writeCache));
 
         public void FindAllTasks ()
         {
@@ -190,6 +194,25 @@ namespace Graph3DVisualizer.SceneLoader
 #endif
         }
 
+        public void LoadScene (int taskIndex, SceneParameters? visualTaskParameters = default)
+        {
+            var m = GetType().GetMethod(nameof(LoadScene), new[] { typeof(SceneParameters) });
+            m.MakeGenericMethod(TaskList[taskIndex]);
+            m.Invoke(this, new[] { visualTaskParameters });
+        }
+
+        public void LoadScene<T> (SceneParameters? visualTaskParameters = default) where T : AbstractSceneController
+        {
+            if (ActiveTask != null)
+                StopTask();
+            var gameObject = new GameObject($"{typeof(T).Name}");
+            ActiveTask = gameObject.AddComponent<T>();
+            if (visualTaskParameters == null)
+                ActiveTask.InitTask();
+            else
+                CustomizableExtension.CallSetUpParams(ActiveTask, visualTaskParameters);
+        }
+
         public void SaveBinary (string name)
         {
             using var fs = new FileStream(name, FileMode.Create);
@@ -209,20 +232,8 @@ namespace Graph3DVisualizer.SceneLoader
             var index = TaskList.FindIndex(x => x == parameters.TaskType);
             if (index > -1)
             {
-                StartTask(index, parameters.VisualTaskParameters);
+                LoadScene(index, parameters.VisualTaskParameters);
             }
-        }
-
-        public void StartTask (int taskIndex, VisualTaskParameters? visualTaskParameters = default)
-        {
-            if (ActiveTask != null)
-                StopTask();
-            var gameObject = new GameObject("VisualTask");
-            ActiveTask = (AbstractSceneController) gameObject.AddComponent(TaskList[taskIndex]);
-            if (visualTaskParameters == null)
-                ActiveTask.InitTask();
-            else
-                CustomizableExtension.CallSetUpParams(ActiveTask, visualTaskParameters);
         }
 
         public void StopTask ()
@@ -232,7 +243,7 @@ namespace Graph3DVisualizer.SceneLoader
             if (ActiveTask != null)
             {
                 ActiveTask.DestroyTask();
-                DestroyImmediate(ActiveTask.gameObject);
+                GameObject.DestroyImmediate(ActiveTask.gameObject);
                 Resources.UnloadUnusedAssets();
             }
             else

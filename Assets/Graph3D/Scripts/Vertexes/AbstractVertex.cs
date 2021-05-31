@@ -18,9 +18,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
-using Graph3DVisualizer.Billboards;
 using Graph3DVisualizer.Customizable;
 using Graph3DVisualizer.SupportComponents;
 
@@ -36,16 +34,12 @@ namespace Graph3DVisualizer.Graph3D
     [RequireComponent(typeof(MovementComponent))]
     [RequireComponent(typeof(MeshRenderer))]
     [RequireComponent(typeof(MeshFilter))]
-    [RequireComponent(typeof(BillboardController))]
-    [RequireComponent(typeof(SphereCollider))]
-    [CustomizableGrandType(typeof(VertexParameters))]
-    public abstract class AbstractVertex : AbstractGraphObject, IVisibile, IDestructible, ICustomizable<VertexParameters>
+    [CustomizableGrandType(typeof(AbstractVertexParameters))]
+    public abstract class AbstractVertex : AbstractGraphObject, IVisibile, IDestructible, ICustomizable<AbstractVertexParameters>
     {
-        protected BillboardController _billboardControler;
+        protected List<Link> _incomingLinks = new List<Link>();
 
-        protected List<Link> _incomingLinks;
-
-        protected List<Link> _outgoingLinks;
+        protected List<Link> _outgoingLinks = new List<Link>();
 
         protected Transform _transform;
 
@@ -54,8 +48,6 @@ namespace Graph3DVisualizer.Graph3D
         public abstract event Action<UnityEngine.Object> Destroyed;
 
         public abstract event Action<bool, UnityEngine.Object> VisibleChanged;
-
-        public virtual IList<BillboardId> ImageIds { get; set; } = new List<BillboardId>();
 
         public IReadOnlyList<Link> IncomingLinks => _incomingLinks;
 
@@ -152,18 +144,9 @@ namespace Graph3DVisualizer.Graph3D
             throw new LinkNotFoundException();
         }
 
-        protected abstract void UpdateColliderRange ();
+        public AbstractVertexParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
+            new AbstractVertexParameters(MovementComponent.GlobalCoordinates, MovementComponent.GlobalEulerAngles, Id);
 
-        public virtual BillboardId AddImage (BillboardParameters billboardParameters) => _billboardControler.CreateBillboard(billboardParameters);
-
-        public virtual void DeleteImage (BillboardId billboardId) => _billboardControler.DeleteBillboard(billboardId);
-
-        public VertexParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
-            new VertexParameters(ImageIds.Select(id => (_billboardControler.GetBillboard(id).DownloadParams(writeCache))).ToArray(), _transform.position, _transform.rotation, Id);
-
-        public abstract Vector2 GetImageSize (BillboardId id);
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0029:Используйте выражение объединения", Justification = "<Ожидание>")]
         public TEdge Link<TEdge, TParameters> (AbstractVertex toVertex, TParameters edgeParameters) where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
             CheckLinkForCorrectness(toVertex, typeof(TEdge));
@@ -184,16 +167,8 @@ namespace Graph3DVisualizer.Graph3D
             return edge;
         }
 
-        public abstract void SetImageSize (BillboardId id, Vector2 vector2);
-
-        public virtual void SetupParams (VertexParameters parameters)
-        {
-            Id = parameters.ObjectId;
-
-            (_transform.position, _transform.rotation) = (parameters.Position, parameters.Rotation);
-            foreach (var param in parameters.ImageParameters)
-                ImageIds.Add(AddImage(param));
-        }
+        public virtual void SetupParams (AbstractVertexParameters parameters) =>
+            (MovementComponent.GlobalCoordinates, MovementComponent.GlobalEulerAngles, Id) = (parameters.Position, parameters.EulerAngles, parameters.ObjectId);
 
         public void UnLink<TEdge> (AbstractVertex toVertex) where TEdge : AbstractEdge => UnLink(toVertex, typeof(SpriteEdge));
 
@@ -212,6 +187,20 @@ namespace Graph3DVisualizer.Graph3D
                 Destroy(edge.gameObject);
             }
         }
+    }
+
+    /// <summary>
+    /// Class that describes default vertex parameters for <see cref="ICustomizable{TParams}"/>.
+    /// </summary>
+    [Serializable]
+    [YuzuAll]
+    public class AbstractVertexParameters : AbstractGraphObjectParameters
+    {
+        public Vector3 EulerAngles { get; protected set; }
+        public Vector3 Position { get; protected set; }
+
+        public AbstractVertexParameters (Vector3 position = default, Vector3 eulerAngles = default, string? id = default) : base(id)
+            => (Position, EulerAngles) = (position, eulerAngles);
     }
 
     /// <summary>
@@ -242,20 +231,5 @@ namespace Graph3DVisualizer.Graph3D
         public LinkNotFoundException (string message, Exception innerException) : base(message, innerException)
         {
         }
-    }
-
-    /// <summary>
-    /// Class that describes default vertex parameters for <see cref="ICustomizable{TParams}"/>.
-    /// </summary>
-    [Serializable]
-    [YuzuAll]
-    public class VertexParameters : AbstractGraphObjectParameters
-    {
-        public BillboardParameters[] ImageParameters { get; protected set; }
-        public Vector3 Position { get; protected set; }
-        public Quaternion Rotation { get; protected set; }
-
-        public VertexParameters (BillboardParameters[] imageParameters, Vector3 position = default, Quaternion rotation = default, string? id = default) : base(id)
-            => (ImageParameters, Position, Rotation) = (imageParameters, position, rotation);
     }
 }
