@@ -114,7 +114,7 @@ namespace Graph3DVisualizer.SceneController
             var edgeTypes = new List<(Type type, EdgeParameters parameters)>(1) { (typeof(StretchableEdge), new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(Color.white), new SpringParameters(1, 10))) };
 
             var player = CreatePlayer();
-            player.SetupParams(new PlayerParameters(Vector3.zero, Vector3.zero, 40, 20,
+            player.SetupParams(new PlayerParameters(Vector3.zero, Vector3.zero, 40, 20, true,
                 new ToolConfig[4]
                 {
                     new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)),

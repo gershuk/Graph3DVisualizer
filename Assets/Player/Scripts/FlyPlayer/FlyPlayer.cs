@@ -81,7 +81,7 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public override HUDController HUDController => _hudController;
 
-        public bool IsVr
+        public override bool IsVr
         {
             get => _isVr;
             set
@@ -103,6 +103,9 @@ namespace Graph3DVisualizer.PlayerInputControls
                 }
 
                 _crosshair.SetActive(!_isVr);
+
+                foreach (var tool in _playerTools)
+                    tool.IsVR = _isVr;
             }
         }
 
@@ -124,7 +127,7 @@ namespace Graph3DVisualizer.PlayerInputControls
 
             _hudController.Visibility = false;
 
-            IsVr = false;
+            IsVr = true;
         }
 
         [ContextMenu("ChangeControllerType")]
@@ -194,11 +197,13 @@ namespace Graph3DVisualizer.PlayerInputControls
         {
             if (_playerTools.Count == 0)
                 return;
-            var value = _currentToolIndex + Mathf.RoundToInt(obj.ReadValue<float>());
+            var value = _currentToolIndex + Math.Sign(obj.ReadValue<float>());
             value %= _playerTools.Count;
             if (value < 0)
                 value = _playerTools.Count + value;
-            SelectTool(value);
+
+            if (value != _currentToolIndex)
+                SelectTool(value);
         }
 
         protected override void GiveNewTool (params ToolConfig[] toolsConfig)
@@ -218,6 +223,7 @@ namespace Graph3DVisualizer.PlayerInputControls
                     {
                         if (config.ToolParams != null)
                             CustomizableExtension.CallSetUpParams(newTool, config.ToolParams);
+                        newTool.IsVR = IsVr;
                     }
                     catch (Exception e)
                     {
@@ -227,7 +233,6 @@ namespace Graph3DVisualizer.PlayerInputControls
                     _playerTools.Add(newTool);
                     _playerTools[_playerTools.Count - 1].enabled = false;
                 }
-
                 SelectTool(0);
             }
             catch

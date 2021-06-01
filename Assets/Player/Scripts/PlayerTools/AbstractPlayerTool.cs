@@ -17,6 +17,7 @@
 #nullable enable
 
 using System;
+using System.Collections.Generic;
 
 using Graph3DVisualizer.Customizable;
 
@@ -36,10 +37,10 @@ namespace Graph3DVisualizer.PlayerInputControls
     [YuzuAll]
     public struct ToolConfig
     {
-        public AbstractToolParams ToolParams { get; set; }
+        public ToolParams ToolParams { get; set; }
         public Type ToolType { get; set; }
 
-        public ToolConfig (Type toolType, AbstractToolParams toolParams)
+        public ToolConfig (Type toolType, ToolParams toolParams)
         {
             if (!toolType.IsSubclassOf(typeof(AbstractPlayerTool)))
                 throw new Exception($"{toolType} is not subclass of PlayerTool");
@@ -51,8 +52,15 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// <summary>
     /// Abstract class that describes the player's tool for interacting with the world.
     /// </summary>
-    public abstract class AbstractPlayerTool : MonoBehaviour
+    public abstract class AbstractPlayerTool : MonoBehaviour, ICustomizable<ToolParams>
     {
+        private bool _enable = true;
+
+        private bool _isVR = false;
+
+        [SerializeField]
+        private float _rayCastRange = 1000;
+
         #region Input PC
         protected const string _inputActionMapPCName = "InputActionMapPC";
         protected InputActionMap _inputActionsPC;
@@ -63,17 +71,44 @@ namespace Graph3DVisualizer.PlayerInputControls
         protected InputActionMap _inputActionsVR;
         #endregion Input VR
 
-        protected RaycastHit RayCast (float range)
+        public virtual bool Enable { get => _enable; set { _enable = value; UpdateInput(); } }
+
+        public virtual bool IsVR { get => _isVR; set { _isVR = value; UpdateInput(); } }
+
+        public float RayCastRange { get => _rayCastRange; set => _rayCastRange = value; }
+
+        protected void OnDisable () => Enable = false;
+
+        protected void OnEnable () => Enable = true;
+
+        protected RaycastHit RayCast ()
         {
-            Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, range);
+            Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, RayCastRange);
             return hit;
         }
+
+        protected void UpdateInput ()
+        {
+            if (_enable && _isVR)
+                _inputActionsVR?.Enable();
+            else
+                _inputActionsVR?.Disable();
+
+            if (_enable && !_isVR)
+                _inputActionsPC?.Enable();
+            else
+                _inputActionsPC?.Disable();
+        }
+
+        public ToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new ToolParams(IsVR);
 
         public virtual void RegisterEvents (IInputActionCollection inputActions)
         {
             _inputActionsPC = new InputActionMap(_inputActionMapPCName);
             _inputActionsVR = new InputActionMap(_inputActionMapVRName);
         }
+
+        public void SetupParams (ToolParams parameters) => IsVR = parameters.IsVR;
     }
 
     /// <summary>
@@ -81,9 +116,11 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// </summary>
     [Serializable]
     [YuzuAll]
-    public abstract class AbstractToolParams : AbstractCustomizableParameter
+    public class ToolParams : AbstractCustomizableParameter
     {
-        protected AbstractToolParams (Guid? parameterId = default) : base(parameterId)
-        { }
+        public bool IsVR { get; protected set; }
+        public float RayCastRange { get; protected set; }
+
+        public ToolParams (bool isVR = false, float rayCastRange = 1000, Guid? parameterId = default) : base(parameterId) => (IsVR, RayCastRange) = (isVR, rayCastRange);
     }
 }

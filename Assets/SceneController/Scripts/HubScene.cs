@@ -20,7 +20,7 @@ namespace Graph3DVisualizer.SceneController
             Players = new List<AbstractPlayer>();
             var player = CreatePlayer();
             var toolConfig = new ToolConfig(typeof(ClickTool), new ClickToolParams());
-            player.SetupParams(new PlayerParameters(new Vector3(0, 0, -50), sceneInfo: "Hub scene", toolConfigs: new[] { toolConfig }));
+            player.SetupParams(new PlayerParameters(new Vector3(0, 0, -50), sceneInfo: "Hub scene", isVR: true, toolConfigs: new[] { toolConfig }));
 
             var textComponnet = gameObject.AddComponent<Text>();
             //ToDo : Replace with auto generation

@@ -85,13 +85,14 @@ namespace Graph3DVisualizer.PlayerInputControls
         public int CurrentToolIndex { get => _currentToolIndex; set => SelectTool(value); }
         public IReadOnlyList<AbstractPlayerTool> GetToolsList => _playerTools;
         public abstract HUDController HUDController { get; }
+        public abstract bool IsVr { get; set; }
         public abstract string SceneInfo { get; set; }
 
         protected abstract void GiveNewTool (params ToolConfig[] toolsConfig);
 
         public PlayerParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
-            new PlayerParameters(transform.position, transform.eulerAngles, _moveComponent.MovingSpeed, _moveComponent.RotationSpeed,
-            _playerTools.Select(tool => new ToolConfig(tool.GetType(), (AbstractToolParams) CustomizableExtension.CallDownloadParams(tool, writeCache))).ToArray(), sceneInfo: SceneInfo);
+            new PlayerParameters(transform.position, transform.eulerAngles, _moveComponent.MovingSpeed, _moveComponent.RotationSpeed, IsVr,
+            _playerTools.Select(tool => new ToolConfig(tool.GetType(), (ToolParams) CustomizableExtension.CallDownloadParams(tool, writeCache))).ToArray(), sceneInfo: SceneInfo);
 
         public void SelectTool (int index)
         {
@@ -123,6 +124,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             _moveComponent.GlobalEulerAngles = playerParams.EulerAngles;
             SceneInfo = playerParams.SceneInfo;
             GiveNewTool(playerParams.ToolConfigs);
+            IsVr = playerParams.IsVr;
         }
     }
 
@@ -134,19 +136,22 @@ namespace Graph3DVisualizer.PlayerInputControls
     public class PlayerParameters : AbstractCustomizableParameter
     {
         public Vector3 EulerAngles { get; protected set; }
+        public bool IsVr { get; protected set; }
         public float MovingSpeed { get; protected set; }
         public Vector3 Position { get; protected set; }
         public float RotationSpeed { get; protected set; }
         public string SceneInfo { get; protected set; }
         public ToolConfig[] ToolConfigs { get; protected set; }
 
-        public PlayerParameters (Vector3 position = default, Vector3 eulerAngles = default, float movingSpeed = 10, float rotationSpeed = 10, ToolConfig[]? toolConfigs = default,
+        public PlayerParameters (Vector3 position = default, Vector3 eulerAngles = default, float movingSpeed = 10, float rotationSpeed = 10,
+            bool isVR = false, ToolConfig[]? toolConfigs = default,
             Guid? parameterId = default, string sceneInfo = "No Info") : base(parameterId)
         {
             Position = position;
             EulerAngles = eulerAngles;
             RotationSpeed = rotationSpeed;
             MovingSpeed = movingSpeed;
+            IsVr = isVR;
             ToolConfigs = toolConfigs ?? new ToolConfig[0];
             SceneInfo = sceneInfo;
         }

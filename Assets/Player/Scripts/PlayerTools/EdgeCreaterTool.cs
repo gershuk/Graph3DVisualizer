@@ -59,9 +59,6 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private BillboardVertex? _firstVertex;
 
-        [SerializeField]
-        private float _rayCastRange = 1000;
-
         private BillboardVertex? _secondVertex;
         private State _state;
         private int _typeIndex;
@@ -83,10 +80,6 @@ namespace Graph3DVisualizer.PlayerInputControls
         }
 
         private void CallSelectFirstPoint (InputAction.CallbackContext obj) => SelectFirstPoint();
-
-        private void OnDisable () => _inputActionsPC?.Disable();
-
-        private void OnEnable () => _inputActionsPC?.Enable();
 
         public void ChangeIndex (int deltaIndex) => _typeIndex = (_typeIndex + deltaIndex) < 0 ? _edgeData.Count - 1 : (_typeIndex + deltaIndex) % _edgeData.Count;
 
@@ -128,7 +121,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             }
         }
 
-        public EdgeCreaterToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new EdgeCreaterToolParams(_edgeData);
+        public new EdgeCreaterToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new EdgeCreaterToolParams(_edgeData, (this as ICustomizable<ToolParams>).DownloadParams(writeCache));
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
@@ -160,7 +153,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         {
             if (_state == State.None)
             {
-                _firstVertex = RayCast(_rayCastRange).transform?.GetComponent<BillboardVertex>();
+                _firstVertex = RayCast().transform?.GetComponent<BillboardVertex>();
                 if (_firstVertex != null)
                     _state = State.Selecting;
             }
@@ -170,13 +163,17 @@ namespace Graph3DVisualizer.PlayerInputControls
         {
             if (_state == State.Selecting)
             {
-                _secondVertex = RayCast(_rayCastRange).transform?.GetComponent<BillboardVertex>();
+                _secondVertex = RayCast().transform?.GetComponent<BillboardVertex>();
                 if (_secondVertex != null)
                     _state = State.LinkChanging;
             }
         }
 
-        public void SetupParams (EdgeCreaterToolParams parameters) => _edgeData = parameters.EdgeTypes.ToList();
+        public void SetupParams (EdgeCreaterToolParams parameters)
+        {
+            (this as ICustomizable<ToolParams>).SetupParams(parameters);
+            _edgeData = parameters.EdgeTypes.ToList();
+        }
     }
 
     /// <summary>
@@ -184,11 +181,11 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// </summary>
     [Serializable]
     [YuzuAll]
-    public class EdgeCreaterToolParams : AbstractToolParams
+    public class EdgeCreaterToolParams : ToolParams
     {
         public IReadOnlyList<(Type, EdgeParameters)> EdgeTypes { get; protected set; }
 
-        public EdgeCreaterToolParams (IReadOnlyList<(Type, EdgeParameters)> edgeTypes)
+        public EdgeCreaterToolParams (IReadOnlyList<(Type, EdgeParameters)> edgeTypes, bool isVR = false, float rayCastRange = 1000) : base(isVR, rayCastRange)
         {
             EdgeTypes = edgeTypes ?? throw new ArgumentNullException(nameof(edgeTypes));
             foreach (var (type, parameters) in EdgeTypes)
@@ -196,6 +193,10 @@ namespace Graph3DVisualizer.PlayerInputControls
                 if (!type.IsSubclassOf(typeof(AbstractEdge)))
                     throw new WrongTypeInCustomizableParameterException(typeof(AbstractEdge), type);
             }
+        }
+
+        public EdgeCreaterToolParams (IReadOnlyList<(Type, EdgeParameters)> edgeTypes, ToolParams toolParams) : this(edgeTypes, toolParams.IsVR, toolParams.RayCastRange)
+        {
         }
     }
 }

@@ -46,11 +46,6 @@ namespace Graph3DVisualizer.PlayerInputControls
         private AbstractClickableObject? _clickableObject;
         private GameObject _owner;
 
-        [SerializeField]
-        private float _rayCastRange = 1000;
-
-        public float RayCastRange { get => _rayCastRange; set => _rayCastRange = value; }
-
         private void Awake ()
         {
             //due to problems with serialization, you have to search for it from inside
@@ -59,27 +54,17 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private void CallClick (InputAction.CallbackContext obj) => Click();
 
-        private void OnDisable ()
-        {
-            _inputActionsPC?.Disable();
-        }
-
-        private void OnEnable ()
-        {
-            _inputActionsPC?.Enable();
-        }
-
         public void Click ()
         {
             //if (_clickableObject)
             //    _clickableObject.SetDisabled();
 
-            _clickableObject = RayCast(_rayCastRange).transform?.GetComponent<AbstractClickableObject>();
+            _clickableObject = RayCast().transform?.GetComponent<AbstractClickableObject>();
             if (_clickableObject != null)
                 _clickableObject.Click(_owner);
         }
 
-        public ClickToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new ClickToolParams();
+        public new ClickToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new ClickToolParams((this as ICustomizable<ToolParams>).DownloadParams(writeCache));
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
@@ -96,9 +81,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             #endregion Bind VR input
         }
 
-        public void SetupParams (ClickToolParams parameters)
-        {
-        }
+        public void SetupParams (ClickToolParams parameters) => (this as ICustomizable<ToolParams>).SetupParams(parameters);
     }
 
     /// <summary>
@@ -106,10 +89,14 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// </summary>
     [Serializable]
     [YuzuAll]
-    public class ClickToolParams : AbstractToolParams
+    public class ClickToolParams : ToolParams
     {
-        //public GameObject Owner { get; private set; }
+        public ClickToolParams (bool isVR = false, float rayCastRange = 1000) : base(isVR, rayCastRange)
+        {
+        }
 
-        //public ClickToolParams (GameObject owner) => Owner = owner ?? throw new ArgumentNullException(nameof(owner));
+        public ClickToolParams (ToolParams toolParams) : this(toolParams.IsVR, toolParams.RayCastRange)
+        {
+        }
     }
 }

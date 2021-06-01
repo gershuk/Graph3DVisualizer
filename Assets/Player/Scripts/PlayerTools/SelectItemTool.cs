@@ -48,33 +48,18 @@ namespace Graph3DVisualizer.PlayerInputControls
         private int _colorIndex;
         private IReadOnlyList<Color> _colors = new List<Color>(1) { Color.red };
 
-        [SerializeField]
-        private float _rayCastRange = 1000;
-
-        public float RayCastRange { get => _rayCastRange; set => _rayCastRange = value; }
-
         private void Awake ()
         {
             _colorIndex = 0;
         }
 
-        private void CallChangeColor (InputAction.CallbackContext obj) => ChangeColor(Mathf.RoundToInt(obj.ReadValue<float>()));
+        private void CallChangeColor (InputAction.CallbackContext obj) => ChangeColor(Math.Sign(Mathf.RoundToInt(obj.ReadValue<float>())));
 
         private void CallSelectItem (InputAction.CallbackContext obj) => SelectItem();
 
-        private void OnDisable ()
-        {
-            _inputActionsPC?.Disable();
-        }
-
-        private void OnEnable ()
-        {
-            _inputActionsPC?.Enable();
-        }
-
         public void ChangeColor (int deltaIndex) => _colorIndex = (_colorIndex + deltaIndex) < 0 ? _colors.Count - 1 : (_colorIndex + deltaIndex) % _colors.Count;
 
-        public SelectItemToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new SelectItemToolParams(_colors);
+        public new SelectItemToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new SelectItemToolParams(_colors, (this as ICustomizable<ToolParams>).DownloadParams(writeCache));
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
@@ -85,23 +70,31 @@ namespace Graph3DVisualizer.PlayerInputControls
             var changeColorActionPC = _inputActionsPC.AddAction(_changeColorActionPCName, InputActionType.Button);
             changeColorActionPC.AddCompositeBinding("1DAxis").With("Positive", "<Keyboard>/e").With("Negative", "<Keyboard>/q");
             selectItemActionPC.canceled += CallSelectItem;
-            changeColorActionPC.performed += CallChangeColor;
+            changeColorActionPC.started += CallChangeColor;
             #endregion Bind PC input
 
             #region Bind VR input
             var selectItemActionVR = _inputActionsVR.AddAction(_selectActionVRName, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
+            var changeColorActionVR = _inputActionsVR.AddAction(_changeColorActionVRName, InputActionType.Value, "<ViveController>{RightHand}/trackpad/x");
             selectItemActionVR.canceled += CallSelectItem;
+            changeColorActionVR.started += CallChangeColor;
             #endregion Bind VR input
         }
 
         public void SelectItem ()
         {
-            var selectableComponent = RayCast(_rayCastRange).transform?.GetComponent<ISelectable>();
+            const float eps = 1e-4f;
+            var selectableComponent = RayCast().transform?.GetComponent<ISelectable>();
             if (selectableComponent != null)
             {
                 if (selectableComponent.IsSelected)
                 {
-                    if (selectableComponent.SelectFrameColor == _colors[_colorIndex])
+                    //The shader can distort colors, so the comparison is performed with eps.
+                    if (Mathf.Abs(selectableComponent.SelectFrameColor.r - _colors[_colorIndex].r) < eps &&
+                        Mathf.Abs(selectableComponent.SelectFrameColor.g - _colors[_colorIndex].g) < eps &&
+                        Mathf.Abs(selectableComponent.SelectFrameColor.b - _colors[_colorIndex].b) < eps &&
+                        Mathf.Abs(selectableComponent.SelectFrameColor.a - _colors[_colorIndex].a) < eps
+                       )
                     {
                         selectableComponent.IsSelected = false;
                     }
@@ -118,7 +111,11 @@ namespace Graph3DVisualizer.PlayerInputControls
             }
         }
 
-        public void SetupParams (SelectItemToolParams parameters) => _colors = parameters.Colors;
+        public void SetupParams (SelectItemToolParams parameters)
+        {
+            (this as ICustomizable<ToolParams>).SetupParams(parameters);
+            _colors = parameters.Colors;
+        }
     }
 
     /// <summary>
@@ -126,10 +123,14 @@ namespace Graph3DVisualizer.PlayerInputControls
     /// </summary>
     [Serializable]
     [YuzuAll]
-    public class SelectItemToolParams : AbstractToolParams
+    public class SelectItemToolParams : ToolParams
     {
         public IReadOnlyList<Color> Colors { get; protected set; }
 
-        public SelectItemToolParams (IReadOnlyList<Color> colors) => Colors = colors ?? throw new ArgumentNullException(nameof(colors));
+        public SelectItemToolParams (IReadOnlyList<Color> colors, bool isVR = false, float rayCastRange = 1000) : base(isVR, rayCastRange)
+            => Colors = colors ?? throw new ArgumentNullException(nameof(colors));
+
+        public SelectItemToolParams (IReadOnlyList<Color> colors, ToolParams toolParams) : this(colors, toolParams.IsVR, toolParams.RayCastRange)
+        { }
     }
 }

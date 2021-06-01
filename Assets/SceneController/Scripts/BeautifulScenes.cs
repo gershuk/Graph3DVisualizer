@@ -161,7 +161,7 @@ namespace Graph3DVisualizer.SceneController
         {
             CreateGraph();
             var player = CreatePlayer();
-            player.SetupParams(new PlayerParameters(Vector3.zero, Vector3.zero, 20, 10, new[] { new ToolConfig(typeof(ClickTool), new ClickToolParams()) }));
+            player.SetupParams(new PlayerParameters(Vector3.zero, Vector3.zero, 20, 10, true, new[] { new ToolConfig(typeof(ClickTool), new ClickToolParams()) }));
         }
     }
 }

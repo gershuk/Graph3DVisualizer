@@ -99,7 +99,7 @@ namespace Graph3DVisualizer.SceneController
 
             var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath)).GetComponent<FlyPlayer>();
             Players.Add(player);
-            player.SetupParams(new PlayerParameters(new Vector3(100, 20, -50), Vector3.zero, 40, 20,
+            player.SetupParams(new PlayerParameters(new Vector3(100, 20, -50), Vector3.zero, 40, 20, true,
                 new ToolConfig[4]
                 {
                     new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)),

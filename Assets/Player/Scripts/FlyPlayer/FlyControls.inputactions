@@ -215,7 +215,7 @@
                     "name": "",
                     "id": "9244af59-d3c8-4ad8-b214-36b525d30136",
                     "path": "<ViveController>{RightHand}/trackpad/y",
-                    "interactions": "",
+                    "interactions": "Tap",
                     "processors": "",
                     "groups": "",
                     "action": "ScrollItemList",
