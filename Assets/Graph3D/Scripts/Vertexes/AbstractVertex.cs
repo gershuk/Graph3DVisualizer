@@ -37,12 +37,10 @@ namespace Graph3DVisualizer.Graph3D
     [CustomizableGrandType(typeof(AbstractVertexParameters))]
     public abstract class AbstractVertex : AbstractGraphObject, IVisibile, IDestructible, ICustomizable<AbstractVertexParameters>
     {
+        private float weight = 10;
         protected List<Link> _incomingLinks = new List<Link>();
-
         protected List<Link> _outgoingLinks = new List<Link>();
-
         protected Transform _transform;
-
         protected bool _visible = true;
 
         public abstract event Action<UnityEngine.Object> Destroyed;
@@ -50,12 +48,10 @@ namespace Graph3DVisualizer.Graph3D
         public abstract event Action<bool, UnityEngine.Object> VisibleChanged;
 
         public IReadOnlyList<Link> IncomingLinks => _incomingLinks;
-
         public abstract MovementComponent MovementComponent { get; protected set; }
-
         public IReadOnlyList<Link> OutgoingLinks => _outgoingLinks;
-
         public abstract bool Visibility { get; set; }
+        public virtual float Weight { get => weight; set => weight = value; }
 
         private TEdge CreateEdge<TEdge, TParameters> (TParameters parameters, AbstractVertex toVertex) where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
@@ -107,7 +103,7 @@ namespace Graph3DVisualizer.Graph3D
             {
                 if (link.AdjacentVertex == toVertex && link.Edge.GetType() == edgeType)
                 {
-                    throw new Exception("Link already exist");
+                    throw new LinkAlreadyExistException($"Link {Id} -> {toVertex.Id} already exist exception");
                 }
             }
         }
@@ -215,6 +211,13 @@ namespace Graph3DVisualizer.Graph3D
         {
             AdjacentVertex = adjacentVertex != null ? adjacentVertex : throw new ArgumentNullException(nameof(adjacentVertex));
             Edge = edge != null ? edge : throw new ArgumentNullException(nameof(edge));
+        }
+    }
+
+    public class LinkAlreadyExistException : Exception
+    {
+        public LinkAlreadyExistException (string message) : base(message)
+        {
         }
     }
 

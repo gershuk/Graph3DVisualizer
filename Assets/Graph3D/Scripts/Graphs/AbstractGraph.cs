@@ -130,40 +130,68 @@ namespace Graph3DVisualizer.Graph3D
 
         public abstract int VertexesCount { get; }
 
-        private IEnumerator ForceBasedLayoutCoroutine ()
+        private IEnumerator ForceBasedLayoutCoroutine (int maxIterationCount)
         {
-            _isChanging = true;
-            const float eps = 1E-1f;
-            const float speed = 5E-1f;
-            var list = new List<(AbstractVertex abstractVertex, Vector3 force)>();
-            var vertexMustMove = false;
-            while (!vertexMustMove)
+            if (_isChanging)
+                yield break;
+
+            const float maxSpeed = 1e5F;
+            const int maxCounter = 400;
+            const float eps = 0.1f;
+            var vertexesMustMove = true;
+            var vertexes = GetVertexes();
+            var speeds = new Vector3[vertexes.Count];
+            var iterationCounter = 0;
+
+            static void CalcForce (AbstractVertex vertex, ref Vector3 speed)
             {
-                vertexMustMove = true;
-                foreach (var vertex in GetVertexes())
-                {
-                    var sumForce = Vector3.zero;
+                var sumForce = Vector3.zero;
 
-                    foreach (var link in vertex.IncomingLinks.Concat(vertex.OutgoingLinks))
-                    {
-                        var dir = link.AdjacentVertex.transform.position - vertex.transform.position;
-                        sumForce += (dir.magnitude - link.Edge.SpringParameters.Length) * link.Edge.SpringParameters.StiffnessCoefficient * dir.normalized;
-                    }
-
-                    if (sumForce.magnitude > eps)
-                    {
-                        list.Add((vertex, sumForce));
-                        vertexMustMove = false;
-                    }
-                }
-                foreach (var (veretx, force) in list)
+                foreach (var link in vertex.IncomingLinks.Concat(vertex.OutgoingLinks))
                 {
-                    veretx.MovementComponent.GlobalCoordinates += force * speed * Time.deltaTime;
+                    var dir = link.AdjacentVertex.transform.position - vertex.transform.position;
+                    sumForce += (dir.magnitude - link.Edge.SpringParameters.Length) * link.Edge.SpringParameters.StiffnessCoefficient * dir.normalized;
                 }
-                list.Clear();
-                yield return null;
+
+                speed += sumForce / vertex.Weight * Time.deltaTime;
+
+                if (speed.magnitude > maxSpeed)
+                    speed = speed.normalized * maxSpeed;
             }
-            _isChanging = false;
+
+            _isChanging = true;
+            try
+            {
+                while (vertexesMustMove && iterationCounter < maxIterationCount)
+                {
+                    ++iterationCounter;
+                    vertexesMustMove = false;
+                    for (var i = 0; i < vertexes.Count; ++i)
+                    {
+                        CalcForce(vertexes[i], ref speeds[i]);
+                        if (i != 0 && i % maxCounter == 0)
+                            yield return null;
+                    }
+
+                    for (var j = 0; j < vertexes.Count; ++j)
+                    {
+                        if (speeds[j].magnitude > eps)
+                        {
+                            vertexes[j].MovementComponent.GlobalCoordinates += speeds[j] * Time.deltaTime;
+                            speeds[j] = Vector3.zero;
+                            vertexesMustMove = true;
+                        }
+
+                        if (j != 0 && j % maxCounter == 0)
+                            yield return null;
+                    }
+                    yield return null;
+                }
+            }
+            finally
+            {
+                _isChanging = false;
+            }
         }
 
         public abstract bool ContainsVertex (string id);
@@ -223,12 +251,72 @@ namespace Graph3DVisualizer.Graph3D
 
         public abstract AbstractVertex SpawnVertex (Type vertexType, AbstractVertexParameters parameters);
 
-        [ContextMenu("ForceBasedLayout")]
-        public void StartForceBasedLayout ()
+        [ContextMenu("SpectralLayout")]
+        public void SpectralLayout ()
+        {
+            if (_isChanging)
+                return;
+            _isChanging = true;
+            try
+            {
+                var vertexes = GetVertexes();
+                var idToIndexDictionary = new Dictionary<string, int>(vertexes.Count);
+                for (var i = 0; i < vertexes.Count; i++)
+                {
+                    var vertex = vertexes[i];
+                    idToIndexDictionary[vertex.Id] = i;
+                }
+                var matrix = new alglib.complex[vertexes.Count, vertexes.Count];
+                for (var i = 0; i < vertexes.Count; i++)
+                {
+                    var vertex = vertexes[i];
+                    var adjVertexSet = new HashSet<AbstractVertex>(vertex.IncomingLinks.Concat(vertex.OutgoingLinks).Select(l => l.AdjacentVertex));
+                    matrix[i, i] = adjVertexSet.Count;
+                    foreach (var adjVeretex in adjVertexSet)
+                    {
+                        matrix[i, idToIndexDictionary[adjVeretex.Id]] = -1;
+                        matrix[idToIndexDictionary[adjVeretex.Id], i] = -1;
+                    }
+                }
+
+                //for (var i = 0; i < vertexes.Count; ++i)
+                //{
+                //    var s = "";
+                //    for (var j = 0; j < vertexes.Count; ++j)
+                //    {
+                //        s += matrix[i, j].x + " ";
+                //    }
+                //    Debug.LogWarning(s);
+                //}
+
+                alglib.hmatrixevd(matrix, vertexes.Count, 1, true, out var d, out var z);
+                //var t = "";
+                //foreach (var l in d)
+                //{
+                //    t += l.ToString() + " ";
+                //}
+                //Debug.LogWarning(t);
+
+                var scale = vertexes.Count * vertexes.Count;
+                for (var i = 0; i < vertexes.Count; ++i)
+                {
+                    vertexes[i].MovementComponent.GlobalCoordinates = new Vector3((float) (z[i, vertexes.Count - 1].x * scale), (float) (z[i, vertexes.Count - 2].x * scale), (float) (z[i, vertexes.Count - 3].x * scale));
+                }
+            }
+            finally
+            {
+                _isChanging = false;
+            }
+        }
+
+        public void StartForceBasedLayout (int maxIterationCount = 1000)
         {
             if (!_isChanging)
-                StartCoroutine(ForceBasedLayoutCoroutine());
+                StartCoroutine(ForceBasedLayoutCoroutine(maxIterationCount));
         }
+
+        [ContextMenu("ForceBasedLayout")]
+        public void StartFroceBaseFromMenu () => StartForceBasedLayout();
     }
 
     /// <summary>

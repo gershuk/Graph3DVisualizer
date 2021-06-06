@@ -108,11 +108,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             _lineRender.startWidth = _width;
         }
 
-        private void LateUpdate ()
-        {
-            Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, Range);
-            //_lineRender.SetPosition(1, hit.transform == null ? Vector3.forward * Range : Vector3.forward * hit.distance);
-        }
+        private void LateUpdate () => Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, Range);//_lineRender.SetPosition(1, hit.transform == null ? Vector3.forward * Range : Vector3.forward * hit.distance);
     }
 
     public enum LaserState

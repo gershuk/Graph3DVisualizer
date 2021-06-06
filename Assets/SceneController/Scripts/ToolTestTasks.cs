@@ -1,3 +1,19 @@
+// This file is part of Graph3DVisualizer.
+// Copyright © Gershuk Vladislav 2021.
+//
+// Graph3DVisualizer is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Graph3DVisualizer is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY, without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+
 using System;
 using System.Collections.Generic;
 
@@ -26,9 +42,11 @@ namespace Graph3DVisualizer.SceneController
 
         public override List<Verdict> GetResult ()
         {
-            var verdicts = new List<Verdict>(4);
-            verdicts.Add(new Verdict($"Нажатий на вершину>0 == {_clickCount}", _clickCount > 0 ? VerdictStatus.Correct : VerdictStatus.Incorrect));
-            verdicts.Add(new Verdict($"Вершина выбрана", _selectableVertex.IsSelected ? VerdictStatus.Correct : VerdictStatus.Incorrect));
+            var verdicts = new List<Verdict>(4)
+            {
+                new Verdict($"Нажатий на вершину>0 == {_clickCount}", _clickCount > 0 ? VerdictStatus.Correct : VerdictStatus.Incorrect),
+                new Verdict($"Вершина выбрана", _selectableVertex.IsSelected ? VerdictStatus.Correct : VerdictStatus.Incorrect)
+            };
 
             var c = false;
 
@@ -50,7 +68,7 @@ namespace Graph3DVisualizer.SceneController
         public override void InitTask ()
         {
             var graph = new GameObject("Graph");
-            var graphControler = graph.AddComponent<Graph>();
+            var graphControler = graph.AddComponent<GraphForBillboardVertexes>();
             Graphs.Add(graphControler);
             graphControler.SetupParams(new GraphParameters(new Vector3(0, -20), "Test"));
 

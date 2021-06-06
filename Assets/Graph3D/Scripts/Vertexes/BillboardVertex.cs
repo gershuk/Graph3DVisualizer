@@ -38,10 +38,15 @@ namespace Graph3DVisualizer.Graph3D
     [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(SphereCollider))]
+    [CustomizableGrandType(typeof(BillboardVertexParameters))]
     public class BillboardVertex : AbstractVertex, ICustomizable<BillboardVertexParameters>
     {
         protected BillboardController _billboardControler;
+
         protected SphereCollider _sphereCollider;
+
+        [SerializeField]
+        public Texture2D texture2D;
 
         public override event Action<UnityEngine.Object>? Destroyed;
 

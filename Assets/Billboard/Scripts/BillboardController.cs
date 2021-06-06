@@ -34,8 +34,13 @@ namespace Graph3DVisualizer.Billboards
     public class BillboardController : MonoBehaviour, IVisibile
     {
         private readonly Dictionary<BillboardId, Billboard> _billboards = new Dictionary<BillboardId, Billboard>();
+
         private MeshFilter _meshFilter;
+
         private MeshRenderer _render;
+
+        [SerializeField]
+        protected static Mesh _billboardMesh;
 
         public event Action<bool, UnityEngine.Object>? VisibleChanged;
 
@@ -70,9 +75,13 @@ namespace Graph3DVisualizer.Billboards
 
         private void Awake ()
         {
+            _billboardMesh ??= MeshCreater.CreateQuadMesh();
             _meshFilter = GetComponent<MeshFilter>();
-            _render = GetComponent<MeshRenderer>();
+            _meshFilter.sharedMesh = _billboardMesh;
+            _billboardMesh = _meshFilter.sharedMesh;
 
+            _render = GetComponent<MeshRenderer>();
+            _render.sharedMaterials = new Material[0];
             var bounds = _meshFilter.mesh.bounds;
             bounds.size = new Vector3(0.5f, 0.5f, 0.5f);
             _meshFilter.mesh.bounds = bounds;

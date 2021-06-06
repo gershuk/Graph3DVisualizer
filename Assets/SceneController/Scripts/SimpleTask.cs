@@ -34,14 +34,13 @@ namespace Graph3DVisualizer.SceneController
     /// </summary>
     public class SimpleTask : VisualTaskController
     {
-        private const string _fontPath = "Font/CustomFontDroidSans-Bold";
         private const string _mainTexture = "Textures/Default";
         private const string _selectFrameTexture = "Textures/SelectFrame";
 
-        public Graph CreateGraph ()
+        public GraphForBillboardVertexes CreateGraph ()
         {
             var graph = new GameObject("Graph");
-            var graphControler = graph.AddComponent<Graph>();
+            var graphControler = graph.AddComponent<GraphForBillboardVertexes>();
             Graphs.Add(graphControler);
             graphControler.SetupParams(new GraphParameters(new Vector3(0, -20), "Test"));
 

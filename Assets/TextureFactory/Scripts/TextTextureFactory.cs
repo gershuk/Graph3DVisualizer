@@ -38,13 +38,14 @@ namespace Graph3DVisualizer.TextureFactory
 
         private readonly Texture2D[] _alphabet;
         private readonly Font _customFont;
+        private readonly int _lineHeight;
 
         public TextTextureFactory (Font customFont, int ASCIIOffset)
         {
             _customFont = customFont;
             var fontTexture = (Texture2D) _customFont.material.mainTexture;
 
-            _alphabet = new Texture2D[256];
+            _alphabet = new Texture2D[3000];
 
             var maxWidth = 0;
             var maxHeight = 0;
@@ -172,6 +173,8 @@ namespace Graph3DVisualizer.TextureFactory
             //set whitespace
             _alphabet[32] = new Texture2D(maxWidth, maxHeight);
             _alphabet[32].SetPixels32(new Color32[maxWidth * maxHeight]);
+
+            _lineHeight = Math.Max(maxHeight, _customFont.lineHeight);
         }
 
         public Texture2D MakeTextTexture (string text, bool isTransparentBackground = false)
@@ -190,9 +193,9 @@ namespace Graph3DVisualizer.TextureFactory
 
                 if (character == '\n' || i == text.Length - 1)
                 {
-                    textureHeight += _customFont.lineHeight;
+                    textureHeight += _lineHeight;
                     textureWidth = Mathf.Max(textureWidth, lineWidth);
-                    linesSizes.Add(new Vector2Int(lineWidth, _customFont.lineHeight));
+                    linesSizes.Add(new Vector2Int(lineWidth, _lineHeight));
                     lineWidth = 0;
                 }
             }

@@ -48,10 +48,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         private int _colorIndex;
         private IReadOnlyList<Color> _colors = new List<Color>(1) { Color.red };
 
-        private void Awake ()
-        {
-            _colorIndex = 0;
-        }
+        private void Awake () => _colorIndex = 0;
 
         private void CallChangeColor (InputAction.CallbackContext obj) => ChangeColor(Math.Sign(Mathf.RoundToInt(obj.ReadValue<float>())));
 

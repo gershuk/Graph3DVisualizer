@@ -115,7 +115,7 @@ namespace Graph3DVisualizer.Graph3D
             }
         }
 
-        public SpringParameters SpringParameters { get; protected set; } = new SpringParameters(1, 40);
+        public SpringParameters SpringParameters { get; protected set; }
 
         public virtual float TargetOffsetDist
         {

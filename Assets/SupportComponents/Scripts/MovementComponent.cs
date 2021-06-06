@@ -85,20 +85,6 @@ namespace Graph3DVisualizer.SupportComponents
             }
         }
 
-        public Vector3 GlobalEulerAngles
-        {
-            get => _eulerAngles;
-            set
-            {
-                if (_eulerAngles != value)
-                {
-                    _eulerAngles = value;
-                    _transform.eulerAngles = _eulerAngles;
-                    ObjectEulerAnglesChanged?.Invoke(value, this);
-                }
-            }
-        }
-
         public List<(float deltaTimeFromStart, float multiplier)> Gears
         {
             get => _gears;
@@ -122,6 +108,20 @@ namespace Graph3DVisualizer.SupportComponents
                 }
             }
             get => _transform.position;
+        }
+
+        public Vector3 GlobalEulerAngles
+        {
+            get => _eulerAngles;
+            set
+            {
+                if (_eulerAngles != value)
+                {
+                    _eulerAngles = value;
+                    _transform.eulerAngles = _eulerAngles;
+                    ObjectEulerAnglesChanged?.Invoke(value, this);
+                }
+            }
         }
 
         public Vector3 LocalCoordinates

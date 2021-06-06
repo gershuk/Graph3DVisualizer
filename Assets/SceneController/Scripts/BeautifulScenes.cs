@@ -1,23 +1,46 @@
+// This file is part of Graph3DVisualizer.
+// Copyright © Gershuk Vladislav 2021.
+//
+// Graph3DVisualizer is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Graph3DVisualizer is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY, without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+
 using Graph3DVisualizer.Billboards;
 using Graph3DVisualizer.Graph3D;
 using Graph3DVisualizer.GUI;
+using Graph3DVisualizer.LightGraphSerializer;
 using Graph3DVisualizer.PlayerInputControls;
 using Graph3DVisualizer.TextureFactory;
 
 using UnityEngine;
+
+#nullable enable
 
 namespace Graph3DVisualizer.SceneController
 {
     public class BeautifulScenes : AbstractSceneController
     {
         private const string _fontPath = "Font/CustomFontDroidSans-Bold";
+
         private const string _mainTexture = "Textures/Dot";
 
-        public Graph CreateGraph ()
+        [SerializeField]
+        private Texture2D _texure2D;
+
+        public GraphForBillboardVertexes CreateGraph ()
         {
             var graph = new GameObject("Graph");
-            var graphControler = graph.AddComponent<Graph>();
-            graph.AddComponent<Button3D>().Action = (g) => graphControler.StartForceBasedLayout();
+            var graphControler = graph.AddComponent<GraphForBillboardVertexes>();
+            graph.AddComponent<Button3D>().Action = (g) => graphControler.StartForceBasedLayout(1000);
             Graphs.Add(graphControler);
             graphControler.SetupParams(new GraphParameters(new Vector3(-69, -15, -30), "Click me"));
 
@@ -34,8 +57,6 @@ namespace Graph3DVisualizer.SceneController
 
             var stretchableEdgeMaterialParameters = new StretchableEdgeMaterialParameters(Color.white, true);
             var edgeParameters = new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(Color.yellow, true), new SpringParameters(1, 5));
-
-            BillboardVertex? vertex = null;
             var coordinates = new Vector3[26] { new Vector3(-91.62799f, -2.3942585f, -43.161083f),
                                                 new Vector3(-91.138885f, -3.3022366f, -17.54464f),
                                                 new Vector3(-68.31055f, -9.711845f, -29.303394f),
@@ -159,6 +180,76 @@ namespace Graph3DVisualizer.SceneController
 
         public override void InitTask ()
         {
+            var graph = new GameObject("Graph");
+            var graphControler = graph.AddComponent<GraphForBillboardVertexes>();
+            var graphInfo = new GraphSerializationInfo()
+            {
+                VertexInfos = new[]
+                {
+                    new VertexSerializationInfo(new Vector3(355.5f,186), 10,"Москва",Color.yellow,string.Empty),
+                    new VertexSerializationInfo(new Vector3(281.5f,113), 10,"Тверь",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(163.5f,20), 10,"Великий Новгород",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(133.5f,-77), 10,"Санкт-Петербург",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(444.5f,88), 10,"Ярославль",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(450.5f,-15), 10,"Вологда",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(497.5f,211), 10,"Владимир",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(517.5f,136), 10,"Иваново",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(657.5f,166), 10,"Нижний Новгород",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(819.5f,212), 10,"Чебоксары",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(957.5f,199), 10,"Казань",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(867.5f,321), 10,"Ульяновск",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(967.5f,417), 10,"Самара",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(737.5f,363), 10,"Пенза",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(693.5f,258), 10,"Саранск",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(702.5f,471), 10,"Саратов",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(608.5f,626), 10,"Волгоград",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(457.5f,446), 10,"Воронеж",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(247.5f,467), 10,"Курск",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(274.5f,343), 10,"Орёл",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(320.5f,258), 10,"Тула",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(526.5f,291), 10,"Резань",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(222.5f,249), 10,"Калуга",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(121.5f,336), 10,"Брянск",Color.white,string.Empty),
+                    new VertexSerializationInfo(new Vector3(89.5f,203), 10,"Смоленск",Color.white,string.Empty),
+                },
+                EdgeInfos = new[]
+                {
+                    new EdgeSerializationInfo(0,1,156,true, Color.white),
+                    new EdgeSerializationInfo(1,2,323,true, Color.white),
+                    new EdgeSerializationInfo(2,3,151,true, Color.white),
+                    new EdgeSerializationInfo(0,4,246,true, Color.white),
+                    new EdgeSerializationInfo(4,5,174,true, Color.white),
+                    new EdgeSerializationInfo(5,3,545,true, Color.white),
+                    new EdgeSerializationInfo(0,6,184,true, Color.white),
+                    new EdgeSerializationInfo(6,7,83,true, Color.white),
+                    new EdgeSerializationInfo(7,4,100,true, Color.white),
+                    new EdgeSerializationInfo(6,8,224,true, Color.white),
+                    new EdgeSerializationInfo(8,9,209,true, Color.white),
+                    new EdgeSerializationInfo(9,10,116,true, Color.white),
+                    new EdgeSerializationInfo(10,11,180,true, Color.white),
+                    new EdgeSerializationInfo(11,12,157,true, Color.white),
+                    new EdgeSerializationInfo(11,13,251,true, Color.white),
+                    new EdgeSerializationInfo(13,12,342,true, Color.white),
+                    new EdgeSerializationInfo(13,15,208,true, Color.white),
+                    new EdgeSerializationInfo(15,16,335,true, Color.white),
+                    new EdgeSerializationInfo(15,17,462,true, Color.white),
+                    new EdgeSerializationInfo(13,21,382,true, Color.white),
+                    new EdgeSerializationInfo(13,14,111,true, Color.white),
+                    new EdgeSerializationInfo(14,8,217,true, Color.white),
+                    new EdgeSerializationInfo(21,6,192,true, Color.white),
+                    new EdgeSerializationInfo(17,0,462,true, Color.white),
+                    new EdgeSerializationInfo(17,18,212,true, Color.white),
+                    new EdgeSerializationInfo(18,19,135,true, Color.white),
+                    new EdgeSerializationInfo(19,20,174,true, Color.white),
+                    new EdgeSerializationInfo(20,0,171,true, Color.white),
+                    new EdgeSerializationInfo(22,0,157,true, Color.white),
+                    new EdgeSerializationInfo(23,22,171,true, Color.white),
+                    new EdgeSerializationInfo(24,0,363,true, Color.white),
+                },
+            };
+            var lightGenerator = new LightGraphGenerator(graphInfo);
+            lightGenerator.Generate(graphControler);
+
             CreateGraph();
             var player = CreatePlayer();
             player.SetupParams(new PlayerParameters(Vector3.zero, Vector3.zero, 20, 10, true, new[] { new ToolConfig(typeof(ClickTool), new ClickToolParams()) }));

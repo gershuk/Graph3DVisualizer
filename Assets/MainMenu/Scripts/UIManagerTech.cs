@@ -1,18 +1,18 @@
-﻿// This file is part of Grpah3DVisualizer.
-// Copyright © Gershuk Vladislav 2020.
+﻿// This file is part of Graph3DVisualizer.
+// Copyright © Gershuk Vladislav 2021.
 //
-// Grpah3DVisualizer is free software: you can redistribute it and/or modify
+// Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Grpah3DVisualizer is distributed in the hope that it will be useful,
+// Graph3DVisualizer is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY, without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Grpah3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
 using System;
 using System.Collections;
@@ -35,7 +35,7 @@ namespace Graph3DVisualizer.MainMenu
 
         private readonly string _delDecryptedPass;
 
-        private readonly String[] _delLines;
+        private readonly string[] _delLines;
 
         private readonly string _loadSceneName;
 
@@ -49,7 +49,7 @@ namespace Graph3DVisualizer.MainMenu
 
         private string _form;
 
-        private String[] _lines;
+        private string[] _lines;
 
         private string _logPasswordString;
 
@@ -251,10 +251,7 @@ namespace Graph3DVisualizer.MainMenu
         }
 
         // Converts the resolution into a string form that is then used in the dropdown list as the options
-        private string ResToString (Resolution res)
-        {
-            return res.width + " x " + res.height;
-        }
+        private string ResToString (Resolution res) => res.width + " x " + res.height;
 
         private void Start ()
         {
@@ -720,10 +717,7 @@ namespace Graph3DVisualizer.MainMenu
         }
 
         // called when returned back to the database menu, confirmation message displays temporarily
-        public void MessageDisplayDatabase (string message, Color col)
-        {
-            StartCoroutine(MessageDisplay(message, col));
-        }
+        public void MessageDisplayDatabase (string message, Color col) => StartCoroutine(MessageDisplay(message, col));
 
         public void MoveToFront (GameObject currentObj)
         {
@@ -760,10 +754,7 @@ namespace Graph3DVisualizer.MainMenu
 
         // When accepting the QUIT question, the application will close
         // (Only works in Executable. Disabled in Editor)
-        public void Quit ()
-        {
-            Application.Quit();
-        }
+        public void Quit () => Application.Quit();
 
         public void SetTint ()
         {

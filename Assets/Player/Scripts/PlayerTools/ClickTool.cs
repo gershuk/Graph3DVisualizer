@@ -46,11 +46,9 @@ namespace Graph3DVisualizer.PlayerInputControls
         private AbstractClickableObject? _clickableObject;
         private GameObject _owner;
 
-        private void Awake ()
-        {
+        private void Awake () =>
             //due to problems with serialization, you have to search for it from inside
             _owner = transform.parent.gameObject;
-        }
 
         private void CallClick (InputAction.CallbackContext obj) => Click();
 

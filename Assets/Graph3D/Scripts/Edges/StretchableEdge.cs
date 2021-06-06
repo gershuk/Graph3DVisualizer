@@ -29,15 +29,15 @@ namespace Graph3DVisualizer.Graph3D
 {
     [RequireComponent(typeof(LineRenderer))]
     [CustomizableGrandType(typeof(StretchableEdgeParameters))]
-    public sealed class StretchableEdge : AbstractEdge, ICustomizable<StretchableEdgeParameters>
+    public class StretchableEdge : AbstractEdge, ICustomizable<StretchableEdgeParameters>
     {
-        private const string _edgeShaderPath = "Custom/MonoColorSurface";
-        private const string _shaderColor = "_Color";
+        protected const string _edgeShaderPath = "Custom/MonoColorSurface";
+        protected const string _shaderColor = "_Color";
 
         [SerializeField]
-        private float _headLength;
+        protected float _headLength;
 
-        private LineRenderer _lineRenderer;
+        protected LineRenderer _lineRenderer;
 
         public static Shader Shader { get; set; } = Shader.Find(_edgeShaderPath);
 
@@ -66,28 +66,16 @@ namespace Graph3DVisualizer.Graph3D
             set => base.Width = value;
         }
 
-        private void Awake ()
+        protected virtual void Awake ()
         {
             _transform = GetComponent<Transform>();
             _lineRenderer = GetComponent<LineRenderer>();
-            //_material = new Material(_shader);
-            //_material.enableInstancing = true;
-            //Color = Color.yellow;
-
-            //_lineRenderer = GetComponent<LineRenderer>();
-            //if (_lineRenderer == null)
-            //    _lineRenderer = gameObject.AddComponent<LineRenderer>();
-            //_lineRenderer.sharedMaterial = _material;
-            //_material = _lineRenderer.sharedMaterial;
-            //_lineRenderer.positionCount = 2;
-            //_lineRenderer.useWorldSpace = false;
-
             _sourceOffsetDist = 1f;
             _targetOffsetDist = 1f;
             Type = EdgeType.Unidirectional;
         }
 
-        private void OnDestroy () => UnsubscribeOnVerticesEvents();
+        protected void OnDestroy () => UnsubscribeOnVerticesEvents();
 
         public new StretchableEdgeParameters DownloadParams (Dictionary<Guid, object> writeCache)
         {

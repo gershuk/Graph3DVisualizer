@@ -38,13 +38,9 @@ namespace Graph3DVisualizer.Graph3D
     [RequireComponent(typeof(MovementComponent))]
     [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(MeshRenderer))]
-    public class Graph : AbstractGraph
+    public class GraphForBillboardVertexes : AbstractGraph
     {
         private MovementComponent _movementComponent;
-
-        [SerializeField]
-        protected static Mesh _vertexMesh;
-
         protected readonly Dictionary<string, AbstractVertex> _vertexes = new Dictionary<string, AbstractVertex>();
         protected BillboardController _billboardController;
         protected BillboardId _imageId;
@@ -83,60 +79,11 @@ namespace Graph3DVisualizer.Graph3D
 
         public override int VertexesCount => _vertexes.Count;
 
-        private static Mesh CreateQuadMesh ()
-        {
-            const float width = 0.5f;
-            const float height = 0.5f;
-            var mesh = new Mesh();
-
-            var vertices = new Vector3[4]
-            {
-            new Vector3(-width, -height, 0),
-            new Vector3(width, -height, 0),
-            new Vector3(-width, height, 0),
-            new Vector3(width, height, 0)
-            };
-            mesh.vertices = vertices;
-
-            var tris = new int[6]
-            {
-            // lower left triangle
-            0, 2, 1,
-            // upper right triangle
-            2, 3, 1
-            };
-            mesh.triangles = tris;
-
-            var normals = new Vector3[4]
-            {
-            -Vector3.forward,
-            -Vector3.forward,
-            -Vector3.forward,
-            -Vector3.forward
-            };
-            mesh.normals = normals;
-
-            var uv = new Vector2[4]
-            {
-            new Vector2(0, 0),
-            new Vector2(1, 0),
-            new Vector2(0, 1),
-            new Vector2(1, 1)
-            };
-            mesh.uv = uv;
-
-            return mesh;
-        }
-
         private void Awake ()
         {
             MovementComponent = GetComponent<MovementComponent>();
-            _vertexMesh ??= CreateQuadMesh();
             _transform = GetComponent<Transform>();
             _meshFilter = GetComponent<MeshFilter>();
-            _meshFilter.sharedMesh = _vertexMesh;
-            GetComponent<MeshRenderer>().sharedMaterials = new Material[0];
-            _vertexMesh = _meshFilter.sharedMesh;
             _billboardController = GetComponent<BillboardController>();
             _sphereCollider = GetComponent<SphereCollider>();
             _textTextureFactory = new TextTextureFactory(FontsGenerator.GetOrCreateFont("Arial", 32), 0);
@@ -146,22 +93,13 @@ namespace Graph3DVisualizer.Graph3D
         {
             var vertex = new GameObject("Vertex");
             vertex.transform.parent = _transform;
-
             var meshRender = vertex.AddComponent<MeshRenderer>();
-            meshRender.sharedMaterials = new Material[0];
             meshRender.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             meshRender.receiveShadows = false;
-            //meshRender.receiveGI = ReceiveGI.LightProbes;
             meshRender.lightProbeUsage = UnityEngine.Rendering.LightProbeUsage.Off;
             meshRender.reflectionProbeUsage = UnityEngine.Rendering.ReflectionProbeUsage.Off;
             meshRender.motionVectorGenerationMode = MotionVectorGenerationMode.Object;
             meshRender.allowOcclusionWhenDynamic = true;
-
-            var meshFilter = vertex.AddComponent<MeshFilter>();
-
-            meshFilter.sharedMesh = _vertexMesh;
-            _vertexMesh = meshFilter.sharedMesh;
-
             return vertex;
         }
 

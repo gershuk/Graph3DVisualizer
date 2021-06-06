@@ -33,6 +33,8 @@ namespace Graph3DVisualizer.TextureFactory
             var stringBuilder = new StringBuilder(256);
             for (var i = 32; i < 125; ++i)
                 stringBuilder.Append((char) i);
+            for (var i = 1040; i < 1106; ++i)
+                stringBuilder.Append((char) i);
             _alphabet = stringBuilder.ToString();
             _fonts = new Dictionary<(string name, int size), Font>(6);
         }

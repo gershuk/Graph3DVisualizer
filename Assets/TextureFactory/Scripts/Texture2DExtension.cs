@@ -18,6 +18,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 using UnityEngine;
 
@@ -55,6 +56,19 @@ namespace Graph3DVisualizer.TextureFactory
             return newTexture;
         }
 
+        //ToDo : replace all methods of reading a texture from a file with this one
+        public static Texture2D ReadTexture (string path)
+        {
+            var texture2D = new Texture2D(1, 1) { name = path };
+            using (var fs = new FileStream(path, FileMode.Open))
+            {
+                var bytes = new byte[fs.Length];
+                fs.Read(bytes, 0, bytes.Length);
+                texture2D.LoadImage(bytes);
+            }
+            return texture2D;
+        }
+
         public static Texture2D ResizeTexture (Texture2D texture, int textureWidth, int textureHeight)
         {
             var renderTexture = RenderTexture.GetTemporary(textureWidth, textureHeight);
@@ -89,8 +103,11 @@ namespace Graph3DVisualizer.TextureFactory
         {
             var result = new Texture2D(originTexture.height, originTexture.width);
             for (var i = 0; i < originTexture.width; ++i)
+            {
                 for (var j = 0; j < originTexture.height; ++j)
                     result.SetPixel(j, i, originTexture.GetPixel(i, originTexture.height - 1 - j));
+            }
+
             result.Apply();
             return result;
         }
@@ -99,8 +116,11 @@ namespace Graph3DVisualizer.TextureFactory
         {
             var result = new Texture2D(originTexture.height, originTexture.width);
             for (var i = 0; i < originTexture.width; ++i)
+            {
                 for (var j = 0; j < originTexture.height; ++j)
                     result.SetPixel(j, i, originTexture.GetPixel(originTexture.width - 1 - i, j));
+            }
+
             result.Apply();
             return result;
         }

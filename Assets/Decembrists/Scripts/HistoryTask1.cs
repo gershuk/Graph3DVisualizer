@@ -37,7 +37,7 @@ namespace Graph3DVisualizer.SceneController
         private const string _notDecembristsPath = "Textures/NotDecembrists";
         private const string _selectFramePath = "Textures/SelectFrame";
 
-        private DecembristVertex AddPeople (TextTextureFactory textTextureFactory, UnityEngine.Object man, Graph graphController, Texture2D selectFrame, bool isDec)
+        private DecembristVertex AddPeople (TextTextureFactory textTextureFactory, UnityEngine.Object man, GraphForBillboardVertexes graphController, Texture2D selectFrame, bool isDec)
         {
             var picked = (Texture2D) man;
             var name = textTextureFactory.MakeTextTexture(picked.name.Replace(',', '\n').Replace(' ', '\n').Replace("\n\n", "\n"), true);
@@ -65,10 +65,10 @@ namespace Graph3DVisualizer.SceneController
             return vertex;
         }
 
-        public Graph CreateGraph ()
+        public GraphForBillboardVertexes CreateGraph ()
         {
             var graph = new GameObject("Graph");
-            var graphControler = graph.AddComponent<Graph>();
+            var graphControler = graph.AddComponent<GraphForBillboardVertexes>();
 
             var rand = new System.Random();
             var decembrists = Resources.LoadAll(_decembristsPath, typeof(Texture2D));
@@ -102,8 +102,8 @@ namespace Graph3DVisualizer.SceneController
 
         public override List<Verdict> GetResult ()
         {
-            var verdicts = new List<Verdict>(base.Graphs[0].GetComponent<Graph>().VertexesCount);
-            foreach (DecembristVertex vertex in base.Graphs[0].GetComponent<Graph>().GetVertexes())
+            var verdicts = new List<Verdict>(base.Graphs[0].GetComponent<GraphForBillboardVertexes>().VertexesCount);
+            foreach (DecembristVertex vertex in base.Graphs[0].GetComponent<GraphForBillboardVertexes>().GetVertexes())
             {
                 var type = vertex.IsDec ? "Декабрист" : "Не декабрист";
                 var act = vertex.IsSelected ? "выбрали" : "не выбрали";

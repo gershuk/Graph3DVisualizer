@@ -1,3 +1,19 @@
+// This file is part of Graph3DVisualizer.
+// Copyright © Gershuk Vladislav 2021.
+//
+// Graph3DVisualizer is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// Graph3DVisualizer is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY, without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
+
 using System;
 using System.Collections.Generic;
 
@@ -12,31 +28,166 @@ namespace Graph3DVisualizer.Graph3D
 {
     public abstract class AbstractGraphGenerator
     {
-        public abstract AbstractPlaceholder Placeholder { get; protected set; }
-
         public abstract void Generate (AbstractGraph abstractGraph);
+    }
+
+    public abstract class AbstractGraphGeneratorWithPlaceholder : AbstractGraphGenerator
+    {
+        public virtual AbstractPlaceholder Placeholder { get; protected set; }
     }
 
     public abstract class AbstractPlaceholder
     {
-        public abstract IEnumerable<Vector3> GetPosition (int count);
+        public abstract IEnumerable<Vector3> GetPosition ();
+    }
+
+    public class AdjacencyListBaseGenerator : AbstractGraphGeneratorWithPlaceholder
+    {
+        public struct AdjacencyInfo
+        {
+            public string FirstId;
+            public bool IsBidirectional;
+            public float Length;
+            public string SecondId;
+            public float StiffnessCoefficient;
+
+            public AdjacencyInfo (string firstId, string secondId, bool isBidirectional, float length = 20, float stiffnessCoefficient = 1)
+            {
+                FirstId = firstId;
+                SecondId = secondId;
+                IsBidirectional = isBidirectional;
+                Length = length;
+                StiffnessCoefficient = stiffnessCoefficient;
+            }
+
+            public static implicit operator (string firstId, string secondId, bool isBidirectional, float length, float stiffnessCoefficient) (AdjacencyInfo value) =>
+                (value.FirstId, value.SecondId, value.IsBidirectional, value.Length, value.StiffnessCoefficient);
+
+            public static implicit operator AdjacencyInfo ((string firstId, string secondId, bool isBidirectional, float length, float stiffnessCoefficient) value) =>
+                new AdjacencyInfo(value.firstId, value.secondId, value.isBidirectional, value.length, value.stiffnessCoefficient);
+
+            public void Deconstruct (out string firstId, out string secondId, out bool isBidirectional, out float length, out float stiffnessCoefficient)
+            {
+                firstId = FirstId;
+                secondId = SecondId;
+                isBidirectional = IsBidirectional;
+                length = Length;
+                stiffnessCoefficient = StiffnessCoefficient;
+            }
+
+            public override bool Equals (object? obj) => obj is AdjacencyInfo other &&
+                       FirstId == other.FirstId &&
+                       SecondId == other.SecondId &&
+                       IsBidirectional == other.IsBidirectional &&
+                       Length == other.Length &&
+                       StiffnessCoefficient == other.StiffnessCoefficient;
+
+            public override int GetHashCode ()
+            {
+                var hashCode = -1013726004;
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FirstId);
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(SecondId);
+                hashCode = hashCode * -1521134295 + IsBidirectional.GetHashCode();
+                hashCode = hashCode * -1521134295 + EqualityComparer<float>.Default.GetHashCode(Length);
+                hashCode = hashCode * -1521134295 + EqualityComparer<float>.Default.GetHashCode(StiffnessCoefficient);
+                return hashCode;
+            }
+        }
+
+        private const string _defaultTexture = "Textures/Dot";
+        public List<AdjacencyInfo> Edges { get; protected set; }
+        public string? MainImagePath { get; protected set; }
+
+        public AdjacencyListBaseGenerator (List<AdjacencyInfo> edges, AbstractPlaceholder abstractPlaceholder, string? mainImagePath = default)
+        {
+            Edges = edges ?? throw new ArgumentNullException(nameof(edges));
+            MainImagePath = mainImagePath;
+            Placeholder = abstractPlaceholder;
+        }
+
+        public override void Generate (AbstractGraph abstractGraph)
+        {
+            var customFont = FontsGenerator.GetOrCreateFont("Broadway", 64);
+            var textTextureFactory = new TextTextureFactory(customFont, 0);
+            var texture = string.IsNullOrEmpty(MainImagePath) ? Resources.Load<Texture2D>(_defaultTexture) : Texture2DExtension.ReadTexture(MainImagePath);
+            const float scale = 5;
+            var imageParameters = new BillboardParameters(texture, scale: Vector2.one * scale, useCache: true);
+            var posEn = Placeholder.GetPosition().GetEnumerator();
+
+            AbstractVertex getOrCreateVertex (string id)
+            {
+                //slow, but more reliable than using an exception
+                AbstractVertex abstractVertex;
+                if (!abstractGraph.ContainsVertex(id))
+                {
+                    posEn.MoveNext();
+                    var text = textTextureFactory.MakeTextTexture(id, true);
+                    var textParameters = new BillboardParameters(text, new Vector4(0, 4, 0, 1), new Vector2(scale / 2, text.height * 1.0f / text.width * scale / 2));
+                    abstractVertex = abstractGraph.SpawnVertex<BillboardVertex, BillboardVertexParameters>(new BillboardVertexParameters(new[] { imageParameters, textParameters }, posEn.Current, id: id));
+                }
+                else
+                {
+                    abstractVertex = abstractGraph.GetVertexById(id);
+                }
+
+                return abstractVertex;
+            }
+
+            foreach (var adjacencyInfo in Edges)
+            {
+                var firstVertex = getOrCreateVertex(adjacencyInfo.FirstId);
+                var secondVertex = getOrCreateVertex(adjacencyInfo.SecondId);
+                var materialParameters = new StretchableEdgeMaterialParameters(Color.white, true);
+                var edgeParameters = new StretchableEdgeParameters(materialParameters, new SpringParameters(adjacencyInfo.StiffnessCoefficient, adjacencyInfo.Length), 1, scale, scale, scale / 10);
+
+                try
+                {
+                    firstVertex.Link<StretchableEdge, StretchableEdgeParameters>(secondVertex, edgeParameters);
+                    if (adjacencyInfo.IsBidirectional)
+                        secondVertex.Link<StretchableEdge, StretchableEdgeParameters>(firstVertex, edgeParameters);
+                }
+                catch (LinkAlreadyExistException e)
+                {
+                    Debug.Log(e);
+                }
+            }
+        }
     }
 
     public class GridPlaceholder : AbstractPlaceholder
     {
+        public int Count;
         public uint Dist { get; protected set; }
         public Vector2Int GridDim { get; protected set; }
 
         public GridPlaceholder (Vector2Int gridDim, uint dist) => (GridDim, Dist) = (gridDim, dist);
 
-        public override IEnumerable<Vector3> GetPosition (int count)
+        public override IEnumerable<Vector3> GetPosition ()
         {
-            for (var i = 0; i < count; ++i)
+            for (var i = 0; i < Count; ++i)
                 yield return new Vector3(i % GridDim.x * Dist, i / GridDim.x % GridDim.y * Dist, i / (GridDim.x * GridDim.y) * Dist);
         }
     }
 
-    public class SimpleGenerator : AbstractGraphGenerator
+    public sealed class RandomPlaceholder : AbstractPlaceholder
+    {
+        private Vector3 _maxValue;
+        private Vector3 _minValue;
+
+        public RandomPlaceholder (Vector3 minValue, Vector3 maxValue) => (_minValue, _maxValue) = (minValue, maxValue);
+
+        public override IEnumerable<Vector3> GetPosition ()
+        {
+            while (true)
+            {
+                yield return new Vector3(UnityEngine.Random.Range(_minValue.x, _maxValue.x),
+                                         UnityEngine.Random.Range(_minValue.y, _maxValue.y),
+                                         UnityEngine.Random.Range(_minValue.z, _maxValue.z));
+            }
+        }
+    }
+
+    public class SimpleGenerator : AbstractGraphGeneratorWithPlaceholder
     {
         private const string _fontPath = "Font/CustomFontArial";
         private const string _selectFrameTexture = "Textures/SelectFrame";
@@ -44,7 +195,6 @@ namespace Graph3DVisualizer.Graph3D
         private static readonly TextTextureFactory _textTextureFactory = new TextTextureFactory(_customFont, 32);
 
         public List<(int firstVertex, int secondVertex, Color color)> Edges { get; protected set; }
-        public override AbstractPlaceholder Placeholder { get; protected set; }
         public List<(string text, Texture2D texture2D, string? id)> Vertexes { get; protected set; }
 
         public SimpleGenerator (List<(string text, Texture2D texture2D, string? id)> vertexes, List<(int firstVertex, int secondVertex, Color color)> edges, AbstractPlaceholder placeholder)
@@ -56,7 +206,7 @@ namespace Graph3DVisualizer.Graph3D
 
         public override void Generate (AbstractGraph graphControler)
         {
-            using var coordsEnum = Placeholder.GetPosition(Vertexes.Count).GetEnumerator();
+            using var coordsEnum = Placeholder.GetPosition().GetEnumerator();
             var createdVertexes = new SelectableVertex[Vertexes.Count];
 
             for (var i = 0; i < Vertexes.Count; ++i)
