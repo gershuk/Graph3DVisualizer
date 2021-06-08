@@ -287,9 +287,53 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1069762314554128, guid: 134ebeb3354803f4c91595589e21837d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1163101417373726, guid: 134ebeb3354803f4c91595589e21837d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1254755162620056, guid: 134ebeb3354803f4c91595589e21837d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1299562523921248, guid: 134ebeb3354803f4c91595589e21837d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1420586615030290, guid: 134ebeb3354803f4c91595589e21837d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1510957920998222, guid: 134ebeb3354803f4c91595589e21837d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610457988761502, guid: 134ebeb3354803f4c91595589e21837d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719659154078362, guid: 134ebeb3354803f4c91595589e21837d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739931938882984, guid: 134ebeb3354803f4c91595589e21837d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1803523754026214, guid: 134ebeb3354803f4c91595589e21837d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1835116622386160, guid: 134ebeb3354803f4c91595589e21837d, type: 3}
       propertyPath: m_Name
       value: SUI_Tech_Center_Simple_V3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1991771677870200, guid: 134ebeb3354803f4c91595589e21837d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224104747443282554, guid: 134ebeb3354803f4c91595589e21837d, type: 3}
       propertyPath: m_Pivot.x

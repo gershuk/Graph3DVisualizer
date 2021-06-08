@@ -43,7 +43,7 @@ namespace Graph3DVisualizer.TextureFactory
         public TextTextureFactory (Font customFont, int ASCIIOffset)
         {
             _customFont = customFont;
-            var fontTexture = (Texture2D) _customFont.material.mainTexture;
+            var fontTexture = Texture2DExtension.ResizeTexture((Texture2D) _customFont.material.mainTexture, _customFont.material.mainTexture.width, _customFont.material.mainTexture.height);
 
             _alphabet = new Texture2D[3000];
 
@@ -176,6 +176,8 @@ namespace Graph3DVisualizer.TextureFactory
 
             _lineHeight = Math.Max(maxHeight, _customFont.lineHeight);
         }
+
+        public Texture2D GetCharTexture (char ch) => _alphabet[ch];
 
         public Texture2D MakeTextTexture (string text, bool isTransparentBackground = false)
         {

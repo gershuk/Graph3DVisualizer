@@ -244,7 +244,8 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public void OnMoveToPoint (InputAction.CallbackContext obj)
         {
-            if (Physics.Raycast(_leftHand.transform.position, _leftHand.transform.TransformDirection(Vector3.forward), out var hit, Mathf.Infinity) && MovementEnable)
+            var transform = IsVr ? _leftHand.transform : _cameraOffSet.transform;
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, Mathf.Infinity) && MovementEnable)
                 StartCoroutine(_moveComponent.MoveAlongTrajectory(new List<Vector3>(1) { hit.point }));
         }
 

@@ -177,6 +177,11 @@ namespace Graph3DVisualizer.Billboards
     [YuzuAll]
     public sealed class BillboardParameters : AbstractCustomizableParameter
     {
+        private readonly Texture _mainTexture;
+        private readonly bool _useCache;
+        private Vector2 _vector2;
+        private Vector4 _zero;
+
         /// <summary>
         /// Used to determine the lower bound of the texel clipping, based on the alpha channel summary.
         /// </summary>
@@ -241,6 +246,14 @@ namespace Graph3DVisualizer.Billboards
             Name = name ?? string.Empty;
             Description = description ?? string.Empty;
             UseCash = useCache;
+        }
+
+        public BillboardParameters (Texture mainTexture, Vector4 zero, Vector2 vector2, bool useCache)
+        {
+            _mainTexture = mainTexture;
+            _zero = zero;
+            _vector2 = vector2;
+            _useCache = useCache;
         }
     }
 }

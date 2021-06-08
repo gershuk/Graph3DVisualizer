@@ -187,8 +187,8 @@ namespace Graph3DVisualizer.Billboards
 
         public BillboardId (string name, string description)
         {
-            Name = name ?? throw new ArgumentNullException(nameof(name));
-            Description = description ?? throw new ArgumentNullException(nameof(description));
+            Name = name ?? Guid.NewGuid().ToString();
+            Description = description;
         }
     }
 }

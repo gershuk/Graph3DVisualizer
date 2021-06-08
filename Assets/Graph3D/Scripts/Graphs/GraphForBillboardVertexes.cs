@@ -69,8 +69,8 @@ namespace Graph3DVisualizer.Graph3D
                 if (_name != null)
                 {
                     var text = _textTextureFactory.MakeTextTexture(_name, true);
-                    var scale = new Vector2(10, text.height * 1.0f / text.width * 10);
-                    var textParameters = new BillboardParameters(text, Vector4.zero, scale);
+                    var scale = new Vector2(40, text.height * 1.0f / text.width * 40);
+                    var textParameters = new BillboardParameters(text, Vector4.zero, scale, isMonoColor: true, monoColor: Color.white);
                     _imageId = _billboardController.CreateBillboard(textParameters);
                     _sphereCollider.radius = Mathf.Max(scale.x / 2, scale.y / 2);
                 }

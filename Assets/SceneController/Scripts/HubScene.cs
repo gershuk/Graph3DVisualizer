@@ -32,30 +32,29 @@ namespace Graph3DVisualizer.SceneController
         {
             var player = CreatePlayer();
             var toolConfig = new ToolConfig(typeof(ClickTool), new ClickToolParams());
-            player.SetupParams(new PlayerParameters(new Vector3(0, 0, -50), sceneInfo: "Hub scene", isVR: true, toolConfigs: new[] { toolConfig }));
+            player.SetupParams(new PlayerParameters(new Vector3(0, 0, -50), Vector3.zero, SceneParametersContainer.PlayerSpeed, sceneInfo: "Hub scene", isVR: SceneParametersContainer.IsVR, toolConfigs: new[] { toolConfig }));
 
             //ToDo : Replace with auto generation
-            var customFont = FontsGenerator.GetOrCreateFont("Broadway", 128);
+            var customFont = FontsGenerator.GetOrCreateFont("Arial", 128);
             var textTextureFactory = new TextTextureFactory(customFont, 0);
-
             {
                 var graph = new GameObject("Tutorial tasks");
                 var graphControler = graph.AddComponent<GraphForBillboardVertexes>();
                 Graphs.Add(graphControler);
                 var baseScale = Vector2.one;
-                graphControler.SetupParams(new GraphParameters(Vector3.zero, "Tutorial tasks"));
+                graphControler.SetupParams(new GraphParameters(new Vector3(-20, 0, 0), "Tutorial tasks"));
 
                 var text = textTextureFactory.MakeTextTexture("Tools test", true);
                 var mainTexture = Texture2DExtension.ResizeTexture(Resources.Load<Texture2D>(_mainTexture), 400, 400);
                 var imageParameters = new BillboardParameters(mainTexture, Vector4.zero, new Vector2(9, 2), useCache: true);
-                var textParameters = new BillboardParameters(text, Vector4.zero, new Vector2(4, 0.4f), useCache: false);
-                var vertexParameters = new BillboardVertexParameters(new[] { imageParameters, textParameters }, new Vector3(-10, 6, 0));
+                var textParameters = new BillboardParameters(text, Vector4.zero, new Vector2(4, 0.4f), useCache: false, isMonoColor: true, monoColor: Color.white);
+                var vertexParameters = new BillboardVertexParameters(new[] { imageParameters, textParameters }, new Vector3(-30, 18, 0));
                 var toolsTest = graphControler.SpawnVertex<BillboardVertex, BillboardVertexParameters>(vertexParameters);
                 toolsTest.gameObject.AddComponent<Button3D>().Action = (gameObject) => SceneLoader.Instance.LoadScene<ToolTestTasks>();
 
                 text = textTextureFactory.MakeTextTexture("Movement test", true);
-                textParameters = new BillboardParameters(text, Vector4.zero, new Vector2(4, 0.4f), useCache: false);
-                vertexParameters = new BillboardVertexParameters(new[] { imageParameters, textParameters }, new Vector3(0, 3, 0));
+                textParameters = new BillboardParameters(text, Vector4.zero, new Vector2(4, 0.4f), isMonoColor: true, monoColor: Color.white, useCache: false);
+                vertexParameters = new BillboardVertexParameters(new[] { imageParameters, textParameters }, new Vector3(-20, 9, 0));
                 var movementTest = graphControler.SpawnVertex<BillboardVertex, BillboardVertexParameters>(vertexParameters);
                 movementTest.gameObject.AddComponent<Button3D>().Action = (gameObject) => SceneLoader.Instance.LoadScene<MovementTestTask>();
 
@@ -68,17 +67,32 @@ namespace Graph3DVisualizer.SceneController
                 Graphs.Add(graphControler);
                 var baseScale = Vector2.one;
                 graphControler.SetupParams(new GraphParameters(new Vector3(20, 0, 0), "Beautiful scenes"));
-                var text = textTextureFactory.MakeTextTexture("Map", true);
+                var text = textTextureFactory.MakeTextTexture("Plants Kingdom", true);
                 var mainTexture = Texture2DExtension.ResizeTexture(Resources.Load<Texture2D>(_mainTexture), 400, 400);
                 var imageParameters = new BillboardParameters(mainTexture, Vector4.zero, new Vector2(9, 2), useCache: true);
-                var textParameters = new BillboardParameters(text, Vector4.zero, new Vector2(4, 0.4f), useCache: false);
-                var vertexParameters = new BillboardVertexParameters(new[] { imageParameters, textParameters }, new Vector3(20, 3, 0));
-                graphControler.SpawnVertex<BillboardVertex, BillboardVertexParameters>(vertexParameters).gameObject.AddComponent<Button3D>().Action = (gameObject) => SceneLoader.Instance.LoadScene<BeautifulScenes>();
+                var textParameters = new BillboardParameters(text, Vector4.zero, new Vector2(4, 0.4f), useCache: false, isMonoColor: true, monoColor: Color.white);
+                var vertexParameters = new BillboardVertexParameters(new[] { imageParameters, textParameters }, new Vector3(10, 10, 0));
+                var v1 = graphControler.SpawnVertex<BillboardVertex, BillboardVertexParameters>(vertexParameters);
+                v1.gameObject.AddComponent<Button3D>().Action = (gameObject) => SceneLoader.Instance.LoadScene<PlantsKingdom>();
 
-                text = textTextureFactory.MakeTextTexture("Mail Graph", true);
-                textParameters = new BillboardParameters(text, Vector4.zero, new Vector2(4, 0.4f), useCache: false);
-                vertexParameters = new BillboardVertexParameters(new[] { imageParameters, textParameters }, new Vector3(20, 8, 0));
-                graphControler.SpawnVertex<BillboardVertex, BillboardVertexParameters>(vertexParameters).gameObject.AddComponent<Button3D>().Action = (gameObject) => SceneLoader.Instance.LoadScene<MailGraph>();
+                text = textTextureFactory.MakeTextTexture("Social graph 1", true);
+                textParameters = new BillboardParameters(text, Vector4.zero, new Vector2(4, 0.4f), isMonoColor: true, monoColor: Color.white, useCache: false);
+                vertexParameters = new BillboardVertexParameters(new[] { imageParameters, textParameters }, new Vector3(30, 19, 0));
+                var v2 = graphControler.SpawnVertex<BillboardVertex, BillboardVertexParameters>(vertexParameters);
+                v2.gameObject.AddComponent<Button3D>().Action = (gameObject) => SceneLoader.Instance.LoadScene<OneGroupEnemyAndFriendsScene>();
+
+                text = textTextureFactory.MakeTextTexture("Social graph 2", true);
+                textParameters = new BillboardParameters(text, Vector4.zero, new Vector2(4, 0.4f), isMonoColor: true, monoColor: Color.white, useCache: false);
+                vertexParameters = new BillboardVertexParameters(new[] { imageParameters, textParameters }, new Vector3(20, 28, 0));
+                var v3 = graphControler.SpawnVertex<BillboardVertex, BillboardVertexParameters>(vertexParameters);
+                v3.gameObject.AddComponent<Button3D>().Action = (gameObject) => SceneLoader.Instance.LoadScene<MultyGroupFriendsScene>();
+
+                v1.Link<StretchableEdge, StretchableEdgeParameters>(v2, new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(Color.green), new SpringParameters(1, 5)));
+                v2.Link<StretchableEdge, StretchableEdgeParameters>(v1, new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(Color.green), new SpringParameters(1, 5)));
+                v1.Link<StretchableEdge, StretchableEdgeParameters>(v3, new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(Color.green), new SpringParameters(1, 5)));
+                v3.Link<StretchableEdge, StretchableEdgeParameters>(v1, new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(Color.green), new SpringParameters(1, 5)));
+                v2.Link<StretchableEdge, StretchableEdgeParameters>(v3, new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(Color.green), new SpringParameters(1, 5)));
+                v3.Link<StretchableEdge, StretchableEdgeParameters>(v2, new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(Color.green), new SpringParameters(1, 5)));
             }
         }
     }

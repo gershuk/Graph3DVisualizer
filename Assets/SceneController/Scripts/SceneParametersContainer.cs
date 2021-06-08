@@ -14,25 +14,11 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
-using Graph3DVisualizer.SceneController;
-
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
-namespace Graph3DVisualizer.MainMenu
+namespace Graph3DVisualizer.SceneController
 {
-    public class MenuController : MonoBehaviour
+    public static class SceneParametersContainer
     {
-        public void StartGamePC ()
-        {
-            SceneParametersContainer.IsVR = false;
-            SceneManager.LoadScene("Hub", LoadSceneMode.Single);
-        }
-
-        public void StartGameVR ()
-        {
-            SceneParametersContainer.IsVR = true;
-            SceneManager.LoadScene("Hub", LoadSceneMode.Single);
-        }
+        public static bool IsVR { get; set; } = false;
+        public static float PlayerSpeed { get; set; } = 50f;
     }
 }

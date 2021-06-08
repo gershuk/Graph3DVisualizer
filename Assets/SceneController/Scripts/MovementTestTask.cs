@@ -44,7 +44,7 @@ namespace Graph3DVisualizer.SceneController
             track.UpdateTrack();
             Graphs.Add(track);
             var player = CreatePlayer();
-            player.SetupParams(new PlayerParameters(new Vector3(0, 0, -10), isVR: true));
+            player.SetupParams(new PlayerParameters(new Vector3(0, 0, -10), Vector3.zero, SceneParametersContainer.PlayerSpeed, isVR: SceneParametersContainer.IsVR));
         }
     }
 }

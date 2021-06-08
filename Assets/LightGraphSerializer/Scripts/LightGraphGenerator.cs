@@ -35,19 +35,24 @@ namespace Graph3DVisualizer.LightGraphSerializer
         public bool Bidirectional { get; set; }
 
         public Color Color { get; set; }
-        public int Source { get; set; }
+        public string Source { get; set; }
 
-        public int Traget { get; set; }
+        public SpringParameters? SpringParameters { get; set; }
+        public string Traget { get; set; }
 
-        public float Value { get; set; }
+        public float? Value { get; set; }
 
-        public EdgeSerializationInfo (int source, int traget, float value, bool bidirectional, Color color)
+        public float Width { get; set; }
+
+        public EdgeSerializationInfo (string source, string traget, float? value, bool bidirectional, float width = 1f, Color color = default, SpringParameters? springParaneters = default)
         {
             Source = source;
             Traget = traget;
             Value = value;
             Bidirectional = bidirectional;
+            Width = width;
             Color = color;
+            SpringParameters = springParaneters;
         }
     }
 
@@ -62,13 +67,14 @@ namespace Graph3DVisualizer.LightGraphSerializer
     public struct VertexSerializationInfo
     {
         public Vector3 Coordinates { get; set; }
+        public string? Id { get; set; }
         public string Name { get; set; }
-        public string Path { get; set; }
+        public string? Path { get; set; }
         public int Size { get; set; }
         public Color TextColor { get; set; }
 
-        public VertexSerializationInfo (Vector3 coordinates, int size, string name, Color textColor, string path) =>
-            (Coordinates, Size, Name, TextColor, Path) = (coordinates, size, name, textColor, path);
+        public VertexSerializationInfo (Vector3 coordinates, int size, string name, Color textColor = default, string? id = default, string? path = default) =>
+            (Coordinates, Size, Name, TextColor, Id, Path) = (coordinates, size, name, textColor, id, path);
     }
 
     public sealed class LightGraphGenerator : AbstractGraphGenerator
@@ -105,12 +111,12 @@ namespace Graph3DVisualizer.LightGraphSerializer
             var defaultTexture = Texture2DExtension.ResizeTexture(Resources.Load<Texture2D>(_defaultTexture), 200, 200);
             defaultTexture.name = "Target";
             var textTextureFactory = new TextTextureFactory(customFont, 0);
-            var defaultImageParameters = new BillboardParameters(defaultTexture, scale: Vector2.one * 3f, useCache: true);
 
             for (var i = 0; i < GraphInfo.VertexInfos.Length; i++)
             {
                 var vertexInfo = GraphInfo.VertexInfos[i];
-                var imageParameters = string.IsNullOrEmpty(vertexInfo.Path) ? defaultImageParameters : new BillboardParameters(ReadTexture(vertexInfo.Path), scale: Vector2.one * vertexInfo.Size);
+                var imageParameters = string.IsNullOrEmpty(vertexInfo.Path) ? new BillboardParameters(defaultTexture, scale: Vector2.one * vertexInfo.Size, useCache: true)
+                                                                            : new BillboardParameters(ReadTexture(vertexInfo.Path), scale: Vector2.one * vertexInfo.Size);
 
                 var text = textTextureFactory.MakeTextTexture(vertexInfo.Name, true);
                 var textParameters = new BillboardParameters(text, new Vector4(0, 0, 0, 1), new Vector2(vertexInfo.Size, text.height * 1.0f / text.width * vertexInfo.Size),
@@ -118,14 +124,15 @@ namespace Graph3DVisualizer.LightGraphSerializer
                 abstractGraph.SpawnVertex<BillboardVertex, BillboardVertexParameters>(new BillboardVertexParameters(new[] { imageParameters, textParameters },
                                                                                                                     vertexInfo.Coordinates,
                                                                                                                     Vector3.zero,
-                                                                                                                    i.ToString()));
+                                                                                                                    vertexInfo.Id ?? i.ToString()));
             }
 
             foreach (var edgeInfo in _graphInfo.EdgeInfos)
             {
-                var edgeParameters = new WeightedEdgeParameters(new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(edgeInfo.Color), new SpringParameters(edgeInfo.Value, 10)), edgeInfo.Value);
-                var source = abstractGraph.GetVertexById(edgeInfo.Source.ToString());
-                var target = abstractGraph.GetVertexById(edgeInfo.Traget.ToString());
+                var edgeParameters = new WeightedEdgeParameters(new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(edgeInfo.Color),
+                    edgeInfo.SpringParameters ?? new SpringParameters(edgeInfo.Value ?? 1, 10), width: edgeInfo.Width), edgeInfo.Value);
+                var source = abstractGraph.GetVertexById(edgeInfo.Source);
+                var target = abstractGraph.GetVertexById(edgeInfo.Traget);
                 source.Link<WeightedEdge, WeightedEdgeParameters>(target, edgeParameters);
                 if (edgeInfo.Bidirectional)
                     target.Link<WeightedEdge, WeightedEdgeParameters>(source, edgeParameters);

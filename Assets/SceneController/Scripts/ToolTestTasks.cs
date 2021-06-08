@@ -88,7 +88,7 @@ namespace Graph3DVisualizer.SceneController
             var selectFrameParameters = new BillboardParameters(selectFrame, scale: baseScale * 6f, isMonoColor: true, useCache: false);
             var text = textTextureFactory.MakeTextTexture($"Select Me", true);
             const float scale = 10;
-            var textParameters = new BillboardParameters(text, new Vector4(0, -5, 0, 0), new Vector2(scale, text.height * 1.0f / text.width * scale));
+            var textParameters = new BillboardParameters(text, new Vector4(0, -5, 0, 0), new Vector2(scale, text.height * 1.0f / text.width * scale), isMonoColor: true, monoColor: Color.white);
 
             _selectableVertex = graphControler.SpawnVertex<SelectableVertex, SelectableVertexParameters>(
                 new SelectableVertexParameters(new[] { imageParameters, textParameters }, selectFrameParameters, new Vector3(-20, 20)));
@@ -96,22 +96,22 @@ namespace Graph3DVisualizer.SceneController
             var dotImageParameters = new BillboardParameters(mainTexture, scale: baseScale * 3f, useCache: true);
 
             text = textTextureFactory.MakeTextTexture($"Dot 1", true);
-            textParameters = new BillboardParameters(text, new Vector4(0, -5, 0, 0), new Vector2(scale, text.height * 1.0f / text.width * scale));
+            textParameters = new BillboardParameters(text, new Vector4(0, -5, 0, 0), new Vector2(scale, text.height * 1.0f / text.width * scale), isMonoColor: true, monoColor: Color.white);
             _dot1 = graphControler.SpawnVertex<BillboardVertex, BillboardVertexParameters>(
                 new BillboardVertexParameters(new[] { imageParameters, textParameters }, new Vector3(0, 20)));
 
             text = textTextureFactory.MakeTextTexture($"Dot 2", true);
-            textParameters = new BillboardParameters(text, new Vector4(0, -5, 0, 0), new Vector2(scale, text.height * 1.0f / text.width * scale));
+            textParameters = new BillboardParameters(text, new Vector4(0, -5, 0, 0), new Vector2(scale, text.height * 1.0f / text.width * scale), isMonoColor: true, monoColor: Color.white);
             _dot2 = graphControler.SpawnVertex<BillboardVertex, BillboardVertexParameters>(
                 new BillboardVertexParameters(new[] { imageParameters, textParameters }, new Vector3(20, 20)));
 
             text = textTextureFactory.MakeTextTexture($"Move me", true);
-            textParameters = new BillboardParameters(text, new Vector4(0, -5, 0, 0), new Vector2(scale, text.height * 1.0f / text.width * scale));
+            textParameters = new BillboardParameters(text, new Vector4(0, -5, 0, 0), new Vector2(scale, text.height * 1.0f / text.width * scale), isMonoColor: true, monoColor: Color.white);
             _moveVertex = graphControler.SpawnVertex<BillboardVertex, BillboardVertexParameters>(
                 new BillboardVertexParameters(new[] { imageParameters, textParameters }, new Vector3(30, 20, -10)));
 
             text = textTextureFactory.MakeTextTexture($"Click me", true);
-            textParameters = new BillboardParameters(text, new Vector4(0, -5, 0, 0), new Vector2(scale, text.height * 1.0f / text.width * scale));
+            textParameters = new BillboardParameters(text, new Vector4(0, -5, 0, 0), new Vector2(scale, text.height * 1.0f / text.width * scale), isMonoColor: true, monoColor: Color.white);
             var clickVeretex = graphControler.SpawnVertex<BillboardVertex, BillboardVertexParameters>(
                 new BillboardVertexParameters(new[] { imageParameters, textParameters }, new Vector3(-50, 20, -10)));
 
@@ -132,7 +132,7 @@ namespace Graph3DVisualizer.SceneController
             var edgeTypes = new List<(Type type, EdgeParameters parameters)>(1) { (typeof(StretchableEdge), new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(Color.white), new SpringParameters(1, 10))) };
 
             var player = CreatePlayer();
-            player.SetupParams(new PlayerParameters(Vector3.zero, Vector3.zero, 40, 20, true,
+            player.SetupParams(new PlayerParameters(Vector3.zero, Vector3.zero, SceneParametersContainer.PlayerSpeed, 20, isVR: SceneParametersContainer.IsVR,
                 new ToolConfig[4]
                 {
                     new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)),

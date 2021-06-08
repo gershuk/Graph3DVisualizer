@@ -130,7 +130,7 @@ namespace Graph3DVisualizer.Graph3D
 
         public abstract int VertexesCount { get; }
 
-        private IEnumerator ForceBasedLayoutCoroutine (int maxIterationCount)
+        private IEnumerator ForceBasedLayoutCoroutine (int maxIterationCount = 10000)
         {
             if (_isChanging)
                 yield break;
@@ -251,8 +251,17 @@ namespace Graph3DVisualizer.Graph3D
 
         public abstract AbstractVertex SpawnVertex (Type vertexType, AbstractVertexParameters parameters);
 
+        public void StartForceBasedLayout (int maxIterationCount = 10000)
+        {
+            if (!_isChanging)
+                StartCoroutine(ForceBasedLayoutCoroutine(maxIterationCount));
+        }
+
+        [ContextMenu("ForceBasedLayout")]
+        public void StartFroceBaseFromMenu () => StartForceBasedLayout();
+
         [ContextMenu("SpectralLayout")]
-        public void SpectralLayout ()
+        public void StartSpectralLayout ()
         {
             if (_isChanging)
                 return;
@@ -279,28 +288,12 @@ namespace Graph3DVisualizer.Graph3D
                     }
                 }
 
-                //for (var i = 0; i < vertexes.Count; ++i)
-                //{
-                //    var s = "";
-                //    for (var j = 0; j < vertexes.Count; ++j)
-                //    {
-                //        s += matrix[i, j].x + " ";
-                //    }
-                //    Debug.LogWarning(s);
-                //}
-
                 alglib.hmatrixevd(matrix, vertexes.Count, 1, true, out var d, out var z);
-                //var t = "";
-                //foreach (var l in d)
-                //{
-                //    t += l.ToString() + " ";
-                //}
-                //Debug.LogWarning(t);
 
-                var scale = vertexes.Count * vertexes.Count;
+                var scale = vertexes.Count * 60;
                 for (var i = 0; i < vertexes.Count; ++i)
                 {
-                    vertexes[i].MovementComponent.GlobalCoordinates = new Vector3((float) (z[i, vertexes.Count - 1].x * scale), (float) (z[i, vertexes.Count - 2].x * scale), (float) (z[i, vertexes.Count - 3].x * scale));
+                    vertexes[i].MovementComponent.LocalCoordinates = new Vector3((float) z[i, vertexes.Count - 1].x, (float) z[i, vertexes.Count - 2].x, (float) z[i, vertexes.Count - 3].x) * scale;
                 }
             }
             finally
@@ -309,14 +302,126 @@ namespace Graph3DVisualizer.Graph3D
             }
         }
 
-        public void StartForceBasedLayout (int maxIterationCount = 1000)
+        #region PyramidLayout
+
+        private class VertexRing
         {
-            if (!_isChanging)
-                StartCoroutine(ForceBasedLayoutCoroutine(maxIterationCount));
+            public List<VertexRing>? ChildRings { get; set; }
+            public AbstractVertex Owner { get; private set; }
+
+            public VertexRing? Parent { get; private set; }
+
+            public float Radius { get; private set; }
+
+            public VertexRing (AbstractVertex owner, VertexRing? parent, float radius = 0f) => (Owner, Parent, Radius) = (owner, parent, radius);
+
+            public void CalcRadius (float minRingRadius = 1f, float reserve = 0.05f)
+            {
+                Radius = minRingRadius;
+                if (ChildRings != null && ChildRings.Count > 1)
+                {
+                    var maxChildRadius = 0f;
+                    foreach (var ring in ChildRings)
+                        maxChildRadius = Mathf.Max(maxChildRadius, ring.Radius);
+
+                    Radius = maxChildRadius / Mathf.Sin(Mathf.PI / ChildRings.Count) + reserve;
+                }
+
+                if (ChildRings != null && ChildRings.Count == 1)
+                    Radius = ChildRings[0].Radius;
+            }
+
+            public void FindChildren (HashSet<AbstractVertex>? bannedAbstractVertexes = default)
+            {
+                var adjVertexSet = new HashSet<AbstractVertex>(Owner.IncomingLinks.Concat(Owner.OutgoingLinks).Select(l => l.AdjacentVertex));
+                ChildRings = new List<VertexRing>();
+                foreach (var vertex in adjVertexSet)
+                {
+                    if (bannedAbstractVertexes == null || !bannedAbstractVertexes.Contains(vertex))
+                        ChildRings.Add(new VertexRing(vertex, this, 0));
+                }
+            }
         }
 
-        [ContextMenu("ForceBasedLayout")]
-        public void StartFroceBaseFromMenu () => StartForceBasedLayout();
+        public void PyramidLayout (AbstractVertex? firstVertex = default, float minRingRadius = 15f, float hight = 20f)
+        {
+            if (_isChanging)
+                return;
+            _isChanging = true;
+            try
+            {
+                var visitedVertex = new HashSet<AbstractVertex>();
+
+                if (firstVertex == null)
+                    firstVertex = GetVertexes()[0];
+                else if (firstVertex.transform.parent != _transform.parent)
+                    throw new Exception();
+
+                F(firstVertex);
+
+                foreach (var vertex in GetVertexes())
+                {
+                    if (!visitedVertex.Contains(vertex))
+                        F(vertex);
+                }
+
+                void F (AbstractVertex startVertex)
+                {
+                    var rings = new List<VertexRing>(VertexesCount);
+                    var l = 0;
+                    var r = 0;
+
+                    rings.Add(new VertexRing(startVertex, null));
+                    visitedVertex.Add(startVertex);
+                    while (l <= r)
+                    {
+                        rings[l].FindChildren(visitedVertex);
+                        if (rings[l].ChildRings != null)
+                        {
+                            for (var i = 0; i < rings[l].ChildRings.Count; ++i)
+                            {
+                                ++r;
+                                visitedVertex.Add(rings[l].ChildRings[i].Owner);
+                                rings.Add(rings[l].ChildRings[i]);
+                            }
+                        }
+                        ++l;
+                    }
+
+                    for (var i = r; i >= 0; --i)
+                        rings[i].CalcRadius(minRingRadius);
+                    foreach (var baseRing in rings)
+                    {
+                        if (baseRing.ChildRings != null)
+                        {
+                            if (baseRing.ChildRings.Count == 1)
+                            {
+                                baseRing.ChildRings[0].Owner.MovementComponent.GlobalCoordinates = baseRing.Owner.MovementComponent.GlobalCoordinates + new Vector3(0, hight);
+                                continue;
+                            }
+
+                            for (var i = 0; i < baseRing.ChildRings.Count; i++)
+                            {
+                                var childRing = baseRing.ChildRings[i];
+                                var localPos = new Vector3(baseRing.Radius * Mathf.Cos(2 * Mathf.PI / baseRing.ChildRings.Count * i),
+                                                           hight,
+                                                           baseRing.Radius * Mathf.Sin(2 * Mathf.PI / baseRing.ChildRings.Count * i));
+                                childRing.Owner.MovementComponent.GlobalCoordinates = baseRing.Owner.MovementComponent.GlobalCoordinates + localPos;
+                            }
+                        }
+                    }
+                }
+            }
+            finally
+            {
+                _isChanging = false;
+            }
+        }
+
+        [ContextMenu("PyramidLayout")]
+        public void StartPyramidLayout () => PyramidLayout();
+
+        #endregion PyramidLayout
     }
 
     /// <summary>

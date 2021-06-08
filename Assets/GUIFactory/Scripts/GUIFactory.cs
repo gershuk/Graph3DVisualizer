@@ -64,18 +64,22 @@ namespace Graph3DVisualizer.Gui
         public readonly struct RectTransformParameters
         {
             public Vector2 AnchoredPosition { get; }
+            public Vector3? AnchoredPosition3D { get; }
             public Vector2 AnchorMax { get; }
             public Vector2 AnchorMin { get; }
+            public Vector3? EulerAngles { get; }
             public Transform Parent { get; }
             public Vector2 SizeDelta { get; }
 
-            public RectTransformParameters (Transform parent, Vector2 anchorMin, Vector2 anchorMax, Vector2 sizeDelta, Vector2 anchoredPosition)
+            public RectTransformParameters (Transform parent, Vector2 anchorMin, Vector2 anchorMax, Vector2 sizeDelta, Vector2 anchoredPosition, Vector3? anchoredPosition3D = default, Vector3? eulerAngles = default)
             {
                 Parent = parent;
                 AnchorMin = anchorMin;
                 AnchorMax = anchorMax;
                 SizeDelta = sizeDelta;
                 AnchoredPosition = anchoredPosition;
+                AnchoredPosition3D = anchoredPosition3D;
+                EulerAngles = eulerAngles;
             }
         }
 
@@ -168,7 +172,13 @@ namespace Graph3DVisualizer.Gui
             rectTransform.anchorMin = parameters.AnchorMin;
             rectTransform.anchorMax = parameters.AnchorMax;
             rectTransform.sizeDelta = parameters.SizeDelta;
-            rectTransform.anchoredPosition = parameters.AnchoredPosition;
+            if (parameters.AnchoredPosition3D.HasValue)
+                rectTransform.anchoredPosition3D = parameters.AnchoredPosition3D.Value;
+            else
+                rectTransform.anchoredPosition = parameters.AnchoredPosition;
+
+            if (parameters.EulerAngles.HasValue)
+                rectTransform.eulerAngles = parameters.EulerAngles.Value;
         }
     }
 }

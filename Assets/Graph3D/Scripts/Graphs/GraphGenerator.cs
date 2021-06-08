@@ -45,34 +45,37 @@ namespace Graph3DVisualizer.Graph3D
     {
         public struct AdjacencyInfo
         {
+            public Color Color;
             public string FirstId;
             public bool IsBidirectional;
             public float Length;
             public string SecondId;
             public float StiffnessCoefficient;
 
-            public AdjacencyInfo (string firstId, string secondId, bool isBidirectional, float length = 20, float stiffnessCoefficient = 1)
+            public AdjacencyInfo (string firstId, string secondId, bool isBidirectional, float length = 20, float stiffnessCoefficient = 1, Color color = default)
             {
                 FirstId = firstId;
                 SecondId = secondId;
                 IsBidirectional = isBidirectional;
                 Length = length;
                 StiffnessCoefficient = stiffnessCoefficient;
+                Color = color;
             }
 
-            public static implicit operator (string firstId, string secondId, bool isBidirectional, float length, float stiffnessCoefficient) (AdjacencyInfo value) =>
-                (value.FirstId, value.SecondId, value.IsBidirectional, value.Length, value.StiffnessCoefficient);
+            public static implicit operator (string firstId, string secondId, bool isBidirectional, float length, float stiffnessCoefficient, Color color) (AdjacencyInfo value) =>
+                (value.FirstId, value.SecondId, value.IsBidirectional, value.Length, value.StiffnessCoefficient, value.Color);
 
-            public static implicit operator AdjacencyInfo ((string firstId, string secondId, bool isBidirectional, float length, float stiffnessCoefficient) value) =>
-                new AdjacencyInfo(value.firstId, value.secondId, value.isBidirectional, value.length, value.stiffnessCoefficient);
+            public static implicit operator AdjacencyInfo ((string firstId, string secondId, bool isBidirectional, float length, float stiffnessCoefficient, Color color) value) =>
+                new AdjacencyInfo(value.firstId, value.secondId, value.isBidirectional, value.length, value.stiffnessCoefficient, value.color);
 
-            public void Deconstruct (out string firstId, out string secondId, out bool isBidirectional, out float length, out float stiffnessCoefficient)
+            public void Deconstruct (out string firstId, out string secondId, out bool isBidirectional, out float length, out float stiffnessCoefficient, out Color color)
             {
                 firstId = FirstId;
                 secondId = SecondId;
                 isBidirectional = IsBidirectional;
                 length = Length;
                 stiffnessCoefficient = StiffnessCoefficient;
+                color = Color;
             }
 
             public override bool Equals (object? obj) => obj is AdjacencyInfo other &&
@@ -80,7 +83,8 @@ namespace Graph3DVisualizer.Graph3D
                        SecondId == other.SecondId &&
                        IsBidirectional == other.IsBidirectional &&
                        Length == other.Length &&
-                       StiffnessCoefficient == other.StiffnessCoefficient;
+                       StiffnessCoefficient == other.StiffnessCoefficient &&
+                       Color == other.Color;
 
             public override int GetHashCode ()
             {
@@ -90,6 +94,7 @@ namespace Graph3DVisualizer.Graph3D
                 hashCode = hashCode * -1521134295 + IsBidirectional.GetHashCode();
                 hashCode = hashCode * -1521134295 + EqualityComparer<float>.Default.GetHashCode(Length);
                 hashCode = hashCode * -1521134295 + EqualityComparer<float>.Default.GetHashCode(StiffnessCoefficient);
+                hashCode = hashCode * -1521134295 + EqualityComparer<Color>.Default.GetHashCode(Color);
                 return hashCode;
             }
         }
@@ -97,12 +102,14 @@ namespace Graph3DVisualizer.Graph3D
         private const string _defaultTexture = "Textures/Dot";
         public List<AdjacencyInfo> Edges { get; protected set; }
         public string? MainImagePath { get; protected set; }
+        public float Size { get; protected set; }
 
-        public AdjacencyListBaseGenerator (List<AdjacencyInfo> edges, AbstractPlaceholder abstractPlaceholder, string? mainImagePath = default)
+        public AdjacencyListBaseGenerator (List<AdjacencyInfo> edges, AbstractPlaceholder abstractPlaceholder, string? mainImagePath = default, float size = 5)
         {
             Edges = edges ?? throw new ArgumentNullException(nameof(edges));
             MainImagePath = mainImagePath;
             Placeholder = abstractPlaceholder;
+            Size = size;
         }
 
         public override void Generate (AbstractGraph abstractGraph)
@@ -110,11 +117,10 @@ namespace Graph3DVisualizer.Graph3D
             var customFont = FontsGenerator.GetOrCreateFont("Broadway", 64);
             var textTextureFactory = new TextTextureFactory(customFont, 0);
             var texture = string.IsNullOrEmpty(MainImagePath) ? Resources.Load<Texture2D>(_defaultTexture) : Texture2DExtension.ReadTexture(MainImagePath);
-            const float scale = 5;
-            var imageParameters = new BillboardParameters(texture, scale: Vector2.one * scale, useCache: true);
+            var imageParameters = new BillboardParameters(texture, scale: Vector2.one * Size, useCache: true);
             var posEn = Placeholder.GetPosition().GetEnumerator();
 
-            AbstractVertex getOrCreateVertex (string id)
+            AbstractVertex GetOrCreateVertex (string id)
             {
                 //slow, but more reliable than using an exception
                 AbstractVertex abstractVertex;
@@ -122,7 +128,7 @@ namespace Graph3DVisualizer.Graph3D
                 {
                     posEn.MoveNext();
                     var text = textTextureFactory.MakeTextTexture(id, true);
-                    var textParameters = new BillboardParameters(text, new Vector4(0, 4, 0, 1), new Vector2(scale / 2, text.height * 1.0f / text.width * scale / 2));
+                    var textParameters = new BillboardParameters(text, new Vector4(0, Size * 0.2f, 0, 1), new Vector2(Size / 2, text.height * 1.0f / text.width * Size / 2), isMonoColor: true, monoColor: Color.white);
                     abstractVertex = abstractGraph.SpawnVertex<BillboardVertex, BillboardVertexParameters>(new BillboardVertexParameters(new[] { imageParameters, textParameters }, posEn.Current, id: id));
                 }
                 else
@@ -135,10 +141,10 @@ namespace Graph3DVisualizer.Graph3D
 
             foreach (var adjacencyInfo in Edges)
             {
-                var firstVertex = getOrCreateVertex(adjacencyInfo.FirstId);
-                var secondVertex = getOrCreateVertex(adjacencyInfo.SecondId);
-                var materialParameters = new StretchableEdgeMaterialParameters(Color.white, true);
-                var edgeParameters = new StretchableEdgeParameters(materialParameters, new SpringParameters(adjacencyInfo.StiffnessCoefficient, adjacencyInfo.Length), 1, scale, scale, scale / 10);
+                var firstVertex = GetOrCreateVertex(adjacencyInfo.FirstId);
+                var secondVertex = GetOrCreateVertex(adjacencyInfo.SecondId);
+                var materialParameters = new StretchableEdgeMaterialParameters(adjacencyInfo.Color, true);
+                var edgeParameters = new StretchableEdgeParameters(materialParameters, new SpringParameters(adjacencyInfo.StiffnessCoefficient, adjacencyInfo.Length), 1, Size / 2 + 1, Size / 2 + 1, Size / 10);
 
                 try
                 {

@@ -37,7 +37,7 @@ namespace Graph3DVisualizer.Graph3D
     [CustomizableGrandType(typeof(AbstractVertexParameters))]
     public abstract class AbstractVertex : AbstractGraphObject, IVisibile, IDestructible, ICustomizable<AbstractVertexParameters>
     {
-        private float weight = 10;
+        private float _weight = 10;
         protected List<Link> _incomingLinks = new List<Link>();
         protected List<Link> _outgoingLinks = new List<Link>();
         protected Transform _transform;
@@ -51,7 +51,7 @@ namespace Graph3DVisualizer.Graph3D
         public abstract MovementComponent MovementComponent { get; protected set; }
         public IReadOnlyList<Link> OutgoingLinks => _outgoingLinks;
         public abstract bool Visibility { get; set; }
-        public virtual float Weight { get => weight; set => weight = value; }
+        public virtual float Weight { get => _weight; set => _weight = value; }
 
         private TEdge CreateEdge<TEdge, TParameters> (TParameters parameters, AbstractVertex toVertex) where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
