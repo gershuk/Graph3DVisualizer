@@ -70,8 +70,11 @@ namespace Graph3DVisualizer.Gui
             public Vector3? EulerAngles { get; }
             public Transform Parent { get; }
             public Vector2 SizeDelta { get; }
+            public Vector3? Scale { get; }
 
-            public RectTransformParameters (Transform parent, Vector2 anchorMin, Vector2 anchorMax, Vector2 sizeDelta, Vector2 anchoredPosition, Vector3? anchoredPosition3D = default, Vector3? eulerAngles = default)
+            
+
+            public RectTransformParameters (Transform parent, Vector2 anchorMin, Vector2 anchorMax, Vector2 sizeDelta, Vector2 anchoredPosition, Vector3? anchoredPosition3D = default, Vector3? eulerAngles = default, Vector3? scale = default)
             {
                 Parent = parent;
                 AnchorMin = anchorMin;
@@ -80,6 +83,7 @@ namespace Graph3DVisualizer.Gui
                 AnchoredPosition = anchoredPosition;
                 AnchoredPosition3D = anchoredPosition3D;
                 EulerAngles = eulerAngles;
+                Scale = scale;
             }
         }
 
@@ -172,6 +176,7 @@ namespace Graph3DVisualizer.Gui
             rectTransform.anchorMin = parameters.AnchorMin;
             rectTransform.anchorMax = parameters.AnchorMax;
             rectTransform.sizeDelta = parameters.SizeDelta;
+
             if (parameters.AnchoredPosition3D.HasValue)
                 rectTransform.anchoredPosition3D = parameters.AnchoredPosition3D.Value;
             else
@@ -179,6 +184,10 @@ namespace Graph3DVisualizer.Gui
 
             if (parameters.EulerAngles.HasValue)
                 rectTransform.eulerAngles = parameters.EulerAngles.Value;
+            if (parameters.Scale.HasValue)
+                rectTransform.localScale = parameters.Scale.Value;
+            
+                
         }
     }
 }
