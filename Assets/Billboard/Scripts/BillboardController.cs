@@ -75,16 +75,17 @@ namespace Graph3DVisualizer.Billboards
 
         private void Awake ()
         {
-            _billboardMesh ??= MeshCreater.CreateQuadMesh();
+            //ToDo : Use it when we switch to the submesh system
+            if (_billboardMesh == null)
+                _billboardMesh = MeshCreater.CreateQuadMesh();
             _meshFilter = GetComponent<MeshFilter>();
-            _meshFilter.sharedMesh = _billboardMesh;
-            _billboardMesh = _meshFilter.sharedMesh;
+            _meshFilter.sharedMesh = MeshCreater.CreateQuadMesh();
 
             _render = GetComponent<MeshRenderer>();
             _render.sharedMaterials = new Material[0];
-            var bounds = _meshFilter.mesh.bounds;
+            var bounds = _meshFilter.sharedMesh.bounds;
             bounds.size = new Vector3(0.5f, 0.5f, 0.5f);
-            _meshFilter.mesh.bounds = bounds;
+            _meshFilter.sharedMesh.bounds = bounds;
         }
 
         private void OnDestroy ()
@@ -96,35 +97,29 @@ namespace Graph3DVisualizer.Billboards
             }
         }
 
+        //ToDo : Redo it so that the billboard adds or removes itself from the cache.
         public BillboardId CreateBillboard (BillboardParameters parameters)
         {
             var billboardId = new BillboardId(parameters.Name, parameters.Description);
 
-            Billboard billboard;
-            if (parameters.UseCash)
+            Billboard? billboard;
+            if (parameters.UseCash && CacheForCustomizableObjects.TryGetValue(parameters, out var customizableObject))
             {
-                if (!CacheForCustomizableObjects.TryGetValue(parameters, out var customizableObject))
-                {
-                    billboard = new Billboard();
-                    billboard.SetupParams(parameters);
-                    CacheForCustomizableObjects.Add(parameters, billboard);
-                }
-                else
-                {
-                    billboard = (customizableObject as Billboard) ?? throw new NullReferenceException();
-                }
+                billboard = (customizableObject as Billboard) ?? throw new NullReferenceException();
             }
             else
             {
                 billboard = new Billboard();
+                billboard.SetupParams(parameters);
+                if (parameters.UseCash)
+                    CacheForCustomizableObjects.Add(parameters, billboard);
             }
 
-            billboard.SetupParams(parameters);
+            if (billboard == null)
+                throw new NullReferenceException();
 
             _billboards.Add(billboardId, billboard);
-
             AddBillboardMaterialToRender(billboardId);
-
             return billboardId;
         }
 
@@ -165,14 +160,14 @@ namespace Graph3DVisualizer.Billboards
         //ToDo : Rewrite to multiple meshes
         public void UpdateBounds ()
         {
-            var bounds = _meshFilter.mesh.bounds;
+            var bounds = _meshFilter.sharedMesh.bounds;
             var newValue = 0f;
             foreach (var billboard in _billboards)
             {
                 newValue = Mathf.Max(billboard.Value.ScaleX + billboard.Value.Offset.x * 2, billboard.Value.ScaleY + billboard.Value.Offset.y * 2, newValue);
             }
             bounds.size = new Vector3(newValue, newValue, newValue);
-            _meshFilter.mesh.bounds = bounds;
+            _meshFilter.sharedMesh.bounds = bounds;
         }
     }
 

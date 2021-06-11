@@ -115,7 +115,7 @@ namespace Graph3DVisualizer.LightGraphSerializer
             for (var i = 0; i < GraphInfo.VertexInfos.Length; i++)
             {
                 var vertexInfo = GraphInfo.VertexInfos[i];
-                var imageParameters = string.IsNullOrEmpty(vertexInfo.Path) ? new BillboardParameters(defaultTexture, scale: Vector2.one * vertexInfo.Size, useCache: true)
+                var imageParameters = string.IsNullOrEmpty(vertexInfo.Path) ? new BillboardParameters(defaultTexture, scale: Vector2.one * vertexInfo.Size)
                                                                             : new BillboardParameters(ReadTexture(vertexInfo.Path), scale: Vector2.one * vertexInfo.Size);
 
                 var text = textTextureFactory.MakeTextTexture(vertexInfo.Name, true);
@@ -127,9 +127,17 @@ namespace Graph3DVisualizer.LightGraphSerializer
                                                                                                                     vertexInfo.Id ?? i.ToString()));
             }
 
+            var stretchableEdgeMaterialsCache = new Dictionary<Color, StretchableEdgeMaterialParameters>();
+
             foreach (var edgeInfo in _graphInfo.EdgeInfos)
             {
-                var edgeParameters = new WeightedEdgeParameters(new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(edgeInfo.Color),
+                if (!stretchableEdgeMaterialsCache.TryGetValue(edgeInfo.Color, out var stretchableEdgeMaterialParameters))
+                {
+                    stretchableEdgeMaterialParameters = new StretchableEdgeMaterialParameters(edgeInfo.Color, true);
+                    stretchableEdgeMaterialsCache.Add(stretchableEdgeMaterialParameters.Color, stretchableEdgeMaterialParameters);
+                }
+
+                var edgeParameters = new WeightedEdgeParameters(new StretchableEdgeParameters(stretchableEdgeMaterialParameters,
                     edgeInfo.SpringParameters ?? new SpringParameters(edgeInfo.Value ?? 1, 10), width: edgeInfo.Width), edgeInfo.Value);
                 var source = abstractGraph.GetVertexById(edgeInfo.Source);
                 var target = abstractGraph.GetVertexById(edgeInfo.Traget);

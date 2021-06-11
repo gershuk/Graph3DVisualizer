@@ -62,6 +62,8 @@ namespace Graph3DVisualizer.SupportComponents
             };
             mesh.uv = uv;
 
+            mesh.Optimize();
+
             return mesh;
         }
     }

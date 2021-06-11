@@ -117,7 +117,7 @@ namespace Graph3DVisualizer.Graph3D
             var customFont = FontsGenerator.GetOrCreateFont("Broadway", 64);
             var textTextureFactory = new TextTextureFactory(customFont, 0);
             var texture = string.IsNullOrEmpty(MainImagePath) ? Resources.Load<Texture2D>(_defaultTexture) : Texture2DExtension.ReadTexture(MainImagePath);
-            var imageParameters = new BillboardParameters(texture, scale: Vector2.one * Size, useCache: true);
+            var imageParameters = new BillboardParameters(texture, scale: Vector2.one * Size, useCache: true, description: "MainImage");
             var posEn = Placeholder.GetPosition().GetEnumerator();
 
             AbstractVertex GetOrCreateVertex (string id)
@@ -139,12 +139,19 @@ namespace Graph3DVisualizer.Graph3D
                 return abstractVertex;
             }
 
+            var stretchableEdgeMaterialsCache = new Dictionary<Color, StretchableEdgeMaterialParameters>();
             foreach (var adjacencyInfo in Edges)
             {
                 var firstVertex = GetOrCreateVertex(adjacencyInfo.FirstId);
                 var secondVertex = GetOrCreateVertex(adjacencyInfo.SecondId);
-                var materialParameters = new StretchableEdgeMaterialParameters(adjacencyInfo.Color, true);
-                var edgeParameters = new StretchableEdgeParameters(materialParameters, new SpringParameters(adjacencyInfo.StiffnessCoefficient, adjacencyInfo.Length), 1, Size / 2 + 1, Size / 2 + 1, Size / 10);
+
+                if (!stretchableEdgeMaterialsCache.TryGetValue(adjacencyInfo.Color, out var stretchableEdgeMaterialParameters))
+                {
+                    stretchableEdgeMaterialParameters = new StretchableEdgeMaterialParameters(adjacencyInfo.Color, true);
+                    stretchableEdgeMaterialsCache.Add(stretchableEdgeMaterialParameters.Color, stretchableEdgeMaterialParameters);
+                }
+
+                var edgeParameters = new StretchableEdgeParameters(stretchableEdgeMaterialParameters, new SpringParameters(adjacencyInfo.StiffnessCoefficient, adjacencyInfo.Length), 1, Size / 2 + 1, Size / 2 + 1, Size / 10);
 
                 try
                 {

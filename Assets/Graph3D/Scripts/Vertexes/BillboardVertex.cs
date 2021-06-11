@@ -45,9 +45,6 @@ namespace Graph3DVisualizer.Graph3D
 
         protected SphereCollider _sphereCollider;
 
-        [SerializeField]
-        public Texture2D texture2D;
-
         public override event Action<UnityEngine.Object>? Destroyed;
 
         public override event Action<bool, UnityEngine.Object>? VisibleChanged;

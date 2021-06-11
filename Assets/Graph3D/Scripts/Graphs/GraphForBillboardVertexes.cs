@@ -51,6 +51,13 @@ namespace Graph3DVisualizer.Graph3D
         protected SphereCollider _sphereCollider;
 
         protected TextTextureFactory _textTextureFactory;
+
+        public bool ColliderEnable
+        {
+            get => _sphereCollider.enabled;
+            set => _sphereCollider.enabled = value;
+        }
+
         public override MovementComponent MovementComponent { get => _movementComponent; protected set => _movementComponent = value; }
 
         public override string? Name

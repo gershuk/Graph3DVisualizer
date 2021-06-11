@@ -40,6 +40,7 @@ namespace Graph3DVisualizer.SceneController
             {
                 var graph = new GameObject("Tutorial tasks");
                 var graphControler = graph.AddComponent<GraphForBillboardVertexes>();
+                graphControler.ColliderEnable = false;
                 Graphs.Add(graphControler);
                 var baseScale = Vector2.one;
                 graphControler.SetupParams(new GraphParameters(new Vector3(-20, 0, 0), "Tutorial tasks"));
@@ -64,6 +65,7 @@ namespace Graph3DVisualizer.SceneController
             {
                 var graph = new GameObject("Beautiful scenes");
                 var graphControler = graph.AddComponent<GraphForBillboardVertexes>();
+                graphControler.ColliderEnable = false;
                 Graphs.Add(graphControler);
                 var baseScale = Vector2.one;
                 graphControler.SetupParams(new GraphParameters(new Vector3(20, 0, 0), "Beautiful scenes"));
