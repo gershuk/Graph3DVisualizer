@@ -20,6 +20,12 @@ using Graph3DVisualizer.SupportComponents;
 
 using UnityEngine;
 
+using Graph3DVisualizer.Gui;
+using UnityEngine.Events;
+using UnityEngine.UI;
+using Graph3DVisualizer.TextureFactory;
+using System.Collections.Generic;
+
 namespace Graph3DVisualizer.Player.HUD
 {
     public class ToolsPanelController : MonoBehaviour, IVisibile
@@ -31,6 +37,11 @@ namespace Graph3DVisualizer.Player.HUD
 
         public event Action<bool, UnityEngine.Object> VisibleChanged;
 
+        [SerializeField]
+        private GameObject _content;
+        private List<GameObject> _buttonList = new List<GameObject>();
+
+        private float _buttonPisitionX = -95;
         public bool Visibility
         {
             get => _visibility;
@@ -46,14 +57,31 @@ namespace Graph3DVisualizer.Player.HUD
                 VisibleChanged?.Invoke(value, this);
             }
         }
-
-        private void Start ()
+        public void ClearAll ()
         {
+            foreach (var button in _buttonList)
+                Destroy(button);
+            _buttonList.Clear();
+            _buttonPisitionX = -195;
         }
 
-        // Update is called once per frame
-        private void Update ()
+        public void AddTool (Image image, UnityAction action, string text)
         {
+
+            var rectTransformParameters = new GUIFactory.RectTransformParameters(_content.transform, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(5f, 5f), new Vector2(2f, 2f), new Vector3(_buttonPisitionX , 0, 0), new Vector3(372.34f, 180f, 360f),new Vector3(20,19.5f,0));
+            var buttonParameters = new GUIFactory.ButtonParameters(action, text, rectTransformParameters, image);
+            var button = GUIFactory.CreateButton(buttonParameters);
+            var rectTransfotmParametersText = new GUIFactory.RectTransformParameters(button.transform, new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(100f, 50f), new Vector2(0, 0),new Vector3 (0, 0, 0), new Vector3(12.34f, 180f, 0f), new Vector3(0.05f, 0.05f, 0));
+
+            var font = FontsGenerator.GetOrCreateFont("STHupo", 25);
+
+            var textParameters = new GUIFactory.TextParameters(text, Color.white, font, TextAnchor.MiddleCenter, 20, rectTransfotmParametersText);
+
+            _buttonList.Add(button);
+
+            GUIFactory.CreateText(textParameters);
+
+            _buttonPisitionX += 103;
         }
     }
 }
