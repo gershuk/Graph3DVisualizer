@@ -48,6 +48,8 @@ namespace Graph3DVisualizer.Graph3D
         public void Deconstruct (out AbstractVertex fromVertex, out AbstractVertex toVertex) => (fromVertex, toVertex) = (FromVertex, ToVertex);
     }
 
+    [Serializable]
+    [YuzuAll]
     public struct SpringParameters
     {
         public float Length { get; set; }
