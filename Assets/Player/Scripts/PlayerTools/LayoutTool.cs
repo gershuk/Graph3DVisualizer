@@ -27,7 +27,7 @@ using UnityEngine.InputSystem;
 
 namespace Graph3DVisualizer.PlayerInputControls
 {
-    [CustomizableGrandType(typeof(SelectItemToolParams))]
+    [CustomizableGrandType(typeof(ToolParams))]
     public class LayoutTool : AbstractPlayerTool
     {
         #region Input names PC
@@ -62,7 +62,7 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private void CallChangeColor (InputAction.CallbackContext obj) => ChangeColor(Math.Sign(Mathf.RoundToInt(obj.ReadValue<float>())));
 
-        private void CallSelectItem (InputAction.CallbackContext obj) => SelectItem();
+        private void CallSelectItem (InputAction.CallbackContext obj) => StartLayout();
 
         public void ChangeColor (int deltaIndex) => _layoutTypeIndex = (_layoutTypeIndex + deltaIndex) < 0 ? _layoutFunctions.Count - 1 : (_layoutTypeIndex + deltaIndex) % _layoutFunctions.Count;
 
@@ -86,7 +86,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             #endregion Bind VR input
         }
 
-        public void SelectItem ()
+        public void StartLayout ()
         {
             var graph = RayCast().transform?.GetComponent<AbstractVertex>()?.transform.parent.GetComponent<AbstractGraph>();
             if (graph != null)
