@@ -3,6 +3,7 @@ root = true
 
 # Файлы C#
 [*.cs]
+guidelines = 140 2px solid 40000000
 
 #### Основные параметры EditorConfig ####
 
