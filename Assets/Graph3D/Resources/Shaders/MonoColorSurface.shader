@@ -11,6 +11,7 @@
 			"RenderType" = "Transparent"
 			"IgnoreProjector" = "True"
 		}
+		Cull Back
 
 		CGPROGRAM
 
