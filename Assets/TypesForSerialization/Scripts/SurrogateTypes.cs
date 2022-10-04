@@ -18,97 +18,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Runtime.Serialization;
 
 using UnityEngine;
 
-using Yuzu;
-
-namespace Graph3DVisualizer.SurrogateTypesForSerialization
+namespace Graph3DVisualizer.TypesForSerialization.SurrogateTypes
 {
-    [YuzuAll]
-    public class JsonSystemType
-    {
-        public string Name { get; set; }
-
-        public JsonSystemType (string name) => Name = name ?? throw new ArgumentNullException(nameof(name));
-
-        public static Type FromSurrogate (object obj) => Type.GetType((obj as JsonSystemType).Name);
-
-        public static implicit operator JsonSystemType (Type type) => ToSurrogate(type);
-
-        public static implicit operator Type (JsonSystemType jsonSystemType) => FromSurrogate(jsonSystemType);
-
-        public static JsonSystemType ToSurrogate (object obj) => new JsonSystemType((obj as Type).AssemblyQualifiedName);
-    }
-
-    [YuzuAll]
-    public class JsonTexture2D
-    {
-        private static Dictionary<string, Texture2D> _readCache;
-        private static Dictionary<Texture2D, JsonTexture2D> _writeCache;
-
-        public string Path { get; set; }
-
-        static JsonTexture2D ()
-        {
-            _readCache = new Dictionary<string, Texture2D>();
-            _writeCache = new Dictionary<Texture2D, JsonTexture2D>();
-        }
-
-        public JsonTexture2D (string filePath) => Path = filePath ?? Guid.NewGuid().ToString();
-
-        public static Texture2D FromSurrogate (object obj)
-        {
-            var jsonTexture2D = (JsonTexture2D) obj;
-
-            if (_readCache.TryGetValue(jsonTexture2D.Path, out var texture2D))
-                return texture2D;
-
-            texture2D = new Texture2D(1, 1) { name = jsonTexture2D.Path };
-            using (var fs = new FileStream(jsonTexture2D.Path, FileMode.Open))
-            {
-                var bytes = new byte[fs.Length];
-                fs.Read(bytes, 0, bytes.Length);
-                texture2D.LoadImage(bytes);
-            }
-
-            _readCache.Add(jsonTexture2D.Path, texture2D);
-
-            return texture2D;
-        }
-
-        public static void ReinitializeCache ()
-        {
-            _readCache = new Dictionary<string, Texture2D>();
-            _writeCache = new Dictionary<Texture2D, JsonTexture2D>();
-        }
-
-        public static JsonTexture2D ToSurrogate (object obj)
-        {
-            var texture2D = (Texture2D) obj;
-
-            if (_writeCache.TryGetValue(texture2D, out var jsonTexture2D))
-                return jsonTexture2D;
-
-            var path = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"Graph3DVisualizer\");
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
-            var fileName = (texture2D.name != string.Empty ? texture2D.name : Guid.NewGuid().ToString()) + ".jpg";
-            path = System.IO.Path.Combine(path, fileName);
-            using (var fs = new FileStream(path, FileMode.OpenOrCreate))
-            {
-                var bytes = texture2D.EncodeToJPG();
-                fs.Write(bytes, 0, bytes.Length);
-            }
-
-            jsonTexture2D = new JsonTexture2D(path);
-            _writeCache.Add(texture2D, jsonTexture2D);
-            return jsonTexture2D;
-        }
-    }
-
     public class SurrogateColor : ISerializationSurrogate
     {
         public void GetObjectData (object obj, SerializationInfo info, StreamingContext context)
@@ -155,7 +70,7 @@ namespace Graph3DVisualizer.SurrogateTypesForSerialization
 
     public class SurrogateShader : ISerializationSurrogate
     {
-        private readonly Dictionary<string, Shader> _readCache = new Dictionary<string, Shader>();
+        private readonly Dictionary<string, Shader> _readCache = new();
 
         public void GetObjectData (object obj, SerializationInfo info, StreamingContext context) => info.AddValue("Path", (obj as Shader).name);
 
@@ -174,8 +89,8 @@ namespace Graph3DVisualizer.SurrogateTypesForSerialization
     //ToDo : Add compression
     public class SurrogateTexture2D : ISerializationSurrogate
     {
-        private readonly Dictionary<Guid, Texture2D> _readCache = new Dictionary<Guid, Texture2D>();
-        private readonly Dictionary<Texture2D, (Guid guid, byte[] data)> _writeCache = new Dictionary<Texture2D, (Guid, byte[])>();
+        private readonly Dictionary<Guid, Texture2D> _readCache = new();
+        private readonly Dictionary<Texture2D, (Guid guid, byte[] data)> _writeCache = new();
 
         public void GetObjectData (object obj, SerializationInfo info, StreamingContext context)
         {

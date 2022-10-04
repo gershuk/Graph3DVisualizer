@@ -1,6 +1,6 @@
 {
-    "name": "Graph3DVisualizer.SurrogateTypesForSerialization",
-    "rootNamespace": "Graph3DVisualizer.SurrogateTypesForSerialization",
+    "name": "Graph3DVisualizer.TypesForSerialization",
+    "rootNamespace": "Graph3DVisualizer.TypesForSerialization",
     "references": [
         "GUID:de927d21316a8a447912b685b91e2a7f"
     ],
