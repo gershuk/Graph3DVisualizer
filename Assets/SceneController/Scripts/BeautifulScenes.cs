@@ -1,5 +1,5 @@
 // This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -36,6 +36,7 @@ namespace Graph3DVisualizer.SceneController
         [SerializeField]
         private Texture2D _texure2D;
 
+        [System.Obsolete]
         public GraphForBillboardVertexes CreateGraph ()
         {
             var graph = new GameObject("Graph");
@@ -178,6 +179,7 @@ namespace Graph3DVisualizer.SceneController
             return graphControler;
         }
 
+        [System.Obsolete]
         public override void InitTask ()
         {
             var graph = new GameObject("Graph");

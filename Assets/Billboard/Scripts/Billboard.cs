@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@ namespace Graph3DVisualizer.Billboards
             get => Material.GetFloat(_cutoff);
             set
             {
-                if (value > 1 || value < 0)
+                if (value is > 1 or < 0)
                     throw new ArgumentOutOfRangeException("Cutoff parameter out of range");
                 Material.SetFloat(_cutoff, value);
             }
@@ -72,7 +72,7 @@ namespace Graph3DVisualizer.Billboards
             set => Material.mainTexture = value;
         }
 
-        public Material Material { get; set; }
+        public Material? Material { get; set; }
 
         public Color MonoColor
         {
@@ -130,7 +130,7 @@ namespace Graph3DVisualizer.Billboards
                 return;
             }
 
-            Material = null;
+            GameObject.Destroy(Material);
             GC.SuppressFinalize(this);
             _disposed = true;
         }
@@ -141,23 +141,37 @@ namespace Graph3DVisualizer.Billboards
             {
                 if (!writeCache.TryGetValue(CacheGuid.Value, out var billboardParameters))
                 {
-                    billboardParameters = new BillboardParameters(MainTexture, Offset, new Vector2(ScaleX, ScaleY), Cutoff, IsMonoColor, MonoColor, true, Name, Description, CacheGuid);
+                    billboardParameters = new BillboardParameters(MainTexture,
+                                                                  Offset,
+                                                                  new Vector2(ScaleX, ScaleY),
+                                                                  Cutoff,
+                                                                  IsMonoColor,
+                                                                  MonoColor,
+                                                                  true,
+                                                                  Name,
+                                                                  Description,
+                                                                  CacheGuid);
                     writeCache.Add(CacheGuid.Value, billboardParameters);
                 }
 
                 return (BillboardParameters) billboardParameters;
             }
 
-            return new BillboardParameters(MainTexture, Offset, new Vector2(ScaleX, ScaleY), Cutoff, IsMonoColor, MonoColor, false, Name, Description);
+            return new BillboardParameters(MainTexture,
+                                           Offset,
+                                           new Vector2(ScaleX, ScaleY),
+                                           Cutoff,
+                                           IsMonoColor,
+                                           MonoColor,
+                                           false,
+                                           Name,
+                                           Description);
         }
 
         public void SetupParams (BillboardParameters billboardParameters)
         {
             CacheGuid = billboardParameters.UseCash ? billboardParameters.Id : default(Guid?);
-            Material = new Material(_shader)
-            {
-                enableInstancing = true
-            };
+            Material = new Material(_shader) { enableInstancing = true };
             MainTexture = billboardParameters.Texture;
             Offset = billboardParameters.Offset;
             ScaleX = billboardParameters.Scale.x;
@@ -177,11 +191,6 @@ namespace Graph3DVisualizer.Billboards
     [YuzuAll]
     public sealed class BillboardParameters : AbstractCustomizableParameter
     {
-        private readonly Texture _mainTexture;
-        private readonly bool _useCache;
-        private Vector2 _vector2;
-        private Vector4 _zero;
-
         /// <summary>
         /// Used to determine the lower bound of the texel clipping, based on the alpha channel summary.
         /// </summary>
@@ -234,8 +243,16 @@ namespace Graph3DVisualizer.Billboards
         /// </param>
         /// <param name="monoColor">
         /// Used to determine image color in MonoColor mode.</param>
-        public BillboardParameters (Texture2D texture, Vector4 offset = default, Vector2 scale = default, float cutoff = 0.1f, bool isMonoColor = false, Color monoColor = default,
-            bool useCache = false, string? name = default, string? description = default, Guid? parameterId = default) : base(parameterId)
+        public BillboardParameters (Texture2D texture,
+                                    Vector4 offset = default,
+                                    Vector2 scale = default,
+                                    float cutoff = 0.1f,
+                                    bool isMonoColor = false,
+                                    Color monoColor = default,
+                                    bool useCache = false,
+                                    string? name = default,
+                                    string? description = default,
+                                    Guid? parameterId = default) : base(parameterId)
         {
             Texture = texture;
             Scale = scale;
@@ -246,14 +263,6 @@ namespace Graph3DVisualizer.Billboards
             Name = name ?? string.Empty;
             Description = description ?? string.Empty;
             UseCash = useCache;
-        }
-
-        public BillboardParameters (Texture mainTexture, Vector4 zero, Vector2 vector2, bool useCache)
-        {
-            _mainTexture = mainTexture;
-            _zero = zero;
-            _vector2 = vector2;
-            _useCache = useCache;
         }
     }
 }

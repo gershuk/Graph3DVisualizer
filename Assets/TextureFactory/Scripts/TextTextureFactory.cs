@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,6 +26,7 @@ namespace Graph3DVisualizer.TextureFactory
     /// <summary>
     /// Fabricator that allows you to create text on a texture.
     /// </summary>
+    [Obsolete]
     public class TextTextureFactory
     {
         private enum TextureCorner
@@ -83,9 +84,7 @@ namespace Graph3DVisualizer.TextureFactory
                     {
                         for (var j = 0; j < height / 2; ++j)
                         {
-                            var buff = pixels[i + j * width];
-                            pixels[i + j * width] = pixels[i + (height - 1 - j) * width];
-                            pixels[i + (height - 1 - j) * width] = buff;
+                            (pixels[i + ((height - 1 - j) * width)], pixels[i + (j * width)]) = (pixels[i + (j * width)], pixels[i + ((height - 1 - j) * width)]);
                         }
                     }
                 }
@@ -97,12 +96,10 @@ namespace Graph3DVisualizer.TextureFactory
                     {
                         for (var x = 0; x < width; x++)
                         {
-                            rotatedPixels[(height - 1) - y + x * height] = pixels[x + y * width];
+                            rotatedPixels[height - 1 - y + (x * height)] = pixels[x + (y * width)];
                         }
                     }
-                    var buff = height;
-                    height = width;
-                    width = buff;
+                    (width, height) = (height, width);
                     pixels = rotatedPixels;
                 }
 
@@ -113,12 +110,10 @@ namespace Graph3DVisualizer.TextureFactory
                     {
                         for (var x = 0; x < width; x++)
                         {
-                            rotatedPixels[y + (width - 1 - x) * height] = pixels[x + y * width];
+                            rotatedPixels[y + ((width - 1 - x) * height)] = pixels[x + (y * width)];
                         }
                     }
-                    var buff = height;
-                    height = width;
-                    width = buff;
+                    (width, height) = (height, width);
                     pixels = rotatedPixels;
                 }
 
@@ -213,7 +208,7 @@ namespace Graph3DVisualizer.TextureFactory
             }
 
             var posX = 0;
-            var posY = textureHeight - linesSizes[linesSizes.Count - 1].y;
+            var posY = textureHeight - linesSizes[^1].y;
             var index = 0;
 
             foreach (var character in text)

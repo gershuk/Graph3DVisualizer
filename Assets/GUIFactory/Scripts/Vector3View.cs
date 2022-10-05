@@ -1,5 +1,5 @@
 // This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ namespace Graph3DVisualizer.Gui
 {
     public class Vector3View : MonoBehaviour
     {
-        private readonly CultureInfo _culture = new CultureInfo("en-US");
+        private readonly CultureInfo _culture = new("en-US");
 
         [SerializeField]
         private Text _name;
@@ -44,7 +44,11 @@ namespace Graph3DVisualizer.Gui
 
         public event Action<Vector3>? OnChanged;
 
-        public string Name { get => _name.text; set => _name.text = value; }
+        public string Name
+        {
+            get => _name.text;
+            set => _name.text = value;
+        }
 
         public Vector3 Vector
         {
@@ -65,7 +69,11 @@ namespace Graph3DVisualizer.Gui
         }
 
         private string FormatString (string input) =>
-            string.IsNullOrEmpty(input) || input == "," || input == "." || input == "-" || input == "+" ? "0" : input.Replace(',', '.').TrimEnd('.');
+            string.IsNullOrEmpty(input)
+            || input == ","
+            || input == "."
+            || input == "-"
+            || input == "+" ? "0" : input.Replace(',', '.').TrimEnd('.');
 
         private void SetX (string value)
         {

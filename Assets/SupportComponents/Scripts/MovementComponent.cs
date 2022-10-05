@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ namespace Graph3DVisualizer.SupportComponents
         private int _currentGearIndex;
 
         private Vector3 _eulerAngles;
-        private List<(float deltaTimeFromStart, float multiplier)> _gears = new List<(float deltaTimeFromStart, float multiplier)>(4) { (0f, 1f), (10, 3f), (20, 5f), (40, 8f) };
+        private List<(float deltaTimeFromStart, float multiplier)> _gears = new(4) { (0f, 1f), (10, 3f), (20, 5f), (40, 8f) };
 
         private bool _isMoving;
 
@@ -76,7 +76,9 @@ namespace Graph3DVisualizer.SupportComponents
             {
                 if (TransmissionMode == TransmissionMode.Manual)
                 {
-                    _currentGearIndex = (value > -1 && value < Gears.Count) ? value : throw new ArgumentOutOfRangeException($"Max gear is {Gears.Count}");
+                    _currentGearIndex = (value > -1 && value < Gears.Count)
+                                        ? value
+                                        : throw new ArgumentOutOfRangeException($"Max gear is {Gears.Count}");
                 }
                 else
                 {
@@ -137,7 +139,12 @@ namespace Graph3DVisualizer.SupportComponents
             get => _transform.localPosition;
         }
 
-        public float MovingSpeed { get => _movingSpeed * Gears[CurrentGearIndex].multiplier; set => _movingSpeed = value; }
+        public float MovingSpeed
+        {
+            get => _movingSpeed * Gears[CurrentGearIndex].multiplier;
+            set => _movingSpeed = value;
+        }
+
         public float RotationSpeed { get; set; }
 
         public TransmissionMode TransmissionMode
@@ -181,7 +188,8 @@ namespace Graph3DVisualizer.SupportComponents
                 _lastTimeCheck = Time.time;
                 if (TransmissionMode == TransmissionMode.Auto)
                 {
-                    while (_currentGearIndex + 1 < Gears.Count && Gears[_currentGearIndex + 1].deltaTimeFromStart < Time.time - _startMovingTime)
+                    while (_currentGearIndex + 1 < Gears.Count
+                           && Gears[_currentGearIndex + 1].deltaTimeFromStart < Time.time - _startMovingTime)
                     {
                         _currentGearIndex++;
                     }
@@ -210,7 +218,7 @@ namespace Graph3DVisualizer.SupportComponents
                     UpdateParametersWhileMoving(Time.deltaTime);
 
                     var newCoord = Vector3.Distance(point, _transform.position) > Time.deltaTime * MovingSpeed
-                        ? _transform.position + moveDir * Time.deltaTime * MovingSpeed
+                        ? _transform.position + (moveDir * Time.deltaTime * MovingSpeed)
                         : point;
 
                     _transform.position = newCoord;

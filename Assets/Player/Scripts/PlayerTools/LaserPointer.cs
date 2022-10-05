@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -90,7 +90,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             _texture2D = _texture2D == null ? Resources.Load<Texture2D>(_lineTexturePath) : _texture2D;
             _shader = _shader == null ? Shader.Find(_edgeShaderPath) : _shader;
 
-            _material = new Material(_shader) { mainTexture = _texture2D };
+            _material = new(_shader) { mainTexture = _texture2D };
             _material.SetFloat(_cutoff, 0.8f);
             _material.SetFloat(_monoColorStateName, Convert.ToSingle(true));
             RayColor = Color.red;
@@ -108,7 +108,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             _lineRender.startWidth = _width;
         }
 
-        private void LateUpdate () => Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, Range);//_lineRender.SetPosition(1, hit.transform == null ? Vector3.forward * Range : Vector3.forward * hit.distance);
+        private void LateUpdate () => Raycast(transform.position, transform.TransformDirection(Vector3.forward), out _, Range);
     }
 
     public enum LaserState

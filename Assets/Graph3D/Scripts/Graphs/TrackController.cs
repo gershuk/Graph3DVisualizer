@@ -1,5 +1,5 @@
 // This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -29,7 +29,6 @@ namespace Graph3DVisualizer.SceneController
     {
         private const string _ringPath = @"Prefabs\Ring";
         private static GameObject _ringPrefab;
-        private int _currentIndex;
         private MovementComponent _movementComponent;
 
         [SerializeField]
@@ -40,10 +39,19 @@ namespace Graph3DVisualizer.SceneController
         [SerializeField]
         private Vector3 _scale = Vector3.one;
 
-        public int CurrentIndex { get => _currentIndex; protected set => _currentIndex = value; }
-        public override MovementComponent MovementComponent { get => _movementComponent; protected set => _movementComponent = value; }
+        public int CurrentIndex { get; protected set; }
 
-        public override string? Name { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+        public override MovementComponent MovementComponent
+        {
+            get => _movementComponent;
+            protected set => _movementComponent = value;
+        }
+
+        public override string? Name
+        {
+            get => throw new System.NotImplementedException();
+            set => throw new System.NotImplementedException();
+        }
 
         public Vector3[] Positions
         {
@@ -84,7 +92,8 @@ namespace Graph3DVisualizer.SceneController
                 {
                     _rings[i].GetComponent<TrackRing>().Color = Color.yellow;
                     _rings[i].transform.LookAt(_rings[i - 1].transform);
-                    _rings[i - 1].Link<StretchableEdge, StretchableEdgeParameters>(_rings[i], new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(Color.green, true), new SpringParameters(1, 5)));
+                    _rings[i - 1].Link<StretchableEdge, StretchableEdgeParameters>(_rings[i],
+                                                                                   new(new(Color.green, true), new SpringParameters(1, 5)));
                 }
                 else
                 {
@@ -126,7 +135,8 @@ namespace Graph3DVisualizer.SceneController
 
         public override TVertex SpawnVertex<TVertex, TParams> (TParams vertexParameters) => throw new System.NotImplementedException();
 
-        public override AbstractVertex SpawnVertex (System.Type vertexType, AbstractVertexParameters parameters) => throw new System.NotImplementedException();
+        public override AbstractVertex SpawnVertex (System.Type vertexType, AbstractVertexParameters parameters) =>
+            throw new System.NotImplementedException();
 
         [ContextMenu("UpdateTrack")]
         public void UpdateTrack ()

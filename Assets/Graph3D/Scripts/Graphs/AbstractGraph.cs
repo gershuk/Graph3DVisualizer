@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -42,7 +42,10 @@ namespace Graph3DVisualizer.Graph3D
         public string FirstVertexId { get; set; }
         public string SecondVertexId { get; set; }
 
-        public LinkInfo (string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters)
+        public LinkInfo (string firstVertexId,
+                         string secondVertexId,
+                         Type edgeType,
+                         EdgeParameters edgeParameters)
         {
             FirstVertexId = firstVertexId;
             SecondVertexId = secondVertexId;
@@ -50,13 +53,17 @@ namespace Graph3DVisualizer.Graph3D
             EdgeParameters = edgeParameters;
         }
 
-        public static implicit operator (string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters) (LinkInfo value) =>
-            (value.FirstVertexId, value.SecondVertexId, value.EdgeType, value.EdgeParameters);
+        public static implicit operator (string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters)
+            (LinkInfo value) => (value.FirstVertexId, value.SecondVertexId, value.EdgeType, value.EdgeParameters);
 
-        public static implicit operator LinkInfo ((string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters) value) =>
-            new LinkInfo(value.firstVertexId, value.secondVertexId, value.edgeType, value.edgeParameters);
+        public static implicit operator LinkInfo
+            ((string firstVertexId, string secondVertexId, Type edgeType, EdgeParameters edgeParameters) value) =>
+            new(value.firstVertexId, value.secondVertexId, value.edgeType, value.edgeParameters);
 
-        public void Deconstruct (out string firstVertexId, out string secondVertexId, out Type edgeType, out EdgeParameters edgeParameters)
+        public void Deconstruct (out string firstVertexId,
+                                 out string secondVertexId,
+                                 out Type edgeType,
+                                 out EdgeParameters edgeParameters)
         {
             firstVertexId = FirstVertexId;
             secondVertexId = SecondVertexId;
@@ -64,21 +71,14 @@ namespace Graph3DVisualizer.Graph3D
             edgeParameters = EdgeParameters;
         }
 
-        public override bool Equals (object obj) => obj is LinkInfo other &&
-                   FirstVertexId == other.FirstVertexId &&
-                   SecondVertexId == other.SecondVertexId &&
-                   EqualityComparer<Type>.Default.Equals(EdgeType, other.EdgeType) &&
-                   EqualityComparer<EdgeParameters>.Default.Equals(EdgeParameters, other.EdgeParameters);
+        public override bool Equals (object obj) =>
+            obj is LinkInfo other
+            && FirstVertexId == other.FirstVertexId
+            && SecondVertexId == other.SecondVertexId
+            && EqualityComparer<Type>.Default.Equals(EdgeType, other.EdgeType)
+            && EqualityComparer<EdgeParameters>.Default.Equals(EdgeParameters, other.EdgeParameters);
 
-        public override int GetHashCode ()
-        {
-            var hashCode = -1737920732;
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FirstVertexId);
-            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(SecondVertexId);
-            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(EdgeType);
-            hashCode = hashCode * -1521134295 + EqualityComparer<EdgeParameters>.Default.GetHashCode(EdgeParameters);
-            return hashCode;
-        }
+        public override int GetHashCode () => HashCode.Combine(FirstVertexId, SecondVertexId, EdgeType, EdgeParameters);
     }
 
     /// <summary>
@@ -91,29 +91,24 @@ namespace Graph3DVisualizer.Graph3D
         public AbstractVertexParameters VertexParameters { get; set; }
         public Type VertexType { get; set; }
 
-        public VertexInfo (Type vertexType, AbstractVertexParameters vertexParameters) => (VertexType, VertexParameters) = (vertexType, vertexParameters);
+        public VertexInfo (Type vertexType, AbstractVertexParameters vertexParameters) =>
+            (VertexType, VertexParameters) = (vertexType, vertexParameters);
 
-        public static implicit operator (Type vertexType, AbstractVertexParameters vertexParameters) (VertexInfo value) => (value.VertexType, value.VertexParameters);
+        public static implicit operator (Type vertexType, AbstractVertexParameters vertexParameters) (VertexInfo value) =>
+            (value.VertexType, value.VertexParameters);
 
-        public static implicit operator VertexInfo ((Type vertexType, AbstractVertexParameters vertexParameters) value) => new VertexInfo(value.vertexType, value.vertexParameters);
+        public static implicit operator VertexInfo ((Type vertexType, AbstractVertexParameters vertexParameters) value) =>
+            new(value.vertexType, value.vertexParameters);
 
-        public void Deconstruct (out Type vertexType, out AbstractVertexParameters vertexParameters)
-        {
-            vertexType = VertexType;
-            vertexParameters = VertexParameters;
-        }
+        public void Deconstruct (out Type vertexType, out AbstractVertexParameters vertexParameters) =>
+            (vertexType, vertexParameters) = (VertexType, VertexParameters);
 
-        public override bool Equals (object obj) => obj is VertexInfo other &&
-                   EqualityComparer<Type>.Default.Equals(VertexType, other.VertexType) &&
-                   EqualityComparer<AbstractVertexParameters>.Default.Equals(VertexParameters, other.VertexParameters);
+        public override bool Equals (object obj) =>
+            obj is VertexInfo other
+            && EqualityComparer<Type>.Default.Equals(VertexType, other.VertexType)
+            && EqualityComparer<AbstractVertexParameters>.Default.Equals(VertexParameters, other.VertexParameters);
 
-        public override int GetHashCode ()
-        {
-            var hashCode = -2103449114;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(VertexType);
-            hashCode = hashCode * -1521134295 + EqualityComparer<AbstractVertexParameters>.Default.GetHashCode(VertexParameters);
-            return hashCode;
-        }
+        public override int GetHashCode () => HashCode.Combine(VertexType, VertexParameters);
     }
 
     /// <summary>
@@ -150,7 +145,9 @@ namespace Graph3DVisualizer.Graph3D
                 foreach (var link in vertex.IncomingLinks.Concat(vertex.OutgoingLinks))
                 {
                     var dir = link.AdjacentVertex.transform.position - vertex.transform.position;
-                    sumForce += (dir.magnitude - link.Edge.SpringParameters.Length) * link.Edge.SpringParameters.StiffnessCoefficient * dir.normalized;
+                    sumForce += (dir.magnitude - link.Edge.SpringParameters.Length)
+                                * link.Edge.SpringParameters.StiffnessCoefficient
+                                * dir.normalized;
                 }
 
                 speed += sumForce / vertex.Weight * Time.deltaTime;
@@ -194,22 +191,27 @@ namespace Graph3DVisualizer.Graph3D
             }
         }
 
+        protected virtual void Awake () =>
+                    (_transform, MovementComponent) = (GetComponent<Transform>(), GetComponent<MovementComponent>());
+
         public abstract bool ContainsVertex (string id);
 
         public abstract bool DeleteVeretex (string id);
 
         public GraphParameters DownloadParams (Dictionary<Guid, object> writeCache)
         {
-            var vertexParameters = new List<VertexInfo>();
-            var links = new List<LinkInfo>();
+            List<VertexInfo> vertexParameters = new();
+            List<LinkInfo> links = new();
 
             foreach (var vertex in GetVertexes())
             {
-                vertexParameters.Add((vertex.GetType(), (AbstractVertexParameters) CustomizableExtension.CallDownloadParams(vertex, writeCache)));
+                vertexParameters.Add((vertex.GetType(),
+                                     (AbstractVertexParameters) CustomizableExtension.CallDownloadParams(vertex, writeCache)));
 
                 foreach (var outgoingLink in vertex.OutgoingLinks)
                 {
-                    links.Add((vertex.Id, outgoingLink.AdjacentVertex.Id, outgoingLink.Edge.GetType(), (EdgeParameters) CustomizableExtension.CallDownloadParams(outgoingLink.Edge, writeCache)));
+                    links.Add((vertex.Id, outgoingLink.AdjacentVertex.Id, outgoingLink.Edge.GetType(),
+                        (EdgeParameters) CustomizableExtension.CallDownloadParams(outgoingLink.Edge, writeCache)));
                 }
             }
 
@@ -269,7 +271,7 @@ namespace Graph3DVisualizer.Graph3D
             try
             {
                 var vertexes = GetVertexes();
-                var idToIndexDictionary = new Dictionary<string, int>(vertexes.Count);
+                Dictionary<string, int> idToIndexDictionary = new(vertexes.Count);
                 for (var i = 0; i < vertexes.Count; i++)
                 {
                     var vertex = vertexes[i];
@@ -279,7 +281,8 @@ namespace Graph3DVisualizer.Graph3D
                 for (var i = 0; i < vertexes.Count; i++)
                 {
                     var vertex = vertexes[i];
-                    var adjVertexSet = new HashSet<AbstractVertex>(vertex.IncomingLinks.Concat(vertex.OutgoingLinks).Select(l => l.AdjacentVertex));
+                    HashSet<AbstractVertex> adjVertexSet = new(vertex.IncomingLinks.Concat(vertex.OutgoingLinks)
+                                                                                   .Select(l => l.AdjacentVertex));
                     matrix[i, i] = adjVertexSet.Count;
                     foreach (var adjVeretex in adjVertexSet)
                     {
@@ -293,7 +296,9 @@ namespace Graph3DVisualizer.Graph3D
                 var scale = vertexes.Count * 60;
                 for (var i = 0; i < vertexes.Count; ++i)
                 {
-                    vertexes[i].MovementComponent.LocalCoordinates = new Vector3((float) z[i, vertexes.Count - 1].x, (float) z[i, vertexes.Count - 2].x, (float) z[i, vertexes.Count - 3].x) * scale;
+                    vertexes[i].MovementComponent.LocalCoordinates = new Vector3((float) z[i, vertexes.Count - 1].x,
+                                                                                 (float) z[i, vertexes.Count - 2].x,
+                                                                                 (float) z[i, vertexes.Count - 3].x) * scale;
                 }
             }
             finally
@@ -324,7 +329,7 @@ namespace Graph3DVisualizer.Graph3D
                     foreach (var ring in ChildRings)
                         maxChildRadius = Mathf.Max(maxChildRadius, ring.Radius);
 
-                    Radius = maxChildRadius / Mathf.Sin(Mathf.PI / ChildRings.Count) + reserve;
+                    Radius = (maxChildRadius / Mathf.Sin(Mathf.PI / ChildRings.Count)) + reserve;
                 }
 
                 if (ChildRings != null && ChildRings.Count == 1)

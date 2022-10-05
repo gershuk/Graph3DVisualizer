@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -25,7 +25,8 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 using Graph3DVisualizer.Customizable;
-using Graph3DVisualizer.SurrogateTypesForSerialization;
+using Graph3DVisualizer.TypesForSerialization.SurrogateTypes;
+using Graph3DVisualizer.TypesForSerialization.YuzuTypes;
 
 using UnityEngine;
 
@@ -59,10 +60,9 @@ namespace Graph3DVisualizer.SceneController
     [CustomizableGrandType(typeof(SceneControllerParameters))]
     public class SceneLoader : ICustomizable<SceneControllerParameters>
     {
-        private static readonly SceneLoader _sceneLoader;
-        private readonly Dictionary<string, Assembly> _assemblies = new Dictionary<string, Assembly>();
+        private readonly Dictionary<string, Assembly> _assemblies = new();
 
-        public static SceneLoader Instance => _sceneLoader;
+        public static SceneLoader Instance { get; private set; }
 
         public AbstractSceneController? ActiveTask { get; private set; }
 
@@ -70,8 +70,8 @@ namespace Graph3DVisualizer.SceneController
 
         static SceneLoader ()
         {
-            _sceneLoader = new SceneLoader();
-            _sceneLoader.LoadMods();
+            Instance = new SceneLoader();
+            Instance.LoadMods();
         }
 
         private static SurrogateSelector MakeSurrogateSelector ()
@@ -150,7 +150,7 @@ namespace Graph3DVisualizer.SceneController
         }
 
         public SceneControllerParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
-            new SceneControllerParameters(ActiveTask.GetType(), (SceneParameters) CustomizableExtension.CallDownloadParams(ActiveTask, writeCache));
+            new(ActiveTask.GetType(), (SceneParameters) CustomizableExtension.CallDownloadParams(ActiveTask, writeCache));
 
         public void FindAllTasks ()
         {

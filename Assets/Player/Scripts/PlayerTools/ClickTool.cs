@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -62,19 +62,24 @@ namespace Graph3DVisualizer.PlayerInputControls
                 _clickableObject.Click(_owner);
         }
 
-        public new ClickToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new ClickToolParams((this as ICustomizable<ToolParams>).DownloadParams(writeCache));
+        public new ClickToolParams DownloadParams (Dictionary<Guid, object> writeCache) =>
+            new((this as ICustomizable<ToolParams>).DownloadParams(writeCache));
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
             base.RegisterEvents(inputActions);
 
             #region Bind PC input
-            var selectItemActionPC = _inputActionsPC.AddAction(_selectActionNamePC, InputActionType.Button, "<Mouse>/leftButton");
+            var selectItemActionPC = _inputActionsPC.AddAction(_selectActionNamePC,
+                                                               InputActionType.Button,
+                                                               "<Mouse>/leftButton");
             selectItemActionPC.canceled += CallClick;
             #endregion Bind PC input
 
             #region Bind VR input
-            var selectItemActionVR = _inputActionsVR.AddAction(_selectActionNameVR, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
+            var selectItemActionVR = _inputActionsVR.AddAction(_selectActionNameVR,
+                                                               InputActionType.Button,
+                                                               "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
             selectItemActionVR.canceled += CallClick;
             #endregion Bind VR input
         }

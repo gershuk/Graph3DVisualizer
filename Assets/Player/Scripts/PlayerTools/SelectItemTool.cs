@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -54,9 +54,13 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private void CallSelectItem (InputAction.CallbackContext obj) => SelectItem();
 
-        public void ChangeColor (int deltaIndex) => _colorIndex = (_colorIndex + deltaIndex) < 0 ? _colors.Count - 1 : (_colorIndex + deltaIndex) % _colors.Count;
+        public void ChangeColor (int deltaIndex) =>
+            _colorIndex = (_colorIndex + deltaIndex) < 0
+                          ? _colors.Count - 1
+                          : (_colorIndex + deltaIndex) % _colors.Count;
 
-        public new SelectItemToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new SelectItemToolParams(_colors, (this as ICustomizable<ToolParams>).DownloadParams(writeCache));
+        public new SelectItemToolParams DownloadParams (Dictionary<Guid, object> writeCache) =>
+            new(_colors, (this as ICustomizable<ToolParams>).DownloadParams(writeCache));
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
@@ -71,8 +75,12 @@ namespace Graph3DVisualizer.PlayerInputControls
             #endregion Bind PC input
 
             #region Bind VR input
-            var selectItemActionVR = _inputActionsVR.AddAction(_selectActionVRName, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
-            var changeColorActionVR = _inputActionsVR.AddAction(_changeColorActionVRName, InputActionType.Value, "<ViveController>{RightHand}/trackpad/x");
+            var selectItemActionVR = _inputActionsVR.AddAction(_selectActionVRName,
+                                                               InputActionType.Button,
+                                                               "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
+            var changeColorActionVR = _inputActionsVR.AddAction(_changeColorActionVRName,
+                                                                InputActionType.Value,
+                                                                "<ViveController>{RightHand}/trackpad/x");
             selectItemActionVR.canceled += CallSelectItem;
             changeColorActionVR.started += CallChangeColor;
             #endregion Bind VR input
@@ -124,10 +132,12 @@ namespace Graph3DVisualizer.PlayerInputControls
     {
         public IReadOnlyList<Color> Colors { get; protected set; }
 
-        public SelectItemToolParams (IReadOnlyList<Color> colors, bool isVR = false, float rayCastRange = 1000) : base(isVR, rayCastRange)
+        public SelectItemToolParams (IReadOnlyList<Color> colors, bool isVR = false, float rayCastRange = 1000) :
+            base(isVR, rayCastRange)
             => Colors = colors ?? throw new ArgumentNullException(nameof(colors));
 
-        public SelectItemToolParams (IReadOnlyList<Color> colors, ToolParams toolParams) : this(colors, toolParams.IsVR, toolParams.RayCastRange)
+        public SelectItemToolParams (IReadOnlyList<Color> colors, ToolParams toolParams) :
+            this(colors, toolParams.IsVR, toolParams.RayCastRange)
         { }
     }
 }

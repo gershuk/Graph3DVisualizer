@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -28,11 +28,6 @@ namespace Graph3DVisualizer.MainMenu
 {
     public class UIManagerTech : MonoBehaviour
     {
-        private readonly string[] _characters = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u",
-                                   "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P",
-                                   "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "_",
-                                   "-"};
-
         private readonly string _delDecryptedPass;
 
         private readonly string[] _delLines;
@@ -200,12 +195,12 @@ namespace Graph3DVisualizer.MainMenu
         [Header("What Menu Is Active?")]
         public bool simpleMenu = false;
 
-        public List<string> speakers = new List<string>();
+        public List<string> speakers = new();
 
         [Header("Starting Options Values")]
         public int speakersDefault = 0;
 
-        public List<string> subtitleLanguage = new List<string>();
+        public List<string> subtitleLanguage = new();
 
         public int subtitleLanguageDefault = 0;
 
@@ -547,7 +542,7 @@ namespace Graph3DVisualizer.MainMenu
                     var Encrypted = (char) (c * i);
                     _password += Encrypted.ToString();
                 }
-                _form = (_username + Environment.NewLine + Environment.NewLine + _password);
+                _form = _username + Environment.NewLine + Environment.NewLine + _password;
                 System.IO.File.WriteAllText(_path + "_" + _username + ".txt", _form);
                 _username = "";
                 _password = "";

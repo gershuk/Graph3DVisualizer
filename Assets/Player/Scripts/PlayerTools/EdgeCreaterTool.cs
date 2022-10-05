@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -55,7 +55,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         private const string _deleteEdgeActionVRName = "DeleteEdgeActionVR";
         #endregion Input names VR
 
-        private List<(Type type, EdgeParameters parameters)> _edgeData = new List<(Type, EdgeParameters)>();
+        private List<(Type type, EdgeParameters parameters)> _edgeData = new();
 
         private BillboardVertex? _firstVertex;
 
@@ -81,7 +81,8 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private void CallSelectFirstPoint (InputAction.CallbackContext obj) => SelectFirstPoint();
 
-        public void ChangeIndex (int deltaIndex) => _typeIndex = (_typeIndex + deltaIndex) < 0 ? _edgeData.Count - 1 : (_typeIndex + deltaIndex) % _edgeData.Count;
+        public void ChangeIndex (int deltaIndex) =>
+            _typeIndex = (_typeIndex + deltaIndex) < 0 ? _edgeData.Count - 1 : (_typeIndex + deltaIndex) % _edgeData.Count;
 
         public void CreateEdge ()
         {
@@ -121,7 +122,8 @@ namespace Graph3DVisualizer.PlayerInputControls
             }
         }
 
-        public new EdgeCreaterToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new EdgeCreaterToolParams(_edgeData, (this as ICustomizable<ToolParams>).DownloadParams(writeCache));
+        public new EdgeCreaterToolParams DownloadParams (Dictionary<Guid, object> writeCache) =>
+            new(_edgeData, (this as ICustomizable<ToolParams>).DownloadParams(writeCache));
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
@@ -143,7 +145,9 @@ namespace Graph3DVisualizer.PlayerInputControls
             #endregion Bind PC input
 
             #region Bind VR input
-            var createEdgeActionVR = _inputActionsVR.AddAction(_createEdgeActionVRName, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
+            var createEdgeActionVR = _inputActionsVR.AddAction(_createEdgeActionVRName,
+                                                               InputActionType.Button,
+                                                               "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
             createEdgeActionVR.performed += CallSelectFirstPoint;
             createEdgeActionVR.canceled += CallCreateEdge;
             #endregion Bind VR input
@@ -185,7 +189,8 @@ namespace Graph3DVisualizer.PlayerInputControls
     {
         public IReadOnlyList<(Type, EdgeParameters)> EdgeTypes { get; protected set; }
 
-        public EdgeCreaterToolParams (IReadOnlyList<(Type, EdgeParameters)> edgeTypes, bool isVR = false, float rayCastRange = 1000) : base(isVR, rayCastRange)
+        public EdgeCreaterToolParams (IReadOnlyList<(Type, EdgeParameters)> edgeTypes, bool isVR = false, float rayCastRange = 1000) :
+            base(isVR, rayCastRange)
         {
             EdgeTypes = edgeTypes ?? throw new ArgumentNullException(nameof(edgeTypes));
             foreach (var (type, parameters) in EdgeTypes)
@@ -195,7 +200,8 @@ namespace Graph3DVisualizer.PlayerInputControls
             }
         }
 
-        public EdgeCreaterToolParams (IReadOnlyList<(Type, EdgeParameters)> edgeTypes, ToolParams toolParams) : this(edgeTypes, toolParams.IsVR, toolParams.RayCastRange)
+        public EdgeCreaterToolParams (IReadOnlyList<(Type, EdgeParameters)> edgeTypes, ToolParams toolParams) :
+            this(edgeTypes, toolParams.IsVR, toolParams.RayCastRange)
         {
         }
     }

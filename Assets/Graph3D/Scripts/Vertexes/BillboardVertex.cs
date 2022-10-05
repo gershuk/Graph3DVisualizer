@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -33,9 +33,6 @@ namespace Graph3DVisualizer.Graph3D
     /// <summary>
     /// Simple realization of <see cref="AbstractVertex"/>.
     /// </summary>
-    [RequireComponent(typeof(MovementComponent))]
-    [RequireComponent(typeof(MeshRenderer))]
-    [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(SphereCollider))]
     [CustomizableGrandType(typeof(BillboardVertexParameters))]
@@ -50,7 +47,7 @@ namespace Graph3DVisualizer.Graph3D
         public override event Action<bool, UnityEngine.Object>? VisibleChanged;
 
         public virtual IList<BillboardId> ImageIds { get; protected set; } = new List<BillboardId>();
-        public override MovementComponent MovementComponent { get; protected set; }
+        public override MovementComponent? MovementComponent { get; protected set; }
 
         public override bool Visibility
         {
@@ -66,17 +63,15 @@ namespace Graph3DVisualizer.Graph3D
             get => _visible;
         }
 
-        private void Awake ()
+        protected override void Awake ()
         {
-            _transform = transform;
+            base.Awake();
             _sphereCollider = GetComponent<SphereCollider>();
-            _visible = true;
             _billboardControler = GetComponent<BillboardController>();
-            MovementComponent = GetComponent<MovementComponent>();
             ImageIds = new List<BillboardId>();
         }
 
-        private void OnDestroy () => Destroyed?.Invoke(this);
+        protected void OnDestroy () => Destroyed?.Invoke(this);
 
         protected virtual void UpdateColliderRange ()
         {
@@ -103,16 +98,16 @@ namespace Graph3DVisualizer.Graph3D
         }
 
         public new BillboardVertexParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
-                                            new BillboardVertexParameters(ImageIds.Select(id => (_billboardControler.GetBillboard(id).DownloadParams(writeCache))).ToArray(),
+            new(ImageIds.Select(id => _billboardControler.GetBillboard(id).DownloadParams(writeCache)).ToArray(),
                 (this as ICustomizable<AbstractVertexParameters>).DownloadParams(writeCache));
 
-        public virtual Vector2 GetImageSize (BillboardId id) => new Vector2(_billboardControler.GetBillboard(id).ScaleX, _billboardControler.GetBillboard(id).ScaleY);
+        public virtual Vector2 GetImageSize (BillboardId id) =>
+            new(_billboardControler.GetBillboard(id).ScaleX, _billboardControler.GetBillboard(id).ScaleY);
 
         public virtual void SetImageSize (BillboardId id, Vector2 vector2)
         {
             var billboard = _billboardControler.GetBillboard(id);
-            billboard.ScaleX = vector2.x;
-            billboard.ScaleY = vector2.y;
+            (billboard.ScaleX, billboard.ScaleY) = (vector2.x, vector2.y);
             UpdateColliderRange();
         }
 
@@ -134,11 +129,17 @@ namespace Graph3DVisualizer.Graph3D
     {
         public BillboardParameters[] ImageParameters { get; protected set; }
 
-        public BillboardVertexParameters (BillboardParameters[] imageParameters, Vector3 position = default, Vector3 eulerAngles = default, string? id = default) : base(position, eulerAngles, id)
-            => ImageParameters = imageParameters;
+        public BillboardVertexParameters (BillboardParameters[] imageParameters,
+                                          Vector3 position = default,
+                                          Vector3 eulerAngles = default,
+                                          string? id = default) :
+            base(position, eulerAngles, id) => ImageParameters = imageParameters;
 
         public BillboardVertexParameters (BillboardParameters[] imageParameters, AbstractVertexParameters abstractVertexParameters) :
-            this(imageParameters, abstractVertexParameters.Position, abstractVertexParameters.EulerAngles, abstractVertexParameters.Id.ToString())
+            this(imageParameters,
+                 abstractVertexParameters.Position,
+                 abstractVertexParameters.EulerAngles,
+                 abstractVertexParameters.Id.ToString())
         { }
     }
 }

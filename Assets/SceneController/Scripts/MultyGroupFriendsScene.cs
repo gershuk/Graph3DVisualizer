@@ -1,5 +1,5 @@
 // This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -36,7 +36,8 @@ namespace Graph3DVisualizer.SceneController
                 var graph = new GameObject("Social interactions");
                 var graphControler = graph.AddComponent<GraphForBillboardVertexes>();
                 Graphs.Add(graphControler);
-                var edges = new List<AdjacencyListBaseGenerator.AdjacencyInfo>(5000);
+
+                new List<AdjacencyListBaseGenerator.AdjacencyInfo>(5000);
 
                 const int groupCount = 20;
                 const int sibGroupCount = 4;
@@ -2049,7 +2050,7 @@ namespace Graph3DVisualizer.SceneController
                     {
                         placeholderEnum.MoveNext();
                         groups[k].Add(new VertexSerializationInfo(placeholderEnum.Current, 10, names[UnityEngine.Random.Range(0, names.Length)], Color.white, Guid.NewGuid().ToString()));
-                        vertexInfos.Add(groups[k][groups[k].Count - 1]);
+                        vertexInfos.Add(groups[k][^1]);
                     }
 
                     var isLocalConnected = new bool[manCount, manCount];

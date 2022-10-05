@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -37,9 +37,8 @@ namespace Graph3DVisualizer.Graph3D
     [CustomizableGrandType(typeof(AbstractVertexParameters))]
     public abstract class AbstractVertex : AbstractGraphObject, IVisibile, IDestructible, ICustomizable<AbstractVertexParameters>
     {
-        private float _weight = 10;
-        protected List<Link> _incomingLinks = new List<Link>();
-        protected List<Link> _outgoingLinks = new List<Link>();
+        protected List<Link> _incomingLinks = new();
+        protected List<Link> _outgoingLinks = new();
         protected Transform _transform;
         protected bool _visible = true;
 
@@ -51,13 +50,14 @@ namespace Graph3DVisualizer.Graph3D
         public abstract MovementComponent MovementComponent { get; protected set; }
         public IReadOnlyList<Link> OutgoingLinks => _outgoingLinks;
         public abstract bool Visibility { get; set; }
-        public virtual float Weight { get => _weight; set => _weight = value; }
+        public virtual float Weight { get; set; } = 10;
 
-        private TEdge CreateEdge<TEdge, TParameters> (TParameters parameters, AbstractVertex toVertex) where TEdge : AbstractEdge where TParameters : EdgeParameters
+        private TEdge CreateEdge<TEdge, TParameters> (TParameters parameters, AbstractVertex toVertex)
+            where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
             var edge = CreateEdgeGameObject().AddComponent<TEdge>();
-            edge.AdjacentVertices = new AdjacentVertices(this, toVertex);
-            (edge as ICustomizable<TParameters>).SetupParams(parameters);
+            edge.AdjacentVertices = new(this, toVertex);
+            ((ICustomizable<TParameters>) edge).SetupParams(parameters);
             return edge;
         }
 
@@ -66,14 +66,14 @@ namespace Graph3DVisualizer.Graph3D
             if (!edgeType.IsSubclassOf(typeof(AbstractEdge)))
                 throw new WrongTypeInCustomizableParameterException(typeof(AbstractEdge), edgeType);
             var edge = (AbstractEdge) CreateEdgeGameObject().AddComponent(edgeType);
-            edge.AdjacentVertices = new AdjacentVertices(this, toVertex);
+            edge.AdjacentVertices = new(this, toVertex);
             CustomizableExtension.CallSetUpParams(edge, parameters);
             return edge;
         }
 
         private GameObject CreateEdgeGameObject ()
         {
-            var edgeObject = new GameObject("Edge");
+            GameObject edgeObject = new("Edge");
             edgeObject.transform.position = _transform.position;
             edgeObject.transform.parent = _transform.parent;
 
@@ -91,13 +91,20 @@ namespace Graph3DVisualizer.Graph3D
             return edgeObject;
         }
 
+        protected virtual void Awake ()
+        {
+            _transform = transform;
+            _visible = true;
+            MovementComponent = GetComponent<MovementComponent>();
+        }
+
         protected void CheckLinkForCorrectness (AbstractVertex toVertex, Type edgeType)
         {
             if (toVertex == this)
-                throw new Exception("It is forbidden to create edges from a vertex to the same vertex.");
+                throw new("It is forbidden to create edges from a vertex to the same vertex.");
 
             if (_transform.parent != toVertex._transform.parent)
-                throw new Exception("The vertices are in different graphs");
+                throw new("The vertices are in different graphs");
 
             foreach (var link in _outgoingLinks)
             {
@@ -132,7 +139,7 @@ namespace Graph3DVisualizer.Graph3D
                 if (links[i].AdjacentVertex == toVertex && links[i].Edge.GetType() == edgeType)
                 {
                     var link = links[i];
-                    links[i] = links[links.Count - 1];
+                    links[i] = links[^1];
                     links.RemoveAt(links.Count - 1);
                     return link.Edge;
                 }
@@ -141,15 +148,15 @@ namespace Graph3DVisualizer.Graph3D
         }
 
         public AbstractVertexParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
-            new AbstractVertexParameters(MovementComponent.GlobalCoordinates, MovementComponent.GlobalEulerAngles, Id);
+            new(MovementComponent.GlobalCoordinates, MovementComponent.GlobalEulerAngles, Id);
 
-        public TEdge Link<TEdge, TParameters> (AbstractVertex toVertex, TParameters edgeParameters) where TEdge : AbstractEdge where TParameters : EdgeParameters
+        public TEdge Link<TEdge, TParameters> (AbstractVertex toVertex, TParameters edgeParameters)
+            where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
             CheckLinkForCorrectness(toVertex, typeof(TEdge));
-            var edge = FindOppositeEdge(toVertex, typeof(TEdge)) as TEdge;
-            edge = edge != null ? edge : CreateEdge<TEdge, TParameters>(edgeParameters, toVertex);
-            _outgoingLinks.Add(new Link(toVertex, edge));
-            toVertex._incomingLinks.Add(new Link(this, edge));
+            var edge = ((TEdge?) FindOppositeEdge(toVertex, typeof(TEdge))) ?? CreateEdge<TEdge, TParameters>(edgeParameters, toVertex);
+            _outgoingLinks.Add(new(toVertex, edge));
+            toVertex._incomingLinks.Add(new(this, edge));
             return edge;
         }
 
@@ -158,13 +165,14 @@ namespace Graph3DVisualizer.Graph3D
             CheckLinkForCorrectness(toVertex, edgeType);
             var edge = FindOppositeEdge(toVertex, edgeType);
             edge = edge != null ? edge : CreateEdge(edgeParameters, edgeType, toVertex);
-            _outgoingLinks.Add(new Link(toVertex, edge));
-            toVertex._incomingLinks.Add(new Link(this, edge));
+            _outgoingLinks.Add(new(toVertex, edge));
+            toVertex._incomingLinks.Add(new(this, edge));
             return edge;
         }
 
         public virtual void SetupParams (AbstractVertexParameters parameters) =>
-            (MovementComponent.GlobalCoordinates, MovementComponent.GlobalEulerAngles, Id) = (parameters.Position, parameters.EulerAngles, parameters.ObjectId);
+            (MovementComponent.GlobalCoordinates, MovementComponent.GlobalEulerAngles, Id) =
+            (parameters.Position, parameters.EulerAngles, parameters.ObjectId);
 
         public void UnLink<TEdge> (AbstractVertex toVertex) where TEdge : AbstractEdge => UnLink(toVertex, typeof(SpriteEdge));
 
@@ -176,7 +184,7 @@ namespace Graph3DVisualizer.Graph3D
             if (edge.Type == EdgeType.Bidirectional)
             {
                 edge.Type = EdgeType.Unidirectional;
-                edge.AdjacentVertices = new AdjacentVertices(toVertex, this);
+                edge.AdjacentVertices = new(toVertex, this);
             }
             else
             {

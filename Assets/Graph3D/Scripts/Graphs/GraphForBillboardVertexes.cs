@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -32,24 +32,24 @@ namespace Graph3DVisualizer.Graph3D
     /// <summary>
     /// Simple realization of <see cref="AbstractGraph"/>.
     /// </summary>
-    [CustomizableGrandType(typeof(GraphParameters))]
     [RequireComponent(typeof(BillboardController))]
     [RequireComponent(typeof(SphereCollider))]
     [RequireComponent(typeof(MovementComponent))]
     [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(MeshRenderer))]
+    [CustomizableGrandType(typeof(GraphParameters))]
     public class GraphForBillboardVertexes : AbstractGraph
     {
-        private MovementComponent _movementComponent;
-        protected readonly Dictionary<string, AbstractVertex> _vertexes = new Dictionary<string, AbstractVertex>();
+        protected readonly Dictionary<string, AbstractVertex> _vertexes = new();
         protected BillboardController _billboardController;
         protected BillboardId _imageId;
         protected MeshFilter _meshFilter;
-
+        protected MovementComponent _movementComponent;
         protected string? _name;
 
         protected SphereCollider _sphereCollider;
 
+        [Obsolete]
         protected TextTextureFactory _textTextureFactory;
 
         public bool ColliderEnable
@@ -58,8 +58,13 @@ namespace Graph3DVisualizer.Graph3D
             set => _sphereCollider.enabled = value;
         }
 
-        public override MovementComponent MovementComponent { get => _movementComponent; protected set => _movementComponent = value; }
+        public override MovementComponent MovementComponent
+        {
+            get => _movementComponent;
+            protected set => _movementComponent = value;
+        }
 
+        [Obsolete]
         public override string? Name
         {
             get => _name;
@@ -86,19 +91,9 @@ namespace Graph3DVisualizer.Graph3D
 
         public override int VertexesCount => _vertexes.Count;
 
-        private void Awake ()
-        {
-            MovementComponent = GetComponent<MovementComponent>();
-            _transform = GetComponent<Transform>();
-            _meshFilter = GetComponent<MeshFilter>();
-            _billboardController = GetComponent<BillboardController>();
-            _sphereCollider = GetComponent<SphereCollider>();
-            _textTextureFactory = new TextTextureFactory(FontsGenerator.GetOrCreateFont("Arial", 32), 0);
-        }
-
         private GameObject CreateVertexBody ()
         {
-            var vertex = new GameObject("Vertex");
+            GameObject vertex = new("Vertex");
             vertex.transform.parent = _transform;
             var meshRender = vertex.AddComponent<MeshRenderer>();
             meshRender.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
@@ -108,6 +103,16 @@ namespace Graph3DVisualizer.Graph3D
             meshRender.motionVectorGenerationMode = MotionVectorGenerationMode.Object;
             meshRender.allowOcclusionWhenDynamic = true;
             return vertex;
+        }
+
+        [Obsolete]
+        protected override void Awake ()
+        {
+            base.Awake();
+            _meshFilter = GetComponent<MeshFilter>();
+            _billboardController = GetComponent<BillboardController>();
+            _sphereCollider = GetComponent<SphereCollider>();
+            _textTextureFactory = new(FontsGenerator.GetOrCreateFont("Arial", 32), 0);
         }
 
         public override bool ContainsVertex (string id) => _vertexes.ContainsKey(id);
@@ -126,9 +131,8 @@ namespace Graph3DVisualizer.Graph3D
 
         public override TVertex SpawnVertex<TVertex, TParams> (TParams vertexParameters)
         {
-            var vertex = CreateVertexBody();
-            var vertexComponent = vertex.gameObject.AddComponent<TVertex>();
-            (vertexComponent as ICustomizable<TParams>).SetupParams(vertexParameters);
+            var vertexComponent = CreateVertexBody().AddComponent<TVertex>();
+            ((ICustomizable<TParams>) vertexComponent).SetupParams(vertexParameters);
             _vertexes.Add(vertexComponent.Id, vertexComponent);
             return vertexComponent;
         }
@@ -138,8 +142,7 @@ namespace Graph3DVisualizer.Graph3D
             if (!vertexType.IsSubclassOf(typeof(AbstractVertex)))
                 throw new WrongTypeInCustomizableParameterException(typeof(AbstractVertex), vertexType);
 
-            var vertex = CreateVertexBody();
-            var vertexComponent = (AbstractVertex) vertex.gameObject.AddComponent(vertexType);
+            var vertexComponent = (AbstractVertex) CreateVertexBody().AddComponent(vertexType);
             CustomizableExtension.CallSetUpParams(vertexComponent, parameters);
             _vertexes.Add(vertexComponent.Id, vertexComponent);
             return vertexComponent;

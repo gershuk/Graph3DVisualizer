@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -29,6 +29,7 @@ namespace Graph3DVisualizer.TextureFactory
     /// <summary>
     /// Сlass containing functions for changing textures that are not included in Unity3D engine.
     /// </summary>
+    [Obsolete]
     public static class Texture2DExtension
     {
         public static Texture2D CombineTextures (CombinedImages combinedImage)
@@ -129,6 +130,7 @@ namespace Graph3DVisualizer.TextureFactory
     /// <summary>
     /// Class describing an image consisting of several pictures.
     /// </summary>
+    [Obsolete]
     [Serializable]
     [YuzuAll]
     public class CombinedImages : ICloneable
@@ -159,6 +161,7 @@ namespace Graph3DVisualizer.TextureFactory
     /// <summary>
     /// Class that describes an image with a 2 dimensional coordinate reference.
     /// </summary>
+    [Obsolete]
     [Serializable]
     [YuzuAll]
     public class PositionedImage
@@ -174,7 +177,7 @@ namespace Graph3DVisualizer.TextureFactory
 
         public static implicit operator (Texture2D Texture, Vector2Int Position) (PositionedImage value) => (value.Texture, value.Position);
 
-        public static implicit operator PositionedImage ((Texture2D Texture, Vector2Int Position) value) => new PositionedImage(value.Texture, value.Position);
+        public static implicit operator PositionedImage ((Texture2D Texture, Vector2Int Position) value) => new(value.Texture, value.Position);
 
         public void Deconstruct (out Texture2D texture, out Vector2Int position)
         {
@@ -187,8 +190,8 @@ namespace Graph3DVisualizer.TextureFactory
         public override int GetHashCode ()
         {
             var hashCode = -1773728546;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Texture2D>.Default.GetHashCode(Texture);
-            hashCode = hashCode * -1521134295 + Position.GetHashCode();
+            hashCode = (hashCode * -1521134295) + EqualityComparer<Texture2D>.Default.GetHashCode(Texture);
+            hashCode = (hashCode * -1521134295) + Position.GetHashCode();
             return hashCode;
         }
     }

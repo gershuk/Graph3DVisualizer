@@ -1,5 +1,5 @@
 // This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@ namespace Graph3DVisualizer.Graph3D
 
     public abstract class AbstractGraphGeneratorWithPlaceholder : AbstractGraphGenerator
     {
-        public virtual AbstractPlaceholder Placeholder { get; protected set; }
+        public virtual AbstractPlaceholder? Placeholder { get; protected set; }
     }
 
     public abstract class AbstractPlaceholder
@@ -52,7 +52,12 @@ namespace Graph3DVisualizer.Graph3D
             public string SecondId;
             public float StiffnessCoefficient;
 
-            public AdjacencyInfo (string firstId, string secondId, bool isBidirectional, float length = 20, float stiffnessCoefficient = 1, Color color = default)
+            public AdjacencyInfo (string firstId,
+                                  string secondId,
+                                  bool isBidirectional,
+                                  float length = 20,
+                                  float stiffnessCoefficient = 1,
+                                  Color color = default)
             {
                 FirstId = firstId;
                 SecondId = secondId;
@@ -62,13 +67,12 @@ namespace Graph3DVisualizer.Graph3D
                 Color = color;
             }
 
-            public static implicit operator (string firstId, string secondId, bool isBidirectional, float length, float stiffnessCoefficient, Color color) (AdjacencyInfo value) =>
-                (value.FirstId, value.SecondId, value.IsBidirectional, value.Length, value.StiffnessCoefficient, value.Color);
-
-            public static implicit operator AdjacencyInfo ((string firstId, string secondId, bool isBidirectional, float length, float stiffnessCoefficient, Color color) value) =>
-                new AdjacencyInfo(value.firstId, value.secondId, value.isBidirectional, value.length, value.stiffnessCoefficient, value.color);
-
-            public void Deconstruct (out string firstId, out string secondId, out bool isBidirectional, out float length, out float stiffnessCoefficient, out Color color)
+            public void Deconstruct (out string firstId,
+                                     out string secondId,
+                                     out bool isBidirectional,
+                                     out float length,
+                                     out float stiffnessCoefficient,
+                                     out Color color)
             {
                 firstId = FirstId;
                 secondId = SecondId;
@@ -86,17 +90,7 @@ namespace Graph3DVisualizer.Graph3D
                        StiffnessCoefficient == other.StiffnessCoefficient &&
                        Color == other.Color;
 
-            public override int GetHashCode ()
-            {
-                var hashCode = -1013726004;
-                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(FirstId);
-                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(SecondId);
-                hashCode = hashCode * -1521134295 + IsBidirectional.GetHashCode();
-                hashCode = hashCode * -1521134295 + EqualityComparer<float>.Default.GetHashCode(Length);
-                hashCode = hashCode * -1521134295 + EqualityComparer<float>.Default.GetHashCode(StiffnessCoefficient);
-                hashCode = hashCode * -1521134295 + EqualityComparer<Color>.Default.GetHashCode(Color);
-                return hashCode;
-            }
+            public override int GetHashCode () => HashCode.Combine(FirstId, SecondId, IsBidirectional, Length, StiffnessCoefficient, Color);
         }
 
         private const string _defaultTexture = "Textures/Dot";
@@ -104,7 +98,10 @@ namespace Graph3DVisualizer.Graph3D
         public string? MainImagePath { get; protected set; }
         public float Size { get; protected set; }
 
-        public AdjacencyListBaseGenerator (List<AdjacencyInfo> edges, AbstractPlaceholder abstractPlaceholder, string? mainImagePath = default, float size = 5)
+        public AdjacencyListBaseGenerator (List<AdjacencyInfo> edges,
+                                           AbstractPlaceholder abstractPlaceholder,
+                                           string? mainImagePath = default,
+                                           float size = 5)
         {
             Edges = edges ?? throw new ArgumentNullException(nameof(edges));
             MainImagePath = mainImagePath;
@@ -112,11 +109,14 @@ namespace Graph3DVisualizer.Graph3D
             Size = size;
         }
 
+        [Obsolete]
         public override void Generate (AbstractGraph abstractGraph)
         {
             var customFont = FontsGenerator.GetOrCreateFont("Broadway", 64);
             var textTextureFactory = new TextTextureFactory(customFont, 0);
-            var texture = string.IsNullOrEmpty(MainImagePath) ? Resources.Load<Texture2D>(_defaultTexture) : Texture2DExtension.ReadTexture(MainImagePath);
+            var texture = string.IsNullOrEmpty(MainImagePath)
+                          ? Resources.Load<Texture2D>(_defaultTexture)
+                          : Texture2DExtension.ReadTexture(MainImagePath);
             var imageParameters = new BillboardParameters(texture, scale: Vector2.one * Size, useCache: true, description: "MainImage");
             var posEn = Placeholder.GetPosition().GetEnumerator();
 
@@ -128,8 +128,15 @@ namespace Graph3DVisualizer.Graph3D
                 {
                     posEn.MoveNext();
                     var text = textTextureFactory.MakeTextTexture(id, true);
-                    var textParameters = new BillboardParameters(text, new Vector4(0, Size * 0.2f, 0, 1), new Vector2(Size / 2, text.height * 1.0f / text.width * Size / 2), isMonoColor: true, monoColor: Color.white);
-                    abstractVertex = abstractGraph.SpawnVertex<BillboardVertex, BillboardVertexParameters>(new BillboardVertexParameters(new[] { imageParameters, textParameters }, posEn.Current, id: id));
+                    BillboardParameters textParameters = new(text,
+                                                              new Vector4(0, Size * 0.2f, 0, 1),
+                                                              new Vector2(Size / 2, text.height * 1.0f / text.width * Size / 2),
+                                                              isMonoColor: true,
+                                                              monoColor: Color.white);
+                    abstractVertex = abstractGraph.
+                        SpawnVertex<BillboardVertex, BillboardVertexParameters>(new(new[] { imageParameters, textParameters },
+                                                                                     posEn.Current,
+                                                                                     id: id));
                 }
                 else
                 {
@@ -151,7 +158,12 @@ namespace Graph3DVisualizer.Graph3D
                     stretchableEdgeMaterialsCache.Add(stretchableEdgeMaterialParameters.Color, stretchableEdgeMaterialParameters);
                 }
 
-                var edgeParameters = new StretchableEdgeParameters(stretchableEdgeMaterialParameters, new SpringParameters(adjacencyInfo.StiffnessCoefficient, adjacencyInfo.Length), 1, Size / 2 + 1, Size / 2 + 1, Size / 10);
+                StretchableEdgeParameters edgeParameters = new(stretchableEdgeMaterialParameters,
+                                                                new(adjacencyInfo.StiffnessCoefficient, adjacencyInfo.Length),
+                                                                1,
+                                                                (Size / 2) + 1,
+                                                                (Size / 2) + 1,
+                                                                Size / 10);
 
                 try
                 {
@@ -193,9 +205,9 @@ namespace Graph3DVisualizer.Graph3D
         {
             while (true)
             {
-                yield return new Vector3(UnityEngine.Random.Range(_minValue.x, _maxValue.x),
-                                         UnityEngine.Random.Range(_minValue.y, _maxValue.y),
-                                         UnityEngine.Random.Range(_minValue.z, _maxValue.z));
+                yield return new(UnityEngine.Random.Range(_minValue.x, _maxValue.x),
+                                 UnityEngine.Random.Range(_minValue.y, _maxValue.y),
+                                 UnityEngine.Random.Range(_minValue.z, _maxValue.z));
             }
         }
     }
@@ -205,18 +217,23 @@ namespace Graph3DVisualizer.Graph3D
         private const string _fontPath = "Font/CustomFontArial";
         private const string _selectFrameTexture = "Textures/SelectFrame";
         private static readonly Font _customFont = Resources.Load<Font>(_fontPath);
-        private static readonly TextTextureFactory _textTextureFactory = new TextTextureFactory(_customFont, 32);
+
+        [Obsolete]
+        private static readonly TextTextureFactory _textTextureFactory = new(_customFont, 32);
 
         public List<(int firstVertex, int secondVertex, Color color)> Edges { get; protected set; }
         public List<(string text, Texture2D texture2D, string? id)> Vertexes { get; protected set; }
 
-        public SimpleGenerator (List<(string text, Texture2D texture2D, string? id)> vertexes, List<(int firstVertex, int secondVertex, Color color)> edges, AbstractPlaceholder placeholder)
+        public SimpleGenerator (List<(string text, Texture2D texture2D, string? id)> vertexes,
+                                List<(int firstVertex, int secondVertex, Color color)> edges,
+                                AbstractPlaceholder placeholder)
         {
             Edges = edges ?? throw new ArgumentNullException(nameof(edges));
             Vertexes = vertexes ?? throw new ArgumentNullException(nameof(vertexes));
             Placeholder = placeholder ?? throw new ArgumentNullException(nameof(placeholder));
         }
 
+        [Obsolete]
         public override void Generate (AbstractGraph graphControler)
         {
             using var coordsEnum = Placeholder.GetPosition().GetEnumerator();
@@ -231,21 +248,26 @@ namespace Graph3DVisualizer.Graph3D
 
                 var baseScale = Vector2.one;
 
-                var imageParameters = new BillboardParameters(texture2D, scale: baseScale * 3f, useCache: true);
-                var selectFrameParameters = new BillboardParameters(selectFrame, scale: baseScale * 6f, isMonoColor: true, useCache: false);
+                BillboardParameters imageParameters = new(texture2D, scale: baseScale * 3f, useCache: true);
+                BillboardParameters selectFrameParameters = new(selectFrame, scale: baseScale * 6f, isMonoColor: true, useCache: false);
 
                 var textTexture = _textTextureFactory.MakeTextTexture(text);
                 const float scale = 10;
-                var textParameters = new BillboardParameters(textTexture, new Vector4(0, -5, 0, 0), new Vector2(scale, textTexture.height * 1.0f / textTexture.width * scale));
+                BillboardParameters textParameters = new(textTexture,
+                                                          new Vector4(0, -5, 0, 0),
+                                                          new Vector2(scale, textTexture.height * 1.0f / textTexture.width * scale));
 
                 createdVertexes[i] = graphControler.SpawnVertex<SelectableVertex, SelectableVertexParameters>(
-                    new SelectableVertexParameters(new[] { imageParameters, textParameters }, selectFrameParameters, coordsEnum.Current, id: id));
+                    new(new[] { imageParameters, textParameters }, selectFrameParameters, coordsEnum.Current, id: id));
 
                 coordsEnum.MoveNext();
             }
 
             foreach (var (firstVertex, secondVertex, color) in Edges)
-                createdVertexes[firstVertex].Link<StretchableEdge, StretchableEdgeParameters>(createdVertexes[secondVertex], new StretchableEdgeParameters(new StretchableEdgeMaterialParameters(color), new SpringParameters(1, 10)));
+            {
+                createdVertexes[firstVertex].Link<StretchableEdge, StretchableEdgeParameters>(createdVertexes[secondVertex],
+                                                                                          new(new(color), new SpringParameters(1, 10)));
+            }
         }
     }
 }

@@ -1,5 +1,5 @@
 // This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -64,7 +64,10 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private void CallSelectItem (InputAction.CallbackContext obj) => StartLayout();
 
-        public void ChangeColor (int deltaIndex) => _layoutTypeIndex = (_layoutTypeIndex + deltaIndex) < 0 ? _layoutFunctions.Count - 1 : (_layoutTypeIndex + deltaIndex) % _layoutFunctions.Count;
+        public void ChangeColor (int deltaIndex) =>
+            _layoutTypeIndex = (_layoutTypeIndex + deltaIndex) < 0
+                                ? _layoutFunctions.Count - 1
+                                : (_layoutTypeIndex + deltaIndex) % _layoutFunctions.Count;
 
         public override void RegisterEvents (IInputActionCollection inputActions)
         {
@@ -79,8 +82,12 @@ namespace Graph3DVisualizer.PlayerInputControls
             #endregion Bind PC input
 
             #region Bind VR input
-            var doLayoutActionVR = _inputActionsVR.AddAction(_doLayoutActionVRName, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
-            var changeLayoutTypeVR = _inputActionsVR.AddAction(_changeLayoutTypeVRName, InputActionType.Value, "<ViveController>{RightHand}/trackpad/x");
+            var doLayoutActionVR = _inputActionsVR.AddAction(_doLayoutActionVRName,
+                                                             InputActionType.Button,
+                                                             "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
+            var changeLayoutTypeVR = _inputActionsVR.AddAction(_changeLayoutTypeVRName,
+                                                               InputActionType.Value,
+                                                               "<ViveController>{RightHand}/trackpad/x");
             doLayoutActionVR.canceled += CallSelectItem;
             changeLayoutTypeVR.started += CallChangeColor;
             #endregion Bind VR input

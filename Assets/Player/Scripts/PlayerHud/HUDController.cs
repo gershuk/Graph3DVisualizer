@@ -1,5 +1,5 @@
 // This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -79,20 +79,20 @@ namespace Graph3DVisualizer.Player.HUD
 
                 VisibleChanged?.Invoke(value, this);
 
-                transform.position = _head.transform.position + _head.transform.forward * Dist;
+                transform.position = _head.transform.position + (_head.transform.forward * Dist);
             }
         }
 
         private void Awake ()
         {
             _transform = transform;
-            _transform.position = _head.transform.position + _head.transform.forward * Dist;
+            _transform.position = _head.transform.position + (_head.transform.forward * Dist);
         }
 
         private void LateUpdate ()
         {
             const float eps = 1.2f;
-            var targetPoint = _head.transform.position + _head.transform.forward * Dist;
+            var targetPoint = _head.transform.position + (_head.transform.forward * Dist);
 
             if (Vector3.Distance(transform.position, targetPoint) > eps)
                 _transform.position = Vector3.Lerp(_transform.position, targetPoint, Time.deltaTime);
@@ -107,7 +107,7 @@ namespace Graph3DVisualizer.Player.HUD
                 var stringBuilder = new StringBuilder();
                 foreach (var verdict in GetResultFromTask())
                 {
-                    stringBuilder.Append($"{ verdict}{Environment.NewLine}");
+                    stringBuilder.Append($"{verdict}{Environment.NewLine}");
                 }
                 _objectInfoPanel.Text = stringBuilder.ToString();
             }

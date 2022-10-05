@@ -1,5 +1,5 @@
-// This file is part of Graph3DVisualizer.
-// Copyright � Gershuk Vladislav 2022.
+﻿// This file is part of Graph3DVisualizer.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,12 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with Graph3DVisualizer.  If not, see <https://www.gnu.org/licenses/>.
 
-using Graph3DVisualizer.SceneController;
-
-namespace Graph3DVisualizer.LightGraphSerializer
+namespace System.Runtime.CompilerServices
 {
-    public class CustomSceneController : AbstractSceneController
+    // It is necessary for the records on the unity 2022 version.
+    public class IsExternalInit
     {
-        public override void InitTask () => CreatePlayer();
     }
 }

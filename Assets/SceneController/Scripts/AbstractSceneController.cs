@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -47,9 +47,11 @@ namespace Graph3DVisualizer.SceneController
             GraphParameters = graphParameters;
         }
 
-        public static implicit operator (Type graphType, GraphParameters graphParameters) (GraphInfo value) => (value.GraphType, value.GraphParameters);
+        public static implicit operator (Type graphType, GraphParameters graphParameters) (GraphInfo value) =>
+            (value.GraphType, value.GraphParameters);
 
-        public static implicit operator GraphInfo ((Type graphType, GraphParameters graphParameters) value) => new GraphInfo(value.graphType, value.graphParameters);
+        public static implicit operator GraphInfo ((Type graphType, GraphParameters graphParameters) value) =>
+            new(value.graphType, value.graphParameters);
 
         public void Deconstruct (out Type graphType, out GraphParameters graphParameters)
         {
@@ -61,13 +63,7 @@ namespace Graph3DVisualizer.SceneController
                    EqualityComparer<Type>.Default.Equals(GraphType, other.GraphType) &&
                    EqualityComparer<GraphParameters>.Default.Equals(GraphParameters, other.GraphParameters);
 
-        public override int GetHashCode ()
-        {
-            var hashCode = 459771302;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(GraphType);
-            hashCode = hashCode * -1521134295 + EqualityComparer<GraphParameters>.Default.GetHashCode(GraphParameters);
-            return hashCode;
-        }
+        public override int GetHashCode () => HashCode.Combine(GraphType, GraphParameters);
     }
 
     /// <summary>
@@ -86,9 +82,11 @@ namespace Graph3DVisualizer.SceneController
             PlayerParameters = playerParameters;
         }
 
-        public static implicit operator (Type playerType, PlayerParameters playerParameters) (PlayerInfo value) => (value.PlayerType, value.PlayerParameters);
+        public static implicit operator (Type playerType, PlayerParameters playerParameters) (PlayerInfo value) =>
+            (value.PlayerType, value.PlayerParameters);
 
-        public static implicit operator PlayerInfo ((Type playerType, PlayerParameters playerParameters) value) => new PlayerInfo(value.playerType, value.playerParameters);
+        public static implicit operator PlayerInfo ((Type playerType, PlayerParameters playerParameters) value) =>
+            new(value.playerType, value.playerParameters);
 
         public void Deconstruct (out Type playerType, out PlayerParameters playerParameters)
         {
@@ -100,13 +98,7 @@ namespace Graph3DVisualizer.SceneController
                    EqualityComparer<Type>.Default.Equals(PlayerType, other.PlayerType) &&
                    EqualityComparer<PlayerParameters>.Default.Equals(PlayerParameters, other.PlayerParameters);
 
-        public override int GetHashCode ()
-        {
-            var hashCode = -640872516;
-            hashCode = hashCode * -1521134295 + EqualityComparer<Type>.Default.GetHashCode(PlayerType);
-            hashCode = hashCode * -1521134295 + EqualityComparer<PlayerParameters>.Default.GetHashCode(PlayerParameters);
-            return hashCode;
-        }
+        public override int GetHashCode () => HashCode.Combine(PlayerType, PlayerParameters);
     }
 
     /// <summary>
@@ -116,8 +108,8 @@ namespace Graph3DVisualizer.SceneController
     public abstract class AbstractSceneController : MonoBehaviour, ICustomizable<SceneParameters>
     {
         protected const string _playerPrefabPath = "Prefabs/Players/XR Player";
-        protected List<AbstractGraph> Graphs { get; set; } = new List<AbstractGraph>();
-        protected List<AbstractPlayer> Players { get; set; } = new List<AbstractPlayer>();
+        protected List<AbstractGraph> Graphs { get; set; } = new();
+        protected List<AbstractPlayer> Players { get; set; } = new();
 
         public IReadOnlyList<AbstractGraph> GetGraphs => Graphs;
         public IReadOnlyList<AbstractPlayer> GetPlayers => Players;
@@ -145,9 +137,10 @@ namespace Graph3DVisualizer.SceneController
         }
 
         public SceneParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
-            new SceneParameters
-                (Players.Select(x => new PlayerInfo(x.GetType(), (PlayerParameters) CustomizableExtension.CallDownloadParams(x, writeCache))).ToArray(),
-                 Graphs.Select(x => new GraphInfo(x.GetType(), (GraphParameters) CustomizableExtension.CallDownloadParams(x, writeCache))).ToArray());
+            new(Players.Select(x => new PlayerInfo(x.GetType(),
+                                                    (PlayerParameters) CustomizableExtension.CallDownloadParams(x, writeCache))).ToArray(),
+                 Graphs.Select(x => new GraphInfo(x.GetType(),
+                                                  (GraphParameters) CustomizableExtension.CallDownloadParams(x, writeCache))).ToArray());
 
         public abstract void InitTask ();
 
@@ -160,7 +153,7 @@ namespace Graph3DVisualizer.SceneController
                 CustomizableExtension.CallSetUpParams(graph, graphParameters);
             }
 
-            foreach (var (playerType, playerParameters) in parameters.PlayersParameters)
+            foreach (var (_, playerParameters) in parameters.PlayersParameters)
             {
                 //ToDo : Think about how to handle the player type
                 //var player = new GameObject("Player").AddComponent(playerType);
@@ -180,7 +173,8 @@ namespace Graph3DVisualizer.SceneController
         public GraphInfo[] GraphsParameters { get; protected set; }
         public PlayerInfo[] PlayersParameters { get; protected set; }
 
-        public SceneParameters (PlayerInfo[] playersParameters, GraphInfo[] graphsParameters, Guid? parameterId = default) : base(parameterId)
+        public SceneParameters (PlayerInfo[] playersParameters, GraphInfo[] graphsParameters, Guid? parameterId = default) :
+            base(parameterId)
         {
             PlayersParameters = playersParameters ?? throw new ArgumentNullException(nameof(playersParameters));
             GraphsParameters = graphsParameters ?? throw new ArgumentNullException(nameof(graphsParameters));

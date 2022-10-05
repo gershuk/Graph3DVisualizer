@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -30,21 +30,21 @@ namespace Graph3DVisualizer.Graph3D
     /// <summary>
     /// Simple realization of <see cref="AbstractEdge"/>.
     /// </summary>
-    [RequireComponent(typeof(LineRenderer))]
     [CustomizableGrandType(typeof(SpriteEdgeParameters))]
     public class SpriteEdge : AbstractEdge, ICustomizable<SpriteEdgeParameters>
     {
-        private const string _arrowTexturePath = "Textures/Arrow";
-        private const string _cutoff = "_Cutoff";
-        private const string _edgeShaderPath = "Custom/EdgeShader";
-        private const string _lineTexturePath = "Textures/Line";
-        private static Texture2D _defaultArrowTexture;
-        private static Texture2D _defaultLineTexture;
-        private static Shader _shader;
-        private LineRenderer _lineRenderer;
+        protected const string _arrowTexturePath = "Textures/Arrow";
+        protected const string _cutoff = "_Cutoff";
+        protected const string _edgeShaderPath = "Custom/EdgeShader";
+        protected const string _lineTexturePath = "Textures/Line";
+        protected static Texture2D _defaultArrowTexture;
+        protected static Texture2D _defaultLineTexture;
+        protected static Shader _shader;
 
         [SerializeField]
         protected Texture2D _arrowTexture;
+
+        protected LineRenderer _lineRenderer;
 
         [SerializeField]
         protected Texture2D _lineTexture;
@@ -89,7 +89,7 @@ namespace Graph3DVisualizer.Graph3D
         private void OnDestroy () => UnsubscribeOnVerticesEvents();
 
         public new SpriteEdgeParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
-            new SpriteEdgeParameters((this as ICustomizable<EdgeParameters>).DownloadParams(writeCache), ArrowTexture, LineTexture);
+            new((this as ICustomizable<EdgeParameters>).DownloadParams(writeCache), ArrowTexture, LineTexture);
 
         public void SetupParams (SpriteEdgeParameters parameters)
         {
@@ -102,50 +102,35 @@ namespace Graph3DVisualizer.Graph3D
 
         public override void UpdateCoordinates ()
         {
-            if (Visibility == EdgeVisibility.DependOnVertices || Visibility == EdgeVisibility.Visible)
+            if (Visibility is EdgeVisibility.DependOnVertices or EdgeVisibility.Visible)
             {
                 _transform.position = AdjacentVertices.MiddlePoint;
-                var from = AdjacentVertices.FromVertex.transform.position + AdjacentVertices.UnitVector * SourceOffsetDist;
-                var to = AdjacentVertices.ToVertex.transform.position - AdjacentVertices.UnitVector * TargetOffsetDist;
+                var from = AdjacentVertices.FromVertex.transform.position + (AdjacentVertices.UnitVector * SourceOffsetDist);
+                var to = AdjacentVertices.ToVertex.transform.position - (AdjacentVertices.UnitVector * TargetOffsetDist);
                 from -= _transform.position;
                 to -= _transform.position;
                 _lineRenderer.SetPosition(0, from);
                 _lineRenderer.SetPosition(1, to);
-                _lineRenderer.widthCurve = new AnimationCurve(new Keyframe(0, Width), new Keyframe(1, Width));
+                _lineRenderer.widthCurve = new(new Keyframe(0, Width), new Keyframe(1, Width));
             }
         }
 
-        public override void UpdateType ()
+        public override void UpdateType () => _material.mainTexture = Type switch
         {
-            switch (Type)
-            {
-                case EdgeType.Unidirectional:
-                    _material.mainTexture = ArrowTexture;
-                    break;
-
-                case EdgeType.Bidirectional:
-                    _material.mainTexture = LineTexture;
-                    break;
-            }
-        }
+            EdgeType.Unidirectional => ArrowTexture,
+            EdgeType.Bidirectional => LineTexture,
+            _ => throw new NotImplementedException(),
+        };
 
         public override void UpdateVisibility ()
         {
-            switch (Visibility)
+            _lineRenderer.enabled = Visibility switch
             {
-                case EdgeVisibility.Hidden:
-                    _lineRenderer.enabled = false;
-                    break;
-
-                case EdgeVisibility.Visible:
-                    _lineRenderer.enabled = true;
-                    break;
-
-                case EdgeVisibility.DependOnVertices:
-                    _lineRenderer.enabled = AdjacentVertices.FromVertex.Visibility && AdjacentVertices.ToVertex.Visibility;
-                    break;
-            }
-
+                EdgeVisibility.Hidden => false,
+                EdgeVisibility.Visible => true,
+                EdgeVisibility.DependOnVertices => _adjacentVertices.FromVertex.Visibility && _adjacentVertices.ToVertex.Visibility,
+                _ => throw new NotImplementedException()
+            };
             UpdateCoordinates();
         }
     }
@@ -157,11 +142,28 @@ namespace Graph3DVisualizer.Graph3D
         public Texture2D? ArrowTexture { get; protected set; }
         public Texture2D? LineTexture { get; protected set; }
 
-        public SpriteEdgeParameters (SpringParameters springParameters, float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f, EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string? id = default,
-            Texture2D? arrowTexture = null, Texture2D? lineTexture = null) : base(null, springParameters, sourceOffsetDist, targetOffsetDist, width, visibility, id) => (ArrowTexture, LineTexture) = (arrowTexture, lineTexture);
+        public SpriteEdgeParameters (SpringParameters springParameters,
+                                     float sourceOffsetDist = 1f,
+                                     float targetOffsetDist = 1f,
+                                     float width = 1f,
+                                     EdgeVisibility visibility = EdgeVisibility.DependOnVertices,
+                                     string? id = default,
+                                     Texture2D? arrowTexture = null,
+                                     Texture2D? lineTexture = null) :
+            base(null, springParameters, sourceOffsetDist, targetOffsetDist, width, visibility, id) =>
+            (ArrowTexture, LineTexture) = (arrowTexture, lineTexture);
 
-        public SpriteEdgeParameters (EdgeParameters edgeParameters, Texture2D? arrowTexture = default, Texture2D? lineTexture = default) :
-            this(edgeParameters.SpringParameters, edgeParameters.SourceOffsetDist, edgeParameters.TargetOffsetDist, edgeParameters.Width, edgeParameters.Visibility, edgeParameters.ObjectId, arrowTexture, lineTexture)
+        public SpriteEdgeParameters (EdgeParameters edgeParameters,
+                                     Texture2D? arrowTexture = default,
+                                     Texture2D? lineTexture = default) :
+            this(edgeParameters.SpringParameters,
+                 edgeParameters.SourceOffsetDist,
+                 edgeParameters.TargetOffsetDist,
+                 edgeParameters.Width,
+                 edgeParameters.Visibility,
+                 edgeParameters.ObjectId,
+                 arrowTexture,
+                 lineTexture)
         { }
     }
 }

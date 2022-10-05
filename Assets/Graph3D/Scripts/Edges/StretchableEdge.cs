@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -39,6 +39,7 @@ namespace Graph3DVisualizer.Graph3D
 
         protected LineRenderer _lineRenderer;
 
+        protected float HeadPercent => HeadLength / AdjacentVertices.Distance;
         public static Shader Shader { get; set; } = Shader.Find(_edgeShaderPath);
 
         public Color Color
@@ -79,8 +80,8 @@ namespace Graph3DVisualizer.Graph3D
 
         public new StretchableEdgeParameters DownloadParams (Dictionary<Guid, object> writeCache)
         {
-            var edgeParameters = (this as ICustomizable<EdgeParameters>).DownloadParams(writeCache);
-            object edgeMaterialParameters = null;
+            (this as ICustomizable<EdgeParameters>).DownloadParams(writeCache);
+            object? edgeMaterialParameters = null;
             if (CacheGuid.HasValue)
             {
                 if (!writeCache.TryGetValue(CacheGuid.Value, out edgeMaterialParameters))
@@ -115,53 +116,46 @@ namespace Graph3DVisualizer.Graph3D
 
         public override void UpdateCoordinates ()
         {
-            if (Visibility == EdgeVisibility.DependOnVertices || Visibility == EdgeVisibility.Visible)
+            if (Visibility is EdgeVisibility.DependOnVertices or EdgeVisibility.Visible)
             {
                 _transform.position = _adjacentVertices.MiddlePoint;
-                var from = _adjacentVertices.FromVertex.transform.position + _adjacentVertices.UnitVector * SourceOffsetDist;
-                var to = _adjacentVertices.ToVertex.transform.position - _adjacentVertices.UnitVector * TargetOffsetDist;
-                from -= _transform.position;
-                to -= _transform.position;
+                var from = _adjacentVertices.FromVertex.transform.position
+                           + (_adjacentVertices.UnitVector * SourceOffsetDist)
+                           - _transform.position;
+                var to = _adjacentVertices.ToVertex.transform.position
+                         - (_adjacentVertices.UnitVector * TargetOffsetDist)
+                         - _transform.position;
                 _lineRenderer.positionCount = 4;
-                var percent = HeadLength / AdjacentVertices.Distance;
-                _lineRenderer.SetPositions(new Vector3[] { from, Vector3.Lerp(from, to, 0.999f - percent), Vector3.Lerp(from, to, 1 - percent), to });
+                _lineRenderer.SetPositions(new[]{ from, Vector3.Lerp(from, to, 0.999f - HeadPercent),
+                                                Vector3.Lerp(from, to, 1 - HeadPercent), to });
             }
 
             UpdateType();
         }
 
-        public override void UpdateType ()
+        public override void UpdateType () => _lineRenderer.widthCurve = Type switch
         {
-            var percent = HeadLength / AdjacentVertices.Distance;
-            switch (Type)
-            {
-                case EdgeType.Unidirectional:
-                    _lineRenderer.widthCurve = new AnimationCurve(new Keyframe(0, 0.4f * Width), new Keyframe(0.999f - percent, 0.4f * Width), new Keyframe(1 - percent, 1f * Width), new Keyframe(1, 0f));
-                    break;
+            EdgeType.Unidirectional => new(new Keyframe(0, 0.4f * Width),
+                                           new Keyframe(0.999f - HeadPercent, 0.4f * Width),
+                                           new Keyframe(1 - HeadPercent, 1f * Width),
+                                           new Keyframe(1, 0f)),
 
-                case EdgeType.Bidirectional:
-                    _lineRenderer.widthCurve = new AnimationCurve(new Keyframe(0, Width), new Keyframe(0.999f - percent, Width), new Keyframe(1 - percent, Width), new Keyframe(1, Width));
-                    break;
-            }
-        }
+            EdgeType.Bidirectional => new(new Keyframe(0, Width),
+                                          new Keyframe(0.999f - HeadPercent, Width),
+                                          new Keyframe(1 - HeadPercent, Width),
+                                          new Keyframe(1, Width)),
+            _ => throw new NotImplementedException()
+        };
 
         public override void UpdateVisibility ()
         {
-            switch (Visibility)
+            _lineRenderer.enabled = Visibility switch
             {
-                case EdgeVisibility.Hidden:
-                    _lineRenderer.enabled = false;
-                    break;
-
-                case EdgeVisibility.Visible:
-                    _lineRenderer.enabled = true;
-                    break;
-
-                case EdgeVisibility.DependOnVertices:
-                    _lineRenderer.enabled = _adjacentVertices.FromVertex.Visibility && _adjacentVertices.ToVertex.Visibility;
-                    break;
-            }
-
+                EdgeVisibility.Hidden => false,
+                EdgeVisibility.Visible => true,
+                EdgeVisibility.DependOnVertices => _adjacentVertices.FromVertex.Visibility && _adjacentVertices.ToVertex.Visibility,
+                _ => throw new NotImplementedException()
+            };
             UpdateCoordinates();
         }
     }
@@ -172,7 +166,8 @@ namespace Graph3DVisualizer.Graph3D
     {
         public Color Color { get; protected set; }
 
-        public StretchableEdgeMaterialParameters (Color color = default, bool useCache = default, Guid? id = default) : base(StretchableEdge.Shader, useCache, id) => Color = color;
+        public StretchableEdgeMaterialParameters (Color color = default, bool useCache = default, Guid? id = default) :
+            base(StretchableEdge.Shader, useCache, id) => Color = color;
 
         //Need for serialization in Json to ignore the Shader property in the AbstarctEdgeMaterialParameters class.
         public StretchableEdgeMaterialParameters () : base(StretchableEdge.Shader)
@@ -185,14 +180,26 @@ namespace Graph3DVisualizer.Graph3D
     {
         public float HeadLength { get; protected set; }
 
-        public StretchableEdgeParameters (StretchableEdgeMaterialParameters stretchableEdgeMaterialParameters, SpringParameters springParameters, float headLength = 1f,
-            float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f,
-            EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string? id = default) :
-            base(stretchableEdgeMaterialParameters, springParameters, sourceOffsetDist, targetOffsetDist, width, visibility, id) => HeadLength = headLength;
+        public StretchableEdgeParameters (StretchableEdgeMaterialParameters stretchableEdgeMaterialParameters,
+                                          SpringParameters springParameters,
+                                          float headLength = 1f,
+                                          float sourceOffsetDist = 1f,
+                                          float targetOffsetDist = 1f,
+                                          float width = 1f,
+                                          EdgeVisibility visibility = EdgeVisibility.DependOnVertices,
+                                          string? id = default) :
+            base(stretchableEdgeMaterialParameters, springParameters, sourceOffsetDist, targetOffsetDist, width, visibility, id) =>
+            HeadLength = headLength;
 
         public StretchableEdgeParameters (EdgeParameters edgeParameters, float headLength) :
-            this((StretchableEdgeMaterialParameters) edgeParameters.AbstarctEdgeMaterialParameters, edgeParameters.SpringParameters, headLength, edgeParameters.SourceOffsetDist, edgeParameters.TargetOffsetDist, edgeParameters.Width,
-                edgeParameters.Visibility, edgeParameters.ObjectId)
+            this((StretchableEdgeMaterialParameters) edgeParameters.AbstarctEdgeMaterialParameters!,
+                 edgeParameters.SpringParameters,
+                 headLength,
+                 edgeParameters.SourceOffsetDist,
+                 edgeParameters.TargetOffsetDist,
+                 edgeParameters.Width,
+                 edgeParameters.Visibility,
+                 edgeParameters.ObjectId)
         { }
     }
 }

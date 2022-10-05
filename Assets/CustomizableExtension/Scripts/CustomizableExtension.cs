@@ -25,13 +25,13 @@ namespace Graph3DVisualizer.Customizable
 {
     public static class CacheForCustomizableObjects
     {
-        private static readonly Dictionary<Type, SortedDictionary<Guid, object>> _cache = new Dictionary<Type, SortedDictionary<Guid, object>>();
+        private static readonly Dictionary<Type, SortedDictionary<Guid, object>> _cache = new();
 
         public static void Add (AbstractCustomizableParameter parameter, object customizableObject)
         {
             if (!_cache.TryGetValue(parameter.GetType(), out var dictionary))
             {
-                dictionary = new SortedDictionary<Guid, object>();
+                dictionary = new();
                 _cache.Add(parameter.GetType(), dictionary);
             }
             dictionary.Add(parameter.Id, customizableObject);
@@ -64,9 +64,11 @@ namespace Graph3DVisualizer.Customizable
             _cache.Clear();
         }
 
-        public static bool ContainsKey (AbstractCustomizableParameter parameter) => _cache[parameter.GetType()].ContainsKey(parameter.Id);
+        public static bool ContainsKey (AbstractCustomizableParameter parameter) =>
+            _cache[parameter.GetType()].ContainsKey(parameter.Id);
 
-        public static bool ContainsValue<T> (object customizableObject) => _cache.TryGetValue(typeof(T), out var dictionary) ? dictionary.ContainsValue(customizableObject) : false;
+        public static bool ContainsValue<T> (object customizableObject) =>
+            _cache.TryGetValue(typeof(T), out var dictionary) && dictionary.ContainsValue(customizableObject);
 
         public static void Remove (AbstractCustomizableParameter parameter, bool useDispose = default)
         {
@@ -79,80 +81,54 @@ namespace Graph3DVisualizer.Customizable
         public static bool TryGetValue (AbstractCustomizableParameter parameter, out object? customizableObject)
         {
             customizableObject = null;
-            return _cache.TryGetValue(parameter.GetType(), out var dictionary) && dictionary.TryGetValue(parameter.Id, out customizableObject);
+            return _cache.TryGetValue(parameter.GetType(), out var dictionary) &&
+                dictionary.TryGetValue(parameter.Id, out customizableObject);
         }
     }
 
     /// <summary>
-    ///  A class containing functions for dynamically calling methods <see cref="ICustomizable{TParams}.DownloadParams"/>, <see cref="ICustomizable{TParams}.SetupParams(TParams)"/>.
+    ///  A class containing functions for dynamically calling methods <see cref="ICustomizable{TParams}.DownloadParams"/>,
+    ///  <see cref="ICustomizable{TParams}.SetupParams(TParams)"/>.
     /// </summary>
     public static class CustomizableExtension
     {
         public static AbstractCustomizableParameter CallDownloadParams (object customizable, Dictionary<Guid, object> writeCache)
         {
             const string methodName = nameof(ICustomizable<AbstractCustomizableParameter>.DownloadParams);
-            var attribute = (CustomizableGrandTypeAttribute) Attribute.GetCustomAttribute(customizable.GetType(), typeof(CustomizableGrandTypeAttribute), true);
+            var attribute = (CustomizableGrandTypeAttribute) Attribute.GetCustomAttribute(customizable.GetType(),
+                                                                                          typeof(CustomizableGrandTypeAttribute),
+                                                                                          true);
+
             foreach (var interfaceType in customizable.GetType().GetInterfaces())
             {
-                if (interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>) && interfaceType.GetGenericArguments()[0] == attribute.Type)
+                if (interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>)
+                    && interfaceType.GetGenericArguments()[0] == attribute.Type)
                 {
-                    var method = interfaceType.GetMethod(methodName);
-                    return (AbstractCustomizableParameter) method.Invoke(customizable, new[] { writeCache });
+                    return (AbstractCustomizableParameter) interfaceType.GetMethod(methodName).Invoke(customizable, new[] { writeCache });
                 }
             }
 
             throw new MissingMethodException(customizable.GetType().Name, methodName);
         }
 
-        public static List<T> CallDownloadParams<T> (object customizable, Dictionary<Guid, object> writeCache) where T : AbstractCustomizableParameter
-        {
-            var parameters = new List<T>();
-            foreach (var interfaceType in customizable.GetType().GetInterfaces())
-            {
-                if (interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>)
-                    && (interfaceType.GetGenericArguments()[0].IsSubclassOf(typeof(T)) || interfaceType.GetGenericArguments()[0] == typeof(T)))
-                {
-                    parameters.Add((T) interfaceType.GetMethod(nameof(ICustomizable<AbstractCustomizableParameter>.DownloadParams)).Invoke(customizable, new[] { writeCache }));
-                }
-            }
-            return parameters;
-        }
-
         public static void CallSetUpParams (object customizable, object parameter)
         {
             const string methodName = nameof(ICustomizable<AbstractCustomizableParameter>.SetupParams);
-            var attribute = (CustomizableGrandTypeAttribute) Attribute.GetCustomAttribute(customizable.GetType(), typeof(CustomizableGrandTypeAttribute), true);
+            var attribute = (CustomizableGrandTypeAttribute) Attribute.GetCustomAttribute(customizable.GetType(),
+                                                                                          typeof(CustomizableGrandTypeAttribute),
+                                                                                          true);
+
             foreach (var interfaceType in customizable.GetType().GetInterfaces())
             {
-                if (interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>) && interfaceType.GetGenericArguments()[0] == attribute.Type)
+                if (interfaceType.IsGenericType && interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>)
+                    && interfaceType.GetGenericArguments()[0] == attribute.Type)
                 {
-                    var method = interfaceType.GetMethod(methodName);
-                    method.Invoke(customizable, new[] { parameter });
+                    interfaceType.GetMethod(methodName).Invoke(customizable, new[] { parameter });
                     return;
                 }
             }
 
             throw new MissingMethodException($"Customizable methods with parameter type {attribute.Type} not found");
-        }
-
-        public static void CallSetUpParams (object customizable, object[] parameters)
-        {
-            foreach (var param in parameters)
-            {
-                var isFinded = false;
-
-                foreach (var interfaceType in customizable.GetType().GetInterfaces())
-                {
-                    if (interfaceType.GetGenericTypeDefinition() == typeof(ICustomizable<>) && interfaceType.GetGenericArguments()[0] == param.GetType())
-                    {
-                        interfaceType.GetMethod(nameof(ICustomizable<AbstractCustomizableParameter>.SetupParams), interfaceType.GetGenericArguments()).Invoke(customizable, new[] { param });
-                        isFinded = true;
-                    }
-                }
-
-                if (!isFinded)
-                    throw new MissingMethodException($"Customizable methods with parameter type {param.GetType()} not found");
-            }
         }
     }
 
@@ -173,14 +149,21 @@ namespace Graph3DVisualizer.Customizable
     }
 
     /// <summary>
-    /// An attribute that specifies which type of parameters to use for <see cref="CustomizableExtension.CallDownloadParams(object)"/>, <see cref="CustomizableExtension.CallSetUpParams(object, object)"/>.
+    /// An attribute that specifies which type of parameters to use for <see cref="CustomizableExtension.CallDownloadParams(object)"/>,
+    /// <see cref="CustomizableExtension.CallSetUpParams(object, object)"/>.
     /// </summary>
     [AttributeUsage(AttributeTargets.Struct | AttributeTargets.Class, Inherited = true, AllowMultiple = false)]
     public sealed class CustomizableGrandTypeAttribute : Attribute
     {
         private Type _type;
 
-        public Type Type { get => _type; set => _type = value.IsSubclassOf(typeof(AbstractCustomizableParameter)) ? value : throw new WrongTypeInCustomizableParameterException(); }
+        public Type Type
+        {
+            get => _type;
+            set => _type = value.IsSubclassOf(typeof(AbstractCustomizableParameter))
+                           ? value
+                           : throw new WrongTypeInCustomizableParameterException();
+        }
 
         public CustomizableGrandTypeAttribute (Type type) => Type = type ?? throw new ArgumentNullException(nameof(type));
     }
@@ -191,7 +174,8 @@ namespace Graph3DVisualizer.Customizable
         {
         }
 
-        public WrongTypeInCustomizableParameterException (Type expectedType, Type receivedType) : base($"The type inherited from {expectedType.Name} was expected, and {receivedType.Name} was obtained.")
+        public WrongTypeInCustomizableParameterException (Type expectedType, Type receivedType) :
+            base($"The type inherited from {expectedType.Name} was expected, and {receivedType.Name} was obtained.")
         {
         }
     }

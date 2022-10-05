@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -37,27 +37,45 @@ namespace Graph3DVisualizer.SceneController
         private const string _notDecembristsPath = "Textures/NotDecembrists";
         private const string _selectFramePath = "Textures/SelectFrame";
 
-        private DecembristVertex AddPeople (TextTextureFactory textTextureFactory, UnityEngine.Object man, GraphForBillboardVertexes graphController, Texture2D selectFrame, bool isDec)
+        [Obsolete]
+        private DecembristVertex AddPeople (TextTextureFactory textTextureFactory,
+                                            UnityEngine.Object man,
+                                            GraphForBillboardVertexes graphController,
+                                            Texture2D selectFrame,
+                                            bool isDec)
         {
             var picked = (Texture2D) man;
             var name = textTextureFactory.MakeTextTexture(picked.name.Replace(',', '\n').Replace(' ', '\n').Replace("\n\n", "\n"), true);
             const float scale = 15f;
 
             var resizedTexture = Texture2DExtension.ResizeTexture(picked, name.width, picked.height / picked.width * name.width);
-            var image1 = new PositionedImage[2] { (resizedTexture, new Vector2Int(0, name.height)), (name, new Vector2Int(0, 0)) };
+            var image1 = new PositionedImage[2] { (resizedTexture, new(0, name.height)), (name, new(0, 0)) };
             var image2 = new PositionedImage[1] { (selectFrame, Vector2Int.zero) };
 
             var width = Math.Max(resizedTexture.width, name.width);
             var height = resizedTexture.height + name.height;
 
-            var comIm1 = new CombinedImages(image1, width, height, initTransparentBackground: true);
-            var billPar1 = new BillboardParameters[1] { new BillboardParameters(Texture2DExtension.CombineTextures(comIm1), Vector4.zero, new Vector2(scale, height * scale / width), 0.1f, false, Color.white) };
+            CombinedImages comIm1 = new(image1, width, height, initTransparentBackground: true);
+            var billPar1 = new BillboardParameters[]
+            {
+                new BillboardParameters(Texture2DExtension.CombineTextures(comIm1),
+                                        Vector4.zero,
+                                        new Vector2(scale, height * scale / width),
+                                        0.1f,
+                                        false,
+                                        Color.white)
+            };
 
-            var comIm2 = new CombinedImages(image2, selectFrame.width, selectFrame.height, initTransparentBackground: true);
-            var value = Mathf.Max(scale + 3.5f, height * scale / width + 3.5f);
-            var billPar2 = new BillboardParameters(Texture2DExtension.CombineTextures(comIm2), Vector4.zero, new Vector2(value, value), 0.1f, true, Color.red);
+            CombinedImages comIm2 = new(image2, selectFrame.width, selectFrame.height, initTransparentBackground: true);
+            var value = Mathf.Max(scale + 3.5f, (height * scale / width) + 3.5f);
+            BillboardParameters billPar2 = new(Texture2DExtension.CombineTextures(comIm2),
+                                               Vector4.zero,
+                                               new Vector2(value, value),
+                                               0.1f,
+                                               true,
+                                               Color.red);
 
-            var verPar = new SelectableVertexParameters(billPar1, billPar2);
+            SelectableVertexParameters verPar = new(billPar1, billPar2);
             var vertex = graphController.SpawnVertex<DecembristVertex, SelectableVertexParameters>(verPar);
             vertex.IsDec = isDec;
             vertex.Name = picked.name;
@@ -65,9 +83,10 @@ namespace Graph3DVisualizer.SceneController
             return vertex;
         }
 
+        [Obsolete]
         public GraphForBillboardVertexes CreateGraph ()
         {
-            var graph = new GameObject("Graph");
+            GameObject graph = new("Graph");
             var graphControler = graph.AddComponent<GraphForBillboardVertexes>();
 
             var rand = new System.Random();
@@ -77,7 +96,7 @@ namespace Graph3DVisualizer.SceneController
             const int decCount = 6;
             const int notdecCount = 4;
             var customFont = Resources.Load<Font>(_fontPath);
-            var textTextureFactory = new TextTextureFactory(customFont, 32);
+            TextTextureFactory textTextureFactory = new(customFont, 32);
             var selectFrame = Resources.Load<Texture2D>(_selectFramePath);
 
             var people = new List<DecembristVertex>(10);
@@ -93,7 +112,7 @@ namespace Graph3DVisualizer.SceneController
             var p = 0;
             foreach (var man in people)
             {
-                man.MovementComponent.GlobalCoordinates = new Vector3((p % 5) * 18, p / 5 * 25, 0);
+                man.MovementComponent.GlobalCoordinates = new(p % 5 * 18, p / 5 * 25, 0);
                 p++;
             }
 
@@ -102,7 +121,7 @@ namespace Graph3DVisualizer.SceneController
 
         public override List<Verdict> GetResult ()
         {
-            var verdicts = new List<Verdict>(base.Graphs[0].GetComponent<GraphForBillboardVertexes>().VertexesCount);
+            List<Verdict> verdicts = new(base.Graphs[0].GetComponent<GraphForBillboardVertexes>().VertexesCount);
             foreach (DecembristVertex vertex in base.Graphs[0].GetComponent<GraphForBillboardVertexes>().GetVertexes())
             {
                 var type = vertex.IsDec ? "Декабрист" : "Не декабрист";
@@ -113,6 +132,7 @@ namespace Graph3DVisualizer.SceneController
             return verdicts;
         }
 
+        [Obsolete]
         public override void InitTask ()
         {
             var colors = new List<Color>(1)
@@ -129,7 +149,13 @@ namespace Graph3DVisualizer.SceneController
             base.Graphs.Add(CreateGraph());
             var player = Instantiate(Resources.Load<GameObject>(_playerPrefabPath));
             var flyPlayer = player.GetComponent<FlyPlayer>();
-            flyPlayer.SetupParams(new PlayerParameters(toolConfigs: new[] { new ToolConfig(typeof(SelectItemTool), new SelectItemToolParams(colors)), new ToolConfig(typeof(GrabItemTool), new GrabItemToolParams()) }));
+            flyPlayer.SetupParams(new PlayerParameters(toolConfigs: new[]
+                                                       {
+                                                            new ToolConfig(typeof(SelectItemTool),
+                                                            new SelectItemToolParams(colors)),
+                                                            new ToolConfig(typeof(GrabItemTool),
+                                                            new GrabItemToolParams())
+                                                       }));
             Players.Add(flyPlayer);
         }
     }

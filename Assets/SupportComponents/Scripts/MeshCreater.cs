@@ -1,5 +1,5 @@
 // This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -28,10 +28,10 @@ namespace Graph3DVisualizer.SupportComponents
 
             var vertices = new Vector3[4]
             {
-            new Vector3(-width, -height, 0),
-            new Vector3(width, -height, 0),
-            new Vector3(-width, height, 0),
-            new Vector3(width, height, 0)
+                new (-width, -height, 0),
+                new (width, -height, 0),
+                new (-width, height, 0),
+                new (width, height, 0)
             };
             mesh.vertices = vertices;
 
@@ -46,19 +46,19 @@ namespace Graph3DVisualizer.SupportComponents
 
             var normals = new Vector3[4]
             {
-            -Vector3.forward,
-            -Vector3.forward,
-            -Vector3.forward,
-            -Vector3.forward
+                -Vector3.forward,
+                -Vector3.forward,
+                -Vector3.forward,
+                -Vector3.forward
             };
             mesh.normals = normals;
 
             var uv = new Vector2[4]
             {
-            new Vector2(0, 0),
-            new Vector2(1, 0),
-            new Vector2(0, 1),
-            new Vector2(1, 1)
+                new (0, 0),
+                new (1, 0),
+                new (0, 1),
+                new (1, 1)
             };
             mesh.uv = uv;
 

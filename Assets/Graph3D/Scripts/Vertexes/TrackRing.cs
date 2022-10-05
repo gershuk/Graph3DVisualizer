@@ -1,5 +1,5 @@
 // This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -30,11 +30,11 @@ namespace Graph3DVisualizer.SupportComponents
     [RequireComponent(typeof(BoxCollider))]
     public class TrackRing : AbstractVertex
     {
-        private BoxCollider _collider;
-        private MainModule _mainModule;
-        private MovementComponent _movementComponent;
-        private ParticleSystem _particleSystem;
-        private bool _visibility = true;
+        protected BoxCollider _collider;
+        protected MainModule _mainModule;
+        protected MovementComponent _movementComponent;
+        protected ParticleSystem _particleSystem;
+        protected bool _visibility = true;
 
         public override event Action<UnityEngine.Object>? Destroyed;
 
@@ -74,17 +74,15 @@ namespace Graph3DVisualizer.SupportComponents
             }
         }
 
-        private void Awake ()
+        protected override void Awake ()
         {
-            _transform = transform;
-            _movementComponent = GetComponent<MovementComponent>();
+            base.Awake();
             _particleSystem = GetComponent<ParticleSystem>();
             _mainModule = _particleSystem.main;
             _collider = GetComponent<BoxCollider>();
             _collider.isTrigger = true;
-            Visibility = true;
         }
 
-        private void OnTriggerEnter (Collider other) => Event?.Invoke(this, other);
+        protected void OnTriggerEnter (Collider other) => Event?.Invoke(this, other);
     }
 }

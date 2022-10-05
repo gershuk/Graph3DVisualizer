@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -45,7 +45,8 @@ namespace Graph3DVisualizer.Graph3D
             ToVertex = toVertex != null ? toVertex : throw new ArgumentNullException(nameof(toVertex));
         }
 
-        public void Deconstruct (out AbstractVertex fromVertex, out AbstractVertex toVertex) => (fromVertex, toVertex) = (FromVertex, ToVertex);
+        public void Deconstruct (out AbstractVertex fromVertex, out AbstractVertex toVertex) =>
+            (fromVertex, toVertex) = (FromVertex, ToVertex);
     }
 
     [Serializable]
@@ -55,7 +56,8 @@ namespace Graph3DVisualizer.Graph3D
         public float Length { get; set; }
         public float StiffnessCoefficient { get; set; }
 
-        public SpringParameters (float stiffnessCoefficient, float length) => (StiffnessCoefficient, Length) = (stiffnessCoefficient, length);
+        public SpringParameters (float stiffnessCoefficient, float length) =>
+            (StiffnessCoefficient, Length) = (stiffnessCoefficient, length);
     }
 
     [Serializable]
@@ -67,7 +69,8 @@ namespace Graph3DVisualizer.Graph3D
 
         public bool UseCache { get; protected set; }
 
-        protected AbstarctEdgeMaterialParameters (Shader shader, bool useCache = default, Guid? id = default) : base(id) => (Shader, UseCache) = (shader, useCache);
+        protected AbstarctEdgeMaterialParameters (Shader shader, bool useCache = default, Guid? id = default) :
+            base(id) => (Shader, UseCache) = (shader, useCache);
     }
 
     /// <summary>
@@ -174,11 +177,11 @@ namespace Graph3DVisualizer.Graph3D
         [ContextMenu("UpdateEdge")]
         private void CallUpdateEdge () => UpdateEdge();
 
-        private void OnDestroyed (UnityEngine.Object obj) => Destroy(gameObject);
-
         private void OnMove (Vector3 arg1, UnityEngine.Object arg2) => UpdateCoordinates();
 
         private void OnVisibilityChange (bool visibility, UnityEngine.Object obj) => UpdateVisibility();
+
+        protected void OnDestroyed (UnityEngine.Object obj) => Destroy(gameObject);
 
         protected virtual void SubscribeOnVerticesEvents ()
         {
@@ -208,7 +211,8 @@ namespace Graph3DVisualizer.Graph3D
             }
         }
 
-        public EdgeParameters DownloadParams (Dictionary<Guid, object> writeCache) => new EdgeParameters(null, SpringParameters, SourceOffsetDist, TargetOffsetDist, Width, Visibility, Id);
+        public EdgeParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
+            new(null, SpringParameters, SourceOffsetDist, TargetOffsetDist, Width, Visibility, Id);
 
         public void SetupParams (EdgeParameters parameters)
         {
@@ -226,13 +230,14 @@ namespace Graph3DVisualizer.Graph3D
             if (parameters.AbstarctEdgeMaterialParameters.UseCache)
                 CacheGuid = parameters.AbstarctEdgeMaterialParameters.Id;
 
-            if (parameters.AbstarctEdgeMaterialParameters.UseCache && CacheForCustomizableObjects.TryGetValue(parameters.AbstarctEdgeMaterialParameters, out var custimizableObject))
+            if (parameters.AbstarctEdgeMaterialParameters.UseCache &&
+                CacheForCustomizableObjects.TryGetValue(parameters.AbstarctEdgeMaterialParameters, out var custimizableObject))
             {
                 _material = (Material) custimizableObject!;
             }
             else
             {
-                _material = new Material(parameters.AbstarctEdgeMaterialParameters.Shader) { enableInstancing = true };
+                _material = new(parameters.AbstarctEdgeMaterialParameters.Shader) { enableInstancing = true };
 
                 if (parameters.AbstarctEdgeMaterialParameters.UseCache)
                     CacheForCustomizableObjects.Add(parameters.AbstarctEdgeMaterialParameters, _material);
@@ -271,8 +276,13 @@ namespace Graph3DVisualizer.Graph3D
         public EdgeVisibility Visibility { get; protected set; }
         public float Width { get; protected set; }
 
-        public EdgeParameters (AbstarctEdgeMaterialParameters? abstarctEdgeMaterialParameters, SpringParameters springParameters = default, float sourceOffsetDist = 1f, float targetOffsetDist = 1f, float width = 1f,
-            EdgeVisibility visibility = EdgeVisibility.DependOnVertices, string? id = default) : base(id)
+        public EdgeParameters (AbstarctEdgeMaterialParameters? abstarctEdgeMaterialParameters,
+                               SpringParameters springParameters = default,
+                               float sourceOffsetDist = 1f,
+                               float targetOffsetDist = 1f,
+                               float width = 1f,
+                               EdgeVisibility visibility = EdgeVisibility.DependOnVertices,
+                               string? id = default) : base(id)
         {
             AbstarctEdgeMaterialParameters = abstarctEdgeMaterialParameters;
             SpringParameters = springParameters;

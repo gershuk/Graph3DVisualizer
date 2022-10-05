@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -39,7 +39,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         protected int _currentToolIndex = 0;
         protected bool _cursorEnable;
         protected MovementComponent _moveComponent;
-        protected List<AbstractPlayerTool> _playerTools = new List<AbstractPlayerTool>();
+        protected List<AbstractPlayerTool> _playerTools = new();
         protected bool _toolsEnable;
 
         public event Action<AbstractPlayerTool>? NewToolSelected;
@@ -66,9 +66,12 @@ namespace Graph3DVisualizer.PlayerInputControls
             {
                 if (_toolsEnable == value)
                     return;
+
                 _toolsEnable = value;
+
                 if (_playerTools.Count == 0)
                     return;
+
                 if (value)
                 {
                     if (_playerTools.Count > 0)
@@ -90,9 +93,20 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         protected abstract void GiveNewTool (params ToolConfig[] toolsConfig);
 
-        public PlayerParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
-            new PlayerParameters(transform.position, transform.eulerAngles, _moveComponent.MovingSpeed, _moveComponent.RotationSpeed, IsVr,
-            _playerTools.Select(tool => new ToolConfig(tool.GetType(), (ToolParams) CustomizableExtension.CallDownloadParams(tool, writeCache))).ToArray(), sceneInfo: SceneInfo);
+        public PlayerParameters DownloadParams (Dictionary<Guid, object> writeCache)
+        {
+            PlayerParameters playerParameters = new(transform.position,
+                                                    transform.eulerAngles,
+                                                    _moveComponent.MovingSpeed,
+                                                    _moveComponent.RotationSpeed,
+                                                    IsVr,
+                                                    _playerTools.Select(tool =>
+                                                    new ToolConfig(tool.GetType(),
+                                                                   (ToolParams) CustomizableExtension.CallDownloadParams(tool, writeCache)))
+                                                                                                     .ToArray(),
+                             sceneInfo: SceneInfo);
+            return playerParameters;
+        }
 
         public void SelectTool (int index)
         {
@@ -143,9 +157,14 @@ namespace Graph3DVisualizer.PlayerInputControls
         public string SceneInfo { get; protected set; }
         public ToolConfig[] ToolConfigs { get; protected set; }
 
-        public PlayerParameters (Vector3 position = default, Vector3 eulerAngles = default, float movingSpeed = 10, float rotationSpeed = 10,
-            bool isVR = false, ToolConfig[]? toolConfigs = default,
-            Guid? parameterId = default, string sceneInfo = "No Info") : base(parameterId)
+        public PlayerParameters (Vector3 position = default,
+                                 Vector3 eulerAngles = default,
+                                 float movingSpeed = 10,
+                                 float rotationSpeed = 10,
+                                 bool isVR = false,
+                                 ToolConfig[]? toolConfigs = default,
+                                 Guid? parameterId = default,
+                                 string sceneInfo = "No Info") : base(parameterId)
         {
             Position = position;
             EulerAngles = eulerAngles;

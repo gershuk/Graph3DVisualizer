@@ -1,5 +1,5 @@
 // This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -49,12 +49,14 @@ namespace Graph3DVisualizer.Graph3D
         [SerializeField]
         public GameObject AbstractGraph;
 
+        [System.Obsolete]
         private void Awake ()
         {
             _defaultTexture ??= Texture2DExtension.ResizeTexture(Resources.Load<Texture2D>(_mainTexture), 200, 200);
             _button.onClick.AddListener(CreateVertex);
         }
 
+        [System.Obsolete]
         public void CreateVertex ()
         {
             var texture = _defaultTexture;
@@ -73,15 +75,19 @@ namespace Graph3DVisualizer.Graph3D
 
             var TextTextureFactory = new TextTextureFactory(customFont, 0);
 
-            var imageParameters = new BillboardParameters(texture, scale: _scale.Vector * 3f);
+            BillboardParameters imageParameters = new(texture, scale: _scale.Vector * 3f);
             var selectFrameParameters = new BillboardParameters(selectFrame, scale: _scale.Vector * 6f, isMonoColor: true, useCache: false);
 
             var text = TextTextureFactory.MakeTextTexture(_name.text, true);
-            float scale = 10;
-            var textParameters = new BillboardParameters(text, new Vector4(0, -Mathf.Max(_scale.Vector.x, _scale.Vector.y) - 10, 0, 0), new Vector2(scale, text.height * 1.0f / text.width * scale));
+            var scale = 10f;
+            BillboardParameters textParameters = new(text,
+                                                     new(0, -Mathf.Max(_scale.Vector.x, _scale.Vector.y) - 10, 0, 0),
+                                                     new(scale, text.height * 1.0f / text.width * scale));
 
-            var currentVertex = AbstractGraph.GetComponent<AbstractGraph>().SpawnVertex<SelectableVertex, SelectableVertexParameters>(
-                new SelectableVertexParameters(new[] { imageParameters, textParameters }, selectFrameParameters, _positon.Vector));
+            AbstractGraph.GetComponent<AbstractGraph>()
+                         .SpawnVertex<SelectableVertex, SelectableVertexParameters>(new(new[] { imageParameters, textParameters },
+                                                                                        selectFrameParameters,
+                                                                                        _positon.Vector));
         }
     }
 }

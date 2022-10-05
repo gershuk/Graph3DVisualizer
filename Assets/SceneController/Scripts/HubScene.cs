@@ -1,5 +1,5 @@
 // This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -28,11 +28,17 @@ namespace Graph3DVisualizer.SceneController
     {
         private const string _mainTexture = "Textures/Ñircle";
 
+        [System.Obsolete]
         public override void InitTask ()
         {
             var player = CreatePlayer();
             var toolConfig = new ToolConfig(typeof(ClickTool), new ClickToolParams());
-            player.SetupParams(new PlayerParameters(new Vector3(0, 0, -50), Vector3.zero, SceneParametersContainer.PlayerSpeed, sceneInfo: "Hub scene", isVR: SceneParametersContainer.IsVR, toolConfigs: new[] { toolConfig }));
+            player.SetupParams(new PlayerParameters(new Vector3(0, 0, -50),
+                                                    Vector3.zero,
+                                                    SceneParametersContainer.PlayerSpeed,
+                                                    sceneInfo: "Hub scene",
+                                                    isVR: SceneParametersContainer.IsVR,
+                                                    toolConfigs: new[] { toolConfig }));
 
             //ToDo : Replace with auto generation
             var customFont = FontsGenerator.GetOrCreateFont("Arial", 128);

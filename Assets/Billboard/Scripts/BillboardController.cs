@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -33,12 +33,13 @@ namespace Graph3DVisualizer.Billboards
     [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
     public class BillboardController : MonoBehaviour, IVisibile
     {
-        private readonly Dictionary<BillboardId, Billboard> _billboards = new Dictionary<BillboardId, Billboard>();
+        private readonly Dictionary<BillboardId, Billboard> _billboards = new();
 
         private MeshFilter _meshFilter;
 
         private MeshRenderer _render;
 
+        //ToDo : remove with immutable billboard
         [SerializeField]
         protected static Mesh _billboardMesh;
 
@@ -61,31 +62,22 @@ namespace Graph3DVisualizer.Billboards
         {
             var billboard = _billboards[billboardId];
             var materials = _render.sharedMaterials;
-            var size = materials.Length + 1;
-            var newMaterials = new Material[size];
-            materials.CopyTo(newMaterials, 0);
-            newMaterials[size - 1] = billboard.Material;
-            _render.sharedMaterials = newMaterials;
-
-            billboard.Material = _render.sharedMaterials[size - 1];
-
+            Array.Resize(ref materials, materials.Length + 1);
+            materials[^1] = billboard.Material;
+            _render.sharedMaterials = materials;
+            billboard.Material = _render.sharedMaterials[^1];
             billboard.ScaleChanged += UpdateBounds;
             UpdateBounds();
         }
 
         private void Awake ()
         {
-            //ToDo : Use it when we switch to the submesh system
             if (_billboardMesh == null)
                 _billboardMesh = MeshCreater.CreateQuadMesh();
             _meshFilter = GetComponent<MeshFilter>();
             _meshFilter.sharedMesh = MeshCreater.CreateQuadMesh();
-
             _render = GetComponent<MeshRenderer>();
             _render.sharedMaterials = new Material[0];
-            var bounds = _meshFilter.sharedMesh.bounds;
-            bounds.size = new Vector3(0.5f, 0.5f, 0.5f);
-            _meshFilter.sharedMesh.bounds = bounds;
         }
 
         private void OnDestroy ()
@@ -93,23 +85,24 @@ namespace Graph3DVisualizer.Billboards
             foreach (var billboard in _billboards)
             {
                 if (!CacheForCustomizableObjects.ContainsValue<BillboardParameters>(billboard))
-                    billboard.Value.Material = null;
+                    billboard.Value.Dispose();
             }
         }
 
         //ToDo : Redo it so that the billboard adds or removes itself from the cache.
         public BillboardId CreateBillboard (BillboardParameters parameters)
         {
-            var billboardId = new BillboardId(parameters.Name, parameters.Description);
+            BillboardId billboardId = new(parameters.Name, parameters.Description);
 
             Billboard? billboard;
-            if (parameters.UseCash && CacheForCustomizableObjects.TryGetValue(parameters, out var customizableObject))
+            if (parameters.UseCash
+                && CacheForCustomizableObjects.TryGetValue(parameters, out var customizableObject))
             {
                 billboard = (customizableObject as Billboard) ?? throw new NullReferenceException();
             }
             else
             {
-                billboard = new Billboard();
+                billboard = new();
                 billboard.SetupParams(parameters);
                 if (parameters.UseCash)
                     CacheForCustomizableObjects.Add(parameters, billboard);
@@ -155,7 +148,8 @@ namespace Graph3DVisualizer.Billboards
 
         public Billboard GetBillboard (BillboardId billboardId) => _billboards[billboardId];
 
-        public void RemoveFromCache (BillboardParameters billboardParameters) => CacheForCustomizableObjects.Remove(billboardParameters, true);
+        public void RemoveFromCache (BillboardParameters billboardParameters) =>
+            CacheForCustomizableObjects.Remove(billboardParameters, true);
 
         //ToDo : Rewrite to multiple meshes
         public void UpdateBounds ()
@@ -164,9 +158,11 @@ namespace Graph3DVisualizer.Billboards
             var newValue = 0f;
             foreach (var billboard in _billboards)
             {
-                newValue = Mathf.Max(billboard.Value.ScaleX + billboard.Value.Offset.x * 2, billboard.Value.ScaleY + billboard.Value.Offset.y * 2, newValue);
+                newValue = Mathf.Max(billboard.Value.ScaleX + (billboard.Value.Offset.x * 2),
+                                     billboard.Value.ScaleY + (billboard.Value.Offset.y * 2),
+                                     newValue);
             }
-            bounds.size = new Vector3(newValue, newValue, newValue);
+            bounds.size = new(newValue, newValue, newValue);
             _meshFilter.sharedMesh.bounds = bounds;
         }
     }

@@ -187,9 +187,9 @@ csharp_preserve_single_line_statements = false
 
 # Правила именования
 
-dotnet_naming_rule.private_fields_and_properties_should_be_camel_case_whit_underscore.severity = warning
-dotnet_naming_rule.private_fields_and_properties_should_be_camel_case_whit_underscore.symbols = private_fields_and_properties
-dotnet_naming_rule.private_fields_and_properties_should_be_camel_case_whit_underscore.style = camel_case_whit_underscore
+dotnet_naming_rule.private_or_internal_field_should_be_camel_case_whit_underscore.severity = warning
+dotnet_naming_rule.private_or_internal_field_should_be_camel_case_whit_underscore.symbols = private_or_internal_field
+dotnet_naming_rule.private_or_internal_field_should_be_camel_case_whit_underscore.style = camel_case_whit_underscore
 
 dotnet_naming_rule.interface_should_be_begins_with_i.severity = warning
 dotnet_naming_rule.interface_should_be_begins_with_i.symbols = interface
@@ -205,13 +205,13 @@ dotnet_naming_symbols.interface.applicable_kinds = interface
 dotnet_naming_symbols.interface.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
 dotnet_naming_symbols.interface.required_modifiers = 
 
+dotnet_naming_symbols.private_or_internal_field.applicable_kinds = field
+dotnet_naming_symbols.private_or_internal_field.applicable_accessibilities = internal, private, private_protected
+dotnet_naming_symbols.private_or_internal_field.required_modifiers = 
+
 dotnet_naming_symbols.types.applicable_kinds = class, struct, interface, enum
 dotnet_naming_symbols.types.applicable_accessibilities = public, internal, private, protected, protected_internal, private_protected
 dotnet_naming_symbols.types.required_modifiers = 
-
-dotnet_naming_symbols.private_fields_and_properties.applicable_kinds = property, field
-dotnet_naming_symbols.private_fields_and_properties.applicable_accessibilities = private, protected, protected_internal, private_protected
-dotnet_naming_symbols.private_fields_and_properties.required_modifiers = 
 
 # Стили именования
 

@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -71,9 +71,25 @@ namespace Graph3DVisualizer.PlayerInputControls
         protected InputActionMap _inputActionsVR;
         #endregion Input VR
 
-        public virtual bool Enable { get => _enable; set { _enable = value; UpdateInput(); } }
+        public virtual bool Enable
+        {
+            get => _enable;
+            set
+            {
+                _enable = value;
+                UpdateInput();
+            }
+        }
 
-        public virtual bool IsVR { get => _isVR; set { _isVR = value; UpdateInput(); } }
+        public virtual bool IsVR
+        {
+            get => _isVR;
+            set
+            {
+                _isVR = value;
+                UpdateInput();
+            }
+        }
 
         public float RayCastRange { get => _rayCastRange; set => _rayCastRange = value; }
 
@@ -100,12 +116,12 @@ namespace Graph3DVisualizer.PlayerInputControls
                 _inputActionsPC?.Disable();
         }
 
-        public ToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new ToolParams(IsVR);
+        public ToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new(IsVR);
 
         public virtual void RegisterEvents (IInputActionCollection inputActions)
         {
-            _inputActionsPC = new InputActionMap(_inputActionMapPCName);
-            _inputActionsVR = new InputActionMap(_inputActionMapVRName);
+            _inputActionsPC = new(_inputActionMapPCName);
+            _inputActionsVR = new(_inputActionMapVRName);
         }
 
         public void SetupParams (ToolParams parameters) => IsVR = parameters.IsVR;
@@ -121,6 +137,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         public bool IsVR { get; protected set; }
         public float RayCastRange { get; protected set; }
 
-        public ToolParams (bool isVR = false, float rayCastRange = 1000, Guid? parameterId = default) : base(parameterId) => (IsVR, RayCastRange) = (isVR, rayCastRange);
+        public ToolParams (bool isVR = false, float rayCastRange = 1000, Guid? parameterId = default) :
+            base(parameterId) => (IsVR, RayCastRange) = (isVR, rayCastRange);
     }
 }

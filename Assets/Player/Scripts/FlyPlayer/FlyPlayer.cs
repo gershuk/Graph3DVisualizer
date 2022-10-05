@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -65,6 +65,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         private Vector3 _moveDirVector;
 
         [SerializeField]
+        [Obsolete]
         private XRRig _rig;
 
         [SerializeField]
@@ -81,6 +82,7 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public override HUDController HUDController => _hudController;
 
+        [Obsolete]
         public override bool IsVr
         {
             get => _isVr;
@@ -88,13 +90,24 @@ namespace Graph3DVisualizer.PlayerInputControls
             {
                 _isVr = value;
 
-                foreach (var controller in new MonoBehaviour[] { _rig, _trackedPoseDriver, _leftController, _rightController, _leftRayInteractor, _rightRayInteractor })
+                MonoBehaviour[] controlles =
+                {
+                    _rig,
+                    _trackedPoseDriver,
+                    _leftController,
+                    _rightController,
+                    _leftRayInteractor,
+                    _rightRayInteractor
+                };
+
+                foreach (var controller in controlles)
                     controller.enabled = _isVr;
 
                 if (!_isVr)
                 {
                     _moveComponent.GlobalEulerAngles = Vector3.zero;
-                    foreach (var bodyPart in new[] { _leftHand, _rightHand, _head, _cameraOffSet })
+                    GameObject[] bodyParts = { _leftHand, _rightHand, _head, _cameraOffSet };
+                    foreach (var bodyPart in bodyParts)
                     {
                         bodyPart.transform.localPosition = Vector3.zero;
                         bodyPart.transform.localEulerAngles = Vector3.zero;
@@ -145,7 +158,8 @@ namespace Graph3DVisualizer.PlayerInputControls
             }
         }
 
-        private void OnChangeInputType (InputAction.CallbackContext obj) => (CursorEnable, ToolsEnable, MovementEnable) = (!CursorEnable, !ToolsEnable, !MovementEnable);
+        private void OnChangeInputType (InputAction.CallbackContext obj) =>
+            (CursorEnable, ToolsEnable, MovementEnable) = (!CursorEnable, !ToolsEnable, !MovementEnable);
 
         private void OnDisable ()
         {
@@ -216,7 +230,7 @@ namespace Graph3DVisualizer.PlayerInputControls
             {
                 foreach (var config in toolsConfig)
                 {
-                    var newTool = ((AbstractPlayerTool) _rightHand.AddComponent(config.ToolType));
+                    var newTool = (AbstractPlayerTool) _rightHand.AddComponent(config.ToolType);
                     newTool.RegisterEvents(_inputActions);
 
                     try
@@ -231,7 +245,7 @@ namespace Graph3DVisualizer.PlayerInputControls
                     }
 
                     _playerTools.Add(newTool);
-                    _playerTools[_playerTools.Count - 1].enabled = false;
+                    _playerTools[^1].enabled = false;
                 }
                 SelectTool(0);
             }
@@ -245,8 +259,11 @@ namespace Graph3DVisualizer.PlayerInputControls
         public void OnMoveToPoint (InputAction.CallbackContext obj)
         {
             var transform = IsVr ? _leftHand.transform : _cameraOffSet.transform;
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, Mathf.Infinity) && MovementEnable)
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out var hit, Mathf.Infinity)
+                && MovementEnable)
+            {
                 StartCoroutine(_moveComponent.MoveAlongTrajectory(new List<Vector3>(1) { hit.point }));
+            }
         }
 
         public void OnPlayerChangeAltitude (InputAction.CallbackContext obj) => _moveDirVector.y = obj.ReadValue<float>();
@@ -254,7 +271,7 @@ namespace Graph3DVisualizer.PlayerInputControls
         public void OnPlayerMove (InputAction.CallbackContext obj)
         {
             var direction = obj.ReadValue<Vector2>().normalized;
-            _moveDirVector = new Vector3(direction.x, _moveDirVector.y, direction.y);
+            _moveDirVector = new(direction.x, _moveDirVector.y, direction.y);
         }
 
         public void OnSelectItem (InputAction.CallbackContext obj) => SelectTool(Convert.ToInt32(obj.control.displayName) - 1);

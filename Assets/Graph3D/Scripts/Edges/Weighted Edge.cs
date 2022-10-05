@@ -1,5 +1,5 @@
 // This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -30,6 +30,7 @@ namespace Graph3DVisualizer.Graph3D
     [CustomizableGrandType(typeof(WeightedEdgeParameters))]
     public sealed class WeightedEdge : StretchableEdge, ICustomizable<WeightedEdgeParameters>
     {
+        [Obsolete]
         private static TextTextureFactory? _textTextureFactory;
 
         private BillboardController _billboardController;
@@ -37,6 +38,7 @@ namespace Graph3DVisualizer.Graph3D
         private float? _value;
         private BillboardId? _valueId;
 
+        [Obsolete]
         public float? Value
         {
             get => _value;
@@ -52,30 +54,33 @@ namespace Graph3DVisualizer.Graph3D
                 {
                     const float scale = 5;
                     var texture = _textTextureFactory.MakeTextTexture(_value.ToString(), true);
-                    _valueId = _billboardController.CreateBillboard(new BillboardParameters(texture,
-                                                                                            new Vector4(0, Width, 0, 1),
-                                                                                            new Vector2(scale, texture.height * 1.0f / texture.width * scale),
-                                                                                            0.1f,
-                                                                                            true,
-                                                                                            Color.blue));
+                    _valueId = _billboardController.CreateBillboard(new(texture,
+                                                                        new(0, Width, 0, 1),
+                                                                        new(scale, texture.height * 1.0f / texture.width * scale),
+                                                                        0.1f,
+                                                                        true,
+                                                                        Color.blue));
                 }
             }
         }
 
+        [Obsolete]
         protected override void Awake ()
         {
             base.Awake();
-            _childBillboard = new GameObject("ChildBilllboard");
+            _childBillboard = new("ChildBilllboard");
             _childBillboard.transform.parent = transform;
             _childBillboard.transform.localPosition = Vector3.zero;
             _billboardController = _childBillboard.AddComponent<BillboardController>();
-            _textTextureFactory ??= new TextTextureFactory(FontsGenerator.GetOrCreateFont("Arial", 48), 0);
+            _textTextureFactory ??= new(FontsGenerator.GetOrCreateFont("Arial", 48), 0);
             Value = 0;
         }
 
+        [Obsolete]
         WeightedEdgeParameters ICustomizable<WeightedEdgeParameters>.DownloadParams (Dictionary<Guid, object> writeCache) =>
-            new WeightedEdgeParameters((this as ICustomizable<StretchableEdgeParameters>).DownloadParams(writeCache), Value);
+            new(DownloadParams(writeCache), Value);
 
+        [Obsolete]
         public void SetupParams (WeightedEdgeParameters parameters)
         {
             (this as ICustomizable<StretchableEdgeParameters>).SetupParams(parameters);

@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -96,7 +96,9 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         private IEnumerator ChangingRangeCoroutine ()
         {
-            var changeRangeAction = IsVR ? _inputActionsVR.FindAction(_changeRangeActionVRName) : _inputActionsPC.FindAction(_changeRangeActionPCName);
+            var changeRangeAction = IsVR
+                ? _inputActionsVR.FindAction(_changeRangeActionVRName)
+                : _inputActionsPC.FindAction(_changeRangeActionPCName);
             while (_isChangingRange)
             {
                 ChangeRange(Math.Sign(changeRangeAction.ReadValue<float>()));
@@ -114,9 +116,11 @@ namespace Graph3DVisualizer.PlayerInputControls
             }
         }
 
-        public void ChangeRange (float normalizedDelta) => _capturedRange = Mathf.Max(0, _capturedRange + normalizedDelta * Time.deltaTime * RangeChangeSpeed);
+        public void ChangeRange (float normalizedDelta) =>
+            _capturedRange = Mathf.Max(0, _capturedRange + (normalizedDelta * Time.deltaTime * RangeChangeSpeed));
 
-        public new GrabItemToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new GrabItemToolParams((this as ICustomizable<ToolParams>).DownloadParams(writeCache));
+        public new GrabItemToolParams DownloadParams (Dictionary<Guid, object> writeCache) =>
+            new((this as ICustomizable<ToolParams>).DownloadParams(writeCache));
 
         public void FreeItem ()
         {
@@ -156,8 +160,12 @@ namespace Graph3DVisualizer.PlayerInputControls
             #endregion Bind PC input
 
             #region Bind VR input
-            var grabItemActionVR = _inputActionsVR.AddAction(_grabActionVRName, InputActionType.Button, "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
-            var changeRangeActionVR = _inputActionsVR.AddAction(_changeRangeActionVRName, InputActionType.Value, "<ViveController>{RightHand}/trackpad/x");
+            var grabItemActionVR = _inputActionsVR.AddAction(_grabActionVRName,
+                                                             InputActionType.Button,
+                                                             "<XRInputV1::HTC::HTCViveControllerOpenXR>{RightHand}/triggerpressed");
+            var changeRangeActionVR = _inputActionsVR.AddAction(_changeRangeActionVRName,
+                                                                InputActionType.Value,
+                                                                "<ViveController>{RightHand}/trackpad/x");
             grabItemActionVR.performed += CallGrabItem;
             grabItemActionVR.canceled += CallFreeItem;
 

@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -36,7 +36,10 @@ namespace Graph3DVisualizer.Gui
             public UnityAction OnClickFunction { get; }
             public RectTransformParameters RectTransformParameters { get; }
 
-            public ButtonParameters (UnityAction onClickFunction, string? name = default, in RectTransformParameters rectTransformParameters = default, Image? image = default)
+            public ButtonParameters (UnityAction onClickFunction,
+                                     string? name = default,
+                                     in RectTransformParameters rectTransformParameters = default,
+                                     Image? image = default)
             {
                 Name = name ?? string.Empty;
                 RectTransformParameters = rectTransformParameters;
@@ -71,7 +74,13 @@ namespace Graph3DVisualizer.Gui
             public Transform Parent { get; }
             public Vector2 SizeDelta { get; }
 
-            public RectTransformParameters (Transform parent, Vector2 anchorMin, Vector2 anchorMax, Vector2 sizeDelta, Vector2 anchoredPosition, Vector3? anchoredPosition3D = default, Vector3? eulerAngles = default)
+            public RectTransformParameters (Transform parent,
+                                            Vector2 anchorMin,
+                                            Vector2 anchorMax,
+                                            Vector2 sizeDelta,
+                                            Vector2 anchoredPosition,
+                                            Vector3? anchoredPosition3D = default,
+                                            Vector3? eulerAngles = default)
             {
                 Parent = parent;
                 AnchorMin = anchorMin;
@@ -92,7 +101,12 @@ namespace Graph3DVisualizer.Gui
             public int Size { get; }
             public string Text { get; }
 
-            public TextParameters (string text, Color color, Font font, TextAnchor anchor, int size, in RectTransformParameters rectTransformParameters)
+            public TextParameters (string text,
+                                   Color color,
+                                   Font font,
+                                   TextAnchor anchor,
+                                   int size,
+                                   in RectTransformParameters rectTransformParameters)
             {
                 Text = text ?? string.Empty;
                 Color = color;
@@ -117,7 +131,7 @@ namespace Graph3DVisualizer.Gui
 
         public static GameObject CreateButton (in ButtonParameters parameters)
         {
-            var newButton = new GameObject($"{parameters.Name}Button", typeof(Image), typeof(Button), typeof(LayoutElement));
+            GameObject newButton = new($"{parameters.Name}Button", typeof(Image), typeof(Button), typeof(LayoutElement));
 
             var buttonComponent = newButton.GetComponent<Button>();
             if (parameters.OnClickFunction != null)
@@ -131,7 +145,7 @@ namespace Graph3DVisualizer.Gui
 
         public static GameObject CreateCanvas (in CanvasParameters parameters)
         {
-            var newCanvas = new GameObject("Canvas", typeof(Canvas), typeof(GraphicRaycaster));
+            GameObject newCanvas = new("Canvas", typeof(Canvas), typeof(GraphicRaycaster));
             newCanvas.GetComponent<RectTransform>().SetUpRectTransform(parameters.RectTransformParameters);
             var canvas = newCanvas.GetComponent<Canvas>();
             canvas.renderMode = parameters.RenderMode;
@@ -141,7 +155,7 @@ namespace Graph3DVisualizer.Gui
 
         public static GameObject CreateText (in TextParameters parameters)
         {
-            var newText = new GameObject($"{parameters.Text}Text", typeof(Text));
+            GameObject newText = new($"{parameters.Text}Text", typeof(Text));
             newText.GetComponent<RectTransform>().SetUpRectTransform(parameters.RectTransformParameters);
             var textComponent = newText.GetComponent<Text>();
             textComponent.text = $"{parameters.Text}";

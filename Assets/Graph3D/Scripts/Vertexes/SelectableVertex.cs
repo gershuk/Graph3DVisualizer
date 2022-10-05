@@ -1,5 +1,5 @@
 ﻿// This file is part of Graph3DVisualizer.
-// Copyright © Gershuk Vladislav 2021.
+// Copyright © Gershuk Vladislav 2022.
 //
 // Graph3DVisualizer is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -32,17 +32,12 @@ namespace Graph3DVisualizer.Graph3D
     /// <summary>
     /// Realization of <see cref="BillboardVertex"/> with selection support.
     /// </summary>
-    [RequireComponent(typeof(MovementComponent))]
-    [RequireComponent(typeof(MeshRenderer))]
-    [RequireComponent(typeof(MeshFilter))]
-    [RequireComponent(typeof(BillboardController))]
-    [RequireComponent(typeof(SphereCollider))]
     [CustomizableGrandType(typeof(SelectableVertexParameters))]
     public class SelectableVertex : BillboardVertex, ICustomizable<SelectableVertexParameters>, ISelectable
     {
-        private const string _edgePrefabPath = "Prefabs/Edge";
-        private bool _isSelected = true;
-        private BillboardId _selectFrameId;
+        protected const string _edgePrefabPath = "Prefabs/Edge";
+        protected bool _isSelected = true;
+        protected BillboardId _selectFrameId;
 
         //ToDo : Add highlight effect
         public event Action<UnityEngine.Object, bool>? HighlightedChanged;
@@ -70,7 +65,7 @@ namespace Graph3DVisualizer.Graph3D
             }
         }
 
-        public override MovementComponent MovementComponent { get; protected set; }
+        public override MovementComponent? MovementComponent { get; protected set; }
 
         public Color SelectFrameColor
         {
@@ -80,22 +75,14 @@ namespace Graph3DVisualizer.Graph3D
 
         public Vector2 SetSelectFrameSize
         {
-            get => new Vector2(_billboardControler.GetBillboard(_selectFrameId).ScaleX, _billboardControler.GetBillboard(_selectFrameId).ScaleY);
+            get => new(_billboardControler.GetBillboard(_selectFrameId).ScaleX,
+                       _billboardControler.GetBillboard(_selectFrameId).ScaleY);
             set
             {
                 _billboardControler.GetBillboard(_selectFrameId).ScaleX = value.x;
                 _billboardControler.GetBillboard(_selectFrameId).ScaleY = value.y;
                 UpdateColliderRange();
             }
-        }
-
-        private void Awake ()
-        {
-            _transform = transform;
-            _sphereCollider = GetComponent<SphereCollider>();
-            _visible = true;
-            _billboardControler = GetComponent<BillboardController>();
-            MovementComponent = GetComponent<MovementComponent>();
         }
 
         protected override void UpdateColliderRange ()
@@ -116,8 +103,9 @@ namespace Graph3DVisualizer.Graph3D
         }
 
         public new SelectableVertexParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
-            new SelectableVertexParameters((this as ICustomizable<BillboardVertexParameters>).DownloadParams(writeCache),
-                (BillboardParameters) CustomizableExtension.CallDownloadParams(_billboardControler.GetBillboard(_selectFrameId), writeCache), IsSelected, Id);
+            new((this as ICustomizable<BillboardVertexParameters>).DownloadParams(writeCache),
+                (BillboardParameters) CustomizableExtension.CallDownloadParams(_billboardControler.GetBillboard(_selectFrameId),
+                                                                               writeCache), IsSelected, Id);
 
         public void SetSelectFrame (BillboardParameters billboardParameters)
         {
@@ -148,12 +136,25 @@ namespace Graph3DVisualizer.Graph3D
         public bool IsSelected { get; protected set; }
         public BillboardParameters SelectFrameParameters { get; protected set; }
 
-        public SelectableVertexParameters (BillboardParameters[] imageParameters, BillboardParameters selectFrameParameters,
-            Vector3 position = default, Vector3 eulerAngles = default, bool isSelected = false, string? id = default) :
-                base(imageParameters, position, eulerAngles, id) => (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
+        public SelectableVertexParameters (BillboardParameters[] imageParameters,
+                                           BillboardParameters selectFrameParameters,
+                                           Vector3 position = default,
+                                           Vector3 eulerAngles = default,
+                                           bool isSelected = false,
+                                           string? id = default) :
+                base(imageParameters, position, eulerAngles, id) =>
+                (SelectFrameParameters, IsSelected) = (selectFrameParameters, isSelected);
 
-        public SelectableVertexParameters (BillboardVertexParameters vertexParameters, BillboardParameters selectFrameParameters, bool isSelected = false, string? id = default) :
-                                  this(vertexParameters.ImageParameters, selectFrameParameters, vertexParameters.Position, vertexParameters.EulerAngles, isSelected, id)
+        public SelectableVertexParameters (BillboardVertexParameters vertexParameters,
+                                           BillboardParameters selectFrameParameters,
+                                           bool isSelected = false,
+                                           string? id = default) :
+                                           this(vertexParameters.ImageParameters,
+                                                selectFrameParameters,
+                                                vertexParameters.Position,
+                                                vertexParameters.EulerAngles,
+                                                isSelected,
+                                                id)
         { }
     }
 }
