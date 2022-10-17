@@ -214,6 +214,8 @@ namespace Graph3DVisualizer.Graph3D
         public EdgeParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
             new(null, SpringParameters, SourceOffsetDist, TargetOffsetDist, Width, Visibility, Id);
 
+        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+
         public void SetupParams (EdgeParameters parameters)
         {
             Id = parameters.ObjectId;
@@ -247,6 +249,8 @@ namespace Graph3DVisualizer.Graph3D
 
             UpdateEdge();
         }
+
+        public void SetupParams (object parameters) => throw new NotImplementedException();
 
         public abstract void UpdateCoordinates ();
 

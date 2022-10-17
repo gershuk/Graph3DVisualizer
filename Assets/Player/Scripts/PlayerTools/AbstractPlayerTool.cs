@@ -118,6 +118,8 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public ToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new(IsVR);
 
+        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+
         public virtual void RegisterEvents (IInputActionCollection inputActions)
         {
             _inputActionsPC = new(_inputActionMapPCName);
@@ -125,6 +127,8 @@ namespace Graph3DVisualizer.PlayerInputControls
         }
 
         public void SetupParams (ToolParams parameters) => IsVR = parameters.IsVR;
+
+        public void SetupParams (object parameters) => throw new NotImplementedException();
     }
 
     /// <summary>

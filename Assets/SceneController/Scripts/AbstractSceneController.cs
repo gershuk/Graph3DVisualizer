@@ -142,6 +142,8 @@ namespace Graph3DVisualizer.SceneController
                  Graphs.Select(x => new GraphInfo(x.GetType(),
                                                   (GraphParameters) CustomizableExtension.CallDownloadParams(x, writeCache))).ToArray());
 
+        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+
         public abstract void InitTask ();
 
         public virtual void SetupParams (SceneParameters parameters)
@@ -161,6 +163,8 @@ namespace Graph3DVisualizer.SceneController
                 CustomizableExtension.CallSetUpParams(player, playerParameters);
             }
         }
+
+        public void SetupParams (object parameters) => throw new NotImplementedException();
     }
 
     /// <summary>

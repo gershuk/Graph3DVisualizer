@@ -108,6 +108,8 @@ namespace Graph3DVisualizer.PlayerInputControls
             return playerParameters;
         }
 
+        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+
         public void SelectTool (int index)
         {
             if (!ToolsEnable)
@@ -140,6 +142,8 @@ namespace Graph3DVisualizer.PlayerInputControls
             GiveNewTool(playerParams.ToolConfigs);
             IsVr = playerParams.IsVr;
         }
+
+        public void SetupParams (object parameters) => throw new NotImplementedException();
     }
 
     /// <summary>

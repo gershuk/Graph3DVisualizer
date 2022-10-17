@@ -348,6 +348,8 @@ namespace Graph3DVisualizer.Graph3D
             }
         }
 
+        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+
         public void PyramidLayout (AbstractVertex? firstVertex = default, float minRingRadius = 15f, float hight = 20f)
         {
             if (_isChanging)
@@ -422,6 +424,8 @@ namespace Graph3DVisualizer.Graph3D
                 _isChanging = false;
             }
         }
+
+        public void SetupParams (object parameters) => throw new NotImplementedException();
 
         [ContextMenu("PyramidLayout")]
         public void StartPyramidLayout () => PyramidLayout();

@@ -152,6 +152,8 @@ namespace Graph3DVisualizer.SceneController
         public SceneControllerParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
             new(ActiveTask.GetType(), (SceneParameters) CustomizableExtension.CallDownloadParams(ActiveTask, writeCache));
 
+        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+
         public void FindAllTasks ()
         {
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
@@ -235,6 +237,8 @@ namespace Graph3DVisualizer.SceneController
                 LoadScene(index, parameters.VisualTaskParameters);
             }
         }
+
+        public void SetupParams (object parameters) => throw new NotImplementedException();
 
         public void StopTask ()
         {

@@ -168,6 +168,8 @@ namespace Graph3DVisualizer.Billboards
                                            Description);
         }
 
+        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+
         public void SetupParams (BillboardParameters billboardParameters)
         {
             CacheGuid = billboardParameters.UseCash ? billboardParameters.Id : default(Guid?);
@@ -182,6 +184,8 @@ namespace Graph3DVisualizer.Billboards
             Name = billboardParameters.Name;
             Description = billboardParameters.Description;
         }
+
+        public void SetupParams (object parameters) => throw new NotImplementedException();
     }
 
     /// <summary>

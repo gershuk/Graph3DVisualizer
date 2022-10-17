@@ -1,0 +1,17 @@
+{
+    "name": "Graph3DVisualizer.ObjectFactory",
+    "rootNamespace": "Graph3DVisualizer.ObjectFactory",
+    "references": [
+        "GUID:68f547e922d4cac48980104337bf6a86",
+        "GUID:a251807422a267846803e3939918e146"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
