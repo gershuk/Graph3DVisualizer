@@ -43,14 +43,13 @@ namespace Graph3DVisualizer.SceneController
     [YuzuAll]
     public class SceneControllerParameters : AbstractCustomizableParameter
     {
-        public Type TaskType { get; protected set; }
-
-        public SceneParameters VisualTaskParameters { get; protected set; }
+        public SceneParameters SceneParameters { get; protected set; }
+        public Type SceneType { get; protected set; }
 
         public SceneControllerParameters (Type taskType, SceneParameters visualTaskParameters, Guid? parameterId = default) : base(parameterId)
         {
-            TaskType = taskType ?? throw new ArgumentNullException(nameof(taskType));
-            VisualTaskParameters = visualTaskParameters ?? throw new ArgumentNullException(nameof(visualTaskParameters));
+            SceneType = taskType ?? throw new ArgumentNullException(nameof(taskType));
+            SceneParameters = visualTaskParameters ?? throw new ArgumentNullException(nameof(visualTaskParameters));
         }
     }
 
@@ -64,9 +63,9 @@ namespace Graph3DVisualizer.SceneController
 
         public static SceneLoader Instance { get; private set; }
 
-        public AbstractSceneController? ActiveTask { get; private set; }
+        public AbstractSceneController? ActiveController { get; private set; }
 
-        public List<Type> TaskList { get; } = new List<Type>();
+        public List<Type> ControllersList { get; } = new List<Type>();
 
         static SceneLoader ()
         {
@@ -150,18 +149,18 @@ namespace Graph3DVisualizer.SceneController
         }
 
         public SceneControllerParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
-            new(ActiveTask.GetType(), (SceneParameters) CustomizableExtension.CallDownloadParams(ActiveTask, writeCache));
+            new(ActiveController.GetType(), (SceneParameters) CustomizableExtension.CallDownloadParams(ActiveController, writeCache));
 
-        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+        AbstractCustomizableParameter ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
 
-        public void FindAllTasks ()
+        public void FindAllControllers ()
         {
             foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 foreach (var type in assembly.GetTypes())
                 {
                     if (type.IsSubclassOf(typeof(AbstractSceneController)))
-                        TaskList.Add(type);
+                        ControllersList.Add(type);
                 }
             }
         }
@@ -196,23 +195,23 @@ namespace Graph3DVisualizer.SceneController
 #endif
         }
 
-        public void LoadScene (int taskIndex, SceneParameters? visualTaskParameters = default)
+        public void LoadScene (int index, SceneParameters? parameters = default)
         {
             var m = GetType().GetMethod(nameof(LoadScene), new[] { typeof(SceneParameters) });
-            m.MakeGenericMethod(TaskList[taskIndex]);
-            m.Invoke(this, new[] { visualTaskParameters });
+            m.MakeGenericMethod(ControllersList[index]);
+            m.Invoke(this, new[] { parameters });
         }
 
-        public void LoadScene<T> (SceneParameters? visualTaskParameters = default) where T : AbstractSceneController
+        public void LoadScene<T> (SceneParameters? parameters = default) where T : AbstractSceneController
         {
-            if (ActiveTask != null)
-                StopTask();
+            if (ActiveController != null)
+                StopAndDestroyActiveController();
             var gameObject = new GameObject($"{typeof(T).Name}");
-            ActiveTask = gameObject.AddComponent<T>();
-            if (visualTaskParameters == null)
-                ActiveTask.InitTask();
+            ActiveController = gameObject.AddComponent<T>();
+            if (parameters == null)
+                ActiveController.InitEnvironment();
             else
-                CustomizableExtension.CallSetUpParams(ActiveTask, visualTaskParameters);
+                CustomizableExtension.CallSetUpParams(ActiveController, parameters);
         }
 
         public void SaveBinary (string name)
@@ -231,23 +230,25 @@ namespace Graph3DVisualizer.SceneController
 
         public void SetupParams (SceneControllerParameters parameters)
         {
-            var index = TaskList.FindIndex(x => x == parameters.TaskType);
+            var index = ControllersList.FindIndex(x => x == parameters.SceneType);
             if (index > -1)
             {
-                LoadScene(index, parameters.VisualTaskParameters);
+                LoadScene(index, parameters.SceneParameters);
             }
         }
 
         public void SetupParams (object parameters) => throw new NotImplementedException();
 
-        public void StopTask ()
+        public void SetupParams (AbstractCustomizableParameter parameters) => throw new NotImplementedException();
+
+        public void StopAndDestroyActiveController ()
         {
             CacheForCustomizableObjects.ClearAll(true);
 
-            if (ActiveTask != null)
+            if (ActiveController != null)
             {
-                ActiveTask.DestroyTask();
-                GameObject.DestroyImmediate(ActiveTask.gameObject);
+                ActiveController.DestroyEnvironment();
+                GameObject.DestroyImmediate(ActiveController.gameObject);
                 Resources.UnloadUnusedAssets();
             }
             else

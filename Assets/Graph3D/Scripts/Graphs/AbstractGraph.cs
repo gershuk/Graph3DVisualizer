@@ -348,7 +348,7 @@ namespace Graph3DVisualizer.Graph3D
             }
         }
 
-        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+        AbstractCustomizableParameter ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
 
         public void PyramidLayout (AbstractVertex? firstVertex = default, float minRingRadius = 15f, float hight = 20f)
         {
@@ -426,6 +426,8 @@ namespace Graph3DVisualizer.Graph3D
         }
 
         public void SetupParams (object parameters) => throw new NotImplementedException();
+
+        public void SetupParams (AbstractCustomizableParameter parameters) => throw new NotImplementedException();
 
         [ContextMenu("PyramidLayout")]
         public void StartPyramidLayout () => PyramidLayout();

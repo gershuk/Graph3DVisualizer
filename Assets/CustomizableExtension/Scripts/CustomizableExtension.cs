@@ -182,9 +182,9 @@ namespace Graph3DVisualizer.Customizable
 
     public interface ICustomizable
     {
-        object DownloadParams (Dictionary<Guid, object> writeCache);
+        AbstractCustomizableParameter DownloadParams (Dictionary<Guid, object> writeCache);
 
-        void SetupParams (object parameters);
+        void SetupParams (AbstractCustomizableParameter parameters);
     }
 
     /// <summary>

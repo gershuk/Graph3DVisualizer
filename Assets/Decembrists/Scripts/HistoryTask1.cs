@@ -133,7 +133,7 @@ namespace Graph3DVisualizer.SceneController
         }
 
         [Obsolete]
-        public override void InitTask ()
+        public override void InitEnvironment ()
         {
             var colors = new List<Color>(1)
                          {

@@ -25,7 +25,7 @@ namespace Graph3DVisualizer.SceneController
 {
     public class OneGroupEnemyAndFriendsScene : AbstractSceneController
     {
-        public override void InitTask ()
+        public override void InitEnvironment ()
         {
             var player = CreatePlayer();
             var toolConfig = new ToolConfig(typeof(LayoutTool), new ToolParams());

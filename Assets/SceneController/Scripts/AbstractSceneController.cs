@@ -126,7 +126,7 @@ namespace Graph3DVisualizer.SceneController
         {
         }
 
-        public void DestroyTask ()
+        public void DestroyEnvironment ()
         {
             OnTaskDestoryed();
             foreach (var player in Players)
@@ -142,9 +142,9 @@ namespace Graph3DVisualizer.SceneController
                  Graphs.Select(x => new GraphInfo(x.GetType(),
                                                   (GraphParameters) CustomizableExtension.CallDownloadParams(x, writeCache))).ToArray());
 
-        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+        AbstractCustomizableParameter ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
 
-        public abstract void InitTask ();
+        public abstract void InitEnvironment ();
 
         public virtual void SetupParams (SceneParameters parameters)
         {
@@ -165,6 +165,8 @@ namespace Graph3DVisualizer.SceneController
         }
 
         public void SetupParams (object parameters) => throw new NotImplementedException();
+
+        public void SetupParams (AbstractCustomizableParameter parameters) => throw new NotImplementedException();
     }
 
     /// <summary>

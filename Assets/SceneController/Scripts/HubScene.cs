@@ -29,7 +29,7 @@ namespace Graph3DVisualizer.SceneController
         private const string _mainTexture = "Textures/Ñircle";
 
         [System.Obsolete]
-        public override void InitTask ()
+        public override void InitEnvironment ()
         {
             var player = CreatePlayer();
             var toolConfig = new ToolConfig(typeof(ClickTool), new ClickToolParams());

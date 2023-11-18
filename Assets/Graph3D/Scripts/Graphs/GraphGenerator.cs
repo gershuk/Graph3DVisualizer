@@ -28,7 +28,7 @@ namespace Graph3DVisualizer.Graph3D
 {
     public abstract class AbstractGraphGenerator
     {
-        public abstract void Generate (AbstractGraph abstractGraph);
+        public abstract void Generate (AbstractGraph graph);
     }
 
     public abstract class AbstractGraphGeneratorWithPlaceholder : AbstractGraphGenerator

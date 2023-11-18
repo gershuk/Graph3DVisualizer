@@ -66,7 +66,7 @@ namespace Graph3DVisualizer.SceneController
         }
 
         [Obsolete]
-        public override void InitTask ()
+        public override void InitEnvironment ()
         {
             var graph = new GameObject("Graph");
             var graphControler = graph.AddComponent<GraphForBillboardVertexes>();

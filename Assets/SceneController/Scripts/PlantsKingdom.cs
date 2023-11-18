@@ -263,7 +263,7 @@ namespace Graph3DVisualizer.SceneController
             return graphControler;
         }
 
-        public override void InitTask ()
+        public override void InitEnvironment ()
         {
             var player = CreatePlayer();
             player.SetupParams(new PlayerParameters(Vector3.zero, Vector3.zero, SceneParametersContainer.PlayerSpeed, 20, SceneParametersContainer.IsVR, new[] { new ToolConfig(typeof(LayoutTool), new ToolParams()) }));

@@ -81,7 +81,7 @@ namespace Graph3DVisualizer.SceneController
         public override List<Verdict> GetResult () => new(1) { new Verdict("Test", VerdictStatus.Correct) };
 
         [Obsolete]
-        public override void InitTask ()
+        public override void InitEnvironment ()
         {
             CreateGraph();
 

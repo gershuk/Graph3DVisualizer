@@ -36,7 +36,7 @@ namespace Graph3DVisualizer.SceneController
             return verdicts;
         }
 
-        public override void InitTask ()
+        public override void InitEnvironment ()
         {
             var track = new GameObject("Track").AddComponent<TrackController>();
             track.Positions = new[] { new Vector3(0, 0, 0), new Vector3(0, 0, 10), new Vector3(0, 20, 20), new Vector3(-10, 30, 30), new Vector3(-10, 60, 30), new Vector3(0, 40, 35) };

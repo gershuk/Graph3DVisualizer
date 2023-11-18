@@ -116,16 +116,16 @@ namespace Graph3DVisualizer.Billboards
             return billboardId;
         }
 
-        public void DeleteBillboard (BillboardId billboardId)
+        public void DeleteBillboard (BillboardId id)
         {
-            DisableBillboard(billboardId);
-            _billboards.Remove(billboardId);
+            DisableBillboard(id);
+            _billboards.Remove(id);
             UpdateBounds();
         }
 
-        public void DisableBillboard (BillboardId billboardId)
+        public void DisableBillboard (BillboardId id)
         {
-            var disabledBillboard = GetBillboard(billboardId);
+            var disabledBillboard = GetBillboard(id);
             disabledBillboard.ScaleChanged -= UpdateBounds;
             var newMaterials = new Material[_render.sharedMaterials.Length - 1];
             var i = 0;
@@ -144,9 +144,9 @@ namespace Graph3DVisualizer.Billboards
             UpdateBounds();
         }
 
-        public void EnableBillboard (BillboardId billboardId) => AddBillboardMaterialToRender(billboardId);
+        public void EnableBillboard (BillboardId id) => AddBillboardMaterialToRender(id);
 
-        public Billboard GetBillboard (BillboardId billboardId) => _billboards[billboardId];
+        public Billboard GetBillboard (BillboardId id) => _billboards[id];
 
         public void RemoveFromCache (BillboardParameters billboardParameters) =>
             CacheForCustomizableObjects.Remove(billboardParameters, true);

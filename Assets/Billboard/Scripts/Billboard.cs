@@ -168,7 +168,7 @@ namespace Graph3DVisualizer.Billboards
                                            Description);
         }
 
-        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+        AbstractCustomizableParameter ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
 
         public void SetupParams (BillboardParameters billboardParameters)
         {
@@ -185,7 +185,7 @@ namespace Graph3DVisualizer.Billboards
             Description = billboardParameters.Description;
         }
 
-        public void SetupParams (object parameters) => throw new NotImplementedException();
+        public void SetupParams (AbstractCustomizableParameter parameters) => throw new NotImplementedException();
     }
 
     /// <summary>

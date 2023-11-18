@@ -34,10 +34,10 @@ namespace Graph3DVisualizer.SupportComponents
 
         protected abstract void ClickAction (GameObject callingObject);
 
-        public void Click (GameObject gameObject)
+        public void Click (GameObject callingObject)
         {
-            ClickAction(gameObject);
-            Clicked?.Invoke(gameObject);
+            ClickAction(callingObject);
+            Clicked?.Invoke(callingObject);
         }
     }
 }

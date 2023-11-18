@@ -150,10 +150,10 @@ namespace Graph3DVisualizer.Graph3D
         public AbstractVertexParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
             new(MovementComponent.GlobalCoordinates, MovementComponent.GlobalEulerAngles, Id);
 
-        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+        AbstractCustomizableParameter ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
 
         public TEdge Link<TEdge, TParameters> (AbstractVertex toVertex, TParameters edgeParameters)
-                    where TEdge : AbstractEdge where TParameters : EdgeParameters
+                            where TEdge : AbstractEdge where TParameters : EdgeParameters
         {
             CheckLinkForCorrectness(toVertex, typeof(TEdge));
             var edge = ((TEdge?) FindOppositeEdge(toVertex, typeof(TEdge))) ?? CreateEdge<TEdge, TParameters>(edgeParameters, toVertex);
@@ -177,6 +177,8 @@ namespace Graph3DVisualizer.Graph3D
             (parameters.Position, parameters.EulerAngles, parameters.ObjectId);
 
         public void SetupParams (object parameters) => throw new NotImplementedException();
+
+        public void SetupParams (AbstractCustomizableParameter parameters) => throw new NotImplementedException();
 
         public void UnLink<TEdge> (AbstractVertex toVertex) where TEdge : AbstractEdge => UnLink(toVertex, typeof(SpriteEdge));
 

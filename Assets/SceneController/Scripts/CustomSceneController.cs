@@ -20,6 +20,6 @@ namespace Graph3DVisualizer.LightGraphSerializer
 {
     public class CustomSceneController : AbstractSceneController
     {
-        public override void InitTask () => CreatePlayer();
+        public override void InitEnvironment () => CreatePlayer();
     }
 }

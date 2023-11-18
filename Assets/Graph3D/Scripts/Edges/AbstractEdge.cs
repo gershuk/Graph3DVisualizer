@@ -74,7 +74,7 @@ namespace Graph3DVisualizer.Graph3D
     }
 
     /// <summary>
-    /// Abstarct class for describing visual part of the graph edge.
+    /// Abstract class for describing visual part of the graph edge.
     /// </summary>
     [CustomizableGrandType(typeof(EdgeParameters))]
     [RequireComponent(typeof(LineRenderer))]
@@ -214,7 +214,7 @@ namespace Graph3DVisualizer.Graph3D
         public EdgeParameters DownloadParams (Dictionary<Guid, object> writeCache) =>
             new(null, SpringParameters, SourceOffsetDist, TargetOffsetDist, Width, Visibility, Id);
 
-        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+        AbstractCustomizableParameter ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
 
         public void SetupParams (EdgeParameters parameters)
         {
@@ -251,6 +251,8 @@ namespace Graph3DVisualizer.Graph3D
         }
 
         public void SetupParams (object parameters) => throw new NotImplementedException();
+
+        public void SetupParams (AbstractCustomizableParameter parameters) => throw new NotImplementedException();
 
         public abstract void UpdateCoordinates ();
 

@@ -118,7 +118,7 @@ namespace Graph3DVisualizer.PlayerInputControls
 
         public ToolParams DownloadParams (Dictionary<Guid, object> writeCache) => new(IsVR);
 
-        object ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
+        AbstractCustomizableParameter ICustomizable.DownloadParams (Dictionary<Guid, object> writeCache) => throw new NotImplementedException();
 
         public virtual void RegisterEvents (IInputActionCollection inputActions)
         {
@@ -129,6 +129,8 @@ namespace Graph3DVisualizer.PlayerInputControls
         public void SetupParams (ToolParams parameters) => IsVR = parameters.IsVR;
 
         public void SetupParams (object parameters) => throw new NotImplementedException();
+
+        public void SetupParams (AbstractCustomizableParameter parameters) => throw new NotImplementedException();
     }
 
     /// <summary>
